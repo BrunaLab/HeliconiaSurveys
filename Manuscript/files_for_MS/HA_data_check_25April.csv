@@ -1,0 +1,86 @@
+﻿228,2107,1-ha,237,"same plant, but recorded in wrong location in early survey"
+229,2107,1-ha,237,"same plant, but recorded in wrong location in early survey"
+353,2108,1-ha,17,"same plant, but recorded in wrong location in 2007"
+354,2108,1-ha,17,"same plant, but recorded in wrong location in 2007"
+401,2108,1-ha,66,"looks like the same plant, confusion regarding location after treefall"
+402,2108,1-ha,66,"looks like the same plant, confusion regarding location after treefall"
+899,2206,10-ha,270,"looks like the same plant, confusion regarding location after treefall"
+900,2206,10-ha,270,"looks like the same plant, confusion regarding location after treefall"
+1100,5750,CF,236,"looks like the same plant, confusion regarding location after treefall"
+1101,5750,CF,236,"looks like the same plant, confusion regarding location after treefall"
+1838,5750,CF,988,"looks like the same plant, confusion regarding location after treefall"
+1839,5750,CF,988,"looks like the same plant, confusion regarding location after treefall"
+1952,5750,CF,1401,I think these are two different seedlings and that we wrote one of the numbers down incorreectly but need to deep dive into the original datasheets again
+1953,5750,CF,1401,I think these are two different seedlings and that we wrote one of the numbers down incorreectly but need to deep dive into the original datasheets again
+2013,5750,CF,2022,I think the one in J8 is actually number 2002 and was incorrectly written down as 2022 in 2007
+2014,5750,CF,2022,I think the one in J8 is actually number 2002 and was incorrectly written down as 2022 in 2007
+2517,5751,1-ha,358,same plant - mistake in data entry in 2007-- it IS in A7
+2518,5751,1-ha,358,same plant - mistake in data entry in 2007-- it IS in A7
+2524,5751,1-ha,365,the one in d5 should actually be tag number 395
+2525,5751,1-ha,365,the one in d5 should actually be tag number 395
+2552,5751,1-ha,401,looks like they are same plant
+2553,5751,1-ha,401,looks like they are same plant
+2746,5752,10-ha,181,same plant - I think it was just entered 2x in one year and the duplicate entry just propagated through
+2747,5752,10-ha,181,same plant - I think it was just entered 2x in one year and the duplicate entry just propagated through
+3085,5752,10-ha,526,"same plant (yes, it survived that long! It was mistakenly marked as a seedling in 2007. Merge the records."
+3086,5752,10-ha,526,"same plant (yes, it survived that long! It was mistakenly marked as a seedling in 2007. Merge the records."
+3126,5752,10-ha,566,"same plant (yes, it survived that long! It was mistakenly marked as a seedling in 2007. Merge the records."
+3127,5752,10-ha,566,"same plant (yes, it survived that long! It was mistakenly marked as a seedling in 2007. Merge the records."
+3393,5752,10-ha,841,tough - they are both recorded as 841 in 2 places with 2 diff measurments. I think one was obviously written down incorrectly (the number) and thatthey are 2 different plants but will need to deep dive a bit more
+3394,5752,10-ha,841,tough - they are both recorded as 841 in 2 places with 2 diff measurments. I think one was obviously written down incorrectly (the number) and thatthey are 2 different plants but will need to deep dive a bit more
+3671,5753,1-ha,319,
+3672,5753,1-ha,319,
+3673,5753,1-ha,320,
+3674,5753,1-ha,320,
+3715,5753,1-ha,363,
+3716,5753,1-ha,363,
+3821,5756,CF,16,
+3822,5756,CF,16,
+3835,5756,CF,29,
+3836,5756,CF,29,
+4457,5756,CF,659,
+4458,5756,CF,659,
+4614,5756,CF,816,
+4615,5756,CF,816,
+4728,5756,CF,929,
+4729,5756,CF,929,
+4775,5756,CF,976,
+4776,5756,CF,976,
+4873,5756,CF,1276,
+4874,5756,CF,1276,
+4877,5756,CF,1279,
+4878,5756,CF,1279,
+4901,5756,CF,1602,
+4902,5756,CF,1602,
+4955,5756,CF,1655,
+4956,5756,CF,1655,
+4987,5756,CF,1686,
+4988,5756,CF,1686,
+5086,5756,CF,1789,
+5087,5756,CF,1789,
+5207,CaboFrio,CF,2121,
+5338,CaboFrio,CF,194,
+5339,CaboFrio,CF,194,
+5557,CaboFrio,CF,2115,
+5558,CaboFrio,CF,2115,
+5564,CaboFrio,CF,2121,
+5663,DimonaCF,CF,90,
+5664,DimonaCF,CF,90,
+5757,DimonaCF,CF,185,
+5758,DimonaCF,CF,185,
+5766,DimonaCF,CF,196,
+5767,DimonaCF,CF,196,
+5768,DimonaCF,CF,197,
+5769,DimonaCF,CF,197,
+6351,Florestal,CF,576,
+6352,Florestal,CF,576,
+7033,Florestal,CF,1267,
+7034,Florestal,CF,1267,
+7140,Florestal,CF,1473,
+7141,Florestal,CF,1473,
+7333,Florestal,CF,1969,
+7334,Florestal,CF,1969,
+7606,PA-CF,CF,264,
+7607,PA-CF,CF,264,
+7668,PA-CF,CF,356,
+7669,PA-CF,CF,356,
