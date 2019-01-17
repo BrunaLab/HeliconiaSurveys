@@ -24,7 +24,7 @@ library(tidyverse) #Data Manipulations+ggplo1
 # Step 1: load the CSV files and save as dataframe
 ha_data <-
   read.csv(
-    "./data/Hacuminata_98-09_12oct2016.csv",
+    "./data_raw/Hacuminata_98-09_12oct2016.csv",
     dec = ".",
     header = TRUE,
     sep = ",",
@@ -464,7 +464,7 @@ Not_on_SurveyList <-
   test %>% filter(code.notes == "not on list (40)" |
                     code.notes == "dead not on list (100)")
 write.csv(Not_on_SurveyList,
-          "./output/Not_on_SurveyList.csv",
+          "./data_clean/Not_on_SurveyList.csv",
           row.names = FALSE)
 
 
@@ -595,7 +595,7 @@ df2 <- df2 %>%
 
 summary(df2)
 #All plamts post -dead records, including NA in ALL columnS
-# write.csv(dbl.chk, "./output/post_dead_records.csv",row.names = FALSE)
+# write.csv(dbl.chk, "./data_clean/post_dead_records.csv",row.names = FALSE)
 
 # df3 - keep these for review (they are the ones that are marked dead but have data after)
 df3 <-
@@ -608,7 +608,7 @@ df3 <-
 zombies_all_yrs <-
   semi_join(test, df3, by = c("plot", "tag_number")) %>% select(plot, size, tag_number, year, shts, ht, code.notes) %>% arrange(plot, size, tag_number, year)
 # zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
-write.csv(zombies_all_yrs, "./output/zombies.csv", row.names = FALSE)
+write.csv(zombies_all_yrs, "./data_clean/zombies.csv", row.names = FALSE)
 
 # This just prints them out with each plant separated by a row
 zombies_all_yrs_new <-
@@ -619,7 +619,7 @@ zombies_all_yrs_new <-
     by(zombies_all_yrs_new, zombies_all_yrs_new$tag_number, rbind, "")
   ),-1)
 write.csv(zombies_all_yrs_new,
-          "./output/zombies_space_btwn_plants.csv",
+          "./data_clean/zombies_space_btwn_plants.csv",
           row.names = FALSE)
 
 
@@ -635,7 +635,7 @@ test <- anti_join(test, df4, by = c("plot", "tag_number", "year"))
 
 rm(df, df2, df3, df4, zombies_all_yrs_new)
 
-write.csv(test, "./output/Ha_survey_with_Zombies.csv", row.names = FALSE)
+write.csv(test, "./data_clean/Ha_survey_with_Zombies.csv", row.names = FALSE)
 
 test$row_col <- do.call(paste, c(test[c("row", "column")], sep = "")) 
 duplicates_col <- test %>% group_by(size, plot, column,  tag_number, year) %>% filter(n()>1)
@@ -646,15 +646,5 @@ duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% uniqu
 
 dupes <-
   semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(plot, size, tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, size, tag_number, row_col,year)
-write.csv(dupes, "./output/dupes.csv", row.names = FALSE)
-
-
-
-
-
-total_plants_per_plot <- test %>% group_by(size,plot) %>% summarise(count = n_distinct(tag_number)) %>% arrange(count)
-write.csv(total_plants_per_plot, "./output/total_plants_per_plot.csv", row.names = FALSE)
-
-plants_per_plot_per_year <- test %>% group_by(size,plot,year) %>% summarise(count = n_distinct(tag_number)) %>% arrange(size,plot,year,count)
-write.csv(plants_per_plot_per_year, "./output/plants_per_plot_per_year.csv", row.names = FALSE)
+write.csv(dupes, "./data_clean/dupes.csv", row.names = FALSE)
 
