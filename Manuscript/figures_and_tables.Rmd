@@ -1,0 +1,45 @@
+---
+title: "Figures_and_Tables"
+author: "Emilio Bruna"
+date: "1/17/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r plot_info, echo=FALSE}
+
+plot_info <-
+  read.csv(
+    "./data_raw/heliconia_plot_descriptors.csv",
+    dec = ".",
+    header = TRUE,
+    sep = ",",
+    check.names = FALSE
+  )
+
+knitr::kable(plot_info, format="markdown")
+
+```
+
+```{r plants_per_plot, echo=FALSE}
+heliconia_clean <-
+  read.csv(
+    "../data_clean/Ha_survey_with_Zombies.csv",
+    dec = ".",
+    header = TRUE,
+    sep = ",",
+    check.names = FALSE
+  )
+
+total_plants_per_plot <- heliconia_clean %>% group_by(size,plot,HA.plot) %>% summarise(count = n_distinct(tag_number)) %>% arrange(size)
+knitr::kable(total_plants_per_plot, format="markdown")
+```

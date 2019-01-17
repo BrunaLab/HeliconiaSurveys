@@ -77,8 +77,33 @@ colnames(ha_data)
 str(ha_data)
 
 
+# clean up the names of ranches and plots
 
-# 
+levels(ha_data$ranch)[match("PortoAlegre",levels(ha_data$ranch))] <- "Porto Alegre"
+levels(ha_data$ranch)[match("Esteio-Colosso",levels(ha_data$ranch))] <- "Esteio"
+levels(ha_data$plot)[match("Dimona CF",levels(ha_data$plot))] <- "Dimona-CF"
+levels(ha_data$plot)[match("PA-CF",levels(ha_data$plot))] <- "Porto Alegre-CF"
+
+
+#add the column with CF-1....FF-7 to match bruna 2003
+plot_info <-
+  read.csv(
+    "./data_raw/heliconia_plot_descriptors.csv",
+    dec = ".",
+    header = TRUE,
+    sep = ",",
+    check.names = FALSE
+  )
+
+levels(ha_data$plot)
+levels(plot_info_subset$Heliconia.Plot.ID)
+
+
+plot_info_subset<-plot_info %>% select(HA.plot,plot)
+
+ha_data <- left_join(ha_data, plot_info_subset,by="plot") 
+str(ha_data)
+rm(plot_info, plot_info_subset)
 # ha_data <- tibble::set_tidy_names(ha_data)
 # colnames(ha_data)
 
@@ -149,10 +174,10 @@ colnames(ha_data)
 
 
 #
-# test<-ha_data %>% gather("year_notes", "notes.code", "notes_1998", "notes_1999", "notes_2000", "notes_2001", "notes_2002", "notes_2003", "notes_2004", "notes_2005", "notes_2006", "notes_2008", "notes_2009")
-# test<-test %>% gather("year_shts", "shts", "shts_1998", "shts_1999", "shts_2000", "shts_2001", "shts_2002", "shts_2003", "shts_2004", "shts_2005", "shts_2006", "shts_2008", "shts_2009")
-# test<-test %>% gather("year_ht", "ht", "ht_1998", "ht_1999", "ht_2000", "ht_2001", "ht_2002", "ht_2003", "ht_2004", "ht_2005", "ht_2006", "ht_2008", "ht_2009")
-# test<-test %>% gather("year_infl", "infl", "infl_1998", "infl_1999", "infl_2000", "infl_2001", "infl_2002", "infl_2003", "infl_2004", "infl_2005", "infl_2006", "infl_2008", "infl_2009")
+# test<-ha_data %>% gather("HA.plot","year_notes", "notes.code", "notes_1998", "notes_1999", "notes_2000", "notes_2001", "notes_2002", "notes_2003", "notes_2004", "notes_2005", "notes_2006", "notes_2008", "notes_2009")
+# test<-test %>% gather("HA.plot","year_shts", "shts", "shts_1998", "shts_1999", "shts_2000", "shts_2001", "shts_2002", "shts_2003", "shts_2004", "shts_2005", "shts_2006", "shts_2008", "shts_2009")
+# test<-test %>% gather("HA.plot","year_ht", "ht", "ht_1998", "ht_1999", "ht_2000", "ht_2001", "ht_2002", "ht_2003", "ht_2004", "ht_2005", "ht_2006", "ht_2008", "ht_2009")
+# test<-test %>% gather("HA.plot","year_infl", "infl", "infl_1998", "infl_1999", "infl_2000", "infl_2001", "infl_2002", "infl_2003", "infl_2004", "infl_2005", "infl_2006", "infl_2008", "infl_2009")
 
 
 # levels(ha_data$notes_2004)[levels(ha_data$notes_2004)=="ULY"] <- "3"
@@ -162,6 +187,7 @@ colnames(ha_data)
 test.notes <-
   select(
     ha_data,
+    "HA.plot",
     "plot",
     "size",
     "ranch",
@@ -207,6 +233,7 @@ head(test.notes, 100)
 test.infl <-
   select(
     ha_data,
+    "HA.plot",
     "plot",
     "size",
     "ranch",
@@ -252,6 +279,7 @@ head(test.infl, 10)
 test.shts <-
   select(
     ha_data,
+    "HA.plot",
     "plot",
     "size",
     "ranch",
@@ -297,6 +325,7 @@ head(test.shts, 10)
 test.ht <-
   select(
     ha_data,
+    "HA.plot",
     "plot",
     "size",
     "ranch",
@@ -364,6 +393,7 @@ colnames(test)
 test <-
   select(
     test,
+    "HA.plot",
     "plot",
     "size",
     "ranch",
@@ -645,6 +675,5 @@ duplicates_row_col <- test %>% group_by(size, plot, tag_number, year) %>% filter
 duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()
 
 dupes <-
-  semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(plot, size, tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, size, tag_number, row_col,year)
+  semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(HA.plot,plot, size, tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, size, tag_number, row_col,year)
 write.csv(dupes, "./data_clean/dupes.csv", row.names = FALSE)
-
