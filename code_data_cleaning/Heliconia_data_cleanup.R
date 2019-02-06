@@ -77,7 +77,12 @@ ha_data[cols] <- lapply(ha_data[cols], factor)
 
 
 ############################################################
-# make fragment habitat an ordered factor 
+# make plot and column a factor 
+############################################################
+ha_data$plot<-as.factor(ha_data$plot)
+ha_data$column<-as.factor(ha_data$column)
+############################################################
+# make habitat (frag size) an ordered factor 
 ############################################################
 
 ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
@@ -153,6 +158,7 @@ ha_data <-
     "tag_number",
     "row",
     "column",
+    "shts_1997"
     "shts_1998",
     "shts_1999",
     "shts_2000",
