@@ -6,22 +6,20 @@
 #=============================================================================================================#
 library(tidyverse) #Data Manipulations+ggplo1
 
-
-############################################################################################################
+############################################################
 ### DATA ENTRY AND CLEANUP
-############################################################################################################
+############################################################
 
 # CODE BELOW ASSUMES
 # 1) Data are in a folder in the working directory or RStudio Project called 'data'
 # 2) There is a folder in the working directory or RStudio Project called 'output'
 
 
+############################################################
+#  import CSV files and save as dataframe
+############################################################
 
-#########################################
-#  Nest data import and selection
-#########################################
-
-# Step 1: load the CSV files and save as dataframe
+# load the CSV files and save as dataframe
 ha_data <-
   read.csv(
     "./data_raw/Hacuminata_98-09_12oct2016.csv",
@@ -30,16 +28,15 @@ ha_data <-
     sep = ",",
     check.names = FALSE
   )
-# ha_data<-rowid_to_column(ha_data, "HA_ID_Number")
 
 
-######################################################
-# make the column nmaes lower case
+############################################################
+#  clean column names
+############################################################
+# make the column names lower case
 names(ha_data)<-tolower(names(ha_data))
-# rename the ones with duplicate names
-ha_data <- rename(ha_data, new_name = old_name)
-ha_data <- rename(ha_data[48], new_name = old_name)
 
+# rename the columns that have duplicate names
 names(ha_data)[48] <- "plant_id_07"
 names(ha_data)[49] <- "row_07"
 names(ha_data)[50] <- "column_07"
@@ -53,8 +50,12 @@ names(ha_data)[65] <- "y_09"
 names(ha_data)[66] <- "notes_to_eb"
 names(ha_data)
 
+############################################################
+# correct the data types assigned to each 
+############################################################
 str(ha_data)
-
+# set as character
+ha_data$notes_to_eb<-as.character(ha_data$notes_to_eb)
 
 # set these as a factor
 cols <-
@@ -73,19 +74,36 @@ cols <-
     "notes_2009"
   )
 ha_data[cols] <- lapply(ha_data[cols], factor)
-colnames(ha_data)
-str(ha_data)
 
 
-# clean up the names of ranches and plots
+############################################################
+# make fragment habitat an ordered factor 
+############################################################
 
-levels(ha_data$ranch)[match("PortoAlegre",levels(ha_data$ranch))] <- "Porto Alegre"
-levels(ha_data$ranch)[match("Esteio-Colosso",levels(ha_data$ranch))] <- "Esteio"
+ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
+
+############################################################
+# clean up the names of ranches 
+############################################################
+levels(ha_data$ranch)[match("PortoAlegre",levels(ha_data$ranch))] <- "PAL"
+levels(ha_data$ranch)[match("Esteio-Colosso",levels(ha_data$ranch))] <- "EST"
+levels(ha_data$ranch)[match("Dimona",levels(ha_data$ranch))] <- "DIM"
+summary(ha_data$ranch)
+
+############################################################
+# clean up the names of plots 
+############################################################
+summary(ha_data$plot)
 levels(ha_data$plot)[match("Dimona CF",levels(ha_data$plot))] <- "Dimona-CF"
-levels(ha_data$plot)[match("PA-CF",levels(ha_data$plot))] <- "Porto Alegre-CF"
+levels(ha_data$plot)[match("PA-CF",levels(ha_data$plot))] <- "PortoAlegre-CF"
+levels(ha_data$plot)[match("Cabo Frio",levels(ha_data$plot))] <- "CaboFrio-CF"
+levels(ha_data$plot)[match("Florestal",levels(ha_data$plot))] <- "Florestal-CF"
+summary(ha_data$plot)
 
-
-#add the column with CF-1....FF-7 to match bruna 2003
+############################################################
+# add a column with plots numbered as CF-1, CF-2...FF-7 
+# to match map in Bruna (2003) Ecology
+############################################################
 plot_info <-
   read.csv(
     "./data_raw/heliconia_plot_descriptors.csv",
@@ -94,27 +112,44 @@ plot_info <-
     sep = ",",
     check.names = FALSE
   )
-
-levels(ha_data$plot)
-levels(plot_info_subset$Heliconia.Plot.ID)
-
-
 plot_info_subset<-plot_info %>% select(HA.plot,plot)
 
 ha_data <- left_join(ha_data, plot_info_subset,by="plot") 
 str(ha_data)
 rm(plot_info, plot_info_subset)
-# ha_data <- tibble::set_tidy_names(ha_data)
-# colnames(ha_data)
 
-######################################################
+
+############################################################
+# INSERT THE DATA FOR PA 10-HA FRAGMENT
+############################################################
+
+############################################################
+# ADD A UNIQUE ID NUMBER FOR EACH PLANT
+############################################################
+
+ha_data<-rowid_to_column(ha_data, "HA_ID_Number")
+
+
+
+
+
+
+############################################################
+# DATA CLEANING
+############################################################
+### Not included, need to figure out what these are
+# "plantID", "row", "col", "notes to Emilio", "Y", "plantID.1", "row.1", "col.1",
+
+
 # SELECT THE columnS NEEDED
 ha_data <-
   ha_data %>% select(
+    "HA.plot",
     "plot",
-    "size",
+    "habitat",
     "ranch",
     "bdffp_reserve_no",
+    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -169,11 +204,9 @@ ha_data <-
   )
 colnames(ha_data)
 
-### Not included, need to figure out what these are
-# "plantID", "row", "col", "notes to Emilio", "Y", "plantID.1", "row.1", "col.1",
 
 
-#
+
 # test<-ha_data %>% gather("HA.plot","year_notes", "notes.code", "notes_1998", "notes_1999", "notes_2000", "notes_2001", "notes_2002", "notes_2003", "notes_2004", "notes_2005", "notes_2006", "notes_2008", "notes_2009")
 # test<-test %>% gather("HA.plot","year_shts", "shts", "shts_1998", "shts_1999", "shts_2000", "shts_2001", "shts_2002", "shts_2003", "shts_2004", "shts_2005", "shts_2006", "shts_2008", "shts_2009")
 # test<-test %>% gather("HA.plot","year_ht", "ht", "ht_1998", "ht_1999", "ht_2000", "ht_2001", "ht_2002", "ht_2003", "ht_2004", "ht_2005", "ht_2006", "ht_2008", "ht_2009")
@@ -189,9 +222,10 @@ test.notes <-
     ha_data,
     "HA.plot",
     "plot",
-    "size",
+    "habitat",
     "ranch",
     "bdffp_reserve_no",
+    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -235,9 +269,10 @@ test.infl <-
     ha_data,
     "HA.plot",
     "plot",
-    "size",
+    "habitat",
     "ranch",
     "bdffp_reserve_no",
+    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -281,9 +316,10 @@ test.shts <-
     ha_data,
     "HA.plot",
     "plot",
-    "size",
+    "habitat",
     "ranch",
     "bdffp_reserve_no",
+    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -327,9 +363,10 @@ test.ht <-
     ha_data,
     "HA.plot",
     "plot",
-    "size",
+    "habitat",
     "ranch",
     "bdffp_reserve_no",
+    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -384,7 +421,7 @@ summary(years$test)
 
 ######################################################
 # COMPLETE GOING FROM WIDE TO LONG BY DELETING THE COLUMSN YOU DON'T NEED
-# bind the columns fo ht, shots, infl, and notes into a single dataframe called 'test'
+# bind the columns for ht, shots, infl, and notes into a single dataframe called 'test'
 test <-
   as.data.frame(bind_cols(test.ht, test.shts, test.infl, test.notes))
 head(test, 10)
@@ -395,9 +432,10 @@ test <-
     test,
     "HA.plot",
     "plot",
-    "size",
+    "habitat",
     "ranch",
     "bdffp_reserve_no",
+    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -636,7 +674,7 @@ df3 <-
   bind_rows(df, df3) %>% select(plot, tag_number, year, ht, shts) %>% unique()
 
 zombies_all_yrs <-
-  semi_join(test, df3, by = c("plot", "tag_number")) %>% select(plot, size, tag_number, year, shts, ht, code.notes) %>% arrange(plot, size, tag_number, year)
+  semi_join(test, df3, by = c("plot", "tag_number")) %>% select(plot, habitat, tag_number, year, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, year)
 # zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
 write.csv(zombies_all_yrs, "./data_clean/zombies.csv", row.names = FALSE)
 
@@ -668,12 +706,12 @@ rm(df, df2, df3, df4, zombies_all_yrs_new)
 write.csv(test, "./data_clean/Ha_survey_with_Zombies.csv", row.names = FALSE)
 
 test$row_col <- do.call(paste, c(test[c("row", "column")], sep = "")) 
-duplicates_col <- test %>% group_by(size, plot, column,  tag_number, year) %>% filter(n()>1)
-duplicates_row <- test %>% group_by(size, plot, row,  tag_number, year) %>% filter(n()>1)
-duplicates_row_col <- test %>% group_by(size, plot, row_col,  tag_number, year) %>% filter(n()>1)
-duplicates_row_col <- test %>% group_by(size, plot, tag_number, year) %>% filter(n()>1) %>% ungroup()
+duplicates_col <- test %>% group_by(habitat, plot, column,  tag_number, year) %>% filter(n()>1)
+duplicates_row <- test %>% group_by(habitat, plot, row,  tag_number, year) %>% filter(n()>1)
+duplicates_row_col <- test %>% group_by(habitat, plot, row_col,  tag_number, year) %>% filter(n()>1)
+duplicates_row_col <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1) %>% ungroup()
 duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()
 
 dupes <-
-  semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(HA.plot,plot, size, tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, size, tag_number, row_col,year)
+  semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(HA.plot,plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, row_col,year)
 write.csv(dupes, "./data_clean/dupes.csv", row.names = FALSE)
