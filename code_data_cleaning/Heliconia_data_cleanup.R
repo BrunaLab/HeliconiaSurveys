@@ -37,6 +37,7 @@ ha_data <-
 names(ha_data)<-tolower(names(ha_data))
 
 # rename the columns that have duplicate names
+names(ha_data)[2] <- "habitat"
 names(ha_data)[48] <- "plant_id_07"
 names(ha_data)[49] <- "row_07"
 names(ha_data)[50] <- "column_07"
@@ -158,7 +159,6 @@ ha_data <-
     "tag_number",
     "row",
     "column",
-    "shts_1997"
     "shts_1998",
     "shts_1999",
     "shts_2000",
