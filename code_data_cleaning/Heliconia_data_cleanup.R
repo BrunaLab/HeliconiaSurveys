@@ -61,6 +61,8 @@ ha_data$notes_to_eb<-as.character(ha_data$notes_to_eb)
 # set these as a factor
 cols <-
   c(
+    "plot",
+    "column",
     "notes_1998",
     "notes_1999",
     "notes_2000",
@@ -75,13 +77,9 @@ cols <-
     "notes_2009"
   )
 ha_data[cols] <- lapply(ha_data[cols], factor)
+str(ha_data)
 
-
-############################################################
-# make plot and column a factor 
-############################################################
-ha_data$plot<-as.factor(ha_data$plot)
-ha_data$column<-as.factor(ha_data$column)
+# ha_data$tag_number<-as.factor(ha_data$tag_number)
 ############################################################
 # make habitat (frag size) an ordered factor 
 ############################################################
@@ -121,8 +119,9 @@ plot_info <-
 plot_info_subset<-plot_info %>% select(HA.plot,plot)
 
 ha_data <- left_join(ha_data, plot_info_subset,by="plot") 
-str(ha_data)
 rm(plot_info, plot_info_subset)
+ha_data$plot<-as.factor(ha_data$plot)
+str(ha_data)
 
 
 ############################################################
@@ -136,15 +135,143 @@ rm(plot_info, plot_info_subset)
 ha_data<-rowid_to_column(ha_data, "HA_ID_Number")
 
 
+############################################################
+# CORRECTIONS TO THE DATASET
+############################################################
 
+# track down these marked and mapped in 07/08
+#look for them in plant_id_07 for plants 1609 and 1629
+filter(ha_data, tag_number==1705 & plot==5756) 
+filter(ha_data, tag_number==1710 & plot==5756)
+
+# FIx 
+ha_data$plant_id_07[ha_data$plot=="2107" & ha_data$plant_id_07=="228" & ha_data$tag_number=="288"] <- "288" #incorrectly wrote down 228 when first marked
+ha_data$infl_2007[ha_data$plot=="5756" & ha_data$tag_number=="403"] <- NA # incorrectly recorded as 10 when entered
+
+# fix 68/275
+source<-which(ha_data$tag_number==68 & ha_data$bdffp_reserve_no=="2107")
+destination<-which(ha_data$tag_number==275 & ha_data$bdffp_reserve_no=="2107")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+# fix 129/311
+source<-which(ha_data$tag_number==129 & ha_data$bdffp_reserve_no=="2107")
+destination<-which(ha_data$tag_number==311 & ha_data$bdffp_reserve_no=="2107")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+#fix 1338/1398
+source<-which(ha_data$tag_number==1338 & ha_data$bdffp_reserve_no=="1501")
+destination<-which(ha_data$tag_number==1398 & ha_data$bdffp_reserve_no=="1501")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+#fix 154/390
+source<-which(ha_data$tag_number==154 & ha_data$bdffp_reserve_no=="1104")
+destination<-which(ha_data$tag_number==390 & ha_data$bdffp_reserve_no=="1104")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+#fix 364/337
+source<-which(ha_data$tag_number==264 & ha_data$bdffp_reserve_no=="1104")
+destination<-which(ha_data$tag_number==337 & ha_data$bdffp_reserve_no=="1104")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+#fix 431/480
+source<-which(ha_data$tag_number==431 & ha_data$plot=="5756")
+destination<-which(ha_data$tag_number==480 & ha_data$plot=="5756")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+#fix
+destination<-which(ha_data$tag_number==1629 & ha_data$plot=="5756")
+ha_data[destination, 49:53] <-NA
+
+#fix
+destination<-which(ha_data$tag_number==1609 & ha_data$plot=="5756")
+ha_data[destination, 49:53] <-NA
+
+# fix
+source<-which(ha_data$tag_number==551 & ha_data$plot=="5756")
+destination<-which(ha_data$tag_number==1678 & ha_data$plot=="5756")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+# fix
+source<-which(ha_data$tag_number==1231 & ha_data$plot=="5756")
+destination<-which(ha_data$tag_number==1714 & ha_data$plot=="5756")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+# fix
+source<-which(ha_data$tag_number==1864 & ha_data$plot=="5756")
+destination<-which(ha_data$tag_number==1684 & ha_data$plot=="5756")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+ha_data[c(destination,source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
+ha_data[which(ha_data$tag_number==1864 & ha_data$plot=="5756"),]<-NA
+
+# fix
+ha_data[which(ha_data$tag_number==310 & ha_data$plot=="5751"),49]<-NA
+
+#fix 176/199
+source<-which(ha_data$tag_number==199 & ha_data$plot=="5753")
+destination<-which(ha_data$tag_number==176 & ha_data$plot=="5753")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+# fix 218/298
+source<-which(ha_data$tag_number==218 & ha_data$plot=="5753")
+destination<-which(ha_data$tag_number==298 & ha_data$plot=="5753")
+ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+
+# which(colnames(ha_data)=="plant_id_07")
+# 
+# filter(ha_data, tag_number==347)
+# filter(ha_data, tag_number==275 & plot==2107)
+# filter(ha_data, tag_number==298 & plot==5753)
+# 
+# source<-which(ha_data$tag_number==218 & ha_data$plot=="5753")
+# destination<-which(ha_data$tag_number==298 & ha_data$plot=="5753")
+# ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+
+
+####################
+
+
+ha_data$plant_id_07<-as.integer(ha_data$plant_id_07)
+colnames(ha_data)
+tag_checks<-ha_data %>% select(plot, tag_number,plant_id_07) %>% mutate(dble.chk=tag_number-plant_id_07)
+tag_checks<-arrange(tag_checks,desc(dble.chk))
+head(tag_checks,20)
+tag_checks<-arrange(tag_checks,dble.chk)
+head(tag_checks,20)
+sum(tag_checks$dble.chk) #if NA=zero then all ok
+
+tag_checks<-tag_checks %>% filter(dble.chk > 0 | dble.chk < 0) %>% arrange(plot)
+# 
+# tag.double.chks<-bind_rows(
+#     #2107
+#     ha_data[(ha_data$plot=="2107" & (ha_data$tag_number=="68"| ha_data$tag_number=="275")),],
+#     ha_data[(ha_data$plot=="2107" & (ha_data$tag_number=="129"| ha_data$tag_number=="311")),],
+#     # 5750
+#     ha_data[(ha_data$plot=="5750" & (ha_data$tag_number=="1338"| ha_data$tag_number=="1398")),],
+#     # 5751
+#     ha_data[(ha_data$plot=="5751" & (ha_data$tag_number=="154"| ha_data$tag_number=="390")),],
+#     ha_data[(ha_data$plot=="5751" & (ha_data$tag_number=="264"| ha_data$tag_number=="337")),],
+#     ha_data[(ha_data$plot=="5751" & (ha_data$tag_number=="310"| ha_data$tag_number=="347")),],
+#     #5753
+#     ha_data[(ha_data$plot=="5753" & (ha_data$tag_number=="218"| ha_data$tag_number=="298")),],
+#     ha_data[(ha_data$plot=="5753" & (ha_data$tag_number=="199"| ha_data$tag_number=="176")),],
+#     #5756
+#     ha_data[(ha_data$plot=="5756" & (ha_data$tag_number=="551"| ha_data$tag_number=="1678")),],
+#     ha_data[(ha_data$plot=="5756" & (ha_data$tag_number=="1231"| ha_data$tag_number=="1714")),],
+#     ha_data[(ha_data$plot=="5756" & (ha_data$tag_number=="1609"| ha_data$tag_number=="1710")),],
+#     ha_data[(ha_data$plot=="5756" & ha_data$tag_number=="1629"),],
+#         ha_data[(ha_data$plot=="5756" & (ha_data$tag_number=="431"| ha_data$tag_number=="480")),],
+#     ha_data[(ha_data$plot=="5756" & (ha_data$tag_number=="1864"| ha_data$tag_number=="1684")),]
+#   )
+
+# write_csv(tag.double.chks,"tag.double.chks.csv")
 
 
 
 ############################################################
 # DATA CLEANING
 ############################################################
-### Not included, need to figure out what these are
-# "plantID", "row", "col", "notes to Emilio", "Y", "plantID.1", "row.1", "col.1",
 
 
 # SELECT THE columnS NEEDED
@@ -454,12 +581,14 @@ test <-
 head(test, 30)
 
 rm(test.ht, test.infl, test.notes, test.shts, years)
-
+summary(test)
 ######################################################
 # CLEAN-UP
 # fix the data types as needed
 test$year <- as.numeric(as.character(test$year))
 summary(test$year)
+test$plot<-as.factor(test$plot)
+
 
 # CLARIFY THE CODES
 test$code.notes <- as.factor(test$code.notes)
@@ -508,6 +637,20 @@ summary(test$code.notes)
 # REARRANGE BY plot, then tag number, then year
 test <- test %>% arrange(plot, tag_number, year)
 head(test, 20)
+
+
+
+
+
+############################################
+############################################
+# DATA CORRECTION
+############################################
+############################################
+
+test$code.notes[test$plot=="5753" & test$tag_number=="108" & test$year==2005] <- NA
+
+summary(test)
 
 ######################################################
 # PULL OUT THE 'Miscellaneous observations' AND PUT THEM IN A DIFFERENT CSV FILE
@@ -695,6 +838,22 @@ zombies_all_yrs_new <-
 write.csv(zombies_all_yrs_new,
           "./data_clean/zombies_space_btwn_plants.csv",
           row.names = FALSE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
