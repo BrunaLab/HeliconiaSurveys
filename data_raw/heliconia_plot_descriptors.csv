@@ -6,9 +6,9 @@ FF-4,1-ha fragment,Porto Alegre,3114,1983,5753
 FF-5,10-ha fragment,Dimona,2206,1984,2206
 FF-6,10-ha fragment,Esteio,1202,1980,5752
 FF-7,10-ha fragment,Porto Alegre,3209,1983,5754
-CF-1,Continuous Forest,Esteio,1301,-,Florestal
+CF-1,Continuous Forest,Esteio,1301,-,Florestal-CF
 CF-2,Continuous Forest,Esteio,1501,-,5750
 CF-3,Continuous Forest,Esteio,1501,-,5756
 CF-4,Continuous Forest,Dimona,-,-,Dimona-CF
-CF-5,Continuous Forest,Porto Alegre,-,-,Porto Alegre-CF
-CF-6,Continuous Forest,Porto Alegre,3402,-,Cabo Frio
+CF-5,Continuous Forest,Porto Alegre,-,-,PortoAlegre-CF
+CF-6,Continuous Forest,Porto Alegre,3402,-,CaboFrio-CF

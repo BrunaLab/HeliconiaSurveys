@@ -1,0 +1,49 @@
+Code_ID_Number,codes,count
+1,", must have lost tag",1
+2,sdlg (1),250
+3,1 new infl,16
+4,1 new infl + 1 old infl,3
+5,1 old infl,11
+6,dead (2),117
+7,2 old infl ,2
+8,2 old infls,1
+9,ULY (3),173
+10,3 old infl,2
+11,not on list (40),6
+12,no tag (50),91
+13,plant missing (60),6
+14,under treefall (80),54
+15,under branchfall (90),73
+16,actualkly in c8,1
+17,actually  B5,1
+18,actually in A6,3
+19,could be 1333,1
+20,could be 378,1
+21,could be 680?,1
+22,could be one of missing,10
+23,dead,56
+24,"dead, not on list",1
+25,e E6,1
+26,horrible treefall in plot,1
+27,"horrible treefall in plot, can barely make it in",1
+28,its in C2,2
+29,lots of small branchfalls in plot,1
+30,missing,67
+31,must be one of missing,4
+32,not on list,3
+33,not on list. must be313,1
+34,not on list. must be96,1
+35,plot is 50% treefall,1
+36,pvc stake not on list,1
+37,sdlg,7
+38,should be c5,1
+39,this number belongs to a pvc in a6,1
+40,treefall in plot,1
+41,trefall ,1
+42,ULY?,3
+43,under branch,8
+44,"under branch, must have lost tag",1
+45,under fallen trunk,3
+46,under treefall ,1
+47,"under treefall , must have lost tag",1
+48,under trunk,1

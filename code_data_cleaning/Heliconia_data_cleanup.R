@@ -880,3 +880,4 @@ duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% uniqu
 dupes <-
   semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(HA.plot,plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, row_col,year)
 write.csv(dupes, "./data_clean/dupes.csv", row.names = FALSE)
+write.csv(unique(dupes$tag_number), "./data_clean/dupe_numbers.csv", row.names = FALSE)
