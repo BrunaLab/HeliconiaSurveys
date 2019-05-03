@@ -225,6 +225,7 @@ PA10_data <-
     "shts_2003",
     "shts_2004",
     "shts_2005",
+    "shts_2006",
     "ht_1998",
     "ht_1999",
     "ht_2000",
@@ -233,6 +234,7 @@ PA10_data <-
     "ht_2003",
     "ht_2004",
     "ht_2005",
+    "ht_2006",
     "infl_1998",
     "infl_1999",
     "infl_2000",
@@ -241,6 +243,7 @@ PA10_data <-
     "infl_2003",
     "infl_2004",
     "infl_2005",
+    "infl_2006",
     "notes_1998",
     "notes_1999",
     "notes_2000",
@@ -325,7 +328,7 @@ test.infl <-
     "infl_2003",
     "infl_2004",
     "infl_2005",
-    "notes_2006"
+    "infl_2006"
   )
 str(test.infl)
 test.infl <-
@@ -340,7 +343,7 @@ test.infl <-
     "infl_2003",
     "infl_2004",
     "infl_2005",
-    "notes_2006"
+    "infl_2006"
   )
 test.infl <-
   test.infl %>% separate(year.infl, c("factor", "year"), sep = "\\_")
@@ -365,7 +368,7 @@ test.shts <-
     "shts_2003",
     "shts_2004",
     "shts_2005",
-    "notes_2006"
+    "shts_2006"
   )
 str(test.shts)
 test.shts <-
@@ -380,7 +383,7 @@ test.shts <-
     "shts_2003",
     "shts_2004",
     "shts_2005",
-    "notes_2006"
+    "shts_2006"
   )
 test.shts <-
   test.shts %>% separate(year.shts, c("factor", "year"), sep = "\\_")
@@ -405,7 +408,7 @@ test.ht <-
     "ht_2003",
     "ht_2004",
     "ht_2005",
-    "notes_2006"
+    "ht_2006"
   )
 str(test.ht)
 test.ht <-
@@ -420,7 +423,7 @@ test.ht <-
     "ht_2003",
     "ht_2004",
     "ht_2005",
-    "notes_2006"
+    "ht_2006"
   )
 test.ht <-
   test.ht %>% separate(year.ht, c("factor", "year"), sep = "\\_")
@@ -542,6 +545,29 @@ write_csv(codes_to_fix,"./data_raw/PA10_codes_to_fix.csv")
 # 1) ID'd all entries that were actuially notes about treefalls, or plants being in the wrong location, etc, extracted them, and  
 # saved this as a different CSV called PA10_plants_to_fix. 
 
+# HHHHHHHHHMMMMMMMMMM - need to 2x check all this
+PA10_code_corrs<-read.csv("./data_raw/PA10_code_corrections.csv")
+PA10_code_corrs<-PA10_code_corrs %>% select(code.notes,new_code) 
+PA10_code_corrs$code.notes<-as.character(PA10_code_corrs$code.notes)
+# PA10_code_corrs$new_code<-as.character(PA10_code_corrs$new_code)
+summary(test)
+summary(PA10_code_corrs)
+
+# now create a dataframe with the subset of plants that need codes corrected
+PA.code.corrections<-inner_join(test,PA10_code_corrs,by="code.notes")
+PA.code.corrections$code.notes<-PA.code.corrections$new_code  # repalce old code with new code
+PA.code.corrections$new_code<-NULL # delete column for old code
+
+#This deletes the plants you just corrected from "test" df. 
+test<-anti_join(test,PA.code.corrections,by=c("tag_number","year","row","column"))
+#and this adds the corrected versions of those plants back to "test" df
+test<-bind_rows(test,PA.code.corrections)  
+
+
+
+
+
+
 PA10_checks<-read.csv("./data_raw/PA10_plants_to_fix.csv")
 PA10_checks$code.notes<-as.character(PA10_checks$code.notes)
 # PA10_checks$count<-NULL
@@ -551,44 +577,12 @@ PA10_checks$code.notes<-as.character(PA10_checks$code.notes)
 summary(PA10_checks)
 
 # This will give you the plants that need review (position, error, 2x, etc) by matching their code with the code in "test" df 
-PA10_checks<-semi_join(test,PA10_checks,by="tag_number") %>% arrange(tag_number)
-
+PA10_checks<-inner_join(test,PA10_checks,by="tag_number") %>% arrange(tag_number)
+PA10_checks$code.notes.y<-NULL
+write_csv(PA10_checks,"./data_raw/PA10_Check_and_Fix.csv")
 # Delete them out from "test" dataframe, correct them, then re bind them to the test dataframe
 test<-anti_join(test,PA10_checks,by="tag_number")
 colnames(PA10_checks)
-# PA10_checks$ht<-NA
-# PA10_checks$shts<-NA
-# PA10_checks$infl<-NA
-# PA10_checks$new_code<-NULL
-
-write_csv(PA10_checks,"./data_raw/PA10_Fixes.csv")
-
-
-
-
-PA10_code_corrs<-read.csv("./data_raw/PA10_code_corrections.csv")
-PA10_code_corrs<-PA10_code_corrs %>% select(code.notes,new_code) 
-PA10_code_corrs$code.notes<-as.character(PA10_code_corrs$code.notes)
-# PA10_code_corrs$new_code<-as.character(PA10_code_corrs$new_code)
-summary(test)
-foo<-inner_join(test,PA10_code_corrs,by="code.notes")
-
-foo$ht<-NA
-foo$shts<-NA
-foo$infl<-NA
-foo$code.notes<-foo$new_code
-foo$new_code<-NULL
-
-colnames(foo)
-colnames(test)
-
-test<-anti_join(test,foo,by=c("tag_number","year"))
-test<-bind_rows(test,foo)
-
-
-
-
-
 
 
 ######################################################
@@ -599,8 +593,8 @@ head(test, 20)
 
 ######3
 
-# STILL NEED TO ADD BACK THE ONES YOU FIXED!!!!!!
 
+# HERE NEED TO ADD BACK THE ONES YOU FIXED: all of the ones in PA10_Check_and_Fix.csv!!!!!!
 
 
 ############################################################
@@ -710,26 +704,26 @@ summary(test$code.notes)
 # # ungroup(foo) %>% select(ht) %>% filter(ht>0) %>% tally()
 # head(foo,30)
 
-summary(test)
-summary(test$code.notes)
-summary(as.factor(test$code2))
-# THIS DELETES ALL UNCESSARY rowS FROM YERS BEFORE A SEEDLING EXISTED
-test$code2 <- NA
-test <- test %>%
-  group_by(plot, tag_number) %>%
-  mutate(
-    code2 = as.character(code2),
-    # can be avoided if key is a character to begin with
-    code2 = ifelse(row_number() == 1 &
-                     (!is.na(ht) | !is.na(shts)), "initial.tag.yr", code2)
-  )
-
-test$code2[test$code.notes == "sdlg (1)"] <- "initial.tag.yr"
-
-test <- test %>% filter(cumsum(!is.na(code2)) > 0) %>%
-  ungroup()
-summary(as.factor(test$code2))
-summary(test)
+# summary(test)
+# summary(test$code.notes)
+# summary(as.factor(test$code2))
+# # THIS DELETES ALL UNCESSARY rowS FROM YERS BEFORE A SEEDLING EXISTED
+# test$code2 <- NA
+# test <- test %>%
+#   group_by(plot, tag_number) %>%
+#   mutate(
+#     code2 = as.character(code2),
+#     # can be avoided if key is a character to begin with
+#     code2 = ifelse(row_number() == 1 &
+#                      (!is.na(ht) | !is.na(shts)), "initial.tag.yr", code2)
+#   )
+# 
+# test$code2[test$code.notes == "sdlg (1)"] <- "initial.tag.yr"
+# 
+# test <- test %>% filter(cumsum(!is.na(code2)) > 0) %>%
+#   ungroup()
+# summary(as.factor(test$code2))
+# summary(test)
 
 
 
