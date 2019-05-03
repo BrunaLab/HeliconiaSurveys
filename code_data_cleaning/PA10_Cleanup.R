@@ -75,10 +75,10 @@ PA10_data_2006 <-
     dec = ".",
     header = TRUE,
     sep = ",",
-    skip=2,
+    skip=1,
     check.names = FALSE
   )
-
+str(PA10_data_2006)
 PA10_data_2006[7:12]<-NULL
 colnames_2006<- c("tag_number","row","column","shts_2006","ht_2006","notes_2006")
 colnames(PA10_data_2006)<-colnames_2006
@@ -105,12 +105,6 @@ str(PA10_data_2006)
 PA10_data_2006$column<-as.factor(PA10_data_2006$column)
 PA10_data_2006$tag_number<-as.integer(PA10_data_2006$tag_number)
 
-
-############################################################
-# ADD A UNIQUE ID NUMBER FOR EACH PLANT
-############################################################
-
-PA10_data<-rowid_to_column(PA10_data, "HA_ID_Number")
 
 
 ############################################################
@@ -220,7 +214,6 @@ PA10_data <-
     "habitat",
     "ranch",
     "bdffp_reserve_no",
-    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -281,7 +274,6 @@ test.notes <-
     "habitat",
     "ranch",
     "bdffp_reserve_no",
-    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -322,7 +314,6 @@ test.infl <-
     "habitat",
     "ranch",
     "bdffp_reserve_no",
-    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -363,7 +354,6 @@ test.shts <-
     "habitat",
     "ranch",
     "bdffp_reserve_no",
-    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -404,7 +394,6 @@ test.ht <-
     "habitat",
     "ranch",
     "bdffp_reserve_no",
-    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -467,7 +456,6 @@ test <-
     "habitat",
     "ranch",
     "bdffp_reserve_no",
-    "HA_ID_Number",
     "tag_number",
     "row",
     "column",
@@ -532,14 +520,94 @@ levels(test$code.notes)[levels(test$code.notes) == "1, 200 "] <-
 levels(test$code.notes)[levels(test$code.notes) == ""] <- NA
 summary(test$code.notes)
 
+
+#######
+# There are a bunch of codes that are long strings of text and need to 
+# be corrected. In addition, some of the rows are actually notes about
+# the treefalls in plots that should go into the treefall notes file
+# select the column of codes. This is all plants in the "test" df - not just the ones with codes that need to be fixed 
+# tag.no<-subset(test,select=tag_number)
+
+# codes_to_fix<-na.omit(bind_cols(tag.no,codes))
+# rm(tag.no,codes)
+codes_to_fix<-test %>% select(tag_number,code.notes) %>% drop_na() %>% distinct(code.notes,.keep_all = TRUE) %>% arrange(code.notes) # make a summary table of all the different codes in the PA10 dataset 
+
+str(codes_to_fix)
+# These are codes that need to be fixed. will save as a csv for review.
+# codes_to_fix<-rowid_to_column(codes_to_fix, "Code_ID_Number")
+write_csv(codes_to_fix,"./data_raw/PA10_codes_to_fix.csv")
+
+# after reviewing and noting changes, I can import and make the corrections.
+# I reviewded the file and did two things:
+# 1) ID'd all entries that were actuially notes about treefalls, or plants being in the wrong location, etc, extracted them, and  
+# saved this as a different CSV called PA10_plants_to_fix. 
+
+PA10_checks<-read.csv("./data_raw/PA10_plants_to_fix.csv")
+PA10_checks$code.notes<-as.character(PA10_checks$code.notes)
+# PA10_checks$count<-NULL
+# PA10_checks$new_code<-NULL
+# test$code.notes<-as.character(test$code.notes)
+# PA10_code_corrs$new_code<-as.character(PA10_code_corrs$new_code)
+summary(PA10_checks)
+
+# This will give you the plants that need review (position, error, 2x, etc) by matching their code with the code in "test" df 
+PA10_checks<-semi_join(test,PA10_checks,by="tag_number") %>% arrange(tag_number)
+
+# Delete them out from "test" dataframe, correct them, then re bind them to the test dataframe
+test<-anti_join(test,PA10_checks,by="tag_number")
+colnames(PA10_checks)
+# PA10_checks$ht<-NA
+# PA10_checks$shts<-NA
+# PA10_checks$infl<-NA
+# PA10_checks$new_code<-NULL
+
+write_csv(PA10_checks,"./data_raw/PA10_Fixes.csv")
+
+
+
+
+PA10_code_corrs<-read.csv("./data_raw/PA10_code_corrections.csv")
+PA10_code_corrs<-PA10_code_corrs %>% select(code.notes,new_code) 
+PA10_code_corrs$code.notes<-as.character(PA10_code_corrs$code.notes)
+# PA10_code_corrs$new_code<-as.character(PA10_code_corrs$new_code)
+summary(test)
+foo<-inner_join(test,PA10_code_corrs,by="code.notes")
+
+foo$ht<-NA
+foo$shts<-NA
+foo$infl<-NA
+foo$code.notes<-foo$new_code
+foo$new_code<-NULL
+
+colnames(foo)
+colnames(test)
+
+test<-anti_join(test,foo,by=c("tag_number","year"))
+test<-bind_rows(test,foo)
+
+
+
+
+
+
+
 ######################################################
 # REARRANGE BY plot, then tag number, then year
-test <- test %>% arrange(plot, tag_number, year)
+test <- test %>% arrange(row,column,tag_number, year)
 head(test, 20)
 
 
+######3
+
+# STILL NEED TO ADD BACK THE ONES YOU FIXED!!!!!!
 
 
+
+############################################################
+# ADD A UNIQUE ID NUMBER FOR EACH PLANT
+############################################################
+
+test<-rowid_to_column(test, "HA_ID_Number")
 
 ############################################
 ############################################
@@ -615,13 +683,6 @@ levels(test$code.notes)[levels(test$code.notes) == "dead, yr unknown (300)"] <-
   "dead (2)"
 levels(test$code.notes)[levels(test$code.notes) == "90, 10 (two codes)"] <-
   NA
-
-
-codes_to_fix<-as.data.frame(na.omit(test$code.note))
-names(codes_to_fix)<-"codes"
-codes_to_fix<-codes_to_fix %>% group_by(codes) %>% summarize(count=n()) %>% arrange(codes)
-codes_to_fix<-as.data.frame(codes_to_fix)
-
 
 
 
