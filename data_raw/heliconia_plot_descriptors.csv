@@ -1,14 +1,14 @@
-﻿HA.plot,Habitat.Type.,Ranch,BDFFP.Reserve.No.,Year.Isolated,plot
-FF-1,1-ha fragment,Dimona,2107,1984,2107
-FF-2,1-ha fragment,Dimona,2108,1984,2108
-FF-3,1-ha fragment,Esteio,1104,1980,5751
-FF-4,1-ha fragment,Porto Alegre,3114,1983,5753
-FF-5,10-ha fragment,Dimona,2206,1984,2206
-FF-6,10-ha fragment,Esteio,1202,1980,5752
-FF-7,10-ha fragment,Porto Alegre,3209,1983,5754
-CF-1,Continuous Forest,Esteio,1301,-,Florestal-CF
-CF-2,Continuous Forest,Esteio,1501,-,5750
-CF-3,Continuous Forest,Esteio,1501,-,5756
-CF-4,Continuous Forest,Dimona,-,-,Dimona-CF
-CF-5,Continuous Forest,Porto Alegre,-,-,PortoAlegre-CF
-CF-6,Continuous Forest,Porto Alegre,3402,-,CaboFrio-CF
+﻿habitat_type,habitat_type,ranch,BDFFP_reserve_no,HDP_plot_ID_no
+FF-1,1-ha fragment,Dimona,2107,2107
+FF-2,1-ha fragment,Dimona,2108,2108
+FF-3,1-ha fragment,Esteio,1104,5751
+FF-4,1-ha fragment,Porto Alegre,3114,5753
+FF-5,10-ha fragment,Dimona,2206,2206
+FF-6,10-ha fragment,Esteio,1202,5752
+FF-7,10-ha fragment,Porto Alegre,3209,5754
+CF-1,Continuous Forest,Esteio,1301,Florestal-CF
+CF-2,Continuous Forest,Esteio,1501,5750
+CF-3,Continuous Forest,Esteio,1501,5756
+CF-4,Continuous Forest,Dimona,none,Dimona-CF
+CF-5,Continuous Forest,Porto Alegre,none,PortoAlegre-CF
+CF-6,Continuous Forest,Porto Alegre,3402,CaboFrio-CF
