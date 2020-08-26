@@ -597,11 +597,102 @@ head(test, 20)
 # HERE NEED TO ADD BACK THE ONES YOU FIXED: all of the ones in PA10_Check_and_Fix.csv!!!!!!
 
 
+PA10_checks$infl[PA10_checks$tag_number==88 & PA10_checks$year==2005 & PA10_checks$row=="A"] <- 2
+PA10_checks$code.notes.x[PA10_checks$tag_number==88 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==98 & PA10_checks$year==2006 & PA10_checks$row=="E"] <- NA
+
+PA10_checks$infl[PA10_checks$tag_number==134 & PA10_checks$year==2005 & PA10_checks$row=="A"] <- 1
+PA10_checks$code.notes.x[PA10_checks$tag_number==134 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
+
+PA10_checks$infl[PA10_checks$tag_number==171 & PA10_checks$year==2005 & PA10_checks$row=="B"] <- 1
+PA10_checks$infl[PA10_checks$tag_number==171 & PA10_checks$year==2006 & PA10_checks$row=="B"] <- 1
+PA10_checks$code.notes.x[PA10_checks$tag_number==171 & PA10_checks$year==2006 & PA10_checks$row=="B"] <- NA
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==243 & PA10_checks$year==2006 & PA10_checks$row=="E"] <- NA
+
+PA10_checks$infl[PA10_checks$tag_number==245 & PA10_checks$year==2005 & PA10_checks$row=="A"] <- 3
+PA10_checks$code.notes.x[PA10_checks$tag_number==245 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==272  & PA10_checks$year==2006 & PA10_checks$row=="C"] <- NA
+
+PA10_checks$tag_number[PA10_checks$tag_number==318 & PA10_checks$column==5 & PA10_checks$row=="D"] <- "318X"
+# PA10_checks<-PA10_checks %>% filter(!(tag_number==318 & PA10_checks$row=="D"))
+
+PA10_checks$infl[PA10_checks$tag_number==371 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- 1
+PA10_checks$code.notes.x[PA10_checks$tag_number==371 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
+
+
+PA10_checks$column[PA10_checks$tag_number==382 & PA10_checks$column==5.875 & PA10_checks$row=="C"] <- 5
+PA10_checks$ht[PA10_checks$tag_number==382 & PA10_checks$column==5 & PA10_checks$year==2006] <- 70
+PA10_checks$shts[PA10_checks$tag_number==382 & PA10_checks$column==5 & PA10_checks$year==2006] <- 6
+PA10_checks<-PA10_checks %>% filter(!(tag_number==382 & row=="C" & column==6))
+
+
+
+PA10_checks$shts[PA10_checks$tag_number==770 & PA10_checks$column==3 & PA10_checks$row=="A" & PA10_checks$year==2005] <- 1
+PA10_checks$ht[PA10_checks$tag_number==770 & PA10_checks$column==3 & PA10_checks$row=="A" & PA10_checks$year==2005] <- 8
+PA10_checks$code.notes.x[PA10_checks$tag_number==770 & PA10_checks$column==3 & PA10_checks$row=="A" & PA10_checks$year==2005] <- "sdlg (1)"
+PA10_checks<-PA10_checks %>% filter(!(tag_number==770 & row=="A" & column==5))
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==780 & PA10_checks$column==7 & PA10_checks$row=="C" & PA10_checks$year==2006] <- NA
+PA10_checks$column[PA10_checks$tag_number==780 & PA10_checks$column==7 & PA10_checks$row=="C" & PA10_checks$year==2006] <- 8
+PA10_checks<-PA10_checks %>% filter(!(tag_number==780 & row=="C" & column==7))
+PA10_checks$column[PA10_checks$tag_number==780 & PA10_checks$column==7.25 & PA10_checks$row=="C"] <- 8
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==812 & PA10_checks$column==9 & PA10_checks$row=="D" & PA10_checks$year==2006] <- NA
+PA10_checks$tag_number[PA10_checks$tag_number==812 & PA10_checks$column==9 & PA10_checks$row=="D"] <- "812X"
+
+PA10_checks$tag_number[PA10_checks$tag_number==813 & PA10_checks$column==9 & PA10_checks$row=="A"] <- "813X"
+PA10_checks$code.notes.x[PA10_checks$tag_number==813 & PA10_checks$column==5 & PA10_checks$row=="A" & PA10_checks$year==2006] <- NA
+
+PA10_checks$infl[PA10_checks$tag_number==816 & PA10_checks$column==3 & PA10_checks$row=="C" & PA10_checks$year==2005] <- 2
+PA10_checks$code.notes.x[PA10_checks$tag_number==816 & PA10_checks$column==3 & PA10_checks$row=="C" & PA10_checks$year==2006] <- NA
+PA10_checks$code.notes.x[PA10_checks$tag_number==816 & PA10_checks$column==8 & PA10_checks$row=="A" & PA10_checks$year==2006] <- NA
+PA10_checks$tag_number[PA10_checks$tag_number==816 & PA10_checks$column==8 & PA10_checks$row=="A"] <- "816X"
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==832 & PA10_checks$column==4 & PA10_checks$row=="A" & PA10_checks$year==2006] <- NA
+PA10_checks$tag_number[PA10_checks$tag_number==832 & PA10_checks$column==4 & PA10_checks$row=="A"] <- "832X"
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==835 & PA10_checks$column==4 & PA10_checks$row=="E" & PA10_checks$year==2006] <- NA
+PA10_checks$tag_number[PA10_checks$tag_number==835 & PA10_checks$column==4 & PA10_checks$row=="E"] <- "835X"
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==836 & PA10_checks$column==1 & PA10_checks$row=="D" & PA10_checks$year==2006] <- NA
+PA10_checks$tag_number[PA10_checks$tag_number==836 & PA10_checks$column==1 & PA10_checks$row=="D"] <- "836X"
+
+PA10_checks$code.notes.x[PA10_checks$tag_number==845 & PA10_checks$year==2006 & PA10_checks$row=="B"] <- NA
+
+PA10_checks<- PA10_checks %>% arrange(tag_number,row,column,year) %>% rename(code.notes=code.notes.x)
+
+write_csv(PA10_checks,"./data_raw/PA10_Check_and_Fix_fixed.csv")
+
+# Need to add 2006 seedling notations
+# Figure out plant 46
+# Need to add 1997 data
+# Remove all the ones with NA tag numbers in test
+
+############################################################
+# BRING THE ONES YOU CORRECTED BACK IN
+############################################################
+test$tag_number<-as.character(test$tag_number)
+colnames(PA10_checks)
+colnames(test)
+test<-bind_rows(test,PA10_checks)
+test$tag_number<-as.factor(test$tag_number)
+test$HA.plot<-as.factor(test$HA.plot)
+test$ranch<-as.factor(test$ranch)
+test$habitat<-as.factor(test$habitat)
+test$code.notes<-as.factor(test$code.notes)
+test$column<-as.factor(test$column)
+which(test$row=="NA")
+summary(test)
 ############################################################
 # ADD A UNIQUE ID NUMBER FOR EACH PLANT
 ############################################################
 
 test<-rowid_to_column(test, "HA_ID_Number")
+
+
 
 ############################################
 ############################################

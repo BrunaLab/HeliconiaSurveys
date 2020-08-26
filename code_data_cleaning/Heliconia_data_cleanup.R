@@ -116,7 +116,7 @@ plot_info <-
     sep = ",",
     check.names = FALSE
   )
-plot_info_subset<-plot_info %>% select(HA.plot,plot)
+plot_info_subset<-plot_info %>% select(plot)
 
 ha_data <- left_join(ha_data, plot_info_subset,by="plot") 
 rm(plot_info, plot_info_subset)
@@ -277,7 +277,7 @@ tag_checks<-tag_checks %>% filter(dble.chk > 0 | dble.chk < 0) %>% arrange(plot)
 # SELECT THE columnS NEEDED
 ha_data <-
   ha_data %>% select(
-    "HA.plot",
+    #"HA.plot",
     "plot",
     "habitat",
     "ranch",
@@ -353,7 +353,7 @@ colnames(ha_data)
 test.notes <-
   select(
     ha_data,
-    "HA.plot",
+    #"HA.plot",
     "plot",
     "habitat",
     "ranch",
@@ -400,7 +400,7 @@ head(test.notes, 100)
 test.infl <-
   select(
     ha_data,
-    "HA.plot",
+    #"HA.plot",
     "plot",
     "habitat",
     "ranch",
@@ -447,7 +447,7 @@ head(test.infl, 10)
 test.shts <-
   select(
     ha_data,
-    "HA.plot",
+    #"HA.plot",
     "plot",
     "habitat",
     "ranch",
@@ -494,7 +494,7 @@ head(test.shts, 10)
 test.ht <-
   select(
     ha_data,
-    "HA.plot",
+    #"HA.plot",
     "plot",
     "habitat",
     "ranch",
@@ -563,7 +563,7 @@ colnames(test)
 test <-
   select(
     test,
-    "HA.plot",
+    #"HA.plot",
     "plot",
     "habitat",
     "ranch",
@@ -877,7 +877,7 @@ duplicates_row_col <- test %>% group_by(habitat, plot, row_col,  tag_number, yea
 duplicates_row_col <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1) %>% ungroup()
 duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()
 
-dupes <-
-  semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(HA.plot,plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, row_col,year)
+dupes <-semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, row_col,year)
+# dupes <-semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(HA.plot,plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, row_col,year)
 write.csv(dupes, "./data_clean/dupes.csv", row.names = FALSE)
 write.csv(unique(dupes$tag_number), "./data_clean/dupe_numbers.csv", row.names = FALSE)
