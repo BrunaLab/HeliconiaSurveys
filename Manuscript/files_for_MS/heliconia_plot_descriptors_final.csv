@@ -1,0 +1,14 @@
+﻿HDP_Plot,habitat,ranch,BDFFP_reserve_no,date_established,notes
+FF-1,frag_one,DIM,2107,,
+FF-2,frag_one,DIM,2108,,
+FF-3,frag_one,EST,1104,,"also referred to in field notes as Plot 5751, which is the field collection prefix for specimens collected in this plot by WJK"
+FF-4,frag_one,PAL,3114,,"also referred to in field notes as Plot 5753, which is the field collection prefix for specimens collected in this plot by WJK"
+FF-5,frag_ten,DIM,2206,,2206
+FF-6,frag_ten,EST,1202,,"also referred to in field notes as Plot 5752, which is the field collection prefix for specimens collected in this plot by WJK"
+FF-7,frag_ten,PAL,3209,,"also referred to in field notes as Plot 5754, which is the field collection prefix for specimens collected in this plot by WJK"
+CF-1,frag_ten,EST,1301,,"Located in the reserve known as ""Florestal"", so often referred to by this name in field notes"
+CF-2,forest,EST,1501,,"also referred to in field notes as Plot 5750, which is the field collection prefix for specimens collected in this plot by WJK"
+CF-3,forest,EST,1501,,"also referred to in field notes as Plot 5756, which is the field collection prefix for specimens collected in this plot by WJK"
+CF-4,forest,DIM,NA,,Often referred to in field notes as Dimona CF
+CF-5,forest,PAL,NA,,Often referred to in field notes as Porto Alegre CF
+CF-6,forest,PAL,3402,,"Located in the reserve known as ""Cabo Frio"", so often referred to in field notes as Cabo Frio CF"
