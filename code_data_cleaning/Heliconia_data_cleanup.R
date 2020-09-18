@@ -107,19 +107,13 @@ summary(ha_data$plot)
 ############################################################
 # add a column with plots numbered as CF-1, CF-2...FF-7 
 # to match map in Bruna (2003) Ecology
-############################################################
+########### ################################################
 plot_info <-
-  read.csv(
-    "./data_raw/heliconia_plot_descriptors.csv",
-    dec = ".",
-    header = TRUE,
-    sep = ",",
-    check.names = FALSE
-  )
-plot_info_subset<-plot_info %>% select(plot)
-
-ha_data <- left_join(ha_data, plot_info_subset,by="plot") 
-rm(plot_info, plot_info_subset)
+  read_csv("./data_raw/heliconia_plot_descriptors.csv") %>% 
+  rename(plotID= habitat_type,plot=HDP_plot_ID_no) %>% 
+  select(plotID,plot)
+ha_data <- left_join(ha_data, plot_info,by="plot") 
+rm(plot_info)
 ha_data$plot<-as.factor(ha_data$plot)
 str(ha_data)
 
@@ -279,13 +273,16 @@ ha_data <-
   ha_data %>% select(
     #"HA.plot",
     "plot",
+    "plotID",
     "habitat",
-    "ranch",
+    "ranch", 
     "bdffp_reserve_no",
     "HA_ID_Number",
     "tag_number",
     "row",
     "column",
+    "x_09",
+    "y_09",
     "shts_1998",
     "shts_1999",
     "shts_2000",
@@ -355,6 +352,7 @@ test.notes <-
     ha_data,
     #"HA.plot",
     "plot",
+    "plotID",
     "habitat",
     "ranch",
     "bdffp_reserve_no",
@@ -362,6 +360,8 @@ test.notes <-
     "tag_number",
     "row",
     "column",
+    "x_09",
+    "y_09",
     "notes_1998",
     "notes_1999",
     "notes_2000",
@@ -402,6 +402,7 @@ test.infl <-
     ha_data,
     #"HA.plot",
     "plot",
+    "plotID",
     "habitat",
     "ranch",
     "bdffp_reserve_no",
@@ -409,6 +410,8 @@ test.infl <-
     "tag_number",
     "row",
     "column",
+    "x_09",
+    "y_09",
     "infl_1998",
     "infl_1999",
     "infl_2000",
@@ -449,6 +452,7 @@ test.shts <-
     ha_data,
     #"HA.plot",
     "plot",
+    "plotID",
     "habitat",
     "ranch",
     "bdffp_reserve_no",
@@ -456,6 +460,8 @@ test.shts <-
     "tag_number",
     "row",
     "column",
+    "x_09",
+    "y_09",
     "shts_1998",
     "shts_1999",
     "shts_2000",
@@ -496,6 +502,7 @@ test.ht <-
     ha_data,
     #"HA.plot",
     "plot",
+    "plotID",
     "habitat",
     "ranch",
     "bdffp_reserve_no",
@@ -503,6 +510,8 @@ test.ht <-
     "tag_number",
     "row",
     "column",
+    "x_09",
+    "y_09",
     "ht_1998",
     "ht_1999",
     "ht_2000",
@@ -555,30 +564,54 @@ summary(years$test)
 ######################################################
 # COMPLETE GOING FROM WIDE TO LONG BY DELETING THE COLUMSN YOU DON'T NEED
 # bind the columns for ht, shots, infl, and notes into a single dataframe called 'test'
-test <-
-  as.data.frame(bind_cols(test.ht, test.shts, test.infl, test.notes))
+colnames(test.ht)==colnames(test.shts) colnames(test.infl)==colnames(test.notes)
+
+
+test <- full_join(test.ht, test.shts,
+                  by=c("plot",
+                  "plotID",
+                  "habitat",
+                  "ranch",
+                  "bdffp_reserve_no",
+                  "HA_ID_Number",
+                  "tag_number",
+                  "row",
+                  "column",
+                  "x_09",
+                  "y_09",
+                  "year")) %>% 
+  select(-factor.x,-factor.y)
+
+
+
+
+test <- full_join(test,test.notes) %>% select(-factor)
+test <- full_join(test,test.infl) %>% select(-factor)
 head(test, 10)
 colnames(test)
 # eliminate the redundant columns by selecting the ones you want to keep
-test <-
-  select(
-    test,
-    #"HA.plot",
-    "plot",
-    "habitat",
-    "ranch",
-    "bdffp_reserve_no",
-    "HA_ID_Number",
-    "tag_number",
-    "row",
-    "column",
-    "year",
-    "ht",
-    "shts",
-    "infl",
-    "code.notes"
-  )
-head(test, 30)
+# test <-
+#   select(
+#     test,
+#     #"HA.plot",
+#     "plot",
+#     "plotID",
+#     "habitat",
+#     "ranch",
+#     "bdffp_reserve_no",
+#     "HA_ID_Number",
+#     "tag_number",
+#     "row",
+#     "column",
+#     "x_09",
+#     "y_09",
+#     "year",
+#     "ht",
+#     "shts",
+#     "infl",
+#     "code.notes"
+#   )
+# head(test, 30)
 
 rm(test.ht, test.infl, test.notes, test.shts, years)
 summary(test)
