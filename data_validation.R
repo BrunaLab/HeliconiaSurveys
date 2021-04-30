@@ -37,8 +37,13 @@ ha %>%
   col_vals_in_set(vars(column), 1:10) %>%
   col_vals_in_set(vars(row), LETTERS[1:10]) %>%
   col_vals_in_set(vars(habitat), c("1-ha", "CF", "10-ha")) %>%
+  # check values are within reasonable range
   col_vals_between(vars(shts), 1, 20, na_pass = TRUE) %>%
   col_vals_between(vars(ht), 0, 200, na_pass = TRUE) %>%
   col_vals_between(vars(infl), 0, 3, na_pass = TRUE) %>%
+  # check precision is correct
+  col_vals_expr(label = "Height is measured to nearest cm", expr = ~ ht %% 1 == 0) %>%
+  col_vals_expr(label = "Shoots is interger", expr = ~ shts %% 1 == 0) %>%
+  col_vals_expr(label = "Number of inflorescences is integer", expr = ~ infl %% 1 == 0) %>%
   rows_distinct() %>%
   interrogate()
