@@ -87,18 +87,14 @@ colnames_2006<- c("tag_number","row","column","shts_2006","ht_2006","notes_2006"
 colnames(PA10_data_2006)<-colnames_2006
 PA10_data_2006$column<-as.factor(PA10_data_2006$column)
 PA10_data_2006$infl_2006<-NA
-
-PA10_data_2006$tag_number[PA10_data_2006$row=="A" & PA10_data_2006$column=="3"  & is.na(PA10_data_2006$tag_number)==TRUE] <- 770 #missing on csv, 2x on form
-PA10_data_2006$tag_number[PA10_data_2006$row=="E" & PA10_data_2006$column=="5" & PA10_data$shoots==1 & is.na(PA10_data_2006$tag_number)==TRUE] <- 765 #missing on csv, 2x on form
-
-
-
-
+PA10_data_2006$tag_number[PA10_data_2006$row=="A" & 
+                            PA10_data_2006$column=="3"  & 
+                            is.na(PA10_data_2006$tag_number)==TRUE] <- 770 #missing on csv, 2x on form
+PA10_data_2006$tag_number[PA10_data_2006$row=="E" &
+                            PA10_data_2006$column=="5" & 
+                            PA10_data$shoots==1 & 
+                            is.na(PA10_data_2006$tag_number)==TRUE] <- 765 #missing on csv, 2x on form
 PA10_data<-full_join(PA10_data,PA10_data_2006,by=c("tag_number","row","column"))
-# 
-# 
-# names(PA10_data_2006)<-c("tag_number","row","column","shts_2006","ht_2006","notes_2006")
-
 PA10_data$plot<-5754
 PA10_data$HA.plot<-"FF-7"
 PA10_data$habitat<-"10-ha"
@@ -447,7 +443,7 @@ summary(years$test)
 # THEY DO IF ALL = TRUE
 
 ######################################################
-# COMPLETE GOING FROM WIDE TO LONG BY DELETING THE COLUMSN YOU DON'T NEED
+# COMPLETE GOING FROM WIDE TO LONG BY DELETING THE COLUMNS YOU DON'T NEED
 # bind the columns for ht, shots, infl, and notes into a single dataframe called 'test'
 
 test<-full_join(test.ht, test.shts,
@@ -485,8 +481,6 @@ by = c("HA.plot",
 
 
   
-  
-
 # test <-
 #   as.data.frame(bind_cols(test.ht, test.shts, test.infl, test.notes))
 head(test, 10)
@@ -513,8 +507,8 @@ head(test, 30)
 
 rm(test.ht, test.infl, test.notes, test.shts, years)
 summary(test)
+
 ######################################################
-# CLEAN-UP
 # fix the data types as needed
 names(test)
 test$year <- as.numeric(as.character(test$year))
@@ -575,12 +569,14 @@ summary(test$code.notes)
 
 # codes_to_fix<-na.omit(bind_cols(tag.no,codes))
 # rm(tag.no,codes)
-codes_to_fix<-test %>% select(tag_number,code.notes) %>% drop_na() %>% distinct(code.notes,.keep_all = TRUE) %>% arrange(code.notes) # make a summary table of all the different codes in the PA10 dataset 
+codes_to_fix<-test %>% select(tag_number,code.notes) %>% 
+  drop_na() %>% distinct(code.notes,.keep_all = TRUE) %>% 
+  arrange(code.notes) # make a summary table of all the different codes in the PA10 dataset 
 
 str(codes_to_fix)
 # These are codes that need to be fixed. will save as a csv for review.
 # codes_to_fix<-rowid_to_column(codes_to_fix, "Code_ID_Number")
-write_csv(codes_to_fix,"./data_raw/PA10_codes_to_fix.csv")
+write_csv(codes_to_fix,"./data_midway/PA10_codes_to_fix.csv")
 
 # after reviewing and noting changes, I can import and make the corrections.
 # I reviewded the file and did two things:
@@ -588,7 +584,7 @@ write_csv(codes_to_fix,"./data_raw/PA10_codes_to_fix.csv")
 # in the wrong location, etc, extracted them, and  
 # saved this as a different CSV called PA10_plants_to_fix. 
 
-# HHHHHHHHHMMMMMMMMMM - need to 2x check all this
+#TODO: HHHHHHHHHMMMMMMMMMM - need to 2x check all this
 PA10_code_corrs<-read.csv("./data_raw/PA10_code_corrections.csv")
 PA10_code_corrs<-PA10_code_corrs %>% select(code.notes,new_code) 
 PA10_code_corrs$code.notes<-as.character(PA10_code_corrs$code.notes)
@@ -607,9 +603,19 @@ test<-anti_join(test,PA.code.corrections,by=c("tag_number","year","row","column"
 test<-bind_rows(test,PA.code.corrections)  
 
 
-
-
-PA10_checks<-read.csv("./data_raw/PA10_plants_to_fix.csv")
+PA10_checks <- data.frame(
+  tag_number=c(46,88,98,134,171,243,245,272,318,371,
+               382,770,780,812,813,816,832,835,836,845),
+  code.notes=c("this number belongs to a pvc in a6","2 old infl ",
+               "not on list. must be96","1 old infl",
+               "1 new infl + 1 old infl","e E6",
+               "3 old infl","its in C2",
+               "not on list. must be313","1 new infl",
+               "should be c5","dead, not on list","actualkly in c8","could be 680?",
+               "actually in A6","2 old infls","could be one of missing",
+               "could be 378","could be 1333","actually  B5")
+)
+# PA10_checks<-read.csv("./data_raw/PA10_plants_to_fix.csv")
 PA10_checks$code.notes<-as.character(PA10_checks$code.notes)
 # PA10_checks$count<-NULL
 # PA10_checks$new_code<-NULL
@@ -620,7 +626,7 @@ summary(PA10_checks)
 # This will give you the plants that need review (position, error, 2x, etc) by matching their code with the code in "test" df 
 PA10_checks<-inner_join(test,PA10_checks,by="tag_number") %>% arrange(tag_number)
 PA10_checks$code.notes.y<-NULL
-write_csv(PA10_checks,"./data_raw/PA10_Check_and_Fix.csv")
+write_csv(PA10_checks,"./data_midway/PA10_Check_and_Fix.csv")
 # Delete them out from "test" dataframe, correct them, then re bind them to the test dataframe
 test<-anti_join(test,PA10_checks,by="tag_number")
 colnames(PA10_checks)
@@ -633,91 +639,73 @@ head(test, 20)
 
 
 ######3
-
-# HERE NEED TO ADD BACK THE ONES YOU FIXED: all of the ones in PA10_Check_and_Fix.csv!!!!!!
+# HERE NEED FIX AND REINSERT THEN TO TEST 
 
 PA10_checks$infl[PA10_checks$tag_number==88 & PA10_checks$year==2005 & PA10_checks$row=="A"] <- 2
 PA10_checks$code.notes.x[PA10_checks$tag_number==88 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==98 & PA10_checks$year==2006 & PA10_checks$row=="E"] <- NA
-
 PA10_checks$infl[PA10_checks$tag_number==134 & PA10_checks$year==2005 & PA10_checks$row=="A"] <- 1
 PA10_checks$code.notes.x[PA10_checks$tag_number==134 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
-
 PA10_checks$infl[PA10_checks$tag_number==171 & PA10_checks$year==2005 & PA10_checks$row=="B"] <- 1
 PA10_checks$infl[PA10_checks$tag_number==171 & PA10_checks$year==2006 & PA10_checks$row=="B"] <- 1
 PA10_checks$code.notes.x[PA10_checks$tag_number==171 & PA10_checks$year==2006 & PA10_checks$row=="B"] <- NA
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==243 & PA10_checks$year==2006 & PA10_checks$row=="E"] <- NA
-
 PA10_checks$infl[PA10_checks$tag_number==245 & PA10_checks$year==2005 & PA10_checks$row=="A"] <- 3
 PA10_checks$code.notes.x[PA10_checks$tag_number==245 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==272  & PA10_checks$year==2006 & PA10_checks$row=="C"] <- NA
-
 PA10_checks$tag_number[PA10_checks$tag_number==318 & PA10_checks$column==5 & PA10_checks$row=="D"] <- "318X"
 # PA10_checks<-PA10_checks %>% filter(!(tag_number==318 & PA10_checks$row=="D"))
-
 PA10_checks$infl[PA10_checks$tag_number==371 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- 1
 PA10_checks$code.notes.x[PA10_checks$tag_number==371 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
-
-
 PA10_checks$column[PA10_checks$tag_number==382 & PA10_checks$column==5.875 & PA10_checks$row=="C"] <- 5
 PA10_checks$ht[PA10_checks$tag_number==382 & PA10_checks$column==5 & PA10_checks$year==2006] <- 70
 PA10_checks$shts[PA10_checks$tag_number==382 & PA10_checks$column==5 & PA10_checks$year==2006] <- 6
 PA10_checks<-PA10_checks %>% filter(!(tag_number==382 & row=="C" & column==6))
-
-
-
 PA10_checks$shts[PA10_checks$tag_number==770 & PA10_checks$column==3 & PA10_checks$row=="A" & PA10_checks$year==2005] <- 1
 PA10_checks$ht[PA10_checks$tag_number==770 & PA10_checks$column==3 & PA10_checks$row=="A" & PA10_checks$year==2005] <- 8
 PA10_checks$code.notes.x[PA10_checks$tag_number==770 & PA10_checks$column==3 & PA10_checks$row=="A" & PA10_checks$year==2005] <- "sdlg (1)"
 PA10_checks<-PA10_checks %>% filter(!(tag_number==770 & row=="A" & column==5))
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==780 & PA10_checks$column==7 & PA10_checks$row=="C" & PA10_checks$year==2006] <- NA
 PA10_checks$column[PA10_checks$tag_number==780 & PA10_checks$column==7 & PA10_checks$row=="C" & PA10_checks$year==2006] <- 8
 PA10_checks<-PA10_checks %>% filter(!(tag_number==780 & row=="C" & column==7))
 PA10_checks$column[PA10_checks$tag_number==780 & PA10_checks$column==7.25 & PA10_checks$row=="C"] <- 8
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==812 & PA10_checks$column==9 & PA10_checks$row=="D" & PA10_checks$year==2006] <- NA
 PA10_checks$tag_number[PA10_checks$tag_number==812 & PA10_checks$column==9 & PA10_checks$row=="D"] <- "812X"
-
 PA10_checks$tag_number[PA10_checks$tag_number==813 & PA10_checks$column==9 & PA10_checks$row=="A"] <- "813X"
 PA10_checks$code.notes.x[PA10_checks$tag_number==813 & PA10_checks$column==5 & PA10_checks$row=="A" & PA10_checks$year==2006] <- NA
-
 PA10_checks$infl[PA10_checks$tag_number==816 & PA10_checks$column==3 & PA10_checks$row=="C" & PA10_checks$year==2005] <- 2
 PA10_checks$code.notes.x[PA10_checks$tag_number==816 & PA10_checks$column==3 & PA10_checks$row=="C" & PA10_checks$year==2006] <- NA
 PA10_checks$code.notes.x[PA10_checks$tag_number==816 & PA10_checks$column==8 & PA10_checks$row=="A" & PA10_checks$year==2006] <- NA
 PA10_checks$tag_number[PA10_checks$tag_number==816 & PA10_checks$column==8 & PA10_checks$row=="A"] <- "816X"
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==832 & PA10_checks$column==4 & PA10_checks$row=="A" & PA10_checks$year==2006] <- NA
 PA10_checks$tag_number[PA10_checks$tag_number==832 & PA10_checks$column==4 & PA10_checks$row=="A"] <- "832X"
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==835 & PA10_checks$column==4 & PA10_checks$row=="E" & PA10_checks$year==2006] <- NA
 PA10_checks$tag_number[PA10_checks$tag_number==835 & PA10_checks$column==4 & PA10_checks$row=="E"] <- "835X"
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==836 & PA10_checks$column==1 & PA10_checks$row=="D" & PA10_checks$year==2006] <- NA
 PA10_checks$tag_number[PA10_checks$tag_number==836 & PA10_checks$column==1 & PA10_checks$row=="D"] <- "836X"
-
 PA10_checks$code.notes.x[PA10_checks$tag_number==845 & PA10_checks$year==2006 & PA10_checks$row=="B"] <- NA
-
 PA10_checks<- PA10_checks %>% arrange(tag_number,row,column,year) %>% rename(code.notes=code.notes.x)
 
-write_csv(PA10_checks,"./data_raw/PA10_Check_and_Fix_fixed.csv")
+
+
+############################################################
+# BRING THE ONES YOU CORRECTED BACK IN
+############################################################
+
+# PA10_checks$tag_number<- gsub("X",".2",PA10_checks$tag_number)  # there appear to be some duplicates
+PA10_checks$tag_number<- gsub("X","",PA10_checks$tag_number)  # there appear to be some duplicates
+PA10_checks$tag_number<- as.numeric(PA10_checks$tag_number)
+test<-bind_rows(test,PA10_checks)
+test$tag_number<-as.factor(test$tag_number)
+write_csv(PA10_checks,"./data_midway/PA10_Check_and_Fix_fixed.csv")
+test
+
 #TODO:
 # Need to add 2006 seedling notations
 # Figure out plant 46
 # Need to add 1997 data
 # Remove all the ones with NA tag numbers in test
 
-############################################################
-# BRING THE ONES YOU CORRECTED BACK IN
-############################################################
-test$tag_number<-as.character(test$tag_number)
-colnames(PA10_checks)
-colnames(test)
-test<-bind_rows(test,PA10_checks)
-test$tag_number<-as.factor(test$tag_number)
 test$HA.plot<-as.factor(test$HA.plot)
 test$ranch<-as.factor(test$ranch)
 test$habitat<-as.factor(test$habitat)
@@ -772,7 +760,7 @@ Not_on_SurveyList <-
   test %>% filter(code.notes == "not on list (40)" |
 code.notes == "dead not on list (100)")
 write.csv(Not_on_SurveyList,
-  "./data_clean/Not_on_SurveyList_PA10.csv",
+  "./data_midway/Not_on_SurveyList_PA10.csv",
   row.names = FALSE)
 
 
@@ -813,187 +801,7 @@ levels(test$code.notes)[levels(test$code.notes) == "90, 10 (two codes)"] <-
 test <- droplevels(test)
 summary(test$code.notes)
 
-######################################################
-# because all years for all plants are recorded - including
-# before they appeared and after they died - this  is to help
-# delete all the rows before a seedling is born or after a plant dies.
-# the column 'code2' is only seedling or dead
-
-# test$code2<-test$code.notes
-# test$code2[(test$code2 != "sdlg (1)") & (test$code2 != "dead (2)")] <- NA
-# test$code2<-droplevels(test$code2)
-# levels(test$code2)
-# summary(test)
-
-
-
-# # ungroup(test) %>% select(ht) %>% filter(ht>0) %>% tally()
-# test<-test %>% filter(ht>0 | shts>0|code.notes=="sdlg (1)"|code.notes=="dead (2)"|code.notes=="plant missing (60)")
-# summary(foo)
-# summary(as.factor(foo$code2))
-# # ungroup(foo) %>% select(ht) %>% filter(ht>0) %>% tally()
-# head(foo,30)
-
-# summary(test)
-# summary(test$code.notes)
-# summary(as.factor(test$code2))
-# # THIS DELETES ALL UNCESSARY rowS FROM YERS BEFORE A SEEDLING EXISTED
-# test$code2 <- NA
-# test <- test %>%
-#   group_by(plot, tag_number) %>%
-#   mutate(
-# code2 = as.character(code2),
-# # can be avoided if key is a character to begin with
-# code2 = ifelse(row_number() == 1 &
-#  (!is.na(ht) | !is.na(shts)), "initial.tag.yr", code2)
-#   )
-# 
-# test$code2[test$code.notes == "sdlg (1)"] <- "initial.tag.yr"
-# 
-# test <- test %>% filter(cumsum(!is.na(code2)) > 0) %>%
-#   ungroup()
-# summary(as.factor(test$code2))
-# summary(test)
-
-
-
-# foo<-test %>% select(tag_number, plot)
-# foo<-unique(foo)
-# test$code2<-as_factor(test$code2)
-# foo<-test %>% filter(is.na(code2))
-# summary(foo)
-# summary(as.factor(foo$code2))
-# !is.na(test$code2)
-# # df$code2<-as.factor(df$code2)
-# summary(test)
-# head(test,50)
-
-# foo2<-filter(test,code.notes=="ULY (3)")
-# summary(foo2)
-# summary(as.factor(foo2$code2))
-############################################
-# This finds any that were marked dead in a year but for whihc there are measurments of shts or ht
-df <- test
-df$code2 <- NA
-df$code2[df$code.notes == "dead (2)"] <- "dead"
-df <- df %>%
-  group_by(plot, tag_number) %>%
-  mutate(code2 = as.character(code2),
- # can be avoided if key is a character to begin with
- code2 = ifelse(code2 == "dead" &
-  (!is.na(ht) | !is.na(shts)), "double_check", NA)) %>%
-  filter(cumsum(!is.na(code2)) > 0) %>%
-  ungroup()
-head(df, 20)
-df <- df %>% filter(code2 == "double_check")
-
-
-#THIS WILL CHECK TO SEE IF THERE ARE SOME THAT WERE REGISTERED DEAD BUT
-# FOR WHICH THERE ARE ht or sht measurments in years AFTER they were marked dead
-
-df2 <- test
-df2$code2 <- NA
-df2$code2[df2$code.notes == "dead (2)"] <- "dead"
-df2 <- df2 %>%
-  group_by(plot, tag_number) %>%
-  mutate(code2 = as.character(code2), # can be avoided if key is a character to begin with
- code3 = (cumsum(lag(
-   code2 == "dead" & !is.na(code2 == "dead"), default = 0
- )))) %>%
-  filter(code3 > 0) %>%
-  arrange(plot, tag_number, year) %>%
-  ungroup()
-
-summary(df2)
-#All plamts post -dead records, including NA in ALL columnS
-# write.csv(dbl.chk, "./data_clean/post_dead_records.csv",row.names = FALSE)
-
-# df3 - keep these for review (they are the ones that are marked dead but have data after)
-df3 <-
-  df2 %>% filter((!is.na(ht) |
-!is.na(shts))) %>% arrange(plot, tag_number, year) %>% select(-code3) %>% ungroup()
-
-df$code2<-NULL
-
-
-df3 <-
-  bind_rows(df, df3) %>% select(plot, tag_number, year, ht, shts) %>% unique()
-
-zombies_all_yrs <-
-  semi_join(test, df3, by = c("plot", "tag_number")) %>% select(plot, habitat, tag_number, year, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, year)
-# zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
-write.csv(zombies_all_yrs, "./data_clean/zombies_PA10.csv", row.names = FALSE)
-
-# This just prints them out with each plant separated by a row
-zombies_all_yrs_new <-
-  as.data.frame(lapply(zombies_all_yrs, as.character), stringsAsfactors = FALSE)
-zombies_all_yrs_new <-
-  head(do.call(
-rbind,
-by(zombies_all_yrs_new, zombies_all_yrs_new$tag_number, rbind, "")
-  ),-1)
-write.csv(zombies_all_yrs_new,
-  "./data_clean/zombies_space_btwn_plants_PA10.csv",
-  row.names = FALSE)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# df4 - these are the ones you can delete from test. no data after being marked "dead"
-df4 <- anti_join(df2, df3, by = c("plot", "tag_number", "year"))
-# you can make sure that they in fact they *are* all NA by looking over them
-summary(df4)
-
-
-# then delete them from the Ha survey with an anti_join
-test <- anti_join(test, df4, by = c("plot", "tag_number", "year"))
-
-rm(df, df2, df3, df4, zombies_all_yrs_new)
-
-write.csv(test, "./data_clean/PA10_survey_with_Zombies.csv", row.names = FALSE)
-
-test$row_col <- do.call(paste, c(test[c("row", "column")], sep = "")) 
-
-
-duplicates_col <- test %>% group_by(habitat, plot, column,  tag_number, year) %>% filter(n()>1)
-duplicates_row <- test %>% group_by(habitat, plot, row,  tag_number, year) %>% filter(n()>1)
-duplicates_row_col <- test %>% group_by(habitat, plot, row_col,  tag_number, year) %>% filter(n()>1)
-duplicates_row_col <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1) %>% ungroup()
-duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()
-
-dupes <-
-  semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% 
-  select(HA.plot,plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% 
-  arrange(plot, habitat, tag_number, row_col,year)
-write.csv(dupes, "./data_clean/dupes_PA10.csv", row.names = FALSE)
-
-dupe_simplified <- dupes %>% 
-  select(tag_number,row_col) %>% 
-  group_by(tag_number,row_col) %>% 
-  slice(1)
-
-write.csv(dupe_simplified, "./data_clean/dupe_numbers_PA10.csv", row.names = FALSE)
-
-
-
-
 # correction of zombie plants ---------------------------------------------
-
 # These need to the code changed from "dead "to "missing"
 test$code.notes[test$tag_number==1376 & test$year==2005] <- "plant missing (60)"
 test$code.notes[test$tag_number==748 & test$year==2005] <- "plant missing (60)"
@@ -1007,7 +815,8 @@ test$code.notes[test$tag_number==911 & test$year==2005] <- "plant missing (60)"
 # these are the rows to remove (blank years after a plant died)
 
 # first change th tag number is main master file to numeric
-test$tag_number<-as.numeric(test$tag_number)
+test$tag_number<-as.numeric(levels(test$tag_number))[test$tag_number]
+
 
 # These following will be removed with an antijoin
 
@@ -1076,6 +885,8 @@ test <- test %>%
 
 
 
+
+
 # FIXES LEFT TO DO --------------------------------------------------------
 # 
 # 
@@ -1091,3 +902,22 @@ test <- test %>%
 # These are weird duplicates
 # 5754	10-ha	823	2006	2	39	ULY (3)	*** THIS IS A WEIRD DUPLICATE 
 # 5754	10-ha	824	2006	1	29	ULY (3)	*** THIS IS A WEIRD DUPLICATE 
+
+
+
+############################################
+# This finds any that were marked dead in a year but for whihc there are measurments of shts or ht
+source("./code_data_cleaning/PA10_code/pa_marked_dead_but_measured.R")
+df<-pa_marked_dead_but_measured(test)
+
+#THIS WILL CHECK TO SEE IF THERE ARE SOME THAT WERE REGISTERED DEAD BUT
+# FOR WHICH THERE ARE ht or sht measurments in years AFTER they were marked dead
+# returns 'test', saves csv of things to check
+source("./code_data_cleaning/PA10_code/PA10_zombies.R")
+test<-PA10_zombies(test)
+
+source("./code_data_cleaning/PA10_code/PA10_duplicate_plants.R")
+dupes<-PA10_duplicate_plants(test)
+
+
+write.csv(test, "./data_midway/PA10_survey_with_Zombies.csv", row.names = FALSE)
