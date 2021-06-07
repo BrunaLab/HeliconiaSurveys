@@ -51,6 +51,7 @@ names(ha_data)[65] <- "y_09"
 names(ha_data)[66] <- "notes_to_eb"
 names(ha_data)
 
+
 ############################################################
 # correct the data types assigned to each 
 ############################################################
@@ -721,6 +722,27 @@ head(test, 20)
 test$code.notes[test$plot=="5753" & test$tag_number=="108" & test$year==2005] <- NA
 
 summary(test)
+
+
+# merge the PA10 data -----------------------------------------------------
+
+PA10 <- read_csv("./data_midway/PA10_survey_with_Zombies.csv")
+PA10 <- PA10 %>% rename("plotID"="HA.plot")
+str(test$column)
+PA10$column <-as.factor(PA10$column)
+PA10$plot <-as.factor(PA10$plot)
+PA10$bdffp_reserve_no <-as.character(PA10$bdffp_reserve_no)
+test <- bind_rows(test,PA10)
+
+
+# add a unique id number for the PA10
+# max_ha_id<-max(test$HA_ID_Number,na.rm=TRUE)
+test <- test %>%
+  group_by(plotID,tag_number) %>%
+  mutate(HA_ID_Number = ifelse(is.na(HA_ID_Number), group_indices(),HA_ID_Number))
+
+
+
 
 ######################################################
 # PULL OUT THE 'Miscellaneous observations' AND PUT THEM IN A DIFFERENT CSV FILE
