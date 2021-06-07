@@ -22,11 +22,11 @@ library(tidyverse) #Data Manipulations+ggplo1
 # load the CSV files and save as dataframe
 PA10_data <-
   read.csv(
-    "./data_raw/PA10_from_Hacuminata_98-05_27may_Paul.csv",
-    dec = ".",
-    header = TRUE,
-    sep = ",",
-    check.names = FALSE
+"./data_raw/PA10_from_Hacuminata_98-05_27may_Paul.csv",
+dec = ".",
+header = TRUE,
+sep = ",",
+check.names = FALSE
   )
 
 
@@ -40,6 +40,9 @@ names(PA10_data)<-tolower(names(PA10_data))
 PA10_data<-PA10_data %>% select(-plot,-size,-ranch,-bdffp_reserve_no)
 names(PA10_data)
 
+#some of the columns are coming in as decimals / fractions, so round down
+PA10_data$column<-floor(PA10_data$column)
+
 
 ############################################################
 # correct the data types assigned to each 
@@ -50,17 +53,17 @@ str(PA10_data)
 # set these as a factor
 cols <-
   c(
-    "row",
-    "column",
-    "notes_1998",
-    "notes_1999",
-    "notes_2000",
-    "notes_2001",
-    "notes_2002",
-    "notes_2003",
-    "notes_2004",
-    "notes_2005"
-    )
+"row",
+"column",
+"notes_1998",
+"notes_1999",
+"notes_2000",
+"notes_2001",
+"notes_2002",
+"notes_2003",
+"notes_2004",
+"notes_2005"
+)
 PA10_data[cols] <- lapply(PA10_data[cols], factor)
 str(PA10_data)
 
@@ -71,12 +74,12 @@ str(PA10_data)
 # Import the 06 Survey
 PA10_data_2006 <-
   read.csv(
-    "./data_raw/PA10_2006_from2006datasheets_22may.csv",
-    dec = ".",
-    header = TRUE,
-    sep = ",",
-    skip=1,
-    check.names = FALSE
+"./data_raw/PA10_2006_from2006datasheets_22may.csv",
+dec = ".",
+header = TRUE,
+sep = ",",
+skip=1,
+check.names = FALSE
   )
 str(PA10_data_2006)
 PA10_data_2006[7:12]<-NULL
@@ -209,51 +212,51 @@ PA10_data_2006$tag_number<-as.integer(PA10_data_2006$tag_number)
 # SELECT THE columnS NEEDED
 PA10_data <-
   PA10_data %>% select(
-    "HA.plot",
-    "plot",
-    "habitat",
-    "ranch",
-    "bdffp_reserve_no",
-    "tag_number",
-    "row",
-    "column",
-    "shts_1998",
-    "shts_1999",
-    "shts_2000",
-    "shts_2001",
-    "shts_2002",
-    "shts_2003",
-    "shts_2004",
-    "shts_2005",
-    "shts_2006",
-    "ht_1998",
-    "ht_1999",
-    "ht_2000",
-    "ht_2001",
-    "ht_2002",
-    "ht_2003",
-    "ht_2004",
-    "ht_2005",
-    "ht_2006",
-    "infl_1998",
-    "infl_1999",
-    "infl_2000",
-    "infl_2001",
-    "infl_2002",
-    "infl_2003",
-    "infl_2004",
-    "infl_2005",
-    "infl_2006",
-    "notes_1998",
-    "notes_1999",
-    "notes_2000",
-    "notes_2001",
-    "notes_2002",
-    "notes_2003",
-    "notes_2004",
-    "notes_2005",
-    "notes_2006"
-    )
+"HA.plot",
+"plot",
+"habitat",
+"ranch",
+"bdffp_reserve_no",
+"tag_number",
+"row",
+"column",
+"shts_1998",
+"shts_1999",
+"shts_2000",
+"shts_2001",
+"shts_2002",
+"shts_2003",
+"shts_2004",
+"shts_2005",
+"shts_2006",
+"ht_1998",
+"ht_1999",
+"ht_2000",
+"ht_2001",
+"ht_2002",
+"ht_2003",
+"ht_2004",
+"ht_2005",
+"ht_2006",
+"infl_1998",
+"infl_1999",
+"infl_2000",
+"infl_2001",
+"infl_2002",
+"infl_2003",
+"infl_2004",
+"infl_2005",
+"infl_2006",
+"notes_1998",
+"notes_1999",
+"notes_2000",
+"notes_2001",
+"notes_2002",
+"notes_2003",
+"notes_2004",
+"notes_2005",
+"notes_2006"
+)
 colnames(PA10_data)
 
 
@@ -271,39 +274,39 @@ colnames(PA10_data)
 # RESHAPING FROM WIDE TO LONG. CONVOLUTED BUT IT WORKS
 test.notes <-
   select(
-    PA10_data,
-    "HA.plot",
-    "plot",
-    "habitat",
-    "ranch",
-    "bdffp_reserve_no",
-    "tag_number",
-    "row",
-    "column",
-    "notes_1998",
-    "notes_1999",
-    "notes_2000",
-    "notes_2001",
-    "notes_2002",
-    "notes_2003",
-    "notes_2004",
-    "notes_2005",
-    "notes_2006"
+PA10_data,
+"HA.plot",
+"plot",
+"habitat",
+"ranch",
+"bdffp_reserve_no",
+"tag_number",
+"row",
+"column",
+"notes_1998",
+"notes_1999",
+"notes_2000",
+"notes_2001",
+"notes_2002",
+"notes_2003",
+"notes_2004",
+"notes_2005",
+"notes_2006"
   )
 str(test.notes)
 test.notes <-
   test.notes %>% gather(
-    "year.notes",
-    "code.notes",
-    "notes_1998",
-    "notes_1999",
-    "notes_2000",
-    "notes_2001",
-    "notes_2002",
-    "notes_2003",
-    "notes_2004",
-    "notes_2005",
-    "notes_2006"
+"year.notes",
+"code.notes",
+"notes_1998",
+"notes_1999",
+"notes_2000",
+"notes_2001",
+"notes_2002",
+"notes_2003",
+"notes_2004",
+"notes_2005",
+"notes_2006"
   )
 test.notes <-
   test.notes %>% separate(year.notes, c("factor", "year"), sep = "\\_")
@@ -311,39 +314,39 @@ head(test.notes, 100)
 
 test.infl <-
   select(
-    PA10_data,
-    "HA.plot",
-    "plot",
-    "habitat",
-    "ranch",
-    "bdffp_reserve_no",
-    "tag_number",
-    "row",
-    "column",
-    "infl_1998",
-    "infl_1999",
-    "infl_2000",
-    "infl_2001",
-    "infl_2002",
-    "infl_2003",
-    "infl_2004",
-    "infl_2005",
-    "infl_2006"
+PA10_data,
+"HA.plot",
+"plot",
+"habitat",
+"ranch",
+"bdffp_reserve_no",
+"tag_number",
+"row",
+"column",
+"infl_1998",
+"infl_1999",
+"infl_2000",
+"infl_2001",
+"infl_2002",
+"infl_2003",
+"infl_2004",
+"infl_2005",
+"infl_2006"
   )
 str(test.infl)
 test.infl <-
   test.infl %>% gather(
-    "year.infl",
-    "infl",
-    "infl_1998",
-    "infl_1999",
-    "infl_2000",
-    "infl_2001",
-    "infl_2002",
-    "infl_2003",
-    "infl_2004",
-    "infl_2005",
-    "infl_2006"
+"year.infl",
+"infl",
+"infl_1998",
+"infl_1999",
+"infl_2000",
+"infl_2001",
+"infl_2002",
+"infl_2003",
+"infl_2004",
+"infl_2005",
+"infl_2006"
   )
 test.infl <-
   test.infl %>% separate(year.infl, c("factor", "year"), sep = "\\_")
@@ -351,39 +354,39 @@ head(test.infl, 10)
 
 test.shts <-
   select(
-    PA10_data,
-    "HA.plot",
-    "plot",
-    "habitat",
-    "ranch",
-    "bdffp_reserve_no",
-    "tag_number",
-    "row",
-    "column",
-    "shts_1998",
-    "shts_1999",
-    "shts_2000",
-    "shts_2001",
-    "shts_2002",
-    "shts_2003",
-    "shts_2004",
-    "shts_2005",
-    "shts_2006"
+PA10_data,
+"HA.plot",
+"plot",
+"habitat",
+"ranch",
+"bdffp_reserve_no",
+"tag_number",
+"row",
+"column",
+"shts_1998",
+"shts_1999",
+"shts_2000",
+"shts_2001",
+"shts_2002",
+"shts_2003",
+"shts_2004",
+"shts_2005",
+"shts_2006"
   )
 str(test.shts)
 test.shts <-
   test.shts %>% gather(
-    "year.shts",
-    "shts",
-    "shts_1998",
-    "shts_1999",
-    "shts_2000",
-    "shts_2001",
-    "shts_2002",
-    "shts_2003",
-    "shts_2004",
-    "shts_2005",
-    "shts_2006"
+"year.shts",
+"shts",
+"shts_1998",
+"shts_1999",
+"shts_2000",
+"shts_2001",
+"shts_2002",
+"shts_2003",
+"shts_2004",
+"shts_2005",
+"shts_2006"
   )
 test.shts <-
   test.shts %>% separate(year.shts, c("factor", "year"), sep = "\\_")
@@ -391,39 +394,39 @@ head(test.shts, 10)
 
 test.ht <-
   select(
-    PA10_data,
-    "HA.plot",
-    "plot",
-    "habitat",
-    "ranch",
-    "bdffp_reserve_no",
-    "tag_number",
-    "row",
-    "column",
-    "ht_1998",
-    "ht_1999",
-    "ht_2000",
-    "ht_2001",
-    "ht_2002",
-    "ht_2003",
-    "ht_2004",
-    "ht_2005",
-    "ht_2006"
+PA10_data,
+"HA.plot",
+"plot",
+"habitat",
+"ranch",
+"bdffp_reserve_no",
+"tag_number",
+"row",
+"column",
+"ht_1998",
+"ht_1999",
+"ht_2000",
+"ht_2001",
+"ht_2002",
+"ht_2003",
+"ht_2004",
+"ht_2005",
+"ht_2006"
   )
 str(test.ht)
 test.ht <-
   test.ht %>% gather(
-    "year.ht",
-    "ht",
-    "ht_1998",
-    "ht_1999",
-    "ht_2000",
-    "ht_2001",
-    "ht_2002",
-    "ht_2003",
-    "ht_2004",
-    "ht_2005",
-    "ht_2006"
+"year.ht",
+"ht",
+"ht_1998",
+"ht_1999",
+"ht_2000",
+"ht_2001",
+"ht_2002",
+"ht_2003",
+"ht_2004",
+"ht_2005",
+"ht_2006"
   )
 test.ht <-
   test.ht %>% separate(year.ht, c("factor", "year"), sep = "\\_")
@@ -446,27 +449,65 @@ summary(years$test)
 ######################################################
 # COMPLETE GOING FROM WIDE TO LONG BY DELETING THE COLUMSN YOU DON'T NEED
 # bind the columns for ht, shots, infl, and notes into a single dataframe called 'test'
-test <-
-  as.data.frame(bind_cols(test.ht, test.shts, test.infl, test.notes))
+
+test<-full_join(test.ht, test.shts,
+   by = c("HA.plot", 
+  "plot", 
+  "habitat", 
+  "ranch", 
+  "bdffp_reserve_no", 
+  "tag_number", 
+  "row", 
+  "column", 
+  "year")) %>% 
+  full_join(test.infl,
+by = c("HA.plot", 
+   "plot", 
+   "habitat", 
+   "ranch", 
+   "bdffp_reserve_no", 
+   "tag_number", 
+   "row", 
+   "column", 
+   "year")) %>% 
+  full_join(test.notes,
+by = c("HA.plot", 
+   "plot", 
+   "habitat", 
+   "ranch", 
+   "bdffp_reserve_no", 
+   "tag_number", 
+   "row", 
+   "column", 
+   "year")) %>% 
+  arrange(tag_number) %>% 
+  select(-factor.x, -factor.y,-factor.x.x,-factor.y.y)
+
+
+  
+  
+
+# test <-
+#   as.data.frame(bind_cols(test.ht, test.shts, test.infl, test.notes))
 head(test, 10)
 colnames(test)
 # eliminate the redundant columns by selecting the ones you want to keep
 test <-
   select(
-    test,
-    "HA.plot",
-    "plot",
-    "habitat",
-    "ranch",
-    "bdffp_reserve_no",
-    "tag_number",
-    "row",
-    "column",
-    "year",
-    "ht",
-    "shts",
-    "infl",
-    "code.notes"
+test,
+"HA.plot",
+"plot",
+"habitat",
+"ranch",
+"bdffp_reserve_no",
+"tag_number",
+"row",
+"column",
+"year",
+"ht",
+"shts",
+"infl",
+"code.notes"
   )
 head(test, 30)
 
@@ -475,6 +516,7 @@ summary(test)
 ######################################################
 # CLEAN-UP
 # fix the data types as needed
+names(test)
 test$year <- as.numeric(as.character(test$year))
 summary(test$year)
 test$plot<-as.factor(test$plot)
@@ -542,7 +584,8 @@ write_csv(codes_to_fix,"./data_raw/PA10_codes_to_fix.csv")
 
 # after reviewing and noting changes, I can import and make the corrections.
 # I reviewded the file and did two things:
-# 1) ID'd all entries that were actuially notes about treefalls, or plants being in the wrong location, etc, extracted them, and  
+# 1) ID'd all entries that were actually notes about treefalls, or plants being 
+# in the wrong location, etc, extracted them, and  
 # saved this as a different CSV called PA10_plants_to_fix. 
 
 # HHHHHHHHHMMMMMMMMMM - need to 2x check all this
@@ -562,8 +605,6 @@ PA.code.corrections$new_code<-NULL # delete column for old code
 test<-anti_join(test,PA.code.corrections,by=c("tag_number","year","row","column"))
 #and this adds the corrected versions of those plants back to "test" df
 test<-bind_rows(test,PA.code.corrections)  
-
-
 
 
 
@@ -593,9 +634,7 @@ head(test, 20)
 
 ######3
 
-
 # HERE NEED TO ADD BACK THE ONES YOU FIXED: all of the ones in PA10_Check_and_Fix.csv!!!!!!
-
 
 PA10_checks$infl[PA10_checks$tag_number==88 & PA10_checks$year==2005 & PA10_checks$row=="A"] <- 2
 PA10_checks$code.notes.x[PA10_checks$tag_number==88 & PA10_checks$year==2006 & PA10_checks$row=="A"] <- NA
@@ -665,7 +704,7 @@ PA10_checks$code.notes.x[PA10_checks$tag_number==845 & PA10_checks$year==2006 & 
 PA10_checks<- PA10_checks %>% arrange(tag_number,row,column,year) %>% rename(code.notes=code.notes.x)
 
 write_csv(PA10_checks,"./data_raw/PA10_Check_and_Fix_fixed.csv")
-
+#TODO:
 # Need to add 2006 seedling notations
 # Figure out plant 46
 # Need to add 1997 data
@@ -709,13 +748,13 @@ summary(test)
 
 MISC_OBS <-
   test %>% filter(
-    code.notes == "dried (7)" |
-      code.notes == "under litter (70)" |
-      code.notes == "2x in field (200)" |
-      code.notes == "under branchfall (90)" |
-      code.notes == "resprouting (10)" |
-      code.notes == "under treefall (80)" |
-      code.notes == "90, 10 (two codes)"
+code.notes == "dried (7)" |
+  code.notes == "under litter (70)" |
+  code.notes == "2x in field (200)" |
+  code.notes == "under branchfall (90)" |
+  code.notes == "resprouting (10)" |
+  code.notes == "under treefall (80)" |
+  code.notes == "90, 10 (two codes)"
   ) %>%
   arrange(plot, year, tag_number) %>% select(-ht, -shts, -infl)
 
@@ -731,10 +770,10 @@ write.csv(MISC_OBS, "./output/misc_observations_PA10.csv", row.names = FALSE)
 
 Not_on_SurveyList <-
   test %>% filter(code.notes == "not on list (40)" |
-                    code.notes == "dead not on list (100)")
+code.notes == "dead not on list (100)")
 write.csv(Not_on_SurveyList,
-          "./data_clean/Not_on_SurveyList_PA10.csv",
-          row.names = FALSE)
+  "./data_clean/Not_on_SurveyList_PA10.csv",
+  row.names = FALSE)
 
 
 ######################################################
@@ -803,10 +842,10 @@ summary(test$code.notes)
 # test <- test %>%
 #   group_by(plot, tag_number) %>%
 #   mutate(
-#     code2 = as.character(code2),
-#     # can be avoided if key is a character to begin with
-#     code2 = ifelse(row_number() == 1 &
-#                      (!is.na(ht) | !is.na(shts)), "initial.tag.yr", code2)
+# code2 = as.character(code2),
+# # can be avoided if key is a character to begin with
+# code2 = ifelse(row_number() == 1 &
+#  (!is.na(ht) | !is.na(shts)), "initial.tag.yr", code2)
 #   )
 # 
 # test$code2[test$code.notes == "sdlg (1)"] <- "initial.tag.yr"
@@ -840,9 +879,9 @@ df$code2[df$code.notes == "dead (2)"] <- "dead"
 df <- df %>%
   group_by(plot, tag_number) %>%
   mutate(code2 = as.character(code2),
-         # can be avoided if key is a character to begin with
-         code2 = ifelse(code2 == "dead" &
-                          (!is.na(ht) | !is.na(shts)), "double_check", NA)) %>%
+ # can be avoided if key is a character to begin with
+ code2 = ifelse(code2 == "dead" &
+  (!is.na(ht) | !is.na(shts)), "double_check", NA)) %>%
   filter(cumsum(!is.na(code2)) > 0) %>%
   ungroup()
 head(df, 20)
@@ -858,9 +897,9 @@ df2$code2[df2$code.notes == "dead (2)"] <- "dead"
 df2 <- df2 %>%
   group_by(plot, tag_number) %>%
   mutate(code2 = as.character(code2), # can be avoided if key is a character to begin with
-         code3 = (cumsum(lag(
-           code2 == "dead" & !is.na(code2 == "dead"), default = 0
-         )))) %>%
+ code3 = (cumsum(lag(
+   code2 == "dead" & !is.na(code2 == "dead"), default = 0
+ )))) %>%
   filter(code3 > 0) %>%
   arrange(plot, tag_number, year) %>%
   ungroup()
@@ -872,7 +911,10 @@ summary(df2)
 # df3 - keep these for review (they are the ones that are marked dead but have data after)
 df3 <-
   df2 %>% filter((!is.na(ht) |
-                    !is.na(shts))) %>% arrange(plot, tag_number, year) %>% select(-code3) %>% ungroup()
+!is.na(shts))) %>% arrange(plot, tag_number, year) %>% select(-code3) %>% ungroup()
+
+df$code2<-NULL
+
 
 df3 <-
   bind_rows(df, df3) %>% select(plot, tag_number, year, ht, shts) %>% unique()
@@ -887,12 +929,12 @@ zombies_all_yrs_new <-
   as.data.frame(lapply(zombies_all_yrs, as.character), stringsAsfactors = FALSE)
 zombies_all_yrs_new <-
   head(do.call(
-    rbind,
-    by(zombies_all_yrs_new, zombies_all_yrs_new$tag_number, rbind, "")
+rbind,
+by(zombies_all_yrs_new, zombies_all_yrs_new$tag_number, rbind, "")
   ),-1)
 write.csv(zombies_all_yrs_new,
-          "./data_clean/zombies_space_btwn_plants_PA10.csv",
-          row.names = FALSE)
+  "./data_clean/zombies_space_btwn_plants_PA10.csv",
+  row.names = FALSE)
 
 
 
@@ -926,6 +968,8 @@ rm(df, df2, df3, df4, zombies_all_yrs_new)
 write.csv(test, "./data_clean/PA10_survey_with_Zombies.csv", row.names = FALSE)
 
 test$row_col <- do.call(paste, c(test[c("row", "column")], sep = "")) 
+
+
 duplicates_col <- test %>% group_by(habitat, plot, column,  tag_number, year) %>% filter(n()>1)
 duplicates_row <- test %>% group_by(habitat, plot, row,  tag_number, year) %>% filter(n()>1)
 duplicates_row_col <- test %>% group_by(habitat, plot, row_col,  tag_number, year) %>% filter(n()>1)
@@ -933,6 +977,117 @@ duplicates_row_col <- test %>% group_by(habitat, plot, tag_number, year) %>% fil
 duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()
 
 dupes <-
-  semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(HA.plot,plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, row_col,year)
+  semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% 
+  select(HA.plot,plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% 
+  arrange(plot, habitat, tag_number, row_col,year)
 write.csv(dupes, "./data_clean/dupes_PA10.csv", row.names = FALSE)
-write.csv(unique(dupes$tag_number), "./data_clean/dupe_numbers_PA10.csv", row.names = FALSE)
+
+dupe_simplified <- dupes %>% 
+  select(tag_number,row_col) %>% 
+  group_by(tag_number,row_col) %>% 
+  slice(1)
+
+write.csv(dupe_simplified, "./data_clean/dupe_numbers_PA10.csv", row.names = FALSE)
+
+
+
+
+# correction of zombie plants ---------------------------------------------
+
+# These need to the code changed from "dead "to "missing"
+test$code.notes[test$tag_number==1376 & test$year==2005] <- "plant missing (60)"
+test$code.notes[test$tag_number==748 & test$year==2005] <- "plant missing (60)"
+test$code.notes[test$tag_number==303 & test$year==2005] <- "plant missing (60)"
+test$code.notes[test$tag_number==855 & test$year==2005] <- "plant missing (60)"
+test$code.notes[test$tag_number==198 & test$year==2005] <- "plant missing (60)"
+test$code.notes[test$tag_number==121 & test$year==2005] <- "plant missing (60)"
+test$code.notes[test$tag_number==879 & test$year==2005] <- "plant missing (60)"
+test$code.notes[test$tag_number==911 & test$year==2005] <- "plant missing (60)"
+
+# these are the rows to remove (blank years after a plant died)
+
+# first change th tag number is main master file to numeric
+test$tag_number<-as.numeric(test$tag_number)
+
+# These following will be removed with an antijoin
+
+zombie_rows_to_del <- data.frame(
+  tag_number = c(39,39,39,39,110,110,110,180,180,180,180,184,184,184,185,185,
+                 192,192,209,209,209,209,221,221,221,223,223,238,238,238,238,
+                 250,250,250,250,250,250,280,280,280,280,280,283,283,283,283,
+                 283,336,336,336,336,354,354,354,354,354,354,354,362,362,366,
+                 366,366,386,386,386,386,386,386,419,419,419,419,419,419,420,
+                 420,420,420,420,422,422,422,422,422,422,430,430,431,431,431,
+                 431,431,431,436,436,449,449,449,449,449,459,459,459,459,459,
+                 459,460,460,460,460,468,468,468,468,468,469,469,469,474,474,
+                 474,474,474,478,478,478,478,478,480,480,481,481,481,482,482,
+                 482,482,482,488,488,488,488,488,489,489,489,492,492,492,492,
+                 496,496,496,496,496,496,499,499,499,515,515,515,515,515,515,
+                 540,540,540,540,540,554,554,554,554,554,554,633,633,633,634,
+                 634,645,645,649,649,649,664,664,669,669,669,670,670,680,680,
+                 683,683,683,683,683,684,684,684,684,684,704,704,704,716,716,
+                 716,776,776,785,785,785,795,795,797,797,894,894,902,902,902,
+                 918,918,918,924,924,924,927,931,931,931,945,945,945,946,946,
+                 946,947,947,947,949,949,949,949,949,954,954,956,963,963,963,
+                 971,971,978,978,978,982,982,982,988,988,991,991,991,991,997,
+                 997,997,1306,1306,1306,1317,1317,1317,1337,1337,1352,1352,1352,
+                 1353,1353,1364,1364,1364,1364,1384,1384,1388,1400,1400,1400,
+                 1400,823,823,823,823,824,824,824,824,120,120,120  ),    
+  year = c(2003,2004,2005,2006,2004,2005,2006,2003,2004,2005,2006,2004,2005,
+           2006,2005,2006,2005,2006,2003,2004,2005,2006,2004,2005,2006,2005,
+           2006,2003,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,
+           2004,2005,2006,2002,2003,2004,2005,2006,2003,2004,2005,2006,2000,
+           2001,2002,2003,2004,2005,2006,2005,2006,2004,2005,2006,2001,2002,
+           2003,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,2004,
+           2005,2006,2001,2002,2003,2004,2005,2006,2005,2006,2001,2002,2003,
+           2004,2005,2006,2005,2006,2002,2003,2004,2005,2006,2001,2002,2003,
+           2004,2005,2006,2003,2004,2005,2006,2002,2003,2004,2005,2006,2004,
+           2005,2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,2006,2005,
+           2006,2004,2005,2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,
+           2006,2004,2005,2006,2003,2004,2005,2006,2001,2002,2003,2004,2005,
+           2006,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,2004,
+           2005,2006,2001,2002,2003,2004,2005,2006,2004,2005,2006,2005,2006,
+           2005,2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,2005,
+           2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,2006,2004,2005,
+           2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,2005,2006,
+           2005,2006,2004,2005,2006,2004,2005,2006,2004,2005,2006,2006,2004,
+           2005,2006,2004,2005,2006,2004,2005,2006,2004,2005,2006,2002,2003,
+           2004,2005,2006,2005,2006,2006,2004,2005,2006,2005,2006,2004,2005,
+           2006,2004,2005,2006,2005,2006,2003,2004,2005,2006,2004,2005,2006,
+           2004,2005,2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,
+           2003,2004,2005,2006,2005,2006,2006,2003,2004,2005,2006,2004,2005,
+           2005,2006,2004,2005,2005,2006,2004,2005,2006  )
+)
+
+# ok, remnove them!
+test <- anti_join(test,zombie_rows_to_del)
+
+
+
+
+# Need to change all the ones where a plant is dead but size was recorded as "0"
+test <- test %>% 
+  mutate(shts = ifelse((shts == 0 & ht == 0 & code.notes== "dead (2)"), 
+                       NA, shts)) %>% 
+  mutate(ht = ifelse((shts == 0 & ht == 0 & code.notes== "dead (2)"), 
+                     NA, ht)) %>% 
+  mutate(infl = ifelse((shts == 0 & ht == 0 & code.notes== "dead (2)"), 
+                       NA, infl))
+
+
+
+# FIXES LEFT TO DO --------------------------------------------------------
+# 
+# 
+# what happened to the data for 120? did it get lost in a tag switch?
+# 5754	10-ha	120	1998	NA	NA	NA	
+# 5754	10-ha	120	1999	NA	NA	NA	
+# 5754	10-ha	120	2000	NA	NA	NA	
+# 5754	10-ha	120	2001	NA	NA	NA	
+# 5754	10-ha	120	2002	NA	NA	NA	
+# 5754	10-ha	120	2003	0	0	dead (2)	
+# 
+# 
+# These are weird duplicates
+# 5754	10-ha	823	2006	2	39	ULY (3)	*** THIS IS A WEIRD DUPLICATE 
+# 5754	10-ha	824	2006	1	29	ULY (3)	*** THIS IS A WEIRD DUPLICATE 

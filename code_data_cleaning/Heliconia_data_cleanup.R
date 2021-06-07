@@ -214,54 +214,39 @@ ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4
 # Fixing some errors in row / column location found by ES
 # https://github.com/BrunaLab/HeliconiaDemography/issues/5
 
-str(ha_data)
-
 ha_data$row[ha_data$plot=="2108" & ha_data$HA_ID_Number=="504"] <-"E" 
-
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="962"] <-"6"   
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="977"] <-"10"   
-
 ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1133"] <-"G" 
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1133"] <-"6"
-
 ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1135"] <-"G" 
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1135"] <-"6"
-
 ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1280"] <-"J" 
-
 ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1284"] <-"J" 
-
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1577"] <-"6"   
-
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1778"] <-"10"   
-
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1790"] <-"10"   
-
 ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1836"] <-"J" 
-
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="2149"] <-"6"   
+ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1602"] <-"J" 
 
-ha_data$row[ha_data$plot=="5751" & ha_data$HA_ID_Number==""] <-"" 
-ha_data$column[ha_data$plot=="5751" & ha_data$HA_ID_Number==""] <-""   
+ha_data$column[ha_data$plot=="5751" & ha_data$HA_ID_Number=="2224"] <-"1" 
+ha_data$column[ha_data$plot=="5751" & ha_data$HA_ID_Number=="2242"] <-"1" 
 
-plot	row	column	ha_id_number
+ha_data$row[ha_data$plot=="CaboFrio-CF" & ha_data$HA_ID_Number=="5211"] <-"E" 
+ha_data$row[ha_data$plot=="CaboFrio-CF" & ha_data$HA_ID_Number=="5303"] <-"E" 
 
-5750	L	8	1602
+ha_data$row[ha_data$plot=="Dimona-CF" & ha_data$HA_ID_Number=="5662"] <-"E" 
+ha_data$column[ha_data$plot=="Dimona-CF" & ha_data$HA_ID_Number=="5739"] <-"10" 
+ha_data$column[ha_data$plot=="Dimona-CF" & ha_data$HA_ID_Number=="5762"] <-"10" 
 
+ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="5806"] <-"1" 
+ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="5850"] <-"1" 
+ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="5902"] <-"1" 
+ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="6107"] <-"1" 
+ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="6204"] <-"1" 
+ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="7009"] <-"1" 
 
-5751	E	0	2224
-5751	E	0	2242
-CaboFrio-CF	F	10	5211
-CaboFrio-CF	F	10	5303
-Dimona-CF	F	8	5662
-Dimona-CF	F	11	5739
-Dimona-CF	E	11	5762
-Florestal-CF	C	0	5806
-Florestal-CF	B	0	5850
-Florestal-CF	B	0	5902
-Florestal-CF	E	0	6107
-Florestal-CF	D	0	6204
-Florestal-CF	E	0	7009
 
 # which(colnames(ha_data)=="plant_id_07")
 # 
