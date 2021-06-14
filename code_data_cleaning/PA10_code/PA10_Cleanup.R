@@ -98,7 +98,7 @@ PA10_data<-full_join(PA10_data,PA10_data_2006,by=c("tag_number","row","column"))
 PA10_data$plot<-5754
 PA10_data$HA.plot<-"FF-7"
 PA10_data$habitat<-"10-ha"
-PA10_data$ranch<-"PAL"
+PA10_data$ranch<-"PortoAlegre"
 PA10_data$bdffp_reserve_no<-3209
 str(PA10_data_2006)
 PA10_data_2006$column<-as.factor(PA10_data_2006$column)
@@ -713,13 +713,13 @@ test$code.notes<-as.factor(test$code.notes)
 test$column<-as.factor(test$column)
 which(test$row=="NA")
 summary(test)
-############################################################
-# ADD A UNIQUE ID NUMBER FOR EACH PLANT
-############################################################
-
-test<-rowid_to_column(test, "HA_ID_Number")
-
-
+# ############################################################
+# # ADD A UNIQUE ID NUMBER FOR EACH PLANT
+# ############################################################
+# 
+# test<-rowid_to_column(test, "HA_ID_Number")
+# 
+# 
 
 ############################################
 ############################################
@@ -764,42 +764,42 @@ write.csv(Not_on_SurveyList,
   row.names = FALSE)
 
 
-######################################################
-# DELETE THE MISC OBSERVATIONS FROM THAT column
-# THEN MAKE THEM CONSISTENT
-levels(test$code.notes)[levels(test$code.notes) == "uly? (4)"] <-
-  "ULY (3)"
-levels(test$code.notes)[levels(test$code.notes) == "dead above ground (5)"] <-
-  "dead (2)"
-levels(test$code.notes)[levels(test$code.notes) == "new plant in plot (6)"] <-
-  "ULY (3)"
-levels(test$code.notes)[levels(test$code.notes) == "dried (7)"] <-
-  NA
-levels(test$code.notes)[levels(test$code.notes) == "resprouting (10)"] <-
-  NA
-levels(test$code.notes)[levels(test$code.notes) == "not on list (40)"] <-
-  NA
-levels(test$code.notes)[levels(test$code.notes) == "no tag (50)"] <-
-  "tag missing (50)"
-levels(test$code.notes)[levels(test$code.notes) == "under litter (70)"] <-
-  NA
-levels(test$code.notes)[levels(test$code.notes) == "under treefall (80)"] <-
-  NA
-levels(test$code.notes)[levels(test$code.notes) == "under branchfall (90)"] <-
-  NA
-levels(test$code.notes)[levels(test$code.notes) == "dead not on list (100)"] <-
-  "dead (2)"
-levels(test$code.notes)[levels(test$code.notes) == "2x in field (200)"] <-
-  NA
-levels(test$code.notes)[levels(test$code.notes) == "dead, yr unknown (300)"] <-
-  "dead (2)"
-levels(test$code.notes)[levels(test$code.notes) == "90, 10 (two codes)"] <-
-  NA
-
-
-
-test <- droplevels(test)
-summary(test$code.notes)
+# ######################################################
+# # DELETE THE MISC OBSERVATIONS FROM THAT column
+# # THEN MAKE THEM CONSISTENT
+# levels(test$code.notes)[levels(test$code.notes) == "uly? (4)"] <-
+#   "ULY (3)"
+# levels(test$code.notes)[levels(test$code.notes) == "dead above ground (5)"] <-
+#   "dead (2)"
+# levels(test$code.notes)[levels(test$code.notes) == "new plant in plot (6)"] <-
+#   "ULY (3)"
+# levels(test$code.notes)[levels(test$code.notes) == "dried (7)"] <-
+#   NA
+# levels(test$code.notes)[levels(test$code.notes) == "resprouting (10)"] <-
+#   NA
+# levels(test$code.notes)[levels(test$code.notes) == "not on list (40)"] <-
+#   NA
+# levels(test$code.notes)[levels(test$code.notes) == "no tag (50)"] <-
+#   "tag missing (50)"
+# levels(test$code.notes)[levels(test$code.notes) == "under litter (70)"] <-
+#   NA
+# levels(test$code.notes)[levels(test$code.notes) == "under treefall (80)"] <-
+#   NA
+# levels(test$code.notes)[levels(test$code.notes) == "under branchfall (90)"] <-
+#   NA
+# levels(test$code.notes)[levels(test$code.notes) == "dead not on list (100)"] <-
+#   "dead (2)"
+# levels(test$code.notes)[levels(test$code.notes) == "2x in field (200)"] <-
+#   NA
+# levels(test$code.notes)[levels(test$code.notes) == "dead, yr unknown (300)"] <-
+#   "dead (2)"
+# levels(test$code.notes)[levels(test$code.notes) == "90, 10 (two codes)"] <-
+#   NA
+# 
+# 
+# 
+# test <- droplevels(test)
+# summary(test$code.notes)
 
 # correction of zombie plants ---------------------------------------------
 # These need to the code changed from "dead "to "missing"
@@ -907,17 +907,23 @@ test <- test %>%
 
 ############################################
 # This finds any that were marked dead in a year but for whihc there are measurments of shts or ht
-source("./code_data_cleaning/PA10_code/pa_marked_dead_but_measured.R")
-df<-pa_marked_dead_but_measured(test)
+source("./code_data_cleaning/marked_dead_but_measured.R")
+df<-marked_dead_but_measured(test)
 
 #THIS WILL CHECK TO SEE IF THERE ARE SOME THAT WERE REGISTERED DEAD BUT
 # FOR WHICH THERE ARE ht or sht measurments in years AFTER they were marked dead
 # returns 'test', saves csv of things to check
-source("./code_data_cleaning/PA10_code/PA10_zombies.R")
-test<-PA10_zombies(test)
+source("./code_data_cleaning/zombies.R")
+test<-zombies(test)
 
-source("./code_data_cleaning/PA10_code/PA10_duplicate_plants.R")
-dupes<-PA10_duplicate_plants(test)
+source("./code_data_cleaning/duplicate_plants.R")
+dupes<-duplicate_plants(test)
+write.csv(dupes, "./data_midway/dupes_PA10.csv", row.names = FALSE)
+dupe_simplified <- dupes %>% 
+  select(tag_number,row_col) %>% 
+  group_by(tag_number,row_col) %>% 
+  slice(1)
+write.csv(dupe_simplified, "./data_midway/dupe_numbers_PA10.csv", row.names = FALSE)
 
 
 write.csv(test, "./data_midway/PA10_survey_with_Zombies.csv", row.names = FALSE)
