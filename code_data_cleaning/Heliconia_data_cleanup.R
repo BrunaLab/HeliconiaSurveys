@@ -373,16 +373,6 @@ ha_data <-
 colnames(ha_data)
 
 
-
-
-# test<-ha_data %>% gather("HA.plot","year_notes", "notes.code", "notes_1998", "notes_1999", "notes_2000", "notes_2001", "notes_2002", "notes_2003", "notes_2004", "notes_2005", "notes_2006", "notes_2008", "notes_2009")
-# test<-test %>% gather("HA.plot","year_shts", "shts", "shts_1998", "shts_1999", "shts_2000", "shts_2001", "shts_2002", "shts_2003", "shts_2004", "shts_2005", "shts_2006", "shts_2008", "shts_2009")
-# test<-test %>% gather("HA.plot","year_ht", "ht", "ht_1998", "ht_1999", "ht_2000", "ht_2001", "ht_2002", "ht_2003", "ht_2004", "ht_2005", "ht_2006", "ht_2008", "ht_2009")
-# test<-test %>% gather("HA.plot","year_infl", "infl", "infl_1998", "infl_1999", "infl_2000", "infl_2001", "infl_2002", "infl_2003", "infl_2004", "infl_2005", "infl_2006", "infl_2008", "infl_2009")
-
-
-# levels(ha_data$notes_2004)[levels(ha_data$notes_2004)=="ULY"] <- "3"
-
 ######################################################
 # RESHAPING FROM WIDE TO LONG. CONVOLUTED BUT IT WORKS
 test.notes <-
@@ -633,29 +623,7 @@ test <- full_join(test,test.notes) %>% select(-factor)
 test <- full_join(test,test.infl) %>% select(-factor)
 head(test, 10)
 colnames(test)
-# eliminate the redundant columns by selecting the ones you want to keep
-# test <-
-#   select(
-#     test,
-#     #"HA.plot",
-#     "plot",
-#     "plotID",
-#     "habitat",
-#     "ranch",
-#     "bdffp_reserve_no",
-#     "HA_ID_Number",
-#     "tag_number",
-#     "row",
-#     "column",
-#     "x_09",
-#     "y_09",
-#     "year",
-#     "ht",
-#     "shts",
-#     "infl",
-#     "code.notes"
-#   )
-# head(test, 30)
+
 
 rm(test.ht, test.infl, test.notes, test.shts, years)
 summary(test)
@@ -805,64 +773,11 @@ test <- droplevels(test)
 summary(test$code.notes)
 
 ######################################################
-# because all years for all plants are recorded - including
-# before they appeared and after they died - this  is to help
-# delete all the rows before a seedling is born or after a plant dies.
-# the column 'code2' is only seedling or dead
-
-# test$code2<-test$code.notes
-# test$code2[(test$code2 != "sdlg (1)") & (test$code2 != "dead (2)")] <- NA
-# test$code2<-droplevels(test$code2)
-# levels(test$code2)
-# summary(test)
-
-
-
-# # ungroup(test) %>% select(ht) %>% filter(ht>0) %>% tally()
-# test<-test %>% filter(ht>0 | shts>0|code.notes=="sdlg (1)"|code.notes=="dead (2)"|code.notes=="plant missing (60)")
-# summary(foo)
-# summary(as.factor(foo$code2))
-# # ungroup(foo) %>% select(ht) %>% filter(ht>0) %>% tally()
-# head(foo,30)
 
 summary(test)
 summary(test$code.notes)
 colnames(test)
-# summary(as.factor(test$code2))
-# THIS DELETES ALL UNCESSARY rowS FROM YERS BEFORE A SEEDLING EXISTED
-# test$code2 <- NA
-# test <- test %>%
-#   group_by(plot, tag_number) %>%
-#   mutate(
-#     code2 = as.character(code2),
-#     # can be avoided if key is a character to begin with
-#     code2 = ifelse(row_number() == 1 &
-#                      (!is.na(ht) | !is.na(shts)), "initial.tag.yr", code2)
-#   )
-# 
-# test$code2[test$code.notes == "sdlg (1)"] <- "initial.tag.yr"
-# 
-# test <- test %>% filter(cumsum(!is.na(code2)) > 0) %>%
-#   ungroup()
-# summary(as.factor(test$code2))
-# summary(test)
-# 
-# 
 
-# foo<-test %>% select(tag_number, plot)
-# foo<-unique(foo)
-# test$code2<-as_factor(test$code2)
-# foo<-test %>% filter(is.na(code2))
-# summary(foo)
-# summary(as.factor(foo$code2))
-# !is.na(test$code2)
-# # df$code2<-as.factor(df$code2)
-# summary(test)
-# head(test,50)
-
-# foo2<-filter(test,code.notes=="ULY (3)")
-# summary(foo2)
-# summary(as.factor(foo2$code2))
 ############################################
 # This finds any that were marked dead in a year but for whihc there are measurments of shts or ht
 source("./code_data_cleaning/marked_dead_but_measured.R")
@@ -875,7 +790,7 @@ df<-marked_dead_but_measured(test)
 
 # returns 'test', saves csv of things to check
 source("./code_data_cleaning/zombies.R")
-test <- zombies(test)
+zombies <- zombies(test)
 
 
 source("./code_data_cleaning/duplicate_plants.R")
@@ -894,91 +809,5 @@ test %>%
   group_by(habitat, plot) %>% 
   summarize(N_plants=n_distinct(HA_ID_Number)) %>% 
   arrange(habitat, desc(N_plants))
-
-
-
-# 
-df2 <- test
-df2$code2 <- NA
-df2$code2[df2$code.notes == "dead (2)"] <- "dead"
-df2 <- df2 %>%
-  group_by(plot, tag_number) %>%
-  mutate(code2 = as.character(code2), # can be avoided if key is a character to begin with
-         code3 = (cumsum(lag(
-           code2 == "dead" & !is.na(code2 == "dead"), default = 0
-         )))) %>%
-  filter(code3 > 0) %>%
-  arrange(plot, tag_number, year) %>%
-  ungroup()
-
-summary(df2)
-# #All plamts post -dead records, including NA in ALL columnS
-# # write.csv(dbl.chk, "./data_clean/post_dead_records.csv",row.names = FALSE)
-# 
-# df3 - keep these for review (they are the ones that are marked dead but have data after)
-df3 <-
-  df2 %>% filter((!is.na(ht) |
-                    !is.na(shts))) %>% arrange(plot, tag_number, year) %>% select(-code3) %>% ungroup()
-
-df3 <-
-  bind_rows(df, df3) %>% select(plot, tag_number, year, ht, shts) %>% unique()
-
-zombies_all_yrs <-
-  semi_join(test, df3, by = c("plot", "tag_number")) %>% 
-  select(plot, habitat, tag_number, year, shts, ht, code.notes) %>% 
-  arrange(plot, habitat, tag_number, year)
-
-# zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
-
-write_csv(zombies_all_yrs,
-          "./data_clean/zombies.csv")
-# write_csv(zombies_all_yrs, "./data_clean/zombies.csv")
-# 
-# # This just prints them out with each plant separated by a row
-# zombies_all_yrs_new <-
-#    as.data.frame(lapply(zombies_all_yrs, as.character), stringsAsfactors = FALSE)
-#  zombies_all_yrs_new <-
-#    head(do.call(
-#      rbind,
-#      by(zombies_all_yrs_new, zombies_all_yrs_new$tag_number, rbind, "")
-#    ),-1)
-#  write.csv(zombies_all_yrs_new,
-#            "./data_clean/zombies_space_btwn_plants.csv",
-#            row.names = FALSE)
-# #  
-# 
-# 
-# 
-# 
-# # df4 - these are the ones you can delete from test. no data after being marked "dead"
-# df4 <- anti_join(df2, df3, by = c("plot", "tag_number", "year"))
-# # you can make sure that they in fact they *are* all NA by looking over them
-# summary(df4)
-# 
-# 
-# # then delete them from the Ha survey with an anti_join
-# test <- anti_join(test, df4, by = c("plot", "tag_number", "year"))
-# 
-# rm(df, df2, df3, df4, zombies_all_yrs_new)
-
-# test$row_col <- do.call(paste, c(test[c("row", "column")], sep = ""))
-# duplicates_col <- test %>% group_by(habitat, plot, column,  tag_number, year) %>% filter(n()>1)
-# duplicates_row <- test %>% group_by(habitat, plot, row,  tag_number, year) %>% filter(n()>1)
-# duplicates_row_col <- test %>% group_by(habitat, plot, row_col,  tag_number, year) %>% filter(n()>1)
-# duplicates_row_col <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1) %>% ungroup()
-# duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()
-# 
-dupes <-semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, row_col,year)
-# dupes <-semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% select(HA.plot,plot, habitat, HA_ID_Number,tag_number, year, row_col, shts, ht, code.notes) %>% arrange(plot, habitat, tag_number, row_col,year)
-write.csv(dupes, "./data_clean/dupes.csv", row.names = FALSE)
-
-dupe_numbers <- dupes %>% 
-  arrange(habitat, plot, tag_number, year,row_col) %>%
-  group_by(habitat, plot, tag_number, row_col) %>% 
-  slice(1) %>% 
-  select(habitat, plot, tag_number, row_col)
-  
-write.csv(dupe_numbers, "./data_clean/dupe_numbers.csv", row.names = FALSE)
-
 
 test <- test %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row_col,year)
