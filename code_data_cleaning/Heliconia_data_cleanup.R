@@ -134,16 +134,48 @@ ha_data<-rowid_to_column(ha_data, "HA_ID_Number")
 # CORRECTIONS TO THE DATASET
 ############################################################
 
-# track down these marked and mapped in 07/08
+
+# Correcting errors in transcribing "notes" -------------------------------
+
+# PLOT 2017
+
+# Plant 228: notes say 'dead (2)' in 2006, should be plant missing (60)
+ha_data$notes_2006[ha_data$plot=="2107" & ha_data$tag_number=="228"] <- 60
+# Plant 282: notes say 'dead (2)' in 2006, should be plant missing (60)
+ha_data$notes_2006[ha_data$plot=="2107" & ha_data$tag_number=="282"] <- 60
+
+# PLOT 2018
+
+# Plant 293: notes say 'ULY (3)' in 2008, it's not. replace this with NA
+ha_data$notes_2008[ha_data$plot=="2108" & ha_data$tag_number=="293"] <- NA
+# Plant 293: notes say 'dead (2)' in 2009, it's not. replace this with NA
+ha_data$notes_2009[ha_data$plot=="2108" & ha_data$tag_number=="293"] <- NA
+
+#TODO: track down these marked and mapped in 07/08
 #look for them in plant_id_07 for plants 1609 and 1629
 filter(ha_data, tag_number==1705 & plot==5756) 
 filter(ha_data, tag_number==1710 & plot==5756)
 
-# FIx 
-ha_data$plant_id_07[ha_data$plot=="2107" & ha_data$plant_id_07=="228" & ha_data$tag_number=="288"] <- "288" #incorrectly wrote down 228 when first marked
-ha_data$infl_2007[ha_data$plot=="5756" & ha_data$tag_number=="403"] <- NA # incorrectly recorded as 10 when entered
 
-# fix 68/275
+
+
+# correcting errors: paper to spreadsheet ---------------------------------
+
+#  PLOT 2017
+#incorrectly entered tag no. as 228 instead of 288
+ha_data$plant_id_07[ha_data$plot=="2107" & ha_data$plant_id_07=="228" &
+                      ha_data$tag_number=="288"] <- "288" 
+
+# PLOT 5756
+# incorrectly recorded 10 infl in 2007, should be NA
+ha_data$infl_2007[ha_data$plot=="5756" & ha_data$tag_number=="403"] <- NA 
+
+
+# correcting data assignment after replacing tag in field   ---------------
+
+# PLOT 2017
+
+# tags 68/275
 source<-which(ha_data$tag_number==68 & ha_data$bdffp_reserve_no=="2107")
 destination<-which(ha_data$tag_number==275 & ha_data$bdffp_reserve_no=="2107")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
@@ -153,11 +185,13 @@ source<-which(ha_data$tag_number==129 & ha_data$bdffp_reserve_no=="2107")
 destination<-which(ha_data$tag_number==311 & ha_data$bdffp_reserve_no=="2107")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-#fix 1338/1398
+# PLOT 1501
+# tags 1338/1398
 source<-which(ha_data$tag_number==1338 & ha_data$bdffp_reserve_no=="1501")
 destination<-which(ha_data$tag_number==1398 & ha_data$bdffp_reserve_no=="1501")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
+# Reserve 1104 (Colosso 1-ha)
 #fix 154/390
 source<-which(ha_data$tag_number==154 & ha_data$bdffp_reserve_no=="1104")
 destination<-which(ha_data$tag_number==390 & ha_data$bdffp_reserve_no=="1104")
@@ -168,54 +202,61 @@ source<-which(ha_data$tag_number==264 & ha_data$bdffp_reserve_no=="1104")
 destination<-which(ha_data$tag_number==337 & ha_data$bdffp_reserve_no=="1104")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
+# PLOT 5756
 #fix 431/480
 source<-which(ha_data$tag_number==431 & ha_data$plot=="5756")
 destination<-which(ha_data$tag_number==480 & ha_data$plot=="5756")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-#fix
+#fix tag 1629
 destination<-which(ha_data$tag_number==1629 & ha_data$plot=="5756")
 ha_data[destination, 49:53] <-NA
 
-#fix
+# fix tag 1609
 destination<-which(ha_data$tag_number==1609 & ha_data$plot=="5756")
 ha_data[destination, 49:53] <-NA
 
-# fix
+# fix tag 551/1678
 source<-which(ha_data$tag_number==551 & ha_data$plot=="5756")
 destination<-which(ha_data$tag_number==1678 & ha_data$plot=="5756")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-# fix
+# fix tag 1231/1714
 source<-which(ha_data$tag_number==1231 & ha_data$plot=="5756")
 destination<-which(ha_data$tag_number==1714 & ha_data$plot=="5756")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-# fix
+# fix tag 1864 / 1684
 source<-which(ha_data$tag_number==1864 & ha_data$plot=="5756")
 destination<-which(ha_data$tag_number==1684 & ha_data$plot=="5756")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 ha_data[c(destination,source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
 ha_data[which(ha_data$tag_number==1864 & ha_data$plot=="5756"),]<-NA
 
-# fix
+# PLOT 5751
+# fix tag 310
 ha_data[which(ha_data$tag_number==310 & ha_data$plot=="5751"),49]<-NA
 
-#fix 176/199
+# PLOT 5753
+#fix tags 176/199
 source<-which(ha_data$tag_number==199 & ha_data$plot=="5753")
 destination<-which(ha_data$tag_number==176 & ha_data$plot=="5753")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-# fix 218/298
+# fix tags 218/298
 source<-which(ha_data$tag_number==218 & ha_data$plot=="5753")
 destination<-which(ha_data$tag_number==298 & ha_data$plot=="5753")
 ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 
-# Fixing some errors in row / column location found by ES
-# https://github.com/BrunaLab/HeliconiaDemography/issues/5
+# Fixing errors in plant location (Row/Column) ----------------------------
 
+# found by ES, see https://github.com/BrunaLab/HeliconiaDemography/issues/5
+
+# PLOT 2108
 ha_data$row[ha_data$plot=="2108" & ha_data$HA_ID_Number=="504"] <-"E" 
+
+# PLOT 5750
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="962"] <-"6"   
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="977"] <-"10"   
 ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1133"] <-"G" 
@@ -231,16 +272,20 @@ ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1836"] <-"J"
 ha_data$column[ha_data$plot=="5750" & ha_data$HA_ID_Number=="2149"] <-"6"   
 ha_data$row[ha_data$plot=="5750" & ha_data$HA_ID_Number=="1602"] <-"J" 
 
+# PLOT 5751
 ha_data$column[ha_data$plot=="5751" & ha_data$HA_ID_Number=="2224"] <-"1" 
 ha_data$column[ha_data$plot=="5751" & ha_data$HA_ID_Number=="2242"] <-"1" 
 
+# PLOT CABOFRIO-CF
 ha_data$row[ha_data$plot=="CaboFrio-CF" & ha_data$HA_ID_Number=="5211"] <-"E" 
 ha_data$row[ha_data$plot=="CaboFrio-CF" & ha_data$HA_ID_Number=="5303"] <-"E" 
 
+# PLOT DIMONA CF
 ha_data$row[ha_data$plot=="Dimona-CF" & ha_data$HA_ID_Number=="5662"] <-"E" 
 ha_data$column[ha_data$plot=="Dimona-CF" & ha_data$HA_ID_Number=="5739"] <-"10" 
 ha_data$column[ha_data$plot=="Dimona-CF" & ha_data$HA_ID_Number=="5762"] <-"10" 
 
+# PLOT FLORESTAL
 ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="5806"] <-"1" 
 ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="5850"] <-"1" 
 ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="5902"] <-"1" 
@@ -810,4 +855,24 @@ test %>%
   summarize(N_plants=n_distinct(HA_ID_Number)) %>% 
   arrange(habitat, desc(N_plants))
 
-test <- test %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row_col,year)
+test <- test %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row,column,year)
+
+
+
+# FIXES AFTER REVIEWING THE FILES -----------------------------------
+
+#TODO: 
+# 1. 2107 - tag 237 : it looks like these are actually two different plants, 
+# so need to 2x in the field. Note as such and treat as independent 
+# 
+# 2. 2108: tag 17: these are the same plant, should actually be in A6. (was 
+# marked as ULY in 1999 and position was subsequently corrected.)
+# 
+# 3. 2108: tag 66: this is in C9, not a seedling C( - was not missing in 99, 
+# but rather marked as a seedling in D10 (must be right on an edge()))
+
+ # 4. FF-1	2107	1-ha	282	A	5	2005	4	81	NA  this is actually 222, which was then retagged as 302 in 2006
+
+
+
+# Be sure to delete the ones for which there are no data after being marked dead (see dy in zombies.R)
