@@ -22,17 +22,26 @@ ha <-
          bdffp_reserve_no = col_character())
   )
 
+# A few entries don't read in because x_09 was entered with a comma or
+# semicolon instead of a decimal.
+# problems(ha)
+fails <- problems(ha)
+fails <-
+  fails %>%
+  mutate(corrected = str_replace(actual, "[\\,;]", "\\."))
+
+ha$x_09[fails$row] <- fails$corrected
 
 # Validation --------------------------------------------------------------
-# Create action levels.  Warn if 5% of rows fail and error if 10% fail.
-al <-  action_levels(warn_at = 0.05, stop_at = 0.1)
+# Create action levels.  Warn if 1% of rows fail and error if 5% fail.
+al <-  action_levels(warn_at = 0.01, stop_at = 0.05)
 
 # Do validation
 ha %>%
   create_agent(
     actions = al
   ) %>%
-  col_is_character(vars(plot, habitat, ranch, bdffp_reserve_no, row, code.notes, code2)) %>%
+  col_is_character(vars(plot, habitat, ranch, bdffp_reserve_no, row, code.notes)) %>%
   col_is_numeric(vars(HA_ID_Number, tag_number ,column, year, ht, shts, infl)) %>%
   col_vals_in_set(vars(column), 1:10) %>%
   col_vals_in_set(vars(row), LETTERS[1:10]) %>%
