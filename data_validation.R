@@ -34,12 +34,13 @@ ha$x_09[fails$row] <- fails$corrected
 
 # Validation --------------------------------------------------------------
 # Create action levels.  Warn if 1% of rows fail and error if 5% fail.
-al <-  action_levels(warn_at = 0.01, stop_at = 0.05)
-
+al_default <-  action_levels(warn_at = 0.01, stop_at = 0.05)
+# Warn if any rows fail, error if 10 or more rows fail.
+al_strict <- action_levels(warn_at = 1, stop_at = 10)
 # Do validation
 ha %>%
   create_agent(
-    actions = al
+    actions = al_default
   ) %>%
   col_is_character(vars(plot, habitat, ranch, bdffp_reserve_no, row, code.notes)) %>%
   col_is_numeric(vars(HA_ID_Number, tag_number ,column, year, ht, shts, infl)) %>%
@@ -51,8 +52,9 @@ ha %>%
   col_vals_between(vars(ht), 0, 200, na_pass = TRUE) %>%
   col_vals_between(vars(infl), 0, 3, na_pass = TRUE) %>%
   # check precision is correct
-  col_vals_expr(label = "Height is measured to nearest cm", expr = ~ ht %% 1 == 0) %>%
-  col_vals_expr(label = "Shoots is interger", expr = ~ shts %% 1 == 0) %>%
-  col_vals_expr(label = "Number of inflorescences is integer", expr = ~ infl %% 1 == 0) %>%
-  rows_distinct() %>%
+  col_vals_expr(label = "Height is measured to nearest cm", expr = ~ ht %% 1 == 0, actions = al_strict) %>%
+  col_vals_expr(label = "Shoots is interger", expr = ~ shts %% 1 == 0, actions = al_strict) %>%
+  col_vals_expr(label = "Number of inflorescences is integer", expr = ~ infl %% 1 == 0, actions = al_strict) %>%
+  rows_distinct(actions = al_strict) %>%
   interrogate()
+
