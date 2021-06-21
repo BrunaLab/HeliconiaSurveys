@@ -11,6 +11,7 @@
 library(pointblank)
 library(readr)
 library(here)
+library(dplyr)
 
 # Load data ---------------------------------------------------------------
 
@@ -39,7 +40,6 @@ al_default <-  action_levels(warn_at = 0.01, stop_at = 0.05)
 al_strict <- action_levels(warn_at = 1, stop_at = 10)
 
 # Function for preconditions for some steps
-library(dplyr)
 calc_changes <- function(x) {
   x %>%
     group_by(HA_ID_Number) %>%
