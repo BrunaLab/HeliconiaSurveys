@@ -134,6 +134,97 @@ ha_data<-rowid_to_column(ha_data, "HA_ID_Number")
 # CORRECTIONS TO THE DATASET
 ############################################################
 
+# marked "dead" in one survey but then found alive in a future one ------------
+
+# TODO: is it possible these lost above ground parts, which Is why they were 
+# counted as zero?
+
+# FLORESTAL
+ha_data$notes_2005[ha_data$plot=="Florestal-CF" & ha_data$tag_number=="1"] <- 60
+
+ha_data$notes_2004[ha_data$plot=="Florestal-CF" & ha_data$tag_number=="1508"] <- 60
+ha_data$notes_2005[ha_data$plot=="Florestal-CF" & ha_data$tag_number=="1508"] <- 60
+
+ha_data$notes_2004[ha_data$plot=="Florestal-CF" & ha_data$tag_number=="799"] <- 60
+ha_data$notes_2005[ha_data$plot=="Florestal-CF" & ha_data$tag_number=="799"] <- 60
+
+# 5756
+ha_data$notes_2006[ha_data$plot=="5756" & ha_data$tag_number=="1261"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="5756" & ha_data$tag_number=="1292"] <- 60
+
+ha_data$notes_2006[ha_data$plot=="5756" & ha_data$tag_number=="1294"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="5756" & ha_data$tag_number=="141"] <- 60
+
+ha_data$notes_2006[ha_data$plot=="5756" & ha_data$tag_number=="50"] <- 80
+
+ha_data$notes_2006[ha_data$plot=="5756" & ha_data$tag_number=="690"] <- 60
+
+ha_data$notes_2004[ha_data$plot=="5756" & ha_data$tag_number=="707"] <- 60
+ha_data$notes_2005[ha_data$plot=="5756" & ha_data$tag_number=="707"] <- 60
+ha_data$notes_2006[ha_data$plot=="5756" & ha_data$tag_number=="707"] <- 60
+
+# 5753 (PA1)
+ha_data$notes_2005[ha_data$plot=="5753" & ha_data$tag_number=="268"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="5753" & ha_data$tag_number=="276"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="5753" & ha_data$tag_number=="292"] <- 60
+
+ha_data$notes_2006[ha_data$plot=="5753" & ha_data$tag_number=="34"] <- 60
+ha_data$notes_2007[ha_data$plot=="5753" & ha_data$tag_number=="34"] <- 60
+
+ha_data$notes_2008[ha_data$plot=="5753" & ha_data$tag_number=="345"] <- 60 
+
+ha_data$notes_2008[ha_data$plot=="5753" & ha_data$tag_number=="412"] <- 60
+
+ha_data$notes_2006[ha_data$plot=="5753" & ha_data$tag_number=="52"] <- 60
+
+# PortoAlegre-CF
+ha_data$notes_2004[ha_data$plot=="PortoAlegre-CF" &
+                     ha_data$tag_number=="196"] <- 60
+ha_data$notes_2005[ha_data$plot=="PortoAlegre-CF" &
+                     ha_data$tag_number=="196"] <- 60
+
+ha_data$notes_2006[ha_data$plot=="PortoAlegre-CF" &
+                     ha_data$tag_number=="238"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="PortoAlegre-CF" &
+                     ha_data$tag_number=="139"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="PortoAlegre-CF" &
+                     ha_data$tag_number=="139"] <- 60
+ha_data$notes_2006[ha_data$plot=="PortoAlegre-CF" &
+                     ha_data$tag_number=="139"] <- 60
+
+to_delete <- ha_data %>% 
+  filter(plot=="PortoAlegre-CF" &
+           tag_number=="264" & 
+           row=="C" & 
+           column==10)
+ha_data <- anti_join(ha_data, to_delete) 
+rm(to_delete)
+
+
+# 5751 Colosso 1-ha
+ha_data$notes_2004[ha_data$plot=="5751" & ha_data$tag_number=="128"] <- 60
+ha_data$notes_2005[ha_data$plot=="5751" & ha_data$tag_number=="128"] <- 60
+
+# 5752 Colosso 10-ha
+ha_data$notes_2005[ha_data$plot=="5752" & ha_data$tag_number=="149"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="5752" & ha_data$tag_number=="499"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="5752" & ha_data$tag_number=="272"] <- 60
+
+ha_data$notes_2005[ha_data$plot=="5752" & ha_data$tag_number=="736"] <- 60
+
+
+
+# 5750 
+ha_data$notes_2005[ha_data$plot=="5750" & ha_data$tag_number=="864"] <- 60
+
 
 # Correcting errors in transcribing "notes" -------------------------------
 
@@ -157,8 +248,6 @@ filter(ha_data, tag_number==1705 & plot==5756)
 filter(ha_data, tag_number==1710 & plot==5756)
 
 
-
-
 # correcting errors: paper to spreadsheet ---------------------------------
 
 #  PLOT 2017
@@ -169,6 +258,11 @@ ha_data$plant_id_07[ha_data$plot=="2107" & ha_data$plant_id_07=="228" &
 # PLOT 5756
 # incorrectly recorded 10 infl in 2007, should be NA
 ha_data$infl_2007[ha_data$plot=="5756" & ha_data$tag_number=="403"] <- NA 
+
+
+# FLORESTAL
+# plant size entered incorrectly (entered as 449, should be 49)
+ha_data$ht_2003[ha_data$plot=="Florestal-CF" & ha_data$tag_number==590] <-49
 
 
 # correcting data assignment after replacing tag in field   ---------------
@@ -292,6 +386,9 @@ ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="5902"] <-"1
 ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="6107"] <-"1" 
 ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="6204"] <-"1" 
 ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="7009"] <-"1" 
+
+
+
 
 
 # which(colnames(ha_data)=="plant_id_07")
@@ -738,7 +835,6 @@ head(test, 20)
 ############################################
 ############################################
 
-test$code.notes[test$plot=="5753" & test$tag_number=="108" & test$year==2005] <- NA
 
 summary(test)
 
@@ -748,6 +844,114 @@ source("./code_data_cleaning/merge_with_PA10.R")
 test <- merge_with_PA10(test)
 
 
+
+
+# Corrections - notes -----------------------------------------------------
+
+# 5753
+test$code.notes[test$plot=="5753" & test$tag_number=="108" & test$year==2005] <- NA
+
+
+# Corrections - transcription errors (paper to spreadsheet) ---------------
+
+# 5754 (PA10)
+# plant size entered incorrectly (entered as 997, should be 97)
+test$ht[test$plot=="5754" & test$year==2006 & test$tag_number==445] <-97
+
+
+
+
+
+# Corrections - duplications ----------------------------------------------
+
+
+# CaboFrio
+
+# tag no. 2121
+# create the correct values
+correct_2121 <- test %>% 
+  filter(plot=="CaboFrio-CF",tag_number==2121) %>% 
+  group_by(year) %>% 
+  slice(1) %>% 
+  mutate(ht = if_else(year == 2009,6,ht)) %>% 
+  mutate(shts = if_else(year == 2009,1,shts)) %>% 
+  mutate(code.notes = ifelse(year == 2009, NA, code.notes))
+# remove the duplicates from the original df
+test<-test[!(test$plot=="CaboFrio-CF" & test$tag_number==2121),]
+# re-insert them
+test <- bind_rows(test,correct_2121)
+rm(correct_2121)
+
+
+# 2108
+# tag_no 66
+# Correct the value for C9
+test$ht[test$plot=="2108" & test$year==1999 & test$tag_number==66] <-13
+test$shts[test$plot=="2108" & test$year==1999 & test$tag_number==66] <-1
+test$code.notes[test$plot=="2108" & test$year==1999 & test$tag_number==66] <- NA
+# delete the value for D10
+test<-test[!(test$plot=="2108" & test$row=="D" & test$tag_number==66),]
+
+# 5750
+# tag_no 988
+
+# test$ht[test$plot=="5750" & test$year==2007 & test$tag_number==988] <-38
+# test$shts[test$plot=="5750" & test$year==2007 & test$tag_number==988] <-3
+# test$code.notes[test$plot=="5750" & test$year==2007 & test$tag_number==988] <- NA
+# test$ht[test$plot=="5750" & test$year==2008 & test$tag_number==988] <-60
+# test$shts[test$plot=="5750" & test$year==2008 & test$tag_number==988] <-2
+# test$ht[test$plot=="5750" & test$year==2009 & test$tag_number==988] <-66
+# test$shts[test$plot=="5750" & test$year==2009 & test$tag_number==988] <-3
+
+# 5752
+# tag no. 181
+# create the correct values
+correct_181 <- test %>% 
+  filter(plot=="5752",tag_number==181) %>% 
+  group_by(year) %>% 
+  slice(1) %>% 
+  mutate(ht = if_else(year == 2006,110,ht)) %>% 
+  mutate(shts = if_else(year == 2006,3,shts)) %>% 
+  mutate(code.notes = ifelse(year == 2006, NA, code.notes))
+# remove the duplicates from the original df
+test<-test[!(test$plot=="5752" & test$tag_number==181),]
+# re-insert them
+test <- bind_rows(test,correct_181)
+rm(correct_181)
+
+# tag no. 526
+# create the correct values
+correct_526 <- test %>% 
+  filter(plot=="5752",tag_number==526) %>% 
+  group_by(year) %>% 
+  slice(1) %>% 
+  mutate(ht = if_else(year == 2006,14,ht)) %>% 
+  mutate(shts = if_else(year == 2006,3,shts)) %>% 
+  mutate(code.notes = ifelse(year == 2006, NA, code.notes))
+# remove the duplicates from the original df
+test<-test[!(test$plot=="5752" & test$tag_number==526),]
+# re-insert them
+test <- bind_rows(test,correct_526)
+rm(correct_526)
+
+# 5753
+# tag_no 841
+test<-test[!(test$plot=="5753" & test$tag_number==319 & test$row=="D"),]
+
+
+# 5756
+# tag_no 1602
+test<-test[!(test$plot=="5756" & 
+               test$tag_number==1602 & 
+               test$row=="A" & 
+               test$column==9),]
+
+
+
+# Duplicated tag numbers to check in the field ----------------------------
+
+# 2107 
+# 237: one in C8, one in D6
 
 
 ######################################################
@@ -824,7 +1028,7 @@ summary(test$code.notes)
 colnames(test)
 
 ############################################
-# This finds any that were marked dead in a year but for whihc there are measurments of shts or ht
+# This finds any that were marked dead in a year but for which there are measurments of shts or ht
 source("./code_data_cleaning/marked_dead_but_measured.R")
 df<-marked_dead_but_measured(test)
 
@@ -840,12 +1044,8 @@ zombies <- zombies(test)
 
 source("./code_data_cleaning/duplicate_plants.R")
 dupes <- duplicate_plants(test)
-write.csv(dupes, "./data_midway/dupes_heliconia.csv", row.names = FALSE)
-dupe_simplified <- dupes %>% 
-  select(plot,tag_number,row_col) %>% 
-  group_by(plot,tag_number,row_col) %>% 
-  slice(1)
-write.csv(dupe_simplified, "./data_midway/dupes_heliconia_numbers.csv", row.names = FALSE)
+
+
 
 write.csv(test, "./data_clean/Ha_survey_with_Zombies.csv", row.names = FALSE)
 
