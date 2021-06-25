@@ -1,0 +1,1061 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  english,
+  man]{apa6}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Demography of Heliconia acuminata (Heliconiaceae) in an experimentally fragmented Amazonian landscape},
+  pdfauthor={Emilio M. Bruna1,2,3, Maria Uriarte4, Maria Rosa Darrigo3, Paulo Rubim3, Eric R. Scott1, \& W. John Kress5},
+  pdflang={en-EN},
+  pdfkeywords={Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, Integral projection models, Matrix models, population dynamics, vital rates},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% \usepackage{etoolbox}
+\makeatletter
+\patchcmd{\HyOrg@maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\HyOrg@maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+\shorttitle{Tropical plant demography}
+\keywords{Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, Integral projection models, Matrix models, population dynamics, vital rates\newline\indent Word count: X}
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+\usepackage{lineno}
+
+\linenumbers
+\usepackage{csquotes}
+\usepackage[titles]{tocloft}
+\cftpagenumbersoff{figure}
+\renewcommand{\cftfigpresnum}{\itshape\figurename\enspace}
+\renewcommand{\cftfigaftersnum}{.\space}
+\setlength{\cftfigindent}{0pt}
+\setlength{\cftafterloftitleskip}{0pt}
+\settowidth{\cftfignumwidth}{Figure 10.\qquad}
+\usepackage{booktabs}
+\raggedbottom
+\usepackage{tabu}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\else
+  \usepackage[shorthands=off,main=english]{babel}
+\fi
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\title{\textbf{Demography of \emph{Heliconia acuminata} (Heliconiaceae) in an experimentally fragmented Amazonian landscape}}
+\author{Emilio M. Bruna\textsuperscript{1,2,3}, Maria Uriarte\textsuperscript{4}, Maria Rosa Darrigo\textsuperscript{3}, Paulo Rubim\textsuperscript{3}, Eric R. Scott\textsuperscript{1}, \& W. John Kress\textsuperscript{5}}
+\date{}
+
+
+\affiliation{\vspace{0.5cm}\textsuperscript{1} Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA\\\textsuperscript{2} Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611, USA\\\textsuperscript{3} Biological Dynamics of Forest Fragments Project, INPA-PDBFF, CP 478, Manaus, AM 69011-970, Brazil\\\textsuperscript{4} Department of Ecology, Evolution and Environmental Biology, Columbia University, 1200 Amsterdam Ave., New York, New York 10027, USA\\\textsuperscript{5} Department of Botany, National Museum of Natural History, PO Box 37012, Smithsonian Institution, PO Box 37012, Washington DC, USA}
+
+\abstract{
+Habitat fragmentation is thought to be a leading cause of extinction, but the demography of species in fragmented landscapes remains poorly understood. This is particularly true in tropical ecosystems, where studies monitoring populations of species in both fragments and areas of continuous habitat across all life-history stages are virtually nonexistent. Here we report 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb \emph{Heliconia acuminata} (LC Rich.). These surveys were conducted in the experimentally fragmented landscape of the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plants are located in 50 x 100 m permanent plots located in forest fragments of different sizes (four 1-ha fragments and three 10-ha fragments) as well as 6 continuous forest sites. The population in each plot was censused annually, at which time we recorded the mortality of any previously marked plants and the size of surviving plants. We also marked and measured new seedlings. During the flowering season we also recorded the identity of flowering plants and how many inflorescences each of them produced. These data have been used in publications on topics ranging from how fragmentation-related reductions in germination influence population growth rates to tests of statistical methods for analyzing reproductive rates. Sampling is ongoing and data will be added over time.
+}
+
+
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{INTRODUCTION}\label{introduction}}
+
+Understanding the consequences of habitat fragmentation has been a
+central area of ecological research since this form of landscape change
+was identified as a threat to the integrity of ecosystems (Harris 1984, Wilcove et al. 1986), and the ongoing transformation of landscapes has kept it
+in the theoretical and empirical spotlight (Brudvig et al. 2017, Resasco et al. 2017).
+Decades of research have documented myriad biotic changes associated
+with fragmentation, including the local extinction of species from
+fragments (Harrison and Bruna 1999, Laurance et al. 2011a, Haddad et al. 2015, Fletcher et al. 2018).
+Although the demographic mechanisms underlying these extinctions are
+rarely known (Bruna et al. 2009), many of them -- especially in tropical
+forests -- are thought to be driven by reduced rates of individual
+growth, reproduction, or survivorship in fragments (Laurance et al. 1998, Zartman et al. 2015) resulting from dramatically altered abiotic conditions
+(Broadbent et al. 2008). Disentangling how fragment characteristics, abiotic
+conditions, and demography interact to influence population dynamics has
+therefore become central to conceptual frameworks for studying
+fragmented landscapes (Didham et al. 2012, Driscoll et al. 2013, Selwood et al. 2015).
+
+\noindent 
+\textbf{METADATA}
+
+\noindent  
+\textbf{CLASS I. DATA SET DESCRIPTORS}
+
+\noindent  
+\textbf{A. Data set identity:} Population structure and demography of the understory herb \emph{Heliconia acuminata} (Heliconiaceae) in an experimentally fragmented landscape in the Central Amazon (1997-2009).
+
+\noindent  
+\textbf{B. Data set identification code:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Data set 1: HDP\_plot\_descriptors.csv\\
+\item
+  Data set 2: HDP\_data\_1997-2009.csv\\
+\item
+  Data set 3: HDP\_plot\_maps.pdf
+\end{enumerate}
+
+\noindent 
+\textbf{C. Data set description}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Principal Investigator}: Emilio M. Bruna, Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA and Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611, USA
+\item
+  \textbf{Abstract}: The data set covers 12 years (1997-2009) of annual
+  censuses of 13 populations of the Amazonian understory herb \emph{Heliconia
+  acuminata} (LC Rich.) at the Biological Dynamics of Forest Fragments
+  Project north of Manaus, Brazil. The plants are located in 50 x 100 m
+  permanent plots located in forest fragments of different sizes (four
+  1-ha fragments and three 10-ha fragments) as well as 6 continuous forest
+  sites. The population in each plot was censused annually, at which time
+  we recorded the mortality of any previously marked plants and the size
+  of surviving plants. We also marked and measured new seedlings. During
+  the flowering season we also recorded the identity of flowering plants
+  and how many inflorescences each of them produced. The data set can be
+  used to study the ecological factors influencing the demography and
+  population dynamics of tropical plants, as well as the consequences for
+  plant demography and population dynamics of anthropogenic impacts such
+  as deforestation or climate change. Sampling is ongoing and data will be
+  added over time.
+\end{enumerate}
+
+\noindent  
+D. \textbf{Key words:} Amazon, Brazil, deforestation, demography,
+edge effects, flowering, forest fragments, habitat fragmentation,
+Integral projection models, matrix models, population dynamics, vital
+rates
+
+\noindent 
+\textbf{CLASS II. RESEARCH ORIGIN DESCRIPTORS}
+
+\noindent  
+\textbf{A. Overall project description:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Identity:} The Heliconia Demography Project (HDP)
+\item
+  \textbf{Originators:} Emilio M. Bruna, W. John Kress, and María Uriarte
+\item
+  \textbf{Period of study:} 1997-2009
+\item
+  \textbf{Objectives:} To understand how habitat fragmentation influences
+  the demography and population dynamics of the Amazonian understory
+  herb \emph{Heliconia acuminata} (Heliconiaceae) using experiments,
+  observation data, and demographic modeling. The HDP is based at the
+  Biological Dynamics of Forest Fragments Project, located north of
+  Manaus, Amazonas, Brazil
+\item
+  \textbf{Source(s) of funding:} The initial establishment of plots and
+  1998-2002 surveys were supported by awards to E. M. Bruna from the
+  Smithsonian Institution (Graduate Student Research Award), the
+  University of California, Davis (Center for Population Biology
+  and M. E. Mathias Graduate Research Grants), the Biological Dynamics
+  of Forest Fragments Project (Graduate Student Logistics Grant), the
+  National Science Foundation (Dissertation Improvement Grant INT
+  98-06351), and the Ford Foundation (Dissertation Year Fellowship).
+  The 2001-2005 surveys were supported a grant from the National
+  Science Foundation to E. M. Bruna (Research Starter Grant
+  DEB-0309819). The 2006-2009 surveys were supported by grants from
+  the National Science Foundation to E. Bruna (DEB-0614149) and María
+  Uriarte (DEB-0614339).
+\end{enumerate}
+
+\noindent  
+\textbf{B. Subproject description:} The core of the Heliconia
+Demography Project (HDP) is annual censuses of thirteen \emph{H. acuminata}
+populations located in either continuous forest or one of the BDFFP's
+experimentally isolated forest fragments. In addition to recording the
+reproduction, growth, and survivorship of established plants, newly
+recruited seedlings are marked, measured, and assigned their own unique
+identification number. These data can be used for a broad range of
+analyses, but the primary purpose behind their collection was to
+parameterize models with which to compare the demography and population
+dynamics of H. acuminata populations in fragments and continuous forest.
+This paper reports 12 years of annual census data (1997-2009)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Site description}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \textbf{Study Site:} The data were collected at the Biological Dynamics
+  of Forest Fragments Project (BDFFP), located approximately 70 km
+  north of Manaus, Amazonas, Brazil (2°30'S, 60°W, Fig. X)). The BDFFP
+  is a 1000-km mosaic of lowland forest, forest fragments, secondary
+  forests, and pastures (Bierregaard et al. 2002). It is currently administered
+  collaboratively by the Smithsonian Tropical Research Institute and
+  Brazil's Instituto Nacional de Pesquisas da Amazônia (INPA).
+\end{enumerate}
+
+\begin{quote}
+The BDFFP landscape is an area of often rugged topography ranging from
+50-150 m elevation (Gascon and Bierregaard Jr. 2001a)and includes catchments of the Urubu,
+Cuieiras, and Preto da Eva rivers (Nessimian et al. 2008). The canopy in the
+sites reaches a height of \textasciitilde30--35 m, with emergent trees up to \textasciitilde55 m
+tall. The tree community at the BDFFP is highly diverse, comprising
+approximately 1300 species (Laurance 2001), with some locations having
+over 280 tree species ha-1 (de Oliveira and Mori 1999). The understory is
+dominated by stemless palms (Scariot 1999); over 50 species of
+understory herbaceous plants are found in the BDFFP landscape
+(Ribeiro et al. 2010a). Soils are nutrient-poor xanthic ferralsols, known as
+yellow latosols in the Brazilian soil classification system. They have
+poor water-retention capacity despite their high clay content
+(Fearnside and Leal-Filho 2001). All HDP are located in non-flooded (i.e., terra
+firme) forest and none are bisected by streams.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\item
+  \textbf{Climate:} Mean annual temperature at the site is 26\(^\circ\)C
+  (range 19-39\(^\circ\)C). Annual rainfall ranging from 1900-2300 mm
+  (BDFFP records), with a pronounced dry season from June-December
+  (\textless100 mm rain per month).
+\item
+  \textbf{Site history:} A complete history of the BDFFP can be found in
+  Gascon and Bierregaard Jr. (Gascon and Bierregaard Jr. 2001b). Briefly, the BDFFP
+  fragments were created from 1980-1984 by felling the trees
+  surrounding the forest to be isolated (Lovejoy et al. 1986). For some
+  fragments, this was followed by burning the felled trees and
+  planting pasture grasses. Fragments were fenced to prevent incursion
+  by cattle from the surrounding pastures. To ensure fragments remain
+  isolated, a 100m strip around each fragment is regularly cleared of
+  the secondary growth (BDFFP records). The structure and species
+  composition of the secondary growth that surrounds a fragment, which
+  is strongly dependent on whether fire was used to clear land
+  (Mesquita et al. 2001), can have large effects on the biological dynamics
+  and abiotic condit ions in fragments (Laurance et al. 2002, 2011b).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Study design}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \textbf{Focal species:} \emph{Heliconia acuminata} (Heliconiaceae) is a
+  perennial, self-incompatible monocot native to Amazonia (Kress 1990a)
+  and widely distributed throughout the Amazon basin \textbf{(Better?}
+  Berry and Kress 1991). Although many species of Heliconia grow in
+  large aggregations on roadsides, gaps, and in other disturbed
+  habitats, others, such as H. acuminata, grow primarily in the shaded
+  forest understory (Kress 1983). It is the most abundant understory
+  herb throughout much of the BDFFP (Ribeiro et al. 2010b).
+\end{enumerate}
+
+\begin{quote}
+Although \emph{Heliconia acuminata} can be propagated by segmenting the
+rhizome (Berry and Kress 1991), vegetative reproduction in the field
+is limited and recruitment primarily via seed (Bruna 1999, Bruna 2002). \emph{Heliconia acuminata} flowers during the rainy season,
+when reproductive plants produce 1 or more bracts subtending up to 25
+flowers each (Bruna and Kress 2002). Flowers are pollinated by the `traplining'
+hummingbirds \emph{Phaeothornis superciliosus} and \emph{P. bourcieri}
+(Bruna et al. 2004). Flowers are open only 1 day and visitation rates are
+low. Fruits produced by successfully pollinated flowers have up to
+three seeds and are dispersed by birds. In our sites these dispersers
+are primarily a thrush and several manakins (Uriarte et al. 2011). Seeds
+germinate 6-7 months after dispersal at the onset of the rainy season
+{[}Bruna (1999); (Bruna 1999, Bruna 2002).
+\end{quote}
+
+\begin{quote}
+\emph{Heliconia acuminata} leaves are sometimes damaged by the hispine
+beetle \emph{Cephaloleia nigriceps} Baly (Staines and Garcia-Robledo 2014), but the amount of
+leaf tissue removed is minimal (Bruna et al. 2002, Bruna and Ribeiro 2005). However, the
+beetles can cause extensive damage to the bracts, ovaries, and
+developing fruits. Experiments also indicate post-dispersal seed
+predation is very low and that \emph{H. acuminata} has no seed bank
+(Bruna 1999, Bruna 2002); the lack of a seed bank could be due to
+limited seed viability, mortality resulting from burial under
+leaf-litter, or both (Bruna and Ribeiro 2005).
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  \textbf{Taxonomy, systematics, and voucher specimens:} \emph{Heliconia} is the
+  only genus in the family Heliconiaceae. This family is distinguished
+  from the others in the order Zingiberales by inverted flowers,
+  having a single staminode, and fruits that are drupes. It is
+  estimated that there are 200-250 species of Heliconia, almost all of
+  which are native to the Neotropics. \emph{Heliconia acuminata} L. C.
+  (Rich.) (Richard 1831) is one of the approximately 20 Heliconia
+  species found in the Brazilian Amazon (Kress 1990b).
+\end{enumerate}
+
+\begin{quote}
+Voucher specimens of H. acuminata collected at the BDFFP as part of
+this study can be found at the UC Davis and INPA Herbaria (accession
+numbers DAV 69391-69396 and INPA 189569-189573, respectively).
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Study Design:} The study consists of 13 demographic plots
+  distributed across the BDFFP landscape (Bruna and Kress 2002). Six
+  plots are in continuous forest, four are in 1-ha fragments, and
+  three are in 10-ha fragments. Each demographic plot is 50m x 100m
+  and is subdivided into 50 contiguous subplots (each 10 x 10 m) to
+  facilitate the surveys. Plots in 1-ha fragments were established in
+  a randomly selected half of the fragment, plots in 10-ha fragments
+  are in the center of the fragment, and plots in continuous forest
+  sites are located 500-4000 m from any the borders of primary forest
+  with secondary forest or pastures. The plots furthest apart are
+  separated by \textasciitilde65 km.
+\end{enumerate}
+
+\begin{quote}
+Plots 1-ha fragments, 10-ha fragments, and three of the continuous
+forest sites were established from January-April 1997, the remaining
+three plots in continuous forest were established in January 1998. To
+mark the plants, a team of 2-3 people slowly walked through each
+subplot and located all \emph{Heliconia acuminata} and marked them with a
+wooden stake to which was attached an individually numbered aluminum
+tag (Racetrack Aluminum Tags, Forestry Suppliers). Each plant was then
+measured by (1) by counting the number of vegetative shoots it had and
+(2) measuring the height of the plant from its base of the its highest
+point above the ground. Three additional plots were established in
+continuous forest sites in 1998 (CF 4-6); all plants in these plots
+were tagged and measuring in the same way as in other plots.
+\end{quote}
+
+\begin{quote}
+Plots were censused annually with the onset of the rainy season and
+seedling establishment (generally late January to February). The
+exception to this was the three continuous forest plots established in
+August 1998, which were censused in August 1999. During each census,
+team members recorded the size of all surviving plants, marked and
+measured all new seedlings, and measured all surviving plants. Regular
+visits were made to all 13 plots throughout the rainy season to
+identify reproductive individuals, at which time we recorded the
+number of inflorescences.
+\end{quote}
+
+\begin{quote}
+Plants were marked with individually numbered tags. The height of
+plants to the tallest leaf was measured to the nearest millimeter with
+tape measures.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Project personnel:} In addition to the Principal Investigator and
+  Originators, other key personnel include the Lead Technicians that
+  were responsible for coordinating the annual censuses, the BDFFP
+  Staff Technicians that assisted with data collection and provided
+  support in the field, and field assistants hired to assist with the
+  surveys.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\item
+  \textbf{Technicians:} Paulo Rubim (2007-2012), Maria Rosa Darrigo
+  (2002-2003), Simone Benedet (2004), Cris Follman Jurinitz (2003),
+  Maria Beatriz Nogueira (2002), Sylvia Heredia (2001-2002).
+\item
+  \textbf{BDFFP Staff (``mateiros''):} Osmaildo Ferreira da Silva, Francsico
+  Marques, Alaercio Marajó dos Reis, João De Deus Fragata, Romeu
+  Cardoso.
+\item
+  \textbf{Student Field Assistants:} Wesley Dáttilo da Cruz (2007),
+  Jefferson José Valsko da Silva (2007), Elisabete Marques da Costa
+  (2006), Bruno Turbiani (2005), Cristina Escate (2004), Cris Follman
+  Jurinitz, David M. Lapola (2003), Denise Cruz (2003), Maria Beatriz
+  Nogueira, Obed Garcia (2001), Olavo Nardy (2000).
+\end{enumerate}
+
+\noindent  
+\textbf{CLASS III. DATA SET STATUS AND ACCESSIBILITY}
+
+\noindent  
+\textbf{A. Status}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Latest update:} 1 May 2019
+\item
+  \textbf{Latest archive date:} 1 May 2019
+\item
+  \textbf{Metadata status:} Complete and up to date (1 May 2019)
+\item
+  \textbf{Data verification \& Quality Control Procedures:} Data
+  verification and quality control is ongoing. After each survey, the
+  measurements for a plant are compared with those from previous years
+  to identify outliers that could represent potential errors in either
+  the recording of measurements in the field or data entry (e.g., a
+  plant with 1 shoot in year N and 11 shoots in year N+1 is likely an
+  error in data entry). Discrepancies are verified by first
+  double-checking data sheets and, if necessary, returning to the
+  field to remeasure plants. Occasionally the quadrat in which plants
+  are located might change from one survey to the next (i.e., a plant
+  on the edge of plots A1 and A2 might be recorded in A1 in year N but
+  the survey team decided it is in A2 in year N+1. In these cases, the
+  most current location is used unless a subsequent survey indicates
+  otherwise.
+\end{enumerate}
+
+\begin{quote}
+Established plants not recorded in prior surveys: Occasionally
+unmarked post-seedling plants will be found in a plot. If all other
+previously marked plants in the plot have been located, this indicates
+previous survey teams failed to find and record the plant. Such plants
+are marked with a new numbered tag, mapped, measured, and added to the
+database for measurement in subsequent years. Their record in the
+database for the year they were discovered includes a code identifying
+them as a mature plant not recorded in previous surveys (see Section
+IV, Table 2). From 1998-2009 there were -- -- -- such cases across all
+thirteen HDP plots. Most were in the initial survey years (only XX\%
+after 20XX) and in high-density plots (XX\% and XX\% were in plots A and
+B, respectively).
+\end{quote}
+
+\begin{quote}
+Tag loss: Treefalls and other disturbances sometimes cause the stakes
+to which numbered tags are attached to be displaced, broken, or buried
+under leaf litter. If after an extensive search the tag still can't be
+found, the plant is marked with a new stake and numbered tag and a
+notation is made in the survey record indicating a new number was
+given to a plant with a lost tag. In some cases, determining the
+identify of a plant missing its tag is straightforward (e.g., all
+plants in a plot are found except one, and the plant without a tag is
+similar in height and shoots number as the plant that was missing). In
+those cases, the plant's ID number is updated in the database and the
+change is logged. In some cases, however, it may not be possible to
+definitely conclude with which number a plant was originally marked
+(e.g., when two adjacent and similarly sized plants are both missing
+their tags). In such cases we review the growth history of the plants
+in question to decide which one should be assigned each new number.
+The change in number is again logged; a list of all changes in tag
+number to date is permanently archived at {[}zenodo{]} and updated at
+{[}github site{]}. From 1998-2009 there were -- -- -- such cases across
+all thirteen HDP plots. Most were in the in plots A,B, and C (XX\%, XX\%
+and XX\%, respectively).
+\end{quote}
+
+\begin{quote}
+Plants under treefalls: Plants trapped under the large crowns of
+fallen trees may go several years without being measured until leaves
+have dropped and the area under the crown can be safely searched. In
+some cases, neither the plant nor the ID tag can be found. When this
+occurs, the plant is recorded as missing but not removed from the
+record. (see Section IV, Table 2 for the code added to the record in
+such cases). XX\% of plants missing in a given year were found the
+following year and XX\% were eventually resurveyed. XX\% of plants
+marked missing were never remeasured. This represents XX\% and XX\% of
+all plants in the database (i.e, missing plants are rare).
+\end{quote}
+
+\begin{quote}
+An extensive review of the data and quality control effort was
+conducted prior to the publication of the dataset. Any possible errors
+(e.g.~plants recorded as dead with a measurement in a subsequent year,
+duplicated tag numbers, doubts regarding the quadrat in which a plant
+is located) were investigated E. M. Bruna using the original
+datasheets and electronic data entry files (both stored at the
+University of Florida). All resulting corrections were added to the
+database and logged. The log of changes to date is archived at
+{[}zenodo{]}; updates will be posted at {[}github site{]}. Questions from
+future users of the database should be referred to E. M. Bruna, who
+will investigate and update the database as needed.
+\end{quote}
+
+\noindent 
+\textbf{B. Accessibility}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Storage location and medium:} Ecological Society of America data
+  archives {[}Ecological Archives URL{]}.
+\item
+  \textbf{Location of original data forms, electronic files, and archived
+  copies:} Original data sheets and electronic data files are with E.
+  M. Bruna at the University of Florida. Original data files and paper
+  copies are stored in separate campus locations, with electronic
+  copies (.pdf format) stored on a desktop computer, portable hard
+  drive stored, and a UF cloud storage account. The electronic files
+  into which each year's survey data were entered, and a copy of the
+  complete database, are stored on a desktop computer with copies on a
+  portable hard drive and UF cloud storage account.
+\item
+  \textbf{Contact person(s):} Emilio M. Bruna, Department of Wildlife
+  Ecology and Conservation, Box 110430, Gainesville, FL 32611 USA.
+  Phone: (352) 846-0634. Email:
+  \href{mailto:embruna@ufl.edu}{\nolinkurl{embruna@ufl.edu}}
+\item
+  \textbf{Copyright restrictions:} None
+\item
+  \textbf{Proprietary restrictions:} None. However, we request that authors
+  of publications using these data (1) cite this data paper as per
+  Ecological Archives policy, (2) register the publication as part of
+  the BDFFP Technical Series by contacting the BDFFP Director or E.
+  Bruna, and (3) provide E. Bruna with a copy of their article upon
+  acceptance. This allows us to track the data set's usage, advise
+  users of any corrections, report articles using the data to the
+  funding agencies that provided support, and document that different
+  ways in which the scientific community uses the data.
+\end{enumerate}
+
+\noindent  
+\textbf{CLASS IV. DATA STRUCTURAL DESCRIPTORS}
+
+\noindent  
+\textbf{A. Data set file:} Descriptors of the \emph{Heliconia} demographic plots
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Identity:} HDP\_plot\_descriptors.csv
+\item
+  \textbf{Size:} ----- rows (including header), --- kilobytes.
+\item
+  \textbf{Format and storage mode:} ASCII text, comma delimited. No
+  compression scheme used.
+\item
+  \textbf{Header information:} The first row of the file contains the
+  variable names described in Table 1 below.
+\item
+  \textbf{Alphanumeric attributes:} Mixed.
+\item
+  \textbf{Missing value codes:} Missing values are represented with NA.
+\item
+  \textbf{Data anomalies:} See Section IV, Table 1 for codes used to denote
+  modified data or record unique or unusual circumstances regarding a
+  record.
+\item
+  \textbf{Variable information:} Each row in the data set is a demographic
+  plot, with columns of data describing that plot. Blanks do not
+  denote missing information, but rather nothing relevant to report.
+\end{enumerate}
+
+\hypertarget{insert-table-1-here}{%
+\section{{[}INSERT TABLE 1 HERE{]}}\label{insert-table-1-here}}
+
+\noindent 
+\textbf{B. Data set file:} \emph{Heliconia} Demographic Data
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Identity:} HDP\_data\_1997-2009.csv
+\item
+  \textbf{Size:} 100890 rows (including header), 8.81
+  kilobytes.
+\item
+  \textbf{Format and storage mode:} ASCII text, comma delimited. No
+  compression scheme used.
+\item
+  \textbf{Header information:} The first row of the file contains the
+  variable names in Table 2 below.
+\item
+  \textbf{Alphanumeric attributes:} Mixed.
+\item
+  \textbf{Missing value codes:} Missing values are represented with NA.
+\item
+  \textbf{Data anomalies:} See Section IV, Table 2 for codes used to denote
+  modified data or record unique or unusual circumstances regarding a
+  record, etc.
+\item
+  \textbf{Variable information:} Each row in the dataset is the data
+  collected on an individual plant. For notes, blanks do not denote
+  missing information. Instead, they denote nothing relevant to
+  report.
+\item
+  \textbf{Computer programs and data-processing algorithms:} code to append
+  the plot descriptors can be found at Zenodo. This will be updated
+  regularly, between updates the code can be found at gtihub HDP,
+\end{enumerate}
+
+\hypertarget{insert-table-2-here}{%
+\section{{[}INSERT TABLE 2 HERE{]}}\label{insert-table-2-here}}
+
+\noindent  
+\textbf{C. Data set file:} Maps of the HDP plots
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Identity:} HDP\_plot\_maps.pdf
+\item
+  \textbf{Size:} --- kilobytes.
+\item
+  \textbf{Format and storage mode:} pdf file. No compression scheme used.
+\item
+  \textbf{Description:} maps of the HDP plots, their location and
+  orientation in the BDFFP reserves, and the numbering of subplots
+  used to map plants.
+\end{enumerate}
+
+\noindent  
+\textbf{CLASS V. SUPPLEMENTAL DESCRIPTORS}
+
+\noindent  
+\textbf{A. Publications and results:} The following list includes
+articles to date that used part or all of the dataset in their analyses.
+An update list can be found at {[}github{]}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Bruna, E. M. and W. J. Kress. 2002. Habitat fragmentation and the
+  demographic structure of an Amazonian understory herb (Heliconia
+  acuminata). Conservation Biology, 16(5): 1256-1266.
+\item
+  Bruna, E. M., O. Nardy, S. Y. Strauss, and S. P. Harrison. 2002.
+  Experimental assessment of \emph{Heliconia acuminata} growth in a
+  fragmented Amazonian landscape. Journal of Ecology, 90(4): 639-649.
+\item
+  Bruna, E. M. 2002. Effects of forest fragmentation on \emph{Heliconia
+  acuminata} seedling recruitment in the central Amazon. Oecologia,
+  132:235-243.
+\item
+  Bruna, E. M. 2003. Are plant populations in fragmented habitats
+  recruitment limited? Tests with an Amazonian herb. Ecology, 84(4):
+  932-947.
+\item
+  Bruna, E. M. 2004. Biological impacts of deforestation and
+  fragmentation. Pages 85-90 in The Encyclopaedia of Forest
+  Sciences. J. Burley, J Evans, and J Youngquist, (eds.). Elsevier
+  Press, London.
+\item
+  Morris, W. F., C. A. Pfister, S. Tuljapurkar, C. V. Haridas, C.
+  Boggs, M. S. Boyce, E. M. Bruna, D. R. Church, T. Coulson, D. F.
+  Doak,, S. Forsyth, J-M. Gaillard, C. C. Horvitz, S. Kalisz, B. E.
+  Kendall, T. M. Knight, C. T. Lee, E. S. Menges. 2008. Longevity can
+  buffer plant and animal populations against changing climatic
+  variability. Ecology 89(1): 19-25.
+\item
+  Fiske, I., E. M. Bruna, and B. M. Bolker. 2008. Effect of sample
+  size on estimates of population growth rates calculated with matrix
+  models. PLoS ONE 3(8): e3080.
+\item
+  Fiske, I. and E. M. Bruna. 2010. Alternative spatial sampling in
+  studies of plant demography: consequences for estimates of
+  population growth rate. Plant Ecology 207(2) 213-225.
+\item
+  Uriarte, M., E. M. Bruna, P. Rubim, M. Anciaes, and I.
+  Jonckeeere. 2010. Effects of forest fragmentation on seedling
+  recruitment of an understory herb: assessing seed vs.~safe-site
+  limitation. Ecology 91(5):1317-1328.
+\item
+  Gagnon, P. R., E. M. Bruna, P. Rubim, M. R. Darrigo, R. C.
+  Littlel, M. Uriarte, and W. J. Kress. 2011. The growth of an
+  understory herb is chronically reduced in Amazonian forest
+  fragments. Biological Conservation 144: 830-835.
+\item
+  Uriarte, M. Anciães, M. T.B. da Silva, P. Rubim, E. Johnson, and E.
+  M. Bruna. 2011. Disentangling the drivers of reduced long-distance
+  seed dispersal by birds in an experimentally fragmented landscape.
+  Ecology 92(4): 924-93.
+\item
+  Côrtes, M., M. Uriarte, M. Lemes, R. Gribel, W. J. Kress, P.
+  Smouse, E. M. Bruna. 2013. Low plant density enhances gene flow in
+  the Amazonian understory herb Heliconia acuminata. Molecular Ecology
+  22: 5716-5729.
+\item
+  Brooks, M. E., K. Kristensen, M. R. Darrigo, P. Rubim, M.
+  Uriarte, E. Bruna, B. M Bolker. 2019. Statistical modeling of
+  patterns in annual reproductive rates. Ecology 100(7): e02706.
+\end{enumerate}
+
+\hypertarget{acknowledgments}{%
+\section{ACKNOWLEDGMENTS}\label{acknowledgments}}
+
+This work would not have been possible without the many technicians and
+field assistants participating in the annual surveys, the logistical
+support provided by the staff of the BDFFP, and the organizations that
+provided financial support. Sharon Y. Strauss, Susan P. Harrison, and
+Patricia Delamônica Sampaio provided invaluable support and feedback
+during the project's initial phase. This paper is publication number --
+-- -- in the BDFFP Technical Series.
+
+Tables, figures, and appendices. Tables and figures should be embedded
+in the metadata where appropriate. Tables should be in HTML and figures
+should be embedded .JPG, .GIF, or .PNG files. Appendices are not
+acceptable parts of data papers.
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-lessons2002}{}%
+Bierregaard, R. O., C. Gascon, T. E. Lovejoy, and R. Mesquita, editors. 2002. Lessons from amazonia: The ecology and conservation of a fragmented forest. Yale University Press, New Haven.
+
+\leavevmode\hypertarget{ref-broadbent2008}{}%
+Broadbent, E. N., G. P. Asner, M. Keller, D. E. Knapp, P. J. C. Oliveira, and J. N. Silva. 2008. Forest fragmentation and edge effects from deforestation and selective logging in the brazilian amazon. Biological Conservation 141:1745--1757.
+
+\leavevmode\hypertarget{ref-brudvig2017}{}%
+Brudvig, L. A., S. J. Leroux, C. H. Albert, E. M. Bruna, K. F. Davies, R. M. Ewers, D. J. Levey, R. Pardini, and J. Resasco. 2017. Evaluating conceptual models of landscape change.
+
+\leavevmode\hypertarget{ref-bruna1999}{}%
+Bruna, E. M. 1999. Seed germination in rainforest fragments. Nature 402:139.
+
+\leavevmode\hypertarget{ref-bruna2002b}{}%
+Bruna, E. M. 2002. Effects of forest fragmentation on Heliconia acuminata seedling recruitment in central Amazonia. Oecologia 132:235--243.
+
+\leavevmode\hypertarget{ref-bruna2009}{}%
+Bruna, E. M., I. J. Fiske, and M. D. Trager. 2009. Habitat fragmentation and plant populations: Is what we know demographically irrelevant? Journal of Vegetation Science 20:569--576.
+
+\leavevmode\hypertarget{ref-bruna2002}{}%
+Bruna, E. M., and W. J. Kress. 2002. Habitat fragmentation and the demographic structure of an amazonian understory herb (heliconia acuminata). Conservation Biology 16:1256--1266.
+
+\leavevmode\hypertarget{ref-bruna2004}{}%
+Bruna, E. M., W. J. Kress, F. Marques, and O. F. da Silva. 2004. Heliconia acuminata reproductive success is independent of local floral density. Acta Amazonica 34:467--471.
+
+\leavevmode\hypertarget{ref-bruna2002a}{}%
+Bruna, E. M., O. Nardy, S. Y. Strauss, and S. P. Harrison. 2002. Experimental assessment of heliconia acuminata growth in a fragmented amazonian landscape. Journal of Ecology 90:639--649.
+
+\leavevmode\hypertarget{ref-bruna2005}{}%
+Bruna, E. M., and M. B. N. Ribeiro. 2005. The compensatory responses of an understory herb to experimental damage are habitat-dependent. American Journal of Botany 92:2101--210.
+
+\leavevmode\hypertarget{ref-deoliveira1999}{}%
+de Oliveira, A. A., and S. A. Mori. 1999. A central amazonian terra firme forest. I. High tree species richness on poor soils. Biodiversity and Conservation 8:1219--1244.
+
+\leavevmode\hypertarget{ref-didham2012}{}%
+Didham, R. K., V. Kapos, and R. M. Ewers. 2012. Rethinking the conceptual foundations of habitat fragmentation research. Oikos 121:161--170.
+
+\leavevmode\hypertarget{ref-driscoll2013}{}%
+Driscoll, D. A., S. C. Banks, P. S. Barton, D. B. Lindenmayer, and A. L. Smith. 2013. Conceptual domain of the matrix in fragmented landscapes. Trends in Ecology \& Evolution 28:605--613.
+
+\leavevmode\hypertarget{ref-fearnside2001}{}%
+Fearnside, P. M., and N. Leal-Filho. 2001. Soil and development in amazonia: Lessons from the biological dynamics of forest fragments project. Yale University Press, New Haven, Connecticut, U.S.A.
+
+\leavevmode\hypertarget{ref-fletcher2018}{}%
+Fletcher, R. J., R. K. Didham, C. Banks-Leite, J. Barlow, R. M. Ewers, J. Rosindell, R. D. Holt, A. Gonzalez, R. Pardini, E. I. Damschen, F. P. L. Melo, L. Ries, J. A. Prevedello, T. Tscharntke, W. F. Laurance, T. Lovejoy, and N. M. Haddad. 2018. Is habitat fragmentation good for biodiversity? Biological Conservation 226:9--15.
+
+\leavevmode\hypertarget{ref-gascon2001}{}%
+Gascon, C., and R. O. Bierregaard Jr. 2001a. Study site, experimental design, and research activity. Pages 31--42 \emph{in} R. O. Bierregaard Jr., C. Gascon, and R. Mesquita, editors. Yale University Press, New Haven.
+
+\leavevmode\hypertarget{ref-gascon2001a}{}%
+Gascon, C., and R. O. Bierregaard Jr. 2001b. Study site, experimental design, and research activity. Pages 31--42 \emph{in} R. O. Bierregaard Jr., C. Gascon, and R. Mesquita, editors. Yale University Press, New Haven.
+
+\leavevmode\hypertarget{ref-haddad2015}{}%
+Haddad, N. M., L. A. Brudvig, J. Clobert, K. F. Davies, A. Gonzalez, R. D. Holt, T. E. Lovejoy, J. O. Sexton, M. P. Austin, C. D. Collins, W. M. Cook, E. I. Damschen, R. M. Ewers, B. L. Foster, C. N. Jenkins, A. J. King, W. F. Laurance, D. J. Levey, C. R. Margules, B. A. Melbourne, A. O. Nicholls, J. L. Orrock, D.-X. Song, and J. R. Townshend. 2015. Habitat fragmentation and its lasting impact on Earth{'}s ecosystems. Science Advances 1:e1500052.
+
+\leavevmode\hypertarget{ref-harris1984}{}%
+Harris, L. D. 1984. The fragmented forest: Island biogeography theory and the preservation of biotic diversity. University of Chicago Press, Chicago.
+
+\leavevmode\hypertarget{ref-harrison1999}{}%
+Harrison, S., and E. Bruna. 1999. Habitat fragmentation and large-scale conservation: What do we know for sure? Ecography 22:225--232.
+
+\leavevmode\hypertarget{ref-kress1990}{}%
+Kress, J. 1990a. The diversity and distribution of heliconia (heliconiaceae) in brazil. Acta Botanica Brasileira 4:159--167.
+
+\leavevmode\hypertarget{ref-kress1990a}{}%
+Kress, J. 1990b. The diversity and distribution of heliconia (heliconiaceae) in brazil. Acta Botanica Brasileira 4:159--167.
+
+\leavevmode\hypertarget{ref-kress1983}{}%
+Kress, W. J. 1983. Self-incompatibility systems in central american heliconia. Evolution 37:735--744.
+
+\leavevmode\hypertarget{ref-laurance2011}{}%
+Laurance, W. F., J. L. C. Camargo, R. C. C. Luizao, S. G. Laurance, S. L. Pimm, E. M. Bruna, P. C. Stouffer, G. B. Williamson, J. Benitez-Malvido, H. L. Vasconcelos, K. S. Van Houtan, C. E. Zartman, S. A. Boyle, R. K. Didham, A. Andrade, and T. E. Lovejoy. 2011a. The fate of amazonian forest fragments: A 32-year investigation. Biological Conservation 144:56--67.
+
+\leavevmode\hypertarget{ref-laurance2011a}{}%
+Laurance, W. F., J. L. C. Camargo, R. C. C. Luizao, S. G. Laurance, S. L. Pimm, E. M. Bruna, P. C. Stouffer, G. B. Williamson, J. Benitez-Malvido, H. L. Vasconcelos, K. S. Van Houtan, C. E. Zartman, S. A. Boyle, R. K. Didham, A. Andrade, and T. E. Lovejoy. 2011b. The fate of amazonian forest fragments: A 32-year investigation. Biological Conservation 144:56--67.
+
+\leavevmode\hypertarget{ref-laurance1998}{}%
+Laurance, W. F., L. V. Ferreira, J. M. Rankin de Merona, and S. G. Laurance. 1998. Rain forest fragmentation and the dynamics of amazonian tree communities. Ecology 79:2032--2040.
+
+\leavevmode\hypertarget{ref-laurance2002}{}%
+Laurance, W. F., T. E. Lovejoy, H. L. Vasconcelos, E. M. Bruna, R. K. Didham, P. C. Stouffer, C. Gascon, R. O. Bierregaard Jr., S. G. Laurance, and E. Sampaio. 2002. Ecosystem decay of amazonian forest fragments, a 22 year investigation. Conservation Biology 16:605--618.
+
+\leavevmode\hypertarget{ref-lovejoy1986}{}%
+Lovejoy, T. E., R. O. Bierregaard, A. B. Rylands, J. R. Malcolm, C. E. Quintela, L. H. Harper, K. S. Brown, A. H. Powell, C. V. N. Powell, H. O. R. Schubart, and M. B. Hays. 1986. Edge and other effects of isolation on amazon forest fragments. Pages 257--285 \emph{in} M. Soulé, editor. Sinauer; Associates, Sunderland, MA, USA.
+
+\leavevmode\hypertarget{ref-mesquita2001}{}%
+Mesquita, R. C. G., K. Ickes, G. Ganade, and G. B. Williamson. 2001. Alternative successional pathways in the amazon basin. Journal of Ecology 89:528--537.
+
+\leavevmode\hypertarget{ref-nessimian2008}{}%
+Nessimian, J. L., E. M. Venticinque, J. Zuanon, P. De Marco, M. Gordo, L. Fidelis, J. D. Batista, and L. Juen. 2008. Land use, habitat integrity, and aquatic insect assemblages in central amazonian streams. Hydrobiologia 614:117--131.
+
+\leavevmode\hypertarget{ref-resasco2017}{}%
+Resasco, J., E. M. Bruna, N. M. Haddad, C. Banks-Leite, and C. R. Margules. 2017. The contribution of theory and experiments to conservation in fragmented landscapes. Ecography 40:109--118.
+
+\leavevmode\hypertarget{ref-ribeiro2010}{}%
+Ribeiro, M. B. N., E. M. Bruna, and W. Mantovani. 2010a. Influence of post-clearing treatment on the recovery of herbaceous plant communities in amazonian secondary forests. Restoration Ecology 18:50--58.
+
+\leavevmode\hypertarget{ref-ribeiro2010a}{}%
+Ribeiro, M. B. N., E. M. Bruna, and W. Mantovani. 2010b. Influence of post-clearing treatment on the recovery of herbaceous plant communities in amazonian secondary forests. Restoration Ecology 18:50--58.
+
+\leavevmode\hypertarget{ref-scariot1999}{}%
+Scariot, A. 1999. Forest fragmentation effects on palm diversity in central amazonia. Journal of Ecology 87:66--76.
+
+\leavevmode\hypertarget{ref-selwood2015a}{}%
+Selwood, K. E., M. A. McGeoch, and R. Mac Nally. 2015. The effects of climate change and land{-}use change on demographic rates and population viability. Biological Reviews 90:837--853.
+
+\leavevmode\hypertarget{ref-staines2014}{}%
+Staines, C. L., and C. Garcia-Robledo. 2014. The genus cephaloleia chevrolat, 1836 (coleoptera, chrysomelidae, cassidinae). Zookeys:1--355.
+
+\leavevmode\hypertarget{ref-uriarte2011}{}%
+Uriarte, M., M. Anciaes, M. T. B. da Silva, P. Rubim, E. Johnson, and E. M. Bruna. 2011. Disentangling the drivers of reduced long-distance seed dispersal by birds in an experimentally fragmented landscape. Ecology 92:924--937.
+
+\leavevmode\hypertarget{ref-wilcove1986}{}%
+Wilcove, D. S., C. H. McLellan, and A. P. Dobson. 1986. Habitat fragmentation in the temperate zone. Page 237256. \emph{in} M. E. Soulé, editor. Sinauer Associates, Sunderland.
+
+\leavevmode\hypertarget{ref-zartman2015}{}%
+Zartman, C. E., J. A. Amaral, J. N. Figueiredo, and C. D. Dambros. 2015. Drought impacts survivorship and reproductive strategies of an epiphyllous leafy liverwort in central amazonia. Biotropica 47:172--178.
+
+\end{CSLReferences}
+
+\endgroup
+
+\newpage
+
+\begin{table}
+
+\caption{\label{tab:Table1}Description of the column names for Heliconia-plot-descriptors.csv and description of the data in each column}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{12}{14}\selectfont
+\begin{tabular}[t]{lllll}
+\toprule
+Variable & Definition & Storage type & List and definition of variable codes & Units, range, and precision\\
+\midrule
+HDP-plot & Seven of the plots are in forest fragments (FF) and & string & FF1-7 & \\
+ & six are in Continuous Forest (CF). These numbers &  & CF1-6 & \\
+ & are used to identify the plots in publications and figures. &  &  & \\
+Habitat & Habitat type in which the demographic plot is located. & string & frag-one: 1-ha fragment & \\
+ &  &  & frag-ten: 10-ha fragment & \\
+ &  &  & forest: continuous forest & \\
+ranch & The name of the ranch (Fazenda, in Portuguese) in which the plot is located. & string & DIM: Fazenda Dimona & \\
+ &  &  & PAL: Fazenda Porto Alegre & \\
+ &  &  & EST: Fazenda Esteio & \\
+BDFFP-reserve-no & The BDFFP assigns each of its officially demarcated reserves a 4-digit & string & 2107, 2108, 2206 & \\
+ & number that identifies the ranch in which it is found (first digit), the &  & 3114, 3114, 3402 & \\
+ & size of the reserve (second digit), and what replicate of that size class &  & 1104, 1202, 1301, 1501 & \\
+ & it is (final 2 digits). Some Heliconia demographic plots are &  &  & \\
+ & outside an officially demarcated  BDFFP reserve, and hence have no BDFFP Reserve Number (NA) &  &  & \\
+ &  &  &  & \\
+date-established &  &  &  & \\
+notes &  &  &  & \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:Table2}Description of the column names for HDP-data-1997-2009.csv and description of the data in each column}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{12}{14}\selectfont
+\begin{tabular}[t]{lllll}
+\toprule
+Variable & Definition & Storage type & List and definition of variable codes & Units, range, and precision\\
+\midrule
+HA.plot & Seven of the plots are in forest fragments and six are in Continuous Forest. These numbers are used to identify the plots in publications and figures. & string & FF1-7: Forest Fragment plots 1-7 & N/A\\
+HA.plot & Seven of the plots are in forest fragments and six are in Continuous Forest. These numbers are used to identify the plots in publications and figures. & string & CF1-6: Continuous Forest plots 1-6 & N/A\\
+HA\_ID\_Number & Each plant in the database is assigned a unique ID number & integer &  & Range: 1-XXXX\\
+tag\_number & Plants are marked in the field with a stake to which is marked a numbered aluminum tag. Tag numbers are not duplicated or recycled within a plot. & integer &  & Range: 1-XXXX\\
+row & each demographic plot is subdivided into 50 contiguous subplots arranged in a 5 x 10 grid. “row” identifies the first axis of this grid. & string &  & A-J\\
+column & each demographic plot is subdivided into 50 contiguous subplots arranged in a 5 x 10 grid. “row” identifies the second axis of this grid & string &  & 1 through 10\\
+year & calendar year in which a survey was conducted & integer &  & Range: 1997-2009\\
+ht & the distance from the ground to the maximum height of the tallest leaf. & integer &  & Range:\\
+ &  &  &  & Units: cm\\
+shts & the number of vegetative shoots a plant has at the time it is censused & integer &  & Range:\\
+ &  &  &  & units: shoots\\
+infl & the number of inflorescences produced during a flowering season & integer &  & range:\\
+ &  &  &  & units: infloresences\\
+code.notes &  &  &  & \\
+code2 &  &  & "sdlg (1)": 3218 & \\
+ &  &  & "dead (2)": 1575 & \\
+ &  &  & "ULY (3)":  44 & \\
+ &  &  & "tag missing (50)": 8 & \\
+ &  &  & "plant missing (60)": 3997 (out of 50,333 records) & \\
+ &  &  & "initial.tag.yr": 6156 & \\
+ &  &  & 6169 plants – need to fill out for all of them! & \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\newpage
+
+\hypertarget{figures}{%
+\section{FIGURES}\label{figures}}
+
+\begin{figure}
+
+{\centering \includegraphics{Bruna_etal_HeliconiaDataPaper_files/figure-latex/Fig1-1} 
+
+}
+
+\caption{Satellite image of the BDFFP landscape showing the location of the *Heliconia* Dempographic Plots.}\label{fig:Fig1}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{Bruna_etal_HeliconiaDataPaper_files/figure-latex/Fig2-1} 
+
+}
+
+\caption{Population Structure.}\label{fig:Fig2}
+\end{figure}
+
+
+\clearpage
+\renewcommand{\listfigurename}{Figure captions}
+
+
+\end{document}
