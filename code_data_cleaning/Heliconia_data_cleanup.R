@@ -844,7 +844,30 @@ source("./code_data_cleaning/merge_with_PA10.R")
 test <- merge_with_PA10(test)
 
 
+# remove the rows with NA across all columns -----------------------------
+test <- test %>% drop_na(plot, habitat, ranch)
 
+
+# correction - x/y coordinates --------------------------------------------
+
+# a few were entered with a comma instead of decimal
+test$x_09 <- gsub("[\\,]", "\\.", test$x_09)
+test
+
+# 5750 
+# Some of the plants in 5750 were put as Row "L" because he thought they might be 
+# just outside the plot. I converted to J.
+test$row[test$plot=="5750" & test$row=="L"] <- "J"
+test$column[test$plot=="Florestal-CF" & test$column==0] <- 1
+test$column[test$plot=="5751" & test$column==0] <- 1
+
+# If you want to convert these to 0 to say they are inside the plot, 
+# then uncomment these two lines
+# test$x_09[test$x_09 < 1] <- 0
+# test$y_09[test$x_09 < 1] <- 0
+
+# Dimona CF
+test$column[test$plot=="Dimona-CF" & test$column==11] <- 10
 
 # Corrections - notes -----------------------------------------------------
 
@@ -858,7 +881,9 @@ test$code.notes[test$plot=="5753" & test$tag_number=="108" & test$year==2005] <-
 # plant size entered incorrectly (entered as 997, should be 97)
 test$ht[test$plot=="5754" & test$year==2006 & test$tag_number==445] <-97
 
-
+# 5756
+test$ht[test$plot=="5756" & test$year==2005 & test$tag_number==372] <- 26
+# TODO: did this one change tag numbers? 2x
 
 
 
