@@ -885,9 +885,52 @@ test$ht[test$plot=="5754" & test$year==2006 & test$tag_number==445] <-97
 test$ht[test$plot=="5756" & test$year==2005 & test$tag_number==372] <- 26
 # TODO: did this one change tag numbers? 2x
 
+# 5751
+# 395 incorrectly entered as 365
+to_delete <- test %>% 
+  filter(plot=="5751" &
+           tag_number==365 & 
+           row=="D" & 
+           column==5)
+test <- anti_join(test, to_delete) 
+rm(to_delete)
+test$ht[test$plot=="5751" & test$year==2008 & test$tag_number==395] <- 40
+test$shts[test$plot=="5751" & test$year==2008 & test$tag_number==395] <- 3
 
 
-# Corrections - duplications ----------------------------------------------
+
+# 17 plot corrected but failed to correct on datasheet
+
+test$code.notes[test$plot==2108 & test$year==2006 & test$tag_number==17] <- NA
+
+test$ht[test$plot==2108 & test$year==2006 & test$tag_number==17] <- 0
+test$shts[test$plot==2108 & test$year==2006 & test$tag_number==17] <- 0
+
+test$ht[test$plot==2108 & test$year==2007 & test$tag_number==17] <- 16
+test$shts[test$plot==2108 & test$year==2007 & test$tag_number==17] <- 1
+
+test$ht[test$plot==2108 & test$year==2008 & test$tag_number==17] <- 11
+test$shts[test$plot==2108 & test$year==2008 & test$tag_number==17] <- 1
+
+test$ht[test$plot==2108 & test$year==2009 & test$tag_number==17] <- 13
+test$shts[test$plot==2108 & test$year==2009 & test$tag_number==17] <- 1
+
+test$x_09[test$plot==2108 & test$column==7 & test$tag_number==17] <- 0.1
+test$y_09[test$plot==2108 & test$column==7 & test$tag_number==17] <- 2.60
+
+# delete the duplicate
+to_delete <- test %>% 
+  filter(plot==2108 &
+           tag_number==17 & 
+           row=="A" & 
+           column==4)
+test <- anti_join(test, to_delete) 
+rm(to_delete)
+# correct the plot
+test$column[test$plot==2108 & test$column==7 & test$tag_number==17] <- 6
+
+
+
 
 
 # CaboFrio
@@ -1087,16 +1130,17 @@ test <- test %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, ro
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 #TODO: 
-# 1. 2107 - tag 237 : it looks like these are actually two different plants, 
+# 2107 - tag 237 : it looks like these are actually two different plants, 
 # so need to 2x in the field. Note as such and treat as independent 
-# 
-# 2. 2108: tag 17: these are the same plant, should actually be in A6. (was 
+ 
+# 2108: tag 17: these are the same plant, should actually be in A6. (was 
 # marked as ULY in 1999 and position was subsequently corrected.)
-# 
-# 3. 2108: tag 66: this is in C9, not a seedling C( - was not missing in 99, 
+
+# 2108: tag 66: this is in C9, not a seedling C( - was not missing in 99, 
 # but rather marked as a seedling in D10 (must be right on an edge()))
 
- # 4. FF-1	2107	1-ha	282	A	5	2005	4	81	NA  this is actually 222, which was then retagged as 302 in 2006
+# FF-1	2107	1-ha	282	A	5	2005	4	81	NA  this 
+# is actually 222, which was then retagged as 302 in 2006
 
 
 
