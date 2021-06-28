@@ -847,14 +847,13 @@ test <- merge_with_PA10(test)
 # remove the rows with NA across all columns -----------------------------
 test <- test %>% drop_na(plot, habitat, ranch)
 
-
-# correction - x/y coordinates --------------------------------------------
+# correction - x/y coordinates and row/col--------------------------------
 
 # a few were entered with a comma instead of decimal
 test$x_09 <- gsub("[\\,]", "\\.", test$x_09)
 test
 
-# 5750 
+
 # Some of the plants in 5750 were put as Row "L" because he thought they might be 
 # just outside the plot. I converted to J.
 test$row[test$plot=="5750" & test$row=="L"] <- "J"
@@ -866,26 +865,179 @@ test$column[test$plot=="5751" & test$column==0] <- 1
 # test$x_09[test$x_09 < 1] <- 0
 # test$y_09[test$x_09 < 1] <- 0
 
-# Dimona CF
-test$column[test$plot=="Dimona-CF" & test$column==11] <- 10
 
-# Corrections - notes -----------------------------------------------------
+# corrections 5750 --------------------------------------------------------
 
-# 5753
-test$code.notes[test$plot=="5753" & test$tag_number=="108" & test$year==2005] <- NA
+# Plant 236 - add code for year it's missing, delete the plot
+# it duplicate numbers, delete incorrect plot
+test$code.notes[test$plot==5750 & 
+                  test$year==2006 & 
+                  test$tag_number==236] <- "plant missing (60)"
+test$code.notes[test$plot==5750 & 
+                  test$year==2008 & 
+                  test$tag_number==236] <- "plant missing (60)"
+test$code.notes[test$plot==5750 & 
+                  test$year==2009 & 
+                  test$tag_number==236] <- "plant missing (60)"
+test$shts[test$plot==5750 & 
+            test$year==2007 & 
+            test$tag_number==236] <- 1
+test$ht[test$plot==5750 & 
+          test$year==2007 & 
+          test$tag_number==236] <- 10
+# delete the duplicate
+to_delete <- test %>% 
+  filter(plot==5750 &
+           tag_number==236 & 
+           row=="G" & 
+           column==9)
+test <- anti_join(test, to_delete) 
+rm(to_delete)
 
 
-# Corrections - transcription errors (paper to spreadsheet) ---------------
 
-# 5754 (PA10)
-# plant size entered incorrectly (entered as 997, should be 97)
-test$ht[test$plot=="5754" & test$year==2006 & test$tag_number==445] <-97
+# corrections 5756 --------------------------------------------------------
 
-# 5756
+# tag no. 793
+test$code.notes[test$plot==5756 & 
+                  (test$year==2005 | 
+                     test$year==2006) & 
+                  test$tag_number==793] <- "plant missing (60)"
+
+
+
+
+
+# Tag 372
 test$ht[test$plot=="5756" & test$year==2005 & test$tag_number==372] <- 26
 # TODO: did this one change tag numbers? 2x
 
-# 5751
+# Tag 1616
+test$ht[test$plot=="5756" & test$year==2004 & test$tag_number==1616] <- 77
+test$shts[test$plot=="5756" & test$year==2004 & test$tag_number==1616] <- 4
+test$code.notes[test$plot==5756 &
+                  (test$year==2005 | test$year==2006) &
+                  test$tag_number==1616] <- "plant missing (60)"
+# TODO: figure out which of the plants in the plot this is - tags lost in tfall 
+# in the first yr this showed up
+
+# Plant 933
+test$HA_ID_Number <- as.character(test$HA_ID_Number)
+test <- test %>% 
+  mutate(HA_ID_Number = if_else((plot==5756 & tag_number==933 & year < 2006),"4733.1",HA_ID_Number)) %>% 
+  mutate(HA_ID_Number = if_else((plot==5756 & tag_number==933 & year > 2005),"4733.2",HA_ID_Number)) 
+
+
+# %>% 
+# mutate(tag_number = if_else((plot==5756 & tag_number==933 & year < 2006),
+# 933.1,tag_number)) %>% 
+# mutate(tag_number = if_else((plot==5756 & tag_number==933 & year > 2005),
+# 933.2,tag_number))
+
+# Plant 929
+# 929 in C8 is a renumber after tag was lost, I think it was written down
+# incorrectly and needs to be 2x in field
+test$code.notes[test$plot=="5756" & 
+                  test$year==2007 &
+                  test$row=="C" &
+                  test$column==8 &
+                  test$tag_number==929] <- "ULY (3)"
+
+# Plant 816
+# 816 in D9 is a renumber after tag was lost, I think it was written down
+# incorrectly and needs to be 2x in field
+test$code.notes[test$plot=="5756" & 
+                  test$year==2009 &
+                  test$row=="D" &
+                  test$column==9 &
+                  test$tag_number==816] <- "ULY (3)"
+
+
+# tag no 29
+# 29 in 5756 was actually in E3, and was retagged as 1663 in 07
+test <- test %>% 
+  mutate(ht = if_else((plot==5756 & tag_number==1663 & year == 1998),54,ht)) %>% 
+  mutate(ht = if_else((plot==5756 & tag_number==1663 & year == 1999),56,ht)) %>% 
+  mutate(ht = if_else((plot==5756 & tag_number==1663 & year == 2000),96,ht)) %>% 
+  mutate(ht = if_else((plot==5756 & tag_number==1663 & year == 2001),79,ht)) %>% 
+  mutate(ht = if_else((plot==5756 & tag_number==1663 & year == 2002),67,ht)) %>% 
+  mutate(ht = if_else((plot==5756 & tag_number==1663 & year == 2003),55,ht)) %>% 
+  mutate(ht = if_else((plot==5756 & tag_number==1663 & year == 2004),52,ht)) %>% 
+  mutate(ht = if_else((plot==5756 & tag_number==1663 & year == 2005),15,ht)) %>% 
+  mutate(shts = if_else((plot==5756 & tag_number==1663 & year == 1998),2,shts)) %>% 
+  mutate(shts = if_else((plot==5756 & tag_number==1663 & year == 1999),4,shts)) %>% 
+  mutate(shts = if_else((plot==5756 & tag_number==1663 & year == 2000),5,shts)) %>% 
+  mutate(shts = if_else((plot==5756 & tag_number==1663 & year == 2001),9,shts)) %>% 
+  mutate(shts = if_else((plot==5756 & tag_number==1663 & year == 2002),5,shts)) %>% 
+  mutate(shts = if_else((plot==5756 & tag_number==1663 & year == 2003),3,shts)) %>% 
+  mutate(shts = if_else((plot==5756 & tag_number==1663 & year == 2004),3,shts)) %>% 
+  mutate(shts = if_else((plot==5756 & tag_number==1663 & year == 2005),2,shts)) 
+test$code.notes[test$plot=="5756" & 
+                  (test$year==2005 |
+                     test$year==2006) &
+                  test$tag_number==1663] <- NA
+to_delete <- test %>% 
+  filter(plot=="5756" &
+           tag_number==29 & 
+           row=="E" & 
+           column==3)
+test <- anti_join(test, to_delete) 
+rm(to_delete)
+
+
+# tag_no 1602
+test<-test[!(test$plot=="5756" & 
+               test$tag_number==1602 & 
+               test$row=="A" & 
+               test$column==9),]
+
+
+
+# Corrections Dimona-CF ---------------------------------------------------
+
+test$column[test$plot=="Dimona-CF" & test$column==11] <- 10
+
+
+# plant 81 was not dead in 06
+test$code.notes[test$plot=="Dimona-CF" &
+                  test$tag_number==81 & 
+                  test$year==2006] <- "plant missing (60)"
+
+test$code.notes[test$plot=="Dimona-CF" &
+                  test$tag_number==81 & 
+                  test$year==2008] <- "plant missing (60)"
+
+test$code.notes[test$plot=="Dimona-CF" &
+                  test$tag_number==81 & 
+                  test$year==2009] <- "plant missing (60)"
+
+
+
+# Corrections 5753 --------------------------------------------------------
+
+# Tag no. 108
+test$code.notes[test$plot==5753 & test$tag_number==108 & test$year==2005] <- NA
+
+# tag_no 841
+test<-test[!(test$plot==5753 & test$tag_number==319 & test$row=="D"),]
+
+# Status plant 412 in 2005
+test$code.notes[test$plot==5753 &
+                  test$year==2005 & 
+                  test$tag_number==412] <- "plant missing (60)"
+
+
+
+# Corrections 5754 (PA10) -------------------------------------------------
+
+# plant size entered incorrectly (entered as 997, should be 97)
+test$ht[test$plot=="5754" & test$year==2006 & test$tag_number==445] <-97
+
+
+
+
+# Corrections 5751 --------------------------------------------------------
+
 # 395 incorrectly entered as 365
 to_delete <- test %>% 
   filter(plot=="5751" &
@@ -899,8 +1051,9 @@ test$shts[test$plot=="5751" & test$year==2008 & test$tag_number==395] <- 3
 
 
 
-# 17 plot corrected but failed to correct on datasheet
+# Corrections 2108 --------------------------------------------------------
 
+# 17 plot corrected but failed to correct on datasheet
 test$code.notes[test$plot==2108 & test$year==2006 & test$tag_number==17] <- NA
 
 test$ht[test$plot==2108 & test$year==2006 & test$tag_number==17] <- 0
@@ -930,10 +1083,24 @@ rm(to_delete)
 test$column[test$plot==2108 & test$column==7 & test$tag_number==17] <- 6
 
 
+# tag_no 66
+# Correct the value for C9
+test$ht[test$plot=="2108" & test$year==1999 & test$tag_number==66] <-13
+test$shts[test$plot=="2108" & test$year==1999 & test$tag_number==66] <-1
+test$code.notes[test$plot=="2108" & test$year==1999 & test$tag_number==66] <- NA
+# delete the value for D10
+test<-test[!(test$plot=="2108" & test$row=="D" & test$tag_number==66),]
 
 
+# Corrections 2017 --------------------------------------------------------
 
-# CaboFrio
+# Plant 237 in D6 is actually 337. The actual 237 is in C8
+test$tag_number[test$plot==2107 & 
+                    test$row=="D" & 
+                    test$column==6 & 
+                    test$tag_number==237] <- 337
+
+# Corrections CaboFrio-CF -------------------------------------------------
 
 # tag no. 2121
 # create the correct values
@@ -951,18 +1118,9 @@ test <- bind_rows(test,correct_2121)
 rm(correct_2121)
 
 
-# 2108
-# tag_no 66
-# Correct the value for C9
-test$ht[test$plot=="2108" & test$year==1999 & test$tag_number==66] <-13
-test$shts[test$plot=="2108" & test$year==1999 & test$tag_number==66] <-1
-test$code.notes[test$plot=="2108" & test$year==1999 & test$tag_number==66] <- NA
-# delete the value for D10
-test<-test[!(test$plot=="2108" & test$row=="D" & test$tag_number==66),]
 
 # 5750
 # tag_no 988
-
 # test$ht[test$plot=="5750" & test$year==2007 & test$tag_number==988] <-38
 # test$shts[test$plot=="5750" & test$year==2007 & test$tag_number==988] <-3
 # test$code.notes[test$plot=="5750" & test$year==2007 & test$tag_number==988] <- NA
@@ -971,7 +1129,11 @@ test<-test[!(test$plot=="2108" & test$row=="D" & test$tag_number==66),]
 # test$ht[test$plot=="5750" & test$year==2009 & test$tag_number==988] <-66
 # test$shts[test$plot=="5750" & test$year==2009 & test$tag_number==988] <-3
 
-# 5752
+
+
+
+# Corrections 5752  -------------------------------------------------------
+
 # tag no. 181
 # create the correct values
 correct_181 <- test %>% 
@@ -1002,17 +1164,6 @@ test<-test[!(test$plot=="5752" & test$tag_number==526),]
 test <- bind_rows(test,correct_526)
 rm(correct_526)
 
-# 5753
-# tag_no 841
-test<-test[!(test$plot=="5753" & test$tag_number==319 & test$row=="D"),]
-
-
-# 5756
-# tag_no 1602
-test<-test[!(test$plot=="5756" & 
-               test$tag_number==1602 & 
-               test$row=="A" & 
-               test$column==9),]
 
 
 
