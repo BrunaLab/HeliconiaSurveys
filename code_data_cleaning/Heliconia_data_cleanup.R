@@ -6,20 +6,17 @@
 #=============================================================================================================#
 library(tidyverse) #Data Manipulations+ggplo1
 
-############################################################
-### DATA ENTRY AND CLEANUP
-############################################################
+
+
+
+# DATA ENTRY AND CLEANUP --------------------------------------------------
 
 # CODE BELOW ASSUMES
 # 1) Data are in a folder in the working directory or RStudio Project called 'data'
 # 2) There is a folder in the working directory or RStudio Project called 'output'
 
 
-############################################################
-#  import CSV files and save as dataframe
-############################################################
-
-# load the CSV files and save as dataframe
+# load the CSV file
 ha_data <-
   read.csv(
     "./data_raw/Hacuminata_98-09_12oct2016.csv",
@@ -29,10 +26,6 @@ ha_data <-
     check.names = FALSE
   )
 
-
-############################################################
-#  clean column names
-############################################################
 # make the column names lower case
 names(ha_data)<-tolower(names(ha_data))
 
@@ -52,9 +45,8 @@ names(ha_data)[66] <- "notes_to_eb"
 names(ha_data)
 
 
-############################################################
-# correct the data types assigned to each 
-############################################################
+# correct the data types assigned to each
+
 str(ha_data)
 # set as character
 ha_data$notes_to_eb<-as.character(ha_data$notes_to_eb)
@@ -81,23 +73,18 @@ ha_data[cols] <- lapply(ha_data[cols], factor)
 str(ha_data)
 
 # ha_data$tag_number<-as.factor(ha_data$tag_number)
-############################################################
-# make habitat (frag size) an ordered factor 
-############################################################
 
+
+# make habitat (frag size) an ordered factor 
 ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
-############################################################
 # clean up the names of ranches 
-############################################################
 levels(ha_data$ranch)[match("PortoAlegre",levels(ha_data$ranch))] <- "PAL"
 levels(ha_data$ranch)[match("Esteio-Colosso",levels(ha_data$ranch))] <- "EST"
 levels(ha_data$ranch)[match("Dimona",levels(ha_data$ranch))] <- "DIM"
 summary(ha_data$ranch)
 
-############################################################
 # clean up the names of plots 
-############################################################
 summary(ha_data$plot)
 levels(ha_data$plot)[match("Dimona CF",levels(ha_data$plot))] <- "Dimona-CF"
 levels(ha_data$plot)[match("PA-CF",levels(ha_data$plot))] <- "PortoAlegre-CF"
@@ -105,10 +92,9 @@ levels(ha_data$plot)[match("Cabo Frio",levels(ha_data$plot))] <- "CaboFrio-CF"
 levels(ha_data$plot)[match("Florestal",levels(ha_data$plot))] <- "Florestal-CF"
 summary(ha_data$plot)
 
-############################################################
+
 # add a column with plots numbered as CF-1, CF-2...FF-7 
 # to match map in Bruna (2003) Ecology
-########### ################################################
 plot_info <-
   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>% 
   rename(plotID= habitat_type,plot=HDP_plot_ID_no) %>% 
@@ -119,20 +105,17 @@ ha_data$plot<-as.factor(ha_data$plot)
 str(ha_data)
 
 
-############################################################
-# INSERT THE DATA FOR PA 10-HA FRAGMENT
-############################################################
 
-############################################################
-# ADD A UNIQUE ID NUMBER FOR EACH PLANT
-############################################################
 
+
+# ADD A UNIQUE ID NUMBER FOR EACH PLANT -----------------------------------
 ha_data<-rowid_to_column(ha_data, "HA_ID_Number")
 
 
-############################################################
-# CORRECTIONS TO THE DATASET
-############################################################
+
+
+
+# CORRECTIONS TO THE DATASET ----------------------------------------------
 
 # marked "dead" in one survey but then found alive in a future one ------------
 
@@ -164,6 +147,10 @@ ha_data$notes_2006[ha_data$plot=="5756" & ha_data$tag_number=="690"] <- 60
 ha_data$notes_2004[ha_data$plot=="5756" & ha_data$tag_number=="707"] <- 60
 ha_data$notes_2005[ha_data$plot=="5756" & ha_data$tag_number=="707"] <- 60
 ha_data$notes_2006[ha_data$plot=="5756" & ha_data$tag_number=="707"] <- 60
+
+# incorrectly recorded 10 infl in 2007, should be NA
+ha_data$infl_2007[ha_data$plot=="5756" & ha_data$tag_number=="403"] <- NA 
+
 
 # 5753 (PA1)
 ha_data$notes_2005[ha_data$plot=="5753" & ha_data$tag_number=="268"] <- 60
@@ -211,6 +198,7 @@ rm(to_delete)
 ha_data$notes_2004[ha_data$plot=="5751" & ha_data$tag_number=="128"] <- 60
 ha_data$notes_2005[ha_data$plot=="5751" & ha_data$tag_number=="128"] <- 60
 
+
 # 5752 Colosso 10-ha
 ha_data$notes_2005[ha_data$plot=="5752" & ha_data$tag_number=="149"] <- 60
 
@@ -221,12 +209,9 @@ ha_data$notes_2005[ha_data$plot=="5752" & ha_data$tag_number=="272"] <- 60
 ha_data$notes_2005[ha_data$plot=="5752" & ha_data$tag_number=="736"] <- 60
 
 
-
 # 5750 
 ha_data$notes_2005[ha_data$plot=="5750" & ha_data$tag_number=="864"] <- 60
 
-
-# Correcting errors in transcribing "notes" -------------------------------
 
 # PLOT 2017
 
@@ -234,6 +219,9 @@ ha_data$notes_2005[ha_data$plot=="5750" & ha_data$tag_number=="864"] <- 60
 ha_data$notes_2006[ha_data$plot=="2107" & ha_data$tag_number=="228"] <- 60
 # Plant 282: notes say 'dead (2)' in 2006, should be plant missing (60)
 ha_data$notes_2006[ha_data$plot=="2107" & ha_data$tag_number=="282"] <- 60
+#incorrectly entered tag no. as 228 instead of 288
+ha_data$plant_id_07[ha_data$plot=="2107" & ha_data$plant_id_07=="228" &
+                      ha_data$tag_number=="288"] <- "288" 
 
 # PLOT 2018
 
@@ -246,18 +234,6 @@ ha_data$notes_2009[ha_data$plot=="2108" & ha_data$tag_number=="293"] <- NA
 #look for them in plant_id_07 for plants 1609 and 1629
 filter(ha_data, tag_number==1705 & plot==5756) 
 filter(ha_data, tag_number==1710 & plot==5756)
-
-
-# correcting errors: paper to spreadsheet ---------------------------------
-
-#  PLOT 2017
-#incorrectly entered tag no. as 228 instead of 288
-ha_data$plant_id_07[ha_data$plot=="2107" & ha_data$plant_id_07=="228" &
-                      ha_data$tag_number=="288"] <- "288" 
-
-# PLOT 5756
-# incorrectly recorded 10 infl in 2007, should be NA
-ha_data$infl_2007[ha_data$plot=="5756" & ha_data$tag_number=="403"] <- NA 
 
 
 # FLORESTAL
@@ -387,10 +363,6 @@ ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="6107"] <-"1
 ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="6204"] <-"1" 
 ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="7009"] <-"1" 
 
-
-
-
-
 # which(colnames(ha_data)=="plant_id_07")
 # 
 # filter(ha_data, tag_number==347)
@@ -404,7 +376,6 @@ ha_data$column[ha_data$plot=="Florestal-CF" & ha_data$HA_ID_Number=="7009"] <-"1
 
 
 ####################
-
 
 ha_data$plant_id_07<-as.integer(ha_data$plant_id_07)
 colnames(ha_data)
@@ -443,10 +414,9 @@ tag_checks<-tag_checks %>% filter(dble.chk > 0 | dble.chk < 0) %>% arrange(plot)
 
 
 
-############################################################
-# DATA CLEANING
-############################################################
 
+
+# DATA CLEANING -----------------------------------------------------------
 
 # SELECT THE columnS NEEDED
 ha_data <-
@@ -515,7 +485,6 @@ ha_data <-
 colnames(ha_data)
 
 
-######################################################
 # RESHAPING FROM WIDE TO LONG. CONVOLUTED BUT IT WORKS
 test.notes <-
   select(
@@ -722,7 +691,7 @@ test.ht <-
   test.ht %>% separate(year.ht, c("factor", "year"), sep = "\\_")
 head(test.ht, 10)
 
-######################################################
+
 # Check to see if they are all lined up properly by seeing if year matches across columns
 years <-
   as.data.frame(cbind(test.ht$year, test.notes$year, test.infl$year, test.shts$year))
@@ -736,7 +705,7 @@ years$test <-
 summary(years$test)
 # THEY DO IF ALL = TRUE
 
-######################################################
+
 # COMPLETE GOING FROM WIDE TO LONG BY DELETING THE COLUMSN YOU DON'T NEED
 # bind the columns for ht, shots, infl, and notes into a single dataframe called 'test'
 colnames(test.ht)==colnames(test.shts) 
@@ -769,13 +738,11 @@ colnames(test)
 
 rm(test.ht, test.infl, test.notes, test.shts, years)
 summary(test)
-######################################################
-# CLEAN-UP
+
 # fix the data types as needed
 test$year <- as.numeric(as.character(test$year))
 summary(test$year)
 test$plot<-as.factor(test$plot)
-
 
 # CLARIFY THE CODES
 test$code.notes <- as.factor(test$code.notes)
@@ -820,23 +787,11 @@ levels(test$code.notes)[levels(test$code.notes) == "1, 200 "] <-
 levels(test$code.notes)[levels(test$code.notes) == ""] <- NA
 summary(test$code.notes)
 
-######################################################
+
 # REARRANGE BY plot, then tag number, then year
 test <- test %>% arrange(plot, tag_number, year)
 head(test, 20)
 
-
-
-
-
-############################################
-############################################
-# DATA CORRECTION
-############################################
-############################################
-
-
-summary(test)
 
 
 # merge the PA10 data -----------------------------------------------------
@@ -1173,8 +1128,9 @@ rm(correct_526)
 # 237: one in C8, one in D6
 
 
-######################################################
-# PULL OUT THE 'Miscellaneous observations' AND PUT THEM IN A DIFFERENT CSV FILE
+
+
+# Pull out 'Miscellaneous observations'; save to csv file -----------------
 
 MISC_OBS <-
   test %>% filter(
@@ -1192,8 +1148,8 @@ write.csv(MISC_OBS, "./output/misc_observations.csv", row.names = FALSE)
 
 
 
-######################################################
-# MAKE A NEW CSV FILE OF THE plants that were not on the survey list
+# Save CSV of plants that were not on the survey list ---------------------
+
 # but had a tag on them, so they were marked in a previous year.  Not sure why -
 # could have been someone forgot to call it out. They are useful because they
 # are a true mortality (had a tag, now dead), or were alive in past year
@@ -1206,9 +1162,9 @@ write.csv(Not_on_SurveyList,
           row.names = FALSE)
 
 
-######################################################
-# DELETE THE MISC OBSERVATIONS FROM THAT column
-# THEN MAKE THEM CONSISTENT
+
+# Delete "Misc" obs,; make the remainder consistent ---------------------
+
 levels(test$code.notes)[levels(test$code.notes) == "uly? (4)"] <-
   "ULY (3)"
 levels(test$code.notes)[levels(test$code.notes) == "dead above ground (5)"] <-
@@ -1238,18 +1194,18 @@ levels(test$code.notes)[levels(test$code.notes) == "dead, yr unknown (300)"] <-
 levels(test$code.notes)[levels(test$code.notes) == "90, 10 (two codes)"] <-
   NA
 test <- droplevels(test)
-summary(test$code.notes)
 
-######################################################
 
-summary(test)
-summary(test$code.notes)
-colnames(test)
+# summary(test)
+# summary(test$code.notes)
+# colnames(test)
 
-############################################
-# This finds any that were marked dead in a year but for which there are measurments of shts or ht
+
+# Finds Zombies and Duplicates --------------------------------------------
+
+# This finds any marked dead in year X but with measurments of shts or ht
 source("./code_data_cleaning/marked_dead_but_measured.R")
-df<-marked_dead_but_measured(test)
+df <- marked_dead_but_measured(test)
 
 
 
