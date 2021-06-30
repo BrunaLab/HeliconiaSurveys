@@ -32,19 +32,6 @@ ha <-
 ```
 
 
-```{r fix}
-# A few entries don't read in because x_09 was entered with a comma or
-# semicolon instead of a decimal.
-# problems(ha)
-fails <- problems(ha)
-fails <-
-  fails %>%
-  mutate(corrected = str_replace(actual, "[\\,;]", "\\."))
-
-ha$x_09[fails$row] <- fails$corrected
-```
-
-
 **Action levels**
 
 By default, warn if 1% of rows fail and error if 5% fail.  A stricter level warns if *any* rows fail, and errors if 10 or more rows fail.
@@ -88,9 +75,9 @@ ha %>%
                    actions = al_strict) %>%
   col_vals_between(vars(infl), 0, 3, na_pass = TRUE) %>%
   # check that year-to-year change is reasonable
-  col_vals_lt(vars(ht_pc), 2, na_pass = TRUE,
+  col_vals_lt(vars(ht_pc), 3, na_pass = TRUE,
               preconditions = ~ . %>% calc_changes(),
-              label = "% ht change < 200%") %>%
+              label = "% ht change < 300%") %>%
   col_vals_between(vars(ht_diff), -100, 100, na_pass = TRUE,
                    preconditions = ~. %>% calc_changes(),
                    label = "Ht change < 100cm",
