@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 
-
+#knit html
+*.html
