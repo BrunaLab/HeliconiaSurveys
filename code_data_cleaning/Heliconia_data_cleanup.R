@@ -4,7 +4,7 @@
 # Code to conduct the analyses and generate the figures in:
 #
 #=============================================================================================================#
-library(tidyverse) #Data Manipulations+ggplo1
+library(tidyverse) #Data Manipulations+ggplot2
 
 
 
@@ -1252,3 +1252,4 @@ test <- test %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, ro
 
 
 # Be sure to delete the ones for which there are no data after being marked dead (see dy in zombies.R)
+
