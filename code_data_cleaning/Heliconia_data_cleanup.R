@@ -1247,7 +1247,8 @@ zombies <- zombies(test)
 source("./code_data_cleaning/duplicate_plants.R")
 dupes <- duplicate_plants(test)
 
-
+dim(dupes)
+check_dupes(test)
 
 write.csv(test, "./data_clean/Ha_survey_with_Zombies.csv", row.names = FALSE)
 
@@ -1279,3 +1280,4 @@ test <- test %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, ro
 
 
 # Be sure to delete the ones for which there are no data after being marked dead (see dy in zombies.R)
+
