@@ -419,7 +419,7 @@ tag_checks<-tag_checks %>% filter(dble.chk > 0 | dble.chk < 0) %>% arrange(plot)
 
 # DATA CLEANING -----------------------------------------------------------
 
-# SELECT THE columnS NEEDED
+# SELECT THE columns NEEDED
 ha_data <-
   ha_data %>% select(
     #"HA.plot",
@@ -487,6 +487,16 @@ colnames(ha_data)
 
 
 # RESHAPING FROM WIDE TO LONG. CONVOLUTED BUT IT WORKS
+
+# alternate solution using most recent version of tidyr:
+# test <- ha_data %>% 
+#   mutate(across(starts_with(c("shts_", "ht_", "infl_", "notes_")),
+#                 as.character)) %>% 
+#   pivot_longer(cols = starts_with(c("shts_", "ht_", "infl_", "notes_")),
+#                names_sep = "\\_",
+#                names_to = c("var", "year")) %>% 
+#   pivot_wider(names_from = var, values_from = value)
+
 test.notes <-
   select(
     ha_data,
@@ -703,7 +713,7 @@ colnames(years)
 years$test <-
   (years$yr1 == years$yr2) &
   (years$yr3 == years$yr4) & (years$yr1 == years$yr4)
-summary(years$test)
+all(years$test)
 # THEY DO IF ALL = TRUE
 
 
