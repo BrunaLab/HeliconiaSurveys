@@ -55,6 +55,7 @@ ha_data$notes_to_eb<-as.character(ha_data$notes_to_eb)
 cols <-
   c(
     "plot",
+    "ranch",
     "column",
     "notes_1998",
     "notes_1999",
