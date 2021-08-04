@@ -1,86 +1,85 @@
 "plot","plotID","habitat","ranch","bdffp_reserve_no","HA_ID_Number","tag_number","row","column","x_09","y_09","year","ht","shts","code.notes","infl"
-"2108","FF-2","1-ha","Dimona","2108",363,26,"A","6","8.1",4.9,1999,34,3,"not on list (40)",0
-"2108","FF-2","1-ha","Dimona","2108",375,38,"B","4","0.5",6.4,1999,22,1,"not on list (40)",0
-"2108","FF-2","1-ha","Dimona","2108",615,332,"B","3","3.7",8.3,2008,13,1,"not on list (40)",NA
-"2108","FF-2","1-ha","Dimona","2108",616,333,"A","1","9.4",4.6,2008,15,2,"not on list (40)",NA
-"2108","FF-2","1-ha","Dimona","2108",638,365,"D","1","2.3",5.4,2009,17,2,"not on list (40)",NA
-"2206","FF-5","10-ha","Dimona","2206",690,45,"C","2","",NA,2004,27,2,"not on list (40)",0
-"2206","FF-5","10-ha","Dimona","2206",833,201,"B","7","",NA,2005,22,1,"not on list (40)",0
-"2206","FF-5","10-ha","Dimona","2206",905,275,"B","9","",NA,2005,23,2,"not on list (40)",0
-"5750","CF-2","CF","Esteio-Colosso","1501",974,101,"D","6","",NA,2004,0,NA,"dead not on list (100)",0
-"5750","CF-2","CF","Esteio-Colosso","1501",1523,668,"I","9","4.7",5.6,2004,13,1,"not on list (40)",0
-"5750","CF-2","CF","Esteio-Colosso","1501",1542,687,"C","9","1.6",4,2004,14,2,"not on list (40)",0
-"5750","CF-2","CF","Esteio-Colosso","1501",1721,867,"E","7","3.6",9.8,2003,113,4,"not on list (40)",1
-"5751","FF-3","1-ha","Esteio-Colosso","1104",2238,71,"A","5","",NA,2008,NA,NA,"not on list (40)",NA
-"5751","FF-3","1-ha","Esteio-Colosso","1104",2549,398,"E","5","4.6",5.5,2005,44,4,"not on list (40)",0
-"5751","FF-3","1-ha","Esteio-Colosso","1104",2552,401,"A","8","6.9",8.6,2008,16,1,"not on list (40)",NA
-"5752","FF-6","10-ha","Esteio-Colosso","1202",2666,95,"C","9","",NA,1999,16,2,"not on list (40)",0
-"5752","FF-6","10-ha","Esteio-Colosso","1202",3019,460,"B","6","",NA,2001,NA,NA,"dead not on list (100)",NA
-"5752","FF-6","10-ha","Esteio-Colosso","1202",3023,464,"B","6","",NA,2001,21,1,"not on list (40)",0
-"5752","FF-6","10-ha","Esteio-Colosso","1202",3054,495,"C","8","",NA,2001,43,3,"not on list (40)",0
-"5753","FF-4","1-ha","PortoAlegre","3114",3425,28,"C","2","4.4",1.7,2008,30,2,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3429,32,"B","10","",NA,2008,46,4,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3436,39,"C","1","4.3",1,2008,72,3,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3471,76,"B","10","",NA,2008,42,4,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3491,97,"B","10","",NA,2008,18,1,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3527,150,"A","4","3.7",0.2,1999,41,3,"not on list (40)",0
-"5753","FF-4","1-ha","PortoAlegre","3114",3551,194,"B","10","",NA,2008,22,4,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3578,222,"C","1","2.8",3.9,2008,38,3,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3583,227,"B","9","5.1",4.45,2008,36,3,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3601,245,"C","2","1.7",9.4,2008,54,2,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3616,260,"C","2","5.3",3.8,2008,29,2,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3623,267,"C","3","5.9",8.2,2008,25,2,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3679,325,"C","1","6.9",1.13,2008,16,1,"not on list (40)",NA
-"5753","FF-4","1-ha","PortoAlegre","3114",3680,326,"E","9","1.9",8,2001,24,1,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",3813,7,"A","8","",NA,2004,0,NA,"dead not on list (100)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",3815,9,"A","5","3.3",5.9,1999,94,3,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4238,439,"C","6","8.3",7.5,1999,50,3,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4590,792,"A","7","0.3",2.9,2001,12,2,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4641,842,"B","7","4.3",8.2,2001,0,2,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4646,847,"B","7","0.9",0.5,2001,25,2,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4689,890,"A","5","2.7",2,2002,15,2,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4783,983,"A","7","",NA,2004,0,NA,"dead not on list (100)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4805,1205,"A","4","",NA,2004,NA,NA,"dead not on list (100)",NA
-"5756","CF-3","CF","Esteio-Colosso","1501",4831,1231,"E","3","",NA,2008,NA,NA,"not on list (40)",NA
-"5756","CF-3","CF","Esteio-Colosso","1501",4884,1285,"C","8","6.9",6.5,2005,60,3,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4908,1608,"D","10","0.9",3.5,2005,40,2,"not on list (40)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4916,1616,"C","9","5.3",9.6,2005,NA,NA,"dead not on list (100)",0
-"5756","CF-3","CF","Esteio-Colosso","1501",4987,1686,"E","2","",NA,2008,16,1,"not on list (40)",NA
-"5756","CF-3","CF","Esteio-Colosso","1501",5094,1796,"A","3","3.8",6.1,2008,34,1,"not on list (40)",NA
-"CaboFrio-CF","CF-6","CF","PortoAlegre","3402",5410,267,"A","9","9.4",5.5,2004,26,3,"not on list (40)",0
-"Dimona-CF","CF-4","CF","Dimona","none",5659,86,"E","10","",NA,1999,39,2,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",5804,19,"B","4","8.5",9.3,2004,14,3,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",5817,32,"C","4","4.7",1.4,1999,57,4,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",5889,105,"C","4","2",3.9,1999,60,3,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",5890,106,"B","4","",NA,1999,NA,NA,"dead not on list (100)",NA
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",5968,187,"A","9","",NA,1999,NA,NA,"dead not on list (100)",NA
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",5969,188,"A","4","5.8",1.5,1999,48,3,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6057,277,"D","3","",NA,2004,0,NA,"dead not on list (100)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6115,335,"C","10","4.8",8.7,2004,15,2,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6132,352,"E","7","4.1",7.9,1999,73,3,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6173,393,"D","4","5",8.3,1999,35,3,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6352,576,"E","1","5.2",0.9,2008,16,4,"not on list (40)",NA
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6501,727,"A","1","",NA,2002,21,3,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6512,738,"A","2","",NA,2002,10,1,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6676,904,"D","3","7.4",5.7,1999,56,2,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6712,941,"A","3","",NA,2002,16,2,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6743,972,"A","3","9",8.2,2002,32,2,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6798,1028,"D","2","",NA,2002,9,2,"not on list (40)",0
-"Florestal-CF","CF-1","CF","Esteio-Colosso","1301",6821,1053,"E","2","7.4",8.4,2002,10,1,"not on list (40)",0
-"PortoAlegre-CF","CF-5","CF","PortoAlegre","none",7395,32,"D","2","6.8",7.1,2008,80,4,"not on list (40)",NA
-"PortoAlegre-CF","CF-5","CF","PortoAlegre","none",7416,53,"C","10","",NA,2002,21,1,"not on list (40)",1
-"PortoAlegre-CF","CF-5","CF","PortoAlegre","none",7449,89,"D","1","",NA,2002,66,3,"not on list (40)",1
-"PortoAlegre-CF","CF-5","CF","PortoAlegre","none",7507,149,"D","1","5",9.95,2008,120,6,"not on list (40)",NA
-"PortoAlegre-CF","CF-5","CF","PortoAlegre","none",7546,195,"D","1","6.4",9.4,2008,29,2,"not on list (40)",NA
-"PortoAlegre-CF","CF-5","CF","PortoAlegre","none",7652,327,"E","2","6.4",0.45,2008,45,2,"not on list (40)",NA
-"5754","FF-7","10-ha","PortoAlegre","3209",7922,316,"A","5",NA,NA,2004,85,9,"not on list (40)",2
-"5754","FF-7","10-ha","PortoAlegre","3209",8546,1366,"B","8",NA,NA,2006,22,2,"not on list (40)",NA
-"5754","FF-7","10-ha","PortoAlegre","3209",8255,746,"C","5",NA,NA,2006,20,1,"not on list (40)",NA
-"5754","FF-7","10-ha","PortoAlegre","3209",7641,18,"E","3",NA,NA,2004,83,2,"not on list (40)",0
-"5754","FF-7","10-ha","PortoAlegre","3209",8273,764,"E","5",NA,NA,2006,16,1,"not on list (40)",NA
-"5754","FF-7","10-ha","PortoAlegre","3209",8399,909,"E","5",NA,NA,2000,22,1,"not on list (40)",0
-"5754","FF-7","10-ha","PortoAlegre","3209",8501,1312,"E","5",NA,NA,2002,50,3,"not on list (40)",0
-"5754","FF-7","10-ha","PortoAlegre","3209",8122,611,"E","6",NA,NA,2000,12,1,"not on list (40)",0
-"5754","FF-7","10-ha","PortoAlegre","3209",8246,737,"E","9",NA,NA,2005,10,1,"not on list (40)",0
-"5754","FF-7","10-ha","PortoAlegre","3209",7924,318,"D","5",NA,NA,2006,24,2,"not on list (40)",NA
-"5754","FF-7","10-ha","PortoAlegre","3209",7662,46,"E","6",NA,NA,2006,53,3,"not on list (40)",NA
+"2108","FF-2","1-ha","Dimona","2108","363",26,"A","6","8.1",4.9,1999,34,3,"not on list (40)",0
+"2108","FF-2","1-ha","Dimona","2108","375",38,"B","4","0.5",6.4,1999,22,1,"not on list (40)",0
+"2108","FF-2","1-ha","Dimona","2108","615",332,"B","3","3.7",8.3,2008,13,1,"not on list (40)",NA
+"2108","FF-2","1-ha","Dimona","2108","616",333,"A","1","9.4",4.6,2008,15,2,"not on list (40)",NA
+"2108","FF-2","1-ha","Dimona","2108","638",365,"D","1","2.3",5.4,2009,17,2,"not on list (40)",NA
+"2206","FF-5","10-ha","Dimona","2206","690",45,"C","2","",NA,2004,27,2,"not on list (40)",0
+"2206","FF-5","10-ha","Dimona","2206","833",201,"B","7","",NA,2005,22,1,"not on list (40)",0
+"2206","FF-5","10-ha","Dimona","2206","905",275,"B","9","",NA,2005,23,2,"not on list (40)",0
+"5750","CF-2","CF","Esteio-Colosso","1501","974",101,"D","6","",NA,2004,0,NA,"dead not on list (100)",0
+"5750","CF-2","CF","Esteio-Colosso","1501","1523",668,"I","9","4.7",5.6,2004,13,1,"not on list (40)",0
+"5750","CF-2","CF","Esteio-Colosso","1501","1542",687,"C","9","1.6",4,2004,14,2,"not on list (40)",0
+"5750","CF-2","CF","Esteio-Colosso","1501","1721",867,"E","7","3.6",9.8,2003,113,4,"not on list (40)",1
+"5751","FF-3","1-ha","Esteio-Colosso","1104","2238",71,"A","5","",NA,2008,NA,NA,"not on list (40)",NA
+"5751","FF-3","1-ha","Esteio-Colosso","1104","2549",398,"E","5","4.6",5.5,2005,44,4,"not on list (40)",0
+"5751","FF-3","1-ha","Esteio-Colosso","1104","2552",401,"A","8","6.9",8.6,2008,16,1,"not on list (40)",NA
+"5752","FF-6","10-ha","Esteio-Colosso","1202","2666",95,"C","9","",NA,1999,16,2,"not on list (40)",0
+"5752","FF-6","10-ha","Esteio-Colosso","1202","3019",460,"B","6","",NA,2001,NA,NA,"dead not on list (100)",NA
+"5752","FF-6","10-ha","Esteio-Colosso","1202","3023",464,"B","6","",NA,2001,21,1,"not on list (40)",0
+"5752","FF-6","10-ha","Esteio-Colosso","1202","3054",495,"C","8","",NA,2001,43,3,"not on list (40)",0
+"5753","FF-4","1-ha","PortoAlegre","3114","3425",28,"C","2","4.4",1.7,2008,30,2,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3429",32,"B","10","",NA,2008,46,4,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3436",39,"C","1","4.3",1,2008,72,3,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3471",76,"B","10","",NA,2008,42,4,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3491",97,"B","10","",NA,2008,18,1,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3527",150,"A","4","3.7",0.2,1999,41,3,"not on list (40)",0
+"5753","FF-4","1-ha","PortoAlegre","3114","3551",194,"B","10","",NA,2008,22,4,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3578",222,"C","1","2.8",3.9,2008,38,3,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3583",227,"B","9","5.1",4.45,2008,36,3,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3601",245,"C","2","1.7",9.4,2008,54,2,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3616",260,"C","2","5.3",3.8,2008,29,2,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3623",267,"C","3","5.9",8.2,2008,25,2,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3679",325,"C","1","6.9",1.13,2008,16,1,"not on list (40)",NA
+"5753","FF-4","1-ha","PortoAlegre","3114","3680",326,"E","9","1.9",8,2001,24,1,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","3813",7,"A","8","",NA,2004,0,NA,"dead not on list (100)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","3815",9,"A","5","3.3",5.9,1999,94,3,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4238",439,"C","6","8.3",7.5,1999,50,3,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4590",792,"A","7","0.3",2.9,2001,12,2,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4641",842,"B","7","4.3",8.2,2001,0,2,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4646",847,"B","7","0.9",0.5,2001,25,2,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4689",890,"A","5","2.7",2,2002,15,2,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4783",983,"A","7","",NA,2004,0,NA,"dead not on list (100)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4805",1205,"A","4","",NA,2004,NA,NA,"dead not on list (100)",NA
+"5756","CF-3","CF","Esteio-Colosso","1501","4831",1231,"E","3","",NA,2008,NA,NA,"not on list (40)",NA
+"5756","CF-3","CF","Esteio-Colosso","1501","4884",1285,"C","8","6.9",6.5,2005,60,3,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4908",1608,"D","10","0.9",3.5,2005,40,2,"not on list (40)",0
+"5756","CF-3","CF","Esteio-Colosso","1501","4987",1686,"E","2","",NA,2008,16,1,"not on list (40)",NA
+"5756","CF-3","CF","Esteio-Colosso","1501","5094",1796,"A","3","3.8",6.1,2008,34,1,"not on list (40)",NA
+"CaboFrio-CF","CF-6","CF","PortoAlegre","3402","5410",267,"A","9","9.4",5.5,2004,26,3,"not on list (40)",0
+"Dimona-CF","CF-4","CF","Dimona","none","5659",86,"E","10","",NA,1999,39,2,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","5804",19,"B","4","8.5",9.3,2004,14,3,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","5817",32,"C","4","4.7",1.4,1999,57,4,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","5889",105,"C","4","2",3.9,1999,60,3,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","5890",106,"B","4","",NA,1999,NA,NA,"dead not on list (100)",NA
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","5968",187,"A","9","",NA,1999,NA,NA,"dead not on list (100)",NA
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","5969",188,"A","4","5.8",1.5,1999,48,3,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6057",277,"D","3","",NA,2004,0,NA,"dead not on list (100)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6115",335,"C","10","4.8",8.7,2004,15,2,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6132",352,"E","7","4.1",7.9,1999,73,3,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6173",393,"D","4","5",8.3,1999,35,3,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6352",576,"E","1","5.2",0.9,2008,16,4,"not on list (40)",NA
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6501",727,"A","1","",NA,2002,21,3,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6512",738,"A","2","",NA,2002,10,1,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6676",904,"D","3","7.4",5.7,1999,56,2,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6712",941,"A","3","",NA,2002,16,2,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6743",972,"A","3","9",8.2,2002,32,2,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6798",1028,"D","2","",NA,2002,9,2,"not on list (40)",0
+"Florestal-CF","CF-1","CF","Esteio-Colosso","1301","6821",1053,"E","2","7.4",8.4,2002,10,1,"not on list (40)",0
+"PortoAlegre-CF","CF-5","CF","PortoAlegre","none","7395",32,"D","2","6.8",7.1,2008,80,4,"not on list (40)",NA
+"PortoAlegre-CF","CF-5","CF","PortoAlegre","none","7416",53,"C","10","",NA,2002,21,1,"not on list (40)",1
+"PortoAlegre-CF","CF-5","CF","PortoAlegre","none","7449",89,"D","1","",NA,2002,66,3,"not on list (40)",1
+"PortoAlegre-CF","CF-5","CF","PortoAlegre","none","7507",149,"D","1","5",9.95,2008,120,6,"not on list (40)",NA
+"PortoAlegre-CF","CF-5","CF","PortoAlegre","none","7546",195,"D","1","6.4",9.4,2008,29,2,"not on list (40)",NA
+"PortoAlegre-CF","CF-5","CF","PortoAlegre","none","7652",327,"E","2","6.4",0.45,2008,45,2,"not on list (40)",NA
+"5754","FF-7","10-ha","PortoAlegre","3209","7922",316,"A","5",NA,NA,2004,85,9,"not on list (40)",2
+"5754","FF-7","10-ha","PortoAlegre","3209","8546",1366,"B","8",NA,NA,2006,22,2,"not on list (40)",NA
+"5754","FF-7","10-ha","PortoAlegre","3209","8255",746,"C","5",NA,NA,2006,20,1,"not on list (40)",NA
+"5754","FF-7","10-ha","PortoAlegre","3209","7641",18,"E","3",NA,NA,2004,83,2,"not on list (40)",0
+"5754","FF-7","10-ha","PortoAlegre","3209","8273",764,"E","5",NA,NA,2006,16,1,"not on list (40)",NA
+"5754","FF-7","10-ha","PortoAlegre","3209","8399",909,"E","5",NA,NA,2000,22,1,"not on list (40)",0
+"5754","FF-7","10-ha","PortoAlegre","3209","8501",1312,"E","5",NA,NA,2002,50,3,"not on list (40)",0
+"5754","FF-7","10-ha","PortoAlegre","3209","8122",611,"E","6",NA,NA,2000,12,1,"not on list (40)",0
+"5754","FF-7","10-ha","PortoAlegre","3209","8246",737,"E","9",NA,NA,2005,10,1,"not on list (40)",0
+"5754","FF-7","10-ha","PortoAlegre","3209","7924",318,"D","5",NA,NA,2006,24,2,"not on list (40)",NA
+"5754","FF-7","10-ha","PortoAlegre","3209","7662",46,"E","6",NA,NA,2006,53,3,"not on list (40)",NA
