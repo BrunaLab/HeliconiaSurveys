@@ -837,7 +837,7 @@ check_dupes(test)
 # correction - x/y coordinates and row/col--------------------------------
 
 # a few were entered with a comma instead of decimal
-test$x_09 <- gsub("[\\,]", "\\.", test$x_09)
+test$x_09 <- gsub("[\\,;]", "\\.", test$x_09)
 test
 
 
