@@ -5,6 +5,11 @@
 # Script created in R version 3.3.1
 
 
+
+#TODO: Change ha_data to ha_wide
+#TODO: Change test to ha_long
+
+
 # Load libraries ----------------------------------------------------------
 library(tidyverse)
 
@@ -117,8 +122,8 @@ ha_data <- rowid_to_column(ha_data, "HA_ID_Number")
 
 # FLORESTAL
 # Updating Codes 
-ha_data$notes_2005[ha_data$plot == "Florestal-CF" & 
-                     ha_data$tag_number == "1"] <- 60
+# ha_data$notes_2005[ha_data$plot == "Florestal-CF" & 
+#                      ha_data$tag_number == "1"] <- 60
 
 ha_data$notes_2004[ha_data$plot == "Florestal-CF" & 
                      ha_data$tag_number == "1508"] <- 60
@@ -840,6 +845,14 @@ check_dupes(test)
 test$x_09 <- gsub("[\\,;]", "\\.", test$x_09)
 test
 
+
+# corrections - Florestal -------------------------------------------------
+
+# ha_data$notes_2005[ha_data$plot == "Florestal-CF" & 
+#                      ha_data$tag_number == "1"] <- 60
+test$code.notes[test$plot == 'Florestal-CF' &
+                  test$year == 2005 &
+                  test$tag_number == 1] <- "plant missing (60)"
 
 
 # corrections 5750 --------------------------------------------------------
