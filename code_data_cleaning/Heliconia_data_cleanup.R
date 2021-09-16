@@ -48,6 +48,7 @@ ha_data$notes_to_eb <- as.character(ha_data$notes_to_eb)
 cols <-
   c(
     "plot",
+    "ranch",
     "column",
     "notes_1998",
     "notes_1999",
@@ -286,11 +287,20 @@ destination <- which(ha_data$tag_number == 1714 & ha_data$plot == "5756")
 ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 # fix tag 1864 / 1684
+# <<<<<<< dupes
+# source<-which(ha_data$tag_number==1864 & ha_data$plot=="5756")
+# destination<-which(ha_data$tag_number==1684 & ha_data$plot=="5756")
+# ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# ha_data[c(destination,source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
+# #TODO: What column(s) is this supposed to set to NA? Or should this remove 1864 entirely?
+# ha_data[which(ha_data$tag_number==1864 & ha_data$plot=="5756"),]<-NA 
+
 source <- which(ha_data$tag_number == 1864 & ha_data$plot == "5756")
 destination <- which(ha_data$tag_number == 1684 & ha_data$plot == "5756")
 ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 ha_data[c(destination, source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
 ha_data[which(ha_data$tag_number == 1864 & ha_data$plot == "5756"), ] <- NA
+
 
 # 5751
 # fix tag 310
@@ -408,7 +418,7 @@ tag_checks <- tag_checks %>%
 
 # DATA CLEANING -----------------------------------------------------------
 
-# SELECT THE columnS NEEDED
+# SELECT THE columns NEEDED
 ha_data <-
   ha_data %>% select(
     # "HA.plot",
@@ -474,8 +484,20 @@ ha_data <-
   )
 colnames(ha_data)
 
+#remove NAs
+ha_data <- ha_data %>% filter(!is.na(HA_ID_Number))
 
 # RESHAPING FROM WIDE TO LONG. CONVOLUTED BUT IT WORKS
+
+# # alternate solution using most recent version of tidyr:
+# test <- ha_data %>%
+#   mutate(across(starts_with(c("shts_", "ht_", "infl_", "notes_")),
+#                 as.character)) %>%
+#   pivot_longer(cols = starts_with(c("shts_", "ht_", "infl_", "notes_")),
+#                names_sep = "\\_",
+#                names_to = c("var", "year")) %>%
+#   pivot_wider(names_from = var, values_from = value)
+
 test.notes <-
   select(
     ha_data,
@@ -691,8 +713,11 @@ names(years) <- c("yr1", "yr2", "yr3", "yr4")
 colnames(years)
 years$test <-
   (years$yr1 == years$yr2) &
-    (years$yr3 == years$yr4) & (years$yr1 == years$yr4)
+  (years$yr3 == years$yr4) & (years$yr1 == years$yr4)
+
+# all(years$test)
 summary(years$test)
+
 # THEY DO IF ALL = TRUE
 
 
@@ -782,12 +807,32 @@ summary(test$code.notes)
 test <- test %>% arrange(plot, tag_number, year)
 head(test, 20)
 
+
+#function to check for duplicate ID #s.
+check_dupes <- function(df){
+  df %>%
+    group_by(year, HA_ID_Number) %>%
+    count() %>%
+    filter(n>1) %>% 
+    pull(HA_ID_Number) %>% 
+    unique()
+}
+check_dupes(test)
+
+
 # merge the PA10 data -----------------------------------------------------
 source("./code_data_cleaning/merge_with_PA10.R")
 test <- merge_with_PA10(test)
 
+
+check_dupes(test)
+
+
 # remove the rows with NA across all columns -----------------------------
 test <- test %>% drop_na(plot, habitat, ranch)
+
+check_dupes(test)
+
 
 # correction - x/y coordinates and row/col--------------------------------
 
@@ -1205,7 +1250,8 @@ zombies <- zombies(test)
 source("./code_data_cleaning/duplicate_plants.R")
 dupes <- duplicate_plants(test)
 
-
+dim(dupes)
+check_dupes(test)
 
 write.csv(test, "./data_clean/Ha_survey_with_Zombies.csv", row.names = FALSE)
 
@@ -1237,3 +1283,4 @@ test <- test %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, ro
 
 
 # Be sure to delete the ones for which there are no data after being marked dead (see dy in zombies.R)
+

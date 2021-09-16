@@ -26,24 +26,9 @@ ha <-
   read_csv(
     here("data_clean", "Ha_survey_with_Zombies.csv"),
     col_names = TRUE,
-    cols(plot = col_character(),
-         bdffp_reserve_no = col_character())
+    guess_max = 100000
   )
 ```
-
-
-```{r fix}
-# A few entries don't read in because x_09 was entered with a comma or
-# semicolon instead of a decimal.
-# problems(ha)
-fails <- problems(ha)
-fails <-
-  fails %>%
-  mutate(corrected = str_replace(actual, "[\\,;]", "\\."))
-
-ha$x_09[fails$row] <- fails$corrected
-```
-
 
 **Action levels**
 
@@ -82,6 +67,11 @@ ha %>%
   col_vals_in_set(vars(row), LETTERS[1:10]) %>%
   col_vals_in_set(vars(habitat), c("1-ha", "CF", "10-ha"),
                   actions = al_strict) %>%
+  col_vals_lte(vars(n), 1,
+              preconditions = ~ . %>%
+                group_by(HA_ID_Number, year) %>%
+                count(),
+              label = "duplicated ID numbers") %>% 
   # check values are within reasonable range
   col_vals_between(vars(shts), 1, 20, na_pass = TRUE) %>%
   col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
