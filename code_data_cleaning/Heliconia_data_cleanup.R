@@ -91,6 +91,12 @@ plot_info <-
   rename(plotID = habitat_type, plot = HDP_plot_ID_no) %>%
   select(plotID, plot)
 ha_data <- left_join(ha_data, plot_info, by = "plot")
+
+#   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>% 
+#   rename(plotID = habitat_type...1, plot=HDP_plot_ID_no) %>% 
+#   select(plotID,plot)
+# ha_data <- left_join(ha_data, plot_info,by="plot") 
+
 rm(plot_info)
 ha_data$plot <- as.factor(ha_data$plot)
 str(ha_data)
