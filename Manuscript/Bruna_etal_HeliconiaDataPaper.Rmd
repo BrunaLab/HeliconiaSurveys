@@ -3,8 +3,6 @@ title             : "**Demography of _Heliconia acuminata_ (Heliconiaceae) in an
 shorttitle        : "Tropical plant demography"
 author: 
     
-  
-    
       
   - name          : "Emilio M. Bruna"
     affiliation   : "1,2,3"
@@ -87,10 +85,10 @@ affiliation:
   - id            : "5"
     institution   : "Department of Botany, National Museum of Natural History, PO Box 37012, Smithsonian Institution, PO Box 37012, Washington DC, USA"
 abstract: |
- Habitat fragmentation is thought to be a leading cause of extinction, but the demography of species in fragmented landscapes remains poorly understood. This is particularly true in tropical ecosystems, where studies monitoring populations of species in both fragments and areas of continuous habitat across all life-history stages are virtually nonexistent. Here we report 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb _Heliconia acuminata_ (LC Rich.). These surveys were conducted in the experimentally fragmented landscape of the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plants are located in 50 x 100 m permanent plots located in forest fragments of different sizes (four 1-ha fragments and three 10-ha fragments) as well as 6 continuous forest sites. The population in each plot was censused annually, at which time we recorded the mortality of any previously marked plants and the size of surviving plants. We also marked and measured new seedlings. During the flowering season we also recorded the identity of flowering plants and how many inflorescences each of them produced. These data have been used in publications on topics ranging from how fragmentation-related reductions in germination influence population growth rates to tests of statistical methods for analyzing reproductive rates. Sampling is ongoing and data will be added over time.   
+ Habitat fragmentation is thought to be a leading cause of extinction, but the demography of species in fragmented landscapes remains poorly understood. This is particularly true in tropical ecosystems, where studies monitoring populations of species in both fragments and areas of continuous habitat across all life-history stages are virtually nonexistent. Here we report 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb _Heliconia acuminata_ (LC Rich.). These surveys were conducted in the experimentally fragmented landscape of the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plants are located in 50 x 100 m permanent plots located in forest fragments of different sizes (four 1-ha fragments and three 10-ha fragments) as well as 6 continuous forest sites. The population in each plot was censused annually, at which time we recorded the mortality of any previously marked plants and the size of surviving plants. We also marked and measured new seedlings. During the flowering season we also recorded the identity of flowering plants and how many inflorescences each of them produced. These data have been used in publications on topics ranging from how fragmentation-related reductions in germination influence population growth rates to tests of statistical methods for analyzing reproductive rates. 
   
 keywords: "Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, Integral projection models, Matrix models, population dynamics, vital rates"
-wordcount         : "X"
+wordcount         : "------"
 # bibliography      : ["r-references.bib"]
 floatsintext      : no
 figurelist        : yes
@@ -105,12 +103,14 @@ output            : "papaja::apa6_pdf"
 fig_caption: yes #yes will automatically add "Figure X" to the start 
 always_allow_html: yes
 header-includes:
- - \usepackage{booktabs}
- - \raggedbottom
+  - \usepackage{booktabs}
+  - \raggedbottom
  # - \usepackage{endfloat} #[nomarkers] excludes the {insert figure x around here] from main text. The others exclude the list of tables and figures. https://cs.brown.edu/about/system/managed/latex/doc/endfloat.pdf
- - \usepackage{tabu}
- - \newcommand{\blandscape}{\begin{landscape}}
- - \newcommand{\elandscape}{\end{landscape}}
+  - \usepackage{tabu}
+  - \usepackage{pdflscape}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+# appendix: "Smith_etal_Appendix_QSSv1.Rmd"
 csl: ecology.csl
 bibliography: references.bib
 editor_options: 
@@ -259,30 +259,13 @@ fragmented landscapes [@didham2012; @driscoll2013; @selwood2015a].
 **C. Data set description**
 
 
-1. **Principal Investigator**: Emilio M. Bruna, Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA and Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611, USA
+1. **Principal Investigator**: Emilio M. Bruna, Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA and Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611, USA.
 
-2. **Abstract**: The data set covers 12 years (1997-2009) of annual
-censuses of 13 populations of the Amazonian understory herb *Heliconia
-acuminata* (LC Rich.) at the Biological Dynamics of Forest Fragments
-Project north of Manaus, Brazil. The plants are located in 50 x 100 m
-permanent plots located in forest fragments of different sizes (four
-1-ha fragments and three 10-ha fragments) as well as 6 continuous forest
-sites. The population in each plot was censused annually, at which time
-we recorded the mortality of any previously marked plants and the size
-of surviving plants. We also marked and measured new seedlings. During
-the flowering season we also recorded the identity of flowering plants
-and how many inflorescences each of them produced. The data set can be
-used to study the ecological factors influencing the demography and
-population dynamics of tropical plants, as well as the consequences for
-plant demography and population dynamics of anthropogenic impacts such
-as deforestation or climate change. Sampling is ongoing and data will be
-added over time.
+2. **Abstract**: The data set comprises 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb *Heliconia acuminata* (LC Rich.). The data were collected at the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plants are located in 50 x 100 m permanent plots located in forest fragments of different sizes (four 1-ha fragments and three 10-ha fragments) as well as 6 continuous forest sites. The population in each plot was censused annually, at which time we recorded the mortality of any previously marked plants and the size of surviving plants. We also marked and measured new seedlings. During the flowering season we also recorded the identity of flowering plants and how many inflorescences each of them produced. The data set can be used to study the ecological factors influencing the demography and
+population dynamics of tropical plants, as well as the consequences for plant demography and population dynamics of anthropogenic impacts such as deforestation or climate change. 
 
 \noindent  
-D. **Key words:** Amazon, Brazil, deforestation, demography,
-edge effects, flowering, forest fragments, habitat fragmentation,
-Integral projection models, matrix models, population dynamics, vital
-rates
+D. **Key words:** Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, integral projection models, matrix models, population dynamics, vital rates.
 
 \noindent 
 **CLASS II. RESEARCH ORIGIN DESCRIPTORS**
@@ -290,7 +273,7 @@ rates
 \noindent  
 **A. Overall project description:**
 
-1.  **Identity:** The Heliconia Demography Project (HDP)
+1.  **Identity:** The *Heliconia* Demography Project (HDP)
 
 2.  **Originators:** Emilio M. Bruna, W. John Kress, and María Uriarte
 
@@ -303,7 +286,7 @@ rates
     Biological Dynamics of Forest Fragments Project, located north of
     Manaus, Amazonas, Brazil
 
-5.  **Source(s) of funding:** The initial establishment of plots and
+5.  **Source(s) of funding:** The initial establishment of plots  and
     1998-2002 surveys were supported by awards to E. M. Bruna from the
     Smithsonian Institution (Graduate Student Research Award), the
     University of California, Davis (Center for Population Biology
@@ -318,7 +301,7 @@ rates
     Uriarte (DEB-0614339).
 
 \noindent  
-**B. Subproject description:** The core of the Heliconia
+**B. Subproject description:** The core of the *Heliconia*
 Demography Project (HDP) is annual censuses of thirteen *H. acuminata*
 populations located in either continuous forest or one of the BDFFP's
 experimentally isolated forest fragments. In addition to recording the
@@ -327,7 +310,7 @@ recruited seedlings are marked, measured, and assigned their own unique
 identification number. These data can be used for a broad range of
 analyses, but the primary purpose behind their collection was to
 parameterize models with which to compare the demography and population
-dynamics of H. acuminata populations in fragments and continuous forest.
+dynamics of *H. acuminata* populations in fragments and continuous forest.
 This paper reports 12 years of annual census data (1997-2009)
 
 1.  **Site description**
@@ -360,7 +343,7 @@ a.  **Study Site:** The data were collected at the Biological Dynamics
 b.  **Climate:** Mean annual temperature at the site is 26$^\circ$C
     (range 19-39$^\circ$C). Annual rainfall ranging from 1900-2300 mm
     (BDFFP records), with a pronounced dry season from June-December
-    (\<100 mm rain per month).
+    (\<100 mm rain per month). **ADD A FIGURE**
 
 c.  **Site history:** A complete history of the BDFFP can be found in
     Gascon and Bierregaard Jr. [@gascon2001a]. Briefly, the BDFFP
@@ -386,9 +369,9 @@ c.  **Site history:** A complete history of the BDFFP can be found in
 a.  **Focal species:** *Heliconia acuminata* (Heliconiaceae) is a
     perennial, self-incompatible monocot native to Amazonia [@kress1990]
     and widely distributed throughout the Amazon basin **(Better?**
-    Berry and Kress 1991). Although many species of Heliconia grow in
+    Berry and Kress 1991). Although many species of *Heliconia* grow in
     large aggregations on roadsides, gaps, and in other disturbed
-    habitats, others, such as H. acuminata, grow primarily in the shaded
+    habitats, others, such as *H. acuminata*, grow primarily in the shaded
     forest understory [@kress1983]. It is the most abundant understory
     herb throughout much of the BDFFP [@ribeiro2010a].
 
@@ -396,22 +379,22 @@ a.  **Focal species:** *Heliconia acuminata* (Heliconiaceae) is a
 > rhizome (Berry and Kress 1991), vegetative reproduction in the field
 > is limited and recruitment primarily via seed [@bruna1999;
 > @bruna2002b]. *Heliconia acuminata* flowers during the rainy season,
-> when reproductive plants produce 1 or more bracts subtending up to 25
+> when reproductive plants produce 1 or more bracts subtending up to 25 **[mean?range?]**
 > flowers each [@bruna2002]. Flowers are pollinated by the 'traplining'
 > hummingbirds *Phaeothornis superciliosus* and *P. bourcieri*
 > [@bruna2004]. Flowers are open only 1 day and visitation rates are
-> low. Fruits produced by successfully pollinated flowers have up to
+> low (<1 visit per hour, [@bruna2004]. Fruits produced by successfully pollinated flowers have up to
 > three seeds and are dispersed by birds. In our sites these dispersers
 > are primarily a thrush and several manakins [@uriarte2011]. Seeds
 > germinate 6-7 months after dispersal at the onset of the rainy season
 > [@bruna1999; [@bruna1999; @bruna2002b].
 
-> *Heliconia acuminata* leaves are sometimes damaged by the hispine
+> *Heliconia acuminata* leaves are ocassionally damaged by the hispine
 > beetle *Cephaloleia nigriceps* Baly [@staines2014], but the amount of
-> leaf tissue removed is minimal [@bruna2002a; @bruna2005]. However, the
+> leaf tissue removed is minimal [@bruna2002a; @bruna2005]. However, these
 > beetles can cause extensive damage to the bracts, ovaries, and
 > developing fruits. Experiments also indicate post-dispersal seed
-> predation is very low and that *H. acuminata* has no seed bank
+> predation is very low and that even seeds protected from burial under leaf-litter rarely germinate after one year, suggesting *H. acuminata* has no seed bank.
 > [@bruna1999; @bruna2002b]; the lack of a seed bank could be due to
 > limited seed viability, mortality resulting from burial under
 > leaf-litter, or both [@bruna2005].
@@ -420,12 +403,12 @@ a.  **Taxonomy, systematics, and voucher specimens:** *Heliconia* is the
     only genus in the family Heliconiaceae. This family is distinguished
     from the others in the order Zingiberales by inverted flowers,
     having a single staminode, and fruits that are drupes. It is
-    estimated that there are 200-250 species of Heliconia, almost all of
+    estimated that there are 200-250 species of *Heliconia*, almost all of
     which are native to the Neotropics. *Heliconia acuminata* L. C.
-    (Rich.) (Richard 1831) is one of the approximately 20 Heliconia
+    (Rich.) (Richard 1831) is one of the approximately 20 *Heliconia*
     species found in the Brazilian Amazon [@kress1990a].
 
-> Voucher specimens of H. acuminata collected at the BDFFP as part of
+> Voucher specimens of *H. acuminata* collected at the BDFFP as part of
 > this study can be found at the UC Davis and INPA Herbaria (accession
 > numbers DAV 69391-69396 and INPA 189569-189573, respectively).
 
@@ -447,10 +430,7 @@ b.  **Study Design:** The study consists of 13 demographic plots
 > mark the plants, a team of 2-3 people slowly walked through each
 > subplot and located all *Heliconia acuminata* and marked them with a
 > wooden stake to which was attached an individually numbered aluminum
-> tag (Racetrack Aluminum Tags, Forestry Suppliers). Each plant was then
-> measured by (1) by counting the number of vegetative shoots it had and
-> (2) measuring the height of the plant from its base of the its highest
-> point above the ground. Three additional plots were established in
+> tag (Racetrack Aluminum Tags, Forestry Suppliers). The size of each plant was measured in two ways: (1) by counting the number of vegetative shoots it had and (2) by measuring the height of the plant from the ground to the top of its highest leaf (to the nearest cm using a tape measure). Three additional plots were established in
 > continuous forest sites in 1998 (CF 4-6); all plants in these plots
 > were tagged and measuring in the same way as in other plots.
 
@@ -464,30 +444,22 @@ b.  **Study Design:** The study consists of 13 demographic plots
 > identify reproductive individuals, at which time we recorded the
 > number of inflorescences.
 
-> Plants were marked with individually numbered tags. The height of
-> plants to the tallest leaf was measured to the nearest millimeter with
-> tape measures.
-
 3.  **Project personnel:** In addition to the Principal Investigator and
-    Originators, other key personnel include the Lead Technicians that
+    Originators, other key personnel include the Technicians that
     were responsible for coordinating the annual censuses, the BDFFP
-    Staff Technicians that assisted with data collection and provided
-    support in the field, and field assistants hired to assist with the
+    field staff (*"Mateiros"*) that assisted with data collection and provided
+    support in the field, and student or postgraduate field assistants hired to assist with the
     surveys.
 
-a.  **Technicians:** Paulo Rubim (2007-2012), Maria Rosa Darrigo
-    (2002-2003), Simone Benedet (2004), Cris Follman Jurinitz (2003),
-    Maria Beatriz Nogueira (2002), Sylvia Heredia (2001-2002).
+a.  **Technicians:** Paulo Rubim (2007-2012),  
+    Maria Beatriz Nogueira (2002), Maria Rosa Darrigo
+    (2002-2003), Cris Follman Jurinitz (2003), Simone Benedet (2004).
 
-b.  **BDFFP Staff ("mateiros"):** Osmaildo Ferreira da Silva, Francsico
-    Marques, Alaercio Marajó dos Reis, João De Deus Fragata, Romeu
+b.  **BDFFP Staff:** Osmaildo Ferreira da Silva, Francsico
+    Marques, Alaercio Marajó dos Reis, João de Deus Fragata, Romeu
     Cardoso.
 
-c.  **Student Field Assistants:** Wesley Dáttilo da Cruz (2007),
-    Jefferson José Valsko da Silva (2007), Elisabete Marques da Costa
-    (2006), Bruno Turbiani (2005), Cristina Escate (2004), Cris Follman
-    Jurinitz, David M. Lapola (2003), Denise Cruz (2003), Maria Beatriz
-    Nogueira, Obed Garcia (2001), Olavo Nardy (2000).
+c.  **Student & Postgraduate Field Assistants:** Olavo Nardy (2000), Obed Garcia (2001), Sylvia Heredia (2001-2002), Maria Beatriz Nogueira (2002), Cris Follman Jurinitz (2003), David M. Lapola (2003), Denise Cruz (2003), Cristina Escate (2004), Bruno Turbiani (2005), Elisabete Marques da Costa (2006), Wesley Dáttilo da Cruz (2007), Jefferson José Valsko da Silva (2007). 
 
 \noindent  
 **CLASS III. DATA SET STATUS AND ACCESSIBILITY**
@@ -495,11 +467,11 @@ c.  **Student Field Assistants:** Wesley Dáttilo da Cruz (2007),
 \noindent  
 **A. Status**
 
-1.  **Latest update:** 1 May 2019
+1.  **Latest update:** `r format(Sys.time(), '%d %B %Y')`
 
-2.  **Latest archive date:** 1 May 2019
+2.  **Latest archive date:** `r format(Sys.time(), '%d %B %Y')`
 
-3.  **Metadata status:** Complete and up to date (1 May 2019)
+3.  **Metadata status:** Complete and up to date (`r format(Sys.time(), '%d %B %Y')`)
 
 4.  **Data verification & Quality Control Procedures:** Data
     verification and quality control is ongoing. After each survey, the
@@ -524,9 +496,9 @@ c.  **Student Field Assistants:** Wesley Dáttilo da Cruz (2007),
 > database for measurement in subsequent years. Their record in the
 > database for the year they were discovered includes a code identifying
 > them as a mature plant not recorded in previous surveys (see Section
-> IV, Table 2). From 1998-2009 there were -- -- -- such cases across all
-> thirteen HDP plots. Most were in the initial survey years (only XX%
-> after 20XX) and in high-density plots (XX% and XX% were in plots A and
+> IV, Table 2). From 1998-2009 there were **-- -- --** such cases across all
+> thirteen HDP plots. Most were in the initial survey years (only **XX%**
+> after **20XX**) and in high-density plots (**XX% and XX%** were in plots A and
 > B, respectively).
 
 > Tag loss: Treefalls and other disturbances sometimes cause the stakes
@@ -546,9 +518,8 @@ c.  **Student Field Assistants:** Wesley Dáttilo da Cruz (2007),
 > in question to decide which one should be assigned each new number.
 > The change in number is again logged; a list of all changes in tag
 > number to date is permanently archived at [zenodo] and updated at
-> [github site]. From 1998-2009 there were -- -- -- such cases across
-> all thirteen HDP plots. Most were in the in plots A,B, and C (XX%, XX%
-> and XX%, respectively).
+> [github site]. From 1998-2009 there were **-- -- --** such cases across
+> all thirteen HDP plots. Most were in the in plots A,B, and C **XX%, XX% and XX%**, respectively).
 
 > Plants under treefalls: Plants trapped under the large crowns of
 > fallen trees may go several years without being measured until leaves
@@ -556,9 +527,9 @@ c.  **Student Field Assistants:** Wesley Dáttilo da Cruz (2007),
 > some cases, neither the plant nor the ID tag can be found. When this
 > occurs, the plant is recorded as missing but not removed from the
 > record. (see Section IV, Table 2 for the code added to the record in
-> such cases). XX% of plants missing in a given year were found the
-> following year and XX% were eventually resurveyed. XX% of plants
-> marked missing were never remeasured. This represents XX% and XX% of
+> such cases). **XX%** of plants missing in a given year were found the
+> following year and XX% were eventually resurveyed. **XX%** of plants
+> marked missing were never remeasured. This represents **XX% and XX%** of
 > all plants in the database (i.e, missing plants are rare).
 
 > An extensive review of the data and quality control effort was
@@ -584,7 +555,7 @@ c.  **Student Field Assistants:** Wesley Dáttilo da Cruz (2007),
     M. Bruna at the University of Florida. Original data files and paper
     copies are stored in separate campus locations, with electronic
     copies (.pdf format) stored on a desktop computer, portable hard
-    drive stored, and a UF cloud storage account. The electronic files
+    drive, and a cloud storage account. The electronic files
     into which each year's survey data were entered, and a copy of the
     complete database, are stored on a desktop computer with copies on a
     portable hard drive and UF cloud storage account.
@@ -596,7 +567,7 @@ c.  **Student Field Assistants:** Wesley Dáttilo da Cruz (2007),
 
 4.  **Copyright restrictions:** None
 
-5.  **Proprietary restrictions:** None. However, we request that authors
+5.  **Proprietary restrictions:** None. However, we do request that authors
     of publications using these data (1) cite this data paper as per
     Ecological Archives policy, (2) register the publication as part of
     the BDFFP Technical Series by contacting the BDFFP Director or E.
@@ -693,16 +664,13 @@ articles to date that used part or all of the dataset in their analyses.
 An update list can be found at [github].
 
 1.  Bruna, E. M. and W. J. Kress. 2002. Habitat fragmentation and the
-    demographic structure of an Amazonian understory herb (Heliconia
-    acuminata). Conservation Biology, 16(5): 1256-1266.
+    demographic structure of an Amazonian understory herb (*Heliconia acuminata*). Conservation Biology, 16(5): 1256-1266.
 
 2.  Bruna, E. M., O. Nardy, S. Y. Strauss, and S. P. Harrison. 2002.
     Experimental assessment of *Heliconia acuminata* growth in a
     fragmented Amazonian landscape. Journal of Ecology, 90(4): 639-649.
 
-3.  Bruna, E. M. 2002. Effects of forest fragmentation on *Heliconia
-    acuminata* seedling recruitment in the central Amazon. Oecologia,
-    132:235-243.
+3.  Bruna, E. M. 2002. Effects of forest fragmentation on *Heliconia acuminata* seedling recruitment in the central Amazon. Oecologia, 132:235-243.
 
 4.  Bruna, E. M. 2003. Are plant populations in fragmented habitats
     recruitment limited? Tests with an Amazonian herb. Ecology, 84(4):
@@ -745,7 +713,7 @@ An update list can be found at [github].
 
 12. Côrtes, M., M. Uriarte, M. Lemes, R. Gribel, W. J. Kress, P.
     Smouse, E. M. Bruna. 2013. Low plant density enhances gene flow in
-    the Amazonian understory herb Heliconia acuminata. Molecular Ecology
+    the Amazonian understory herb *Heliconia acuminata*. Molecular Ecology
     22: 5716-5729.
 
 13. Brooks, M. E., K. Kristensen, M. R. Darrigo, P. Rubim, M.
@@ -780,10 +748,13 @@ acceptable parts of data papers.
 :::
 
 \endgroup
-
 \newpage
 
-<!-- \begin{landscape} -->
+# FIGURES
+1. satellite image
+2. population structure
+3. plot maps
+\newpage
 
 ```{r Table1, echo=FALSE, message = FALSE, warning=FALSE}
 Table1 <- read_csv("./Manuscript/table_1.csv", col_names = TRUE) %>% 
@@ -801,20 +772,28 @@ tmp <- knitr::kable(Table1,
     linesep = "", #removes the blank line after every 5 lines
      caption = "Description of the column names for Heliconia-plot-descriptors.csv and description of the data in each column") %>%
    kable_styling(bootstrap_options = c("hover"),
-                 full_width = FALSE,
-                 latex_options = c("scale_down"),
-                 font_size = 12,
+                 full_width = TRUE,
+                 # latex_options = c("scale_down"),
+                 font_size = 10,
                  position = "center")
+    # ) %>%
+    # column_spec(2, width = "10em")
+  # row_spec(2, extra_latex_after = "\\cline{1-5}") %>%
+  # row_spec(15, extra_latex_after = "\\cline{1-5}") %>%
+  # row_spec(25, extra_latex_after = "\\cline{1-5}") %>%
+  # row_spec(32, extra_latex_after = "\\cline{1-5}") %>%
+  # row_spec(42, extra_latex_after = "\\cline{1-5}") %>%
+  # row_spec(55, extra_latex_after = "\\cline{1-5}")
 knitr::asis_output(tmp)
 ```
 
 ```{r Table2, echo=FALSE, message = FALSE, warning=FALSE}
-Table1 <- read_csv("./Manuscript/table_2.csv", col_names = TRUE) %>% 
+Table2 <- read_csv("./Manuscript/table_2.csv", col_names = TRUE) %>% 
   replace_na(list("Variable" = "",	"Definition" = "",	"Storage type" = "",	"List and definition of variable codes" = "",	"Units, range, and precision"=""))
-Table1<-as.data.frame(Table1)
+Table1<-as.data.frame(Table2)
 # Table1_names <- c("Variable",	"Definition",	"Storage type",	"List & definition of variable codes",	"Units, range, & precision") 
 
-tmp <- knitr::kable(Table1,
+tmp <- knitr::kable(Table2,
      digits = 2,
      format = "latex",
      align="l",
@@ -824,23 +803,10 @@ tmp <- knitr::kable(Table1,
     linesep = "", #removes the blank line after every 5 lines
      caption = "Description of the column names for HDP-data-1997-2009.csv and description of the data in each column") %>%
    kable_styling(bootstrap_options = c("hover"),
-                 full_width = FALSE,
+                 full_width = TRUE,
                  latex_options = c("scale_down"),
-                 font_size = 12,
+                 font_size = 10,
                  position = "center")
 knitr::asis_output(tmp)
 ```
 
-<!-- \end{landscape} -->
-
-\newpage
-
-# FIGURES
-
-```{r Fig1, fig.align='center',fig.cap="Satellite image of the BDFFP landscape showing the location of the *Heliconia* Dempographic Plots.",fig.height = 3,fig.width=3}
-plot(pressure)
-```
-
-```{r Fig2, fig.align='center',fig.cap="Population Structure.",fig.height = 3,fig.width=3}
-plot(pressure)
-```
