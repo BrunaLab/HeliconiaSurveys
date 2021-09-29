@@ -1,6 +1,6 @@
 merge_with_PA10 <- function(test) {
   PA10 <- read_csv("./data_midway/PA10_survey_with_Zombies.csv")
-  PA10 <- PA10 %>% rename("plotID"="HA.plot")
+  PA10 <- PA10 %>% rename("plotID"="HA.plot", "code"='code.notes')
   str(test$column)
   PA10$column <-as.factor(PA10$column)
   PA10$plot <-as.factor(PA10$plot)

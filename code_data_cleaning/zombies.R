@@ -1,5 +1,6 @@
 
 zombies <- function(test) {
+  # test<-ha_long
   df2 <- test
   df2$code2 <- NA
   df2$code2[df2$code.notes == "dead (2)"] <- "dead"
@@ -19,15 +20,16 @@ zombies <- function(test) {
   
   # df3 - keep these for review (they are the ones that are marked dead but have data after)
   df3 <-
-    df2 %>% filter((!is.na(ht) |
-                      !is.na(shts))) %>% arrange(plot, tag_number, year) %>% select(-code3) %>% ungroup()
+    df2 %>% filter((!is.na(ht) | !is.na(shts))) %>% 
+    arrange(plot, tag_number, year) %>% 
+    select(-code3) %>% ungroup()
   
-  df$code2<-NULL
+  df3$code2<-NULL
   
   
-  df3 <-
-    bind_rows(df, df3) %>% select(plot, tag_number, year, ht, shts) %>% unique()
-  
+  # df3 <-
+  #   bind_rows(df2, df3) %>% select(plot, tag_number, year, ht, shts) %>% unique()
+  # 
   zombies_all_yrs <-
     semi_join(test, df3, by = c("plot", "tag_number")) %>% 
     select(plot, habitat, tag_number, row, column,year, shts, ht, code.notes) %>% 
@@ -65,5 +67,5 @@ zombies <- function(test) {
   
   
   
-  return(test)
+  return(zombies_all_yrs)
 }

@@ -1,0 +1,86 @@
+---
+title: "Heliconia Data Paper - Figures"
+author: "E. M. Bruna et al."
+email: embruna@ufl.edu
+web: www.BrunaLab.org
+github: embruna
+twitter: BrunaLab
+phone: "(352) 846-0634"
+# date: "`r format(Sys.time(), '%B %Y')`"
+geometry: margin=1in
+# tables: true
+# fontawesome: yes
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyfoot{} # remove page number bottom of the page
+- \fancyhead[L]{Bruna et al. - Figures}
+- \fancyhead[R]{p. \thepage}
+- \usepackage{setspace}
+- \usepackage{parskip} 
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+
+- \usepackage{caption}                            
+- \DeclareCaptionLabelFormat{Sformat}{#1 S#2}     
+- \captionsetup[table]{labelformat=Sformat}  
+- \captionsetup[figure]{labelformat=Sformat}  
+  
+output: 
+  pdf_document:
+    keep_tex: true
+   # html_document:
+   # df_print: paged
+   # toc: true
+
+---
+
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE)
+library(tidyverse)
+library(gridExtra)
+library(here)
+library(egg)
+# library(citr)
+```
+
+
+```{=tex}
+\newpage
+\blandscape
+```
+![Satellite image of the Biological Dynamics of Forest Fragments Project showing the location of the *Heliconia* Demographic Plots. Plots are foudn in both Continuous Forest (CF) or Forest Fragments (FF). Dark green is primary forest, light green is regenerating forest, and red indicates pasture and recently c;eared areas. For additional details on each plot see Table 1.](figures/bdffp_sat.jpeg)
+```{=tex}
+\elandscape
+```
+
+![Figures 2-14: Schematic of each demographic plot's location, orientation, and layout in each forest fragment (Figs. 2-8) or continuous forest site (Figs 9-14).](figures/ff1.jpeg){width=90%}  
+
+![FF-2](figures/ff2.jpeg){width=90%}  
+
+![FF-3](figures/ff3.jpeg){width=90%}  
+
+![FF-4](figures/ff4.jpeg){width=90%}  
+
+![FF-5](figures/ff5.jpeg){width=90%}  
+
+![FF-6](figures/ff6.jpeg){width=90%}  
+
+![FF-7](figures/ff7.jpeg){width=90%}  
+
+![CF-1](figures/cf1.jpeg){width=90%}  
+
+![CF-2](figures/cf2.jpeg){width=90%}  
+
+![CF-3](figures/cf3.jpeg){width=90%}  
+
+![CF-4](figures/cf4.jpeg){width=90%}  
+
+![CF-5](figures/cf5.jpeg){width=90%}  
+
+![CF-6](figures/cf6.jpeg){width=90%}  
+
+
