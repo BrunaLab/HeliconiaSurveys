@@ -22,12 +22,7 @@ library(stringr)
 
 
 ```{r load-data, message=FALSE, warning=FALSE}
-ha <-
-  read_csv(
-    here("data_clean", "Ha_survey_with_Zombies.csv"),
-    col_names = TRUE,
-    guess_max = 100000
-  )
+ha <- read_csv(here("data_clean", "Ha_survey_with_Zombies.csv"))
 ```
 
 **Action levels**
@@ -77,6 +72,13 @@ ha %>%
   col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
                    actions = al_strict) %>%
   col_vals_between(vars(infl), 0, 3, na_pass = TRUE) %>%
+  # check seedlings
+  col_vals_lt(vars(shts), 3, na_pass = TRUE,
+              preconditions = ~. %>% filter(code.notes == "sdlg (1)"),
+              label = "seedlings < 3 shoots") %>% 
+  col_vals_lt(vars(ht), 20, na_pass = TRUE,
+              preconditions = ~. %>% filter(code.notes == "sdlg (1)"),
+              label = "seedlings < 20cm") %>% 
   # check that year-to-year change is reasonable
   col_vals_lt(vars(ht_pc), 2, na_pass = TRUE,
               preconditions = ~ . %>% calc_changes(),
