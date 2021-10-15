@@ -8,7 +8,7 @@ output: html_document
 This uses `pointblank` to create a data validation report. In the resulting table at the end, any failing tests should have a CSV button that lets you download a .csv file of just the rows of data that don't pass that particular validation step.
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
 
 library(pointblank)
 library(pointblank)
@@ -21,7 +21,7 @@ library(stringr)
 ```
 
 
-```{r load-data, message=FALSE, warning=FALSE}
+```{r load-data}
 ha <- read_csv(here("data_clean", "Ha_survey_with_Zombies.csv"))
 ```
 
@@ -51,10 +51,15 @@ calc_changes <- function(x) {
 }
 ```
 
-```{r agent}
+# Data Validation
+
+Checks for data type, range, and duplicates
+
+```{r agent1}
 ha %>%
   create_agent(
-    actions = al_default
+    actions = al_default,
+    label = "Data Validation"
   ) %>%
   col_is_character(vars(plot, habitat, ranch, bdffp_reserve_no, row, code.notes)) %>%
   col_is_numeric(vars(HA_ID_Number, tag_number ,column, year, ht, shts, infl)) %>%
@@ -62,42 +67,72 @@ ha %>%
   col_vals_in_set(vars(row), LETTERS[1:10]) %>%
   col_vals_in_set(vars(habitat), c("1-ha", "CF", "10-ha"),
                   actions = al_strict) %>%
-  col_vals_lte(vars(n), 1,
-              preconditions = ~ . %>%
-                group_by(HA_ID_Number, year) %>%
-                count(),
-              label = "duplicated ID numbers") %>% 
-  # check values are within reasonable range
-  col_vals_between(vars(shts), 1, 20, na_pass = TRUE) %>%
-  col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
-                   actions = al_strict) %>%
-  col_vals_between(vars(infl), 0, 3, na_pass = TRUE) %>%
-  # check seedlings
-  col_vals_lt(vars(shts), 3, na_pass = TRUE,
-              preconditions = ~. %>% filter(code.notes == "sdlg (1)"),
-              label = "seedlings < 3 shoots") %>% 
-  col_vals_lt(vars(ht), 20, na_pass = TRUE,
-              preconditions = ~. %>% filter(code.notes == "sdlg (1)"),
-              label = "seedlings < 20cm") %>% 
-  # check that year-to-year change is reasonable
-  col_vals_lt(vars(ht_pc), 2, na_pass = TRUE,
-              preconditions = ~ . %>% calc_changes(),
-              label = "% ht change < 200%") %>%
-  col_vals_between(vars(ht_diff), -100, 100, na_pass = TRUE,
-                   preconditions = ~. %>% calc_changes(),
-                   label = "Ht change < 100cm",
-                   actions = al_strict) %>%
-  col_vals_between(vars(shts_diff), -5, 5, na_pass = TRUE,
-                   preconditions = ~. %>% calc_changes(),
-                   label = "shoot number change < 5",
-                   actions = al_strict) %>%
-  # check precision is correct
   col_vals_expr(label = "Height is measured to nearest cm",
                 expr = ~ ht %% 1 == 0, actions = al_strict) %>%
   col_vals_expr(label = "Shoots is interger",
                 expr = ~ shts %% 1 == 0, actions = al_strict) %>%
   col_vals_expr(label = "Number of inflorescences is integer",
-                expr = ~ infl %% 1 == 0, actions = al_strict) %>%
-  rows_distinct(actions = al_strict) %>%
+                expr = ~ infl %% 1 == 0, actions = al_strict) %>% 
+  # check values are within reasonable range
+  col_vals_between(vars(shts), 1, 20, na_pass = TRUE,
+                   label = "shoots between 1 and 20") %>%
+  col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
+                   actions = al_strict,
+                   label = "height between 0 and 200cm") %>%
+  col_vals_between(vars(infl), 0, 3, na_pass = TRUE,
+                   label = "infloresences between 0 and 3") %>%
+  col_vals_lte(vars(n), 1,
+               preconditions = ~ . %>%
+                 group_by(HA_ID_Number, year) %>%
+                 count(),
+               label = "duplicated ID numbers") %>% 
+  rows_distinct(actions = al_strict, 
+                label  = "duplicated rows") %>% 
+  interrogate()
+```
+
+
+# Year to year change
+
+Checks that year to year change in size is reasonable
+
+```{r agent2}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Check growth & regression"
+  ) %>%
+  
+  # check that year-to-year change is reasonable
+  col_vals_lt(vars(ht_pc), 2, na_pass = TRUE,
+              preconditions = ~ . %>% calc_changes(),
+              label = "|% change in height| < 200%") %>%
+  col_vals_between(vars(ht_diff), -100, 100, na_pass = TRUE,
+                   preconditions = ~. %>% calc_changes(),
+                   label = "|∆ height| < 100cm",
+                   actions = al_strict) %>%
+  col_vals_between(vars(shts_diff), -5, 5, na_pass = TRUE,
+                   preconditions = ~. %>% calc_changes(),
+                   label = "|∆ shoot number| < 5",
+                   actions = al_strict) %>%
+  interrogate()
+```
+
+# Seedlings
+
+Check that size of seedlings is reasonable
+
+```{r agent3}
+# check seedlings
+ha %>%
+  filter(code.notes == "sdlg (1)") %>% 
+  create_agent(
+    actions = al_strict,
+    label = "Check seedlings"
+  ) %>% 
+  col_vals_lt(vars(shts), 3, na_pass = TRUE,
+              label = "shoots < 3") %>% 
+  col_vals_lt(vars(ht), 20, na_pass = TRUE,
+              label = "height < 20cm") %>% 
   interrogate()
 ```
