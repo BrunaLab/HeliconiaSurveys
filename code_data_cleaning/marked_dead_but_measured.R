@@ -2,7 +2,7 @@ marked_dead_but_measured <- function(test) {
   # This finds any that were marked dead in a year but for whihc there are measurments of shts or ht
   df <- test
   df$code2 <- NA
-  df$code2[df$code.notes == "dead (2)"] <- "dead"
+  df$code2[df$code == "dead (2)"] <- "dead"
   df <- df %>%
     group_by(plot, tag_number) %>%
     mutate(code2 = as.character(code2),

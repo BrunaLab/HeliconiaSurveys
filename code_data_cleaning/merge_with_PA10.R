@@ -12,6 +12,6 @@ merge_with_PA10 <- function(test) {
   # max_ha_id<-max(test$HA_ID_Number,na.rm=TRUE)
   test3 <- test2 %>%
     group_by(plotID,tag_number) %>%
-    mutate(HA_ID_Number = ifelse(is.na(HA_ID_Number), group_indices(),HA_ID_Number))
+    mutate(HA_ID_Number = ifelse(is.na(HA_ID_Number), cur_group_id(),HA_ID_Number))
   return(test3)
 }

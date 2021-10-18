@@ -10,7 +10,7 @@ duplicate_plants <- function(test) {
   
   dupes <-
     semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% 
-    select(plotID,plot, habitat,  HA_ID_Number,  tag_number, year, row_col, shts, ht, code.notes) %>% 
+    select(plotID,plot, habitat,  HA_ID_Number,  tag_number, year, row_col, shts, ht, code) %>% 
     arrange(plot, habitat, tag_number,   HA_ID_Number, row_col,year)
   
   

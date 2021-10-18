@@ -3,7 +3,7 @@ zombies <- function(test) {
   # test<-ha_long
   df2 <- test
   df2$code2 <- NA
-  df2$code2[df2$code.notes == "dead (2)"] <- "dead"
+  df2$code2[df2$code == "dead (2)"] <- "dead"
   df2 <- df2 %>%
     group_by(plot, tag_number) %>%
     mutate(code2 = as.character(code2), # can be avoided if key is a character to begin with
@@ -32,7 +32,7 @@ zombies <- function(test) {
   # 
   zombies_all_yrs <-
     semi_join(test, df3, by = c("plot", "tag_number")) %>% 
-    select(plot, habitat, tag_number, row, column,year, shts, ht, code.notes) %>% 
+    select(plot, habitat, tag_number, row, column,year, shts, ht, code) %>% 
     arrange(habitat, plot, tag_number, year)
   # zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
   # write.csv(zombies_all_yrs, "./data_midway/zombies.csv", row.names = FALSE)
