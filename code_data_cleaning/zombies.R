@@ -1,6 +1,7 @@
 
 zombies <- function(test) {
   # test<-ha_long
+  # test<-pa_wide
   df2 <- test
   df2$code2 <- NA
   df2$code2[df2$code == "dead (2)"] <- "dead"

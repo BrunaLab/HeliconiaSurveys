@@ -261,86 +261,127 @@ pa_long <- PA10_data %>%
                names_to = c("var", "year"))
 
 
+
 # ALL THE PLANTS WITH DUPLICATED NUMBERS
-pa_long_duplicate<-pa_long %>% 
-  group_by(tag_number,var,year,value) %>% 
-  summarize(n=n()) %>% 
-  filter(n>1) %>% 
+pa_long_duplicate<-pa_long %>%
+  group_by(tag_number,var,year,value) %>%
+  summarize(n=n()) %>%
+  filter(n>1) %>%
   arrange(desc(n))
   pa_long_duplicate<-levels(as.factor(pa_long_duplicate$tag_number))
   pa_long_duplicate<-as.data.frame(pa_long_duplicate)
   names(pa_long_duplicate)<-"tag_number"
-  pa_long_duplicate<-pa_long %>% filter(tag_number %in% pa_long_duplicate$tag_number)  
-  
-  
+  pa_long_duplicate<-pa_long %>% filter(tag_number %in% pa_long_duplicate$tag_number)
+
+
   pa_long_no_dupes <- pa_long %>% anti_join(pa_long_duplicate)
-  pa_long_no_dupes <-pa_long_no_dupes %>%  pivot_wider(names_from = var, values_from = value)
+  pa_wide_no_dupes <-pa_long_no_dupes %>%  pivot_wider(names_from = var, values_from = value)
+
+  pa_long_duplicate<-pa_long_duplicate  %>%
+    mutate(tag_number=paste(tag_number,column,sep ="."))
+
+ # TODO: FIX THESE TWO DUPES
+  pa_long_duplicate_fix<-pa_long_duplicate %>%
+    filter(tag_number=="818.7" | tag_number=="825.7")
+  pa_wide_duplicate<-pa_long_duplicate %>%
+    filter(tag_number!="818.7") %>%
+    filter(tag_number!="825.7") %>%
+    pivot_wider(names_from = var, values_from = value)
+
+
+  pa_wide_no_dupes$tag_number<-as.numeric(pa_wide_no_dupes$tag_number)
+  pa_wide_duplicate$tag_number<-as.numeric(pa_wide_duplicate$tag_number)
+  pa_wide<-bind_rows(pa_wide_no_dupes,pa_wide_duplicate)
+  summary(pa_wide$tag_number)
+  pa_wide <- pa_wide %>% rename("plotID"="HA.plot")
   
-  pa_long_duplicate<-pa_long_duplicate  %>% 
-    mutate(tag_number=paste(tag_number,row,column,sep ="-")) 
-  
-  #TODO: FIX THESE TWO DUPES
-  pa_long_duplicate_fix<-pa_long_duplicate %>% 
-    filter(tag_number=="818-B-7" | tag_number=="825-B-7")   
-  pa_long_duplicate<-pa_long_duplicate %>% 
-    filter(tag_number!="818-B-7") %>% 
-    filter(tag_number!="825-B-7") %>% 
-    pivot_wider(names_from = var, values_from = value) 
+  # cols<-c("plot","column")
+  # pa_wide[cols] <- lapply(PA10_data[cols], factor)
+  # cols2<-c("year","bdffp_reserve_no")
+  # pa_wide[cols2] <- lapply(pa_wide[cols2], character)
+  # pa_wide$year <-as.character(pa_wide$year)
+  # pa_wide$plot <-as.factor(pa_wide$plot)
+  # cols3<-c("shts","ht","infl")
+  # pa_wide[cols3] <- lapply(pa_wide[cols3], double,na.o=OK)
   
   
-  pa_long_no_dupes$tag_number<-as.character(pa_long_no_dupes$tag_number)
-  pa_long<-bind_rows(pa_long_no_dupes,pa_long_duplicate)
+  # fix the data types as needed
+  pa_wide$year <- as.numeric(as.character(pa_wide$year))
+  pa_wide$shts <- as.numeric(as.character(pa_wide$shts))
+  pa_wide$ht <- as.numeric(as.character(pa_wide$ht))
+  pa_wide$infl <- as.numeric(as.character(pa_wide$infl))
+  pa_wide$plot <- as.factor(pa_wide$plot)
+  pa_wide$plotID <- as.factor(pa_wide$plotID)
+  pa_wide$ranch <- as.factor(pa_wide$ranch)
+  pa_wide$bdffp_reserve_no <- as.factor(pa_wide$bdffp_reserve_no)
+  pa_wide$row <- as.factor(pa_wide$row)
+  # make habitat (frag size) an ordered factor
+  pa_wide$habitat <- ordered(pa_wide$habitat, levels = c("1-ha", "10-ha", "CF"))
   
-# ######################################################
+  ######################################################
+  # REARRANGE BY plot, then tag number, then year
+  pa_wide <- pa_wide %>% arrange(row,column,tag_number, year)
+  head(pa_wide, 20)
+  
+  
+  write_csv(pa_wide, "./data_midway/PA10_wide_to_join.csv")  
+
+  
+
+  
+  
+  
+  # ######################################################
 # # fix the data types as needed
+pa_long
 names(pa_long)
 pa_long$year <- as.numeric(as.character(pa_long$year))
 range(pa_long$year)
 pa_long$plot<-as.factor(pa_long$plot)
 
-
-# CLARIFY THE CODES
-pa_long$notes <- as.factor(pa_long$notes)
-summary(pa_long$notes)
-levels(pa_long$notes)[levels(pa_long$notes) == "1"] <-
-  "sdlg (1)"
-levels(pa_long$notes)[levels(pa_long$notes) == "ULY"] <-
-  "ULY (3)"
-levels(pa_long$notes)[levels(pa_long$notes) == "3"] <- "ULY (3)"
-levels(pa_long$notes)[levels(pa_long$notes) == "2"] <-
-  "dead (2)"
-levels(pa_long$notes)[levels(pa_long$notes) == "4"] <-
-  "uly? (4)"
-levels(pa_long$notes)[levels(pa_long$notes) == "5"] <-
-  "dead above ground (5)"
-levels(pa_long$notes)[levels(pa_long$notes) == "6"] <-
-  "new plant in plot (6)"
-levels(pa_long$notes)[levels(pa_long$notes) == "7"] <-
-  "dried (7)"
-levels(pa_long$notes)[levels(pa_long$notes) == "10"] <-
-  "resprouting (10)"
-levels(pa_long$notes)[levels(pa_long$notes) == "40"] <-
-  "not on list (40)"
-levels(pa_long$notes)[levels(pa_long$notes) == "50"] <-
-  "no tag (50)"
-levels(pa_long$notes)[levels(pa_long$notes) == "60"] <-
-  "plant missing (60)"
-levels(pa_long$notes)[levels(pa_long$notes) == "70"] <-
-  "under litter (70)"
-levels(pa_long$notes)[levels(pa_long$notes) == "80"] <-
-  "under treefall (80)"
-levels(pa_long$notes)[levels(pa_long$notes) == "90"] <-
-  "under branchfall (90)"
-levels(pa_long$notes)[levels(pa_long$notes) == "100"] <-
-  "dead not on list (100)"
-levels(pa_long$notes)[levels(pa_long$notes) == "200"] <-
-  "2x in field (200)"
-levels(pa_long$notes)[levels(pa_long$notes) == "300"] <-
-  "dead, yr unknown (300)"
-levels(pa_long$notes)[levels(pa_long$notes) == "1, 200 "] <-
-  "sdlg (1)"
-levels(pa_long$notes)[levels(pa_long$notes) == ""] <- NA
-summary(pa_long$notes)
+# 
+# # CLARIFY THE CODES
+# pa_long$notes <- as.factor(pa_long$notes)
+# summary(pa_long$notes)
+# levels(pa_long$notes)[levels(pa_long$notes) == "1"] <-
+#   "sdlg (1)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "ULY"] <-
+#   "ULY (3)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "3"] <- "ULY (3)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "2"] <-
+#   "dead (2)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "4"] <-
+#   "uly? (4)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "5"] <-
+#   "dead above ground (5)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "6"] <-
+#   "new plant in plot (6)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "7"] <-
+#   "dried (7)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "10"] <-
+#   "resprouting (10)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "40"] <-
+#   "not on list (40)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "50"] <-
+#   "no tag (50)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "60"] <-
+#   "plant missing (60)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "70"] <-
+#   "under litter (70)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "80"] <-
+#   "under treefall (80)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "90"] <-
+#   "under branchfall (90)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "100"] <-
+#   "dead not on list (100)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "200"] <-
+#   "2x in field (200)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "300"] <-
+#   "dead, yr unknown (300)"
+# levels(pa_long$notes)[levels(pa_long$notes) == "1, 200 "] <-
+#   "sdlg (1)"
+# levels(pa_long$notes)[levels(pa_long$notes) == ""] <- NA
+# summary(pa_long$notes)
 
 
 #######
@@ -352,34 +393,34 @@ summary(pa_long$notes)
 
 # codes_to_fix<-na.omit(bind_cols(tag.no,notes))
 # rm(tag.no,codes)
-
-pa_long$notes<-trimws(pa_long$notes)
-
-
-pa10_checks<-pa_long %>% filter(notes=="should be c5"|
-                                       notes=="this number belongs to a pvc in a6"|
-                                       notes=="pvc stake not on list"|
-                                       notes=="its in C2"|
-                                       notes=="dead, not on list"|
-                                       notes=="e E6"|
-                                       notes==", must have lost tag"|
-                                       notes=="3 old infl"|
-                                       notes=="actually in A6"|
-                                       notes=="was not on list, could it be 313"|
-                                       notes=="was not on list, could it be 96"|
-                                       notes=="was not on list, could it be 1333"|
-                                       notes=="was not on list, could it be 378"|
-                                       notes=="was not on list, could it be 680"|
-                                       notes=="Dead, Not on List"|
-                                       notes==", must have lost tag"|
-                                       notes=="1 new infl + 1 old infl"|
-                                       notes=="1 old infl"|
-                                       notes=="2 old infl"|
-                                       notes=="2 old infls"|
-                                       notes=="3 old infl"|
-                                       notes=="actualkly in c8"|
-                                       notes=="actually  B5"|
-                                       notes=="actually in A6")
+# 
+# pa_long$notes<-trimws(pa_long$notes)
+# 
+# 
+# pa10_checks<-pa_long %>% filter(notes=="should be c5"|
+#                                        notes=="this number belongs to a pvc in a6"|
+#                                        notes=="pvc stake not on list"|
+#                                        notes=="its in C2"|
+#                                        notes=="dead, not on list"|
+#                                        notes=="e E6"|
+#                                        notes==", must have lost tag"|
+#                                        notes=="3 old infl"|
+#                                        notes=="actually in A6"|
+#                                        notes=="was not on list, could it be 313"|
+#                                        notes=="was not on list, could it be 96"|
+#                                        notes=="was not on list, could it be 1333"|
+#                                        notes=="was not on list, could it be 378"|
+#                                        notes=="was not on list, could it be 680"|
+#                                        notes=="Dead, Not on List"|
+#                                        notes==", must have lost tag"|
+#                                        notes=="1 new infl + 1 old infl"|
+#                                        notes=="1 old infl"|
+#                                        notes=="2 old infl"|
+#                                        notes=="2 old infls"|
+#                                        notes=="3 old infl"|
+#                                        notes=="actualkly in c8"|
+#                                        notes=="actually  B5"|
+#                                        notes=="actually in A6")
 
 # TODO: 
 # 382-C-6	should be c5
@@ -406,68 +447,67 @@ pa10_checks<-pa_long %>% filter(notes=="should be c5"|
 # 780	actualkly in c8
 # 845	actually  B5
 # 854	actually in A6
-
-
-
-pa_long <- pa_long %>%
-  mutate(infl = if_else(is.na(infl) & notes == "1 new infl","1", infl)) %>% 
-  mutate(notes= na_if(notes,"1 new infl")) %>% 
-  mutate(notes == "dead","dead (2)", notes) %>% 
-  mutate(notes= na_if(notes, "dead")) %>% 
-  mutate(notes == "sdlg","sdlg (1)", notes) %>% 
-  mutate(notes= na_if(notes, "sdlg")) %>% 
-  mutate(notes == "under trunk","under treefall (80)", notes) %>% 
-  mutate(notes == "under treefall","under treefall (80)", notes) %>% 
-  mutate(notes == "under fallen trunk","under treefall (80)", notes) %>% 
-  mutate(notes= na_if(notes, "under trunk")) %>%
-  mutate(notes= na_if(notes, "under treefall")) %>%
-  mutate(notes= na_if(notes, "under fallen trunk")) %>%
-  mutate((notes == "under branch" | notes == "under branch, must have lost tag"),
-         "under treefall (90)", notes) %>% 
-  mutate(notes= na_if(notes, "under branch")) %>%
-  mutate(notes= na_if(notes, "under branch, must have lost tag")) %>%
-  mutate(notes == "not on list","not on list (40)", notes) %>% 
-  mutate(notes= na_if(notes, "not on list")) %>% 
-  mutate(notes == "missing","plant missing (60)", notes) %>% 
-  mutate(notes= na_if(notes, "missing")) %>% 
-  mutate(notes == "ULY?","ULY (3)", notes) %>% 
-  mutate(notes= na_if(notes, "ULY?")) %>% 
-  mutate(notes == "not on list. must be313","not on list (40)", notes) %>% 
-  mutate(notes == "not on list. must be96","not on list (40)", notes) %>% 
-  mutate(notes= na_if(notes, "not on list. must be313")) %>% 
-  mutate(notes= na_if(notes, "not on list. must be96")) %>% 
-  mutate(notes= na_if(notes, "must be one of missing")) %>% 
-  mutate(notes == "Dead, Not on List","dead not on list (100)", notes) %>% 
-  mutate(notes == "dead, not on list","dead not on list (100)", notes) %>% 
-  # mutate(notes= na_if(notes, "Dead, Not on List")) %>% 
-  # mutate(notes= na_if(notes, "dead, not on list")) %>% 
-  mutate(notes= na_if(notes, "could be one of missing")) %>% 
-  mutate(notes= na_if(notes, "could be 1333")) %>% 
-  mutate(notes= na_if(notes, "could be 378")) %>% 
-  mutate(notes= na_if(notes, "could be 680?")) %>% 
-  mutate(notes= na_if(notes, "must have lost tag")) %>% 
-  mutate(notes= na_if(notes, "1 new infl + 1 old infl")) %>% 
-  mutate(notes= na_if(notes, "1 old infl")) %>% 
-  mutate(notes= na_if(notes, "2 old infl")) %>% 
-  mutate(notes= na_if(notes, "2 old infls")) %>%
-  mutate(notes= na_if(notes, "3 old infls")) %>%
-  mutate(notes= na_if(notes, "actualkly in c8")) %>%
-  mutate(notes= na_if(notes, "actually  B5")) %>%
-  mutate(notes= na_if(notes, "actually in A6")) %>% 
-  mutate(notes= na_if(notes, "should be c5")) %>%
-  mutate(notes= na_if(notes, "this number belongs to a pvc in a6")) %>%
-  mutate(notes= na_if(notes, "pvc stake not on list")) %>%
-  mutate(notes= na_if(notes, "pvc stake not on list")) %>%
-  mutate(notes= na_if(notes, "its in C2")) %>%
-  mutate(notes= na_if(notes, "e E6")) %>%
-  mutate(notes= na_if(notes, ", must have lost tag")) %>%
-  mutate(notes= na_if(notes, "3 old infl")) 
-
-codes_to_fix<-pa_long %>% select(tag_number,notes) %>% 
-  drop_na() %>% distinct(notes,.keep_all = TRUE) %>% 
-  arrange(notes) # make a summary table of all the different codes in the PA10 dataset 
-
-str(codes_to_fix)
+# 
+# 
+# 
+# pa_long <- pa_long %>%
+#   mutate(infl = if_else(is.na(infl) & notes == "1 new infl","1", infl)) %>% 
+#   mutate(notes= na_if(notes,"1 new infl")) %>% 
+#   mutate(notes = if_else(notes=="dead","dead (2)", notes)) %>% 
+#   mutate(notes= na_if(notes, "dead")) %>% 
+#   mutate(notes = if_else(notes == "sdlg","sdlg (1)", notes)) %>% 
+#   mutate(notes = na_if(notes, "sdlg")) %>% 
+#   mutate(notes = if_else(notes == "under trunk","under treefall (80)", notes)) %>% 
+#   mutate(notes = if_else(notes == "under treefall","under treefall (80)", notes)) %>% 
+#   mutate(notes = if_else(notes == "under fallen trunk","under treefall (80)", notes)) %>% 
+#   mutate(notes= na_if(notes, "under trunk")) %>%
+#   mutate(notes= na_if(notes, "under treefall")) %>%
+#   mutate(notes= na_if(notes, "under fallen trunk")) %>%
+#   mutate(notes = if_else(notes == "under branch" | notes == "under branch), must have lost tag",
+#          "under treefall (90)", notes)) %>% 
+#   mutate(notes= na_if(notes, "under branch")) %>%
+#   mutate(notes= na_if(notes, "under branch, must have lost tag")) %>%
+#   mutate(notes = if_else(notes == "not on list","not on list (40)", notes)) %>% 
+#   mutate(notes= na_if(notes, "not on list")) %>% 
+#   mutate(notes = if_else(notes == "missing","plant missing (60)", notes)) %>% 
+#   mutate(notes= na_if(notes, "missing")) %>% 
+#   mutate(notes = if_else(notes== "ULY?","ULY (3)", notes)) %>% 
+#   mutate(notes= na_if(notes, "ULY?")) %>% 
+#   mutate(notes = if_else(notes== "not on list. must be313","not on list (40)", notes)) %>% 
+#   mutate(notes = if_else(notes== "not on list. must be96","not on list (40)", notes)) %>% 
+#   mutate(notes= na_if(notes, "not on list. must be313")) %>% 
+#   mutate(notes= na_if(notes, "not on list. must be96")) %>% 
+#   mutate(notes= na_if(notes, "must be one of missing")) %>% 
+#   mutate(notes = if_else(notes== "Dead, Not on List","dead not on list (100)", notes)) %>% 
+#   mutate(notes= if_else(notes == "dead, not on list","dead not on list (100)", notes)) %>% 
+#   # mutate(notes= na_if(notes, "Dead, Not on List")) %>% 
+#   # mutate(notes= na_if(notes, "dead, not on list")) %>% 
+#   mutate(notes= na_if(notes, "could be one of missing")) %>% 
+#   mutate(notes= na_if(notes, "could be 1333")) %>% 
+#   mutate(notes= na_if(notes, "could be 378")) %>% 
+#   mutate(notes= na_if(notes, "could be 680?")) %>% 
+#   mutate(notes= na_if(notes, "must have lost tag")) %>% 
+#   mutate(notes= na_if(notes, "1 new infl + 1 old infl")) %>% 
+#   mutate(notes= na_if(notes, "1 old infl")) %>% 
+#   mutate(notes= na_if(notes, "2 old infl")) %>% 
+#   mutate(notes= na_if(notes, "2 old infls")) %>%
+#   mutate(notes= na_if(notes, "3 old infls")) %>%
+#   mutate(notes= na_if(notes, "actualkly in c8")) %>%
+#   mutate(notes= na_if(notes, "actually  B5")) %>%
+#   mutate(notes= na_if(notes, "actually in A6")) %>% 
+#   mutate(notes= na_if(notes, "should be c5")) %>%
+#   mutate(notes= na_if(notes, "this number belongs to a pvc in a6")) %>%
+#   mutate(notes= na_if(notes, "pvc stake not on list")) %>%
+#   mutate(notes= na_if(notes, "pvc stake not on list")) %>%
+#   mutate(notes= na_if(notes, "its in C2")) %>%
+#   mutate(notes= na_if(notes, "e E6")) %>%
+#   mutate(notes= na_if(notes, ", must have lost tag")) %>%
+#   mutate(notes= na_if(notes, "3 old infl")) 
+# 
+# codes_to_fix<-pa_long %>% select(tag_number,notes) %>% 
+#   drop_na() %>% distinct(notes,.keep_all = TRUE) %>% 
+#   arrange(notes) # make a summary table of all the different codes in the PA10 dataset 
+# str(codes_to_fix)
 
 # 
 # # These are codes that need to be fixed. will save as a csv for review.
@@ -528,11 +568,6 @@ str(codes_to_fix)
 # pa_long<-anti_join(pa_long,PA10_checks,by="tag_number")
 # colnames(PA10_checks)
 
-
-######################################################
-# REARRANGE BY plot, then tag number, then year
-pa_long <- pa_long %>% arrange(row,column,tag_number, year)
-head(pa_long, 20)
 
 
 ######3
@@ -712,8 +747,8 @@ summary(pa_long)
 # these are the rows to remove (blank years after a plant died)
 
 # first change th tag number is main master file to numeric
-pa_long$tag_number<-as.numeric(levels(pa_long$tag_number))[pa_long$tag_number]
-
+# pa_long$tag_number<-as.numeric(levels(pa_long$tag_number))[pa_long$tag_number]
+# pa_long$tag_number<-as.numeric(pa_long$tag_number)
 # 
 # # These following will be removed with an antijoin
 # 
@@ -800,21 +835,21 @@ pa_long$tag_number<-as.numeric(levels(pa_long$tag_number))[pa_long$tag_number]
 # 5754	10-ha	823	2006	2	39	ULY (3)	*** THIS IS A WEIRD DUPLICATE 
 # 5754	10-ha	824	2006	1	29	ULY (3)	*** THIS IS A WEIRD DUPLICATE 
 
-
-
+# pa_long<-pa_long %>% rename("code"="notes","plotID"="plot")
+# names(pa_long)
 ############################################
 # This finds any that were marked dead in a year but for whihc there are measurments of shts or ht
 source("./code_data_cleaning/marked_dead_but_measured.R")
-df<-marked_dead_but_measured(pa_long)
+df<-marked_dead_but_measured(pa_wide)
 
 #THIS WILL CHECK TO SEE IF THERE ARE SOME THAT WERE REGISTERED DEAD BUT
 # FOR WHICH THERE ARE ht or sht measurments in years AFTER they were marked dead
 # returns 'pa_long', saves csv of things to check
 source("./code_data_cleaning/zombies.R")
-pa_long<-zombies(pa_long)
+pa_long_zombies<-zombies(pa_wide)
 
 source("./code_data_cleaning/duplicate_plants.R")
-dupes<-duplicate_plants(pa_long)
+dupes<-duplicate_plants(pa_wide)
 write.csv(dupes, "./data_midway/dupes_PA10.csv", row.names = FALSE)
 dupe_simplified <- dupes %>% 
   select(tag_number,row_col) %>% 
@@ -822,4 +857,4 @@ dupe_simplified <- dupes %>%
   slice(1)
 write.csv(dupe_simplified, "./data_midway/dupe_numbers_PA10.csv", row.names = FALSE)
 
-write.csv(pa_long, "./data_midway/PA10_survey_with_Zombies.csv", row.names = FALSE)
+write.csv(pa_wide, "./data_midway/PA10_survey_with_Zombies.csv", row.names = FALSE)

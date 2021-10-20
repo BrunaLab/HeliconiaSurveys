@@ -1,5 +1,6 @@
 marked_dead_but_measured <- function(test) {
   # This finds any that were marked dead in a year but for whihc there are measurments of shts or ht
+  # test<-pa_wide
   df <- test
   df$code2 <- NA
   df$code2[df$code == "dead (2)"] <- "dead"

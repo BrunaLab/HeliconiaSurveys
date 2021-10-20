@@ -1,10 +1,14 @@
 merge_with_PA10 <- function(test) {
-  PA10 <- read_csv("./data_midway/PA10_survey_with_Zombies.csv")
-  PA10 <- PA10 %>% rename("plotID"="HA.plot", "code"='code.notes')
+  PA10 <- read_csv("./data_midway/PA10_wide_to_join.csv")
+  
+  # PA10 <- PA10 %>% rename("plotID"="HA.plot")
   str(test$column)
   PA10$column <-as.factor(PA10$column)
   PA10$plot <-as.factor(PA10$plot)
-  PA10$bdffp_reserve_no <-as.character(PA10$bdffp_reserve_no)
+  PA10$year <-as.character(PA10$year)
+  PA10$bdffp_reserve_no <-as.factor(PA10$bdffp_reserve_no)
+  PA10$column <-as.factor(PA10$column)
+  
   test2 <- bind_rows(test,PA10)
   
   

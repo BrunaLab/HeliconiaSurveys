@@ -34,14 +34,14 @@ names(ha_data)[58] <- "row_08"
 names(ha_data)[59] <- "column_08"
 names(ha_data)[64] <- "x_09"
 names(ha_data)[65] <- "y_09"
-names(ha_data)[66] <- "notes_to_eb"
+names(ha_data)[66] <- "code_to_eb"
 names(ha_data)
 
 # correct the data types assigned to each
 str(ha_data)
 
 # set as character
-ha_data$notes_to_eb <- as.character(ha_data$notes_to_eb)
+ha_data$code_to_eb <- as.character(ha_data$code_to_eb)
 
 # set these as a factor
 cols <-
@@ -65,8 +65,6 @@ cols <-
 ha_data[cols] <- lapply(ha_data[cols], factor)
 str(ha_data)
 
-# make habitat (frag size) an ordered factor
-ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
 # Convert the names of ranches to 3 letter codes
 levels(ha_data$ranch)[match("PortoAlegre", levels(ha_data$ranch))] <- "PAL"
@@ -302,7 +300,7 @@ colnames(ha_data)
 ha_data <- ha_data %>% filter(!is.na(HA_ID_Number))
 
 # # alternate solution using most recent version of tidyr:
-ha_long <- ha_data %>%
+ha_data <- ha_data %>%
   mutate(across(starts_with(c("shts_", "ht_", "infl_", "notes_")),
                 as.character)) %>%
   pivot_longer(cols = starts_with(c("shts_", "ht_", "infl_", "notes_")),
@@ -310,66 +308,180 @@ ha_long <- ha_data %>%
                names_to = c("var", "year")) %>%
    pivot_wider(names_from = var, values_from = value)
 
-head(ha_long, 10)
-colnames(ha_long)
-summary(ha_long)
+head(ha_data, 10)
+colnames(ha_data)
+summary(ha_data)
+
+
+
+ha_data$shts <- as.numeric(as.numeric(ha_data$shts))
+ha_data$ht <- as.numeric(as.numeric(ha_data$ht))
+ha_data$infl <- as.numeric(as.numeric(ha_data$infl))
+
+
+str(pa_wide)
+str(ha_data)
+names(pa_wide)
+names(ha_data)
+
+# merge the PA10 data -----------------------------------------------------
+source("./code_data_cleaning/merge_with_PA10.R")
+ha_data <- merge_with_PA10(ha_data)
+names(ha_data)
+ha_data <-ha_data %>% rename("code"="notes") %>%
+  replace_na(list(infl = 0))   #convert all NA in infl column to zero
 
 # fix the data types as needed
-ha_long$year <- as.numeric(as.character(ha_long$year))
-ha_long$shts <- as.numeric(as.character(ha_long$shts))
-ha_long$ht <- as.numeric(as.character(ha_long$ht))
-ha_long$infl <- as.numeric(as.character(ha_long$infl))
-summary(ha_long$year)
-ha_long$plot <- as.factor(ha_long$plot)
+ha_data$infl <- as.character(ha_data$infl)
+# ha_data$year <- as.numeric(as.character(ha_data$year))
+ha_data$shts <- as.numeric(as.character(ha_data$shts))
+ha_data$ht <- as.numeric(as.character(ha_data$ht))
+# ha_data$infl <- as.numeric(as.character(ha_data$infl))
+ha_data$plot <- as.factor(ha_data$plot)
+ha_data$plotID <- as.factor(ha_data$plotID)
+ha_data$ranch <- as.factor(ha_data$ranch)
+ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
+ha_data$row <- as.factor(ha_data$row)
+# make habitat (frag size) an ordered factor
+ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
+
+
+
+
+
+
+
 
 # CLARIFY THE CODES
-ha_long <- rename(ha_long, "code"="notes")
-ha_long$code <- as.factor(ha_long$code)
-summary(ha_long$code)
-levels(ha_long$code)[levels(ha_long$code) == "1"] <-
-  "sdlg (1)"
-levels(ha_long$code)[levels(ha_long$code) == "ULY"] <-
-  "ULY (3)"
-levels(ha_long$code)[levels(ha_long$code) == "3"] <- "ULY (3)"
-levels(ha_long$code)[levels(ha_long$code) == "2"] <-
-  "dead (2)"
-levels(ha_long$code)[levels(ha_long$code) == "4"] <-
-  "uly? (4)"
-levels(ha_long$code)[levels(ha_long$code) == "5"] <-
-  "dead above ground (5)"
-levels(ha_long$code)[levels(ha_long$code) == "6"] <-
-  "new plant in plot (6)"
-levels(ha_long$code)[levels(ha_long$code) == "7"] <-
-  "dried (7)"
-levels(ha_long$code)[levels(ha_long$code) == "10"] <-
-  "resprouting (10)"
-levels(ha_long$code)[levels(ha_long$code) == "40"] <-
-  "not on list (40)"
-levels(ha_long$code)[levels(ha_long$code) == "50"] <-
-  "no tag (50)"
-levels(ha_long$code)[levels(ha_long$code) == "60"] <-
-  "plant missing (60)"
-levels(ha_long$code)[levels(ha_long$code) == "70"] <-
-  "under litter (70)"
-levels(ha_long$code)[levels(ha_long$code) == "80"] <-
-  "under treefall (80)"
-levels(ha_long$code)[levels(ha_long$code) == "90"] <-
-  "under branchfall (90)"
-levels(ha_long$code)[levels(ha_long$code) == "100"] <-
-  "dead not on list (100)"
-levels(ha_long$code)[levels(ha_long$code) == "200"] <-
-  "2x in field (200)"
-levels(ha_long$code)[levels(ha_long$code) == "300"] <-
-  "dead, yr unknown (300)"
-levels(ha_long$code)[levels(ha_long$code) == "1, 200 "] <-
-  "sdlg (1)"
-levels(ha_long$code)[levels(ha_long$code) == ""] <- NA
-summary(ha_long$code)
+ha_data <- rename(ha_data, "code"="code")
+ha_data$code <- as.factor(ha_data$code)
+summary(ha_data$code)
+levels(ha_data$code)[levels(ha_data$code) == "1"] <-  "sdlg (1)"
+levels(ha_data$code)[levels(ha_data$code) == "ULY"] <-  "ULY (3)"
+levels(ha_data$code)[levels(ha_data$code) == "3"] <- "ULY (3)"
+levels(ha_data$code)[levels(ha_data$code) == "2"] <-  "dead (2)"
+levels(ha_data$code)[levels(ha_data$code) == "4"] <-  "ULY (3)"
+levels(ha_data$code)[levels(ha_data$code) == "5"] <-  "dead (2)"
+levels(ha_data$code)[levels(ha_data$code) == "6"] <-  "new plant in plot (6)"
+levels(ha_data$code)[levels(ha_data$code) == "7"] <-  "dried (7)"
+levels(ha_data$code)[levels(ha_data$code) == "10"] <-  "resprouting (10)"
+levels(ha_data$code)[levels(ha_data$code) == "40"] <-  "not on list (40)"
+levels(ha_data$code)[levels(ha_data$code) == "50"] <-  "no tag (50)"
+levels(ha_data$code)[levels(ha_data$code) == "60"] <-  "missing (60)"
+levels(ha_data$code)[levels(ha_data$code) == "70"] <-  "under litter (70)"
+levels(ha_data$code)[levels(ha_data$code) == "80"] <-  "under treefall (80)"
+levels(ha_data$code)[levels(ha_data$code) == "90"] <-  "under branchfall (90)"
+levels(ha_data$code)[levels(ha_data$code) == "100"] <-  "dead and not on list (100)"
+levels(ha_data$code)[levels(ha_data$code) == "200"] <-  "2x in field (200)"
+levels(ha_data$code)[levels(ha_data$code) == "300"] <-  "dead (2)"
+levels(ha_data$code)[levels(ha_data$code) == "1, 200 "] <-  "sdlg (1)"
+levels(ha_data$code)[levels(ha_data$code) == ""] <- NA
+summary(as.factor(ha_data$code))
+levels(as.factor(ha_data$code))
 
+
+
+# CLARIFY THE CODES FROM PA10
+
+ha_data$notes <-as.character(NA)
+ha_data$code<-as.character(ha_data$code)
+
+ha_data <- ha_data %>%
+  mutate(notes = if_else(code == "not on list. must be313","is it 133?", notes)) %>% 
+  mutate(notes = if_else(code == "1 new infl + 1 old infl","1 new infl + 1 old infl", notes)) %>% 
+  mutate(notes = if_else(code == "not on list. must be96","is it 96?", notes)) %>% 
+  mutate(notes = if_else(code == "1 old infl","1 old infl", notes)) %>% 
+  mutate(notes = if_else(code == "2 old infl","2 old infl", notes)) %>% 
+  mutate(notes = if_else(code == "2 old infls","2 old infl", notes)) %>% 
+  mutate(notes = if_else(code == "3 old infls","2 old infl", notes)) %>% 
+  mutate(notes = if_else(code == "actualkly in c8","in c8", notes)) %>% 
+  mutate(notes = if_else(code == "actually  B5","in b5", notes)) %>% 
+  mutate(notes = if_else(code == "actually  A6","in a6", notes)) %>% 
+  mutate(notes = if_else(code == "should be c5","in c5", notes)) %>% 
+  mutate(notes = if_else(code == "this number belongs to a pvc in a6","this no belongs to pvc in a6", notes)) %>% 
+  mutate(notes = if_else(code == "pvc stake not on list","pvc stake not on list", notes)) %>% 
+  mutate(notes = if_else(code == "its in C2","its in C2", notes)) %>% 
+  mutate(notes = if_else(code == "e E6","its in e6", notes)) %>% 
+  mutate(notes = if_else(code == "3 old infl","2 old infl", notes)) %>% 
+  mutate(notes = if_else(code == "horrible treefall in plot","horrible treefall in plot", notes)) %>% 
+  mutate(notes = if_else(code == "treefall in plot","treefall in plot", notes)) %>% 
+  mutate(notes = if_else(code == "horrible treefall in plot, can barely make it in","horrible treefall in plot, can barely make it in", notes)) %>% 
+  mutate(notes = if_else(code == "lots of small branchfalls in plot","lots of small branchfalls in plot", notes)) %>% 
+  mutate(notes = if_else(code == "plot is 50% treefall","plot is 50% treefall", notes)) %>% 
+  mutate(notes = if_else(code == "trefall","trefall", notes)) %>% 
+  mutate(code = if_else(code=="dead","dead (2)", code)) %>% 
+  mutate(code= na_if(code, "dead")) %>% 
+  mutate(code = if_else(code == "sdlg","sdlg (1)", code)) %>% 
+  mutate(code = na_if(code, "sdlg")) %>% 
+  mutate(code = if_else(code == "under trunk","under treefall (80)", code)) %>% 
+  mutate(code = if_else(code == "under treefall","under treefall (80)", code)) %>% 
+  mutate(code = if_else(code == "under fallen trunk","under treefall (80)", code)) %>% 
+  mutate(code= na_if(code, "under trunk")) %>%
+  mutate(code= na_if(code, "under treefall")) %>%
+  mutate(code= na_if(code, "under fallen trunk")) %>%
+  mutate(code = if_else(code == "under branch" | code == "under branch), must have lost tag",
+                         "under branchfall (90)", code)) %>% 
+  mutate(code= na_if(code, "under branch")) %>%
+  mutate(code= na_if(code, "under branch, must have lost tag")) %>%
+  mutate(code = if_else(code == "not on list","not on list (40)", code)) %>% 
+  mutate(code= na_if(code, "not on list")) %>% 
+  mutate(code = if_else(code == "missing","missing (60)", code)) %>% 
+  mutate(code= na_if(code, "missing")) %>% 
+  mutate(code = if_else(code== "ULY?","ULY (3)", code)) %>% 
+  mutate(code= na_if(code, "ULY?")) %>% 
+  mutate(code = if_else(code== "not on list. must be313","not on list (40)", code)) %>% 
+  mutate(code = if_else(code== "not on list. must be96","not on list (40)", code)) %>% 
+  mutate(code= na_if(code, "not on list. must be313")) %>% 
+  mutate(code= na_if(code, "not on list. must be96")) %>% 
+  mutate(code= na_if(code, "must be one of missing")) %>% 
+  mutate(code = if_else(code== "Dead, Not on List","dead and not on list (100)", code)) %>% 
+  mutate(code= if_else(code == "dead, not on list","dead and not on list (100)", code)) %>% 
+  mutate(code= na_if(code, "Dead, Not on List")) %>% 
+  mutate(code= na_if(code, "dead, not on list")) %>% 
+  mutate(code= na_if(code, "could be one of missing")) %>% 
+  mutate(code= na_if(code, "could be 1333")) %>% 
+  mutate(code= na_if(code, "could be 378")) %>% 
+  mutate(code= na_if(code, "could be 680?")) %>% 
+  mutate(code= na_if(code, "must have lost tag")) %>% 
+  mutate(code= na_if(code, "1 new infl + 1 old infl")) %>% 
+  mutate(code= na_if(code, "1 old infl")) %>% 
+  mutate(code= na_if(code, "2 old infl")) %>% 
+  mutate(code= na_if(code, "2 old infls")) %>%
+  mutate(code= na_if(code, "3 old infls")) %>%
+  mutate(code= na_if(code, "actualkly in c8")) %>%
+  mutate(code= na_if(code, "actually  B5")) %>%
+  mutate(code= na_if(code, "actually in A6")) %>% 
+  mutate(code= na_if(code, "should be c5")) %>%
+  mutate(code= na_if(code, "this number belongs to a pvc in a6")) %>%
+  mutate(code = if_else(code == "pvc stake not on list","not on list (40)", code)) %>% 
+  mutate(code= na_if(code, "pvc stake not on list")) %>%
+  # mutate(code= na_if(code, "pvc stake not on list")) %>%
+  mutate(code= na_if(code, "its in C2")) %>%
+  mutate(code= na_if(code, "e E6")) %>%
+  mutate(code= na_if(code, ", must have lost tag")) %>%
+  mutate(code= na_if(code, "3 old infl")) %>% 
+  mutate(infl = if_else(infl=="0" & code == "1 new infl" , "1", infl)) %>% 
+  mutate(code= na_if(code,"1 new infl")) %>% 
+  mutate(code= na_if(code, "horrible treefall in plot")) %>%
+  mutate(code= na_if(code, "treefall in plot")) %>%
+  mutate(code= na_if(code, "horrible treefall in plot, can barely make it in")) %>%
+  mutate(code= na_if(code, "lots of small branchfalls in plot")) %>%
+  mutate(code= na_if(code, "plot is 50% treefall")) %>%
+  mutate(code= na_if(code, "trefall")) 
+
+    
+levels(as.factor(ha_data$code))
+levels(as.factor(ha_data$notes))
+
+
+codes_to_fix<-ha_data %>% select(tag_number,code) %>% 
+  drop_na() %>% distinct(code,.keep_all = TRUE) %>% 
+  arrange(code) # make a summary table of all the different codes in the PA10 dataset 
+summary(as.factor(codes_to_fix$code))
 
 # Rearrange plot, then tag number, then year
-ha_long <- ha_long %>% arrange(plot, tag_number, year)
-head(ha_long, 20)
+ha_data <- ha_data %>% arrange(plot, tag_number, year)
+head(ha_data, 20)
 
 
 
@@ -383,163 +495,163 @@ check_dupes <- function(df){
     pull(HA_ID_Number) %>% 
     unique()
 }
-check_dupes(ha_long)
+check_dupes(ha_data)
 
-
-# merge the PA10 data -----------------------------------------------------
-source("./code_data_cleaning/merge_with_PA10.R")
-ha_long <- merge_with_PA10(ha_long)
-
-
-check_dupes(ha_long)
 
 # remove the rows with NA across all columns -----------------------------
 
-ha_long <- ha_long %>% drop_na(plot, habitat, ranch)
-check_dupes(ha_long)
+ha_data <- ha_data %>% drop_na(plot, habitat, ranch)
+
 
 
 # correction - x/y coordinates and row/col--------------------------------
 
 # a few were entered with a comma instead of decimal
-ha_long$x_09 <- gsub("[\\,;]", "\\.", ha_long$x_09)
-ha_long
+ha_data$x_09 <- gsub("[\\,;]", "\\.", ha_data$x_09)
+ha_data
 
 # some of the errors in plant location (Row/Column) corrected below found 
 # by ES, see https://github.com/BrunaLab/HeliconiaDemography/issues/5
 
 # corrections - Florestal -------------------------------------------------
 
-# ha_data$notes_2005[ha_data$plot == "Florestal-CF" & 
+# ha_data$code_2005[ha_data$plot == "Florestal-CF" & 
 #                      ha_data$tag_number == "1"] <- 60
-ha_long$code[ha_long$plot == 'Florestal-CF' &
-                  ha_long$year == 2005 &
-                  ha_long$tag_number == 1] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 'Florestal-CF' &
+                  ha_data$year == 2005 &
+                  ha_data$tag_number == 1] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 'Florestal-CF' &
-                     ha_long$year == 2004 &
-                     ha_long$tag_number == 1508] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 'Florestal-CF' &
+                     ha_data$year == 2004 &
+                     ha_data$tag_number == 1508] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 'Florestal-CF' &
-                     ha_long$year == 2004 &
-                     ha_long$tag_number == 1508] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 'Florestal-CF' &
+                     ha_data$year == 2004 &
+                     ha_data$tag_number == 1508] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 'Florestal-CF' &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 1508] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 'Florestal-CF' &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 1508] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 'Florestal-CF' &
-                     ha_long$year == 2004 &
-                     ha_long$tag_number == 799] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 'Florestal-CF' &
+                     ha_data$year == 2004 &
+                     ha_data$tag_number == 799] <- "missing (60)"
 
-ha_long$code[ha_long$plot == 'Florestal-CF' &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 799] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 'Florestal-CF' &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 799] <- "missing (60)"
 
 # correcting location
-ha_long$column[ha_long$plot == "Florestal-CF" & ha_long$column == 0] <- 1
-# ha_long$column[ha_long$plot == "Florestal-CF" & ha_long$HA_ID_Number == 5806] <- "1"
-# ha_long$column[ha_long$plot == "Florestal-CF" & ha_long$HA_ID_Number == 5850] <- "1"
-# ha_long$column[ha_long$plot == "Florestal-CF" & ha_long$HA_ID_Number == 5902] <- "1"
-# ha_long$column[ha_long$plot == "Florestal-CF" & ha_long$HA_ID_Number == 6107] <- "1"
-# ha_long$column[ha_long$plot == "Florestal-CF" & ha_long$HA_ID_Number == 6204] <- "1"
-# ha_long$column[ha_long$plot == "Florestal-CF" & ha_long$HA_ID_Number == 7009] <- "1"
-
+ha_data$column[ha_data$plot == "Florestal-CF" & ha_data$column == 0] <- 1
 
 
 # plant size entered incorrectly (entered as 449, should be 49)
-ha_long$ht[ha_long$plot == "Florestal-CF" & 
-             ha_long$year == 2003 &
-             ha_long$tag_number == 590] <- 49
+ha_data$ht[ha_data$plot == "Florestal-CF" & 
+             ha_data$year == 2003 &
+             ha_data$tag_number == 590] <- 49
 
 
 # corrections 5750 --------------------------------------------------------
 
 # Some of the plants in 5750 were put as Row "L" because he thought they might be
 # just outside the plot. I converted to J.
-ha_long$row[ha_long$plot == "5750" & ha_long$row == "L"] <- "J"
+ha_data$row[ha_data$plot == "5750" & ha_data$row == "L"] <- "J"
 
 
 # If you want to convert these to 0 to say they are inside the plot,
 # then uncomment these two lines
-# ha_long$x_09[ha_long$x_09 < 1] <- 0
-# ha_long$y_09[ha_long$x_09 < 1] <- 0
+# ha_data$x_09[ha_data$x_09 < 1] <- 0
+# ha_data$y_09[ha_data$x_09 < 1] <- 0
 
 
 # Plant 236 - add code for year it's missing, delete the plot
 # it duplicate numbers, delete incorrect plot
-ha_long$code[ha_long$plot == 5750 &
-  ha_long$year == 2006 &
-  ha_long$tag_number == 236] <- "plant missing (60)"
-ha_long$code[ha_long$plot == 5750 &
-  ha_long$year == 2008 &
-  ha_long$tag_number == 236] <- "plant missing (60)"
-ha_long$code[ha_long$plot == 5750 &
-  ha_long$year == 2009 &
-  ha_long$tag_number == 236] <- "plant missing (60)"
-ha_long$shts[ha_long$plot == 5750 &
-  ha_long$year == 2007 &
-  ha_long$tag_number == 236] <- 1
-ha_long$ht[ha_long$plot == 5750 &
-  ha_long$year == 2007 &
-  ha_long$tag_number == 236] <- 10
+ha_data$code[ha_data$plot == 5750 &
+  ha_data$year == 2006 &
+  ha_data$tag_number == 236] <- "missing (60)"
+ha_data$code[ha_data$plot == 5750 &
+  ha_data$year == 2008 &
+  ha_data$tag_number == 236] <- "missing (60)"
+ha_data$code[ha_data$plot == 5750 &
+  ha_data$year == 2009 &
+  ha_data$tag_number == 236] <- "missing (60)"
+ha_data$shts[ha_data$plot == 5750 &
+  ha_data$year == 2007 &
+  ha_data$tag_number == 236] <- 1
+ha_data$ht[ha_data$plot == 5750 &
+  ha_data$year == 2007 &
+  ha_data$tag_number == 236] <- 10
 # delete the duplicate
-to_delete <- ha_long %>%
+to_delete <- ha_data %>%
   filter(plot == 5750 &
     tag_number == 236 &
     row == "G" &
     column == 9)
-ha_long <- anti_join(ha_long, to_delete)
+ha_data <- anti_join(ha_data, to_delete)
 rm(to_delete)
 
 # 5750
 # Updating Codes 
-ha_long$code[ha_long$plot == "5750" & ha_long$year == 2005 & ha_long$tag_number == 864] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5750" & ha_data$year == 2005 & ha_data$tag_number == 864] <- "missing (60)"
 
 # location
-ha_long$column[ha_long$plot == "5750" & ha_long$HA_ID_Number == 962] <- 6
-ha_long$column[ha_long$plot == "5750" & ha_long$HA_ID_Number == 977] <- 10
-ha_long$row[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1133] <- "G"
-ha_long$column[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1133] <- 6
-ha_long$row[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1135] <- "G"
-ha_long$column[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1135] <- 6
-ha_long$row[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1280] <- "J"
-ha_long$row[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1284] <- "J"
-ha_long$column[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1577] <- 6
-ha_long$column[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1778] <- 10
-ha_long$column[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1790] <- 10
-ha_long$row[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1836] <- "J"
-ha_long$column[ha_long$plot == "5750" & ha_long$HA_ID_Number == 2149] <- 6
-ha_long$row[ha_long$plot == "5750" & ha_long$HA_ID_Number == 1602] <- "J"
+ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 962] <- 6
+ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 977] <- 10
+ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1133] <- "G"
+ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1133] <- 6
+ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1135] <- "G"
+ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1135] <- 6
+ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1280] <- "J"
+ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1284] <- "J"
+ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1577] <- 6
+ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1778] <- 10
+ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1790] <- 10
+ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1836] <- "J"
+ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 2149] <- 6
+ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1602] <- "J"
+
+
+# 5750
+# tag_no 988
+# ha_data$ht[ha_data$plot=="5750" & ha_data$year==2007 & ha_data$tag_number==988] <-38
+# ha_data$shts[ha_data$plot=="5750" & ha_data$year==2007 & ha_data$tag_number==988] <-3
+# ha_data$code[ha_data$plot=="5750" & ha_data$year==2007 & ha_data$tag_number==988] <- NA
+# ha_data$ht[ha_data$plot=="5750" & ha_data$year==2008 & ha_data$tag_number==988] <-60
+# ha_data$shts[ha_data$plot=="5750" & ha_data$year==2008 & ha_data$tag_number==988] <-2
+# ha_data$ht[ha_data$plot=="5750" & ha_data$year==2009 & ha_data$tag_number==988] <-66
+# ha_data$shts[ha_data$plot=="5750" & ha_data$year==2009 & ha_data$tag_number==988] <-3
+
+
+
 
 # corrections 5756 --------------------------------------------------------
 
 # tag no. 793
-ha_long$code[ha_long$plot == 5756 &
-  (ha_long$year == 2005 |
-    ha_long$year == 2006) &
-  ha_long$tag_number == 793] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5756 &
+  (ha_data$year == 2005 |
+    ha_data$year == 2006) &
+  ha_data$tag_number == 793] <- "missing (60)"
 
 # Tag 372
-ha_long$ht[ha_long$plot == "5756" & ha_long$year == 2005 & ha_long$tag_number == 372] <- 26
+ha_data$ht[ha_data$plot == "5756" & ha_data$year == 2005 & ha_data$tag_number == 372] <- 26
 # TODO: did this one change tag numbers? 2x
 
 # Tag 1616
-ha_long$ht[ha_long$plot == "5756" & ha_long$year == 2004 & ha_long$tag_number == 1616] <- 77
-ha_long$shts[ha_long$plot == "5756" & ha_long$year == 2004 & ha_long$tag_number == 1616] <- 4
-ha_long$code[ha_long$plot == 5756 &
-  (ha_long$year == 2005 | ha_long$year == 2006) &
-  ha_long$tag_number == 1616] <- "plant missing (60)"
+ha_data$ht[ha_data$plot == "5756" & ha_data$year == 2004 & ha_data$tag_number == 1616] <- 77
+ha_data$shts[ha_data$plot == "5756" & ha_data$year == 2004 & ha_data$tag_number == 1616] <- 4
+ha_data$code[ha_data$plot == 5756 &
+  (ha_data$year == 2005 | ha_data$year == 2006) &
+  ha_data$tag_number == 1616] <- "missing (60)"
 # TODO: figure out which of the plants in the plot this is - tags lost in tfall
 # in the first yr this showed up
 
 # Plant 933
-ha_long$HA_ID_Number <- as.character(ha_long$HA_ID_Number)
-ha_long <- ha_long %>%
+ha_data$HA_ID_Number <- as.character(ha_data$HA_ID_Number)
+ha_data <- ha_data %>%
   mutate(HA_ID_Number = if_else((plot == 5756 & tag_number == 933 & year < 2006), "4733.1", HA_ID_Number)) %>%
   mutate(HA_ID_Number = if_else((plot == 5756 & tag_number == 933 & year > 2005), "4733.2", HA_ID_Number))
 
@@ -553,24 +665,24 @@ ha_long <- ha_long %>%
 # Plant 929
 # 929 in C8 is a renumber after tag was lost, I think it was written down
 # incorrectly and needs to be 2x in field
-ha_long$code[ha_long$plot == "5756" &
-  ha_long$year == 2007 &
-  ha_long$row == "C" &
-  ha_long$column == 8 &
-  ha_long$tag_number == 929] <- "ULY (3)"
+ha_data$code[ha_data$plot == "5756" &
+  ha_data$year == 2007 &
+  ha_data$row == "C" &
+  ha_data$column == 8 &
+  ha_data$tag_number == 929] <- "ULY (3)"
 
 # Plant 816
 # 816 in D9 is a renumber after tag was lost, I think it was written down
 # incorrectly and needs to be 2x in field
-ha_long$code[ha_long$plot == "5756" &
-  ha_long$year == 2009 &
-  ha_long$row == "D" &
-  ha_long$column == 9 &
-  ha_long$tag_number == 816] <- "ULY (3)"
+ha_data$code[ha_data$plot == "5756" &
+  ha_data$year == 2009 &
+  ha_data$row == "D" &
+  ha_data$column == 9 &
+  ha_data$tag_number == 816] <- "ULY (3)"
 
 # tag no 29
 # 29 in 5756 was actually in E3, and was retagged as 1663 in 07
-ha_long <- ha_long %>%
+ha_data <- ha_data %>%
   mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 1998), 54, ht)) %>%
   mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 1999), 56, ht)) %>%
   mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 2000), 96, ht)) %>%
@@ -587,68 +699,68 @@ ha_long <- ha_long %>%
   mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2003), 3, shts)) %>%
   mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2004), 3, shts)) %>%
   mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2005), 2, shts))
-ha_long$code[ha_long$plot == "5756" &
-  (ha_long$year == 2005 |
-    ha_long$year == 2006) &
-  ha_long$tag_number == 1663] <- NA
-to_delete <- ha_long %>%
+ha_data$code[ha_data$plot == "5756" &
+  (ha_data$year == 2005 |
+    ha_data$year == 2006) &
+  ha_data$tag_number == 1663] <- NA
+to_delete <- ha_data %>%
   filter(plot == "5756" &
     tag_number == 29 &
     row == "E" &
     column == 3)
-ha_long <- anti_join(ha_long, to_delete)
+ha_data <- anti_join(ha_data, to_delete)
 rm(to_delete)
 
 # tag_no 1602
-ha_long <- ha_long[!(ha_long$plot == "5756" &
-  ha_long$tag_number == 1602 &
-  ha_long$row == "A" &
-  ha_long$column == 9), ]
+ha_data <- ha_data[!(ha_data$plot == "5756" &
+  ha_data$tag_number == 1602 &
+  ha_data$row == "A" &
+  ha_data$column == 9), ]
 
 
 
 # Updating Codes 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 1261] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 1261] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 1292] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 1292] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 1294] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 1294] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 141] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 141] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 690] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 690] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2004 &
-                     ha_long$tag_number == 707] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2004 &
+                     ha_data$tag_number == 707] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 707] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 707] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 707] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 707] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5756" &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 50] <- "under treefall (80)"
+ha_data$code[ha_data$plot == "5756" &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 50] <- "under treefall (80)"
 
 
 # incorrectly recorded 10 infl in 2007, should be NA
-ha_long$infl[ha_long$plot == "5756" &
-                     ha_long$year == 2007 &
-                     ha_long$tag_number == 403] <- NA
+ha_data$infl[ha_data$plot == "5756" &
+                     ha_data$year == 2007 &
+                     ha_data$tag_number == 403] <- NA
 
 
 
@@ -657,83 +769,83 @@ ha_long$infl[ha_long$plot == "5756" &
 
 # Corrections Dimona-CF ---------------------------------------------------
 
-ha_long$column[ha_long$plot == "Dimona-CF" & ha_long$column == 11] <- 10
+ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$column == 11] <- 10
 
 
 # plant 81 was not dead in 06
-ha_long$code[ha_long$plot == "Dimona-CF" &
-  ha_long$tag_number == 81 &
-  ha_long$year == 2006] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "Dimona-CF" &
+  ha_data$tag_number == 81 &
+  ha_data$year == 2006] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "Dimona-CF" &
-  ha_long$tag_number == 81 &
-  ha_long$year == 2008] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "Dimona-CF" &
+  ha_data$tag_number == 81 &
+  ha_data$year == 2008] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "Dimona-CF" &
-  ha_long$tag_number == 81 &
-  ha_long$year == 2009] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "Dimona-CF" &
+  ha_data$tag_number == 81 &
+  ha_data$year == 2009] <- "missing (60)"
 
 # location
 
 # DIMONA-CF
-ha_long$row[ha_long$plot == "Dimona-CF" & ha_long$HA_ID_Number == 5662] <- "E"
-ha_long$column[ha_long$plot == "Dimona-CF" & ha_long$HA_ID_Number == 5739] <- 10
-ha_long$column[ha_long$plot == "Dimona-CF" & ha_long$HA_ID_Number == 5762] <- 10
+ha_data$row[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5662] <- "E"
+ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5739] <- 10
+ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5762] <- 10
 
 
 # Corrections 5753 --------------------------------------------------------
 
 # Tag no. 108
-ha_long$code[ha_long$plot == 5753 & ha_long$tag_number == 108 & ha_long$year == 2005] <- NA
+ha_data$code[ha_data$plot == 5753 & ha_data$tag_number == 108 & ha_data$year == 2005] <- NA
 
 # tag_no 841
-ha_long <- ha_long[!(ha_long$plot == 5753 & ha_long$tag_number == 319 & ha_long$row == "D"), ]
+ha_data <- ha_data[!(ha_data$plot == 5753 & ha_data$tag_number == 319 & ha_data$row == "D"), ]
 
 # Status plant 412 in 2005
-ha_long$code[ha_long$plot == 5753 &
-  ha_long$year == 2005 &
-  ha_long$tag_number == 412] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+  ha_data$year == 2005 &
+  ha_data$tag_number == 412] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 5753 &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 268] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 268] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 5753 &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 276] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 276] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 5753 &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 292] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 292] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 5753 &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 34] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 34] <- "missing (60)"
 
 
 
-ha_long$code[ha_long$plot == 5753 &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 52] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 52] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 5753 &
-                     ha_long$year == 2007 &
-                     ha_long$tag_number == 34] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+                     ha_data$year == 2007 &
+                     ha_data$tag_number == 34] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 5753 &
-                     ha_long$year == 2008 &
-                     ha_long$tag_number == 345] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+                     ha_data$year == 2008 &
+                     ha_data$tag_number == 345] <- "missing (60)"
 
 
-ha_long$code[ha_long$plot == 5753 &
-                     ha_long$year == 2008 &
-                     ha_long$tag_number == 412] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5753 &
+                     ha_data$year == 2008 &
+                     ha_data$tag_number == 412] <- "missing (60)"
 
 
 
@@ -741,96 +853,94 @@ ha_long$code[ha_long$plot == 5753 &
 # Corrections 5754 (PA10) -------------------------------------------------
 
 # plant size entered incorrectly (entered as 997, should be 97)
-ha_long$ht[ha_long$plot == "5754" & ha_long$year == 2006 & ha_long$tag_number == 445] <- 97
+ha_data$ht[ha_data$plot == "5754" & ha_data$year == 2006 & ha_data$tag_number == 445] <- 97
 
 # Corrections 5751 --------------------------------------------------------
 
 # 395 incorrectly entered as 365
-to_delete <- ha_long %>%
+to_delete <- ha_data %>%
   filter(plot == "5751" &
     tag_number == 365 &
     row == "D" &
     column == 5)
-ha_long <- anti_join(ha_long, to_delete)
+ha_data <- anti_join(ha_data, to_delete)
 rm(to_delete)
-ha_long$ht[ha_long$plot == "5751" & ha_long$year == 2008 & ha_long$tag_number == 395] <- 40
-ha_long$shts[ha_long$plot == "5751" & ha_long$year == 2008 & ha_long$tag_number == 395] <- 3
+ha_data$ht[ha_data$plot == "5751" & ha_data$year == 2008 & ha_data$tag_number == 395] <- 40
+ha_data$shts[ha_data$plot == "5751" & ha_data$year == 2008 & ha_data$tag_number == 395] <- 3
 
 
-ha_long$code[ha_long$plot == "5751" &
-                     ha_long$year == 2004 &
-                     ha_long$tag_number == 128] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5751" &
+                     ha_data$year == 2004 &
+                     ha_data$tag_number == 128] <- "missing (60)"
 
-ha_long$code[ha_long$plot == "5751" &
-                     ha_long$year == 2005 &
-                     ha_long$tag_number == 128] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "5751" &
+                     ha_data$year == 2005 &
+                     ha_data$tag_number == 128] <- "missing (60)"
 
 # location
-ha_long$column[ha_long$plot == "5751" & ha_long$column == 0] <- 1
-# ha_long$column[ha_long$plot == "5751" & ha_long$HA_ID_Number == 2224] <- 1
-# ha_long$column[ha_long$plot == "5751" & ha_long$HA_ID_Number == 2242] <- 1
+ha_data$column[ha_data$plot == "5751" & ha_data$column == 0] <- 1
 
 
 # Corrections 2108 --------------------------------------------------------
 
 # 17 plot corrected but failed to correct on datasheet
-ha_long$code[ha_long$plot == 2108 & ha_long$year == 2006 & ha_long$tag_number == 17] <- NA
+ha_data$code[ha_data$plot == 2108 & ha_data$year == 2006 & ha_data$tag_number == 17] <- NA
 
-ha_long$ht[ha_long$plot == 2108 & ha_long$year == 2006 & ha_long$tag_number == 17] <- 0
-ha_long$shts[ha_long$plot == 2108 & ha_long$year == 2006 & ha_long$tag_number == 17] <- 0
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2006 & ha_data$tag_number == 17] <- 0
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2006 & ha_data$tag_number == 17] <- 0
 
-ha_long$ht[ha_long$plot == 2108 & ha_long$year == 2007 & ha_long$tag_number == 17] <- 16
-ha_long$shts[ha_long$plot == 2108 & ha_long$year == 2007 & ha_long$tag_number == 17] <- 1
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2007 & ha_data$tag_number == 17] <- 16
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2007 & ha_data$tag_number == 17] <- 1
 
-ha_long$ht[ha_long$plot == 2108 & ha_long$year == 2008 & ha_long$tag_number == 17] <- 11
-ha_long$shts[ha_long$plot == 2108 & ha_long$year == 2008 & ha_long$tag_number == 17] <- 1
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2008 & ha_data$tag_number == 17] <- 11
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2008 & ha_data$tag_number == 17] <- 1
 
-ha_long$ht[ha_long$plot == 2108 & ha_long$year == 2009 & ha_long$tag_number == 17] <- 13
-ha_long$shts[ha_long$plot == 2108 & ha_long$year == 2009 & ha_long$tag_number == 17] <- 1
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2009 & ha_data$tag_number == 17] <- 13
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2009 & ha_data$tag_number == 17] <- 1
 
-ha_long$x_09[ha_long$plot == 2108 & ha_long$column == 7 & ha_long$tag_number == 17] <- 0.1
-ha_long$y_09[ha_long$plot == 2108 & ha_long$column == 7 & ha_long$tag_number == 17] <- 2.60
+ha_data$x_09[ha_data$plot == 2108 & ha_data$column == 7 & ha_data$tag_number == 17] <- 0.1
+ha_data$y_09[ha_data$plot == 2108 & ha_data$column == 7 & ha_data$tag_number == 17] <- 2.60
 
 # delete the duplicate
-to_delete <- ha_long %>%
+to_delete <- ha_data %>%
   filter(plot == 2108 &
     tag_number == 17 &
     row == "A" &
     column == 4)
-ha_long <- anti_join(ha_long, to_delete)
+ha_data <- anti_join(ha_data, to_delete)
 rm(to_delete)
 # correct the plot
-ha_long$column[ha_long$plot == 2108 & ha_long$column == 7 & ha_long$tag_number == 17] <- 6
+ha_data$column[ha_data$plot == 2108 & ha_data$column == 7 & ha_data$tag_number == 17] <- 6
 
 
 # tag_no 66
 # Correct the value for C9
-ha_long$ht[ha_long$plot == "2108" & ha_long$year == 1999 & ha_long$tag_number == 66] <- 13
-ha_long$shts[ha_long$plot == "2108" & ha_long$year == 1999 & ha_long$tag_number == 66] <- 1
-ha_long$code[ha_long$plot == "2108" & ha_long$year == 1999 & ha_long$tag_number == 66] <- NA
+ha_data$ht[ha_data$plot == "2108" & ha_data$year == 1999 & ha_data$tag_number == 66] <- 13
+ha_data$shts[ha_data$plot == "2108" & ha_data$year == 1999 & ha_data$tag_number == 66] <- 1
+ha_data$code[ha_data$plot == "2108" & ha_data$year == 1999 & ha_data$tag_number == 66] <- NA
 # delete the value for D10
-ha_long <- ha_long[!(ha_long$plot == "2108" & ha_long$row == "D" & ha_long$tag_number == 66), ]
+ha_data <- ha_data[!(ha_data$plot == "2108" & ha_data$row == "D" & ha_data$tag_number == 66), ]
 
 
 # location
-ha_long$row[ha_long$plot == "2108" & ha_long$HA_ID_Number == 504] <- "E"
+ha_data$row[ha_data$plot == "2108" & ha_data$HA_ID_Number == 504] <- "E"
 
 # Updating Codes 
-# Plant 293: notes say 'ULY (3)' in 2008, it's not. replace this with NA
-ha_long$code[ha_long$plot == "2108" & ha_long$year == 2008 & ha_long$tag_number == 293] <- NA
-# Plant 293: notes say 'dead (2)' in 2009, it's not. replace this with NA
-ha_long$code[ha_long$plot == "2108" & ha_long$year == 2009 & ha_long$tag_number == 293] <- NA
+# Plant 293: code say 'ULY (3)' in 2008, it's not. replace this with NA
+ha_data$code[ha_data$plot == "2108" & ha_data$year == 2008 & ha_data$tag_number == 293] <- NA
+# Plant 293: code say 'dead (2)' in 2009, it's not. replace this with NA
+ha_data$code[ha_data$plot == "2108" & ha_data$year == 2009 & ha_data$tag_number == 293] <- NA
 
 
 # Corrections 2017 --------------------------------------------------------
 
 # Plant 237 in D6 is actually 337. The actual 237 is in C8
-ha_long$tag_number[ha_long$plot == 2107 &
-  ha_long$row == "D" &
-  ha_long$column == 6 &
-  ha_long$tag_number == 237] <- 337
+ha_data$tag_number[ha_data$plot == 2107 &
+  ha_data$row == "D" &
+  ha_data$column == 6 &
+  ha_data$tag_number == 237] <- 337
 
-# ha_long %>% filter((tag_number==68 | tag_number==275), bdffp_reserve_no==2107) %>% 
+# ha_data %>% filter((tag_number==68 | tag_number==275), bdffp_reserve_no==2107) %>% 
 #   select(year, shts, ht, infl) %>% 
 #   pivot_wider(names_from=tag_number, values_from=shts:infl) %>% 
 #   mutate()
@@ -846,16 +956,16 @@ ha_long$tag_number[ha_long$plot == 2107 &
 
 # 2017
 # Updating Codes 
-# Plant 228: notes say 'dead (2)' in 2006, should be plant missing (60)
+# Plant 228: code say 'dead (2)' in 2006, should be missing (60)
 
-ha_long$tag_number[ha_long$plot == 2107 &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 228] <- "plant missing (60)"
-# Plant 282: notes say 'dead (2)' in 2006, should be plant missing (60)
+ha_data$tag_number[ha_data$plot == 2107 &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 228] <- "missing (60)"
+# Plant 282: code say 'dead (2)' in 2006, should be missing (60)
 
-ha_long$tag_number[ha_long$plot == 2107 &
-                     ha_long$year == 2006 &
-                     ha_long$tag_number == 282] <- "plant missing (60)"
+ha_data$tag_number[ha_data$plot == 2107 &
+                     ha_data$year == 2006 &
+                     ha_data$tag_number == 282] <- "missing (60)"
 
 
 
@@ -864,7 +974,7 @@ ha_long$tag_number[ha_long$plot == 2107 &
 
 # tag no. 2121
 # create the correct values
-correct_2121 <- ha_long %>%
+correct_2121 <- ha_data %>%
   filter(plot == "CaboFrio-CF", tag_number == 2121) %>%
   group_by(year) %>%
   slice(1) %>%
@@ -872,29 +982,18 @@ correct_2121 <- ha_long %>%
   mutate(shts = if_else(year == 2009, 1, shts)) %>%
   mutate(code = ifelse(year == 2009, NA, code))
 # remove the duplicates from the original df
-ha_long <- ha_long[!(ha_long$plot == "CaboFrio-CF" & ha_long$tag_number == 2121), ]
+ha_data <- ha_data[!(ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 2121), ]
 # re-insert them
-ha_long <- bind_rows(ha_long, correct_2121)
+ha_data <- bind_rows(ha_data, correct_2121)
 rm(correct_2121)
 
 
 
 # location
-ha_long$row[ha_long$plot == "CaboFrio-CF" & ha_long$HA_ID_Number == 5211] <- "E"
-ha_long$row[ha_long$plot == "CaboFrio-CF" & ha_long$HA_ID_Number == 5303] <- "E"
+ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$HA_ID_Number == 5211] <- "E"
+ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$HA_ID_Number == 5303] <- "E"
 
 
-
-
-# 5750
-# tag_no 988
-# ha_long$ht[ha_long$plot=="5750" & ha_long$year==2007 & ha_long$tag_number==988] <-38
-# ha_long$shts[ha_long$plot=="5750" & ha_long$year==2007 & ha_long$tag_number==988] <-3
-# ha_long$code[ha_long$plot=="5750" & ha_long$year==2007 & ha_long$tag_number==988] <- NA
-# ha_long$ht[ha_long$plot=="5750" & ha_long$year==2008 & ha_long$tag_number==988] <-60
-# ha_long$shts[ha_long$plot=="5750" & ha_long$year==2008 & ha_long$tag_number==988] <-2
-# ha_long$ht[ha_long$plot=="5750" & ha_long$year==2009 & ha_long$tag_number==988] <-66
-# ha_long$shts[ha_long$plot=="5750" & ha_long$year==2009 & ha_long$tag_number==988] <-3
 
 
 
@@ -903,7 +1002,7 @@ ha_long$row[ha_long$plot == "CaboFrio-CF" & ha_long$HA_ID_Number == 5303] <- "E"
 
 # tag no. 181
 # create the correct values
-correct_181 <- ha_long %>%
+correct_181 <- ha_data %>%
   filter(plot == "5752", tag_number == 181) %>%
   group_by(year) %>%
   slice(1) %>%
@@ -911,14 +1010,14 @@ correct_181 <- ha_long %>%
   mutate(shts = if_else(year == 2006, 3, shts)) %>%
   mutate(code = ifelse(year == 2006, NA, code))
 # remove the duplicates from the original df
-ha_long <- ha_long[!(ha_long$plot == "5752" & ha_long$tag_number == 181), ]
+ha_data <- ha_data[!(ha_data$plot == "5752" & ha_data$tag_number == 181), ]
 # re-insert them
-ha_long <- bind_rows(ha_long, correct_181)
+ha_data <- bind_rows(ha_data, correct_181)
 rm(correct_181)
 
 # tag no. 526
 # create the correct values
-correct_526 <- ha_long %>%
+correct_526 <- ha_data %>%
   filter(plot == "5752", tag_number == 526) %>%
   group_by(year) %>%
   slice(1) %>%
@@ -926,150 +1025,154 @@ correct_526 <- ha_long %>%
   mutate(shts = if_else(year == 2006, 3, shts)) %>%
   mutate(code = ifelse(year == 2006, NA, code))
 # remove the duplicates from the original df
-ha_long <- ha_long[!(ha_long$plot == "5752" & ha_long$tag_number == 526), ]
+ha_data <- ha_data[!(ha_data$plot == "5752" & ha_data$tag_number == 526), ]
 # re-insert them
-ha_long <- bind_rows(ha_long, correct_526)
+ha_data <- bind_rows(ha_data, correct_526)
 rm(correct_526)
 
 
 
-ha_long$code[ha_long$plot == 5752 & ha_long$year == 2005 & ha_long$tag_number == 149] <- "plant missing (60)"
-ha_long$code[ha_long$plot == 5752 & ha_long$year == 2005 & ha_long$tag_number == 499] <- "plant missing (60)"
-ha_long$code[ha_long$plot == 5752 & ha_long$year == 2005 & ha_long$tag_number == 272] <- "plant missing (60)"
-ha_long$code[ha_long$plot == 5752 & ha_long$year == 2005 & ha_long$tag_number == 736] <- "plant missing (60)"
+ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 149] <- "missing (60)"
+ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 499] <- "missing (60)"
+ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 272] <- "missing (60)"
+ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 736] <- "missing (60)"
 
 
 # Corrections - Porto Alegre CF -------------------------------------------
-ha_long$code[ha_long$plot == "PortoAlegre-CF" & ha_long$year == 2004 & ha_long$tag_number == 196] <- "plant missing (60)"
-ha_long$code[ha_long$plot == "PortoAlegre-CF" & ha_long$year == 2005 & ha_long$tag_number == 196] <- "plant missing (60)"
-ha_long$code[ha_long$plot == "PortoAlegre-CF" & ha_long$year == 2006 & ha_long$tag_number == 238] <- "plant missing (60)"
-ha_long$code[ha_long$plot == "PortoAlegre-CF" & ha_long$year == 2005 & ha_long$tag_number == 139] <- "plant missing (60)"
-ha_long$code[ha_long$plot == "PortoAlegre-CF" & ha_long$year == 2006 & ha_long$tag_number == 139] <- "plant missing (60)"
+ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2004 & ha_data$tag_number == 196] <- "missing (60)"
+ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2005 & ha_data$tag_number == 196] <- "missing (60)"
+ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2006 & ha_data$tag_number == 238] <- "missing (60)"
+ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2005 & ha_data$tag_number == 139] <- "missing (60)"
+ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2006 & ha_data$tag_number == 139] <- "missing (60)"
 
 # Remove duplicated record 
-ha_long<-ha_long[
-  (ha_long$plot != "PortoAlegre-CF") | 
-    (ha_long$tag_number != "264") |
-    (ha_long$row != "C") |
-    (ha_long$column != 10)
+ha_data<-ha_data[
+  (ha_data$plot != "PortoAlegre-CF") | 
+    (ha_data$tag_number != "264") |
+    (ha_data$row != "C") |
+    (ha_data$column != 10)
     , ]
 
 
 # Corrections - PA10 ------------------------------------------------------
-# 
-# ha_long$infl[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==88 & ha_long$year==2005 & ha_long$row=="A"] <- 2
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==88 & ha_long$year==2006 & ha_long$row=="A"] <- NA
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==98 & ha_long$year==2006 & ha_long$row=="E"] <- NA
-# ha_long$infl[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==134 & ha_long$year==2005 & ha_long$row=="A"] <- 1
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==134 & ha_long$year==2006 & ha_long$row=="A"] <- NA
-# ha_long$infl[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==171 & ha_long$year==2005 & ha_long$row=="B"] <- 1
-# ha_long$infl[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==171 & ha_long$year==2006 & ha_long$row=="B"] <- 1
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==171 & ha_long$year==2006 & ha_long$row=="B"] <- NA
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==243 & ha_long$year==2006 & ha_long$row=="E"] <- NA
-# ha_long$infl[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==245 & ha_long$year==2005 & ha_long$row=="A"] <- 3
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==245 & ha_long$year==2006 & ha_long$row=="A"] <- NA
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==272  & ha_long$year==2006 & ha_long$row=="C"] <- NA
-# ha_long$tag_number[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==318 & ha_long$column==5 & ha_long$row=="D"] <- "318X"
-# # ha_long<-ha_long %>% filter(!(tag_number==318 & ha_long$row=="D"))
-# ha_long$infl[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==371 & ha_long$year==2006 & ha_long$row=="A"] <- 1
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==371 & ha_long$year==2006 & ha_long$row=="A"] <- NA
-# ha_long$column[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==382 & ha_long$column==5.875 & ha_long$row=="C"] <- 5
-# ha_long$ht[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==382 & ha_long$column==5 & ha_long$year==2006] <- 70
-# ha_long$shts[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==382 & ha_long$column==5 & ha_long$year==2006] <- 6
-# ha_long<-ha_long %>% filter(!(tag_number==382 & row=="C" & column==6))
-# ha_long$shts[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==770 & ha_long$column==3 & ha_long$row=="A" & ha_long$year==2005] <- 1
-# ha_long$ht[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==770 & ha_long$column==3 & ha_long$row=="A" & ha_long$year==2005] <- 8
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==770 & ha_long$column==3 & ha_long$row=="A" & ha_long$year==2005] <- "sdlg (1)"
-# ha_long<-ha_long %>% filter(!(tag_number==770 & row=="A" & column==5))
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==780 & ha_long$column==7 & ha_long$row=="C" & ha_long$year==2006] <- NA
-# ha_long$column[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==780 & ha_long$column==7 & ha_long$row=="C" & ha_long$year==2006] <- 8
-# ha_long<-ha_long %>% filter(!(tag_number==780 & row=="C" & column==7))
-# ha_long$column[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==780 & ha_long$column==7.25 & ha_long$row=="C"] <- 8
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==812 & ha_long$column==9 & ha_long$row=="D" & ha_long$year==2006] <- NA
-# ha_long$tag_number[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==812 & ha_long$column==9 & ha_long$row=="D"] <- "812X"
-# ha_long$tag_number[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==813 & ha_long$column==9 & ha_long$row=="A"] <- "813X"
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==813 & ha_long$column==5 & ha_long$row=="A" & ha_long$year==2006] <- NA
-# ha_long$infl[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==816 & ha_long$column==3 & ha_long$row=="C" & ha_long$year==2005] <- 2
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==816 & ha_long$column==3 & ha_long$row=="C" & ha_long$year==2006] <- NA
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==816 & ha_long$column==8 & ha_long$row=="A" & ha_long$year==2006] <- NA
-# ha_long$tag_number[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==816 & ha_long$column==8 & ha_long$row=="A"] <- "816X"
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==832 & ha_long$column==4 & ha_long$row=="A" & ha_long$year==2006] <- NA
-# ha_long$tag_number[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==832 & ha_long$column==4 & ha_long$row=="A"] <- "832X"
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==835 & ha_long$column==4 & ha_long$row=="E" & ha_long$year==2006] <- NA
-# ha_long$tag_number[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==835 & ha_long$column==4 & ha_long$row=="E"] <- "835X"
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==836 & ha_long$column==1 & ha_long$row=="D" & ha_long$year==2006] <- NA
-# ha_long$tag_number[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==836 & ha_long$column==1 & ha_long$row=="D"] <- "836X"
-# ha_long$notes[ha_long$bdffp_reserve_no=="3209" & ha_long$tag_number==845 & ha_long$year==2006 & ha_long$row=="B"] <- NA
-# 
-# 
-# # These need to the code changed from "dead "to "missing"
-# pa_long$notes[pa_long$tag_number==1376 & pa_long$year==2005] <- "plant missing (60)"
-# pa_long$notes[pa_long$tag_number==748 & pa_long$year==2005] <- "plant missing (60)"
-# pa_long$notes[pa_long$tag_number==303 & pa_long$year==2005] <- "plant missing (60)"
-# pa_long$notes[pa_long$tag_number==855 & pa_long$year==2005] <- "plant missing (60)"
-# pa_long$notes[pa_long$tag_number==198 & pa_long$year==2005] <- "plant missing (60)"
-# pa_long$notes[pa_long$tag_number==121 & pa_long$year==2005] <- "plant missing (60)"
-# pa_long$notes[pa_long$tag_number==879 & pa_long$year==2005] <- "plant missing (60)"
-# pa_long$notes[pa_long$tag_number==911 & pa_long$year==2005] <- "plant missing (60)"
+# which(ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==98 & ha_data$year==2006 & ha_data$row=="E")
+# ha_data[92607,]
+ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==88 & ha_data$year==2005 & ha_data$row=="A"] <- 2
+ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==88 & ha_data$year==2006 & ha_data$row=="A"] <- NA
+ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==98 & ha_data$year==2006 & ha_data$row=="E"] <- NA
+ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==134 & ha_data$year==2005 & ha_data$row=="A"] <- 1
+ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==134 & ha_data$year==2006 & ha_data$row=="A"] <- NA
+ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==171 & ha_data$year==2005 & ha_data$row=="B"] <- 1
+ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==171 & ha_data$year==2006 & ha_data$row=="B"] <- 1
+ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==171 & ha_data$year==2006 & ha_data$row=="B"] <- NA
+ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==243 & ha_data$year==2006 & ha_data$row=="E"] <- NA
+ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==245 & ha_data$year==2005 & ha_data$row=="A"] <- 3
+ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==245 & ha_data$year==2006 & ha_data$row=="A"] <- NA
+ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==272  & ha_data$year==2006 & ha_data$row=="C"] <- NA
+ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==318 & ha_data$column==5 & ha_data$row=="D"] <- "318X"
+ha_data <- ha_data %>% filter(!(bdffp_reserve_no=="3209" & tag_number==318 & row=="D"))
+ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==371 & ha_data$year==2006 & ha_data$row=="A"] <- 1
+ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==371 & ha_data$year==2006 & ha_data$row=="A"] <- NA
+ha_data$column[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==382 & ha_data$column==5.875 & ha_data$row=="C"] <- 5
+ha_data$ht[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==382 & ha_data$column==5 & ha_data$year==2006] <- 70
+ha_data$shts[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==382 & ha_data$column==5 & ha_data$year==2006] <- 6
+ha_data<-ha_data %>% filter(!(bdffp_reserve_no=="3209" & tag_number==382 & row=="C" & column==6))
+ha_data$shts[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- 1
+ha_data$ht[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- 8
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- "sdlg (1)"
+ha_data<-ha_data %>% filter(!(bdffp_reserve_no=="3209" & tag_number==770 & row=="A" & column==5))
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==780 & ha_data$column==7 & ha_data$row=="C" & ha_data$year==2006] <- NA
+ha_data$column[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==780 & ha_data$column==7 & ha_data$row=="C" & ha_data$year==2006] <- 8
+ha_data<-ha_data %>% filter(!(bdffp_reserve_no=="3209" & tag_number==780 & row=="C" & column==7))
+ha_data$column[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==780 & ha_data$column==7.25 & ha_data$row=="C"] <- 8
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==812 & ha_data$column==9 & ha_data$row=="D" & ha_data$year==2006] <- NA
+ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==812 & ha_data$column==9 & ha_data$row=="D"] <- "812X"
+ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==813 & ha_data$column==9 & ha_data$row=="A"] <- "813X"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==813 & ha_data$column==5 & ha_data$row=="A" & ha_data$year==2006] <- NA
+ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==816 & ha_data$column==3 & ha_data$row=="C" & ha_data$year==2005] <- 2
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==816 & ha_data$column==3 & ha_data$row=="C" & ha_data$year==2006] <- NA
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==816 & ha_data$column==8 & ha_data$row=="A" & ha_data$year==2006] <- NA
+ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==816 & ha_data$column==8 & ha_data$row=="A"] <- "816X"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==832 & ha_data$column==4 & ha_data$row=="A" & ha_data$year==2006] <- NA
+ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==832 & ha_data$column==4 & ha_data$row=="A"] <- "832X"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==835 & ha_data$column==4 & ha_data$row=="E" & ha_data$year==2006] <- NA
+ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==835 & ha_data$column==4 & ha_data$row=="E"] <- "835X"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==836 & ha_data$column==1 & ha_data$row=="D" & ha_data$year==2006] <- NA
+ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==836 & ha_data$column==1 & ha_data$row=="D"] <- "836X"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==845 & ha_data$year==2006 & ha_data$row=="B"] <- NA
+
+
+# These need to the code changed from "dead "to "missing"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1376 & ha_data$year==2005] <- "missing (60)"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==748 & ha_data$year==2005] <- "missing (60)"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==303 & ha_data$year==2005] <- "missing (60)"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==855 & ha_data$year==2005] <- "missing (60)"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==198 & ha_data$year==2005] <- "missing (60)"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==121 & ha_data$year==2005] <- "missing (60)"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==879 & ha_data$year==2005] <- "missing (60)"
+ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==911 & ha_data$year==2005] <- "missing (60)"
 
 # 
-# zombie_rows_to_del <- data.frame(
-#   tag_number = c(39,39,39,39,110,110,110,180,180,180,180,184,184,184,185,185,
-#                  192,192,209,209,209,209,221,221,221,223,223,238,238,238,238,
-#                  250,250,250,250,250,250,280,280,280,280,280,283,283,283,283,
-#                  283,336,336,336,336,354,354,354,354,354,354,354,362,362,366,
-#                  366,366,386,386,386,386,386,386,419,419,419,419,419,419,420,
-#                  420,420,420,420,422,422,422,422,422,422,430,430,431,431,431,
-#                  431,431,431,436,436,449,449,449,449,449,459,459,459,459,459,
-#                  459,460,460,460,460,468,468,468,468,468,469,469,469,474,474,
-#                  474,474,474,478,478,478,478,478,480,480,481,481,481,482,482,
-#                  482,482,482,488,488,488,488,488,489,489,489,492,492,492,492,
-#                  496,496,496,496,496,496,499,499,499,515,515,515,515,515,515,
-#                  540,540,540,540,540,554,554,554,554,554,554,633,633,633,634,
-#                  634,645,645,649,649,649,664,664,669,669,669,670,670,680,680,
-#                  683,683,683,683,683,684,684,684,684,684,704,704,704,716,716,
-#                  716,776,776,785,785,785,795,795,797,797,894,894,902,902,902,
-#                  918,918,918,924,924,924,927,931,931,931,945,945,945,946,946,
-#                  946,947,947,947,949,949,949,949,949,954,954,956,963,963,963,
-#                  971,971,978,978,978,982,982,982,988,988,991,991,991,991,997,
-#                  997,997,1306,1306,1306,1317,1317,1317,1337,1337,1352,1352,1352,
-#                  1353,1353,1364,1364,1364,1364,1384,1384,1388,1400,1400,1400,
-#                  1400,823,823,823,823,824,824,824,824,120,120,120  ),    
-#   year = c(2003,2004,2005,2006,2004,2005,2006,2003,2004,2005,2006,2004,2005,
-#            2006,2005,2006,2005,2006,2003,2004,2005,2006,2004,2005,2006,2005,
-#            2006,2003,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,
-#            2004,2005,2006,2002,2003,2004,2005,2006,2003,2004,2005,2006,2000,
-#            2001,2002,2003,2004,2005,2006,2005,2006,2004,2005,2006,2001,2002,
-#            2003,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,2004,
-#            2005,2006,2001,2002,2003,2004,2005,2006,2005,2006,2001,2002,2003,
-#            2004,2005,2006,2005,2006,2002,2003,2004,2005,2006,2001,2002,2003,
-#            2004,2005,2006,2003,2004,2005,2006,2002,2003,2004,2005,2006,2004,
-#            2005,2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,2006,2005,
-#            2006,2004,2005,2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,
-#            2006,2004,2005,2006,2003,2004,2005,2006,2001,2002,2003,2004,2005,
-#            2006,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,2004,
-#            2005,2006,2001,2002,2003,2004,2005,2006,2004,2005,2006,2005,2006,
-#            2005,2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,2005,
-#            2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,2006,2004,2005,
-#            2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,2005,2006,
-#            2005,2006,2004,2005,2006,2004,2005,2006,2004,2005,2006,2006,2004,
-#            2005,2006,2004,2005,2006,2004,2005,2006,2004,2005,2006,2002,2003,
-#            2004,2005,2006,2005,2006,2006,2004,2005,2006,2005,2006,2004,2005,
-#            2006,2004,2005,2006,2005,2006,2003,2004,2005,2006,2004,2005,2006,
-#            2004,2005,2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,
-#            2003,2004,2005,2006,2005,2006,2006,2003,2004,2005,2006,2004,2005,
-#            2005,2006,2004,2005,2005,2006,2004,2005,2006  )
-# )
-
+zombie_rows_to_del <- data.frame(
+  tag_number = c(39,39,39,39,110,110,110,180,180,180,180,184,184,184,185,185,
+                 192,192,209,209,209,209,221,221,221,223,223,238,238,238,238,
+                 250,250,250,250,250,250,280,280,280,280,280,283,283,283,283,
+                 283,336,336,336,336,354,354,354,354,354,354,354,362,362,366,
+                 366,366,386,386,386,386,386,386,419,419,419,419,419,419,420,
+                 420,420,420,420,422,422,422,422,422,422,430,430,431,431,431,
+                 431,431,431,436,436,449,449,449,449,449,459,459,459,459,459,
+                 459,460,460,460,460,468,468,468,468,468,469,469,469,474,474,
+                 474,474,474,478,478,478,478,478,480,480,481,481,481,482,482,
+                 482,482,482,488,488,488,488,488,489,489,489,492,492,492,492,
+                 496,496,496,496,496,496,499,499,499,515,515,515,515,515,515,
+                 540,540,540,540,540,554,554,554,554,554,554,633,633,633,634,
+                 634,645,645,649,649,649,664,664,669,669,669,670,670,680,680,
+                 683,683,683,683,683,684,684,684,684,684,704,704,704,716,716,
+                 716,776,776,785,785,785,795,795,797,797,894,894,902,902,902,
+                 918,918,918,924,924,924,927,931,931,931,945,945,945,946,946,
+                 946,947,947,947,949,949,949,949,949,954,954,956,963,963,963,
+                 971,971,978,978,978,982,982,982,988,988,991,991,991,991,997,
+                 997,997,1306,1306,1306,1317,1317,1317,1337,1337,1352,1352,1352,
+                 1353,1353,1364,1364,1364,1364,1384,1384,1388,1400,1400,1400,
+                 1400,823,823,823,823,824,824,824,824,120,120,120  ),
+  year = c(2003,2004,2005,2006,2004,2005,2006,2003,2004,2005,2006,2004,2005,
+           2006,2005,2006,2005,2006,2003,2004,2005,2006,2004,2005,2006,2005,
+           2006,2003,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,
+           2004,2005,2006,2002,2003,2004,2005,2006,2003,2004,2005,2006,2000,
+           2001,2002,2003,2004,2005,2006,2005,2006,2004,2005,2006,2001,2002,
+           2003,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,2004,
+           2005,2006,2001,2002,2003,2004,2005,2006,2005,2006,2001,2002,2003,
+           2004,2005,2006,2005,2006,2002,2003,2004,2005,2006,2001,2002,2003,
+           2004,2005,2006,2003,2004,2005,2006,2002,2003,2004,2005,2006,2004,
+           2005,2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,2006,2005,
+           2006,2004,2005,2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,
+           2006,2004,2005,2006,2003,2004,2005,2006,2001,2002,2003,2004,2005,
+           2006,2004,2005,2006,2001,2002,2003,2004,2005,2006,2002,2003,2004,
+           2005,2006,2001,2002,2003,2004,2005,2006,2004,2005,2006,2005,2006,
+           2005,2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,2005,
+           2006,2002,2003,2004,2005,2006,2002,2003,2004,2005,2006,2004,2005,
+           2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,2005,2006,
+           2005,2006,2004,2005,2006,2004,2005,2006,2004,2005,2006,2006,2004,
+           2005,2006,2004,2005,2006,2004,2005,2006,2004,2005,2006,2002,2003,
+           2004,2005,2006,2005,2006,2006,2004,2005,2006,2005,2006,2004,2005,
+           2006,2004,2005,2006,2005,2006,2003,2004,2005,2006,2004,2005,2006,
+           2004,2005,2006,2004,2005,2006,2005,2006,2004,2005,2006,2005,2006,
+           2003,2004,2005,2006,2005,2006,2006,2003,2004,2005,2006,2004,2005,
+           2005,2006,2004,2005,2005,2006,2004,2005,2006  )
+)
+zombie_rows_to_del$bdffp_reserve_no<-3209
+zombie_rows_to_del$bdffp_reserve_no<-as.factor(zombie_rows_to_del$bdffp_reserve_no)
+zombie_rows_to_del$tag_number<-as.character(zombie_rows_to_del$tag_number)
+zombie_rows_to_del$year<-as.character(zombie_rows_to_del$year)
+ha_data <- anti_join(ha_data,zombie_rows_to_del)
 
 # # Need to change all the ones where a plant is dead but size was recorded as "0"
-# pa_long <- pa_long %>% 
-#   mutate(shts = ifelse((shts == 0 & ht == 0 & notes== "dead (2)"), 
-#                        NA, shts)) %>% 
-#   mutate(ht = ifelse((shts == 0 & ht == 0 & notes== "dead (2)"), 
-#                      NA, ht)) %>% 
-#   mutate(infl = ifelse((shts == 0 & ht == 0 & notes== "dead (2)"), 
-#                        NA, infl))
+ ha_data <- ha_data %>% mutate(shts = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), 
+                        NA, shts)) %>% 
+   mutate(ht = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), 
+                      NA, ht)) %>% 
+   mutate(infl = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), 
+                        NA, infl))
 # 
 
 # what happened to the data for 120? did it get lost in a tag switch?
@@ -1089,14 +1192,14 @@ ha_long<-ha_long[
 # Need to add 2006 seedling notations
 # Figure out plant 46
 # Need to add 1997 data
-# Remove all the ones with NA tag numbers in pa_long
+# Remove all the ones with NA tag numbers in ha_data
 
 # Pull out 'Miscellaneous observations'; save to csv file -----------------
 
-ha_long$code<-gsub("under treefall", "under treefall (80)", ha_long$code)
-
+# ha_data$code<-gsub("under treefall", "under treefall (80)", ha_data$code)
+summary(as.factor(ha_data$code))
 MISC_OBS <-
-  ha_long %>%
+  ha_data %>%
   filter(
     code == "dried (7)" |
       code == "under litter (70)" |
@@ -1105,26 +1208,12 @@ MISC_OBS <-
       code == "resprouting (10)" |
       code == "under treefall (80)" |
       code == "90, 10 (two codes)" |
-      code == "1 new infl" |
-      code == "1 new infl + 1 old infl" |
-      code == "1 old infl" |
-      code == "2 old infl" |
-      code == "3 old infl" |
-      code == "actually in A6" |
-      code == "could be one of missing" |
-      code == "horrible treefall in plot" |
-      code == "horrible treefall in plot, can barely make it in" |
-      code == "its in C2" |
-      code == "lots of small branchfalls in plot" |
-      code == "plot is 50% treefall" |
-      code == "this number belongs to a pvc in a6" |
-      code == "treefall in plot" |
-      code == "trefall" 
-  ) %>%
-  arrange(plot, year, tag_number) %>%
-  select(-ht, -shts, -infl)
+      is.na(notes)== FALSE
+        ) %>%
+  arrange(notes,plot, year, tag_number) %>%
+  select(-ht, -shts, -infl,-x_09,-y_09)
 
-write.csv(MISC_OBS, "./output/misc_observations.csv", row.names = FALSE)
+write_csv(MISC_OBS, "./output/misc_observations.csv")
 
 
 # Save CSV of plants that were not on the survey list ---------------------
@@ -1132,88 +1221,46 @@ write.csv(MISC_OBS, "./output/misc_observations.csv", row.names = FALSE)
 # but had a tag on them, so they were marked in a previous year.  Not sure why -
 # could have been someone forgot to call it out. They are useful because they
 # are a true mortality (had a tag, now dead), or were alive in past year
-
+summary(as.factor(ha_data$code))
 Not_on_SurveyList <-
-  ha_long %>% filter(code == "not on list (40)" |
-    code == "dead not on list (100)")
-write.csv(Not_on_SurveyList,
-  "./data_clean/Not_on_SurveyList.csv",
-  row.names = FALSE
-)
+  ha_data %>% filter(code == "not on list (40)" |
+                       code == "dead not on list (100)" |
+  code == "new plant in plot (6)")
+write_csv(Not_on_SurveyList,
+  "./data_clean/Not_on_SurveyList.csv")
 
-# Delete "Misc" obs,; make the remainder consistent ---------------------
-# 
-# 
-# ha_long$infl<-as.character(ha_long$infl)
-# 
-# ha_long <- ha_long %>% mutate(infl = ifelse(code == "1 new infl", code, infl))
-# ha_long <- ha_long %>% mutate(infl = ifelse(code == "1 new infl + 1 old infl", code, infl))
-# ha_long <- ha_long %>% mutate(infl = ifelse(is.na(infl) & code == "1 old infl", code, infl))
-# ha_long <- ha_long %>% mutate(infl = ifelse(is.na(infl) & code == "2 old infl", code, infl))
-# ha_long <- ha_long %>% mutate(infl = ifelse(is.na(infl) & code == "3 old infl", code, infl))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "actually in A6" , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "could be one of missing"  , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "horrible treefall in plot"  , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "horrible treefall in plot, can barely make it in"  , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "its in C2"  , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code =="lots of small branchfalls in plot" , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "plot is 50% treefall"  , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "this number belongs to a pvc in a6"  , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "treefall in plot" , NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "trefall" , NA, code))
-# 
-# 
-# 
-# # now delete them
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "1 new infl", NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "1 new infl + 1 old infl", NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "1 old infl", NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "2 old infl", NA, code))
-# ha_long <- ha_long %>% mutate(code = ifelse(code == "3 old infl", NA, code))
-# 
-# 
-# 
-# 
+# Delete the uneccesary "Misc" obs,; make the remainder consistent ---------------------
 
-
-
-
-ha_long$code<-trimws(ha_long$code)
-ha_long$code<-as.factor(ha_long$code)
-
-levels(ha_long$code)[levels(ha_long$code) == "uly? (4)"] <-
+ha_data$code<-trimws(ha_data$code)
+ha_data$code<-as.factor(ha_data$code)
+summary(as.factor(ha_data$code))
+levels(ha_data$code)[levels(ha_data$code) == "new plant in plot (6)"] <-
   "ULY (3)"
-levels(ha_long$code)[levels(ha_long$code) == "dead above ground (5)"] <-
-  "dead (2)"
-levels(ha_long$code)[levels(ha_long$code) == "new plant in plot (6)"] <-
-  "ULY (3)"
-levels(ha_long$code)[levels(ha_long$code) == "dried (7)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "dried (7)"] <-
   NA
-levels(ha_long$code)[levels(ha_long$code) == "resprouting (10)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "resprouting (10)"] <-
   NA
-levels(ha_long$code)[levels(ha_long$code) == "not on list (40)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "not on list (40)"] <-
   NA
-levels(ha_long$code)[levels(ha_long$code) == "no tag (50)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "no tag (50)"] <-
   "tag missing (50)"
-levels(ha_long$code)[levels(ha_long$code) == "under litter (70)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "under litter (70)"] <-
   NA
-levels(ha_long$code)[levels(ha_long$code) == "under treefall (80)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "under treefall (80)"] <-
   NA
-levels(ha_long$code)[levels(ha_long$code) == "under branchfall (90)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "under branchfall (90)"] <-
   NA
-levels(ha_long$code)[levels(ha_long$code) == "dead not on list (100)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "dead and not on list (100)"] <-
   "dead (2)"
-levels(ha_long$code)[levels(ha_long$code) == "2x in field (200)"] <- NA
-levels(ha_long$code)[levels(ha_long$code) == "dead, yr unknown (300)"] <-
-  "dead (2)"
-levels(ha_long$code)[levels(ha_long$code) == "90, 10 (two codes)"] <-
+levels(ha_data$code)[levels(ha_data$code) == "2x in field (200)"] <- NA
+levels(ha_data$code)[levels(ha_data$code) == "90, 10 (two codes)"] <-
   NA
-ha_long <- droplevels(ha_long)
+ha_data <- droplevels(ha_data)
+summary(as.factor(ha_data$code))
 
-
-# summary(ha_long)
-# summary(ha_long$code)
-# colnames(ha_long)
+# summary(ha_data)
+# summary(ha_data$code)
+# colnames(ha_data)
 
 
 
@@ -1222,35 +1269,40 @@ ha_long <- droplevels(ha_long)
 
 # This finds any marked dead in year X but with measurments of shts or ht
 source("./code_data_cleaning/marked_dead_but_measured.R")
-df <- marked_dead_but_measured(ha_long)
+df <- marked_dead_but_measured(ha_data)
 
 
 
 # THIS WILL CHECK TO SEE IF THERE ARE SOME THAT WERE REGISTERED DEAD BUT
 # FOR WHICH THERE ARE ht or sht measurments in years AFTER they were marked dead
 
-# returns 'ha_long', saves csv of things to check
+# returns 'ha_data', saves csv of things to check
 source("./code_data_cleaning/zombies.R")
-zombies <- zombies(ha_long)
+zombies <- zombies(ha_data)
 
 
 source("./code_data_cleaning/duplicate_plants.R")
-dupes <- duplicate_plants(ha_long)
-
-dim(dupes)
-check_dupes(ha_long)
-
-ha_long %>%
+dupes <- duplicate_plants(ha_data)
+dupes %>%
   group_by(habitat, plot) %>%
   summarize(N_plants = n_distinct(HA_ID_Number)) %>%
   arrange(habitat, desc(N_plants))
 
-ha_long <- ha_long %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row, column, year)
+
+dim(dupes)
+check_dupes(ha_data)
+
+ha_data %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
+  arrange(habitat, desc(N_plants))
+
+ha_data <- ha_data %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row, column, year)
 
 
-write.csv(ha_long, "./data_clean/Ha_survey_with_Zombies.csv", row.names = FALSE)
+write_csv(ha_data, "./data_clean/Ha_survey_with_Zombies.csv")
 
-summary(as.factor(ha_long$code))
+summary(as.factor(ha_data$code))
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 # TODO:
@@ -1266,7 +1318,7 @@ summary(as.factor(ha_long$code))
 # FF-1	2107	1-ha	282	A	5	2005	4	81	NA  this
 # is actually 222, which was then retagged as 302 in 2006
 
-#TODO: Check misc notes to see which ones repro need to be updated
+#TODO: Check misc code to see which ones repro need to be updated
 
 # Duplicated tag numbers to check in the field ----------------------------
 # 2107
