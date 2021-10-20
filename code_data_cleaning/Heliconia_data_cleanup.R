@@ -328,8 +328,9 @@ names(ha_data)
 source("./code_data_cleaning/merge_with_PA10.R")
 ha_data <- merge_with_PA10(ha_data)
 names(ha_data)
-ha_data <-ha_data %>% rename("code"="notes") %>%
-  replace_na(list(infl = 0))   #convert all NA in infl column to zero
+ha_data <-ha_data %>% rename("code"="notes") 
+# %>%
+#   replace_na(list(infl = 0))   #convert all NA in infl column to zero
 
 # fix the data types as needed
 ha_data$infl <- as.character(ha_data$infl)
@@ -348,11 +349,10 @@ ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
 
 
+# clean up codes/notes ----------------------------------------------------
 
 
 
-
-# CLARIFY THE CODES
 ha_data <- rename(ha_data, "code"="code")
 ha_data$code <- as.factor(ha_data$code)
 summary(ha_data$code)
@@ -385,7 +385,7 @@ levels(as.factor(ha_data$code))
 
 ha_data$notes <-as.character(NA)
 ha_data$code<-as.character(ha_data$code)
-
+ha_data$code<-trimws(ha_data$code)
 ha_data <- ha_data %>%
   mutate(notes = if_else(code == "not on list. must be313","is it 133?", notes)) %>% 
   mutate(notes = if_else(code == "1 new infl + 1 old infl","1 new infl + 1 old infl", notes)) %>% 
@@ -486,16 +486,19 @@ head(ha_data, 20)
 
 
 # Check for Duplicate ID Numbers ------------------------------------------
-
-check_dupes <- function(df){
-  df %>%
-    group_by(year, HA_ID_Number) %>%
-    count() %>%
-    filter(n>1) %>% 
-    pull(HA_ID_Number) %>% 
-    unique()
-}
-check_dupes(ha_data)
+# 
+# check_dupes <- function(df){
+#   df %>%
+#     group_by(year, HA_ID_Number) %>%
+#     count() %>%
+#     filter(n>1) %>% 
+#     pull(HA_ID_Number) %>% 
+#     unique()
+# }
+# initial_dupes<-check_dupes(ha_data)
+# initial_dupes<-ha_data[initial_dupes,]
+# 
+# initial_dupes<-initial_dupes %>% filter(ha_data %in%initial_dupes)
 
 
 # remove the rows with NA across all columns -----------------------------
@@ -958,12 +961,12 @@ ha_data$tag_number[ha_data$plot == 2107 &
 # Updating Codes 
 # Plant 228: code say 'dead (2)' in 2006, should be missing (60)
 
-ha_data$tag_number[ha_data$plot == 2107 &
+ha_data$code[ha_data$plot == 2107 &
                      ha_data$year == 2006 &
                      ha_data$tag_number == 228] <- "missing (60)"
 # Plant 282: code say 'dead (2)' in 2006, should be missing (60)
 
-ha_data$tag_number[ha_data$plot == 2107 &
+ha_data$code[ha_data$plot == 2107 &
                      ha_data$year == 2006 &
                      ha_data$tag_number == 282] <- "missing (60)"
 
@@ -1263,7 +1266,10 @@ summary(as.factor(ha_data$code))
 # colnames(ha_data)
 
 
-
+ha_data$x_09<-as.numeric(ha_data$x_09)
+ha_data$y_09<-as.numeric(ha_data$y_09)
+ha_data$year<-as.factor(ha_data$year)
+ha_data$infl<-as.integer(ha_data$infl)
 
 # Finds Zombies and Duplicates --------------------------------------------
 
@@ -1279,6 +1285,10 @@ df <- marked_dead_but_measured(ha_data)
 # returns 'ha_data', saves csv of things to check
 source("./code_data_cleaning/zombies.R")
 zombies <- zombies(ha_data)
+zombies %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(tag_number)) %>%
+  arrange(habitat, desc(N_plants))
 
 
 source("./code_data_cleaning/duplicate_plants.R")
@@ -1287,7 +1297,6 @@ dupes %>%
   group_by(habitat, plot) %>%
   summarize(N_plants = n_distinct(HA_ID_Number)) %>%
   arrange(habitat, desc(N_plants))
-
 
 dim(dupes)
 check_dupes(ha_data)
@@ -1300,7 +1309,7 @@ ha_data %>%
 ha_data <- ha_data %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row, column, year)
 
 
-write_csv(ha_data, "./data_clean/Ha_survey_with_Zombies.csv")
+write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
 summary(as.factor(ha_data$code))
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
