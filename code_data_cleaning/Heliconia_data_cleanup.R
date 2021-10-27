@@ -473,11 +473,11 @@ ha_data <- ha_data %>%
 levels(as.factor(ha_data$code))
 levels(as.factor(ha_data$notes))
 
-
-codes_to_fix<-ha_data %>% select(tag_number,code) %>% 
-  drop_na() %>% distinct(code,.keep_all = TRUE) %>% 
-  arrange(code) # make a summary table of all the different codes in the PA10 dataset 
-summary(as.factor(codes_to_fix$code))
+# 
+# codes_to_fix<-ha_data %>% select(tag_number,code) %>% 
+#   drop_na() %>% distinct(code,.keep_all = TRUE) %>% 
+#   arrange(code) # make a summary table of all the different codes in the PA10 dataset 
+# summary(as.factor(codes_to_fix$code))
 
 # Rearrange plot, then tag number, then year
 ha_data <- ha_data %>% arrange(plot, tag_number, year)
@@ -521,6 +521,20 @@ ha_data
 # ha_data$code_2005[ha_data$plot == "Florestal-CF" & 
 #                      ha_data$tag_number == "1"] <- 60
 ha_data$code[ha_data$plot == 'Florestal-CF' &
+               (ha_data$year == 2005 |ha_data$year == 2006|ha_data$year == 2007) &
+               ha_data$tag_number == 277] <- NA
+ha_data$shts[ha_data$plot == 'Florestal-CF' &
+               ha_data$year == 2004 &
+               ha_data$tag_number == 277] <- NA
+ha_data$ht[ha_data$plot == 'Florestal-CF' &
+               ha_data$year == 2004 &
+               ha_data$tag_number == 277] <- NA
+ha_data$infl[ha_data$plot == 'Florestal-CF' &
+             ha_data$year == 2004 &
+             ha_data$tag_number == 277] <- NA
+
+
+ha_data$code[ha_data$plot == 'Florestal-CF' &
                   ha_data$year == 2005 &
                   ha_data$tag_number == 1] <- "missing (60)"
 
@@ -556,6 +570,45 @@ ha_data$column[ha_data$plot == "Florestal-CF" & ha_data$column == 0] <- 1
 ha_data$ht[ha_data$plot == "Florestal-CF" & 
              ha_data$year == 2003 &
              ha_data$tag_number == 590] <- 49
+
+# incorrectly recorded as seedling
+ha_data$code[ha_data$plot == "Florestal" &
+               ha_data$year == 2008 & 
+               ha_data$tag_number == 1916] <- "ULY (3)"
+
+# incorrectly recorded the ht as 73 (it is 7.3). Rounded down.
+ha_data$ht[ha_data$plot == "Florestal" &
+               ha_data$year == 2001 & 
+               ha_data$tag_number == 967] <- 7
+
+
+# incorrectly recorded as seedling
+ha_data$code[ha_data$plot == "Florestal" &
+               ha_data$year == 2007 & 
+               ha_data$tag_number == 378] <- "ULY (3)"
+
+# incorrectly recorded as seedling
+ha_data$code[ha_data$plot == "Florestal" &
+               ha_data$year == 2007 & 
+               ha_data$tag_number == 378] <- "ULY (3)"
+
+# incorrectly recorded as seedling ("nova com cara de velha")
+ha_data$code[ha_data$plot == "Florestal" &
+               ha_data$year == 2007 & 
+               ha_data$tag_number == 1578] <- "ULY (3)"
+
+
+
+# correction (found after referring to the datasheet to fix 378 above)
+ha_data$shts[ha_data$plot == "Florestal" &
+             ha_data$year == 2007 & 
+             ha_data$tag_number == 1290] <- 2
+ha_data$ht[ha_data$plot == "Florestal" &
+               ha_data$year == 2007 & 
+               ha_data$tag_number == 1290] <- 16
+ha_data$code[ha_data$plot == "Florestal" &
+              ha_data$year == 2007 & 
+              ha_data$tag_number == 1290] <- NA
 
 
 # corrections 5750 --------------------------------------------------------
@@ -601,6 +654,31 @@ rm(to_delete)
 # Updating Codes 
 ha_data$code[ha_data$plot == "5750" & ha_data$year == 2005 & ha_data$tag_number == 864] <- "missing (60)"
 
+ha_data$code[ha_data$plot == 5750 &
+               (ha_data$year == 2005 | ha_data$year == 2006 | ha_data$year == 2007) & 
+               ha_data$tag_number == 101] <- NA
+ha_data$ht[ha_data$plot == 5750 &
+               ha_data$year == 2004 & 
+               ha_data$tag_number == 101] <- NA
+
+ha_data$shts[ha_data$plot == 5750 &
+             ha_data$year == 2004 & 
+             ha_data$tag_number == 101] <- NA
+
+ha_data$infl[ha_data$plot == 5750 &
+               ha_data$year == 2004 & 
+               ha_data$tag_number == 101] <- NA
+
+# incorrectly recorded as seedling
+ha_data$code[ha_data$plot == 5750 &
+               ha_data$year == 2009 & 
+               ha_data$tag_number == 2341] <- "ULY (3)"
+
+# incorrectly recorded as seedling
+ha_data$code[ha_data$plot == 5750 &
+               ha_data$year == 2007 & 
+               ha_data$tag_number == 2061] <- "ULY (3)"
+
 # location
 ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 962] <- 6
 ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 977] <- 10
@@ -632,6 +710,36 @@ ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1602] <- "J"
 
 
 # corrections 5756 --------------------------------------------------------
+ha_data$code[ha_data$plot == '5756' &
+               (ha_data$year == 2005 |ha_data$year == 2006|ha_data$year == 2007) &
+               ha_data$tag_number == 983] <- NA
+ha_data$shts[ha_data$plot == '5756' &
+               ha_data$year == 2004 &
+               ha_data$tag_number == 983] <- NA
+ha_data$ht[ha_data$plot == '5756' &
+             ha_data$year == 2004 &
+             ha_data$tag_number == 983] <- NA
+ha_data$infl[ha_data$plot == '5756' &
+               ha_data$year == 2004 &
+               ha_data$tag_number == 983] <- NA
+
+
+ha_data$code[ha_data$plot == '5756' &
+               (ha_data$year == 2005 |ha_data$year == 2006) &
+               ha_data$tag_number == 7] <- NA
+ha_data$shts[ha_data$plot == '5756' &
+               ha_data$year == 2004 &
+               ha_data$tag_number == 7] <- NA
+ha_data$ht[ha_data$plot == '5756' &
+             ha_data$year == 2004 &
+             ha_data$tag_number == 7] <- NA
+ha_data$infl[ha_data$plot == '5756' &
+               ha_data$year == 2004 &
+               ha_data$tag_number == 7] <- NA
+
+
+
+
 
 # tag no. 793
 ha_data$code[ha_data$plot == 5756 &
@@ -766,8 +874,15 @@ ha_data$infl[ha_data$plot == "5756" &
                      ha_data$tag_number == 403] <- NA
 
 
+# incorrectly recorded as seedling
+# upon 2x of data sheet found it also had infl
+ha_data$code[ha_data$plot == 5756 &
+               ha_data$year == 2008 & 
+               ha_data$tag_number == 1789] <- "ULY (3)"
 
-
+ha_data$infl[ha_data$plot == 5756 &
+               ha_data$year == 2008 & 
+               ha_data$tag_number == 1789] <- 1
 
 
 # Corrections Dimona-CF ---------------------------------------------------
@@ -851,7 +966,10 @@ ha_data$code[ha_data$plot == 5753 &
                      ha_data$tag_number == 412] <- "missing (60)"
 
 
-
+# incorrectly recorded as seedling
+ha_data$code[ha_data$plot == 5753 &
+               ha_data$year == 2006 & 
+               ha_data$tag_number == 404] <- "under branchfall (90)"
 
 # Corrections 5754 (PA10) -------------------------------------------------
 
@@ -885,6 +1003,61 @@ ha_data$column[ha_data$plot == "5751" & ha_data$column == 0] <- 1
 
 
 # Corrections 2108 --------------------------------------------------------
+
+#TODO:
+
+# 33 was missing in a treefall in 2003 
+# in 2004 a plant was found iunder treefall and recorded as 227
+# in 2005 the 227 tag was replaced and recorded as 240 BUT it was actually 249
+# That's because 240 was a seedling marked in e8 in 2004
+# in all subsequent years 240 in this plot is missing and 249 is correct in this plot,
+# 240 should be in e8
+
+move33<-ha_data %>% filter(plot == 2108 & tag_number == 33) %>% 
+  filter(is.na(shts)==FALSE) %>% 
+  mutate(tag_number=249) %>% 
+  select(plot,tag_number, year,shts,ht)
+
+
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 1998 & ha_data$tag_number == 249] <- 2
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 1999 & ha_data$tag_number == 249] <- 2
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2000 & ha_data$tag_number == 249] <- 3
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2001 & ha_data$tag_number == 249] <- 4
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2002 & ha_data$tag_number == 249] <- 5
+
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 1998 & ha_data$tag_number == 249] <- 50
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 1999 & ha_data$tag_number == 249] <- 52
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2000 & ha_data$tag_number == 249] <- 57
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2001 & ha_data$tag_number == 249] <- 83
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2002 & ha_data$tag_number == 249] <- 120
+
+
+omit33<-ha_data %>% filter(plot==2108 & tag_number==33)
+ha_data<-anti_join(ha_data,omit33)
+rm(move33,omit33)
+ha_data$code[ha_data$plot == 2108 & 
+               ha_data$year == 2006 & ha_data$tag_number == 249] <- NA
+
+ha_data$code[ha_data$plot == 2108 & 
+               ha_data$year == 2004 & ha_data$tag_number == 249] <- NA
+
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2004 & ha_data$tag_number == 249] <- 5
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2004 & ha_data$tag_number == 249] <- 128
+ha_data$code[ha_data$plot == 2108 & ha_data$year == 2004 & ha_data$tag_number == 249] <- "under treefall (80)"
+
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 249] <- 7
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 249] <- 140
+ha_data$code[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 249] <- NA
+
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2008 & ha_data$tag_number == 249] <- 1
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2008 & ha_data$tag_number == 249] <- 35
+ha_data$code[ha_data$plot == 2108 & ha_data$year == 2008 & ha_data$tag_number == 249] <- NA
+
+
+# Adding the year that was missing for 240
+ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 240] <- 2
+ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 240] <- 22
+ha_data$code[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 240] <- NA
 
 # 17 plot corrected but failed to correct on datasheet
 ha_data$code[ha_data$plot == 2108 & ha_data$year == 2006 & ha_data$tag_number == 17] <- NA
@@ -1039,6 +1212,13 @@ ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number ==
 ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 499] <- "missing (60)"
 ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 272] <- "missing (60)"
 ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 736] <- "missing (60)"
+
+
+
+# incorrectly recorded as seedling
+ha_data$code[ha_data$plot == 5752 &
+               ha_data$year == 1999 & 
+               ha_data$tag_number == 378] <- "ULY (3)"
 
 
 # Corrections - Porto Alegre CF -------------------------------------------
