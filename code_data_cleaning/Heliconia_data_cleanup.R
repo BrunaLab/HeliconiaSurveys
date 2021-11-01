@@ -120,13 +120,6 @@ ha_data <- rowid_to_column(ha_data, "HA_ID_Number")
 ha_data[which(ha_data$tag_number == 310 & ha_data$plot == "5751"), 49] <- NA
 
 
-# 2018
-# TODO: track down these marked and mapped in 07/08
-# look for them in plant_id_07 for plants 1609 and 1629
-filter(ha_data, tag_number == 1705 & plot == 5756)
-filter(ha_data, tag_number == 1710 & plot == 5756)
-
-
 
 
 # correcting data assignment after replacing tag in field   ---------------
@@ -334,15 +327,14 @@ ha_data <-ha_data %>% rename("code"="notes")
 
 # fix the data types as needed
 ha_data$infl <- as.character(ha_data$infl)
-# ha_data$year <- as.numeric(as.character(ha_data$year))
 ha_data$shts <- as.numeric(as.character(ha_data$shts))
 ha_data$ht <- as.numeric(as.character(ha_data$ht))
-# ha_data$infl <- as.numeric(as.character(ha_data$infl))
 ha_data$plot <- as.factor(ha_data$plot)
 ha_data$plotID <- as.factor(ha_data$plotID)
 ha_data$ranch <- as.factor(ha_data$ranch)
 ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
 ha_data$row <- as.factor(ha_data$row)
+
 # make habitat (frag size) an ordered factor
 ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
@@ -350,8 +342,6 @@ ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
 
 # clean up codes/notes ----------------------------------------------------
-
-
 
 ha_data <- rename(ha_data, "code"="code")
 ha_data$code <- as.factor(ha_data$code)
@@ -379,10 +369,7 @@ levels(ha_data$code)[levels(ha_data$code) == ""] <- NA
 summary(as.factor(ha_data$code))
 levels(as.factor(ha_data$code))
 
-
-
 # CLARIFY THE CODES FROM PA10
-
 ha_data$notes <-as.character(NA)
 ha_data$code<-as.character(ha_data$code)
 ha_data$code<-trimws(ha_data$code)
@@ -502,10 +489,7 @@ head(ha_data, 20)
 
 
 # remove the rows with NA across all columns -----------------------------
-
 ha_data <- ha_data %>% drop_na(plot, habitat, ranch)
-
-
 
 # correction - x/y coordinates and row/col--------------------------------
 
@@ -581,7 +565,6 @@ ha_data$ht[ha_data$plot == "Florestal-CF" &
                ha_data$year == 2001 & 
                ha_data$tag_number == 967] <- 7
 
-
 # incorrectly recorded as seedling
 ha_data$code[ha_data$plot == "Florestal-CF" &
                ha_data$year == 2007 & 
@@ -596,8 +579,6 @@ ha_data$code[ha_data$plot == "Florestal-CF" &
 ha_data$code[ha_data$plot == "Florestal-CF" &
                ha_data$year == 2007 & 
                ha_data$tag_number == 1578] <- "ULY (3)"
-
-
 
 # correction (found after referring to the datasheet to fix 378 above)
 ha_data$shts[ha_data$plot == "Florestal-CF" &
@@ -617,12 +598,10 @@ ha_data$code[ha_data$plot == "Florestal-CF" &
 # just outside the plot. I converted to J.
 ha_data$row[ha_data$plot == "5750" & ha_data$row == "L"] <- "J"
 
-
 # If you want to convert these to 0 to say they are inside the plot,
 # then uncomment these two lines
 # ha_data$x_09[ha_data$x_09 < 1] <- 0
 # ha_data$y_09[ha_data$x_09 < 1] <- 0
-
 
 # Plant 236 - add code for year it's missing, delete the plot
 # it duplicate numbers, delete incorrect plot
@@ -650,7 +629,6 @@ to_delete <- ha_data %>%
 ha_data <- anti_join(ha_data, to_delete)
 rm(to_delete)
 
-# 5750
 # Updating Codes 
 ha_data$code[ha_data$plot == "5750" & ha_data$year == 2005 & ha_data$tag_number == 864] <- "missing (60)"
 
@@ -723,7 +701,6 @@ ha_data$infl[ha_data$plot == '5756' &
                ha_data$year == 2004 &
                ha_data$tag_number == 983] <- NA
 
-
 ha_data$code[ha_data$plot == '5756' &
                (ha_data$year == 2005 |ha_data$year == 2006) &
                ha_data$tag_number == 7] <- NA
@@ -736,10 +713,6 @@ ha_data$ht[ha_data$plot == '5756' &
 ha_data$infl[ha_data$plot == '5756' &
                ha_data$year == 2004 &
                ha_data$tag_number == 7] <- NA
-
-
-
-
 
 # tag no. 793
 ha_data$code[ha_data$plot == 5756 &
@@ -828,8 +801,6 @@ ha_data <- ha_data[!(ha_data$plot == "5756" &
   ha_data$row == "A" &
   ha_data$column == 9), ]
 
-
-
 # Updating Codes 
 ha_data$code[ha_data$plot == "5756" &
                      ha_data$year == 2006 &
@@ -867,12 +838,10 @@ ha_data$code[ha_data$plot == "5756" &
                      ha_data$year == 2006 &
                      ha_data$tag_number == 50] <- "under treefall (80)"
 
-
 # incorrectly recorded 10 infl in 2007, should be NA
 ha_data$infl[ha_data$plot == "5756" &
                      ha_data$year == 2007 &
                      ha_data$tag_number == 403] <- NA
-
 
 # incorrectly recorded as seedling
 # upon 2x of data sheet found it also had infl
@@ -884,11 +853,92 @@ ha_data$infl[ha_data$plot == 5756 &
                ha_data$year == 2008 & 
                ha_data$tag_number == 1789] <- 1
 
+# something happened in 2005 with 332 and 933 in A7.  332 was reported missing,
+# 933 was reported dead. Subsequent years have plant 933 (which should be dead) 
+# with size measurements that are clearly 332. I think someone changed the tag 
+# without noting it, otherwise the subsequent years would have discovered the 
+# issue I am changing 993->933.1 and 332->933.2 until a field 2x can be conducted.
+ha_data$tag_number[ha_data$plot == 5756 &
+               ha_data$row == "A" & 
+               ha_data$column == "7" & 
+               ha_data$tag_number == 332] <- 933.2
+
+ha_data$tag_number[ha_data$plot == 5756 &
+                     ha_data$row == "A" & 
+                     ha_data$column == "7" & 
+                     ha_data$tag_number == 933] <- 933.1
+
+ha_data$tag_number[ha_data$plot == 5756 &
+                     ha_data$row == "A" & 
+                     ha_data$column == "7" & 
+                     (ha_data$year == 2006 |ha_data$year == 2007 |
+                        ha_data$year == 2008 |ha_data$year == 2009 ) & 
+                     ha_data$tag_number == 933.1] <- 933.2
+
+# No idea what 816 in D9 is - big and late to be ULY, no match for missing.
+# Maybe a tage replacement with the old tag? Will mark as 816.2 and 
+# note for field 2x
+ha_data$tag_number[ha_data$plot == 5756 &
+                     ha_data$row == "D" & 
+                     ha_data$column == "9" & 
+                     ha_data$tag_number == 816] <- 816.2
+
+# # 919 to 1760 (with a year incorrectly recorded as 929)
+# delete the years no longer needed
+ha_data<-ha_data[!(ha_data$plot==5756 &
+                     (ha_data$year==2008 | ha_data$year==2009) &
+                     ha_data$tag_number==919),]
+# Add correct shts, height,code in 2007 (incorrectly recorded as 929)
+ha_data$shts[ha_data$plot == 5756 &
+               ha_data$row == "C" &
+               ha_data$column == "8" &
+               ha_data$year == 2007 &
+               ha_data$tag_number == 919] <- 1
+ha_data$ht[ha_data$plot == 5756 &
+               ha_data$row == "C" &
+               ha_data$column == "8" &
+               ha_data$year == 2007 &
+               ha_data$tag_number == 919] <- 17
+ha_data$code[ha_data$plot == 5756 &
+             ha_data$row == "C" &
+             ha_data$column == "8" &
+             ha_data$year == 2007 &
+             ha_data$tag_number == 919] <- NA
+# delete the incorrectly noted 929 (should have been 919)
+ha_data<-ha_data[!(ha_data$plot==5756 &
+                     (ha_data$column==8 & ha_data$row=="C") &
+                     ha_data$tag_number==929),]
+# remove the years form 1760, we will replace with the ones from 919
+ha_data<-ha_data[!(ha_data$plot==5756 &
+                     ha_data$column==8 & 
+                     ha_data$row=="C" &
+                     (ha_data$year == 1998 |ha_data$year == 1999 |
+                        ha_data$year == 2000 |ha_data$year == 2001 |
+                        ha_data$year == 2002 |ha_data$year == 2003 |
+                        ha_data$year == 2004 |ha_data$year == 2005 |
+                        ha_data$year == 2006 |ha_data$year == 2007 ) &
+                     ha_data$tag_number==1760),]
+#change the code on 1760
+ha_data$code[ha_data$plot == 5756 &
+               ha_data$row == "C" &
+               ha_data$column == "8" &
+               ha_data$year == 2008 &
+               ha_data$tag_number == 1760] <- NA
+# convert the 919 to the new tag nmumber of 1760
+ha_data$tag_number[ha_data$plot == 5756 &
+                     ha_data$row == "C" &
+                     ha_data$column == "8" &
+                     ha_data$tag_number == 919] <- 1760
+# change the y coordinate
+ha_data$y_09[ha_data$plot == 5756 &
+                     ha_data$row == "C" &
+                     ha_data$column == "8" &
+                     ha_data$tag_number == 1760] <- 2.4
+# 
 
 # Corrections Dimona-CF ---------------------------------------------------
 
 ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$column == 11] <- 10
-
 
 # plant 81 was not dead in 06
 ha_data$code[ha_data$plot == "Dimona-CF" &
@@ -904,8 +954,6 @@ ha_data$code[ha_data$plot == "Dimona-CF" &
   ha_data$year == 2009] <- "missing (60)"
 
 # location
-
-# DIMONA-CF
 ha_data$row[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5662] <- "E"
 ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5739] <- 10
 ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5762] <- 10
@@ -924,47 +972,37 @@ ha_data$code[ha_data$plot == 5753 &
   ha_data$year == 2005 &
   ha_data$tag_number == 412] <- "missing (60)"
 
-
 ha_data$code[ha_data$plot == 5753 &
                      ha_data$year == 2005 &
                      ha_data$tag_number == 268] <- "missing (60)"
-
 
 ha_data$code[ha_data$plot == 5753 &
                      ha_data$year == 2005 &
                      ha_data$tag_number == 276] <- "missing (60)"
 
-
 ha_data$code[ha_data$plot == 5753 &
                      ha_data$year == 2005 &
                      ha_data$tag_number == 292] <- "missing (60)"
 
-
 ha_data$code[ha_data$plot == 5753 &
                      ha_data$year == 2006 &
                      ha_data$tag_number == 34] <- "missing (60)"
-
-
 
 ha_data$code[ha_data$plot == 5753 &
                      ha_data$year == 2006 &
                      ha_data$tag_number == 52] <- "missing (60)"
 
-
 ha_data$code[ha_data$plot == 5753 &
                      ha_data$year == 2007 &
                      ha_data$tag_number == 34] <- "missing (60)"
-
 
 ha_data$code[ha_data$plot == 5753 &
                      ha_data$year == 2008 &
                      ha_data$tag_number == 345] <- "missing (60)"
 
-
 ha_data$code[ha_data$plot == 5753 &
                      ha_data$year == 2008 &
                      ha_data$tag_number == 412] <- "missing (60)"
-
 
 # incorrectly recorded as seedling
 ha_data$code[ha_data$plot == 5753 &
@@ -975,6 +1013,73 @@ ha_data$code[ha_data$plot == 5753 &
 
 # plant size entered incorrectly (entered as 997, should be 97)
 ha_data$ht[ha_data$plot == "5754" & ha_data$year == 2006 & ha_data$tag_number == 445] <- 97
+
+# removing the code that was resulting in zombie
+ha_data$code[ha_data$plot == 5754 &
+               ha_data$row == "B" &
+               ha_data$column == "7" &
+               ha_data$year == 2006 &
+               ha_data$tag_number == 823.7] <- NA
+
+# 823 and 824 were marked dead, but I think that was because they were on the B7/C7
+# border and not found when surveying B7. For not the "Dead" is being removed, and 
+# and both are being placed in C7, with numbers corrected
+ha_data$code[ha_data$plot == 5754 &
+               ha_data$row == "B" &
+               ha_data$column == "7" &
+               ha_data$year == 2004 &
+               ha_data$tag_number == 823.7] <- NA
+
+ha_data$code[ha_data$plot == 5754 &
+               ha_data$row == "B" &
+               ha_data$column == "7" &
+               ha_data$year == 2004 &
+               ha_data$tag_number == 824.7] <- NA
+
+# removing the ULY codes
+ha_data$code[ha_data$plot == 5754 &
+               ha_data$row == "C" &
+               ha_data$column == "7" &
+               ha_data$year == 2006 &
+               ha_data$tag_number == 824.7] <- NA
+
+ha_data$code[ha_data$plot == 5754 &
+               ha_data$row == "C" &
+               ha_data$column == "7" &
+               ha_data$year == 2006 &
+               ha_data$tag_number == 823.7] <- NA
+
+# replace the values for the 1st year 
+ha_data$shts[ha_data$plot == 5754 &
+               (ha_data$row == "C" & ha_data$column == "7") &
+               ha_data$year == 2003 &
+               (ha_data$tag_number == 823.7|ha_data$tag_number == 824.7)] <- 1
+ha_data$ht[ha_data$plot == 5754 &
+               (ha_data$row == "C" & ha_data$column == "7") &
+               ha_data$year == 2003 &
+               (ha_data$tag_number == 823.7|ha_data$tag_number == 824.7)] <- 1
+ha_data$code[ha_data$plot == 5754 &
+             (ha_data$row == "C" & ha_data$column == "7") &
+             ha_data$year == 2003 &
+             (ha_data$tag_number == 823.7|ha_data$tag_number == 824.7)] <- "sdlg (1)"
+
+# delete the duplicates
+ha_data<-ha_data[!(ha_data$plot==5754 & 
+                     ha_data$row=="B" & 
+                     ha_data$column==7 &
+                     ha_data$tag_number == 823.7),]
+
+ha_data<-ha_data[!(ha_data$plot==5754 & 
+                     ha_data$row=="B" & 
+                     ha_data$column==7 &
+                     ha_data$tag_number == 824.7),]
+# correct the number
+# str(ha_data$tag_number)
+ha_data<-ha_data %>% 
+  mutate(tag_number = ifelse(plot==5754 & tag_number == 824.7, 824, tag_number))
+
+ha_data<-ha_data %>% 
+  mutate(tag_number = ifelse(plot==5754 & tag_number == 823.7,823, tag_number))
 
 # Corrections 5751 --------------------------------------------------------
 
@@ -1121,29 +1226,21 @@ ha_data$tag_number[ha_data$plot == 2107 &
 #   pivot_wider(names_from=tag_number, values_from=shts:infl) %>% 
 #   mutate()
 
-
 # tags 68/275
 # source <- which(ha_data$tag_number == 68 & ha_data$bdffp_reserve_no == "2107")
 # destination <- which(ha_data$tag_number == 275 & ha_data$bdffp_reserve_no == "2107")
 # ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-
-
-
-# 2017
 # Updating Codes 
 # Plant 228: code say 'dead (2)' in 2006, should be missing (60)
-
 ha_data$code[ha_data$plot == 2107 &
                      ha_data$year == 2006 &
                      ha_data$tag_number == 228] <- "missing (60)"
-# Plant 282: code say 'dead (2)' in 2006, should be missing (60)
 
+# Plant 282: code say 'dead (2)' in 2006, should be missing (60)
 ha_data$code[ha_data$plot == 2107 &
                      ha_data$year == 2006 &
                      ha_data$tag_number == 282] <- "missing (60)"
-
-
 
 
 # Corrections CaboFrio-CF -------------------------------------------------
@@ -1160,19 +1257,14 @@ correct_2121 <- ha_data %>%
 # remove the duplicates from the original df
 ha_data <- ha_data[!(ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 2121), ]
 # re-insert them
+str(ha_data$code)
+str(correct_2121$code)
 ha_data <- bind_rows(ha_data, correct_2121)
 rm(correct_2121)
-
-
 
 # location
 ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$HA_ID_Number == 5211] <- "E"
 ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$HA_ID_Number == 5303] <- "E"
-
-
-
-
-
 
 # Corrections 5752  -------------------------------------------------------
 
@@ -1206,14 +1298,10 @@ ha_data <- ha_data[!(ha_data$plot == "5752" & ha_data$tag_number == 526), ]
 ha_data <- bind_rows(ha_data, correct_526)
 rm(correct_526)
 
-
-
 ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 149] <- "missing (60)"
 ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 499] <- "missing (60)"
 ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 272] <- "missing (60)"
 ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 736] <- "missing (60)"
-
-
 
 # incorrectly recorded as seedling
 ha_data$code[ha_data$plot == 5752 &
@@ -1236,8 +1324,8 @@ ha_data<-ha_data[
     (ha_data$column != 10)
     , ]
 
-
 # Corrections - PA10 ------------------------------------------------------
+
 # which(ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==98 & ha_data$year==2006 & ha_data$row=="E")
 # ha_data[92607,]
 ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==88 & ha_data$year==2005 & ha_data$row=="A"] <- 2
@@ -1284,7 +1372,6 @@ ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==836 & ha_dat
 ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==836 & ha_data$column==1 & ha_data$row=="D"] <- "836X"
 ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==845 & ha_data$year==2006 & ha_data$row=="B"] <- NA
 
-
 # These need to the code changed from "dead "to "missing"
 ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1376 & ha_data$year==2005] <- "missing (60)"
 ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==748 & ha_data$year==2005] <- "missing (60)"
@@ -1295,7 +1382,6 @@ ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==121 & ha_dat
 ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==879 & ha_data$year==2005] <- "missing (60)"
 ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==911 & ha_data$year==2005] <- "missing (60)"
 
-# 
 zombie_rows_to_del <- data.frame(
   tag_number = c(39,39,39,39,110,110,110,180,180,180,180,184,184,184,185,185,
                  192,192,209,209,209,209,221,221,221,223,223,238,238,238,238,
@@ -1349,6 +1435,7 @@ zombie_rows_to_del$tag_number<-as.character(zombie_rows_to_del$tag_number)
 zombie_rows_to_del$year<-as.character(zombie_rows_to_del$year)
 ha_data <- anti_join(ha_data,zombie_rows_to_del)
 
+rm(zombie_rows_to_del)
 # # Need to change all the ones where a plant is dead but size was recorded as "0"
  ha_data <- ha_data %>% mutate(shts = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), 
                         NA, shts)) %>% 
@@ -1357,7 +1444,6 @@ ha_data <- anti_join(ha_data,zombie_rows_to_del)
    mutate(infl = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), 
                         NA, infl))
 # 
-
 # what happened to the data for 120? did it get lost in a tag switch?
 # 5754	10-ha	120	1998	NA	NA	NA	
 # 5754	10-ha	120	1999	NA	NA	NA	
@@ -1365,12 +1451,7 @@ ha_data <- anti_join(ha_data,zombie_rows_to_del)
 # 5754	10-ha	120	2001	NA	NA	NA	
 # 5754	10-ha	120	2002	NA	NA	NA	
 # 5754	10-ha	120	2003	0	0	dead (2)	
-# 
-# 
-# These are weird duplicates
-# 5754	10-ha	823	2006	2	39	ULY (3)	*** THIS IS A WEIRD DUPLICATE 
-# 5754	10-ha	824	2006	1	29	ULY (3)	*** THIS IS A WEIRD DUPLICATE 
-
+ 
 #TODO:
 # Need to add 2006 seedling notations
 # Figure out plant 46
@@ -1395,57 +1476,81 @@ MISC_OBS <-
         ) %>%
   arrange(notes,plot, year, tag_number) %>%
   select(-ht, -shts, -infl,-x_09,-y_09)
-
 write_csv(MISC_OBS, "./output/misc_observations.csv")
 
-
 # Save CSV of plants that were not on the survey list ---------------------
+
+#TODO: what is the difference between "not on list" and "new plant in plot"? 
+# If nothing then collapse. What about "dead not on list...where they properly recorded as dead?
 
 # but had a tag on them, so they were marked in a previous year.  Not sure why -
 # could have been someone forgot to call it out. They are useful because they
 # are a true mortality (had a tag, now dead), or were alive in past year
-summary(as.factor(ha_data$code))
-Not_on_SurveyList <-
-  ha_data %>% filter(code == "not on list (40)" |
-                       code == "dead not on list (100)" |
-  code == "new plant in plot (6)")
-write_csv(Not_on_SurveyList,
-  "./data_clean/Not_on_SurveyList.csv")
+# summary(as.factor(ha_data$code))
+# Not_on_SurveyList <-
+#   ha_data %>% filter(code == "not on list (40)" |
+#                        code == "dead not on list (100)" |
+#   code == "new plant in plot (6)")
+# write_csv(Not_on_SurveyList,
+#   "./data_clean/Not_on_SurveyList.csv")
 
-# Delete the uneccesary "Misc" obs,; make the remainder consistent ---------------------
-
+# Add MISC codes to code2, make the remainder consistent ---------------------
+# ha_data$code2<-NA
+# # ha_data$code2<-as.factor(ha_data$code2)
+# summary(as.factor(ha_data$code))
+# # summary(as.factor(ha_data$code2))
+# # levels(ha_data$code2)<-levels(ha_data$code)
+# # ha_data$code<-as.character(ha_data$code)
+# # ha_data$code2==ha_data$code
+# ha_data$code2<-NA
+# 
+# ha_data$code2[1]==ha_data$code[1]
 ha_data$code<-trimws(ha_data$code)
 ha_data$code<-as.factor(ha_data$code)
-summary(as.factor(ha_data$code))
-levels(ha_data$code)[levels(ha_data$code) == "new plant in plot (6)"] <-
-  "ULY (3)"
-levels(ha_data$code)[levels(ha_data$code) == "dried (7)"] <-
-  NA
-levels(ha_data$code)[levels(ha_data$code) == "resprouting (10)"] <-
-  NA
-levels(ha_data$code)[levels(ha_data$code) == "not on list (40)"] <-
-  NA
-levels(ha_data$code)[levels(ha_data$code) == "no tag (50)"] <-
-  "tag missing (50)"
-levels(ha_data$code)[levels(ha_data$code) == "under litter (70)"] <-
-  NA
-levels(ha_data$code)[levels(ha_data$code) == "under treefall (80)"] <-
-  NA
-levels(ha_data$code)[levels(ha_data$code) == "under branchfall (90)"] <-
-  NA
-levels(ha_data$code)[levels(ha_data$code) == "dead and not on list (100)"] <-
-  "dead (2)"
-levels(ha_data$code)[levels(ha_data$code) == "2x in field (200)"] <- NA
-levels(ha_data$code)[levels(ha_data$code) == "90, 10 (two codes)"] <-
-  NA
-ha_data <- droplevels(ha_data)
-summary(as.factor(ha_data$code))
+ha_data$code<-as.character(ha_data$code)
+levels(as.factor(ha_data$code))
 
-# summary(ha_data)
-# summary(ha_data$code)
-# colnames(ha_data)
+#create a new column to note if seedling in a given survey year
+ha_data$sdlg_status<-ha_data$code 
+ha_data <- ha_data %>%
+  mutate(sdlg_status = replace(as.character(sdlg_status), sdlg_status!="sdlg (1)",NA))
+levels(as.factor(ha_data$sdlg_status))
+
+#create a new column to note it's status in dataset
+ha_data$survey_status<-ha_data$code 
+ha_data <- ha_data %>%
+  mutate(survey_status = replace(as.character(survey_status), ((survey_status!="dead (2)")&
+                                 (survey_status!="missing (60)")&
+                                 (survey_status!="dead and not on list (100)"))
+                                 ,NA)) %>% 
+  mutate(survey_status = replace(as.character(survey_status), survey_status=="dead and not on list (100)","dead (2)"))
+levels(as.factor(ha_data$survey_status))
+
+#create a new column to note if under tree/branch/litter
+ha_data$treefall_status<-ha_data$code 
+ha_data <- ha_data %>%
+  mutate(treefall_status = replace(as.character(treefall_status), ((treefall_status!="under branchfall (90)") &
+                                                                 (treefall_status!="under treefall (80)")&
+                                                                 (treefall_status!="under litter (70)")),NA)) 
+levels(as.factor(ha_data$treefall_status))
+
+#create a new column to note if ULY, Lost tag etc.
+ha_data$adult_recruit<-ha_data$code 
+ha_data <- ha_data %>%
+  mutate(adult_recruit = replace(as.character(adult_recruit), ((adult_recruit!="new plant in plot (6)")&
+                                                                 (adult_recruit!="no tag (50)")&
+                                                                 (adult_recruit!="not on list (40)")&
+                                                                 (adult_recruit!= "ULY (3)")& 
+                                                                 (adult_recruit!= "dead and not on list (100)")), NA)) %>%
+  mutate(adult_recruit = replace(as.character(adult_recruit), adult_recruit=="dead and not on list (100)","not on list (40)")) %>% 
+  mutate(adult_recruit = replace(as.character(adult_recruit), adult_recruit=="new plant in plot (6)","ULY (3)"))
+levels(as.factor(ha_data$adult_recruit))
 
 
+ha_data$sdlg_status<-as.factor(ha_data$sdlg_status)
+ha_data$survey_status<-as.factor(ha_data$survey_status)
+ha_data$adult_recruit<-as.factor(ha_data$adult_recruit)
+ha_data$treefall_status<-as.factor(ha_data$treefall_status)
 ha_data$x_09<-as.numeric(ha_data$x_09)
 ha_data$y_09<-as.numeric(ha_data$y_09)
 ha_data$year<-as.factor(ha_data$year)
@@ -1478,6 +1583,8 @@ dupes %>%
   summarize(N_plants = n_distinct(HA_ID_Number)) %>%
   arrange(habitat, desc(N_plants))
 
+
+
 dim(dupes)
 check_dupes(ha_data)
 
@@ -1486,12 +1593,31 @@ ha_data %>%
   summarize(N_plants = n_distinct(HA_ID_Number)) %>%
   arrange(habitat, desc(N_plants))
 
+
+ha_data %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
+  arrange(habitat, desc(N_plants)) %>% 
+  summarize(N_plants=sum(N_plants))
+
+
+ha_data %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
+  arrange(habitat, desc(N_plants)) %>% 
+  ungroup() %>% 
+  summarize(total_plants=sum(N_plants))
+
+
 ha_data <- ha_data %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row, column, year)
 
-
+summary(ha_data)
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
+
 summary(as.factor(ha_data$code))
+
+
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 # TODO:
@@ -1515,4 +1641,12 @@ summary(as.factor(ha_data$code))
 
 
 # Be sure to delete the ones for which there are no data after being marked dead (see dy in zombies.R)
+
+
+# 2018
+# TODO: track down these marked and mapped in 07/08
+# look for them in plant_id_07 for plants 1609 and 1629
+filter(ha_data, tag_number == 1705 & plot == 5756)
+filter(ha_data, tag_number == 1710 & plot == 5756)
+
 

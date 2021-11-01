@@ -1,6 +1,6 @@
 
 zombies <- function(test) {
-  # test<-ha_long
+  # test<-ha_data
   # test<-pa_wide
   df2 <- test
   df2$code2 <- NA
@@ -37,7 +37,9 @@ zombies <- function(test) {
     arrange(habitat, plot, tag_number, year)
   # zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
   # write.csv(zombies_all_yrs, "./data_midway/zombies.csv", row.names = FALSE)
-  
+  if (nrow(zombies_all_yrs)==0) {
+      print("there are no zombies in your dataset")
+    } else {
   # This just prints them out with each plant separated by a row
   zombies_all_yrs_new <-
     as.data.frame(lapply(zombies_all_yrs, as.character), stringsAsfactors = FALSE)
@@ -46,12 +48,12 @@ zombies <- function(test) {
       rbind,
       by(zombies_all_yrs_new, zombies_all_yrs_new$tag_number, rbind, "")
     ),-1)
-  
-  
   write.csv(zombies_all_yrs_new,
             "./data_midway/zombies_space_btwn_plants.csv",
             row.names = FALSE)
+    }
   
+ 
   
   
   
