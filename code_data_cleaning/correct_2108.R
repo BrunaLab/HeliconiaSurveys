@@ -1,6 +1,6 @@
 correct_2108 <- function(ha_data) {
   
-  #TODO:
+  
   
   # 33 was missing in a treefall in 2003 
   # in 2004 a plant was found iunder treefall and recorded as 227

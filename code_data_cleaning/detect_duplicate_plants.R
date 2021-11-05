@@ -1,4 +1,4 @@
-duplicate_plants <- function(test) {
+detect_duplicate_plants <- function(test) {
   # test<-ha_data
   test$row_col <- do.call(paste, c(test[c("row", "column")], sep = "")) 
   
@@ -22,13 +22,17 @@ duplicate_plants <- function(test) {
   write.csv(dupe_simplified, "./data_midway/dupes_heliconia_numbers.csv", row.names = FALSE)
   
   # This just prints them out with each plant separated by a row
+  if (nrow(dupes)==0) {
+    print("there are no duplicates in your dataset")
+  } else {
   dupes <-
     as.data.frame(lapply(dupes, as.character), stringsAsfactors = FALSE)
   dupes <-
     head(do.call(
       rbind,
-      by(dupes, dupes$tag_number, rbind, "")
+      by(dupes, dupes$HA_ID_Number, rbind, "")
     ),-1)
+  }
   
   
   write.csv(dupes, "./data_midway/dupes_heliconia.csv", row.names = FALSE)

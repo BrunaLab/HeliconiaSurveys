@@ -89,6 +89,17 @@ merge_with_PA10 <- function(test) {
                               is.na(PA10_data_2006$tag_number)==TRUE] <- 765 #missing on csv, 2x on form
   
   
+  # there were two duplicates that were causing porblems with the merge, 
+  # so I dealt with it here
+  delete_818<-PA10_data_2006 %>% filter(tag_number==818 &
+                                      ht_2006==50)
+  PA10_data_2006 <- anti_join(PA10_data_2006,delete_818)
+  
+  delete_825<-PA10_data_2006 %>% filter(tag_number==825 &
+                                          ht_2006==54)
+  PA10_data_2006 <- anti_join(PA10_data_2006,delete_825)
+  
+  
   PA10_data<-full_join(PA10_data,PA10_data_2006,by=c("tag_number","row","column"))
   
   
@@ -186,14 +197,14 @@ merge_with_PA10 <- function(test) {
   pa_long_duplicate<-pa_long_duplicate  %>%
     mutate(tag_number=paste(tag_number,column,sep ="."))
   
-  # TODO: FIX THESE TWO DUPES
-  pa_long_duplicate_fix<-pa_long_duplicate %>%
-    filter(tag_number=="818.7" | tag_number=="825.7")
+  # FIX THESE TWO DUPES 
+  # pa_long_duplicate_fix<-pa_long_duplicate %>%
+  #   filter(tag_number=="818.7" | tag_number=="825.7")
   pa_wide_duplicate<-pa_long_duplicate %>%
     filter(tag_number!="818.7") %>%
     filter(tag_number!="825.7") %>%
     pivot_wider(names_from = var, values_from = value)
-  
+  # 
   
   pa_wide_no_dupes$tag_number<-as.numeric(pa_wide_no_dupes$tag_number)
   pa_wide_duplicate$tag_number<-as.numeric(pa_wide_duplicate$tag_number)

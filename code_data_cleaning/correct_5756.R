@@ -34,6 +34,8 @@ correct_5756 <- function(ha_data) {
   
   # Tag 372
   ha_data$ht[ha_data$plot == "5756" & ha_data$year == 2005 & ha_data$tag_number == 372] <- 26
+  
+  
   # TODO: did this one change tag numbers? 2x
   
   # Tag 1616
@@ -42,6 +44,8 @@ correct_5756 <- function(ha_data) {
   ha_data$code[ha_data$plot == 5756 &
                  (ha_data$year == 2005 | ha_data$year == 2006) &
                  ha_data$tag_number == 1616] <- "missing (60)"
+  
+  
   # TODO: figure out which of the plants in the plot this is - tags lost in tfall
   # in the first yr this showed up
   
