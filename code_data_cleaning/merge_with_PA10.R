@@ -118,58 +118,11 @@ merge_with_PA10 <- function(test) {
   ############################################################
   # DATA CLEANING
   ############################################################
-  
-  
-  # SELECT THE columnS NEEDED
-  PA10_data <-
-    PA10_data %>% select(
-      "HA.plot",
-      "plot",
-      "habitat",
-      "ranch",
-      "bdffp_reserve_no",
-      "tag_number",
-      "row",
-      "column",
-      "shts_1998",
-      "shts_1999",
-      "shts_2000",
-      "shts_2001",
-      "shts_2002",
-      "shts_2003",
-      "shts_2004",
-      "shts_2005",
-      "shts_2006",
-      "ht_1998",
-      "ht_1999",
-      "ht_2000",
-      "ht_2001",
-      "ht_2002",
-      "ht_2003",
-      "ht_2004",
-      "ht_2005",
-      "ht_2006",
-      "infl_1998",
-      "infl_1999",
-      "infl_2000",
-      "infl_2001",
-      "infl_2002",
-      "infl_2003",
-      "infl_2004",
-      "infl_2005",
-      "infl_2006",
-      "notes_1998",
-      "notes_1999",
-      "notes_2000",
-      "notes_2001",
-      "notes_2002",
-      "notes_2003",
-      "notes_2004",
-      "notes_2005",
-      "notes_2006"
-    )
-  colnames(PA10_data)
-  
+  PA10_data<-PA10_data %>% select(order(colnames(.)))
+  PA10_data<-PA10_data %>% relocate(c(ranch,plot,tag_number,row,column), 
+                                    .after = habitat)
+  PA10_data<-PA10_data %>% relocate(starts_with(c("shts_", "ht_", "infl_", "notes_")), .after = column)
+
   pa_long <- PA10_data %>%
     mutate(across(starts_with(c("shts_", "ht_", "infl_", "notes_")),
                   as.character)) %>%

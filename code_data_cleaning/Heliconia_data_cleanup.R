@@ -21,21 +21,36 @@ ha_data <-
 
 # make the column names lower case
 names(ha_data) <- tolower(names(ha_data))
+names(ha_data) <- make.unique(names(ha_data), sep="_")
 
 # rename the columns that have duplicate names
-names(ha_data)[2] <- "habitat"
-names(ha_data)[48] <- "plant_id_07"
-names(ha_data)[49] <- "row_07"
-names(ha_data)[50] <- "column_07"
-names(ha_data)[55] <- "x_08"
-names(ha_data)[56] <- "y_08"
-names(ha_data)[57] <- "plant_id_08"
-names(ha_data)[58] <- "row_08"
-names(ha_data)[59] <- "column_08"
-names(ha_data)[64] <- "x_09"
-names(ha_data)[65] <- "y_09"
-names(ha_data)[66] <- "code_to_eb"
+ha_data<-ha_data %>% rename("habitat"="size",
+                            "plant_id_07"="plantid",
+                            "row_07"="row_1",
+                            "column_07"="col",
+                            "x_08"="x",
+                            "y_08"="y",
+                            "plant_id_08"="plantid_1",
+                            "row_08"="row_2",
+                            "column_08"="col_1",
+                            "x_09"="x_1",
+                            "y_09"="y_1",
+                           "code_to_eb"="notes to emilio")
 names(ha_data)
+# 
+# names(ha_data)[2] <- "habitat"
+# names(ha_data)[48] <- "plant_id_07"
+# names(ha_data)[49] <- "row_07"
+# names(ha_data)[50] <- "column_07"
+# names(ha_data)[55] <- "x_08"
+# names(ha_data)[56] <- "y_08"
+# names(ha_data)[57] <- "plant_id_08"
+# names(ha_data)[58] <- "row_08"
+# names(ha_data)[59] <- "column_08"
+# names(ha_data)[64] <- "x_09"
+# names(ha_data)[65] <- "y_09"
+# names(ha_data)[66] <- "code_to_eb"
+# names(ha_data)
 
 # correct the data types assigned to each
 str(ha_data)
@@ -80,9 +95,6 @@ levels(ha_data$plot)[match("Cabo Frio", levels(ha_data$plot))] <- "CaboFrio-CF"
 levels(ha_data$plot)[match("Florestal", levels(ha_data$plot))] <- "Florestal-CF"
 summary(ha_data$plot)
 
-
-# add a column with plots numbered as CF-1, CF-2...FF-7 to match map in
-# Bruna (2003) Ecology
 
 plot_info <-
   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>%
@@ -222,73 +234,27 @@ ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 
 
 # DATA CLEANING -----------------------------------------------------------
 
-# SELECT THE columns NEEDED
-ha_data <-
-  ha_data %>% select(
-    "plot",
-    "plotID",
-    "habitat",
-    "ranch",
-    "bdffp_reserve_no",
-    "HA_ID_Number",
-    "tag_number",
-    "row",
-    "column",
-    "x_09",
-    "y_09",
-    "shts_1998",
-    "shts_1999",
-    "shts_2000",
-    "shts_2001",
-    "shts_2002",
-    "shts_2003",
-    "shts_2004",
-    "shts_2005",
-    "shts_2006",
-    "shts_2007",
-    "shts_2008",
-    "shts_2009",
-    "ht_1998",
-    "ht_1999",
-    "ht_2000",
-    "ht_2001",
-    "ht_2002",
-    "ht_2003",
-    "ht_2004",
-    "ht_2005",
-    "ht_2006",
-    "ht_2007",
-    "ht_2008",
-    "ht_2009",
-    "infl_1998",
-    "infl_1999",
-    "infl_2000",
-    "infl_2001",
-    "infl_2002",
-    "infl_2003",
-    "infl_2004",
-    "infl_2005",
-    "infl_2006",
-    "infl_2007",
-    "infl_2008",
-    "infl_2009",
-    "notes_1998",
-    "notes_1999",
-    "notes_2000",
-    "notes_2001",
-    "notes_2002",
-    "notes_2003",
-    "notes_2004",
-    "notes_2005",
-    "notes_2006",
-    "notes_2007",
-    "notes_2008",
-    "notes_2009"
-  )
+# delete unecessary columns
+ha_data<-ha_data %>% select(-plant_id_07, 
+                            -row_07, 
+                            -column_07, 
+                            -plant_id_08, 
+                            -row_08, 
+                            -column_08, 
+                            -code_to_eb,
+                            -x_08,
+                            -y_08)
+
+# colnames(ha_data)
+# rearrange the columns
+ha_data<-ha_data %>% select(order(colnames(.)))
+ha_data<-ha_data %>% relocate(c(row,column,x_09,y_09), .after = habitat)
+ha_data<-ha_data %>% relocate(c(habitat,ranch, plot, plotID), 
+                              .before = bdffp_reserve_no)
+ha_data<-ha_data %>% relocate(tag_number, .after = HA_ID_Number)
+ha_data<-ha_data %>% relocate(starts_with(c("shts_", "ht_", "infl_", "notes_")), .after = y_09)
+
 colnames(ha_data)
-
-
-
 #remove NAs
 ha_data <- ha_data %>% filter(!is.na(HA_ID_Number))
 
@@ -301,21 +267,14 @@ ha_data <- ha_data %>%
                names_to = c("var", "year")) %>%
    pivot_wider(names_from = var, values_from = value)
 
-head(ha_data, 10)
-colnames(ha_data)
-summary(ha_data)
-
-
+# head(ha_data, 10)
+# colnames(ha_data)
+# summary(ha_data)
 
 ha_data$shts <- as.numeric(as.numeric(ha_data$shts))
 ha_data$ht <- as.numeric(as.numeric(ha_data$ht))
 ha_data$infl <- as.numeric(as.numeric(ha_data$infl))
 
-
-str(pa_wide)
-str(ha_data)
-names(pa_wide)
-names(ha_data)
 
 # merge the PA10 data -----------------------------------------------------
 source("./code_data_cleaning/merge_with_PA10.R")
@@ -325,7 +284,8 @@ ha_data <-ha_data %>% rename("code"="notes")
 # %>%
 #   replace_na(list(infl = 0))   #convert all NA in infl column to zero
 
-# fix the data types as needed
+
+# stabndardize column classes ---------------------------------------------
 ha_data$infl <- as.character(ha_data$infl)
 ha_data$shts <- as.numeric(as.character(ha_data$shts))
 ha_data$ht <- as.numeric(as.character(ha_data$ht))
@@ -334,7 +294,6 @@ ha_data$plotID <- as.factor(ha_data$plotID)
 ha_data$ranch <- as.factor(ha_data$ranch)
 ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
 ha_data$row <- as.factor(ha_data$row)
-
 # make habitat (frag size) an ordered factor
 ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
@@ -342,123 +301,11 @@ ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
 
 # clean up codes/notes ----------------------------------------------------
+source("./code_data_cleaning/clean_codes.R")
+ha_data<-clean_codes(ha_data)
 
-ha_data <- rename(ha_data, "code"="code")
-ha_data$code <- as.factor(ha_data$code)
-summary(ha_data$code)
-levels(ha_data$code)[levels(ha_data$code) == "1"] <-  "sdlg (1)"
-levels(ha_data$code)[levels(ha_data$code) == "ULY"] <-  "ULY (3)"
-levels(ha_data$code)[levels(ha_data$code) == "3"] <- "ULY (3)"
-levels(ha_data$code)[levels(ha_data$code) == "2"] <-  "dead (2)"
-levels(ha_data$code)[levels(ha_data$code) == "4"] <-  "ULY (3)"
-levels(ha_data$code)[levels(ha_data$code) == "5"] <-  "dead (2)"
-levels(ha_data$code)[levels(ha_data$code) == "6"] <-  "new plant in plot (6)"
-levels(ha_data$code)[levels(ha_data$code) == "7"] <-  "dried (7)"
-levels(ha_data$code)[levels(ha_data$code) == "10"] <-  "resprouting (10)"
-levels(ha_data$code)[levels(ha_data$code) == "40"] <-  "not on list (40)"
-levels(ha_data$code)[levels(ha_data$code) == "50"] <-  "no tag (50)"
-levels(ha_data$code)[levels(ha_data$code) == "60"] <-  "missing (60)"
-levels(ha_data$code)[levels(ha_data$code) == "70"] <-  "under litter (70)"
-levels(ha_data$code)[levels(ha_data$code) == "80"] <-  "under treefall (80)"
-levels(ha_data$code)[levels(ha_data$code) == "90"] <-  "under branchfall (90)"
-levels(ha_data$code)[levels(ha_data$code) == "100"] <-  "dead and not on list (100)"
-levels(ha_data$code)[levels(ha_data$code) == "200"] <-  "2x in field (200)"
-levels(ha_data$code)[levels(ha_data$code) == "300"] <-  "dead (2)"
-levels(ha_data$code)[levels(ha_data$code) == "1, 200 "] <-  "sdlg (1)"
-levels(ha_data$code)[levels(ha_data$code) == ""] <- NA
-summary(as.factor(ha_data$code))
-levels(as.factor(ha_data$code))
-
-# CLARIFY THE CODES FROM PA10
-ha_data$notes <-as.character(NA)
-ha_data$code<-as.character(ha_data$code)
-ha_data$code<-trimws(ha_data$code)
-ha_data <- ha_data %>%
-  mutate(notes = if_else(code == "not on list. must be313","is it 133?", notes)) %>% 
-  mutate(notes = if_else(code == "1 new infl + 1 old infl","1 new infl + 1 old infl", notes)) %>% 
-  mutate(notes = if_else(code == "not on list. must be96","is it 96?", notes)) %>% 
-  mutate(notes = if_else(code == "1 old infl","1 old infl", notes)) %>% 
-  mutate(notes = if_else(code == "2 old infl","2 old infl", notes)) %>% 
-  mutate(notes = if_else(code == "2 old infls","2 old infl", notes)) %>% 
-  mutate(notes = if_else(code == "3 old infls","2 old infl", notes)) %>% 
-  mutate(notes = if_else(code == "actualkly in c8","in c8", notes)) %>% 
-  mutate(notes = if_else(code == "actually  B5","in b5", notes)) %>% 
-  mutate(notes = if_else(code == "actually  A6","in a6", notes)) %>% 
-  mutate(notes = if_else(code == "should be c5","in c5", notes)) %>% 
-  mutate(notes = if_else(code == "this number belongs to a pvc in a6","this no belongs to pvc in a6", notes)) %>% 
-  mutate(notes = if_else(code == "pvc stake not on list","pvc stake not on list", notes)) %>% 
-  mutate(notes = if_else(code == "its in C2","its in C2", notes)) %>% 
-  mutate(notes = if_else(code == "e E6","its in e6", notes)) %>% 
-  mutate(notes = if_else(code == "3 old infl","2 old infl", notes)) %>% 
-  mutate(notes = if_else(code == "horrible treefall in plot","horrible treefall in plot", notes)) %>% 
-  mutate(notes = if_else(code == "treefall in plot","treefall in plot", notes)) %>% 
-  mutate(notes = if_else(code == "horrible treefall in plot, can barely make it in","horrible treefall in plot, can barely make it in", notes)) %>% 
-  mutate(notes = if_else(code == "lots of small branchfalls in plot","lots of small branchfalls in plot", notes)) %>% 
-  mutate(notes = if_else(code == "plot is 50% treefall","plot is 50% treefall", notes)) %>% 
-  mutate(notes = if_else(code == "trefall","trefall", notes)) %>% 
-  mutate(code = if_else(code=="dead","dead (2)", code)) %>% 
-  mutate(code= na_if(code, "dead")) %>% 
-  mutate(code = if_else(code == "sdlg","sdlg (1)", code)) %>% 
-  mutate(code = na_if(code, "sdlg")) %>% 
-  mutate(code = if_else(code == "under trunk","under treefall (80)", code)) %>% 
-  mutate(code = if_else(code == "under treefall","under treefall (80)", code)) %>% 
-  mutate(code = if_else(code == "under fallen trunk","under treefall (80)", code)) %>% 
-  mutate(code= na_if(code, "under trunk")) %>%
-  mutate(code= na_if(code, "under treefall")) %>%
-  mutate(code= na_if(code, "under fallen trunk")) %>%
-  mutate(code = if_else(code == "under branch" | code == "under branch), must have lost tag",
-                         "under branchfall (90)", code)) %>% 
-  mutate(code= na_if(code, "under branch")) %>%
-  mutate(code= na_if(code, "under branch, must have lost tag")) %>%
-  mutate(code = if_else(code == "not on list","not on list (40)", code)) %>% 
-  mutate(code= na_if(code, "not on list")) %>% 
-  mutate(code = if_else(code == "missing","missing (60)", code)) %>% 
-  mutate(code= na_if(code, "missing")) %>% 
-  mutate(code = if_else(code== "ULY?","ULY (3)", code)) %>% 
-  mutate(code= na_if(code, "ULY?")) %>% 
-  mutate(code = if_else(code== "not on list. must be313","not on list (40)", code)) %>% 
-  mutate(code = if_else(code== "not on list. must be96","not on list (40)", code)) %>% 
-  mutate(code= na_if(code, "not on list. must be313")) %>% 
-  mutate(code= na_if(code, "not on list. must be96")) %>% 
-  mutate(code= na_if(code, "must be one of missing")) %>% 
-  mutate(code = if_else(code== "Dead, Not on List","dead and not on list (100)", code)) %>% 
-  mutate(code= if_else(code == "dead, not on list","dead and not on list (100)", code)) %>% 
-  mutate(code= na_if(code, "Dead, Not on List")) %>% 
-  mutate(code= na_if(code, "dead, not on list")) %>% 
-  mutate(code= na_if(code, "could be one of missing")) %>% 
-  mutate(code= na_if(code, "could be 1333")) %>% 
-  mutate(code= na_if(code, "could be 378")) %>% 
-  mutate(code= na_if(code, "could be 680?")) %>% 
-  mutate(code= na_if(code, "must have lost tag")) %>% 
-  mutate(code= na_if(code, "1 new infl + 1 old infl")) %>% 
-  mutate(code= na_if(code, "1 old infl")) %>% 
-  mutate(code= na_if(code, "2 old infl")) %>% 
-  mutate(code= na_if(code, "2 old infls")) %>%
-  mutate(code= na_if(code, "3 old infls")) %>%
-  mutate(code= na_if(code, "actualkly in c8")) %>%
-  mutate(code= na_if(code, "actually  B5")) %>%
-  mutate(code= na_if(code, "actually in A6")) %>% 
-  mutate(code= na_if(code, "should be c5")) %>%
-  mutate(code= na_if(code, "this number belongs to a pvc in a6")) %>%
-  mutate(code = if_else(code == "pvc stake not on list","not on list (40)", code)) %>% 
-  mutate(code= na_if(code, "pvc stake not on list")) %>%
-  # mutate(code= na_if(code, "pvc stake not on list")) %>%
-  mutate(code= na_if(code, "its in C2")) %>%
-  mutate(code= na_if(code, "e E6")) %>%
-  mutate(code= na_if(code, ", must have lost tag")) %>%
-  mutate(code= na_if(code, "3 old infl")) %>% 
-  mutate(infl = if_else(infl=="0" & code == "1 new infl" , "1", infl)) %>% 
-  mutate(code= na_if(code,"1 new infl")) %>% 
-  mutate(code= na_if(code, "horrible treefall in plot")) %>%
-  mutate(code= na_if(code, "treefall in plot")) %>%
-  mutate(code= na_if(code, "horrible treefall in plot, can barely make it in")) %>%
-  mutate(code= na_if(code, "lots of small branchfalls in plot")) %>%
-  mutate(code= na_if(code, "plot is 50% treefall")) %>%
-  mutate(code= na_if(code, "trefall")) 
-
-    
-levels(as.factor(ha_data$code))
-levels(as.factor(ha_data$notes))
+# levels(as.factor(ha_data$code))
+# levels(as.factor(ha_data$notes))
 
 # 
 # codes_to_fix<-ha_data %>% select(tag_number,code) %>% 
@@ -681,7 +528,7 @@ dupes %>%
 
 
 dim(dupes)
-check_dupes(ha_data)
+# check_dupes(ha_data)
 
 ha_data %>%
   group_by(habitat, plot) %>%
@@ -710,8 +557,10 @@ summary(ha_data)
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
 
-summary(as.factor(ha_data$code))
 
+
+
+foo<-as.data.frame(ha_data$tag_number)
 
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
@@ -728,20 +577,15 @@ summary(as.factor(ha_data$code))
 # FF-1	2107	1-ha	282	A	5	2005	4	81	NA  this
 # is actually 222, which was then retagged as 302 in 2006
 
-#TODO: Check misc code to see which ones repro need to be updated
-
-# Duplicated tag numbers to check in the field ----------------------------
-# 2107
-# 237: one in C8, one in D6
-
-
-# Be sure to delete the ones for which there are no data after being marked dead (see dy in zombies.R)
-
-
-# 2018
-# TODO: track down these marked and mapped in 07/08
+# track down these marked and mapped in 07/08
 # look for them in plant_id_07 for plants 1609 and 1629
 filter(ha_data, tag_number == 1705 & plot == 5756)
 filter(ha_data, tag_number == 1710 & plot == 5756)
 
 
+#TODO: check the TODO notes in PA10, 5750, and 5756 cleanup files
+# TODO:# add a column with plots numbered as CF-1, CF-2...FF-7 to match map in
+# Bruna (2003) Ecology
+
+# Duplicated tag numbers to check in the field ----------------------------
+# 2107 : 237 in C8 and D6
