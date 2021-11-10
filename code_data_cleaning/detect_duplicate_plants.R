@@ -3,21 +3,25 @@ detect_duplicate_plants <- function(test) {
   test$row_col <- do.call(paste, c(test[c("row", "column")], sep = "")) 
   
   
-  duplicates_col <- test %>% group_by(habitat, plot, column, HA_ID_Number, tag_number, year) %>% filter(n()>1)
-  duplicates_row <- test %>% group_by(habitat, plot, row,  HA_ID_Number,tag_number, year) %>% filter(n()>1)
-  duplicates_row_col <- test %>% group_by(habitat, plot, row_col, HA_ID_Number,   tag_number, year) %>% filter(n()>1)
-  duplicates_row_col <- test %>% group_by(habitat, plot, HA_ID_Number,    tag_number, year) %>% filter(n()>1) %>% ungroup()
-  duplicates_row_col <- duplicates_row_col %>%  select(plot, HA_ID_Number,   tag_number) %>% unique()
+  duplicates <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1)
+  # duplicates_row <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1)
+  # duplicates_row_col <- test %>% group_by(habitat, plot, row_col,tag_number, year) %>% filter(n()>1) %>% ungroup()
+  # duplicates_row_col <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1) %>% ungroup()
+  
+  anti_join(duplicates_col,duplicates_row)
+  
+  duplicates_row_col <- duplicates %>%  select(plot, tag_number) %>% unique()
+  # duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()
   
   dupes <-
     semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% 
-    select(plotID,plot, habitat,  HA_ID_Number,   tag_number, year, row_col, shts, ht, code) %>% 
-    arrange(plot, habitat, tag_number,  row_col,year) %>% # detect all the ones with decimals
+    select(plotID,plot, habitat,  HA_ID_Number,   tag_number, year, row,column, shts, ht, code) %>% 
+    arrange(plot, habitat, tag_number,  row,column,year) %>% # detect all the ones with decimals
     bind_rows(ha_data %>% filter(str_detect(tag_number, "\\.")))
   
   dupe_simplified <- dupes %>% 
-    select(plot,   tag_number,HA_ID_Number, row_col) %>% 
-    group_by(plot,tag_number,row_col) %>% 
+    select(plot,tag_number,HA_ID_Number,row,column) %>% 
+    group_by(plot,tag_number,row,column) %>% 
     slice(1)
   
   
@@ -32,8 +36,7 @@ detect_duplicate_plants <- function(test) {
   dupes <-
     head(do.call(
       rbind,
-      by(dupes, dupes$ta_number, rbind, "")
-    ),-1)
+      by(dupes, dupes$tag_number, rbind, "")),-1)
   }
   
   

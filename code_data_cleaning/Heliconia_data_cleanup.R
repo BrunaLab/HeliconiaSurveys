@@ -379,6 +379,12 @@ ha_data<-correct_5751(ha_data)
 source("./code_data_cleaning/correct_2108.R")
 ha_data<-correct_2108(ha_data)
 
+
+# Corrections 2206 --------------------------------------------------------
+source("./code_data_cleaning/correct_2206.R")
+ha_data<-correct_2206(ha_data)
+
+
 # Corrections 2107 --------------------------------------------------------
 source("./code_data_cleaning/correct_2107.R")
 ha_data<-correct_2107(ha_data)
@@ -582,10 +588,11 @@ foo<-as.data.frame(ha_data$tag_number)
 filter(ha_data, tag_number == 1705 & plot == 5756)
 filter(ha_data, tag_number == 1710 & plot == 5756)
 
-
+#TODO: check the xy 
 #TODO: check the TODO notes in PA10, 5750, and 5756 cleanup files
 # TODO:# add a column with plots numbered as CF-1, CF-2...FF-7 to match map in
 # Bruna (2003) Ecology
 
 # Duplicated tag numbers to check in the field ----------------------------
 # 2107 : 237 in C8 and D6
+# CaboFrio-CF: 194 in C10 and A8, need to be figured out in field

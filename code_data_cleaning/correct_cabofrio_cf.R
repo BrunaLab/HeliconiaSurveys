@@ -1,6 +1,31 @@
 
 correct_cabofrio_cf <- function(ha_data) {
   
+  # 2115 in D9 is actually 2105; move the measurment from 2008 to 2015's record
+  ha_data$shts[ha_data$plot == "CaboFrio-CF" & 
+                       ha_data$tag_number == 2105 &
+                       ha_data$year == 2008] <- 1
+  
+  ha_data$ht[ha_data$plot == "CaboFrio-CF" & 
+                 ha_data$tag_number == 2105 &
+                 ha_data$year == 2008] <- 13
+  
+  ha_data$code[ha_data$plot == "CaboFrio-CF" & 
+                 ha_data$tag_number == 2105 &
+                 ha_data$year == 2008] <- "sdlg (1)"
+  # Then delete the incorrect 2115 in D9
+  delete2115 <- ha_data %>%
+    filter(plot == "CaboFrio-CF" &
+             tag_number == 2115 &
+             row == "D" &
+             column == 9)
+  ha_data <- anti_join(ha_data, delete2115)
+  rm(delete2115)
+  
+  
+  
+  
+  
   # tag no. 2121
   # create the correct values
   correct_2121 <- ha_data %>%

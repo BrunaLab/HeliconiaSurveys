@@ -1,5 +1,34 @@
-
 correct_5752 <- function(ha_data) {
+  
+  # 841 in c1 is actually 849
+  ha_data$tag_number[ha_data$plot == "5752" & 
+                       ha_data$tag_number == 841 &
+                       ha_data$row == "C" &
+                       ha_data$column == 1] <- 849
+  
+  
+  # 566 mistakenly marked as a seedling in 2007, which created duplicate record
+  # correct and merge
+  ha_data$code[ha_data$plot == "5752" & 
+                       ha_data$tag_number == 566 &
+                       ha_data$year == 2006] <- NA
+  
+  ha_data$ht[ha_data$plot == "5752" & 
+                 ha_data$tag_number == 566 &
+                 ha_data$year == 2006] <- 16
+  
+  ha_data$shts[ha_data$plot == "5752" & 
+               ha_data$tag_number == 566 &
+               ha_data$year == 2006] <- 1
+  
+  delete566 <- ha_data %>%
+    filter(plot == "5752" &
+             tag_number == 566 &
+             HA_ID_Number == 3127)
+  ha_data <- anti_join(ha_data, delete566)
+  rm(delete566)
+  
+  
   
   # tag no. 181
   # create the correct values

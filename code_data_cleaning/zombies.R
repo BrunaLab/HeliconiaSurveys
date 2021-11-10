@@ -1,5 +1,21 @@
 
 zombies <- function(test) {
+  # 
+  # test<-ha_data %>% filter(code=="dead (2)"|code == "dead") %>% 
+  #   select(plot, tag_number, HA_ID_Number, year)
+  #   
+  # test<-ha_data %>% filter(HA_ID_Number%in% test$HA_ID_Number) %>% 
+  #   group_by(plot, tag_number) %>%
+  #   mutate(code = as.character(code), # can be avoided if key is a character to begin with
+  #          code3 = (cumsum(lag(
+  #            code == "dead (2)" & !is.na(code == "dead (2)"), default = 0
+  #          )))) %>% 
+  # filter(code3 > 0) %>%
+  #   arrange(plot, tag_number, year) %>%
+  #   ungroup()
+  # 
+  # 
+  
   # test<-ha_data
   # test<-pa_wide
   df2 <- test
