@@ -8,7 +8,7 @@ detect_duplicate_plants <- function(test) {
   # duplicates_row_col <- test %>% group_by(habitat, plot, row_col,tag_number, year) %>% filter(n()>1) %>% ungroup()
   # duplicates_row_col <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1) %>% ungroup()
   
-  anti_join(duplicates_col,duplicates_row)
+  # anti_join(duplicates_col,duplicates_row)
   
   duplicates_row_col <- duplicates %>%  select(plot, tag_number) %>% unique()
   # duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()

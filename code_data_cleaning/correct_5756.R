@@ -111,11 +111,11 @@ correct_5756 <- function(ha_data) {
   ha_data <- anti_join(ha_data, to_delete)
   rm(to_delete)
   
-  # tag_no 1602
+  # tag_no 1602 delete the incorrect duplicate in A5
   ha_data <- ha_data[!(ha_data$plot == "5756" &
                          ha_data$tag_number == 1602 &
                          ha_data$row == "A" &
-                         ha_data$column == 9), ]
+                         ha_data$column == 5), ]
   
   # Updating Codes 
   ha_data$code[ha_data$plot == "5756" &
@@ -154,6 +154,10 @@ correct_5756 <- function(ha_data) {
                  ha_data$year == 2006 &
                  ha_data$tag_number == 50] <- "under treefall (80)"
   
+  ha_data$code[ha_data$plot == "5756" &
+                 (ha_data$year == 2008 | ha_data$year == 2009) &
+                 ha_data$tag_number == 1662] <- "missing (60)"
+  
   # incorrectly recorded 10 infl in 2007, should be NA
   ha_data$infl[ha_data$plot == "5756" &
                  ha_data$year == 2007 &
@@ -169,28 +173,101 @@ correct_5756 <- function(ha_data) {
                  ha_data$year == 2008 & 
                  ha_data$tag_number == 1789] <- 1
   
-  # something happened in 2005 with 332 and 933 in A7.  332 was reported missing,
-  # 933 was reported dead. Subsequent years have plant 933 (which should be dead) 
-  # with size measurements that are clearly 332. I think someone changed the tag 
+  # something happened in 2007 with 332 and 933 in A7.  
+  # Subsequent years have plant 933 (which should be dead)with size measurements
+  # that are clearly 332. I think someone maybe changed the tag 
   # without noting it, otherwise the subsequent years would have discovered the 
-  # issue I am changing 993->933.1 and 332->933.2 until a field 2x can be conducted.
-  ha_data$tag_number[ha_data$plot == 5756 &
-                       ha_data$row == "A" & 
-                       ha_data$column == "7" & 
-                       ha_data$tag_number == 332] <- 933.2
+  # issue I am correcting the data (data for 332 going to 332) 
+  # and noting a field 2x to be conducted.
   
-  ha_data$tag_number[ha_data$plot == 5756 &
-                       ha_data$row == "A" & 
-                       ha_data$column == "7" & 
-                       ha_data$tag_number == 933] <- 933.1
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "A" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 933 &
+                (ha_data$year == 2006 |
+                    ha_data$year == 2007 |
+                    ha_data$year == 2008 |
+                    ha_data$year == 2009) ] <- NA
   
-  ha_data$tag_number[ha_data$plot == 5756 &
-                       ha_data$row == "A" & 
-                       ha_data$column == "7" & 
-                       (ha_data$year == 2006 |ha_data$year == 2007 |
-                          ha_data$year == 2008 |ha_data$year == 2009 ) & 
-                       ha_data$tag_number == 933.1] <- 933.2
+  ha_data$ht[ha_data$plot == 5756 &
+                 ha_data$row == "A" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 933 &
+                 (ha_data$year == 2006 |
+                    ha_data$year == 2007 |
+                    ha_data$year == 2008 |
+                    ha_data$year == 2009) ] <- NA
   
+  
+  ha_data$HA_ID_Number[ha_data$plot == 5756 &
+               ha_data$row == "A" &
+               ha_data$column == "7" &
+               (ha_data$HA_ID_Number == 4733.1 | 4733.2)] <- round(4733)
+  4733.1
+  # add correct data to  332
+  
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "A" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 332 &
+                 (ha_data$year == 2006 |
+                    ha_data$year == 2008) ] <- 7
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "A" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 332 &
+                 (ha_data$year == 2007) ] <- 10
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "A" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 332 &
+                 (ha_data$year == 2009) ] <- 4
+  
+  ha_data$ht[ha_data$plot == 5756 &
+                 ha_data$row == "A" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 332 &
+                 (ha_data$year == 2006) ] <- 70
+  
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$row == "A" &
+               ha_data$column == "7" &
+               ha_data$tag_number == 332 &
+               (ha_data$year == 2007) ] <- 72
+  
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$row == "A" &
+               ha_data$column == "7" &
+               ha_data$tag_number == 332 &
+               (ha_data$year == 2008) ] <- 74
+  
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$row == "A" &
+               ha_data$column == "7" &
+               ha_data$tag_number == 332 &
+               (ha_data$year == 2009) ] <- 74
+  
+  
+  ha_data$infl[ha_data$plot == 5756 &
+               ha_data$row == "A" &
+               ha_data$column == "7" &
+               ha_data$tag_number == 332 &
+               (ha_data$year == 2000) ] <- 1
+  
+  ha_data$infl[ha_data$plot == 5756 &
+                 ha_data$row == "A" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 332 &
+                 (ha_data$year == 2009) ] <- 1
+  
+  ha_data$code[ha_data$plot == 5756 &
+               ha_data$row == "A" &
+               ha_data$column == "7" &
+               ha_data$tag_number == 332 &
+               (ha_data$year == 2007 |ha_data$year == 2006) ] <- NA
   # No idea what 816 in D9 is - big and late to be ULY, no match for missing.
   # Maybe a tage replacement with the old tag? Will mark as 816.2 and 
   # note for field 2x
@@ -250,6 +327,229 @@ correct_5756 <- function(ha_data) {
                  ha_data$row == "C" &
                  ha_data$column == "8" &
                  ha_data$tag_number == 1760] <- 2.4
+  
+  
+  
+  
+  # delete the duplicate 1276 in B1 
+  delete1276 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 1276 &
+             row == "B" &
+             column == 1)
+  ha_data <- anti_join(ha_data, delete1276)
+  rm(delete1276)
   # 
+  
+  
+  # 1279 is in D3, recorded in D6 in one year (2006) 
+  # Add the 06 data to D1 and delete D3
+  
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "D" &
+                 ha_data$column == "3" &
+                 ha_data$tag_number == 1279 & 
+                 ha_data$year ==2006] <- 1
+  
+  
+  ha_data$ht[ha_data$plot == 5756 &
+                 ha_data$row == "D" &
+                 ha_data$column == "3" &
+                 ha_data$tag_number == 1279 & 
+                 ha_data$year ==2006] <- 14
+  
+  
+  ha_data$code[ha_data$plot == 5756 &
+               ha_data$row == "D" &
+               ha_data$column == "3" &
+               ha_data$tag_number == 1279 & 
+               ha_data$year ==2006] <- NA
+
+  
+  # delete the duplicate 1279 in D6 
+  delete1279 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 1279 &
+             row == "D" &
+             column == 6)
+  ha_data <- anti_join(ha_data, delete1279)
+  rm(delete1279)
+  
+  
+# 1655 
+  ha_data$ht[ha_data$plot == 5756 &
+                 ha_data$row == "B" &
+                 ha_data$column == "8" &
+                 ha_data$tag_number == 1655 & 
+                 ha_data$year ==2007] <- 33
+  
+  
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "B" &
+                 ha_data$column == "8" &
+                 ha_data$tag_number == 1655 & 
+               ha_data$year ==2007] <- 2
+  
+  ha_data$code[ha_data$plot == 5756 &
+                 ha_data$row == "B" &
+                 ha_data$column == "8" &
+                 ha_data$tag_number == 1655 & 
+                 ha_data$year ==2007] <- NA
+  
+  ha_data$code[ha_data$plot == 5756 &
+                 ha_data$row == "B" &
+                 ha_data$column == "8" &
+                 ha_data$tag_number == 1655 & 
+                 ha_data$year ==2008] <- "missing (60)"
+  
+  # delete the duplicate 1655  
+  keep1655 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 1655 &
+             row == "B" &
+             column == 8 & 
+             x_09==7.6)
+  # Delete the incorrect one
+  ha_data<-ha_data[!(ha_data$plot==5756 &
+                       (ha_data$column==8 & ha_data$row=="B") &
+                       ha_data$tag_number==1655),]
+  
+  ha_data <- bind_rows(ha_data, keep1655)
+  rm(keep1655)
+  
+  # 1686 
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$row == "E" &
+               ha_data$column == "2" &
+               ha_data$tag_number == 1686 & 
+               ha_data$year ==2008] <- 16
+  
+  
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "B" &
+                 ha_data$column == "8" &
+                 ha_data$tag_number == 1686 & 
+                 ha_data$year ==2008] <- 1
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$row == "E" &
+               ha_data$column == "2" &
+               ha_data$tag_number == 1686 & 
+               ha_data$year ==2007] <- 16
+  
+  
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "E" &
+                 ha_data$column == "2" &
+                 ha_data$tag_number == 1686 & 
+                 ha_data$year ==2007] <- 1
+  
+  
+  ha_data$code[ha_data$plot == 5756 &
+                 ha_data$row == "E" &
+                 ha_data$column == "2" &
+                 ha_data$tag_number == 1686 & 
+                 ha_data$year ==2007] <- "no tag (50)"
+  
+  # delete the duplicate 1686  
+  keep1686 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 1686 &
+             row == "E" &
+             column == 2 & 
+             x_09==2)
+  # Delete the incorrect one
+  ha_data<-ha_data[!(ha_data$plot==5756 &
+                       (ha_data$column==2 & ha_data$row=="E") &
+                       ha_data$tag_number==1686),]
+  
+  ha_data <- bind_rows(ha_data, keep1686)
+  rm(keep1686)
+  
+  
+  # 1789 in C2 looks like it was a mistake, recorded number incorrectly 
+  # delete it
+
+  delete1789 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 1789 &
+             row == "C" &
+             column == 2)
+  ha_data <- anti_join(ha_data, delete1789)
+  rm(delete1789)
+  
+  
+  # 659 in A3: delete
+  
+  delete659 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 659 &
+             row == "A" &
+             column == 3)
+  ha_data <- anti_join(ha_data, delete659)
+  rm(delete659)
+  
+  # 976
+  # On B7/C7 border, so recorded in C7 in 2 yrs. 
+  # add 06 and 07 measuremnts to B7 and delete C7
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$row == "B" &
+               ha_data$column == "7" &
+               ha_data$tag_number == 976 & 
+               ha_data$year ==2006] <- 31
+  
+  
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "B" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 976 & 
+                 ha_data$year ==2006] <- 31
+  
+  
+  ha_data$code[ha_data$plot == 5756 &
+                 ha_data$row == "E" &
+                 ha_data$column == "2" &
+                 ha_data$tag_number == 976 & 
+                 ha_data$year ==2006] <- NA
+  
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$row == "B" &
+               ha_data$column == "7" &
+               ha_data$tag_number == 976 & 
+               ha_data$year ==2007] <- 31
+  
+  
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$row == "B" &
+                 ha_data$column == "7" &
+                 ha_data$tag_number == 976 & 
+                 ha_data$year ==2007] <- 28
+  
+  
+  ha_data$code[ha_data$plot == 5756 &
+                 ha_data$row == "E" &
+                 ha_data$column == "2" &
+                 ha_data$tag_number == 976 & 
+                 ha_data$year ==2007] <- NA
+  
+  
+  
+  # 976 in C7: delete
+  
+  delete976 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 976 &
+             row == "C" &
+             column == 7)
+  ha_data <- anti_join(ha_data, delete976)
+  rm(delete976)
+  
+  
+
+  
+  
+  
   return(ha_data)
-}
+  }

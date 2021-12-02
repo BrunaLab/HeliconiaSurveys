@@ -132,8 +132,6 @@ ha_data <- rowid_to_column(ha_data, "HA_ID_Number")
 ha_data[which(ha_data$tag_number == 310 & ha_data$plot == "5751"), 49] <- NA
 
 
-
-
 # correcting data assignment after replacing tag in field   ---------------
 
 # PLOT 2017
@@ -549,6 +547,13 @@ ha_data %>%
   summarize(N_plants=sum(N_plants))
 
 
+
+ha_data %>%
+  group_by(habitat) %>%
+  summarize(N_plants = n_distinct(HA_ID_Number))
+
+
+
 ha_data %>%
   group_by(habitat, plot) %>%
   summarize(N_plants = n_distinct(HA_ID_Number)) %>%
@@ -596,3 +601,4 @@ filter(ha_data, tag_number == 1710 & plot == 5756)
 # Duplicated tag numbers to check in the field ----------------------------
 # 2107 : 237 in C8 and D6
 # CaboFrio-CF: 194 in C10 and A8, need to be figured out in field
+# 5756: 16, 816.2 looks like a ULA but recorded number wrong, 2x in field, 933/332 in A7 check 2007 note for 1686 that it is "rebroto de velha sem placa"
