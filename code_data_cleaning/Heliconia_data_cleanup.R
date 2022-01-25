@@ -399,12 +399,6 @@ ha_data<-correct_5752(ha_data)
 source("./code_data_cleaning/correct_pa_cf.R")
 ha_data<-correct_pa_cf(ha_data)
 
-
-# Corrections - PA10 ------------------------------------------------------
-source("./code_data_cleaning/correct_pa_10.R")
-ha_data<-correct_pa_10(ha_data)
-
-
 # Pull out 'Miscellaneous observations'; save to csv file -----------------
 
 # ha_data$code<-gsub("under treefall", "under treefall (80)", ha_data$code)
@@ -529,6 +523,19 @@ dupes %>%
   summarize(N_plants = n_distinct(HA_ID_Number)) %>%
   arrange(habitat, desc(N_plants))
 
+dupes_pa10<-filter(dupes,plot=="5754") 
+dupes_pa10<-filter(dupes_pa10,(is.na(shts)==FALSE) & is.na(ht)==FALSE) %>% 
+  select(plot, tag_number, year, row, column,shts, ht, code)
+rownames(dupes_pa10) <- NULL
+dupes_pa10
+write_csv(dupes_pa10, "./data_midway/dupes_pa10.csv")
+
+
+dupes_pa10_short<-filter(dupes,plot=="5754") %>% 
+  group_by(tag_number) %>% 
+  slice(1)
+
+dupes_pa10
 
 
 dim(dupes)
