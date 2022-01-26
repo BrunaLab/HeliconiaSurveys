@@ -112,5 +112,12 @@ clean_codes <- function(ha_data) {
     mutate(code= na_if(code, "lots of small branchfalls in plot")) %>%
     mutate(code= na_if(code, "plot is 50% treefall")) %>%
     mutate(code= na_if(code, "trefall")) 
+  
+  
+  ha_data$code<-trimws(ha_data$code)
+  # ha_data$code<-as.factor(ha_data$code)
+  # ha_data$code<-as.character(ha_data$code)
+  # levels(as.factor(ha_data$code))
+  
   return(ha_data)
 }

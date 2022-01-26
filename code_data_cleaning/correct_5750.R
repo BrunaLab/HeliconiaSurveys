@@ -68,10 +68,6 @@ correct_5750 <- function(ha_data) {
                ha_data$tag_number == 886] <- 14
   
   
-  # add data to 988
-  # data988
-  # ha_data %>% filter(tag_number==988) %>% filter(plot==5750) 
-  
   
   ha_data<-ha_data %>% mutate(ht = ifelse((plot == 5750 & tag_number ==988 & 
                                              (year!=2006 & 
@@ -207,17 +203,7 @@ correct_5750 <- function(ha_data) {
   ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 2149] <- 6
   ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1602] <- "J"
   
-  
-  # 5750
-  # tag_no 988
-  # ha_data$ht[ha_data$plot=="5750" & ha_data$year==2007 & ha_data$tag_number==988] <-38
-  # ha_data$shts[ha_data$plot=="5750" & ha_data$year==2007 & ha_data$tag_number==988] <-3
-  # ha_data$code[ha_data$plot=="5750" & ha_data$year==2007 & ha_data$tag_number==988] <- NA
-  # ha_data$ht[ha_data$plot=="5750" & ha_data$year==2008 & ha_data$tag_number==988] <-60
-  # ha_data$shts[ha_data$plot=="5750" & ha_data$year==2008 & ha_data$tag_number==988] <-2
-  # ha_data$ht[ha_data$plot=="5750" & ha_data$year==2009 & ha_data$tag_number==988] <-66
-  # ha_data$shts[ha_data$plot=="5750" & ha_data$year==2009 & ha_data$tag_number==988] <-3
-  
+
   return(ha_data)
 }
 

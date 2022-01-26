@@ -36,8 +36,6 @@ correct_5756 <- function(ha_data) {
   ha_data$ht[ha_data$plot == "5756" & ha_data$year == 2005 & ha_data$tag_number == 372] <- 26
   
   
-  # TODO: did this one change tag numbers? 2x
-  
   # Tag 1616
   ha_data$ht[ha_data$plot == "5756" & ha_data$year == 2004 & ha_data$tag_number == 1616] <- 77
   ha_data$shts[ha_data$plot == "5756" & ha_data$year == 2004 & ha_data$tag_number == 1616] <- 4
@@ -46,8 +44,7 @@ correct_5756 <- function(ha_data) {
                  ha_data$tag_number == 1616] <- "missing (60)"
   
   
-  # TODO: figure out which of the plants in the plot this is - tags lost in tfall
-  # in the first yr this showed up
+
   
   # Plant 933
   ha_data$HA_ID_Number <- as.character(ha_data$HA_ID_Number)
@@ -56,12 +53,7 @@ correct_5756 <- function(ha_data) {
     mutate(HA_ID_Number = if_else((plot == 5756 & tag_number == 933 & year > 2005), "4733.2", HA_ID_Number))
   
   
-  # %>%
-  # mutate(tag_number = if_else((plot==5756 & tag_number==933 & year < 2006),
-  # 933.1,tag_number)) %>%
-  # mutate(tag_number = if_else((plot==5756 & tag_number==933 & year > 2005),
-  # 933.2,tag_number))
-  
+
   # Plant 929
   # 929 in C8 is a renumber after tag was lost, I think it was written down
   # incorrectly and needs to be 2x in field
@@ -203,7 +195,7 @@ correct_5756 <- function(ha_data) {
                ha_data$row == "A" &
                ha_data$column == "7" &
                (ha_data$HA_ID_Number == 4733.1 | 4733.2)] <- round(4733)
-  4733.1
+  
   # add correct data to  332
   
   ha_data$shts[ha_data$plot == 5756 &

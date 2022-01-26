@@ -1,5 +1,5 @@
 
-zombies <- function(test) {
+find_zombies <- function(test) {
   # 
   # test<-ha_data %>% filter(code=="dead (2)"|code == "dead") %>% 
   #   select(plot, tag_number, HA_ID_Number, year)
@@ -33,7 +33,7 @@ zombies <- function(test) {
   
   summary(df2)
   #All plamts post -dead records, including NA in ALL columnS
-  # write.csv(dbl.chk, "./data_midway/post_dead_records.csv",row.names = FALSE)
+  # write.csv(dbl.chk, "./data_check/post_dead_records.csv",row.names = FALSE)
   
   # df3 - keep these for review (they are the ones that are marked dead but have data after)
   df3 <-
@@ -49,10 +49,10 @@ zombies <- function(test) {
   # 
   zombies_all_yrs <-
     semi_join(test, df3, by = c("plot", "tag_number")) %>% 
-    select(plot, habitat, tag_number, row, column,year, shts, ht, code) %>% 
-    arrange(habitat, plot, tag_number, year)
+    select(plot, habitat,HA_ID_Number, tag_number, row, column,year, shts, ht, code) %>% 
+    arrange(habitat, plot, HA_ID_Number,tag_number, year)
   # zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
-  # write.csv(zombies_all_yrs, "./data_midway/zombies.csv", row.names = FALSE)
+  # write.csv(zombies_all_yrs, "./data_check/zombies.csv", row.names = FALSE)
   if (nrow(zombies_all_yrs)==0) {
       print("there are no zombies in your dataset")
     } else {
@@ -65,7 +65,7 @@ zombies <- function(test) {
       by(zombies_all_yrs_new, zombies_all_yrs_new$tag_number, rbind, "")
     ),-1)
   write.csv(zombies_all_yrs_new,
-            "./data_midway/zombies_space_btwn_plants.csv",
+            "./data_check/zombies_formatted.csv",
             row.names = FALSE)
     }
   
