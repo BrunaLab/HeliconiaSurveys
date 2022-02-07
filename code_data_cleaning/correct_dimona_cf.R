@@ -100,9 +100,9 @@ correct_dimona_cf <- function(ha_data) {
                  ha_data$year == 2009] <- "missing (60)"
   
   # location
-  ha_data$row[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5662] <- "E"
-  ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5739] <- 10
-  ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$HA_ID_Number == 5762] <- 10
+  ha_data$row[ha_data$plot == "Dimona-CF" & ha_data$tag_number == 89] <- "E"
+  ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$tag_number == 167] <- 10
+  ha_data$column[ha_data$plot == "Dimona-CF" & ha_data$tag_number == 192] <- 10
   
   
   # 195 / 185

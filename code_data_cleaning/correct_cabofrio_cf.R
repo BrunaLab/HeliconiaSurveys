@@ -44,8 +44,8 @@ correct_cabofrio_cf <- function(ha_data) {
   rm(correct_2121)
   
   # location
-  ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$HA_ID_Number == 5211] <- "E"
-  ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$HA_ID_Number == 5303] <- "E"
+  ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 65] <- "E"
+  ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 158] <- "E"
   return(ha_data)
   
 }

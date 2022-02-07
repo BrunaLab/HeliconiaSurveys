@@ -126,9 +126,6 @@ correct_5754 <- function(ha_data) {
   ha_data <- anti_join(ha_data,delete_1387)
   ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1387.7] <- 1387
   
-  # HA_ID_Number 8612 not a plant, its a treefall record
-  delete_8612<-ha_data %>% filter(bdffp_reserve_no=="3209" & HA_ID_Number==8612)
-  ha_data <- anti_join(ha_data,delete_8612)
   
   # plant size entered incorrectly (entered as 997, should be 97)
   ha_data$ht[ha_data$plot == "5754" & ha_data$year == 2006 & ha_data$tag_number == 445] <- 97

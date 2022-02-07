@@ -93,7 +93,7 @@ levels(ha_data$plot)[match("Dimona CF", levels(ha_data$plot))] <- "Dimona-CF"
 levels(ha_data$plot)[match("PA-CF", levels(ha_data$plot))] <- "PortoAlegre-CF"
 levels(ha_data$plot)[match("Cabo Frio", levels(ha_data$plot))] <- "CaboFrio-CF"
 levels(ha_data$plot)[match("Florestal", levels(ha_data$plot))] <- "Florestal-CF"
-summary(ha_data$plot)
+# summary(ha_data$plot)
 
 
 plot_info <-
@@ -119,19 +119,8 @@ ha_data <- rowid_to_column(ha_data, "HA_ID_Number")
 
 # CORRECTIONS TO THE DATASET ----------------------------------------------
 
-# TODO: is it possible these lost above ground parts, which Is why they were
-# counted as zero?
 
-# 2107
-# # incorrectly entered tag no. as 228 instead of 288
- ha_data$plant_id_07[ha_data$plot == "2107" & ha_data$plant_id_07 == "228" &
-                       ha_data$tag_number == "288"] <- "288"
-
-# 5751
-# fix tag 310
-ha_data[which(ha_data$tag_number == 310 & ha_data$plot == "5751"), 49] <- NA
-
-
+# TODO: MOVE THESE INTO FILE FOR EACH PLOT
 # correcting data assignment after replacing tag in field   ---------------
 
 # PLOT 2017
@@ -187,15 +176,6 @@ source <- which(ha_data$tag_number == 1231 & ha_data$plot == "5756")
 destination <- which(ha_data$tag_number == 1714 & ha_data$plot == "5756")
 ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-# fix tag 1864 / 1684
-# <<<<<<< dupes
-# source<-which(ha_data$tag_number==1864 & ha_data$plot=="5756")
-# destination<-which(ha_data$tag_number==1684 & ha_data$plot=="5756")
-# ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
-# ha_data[c(destination,source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
-# #TODO: What column(s) is this supposed to set to NA? Or should this remove 1864 entirely?
-# ha_data[which(ha_data$tag_number==1864 & ha_data$plot=="5756"),]<-NA 
-
 source <- which(ha_data$tag_number == 1864 & ha_data$plot == "5756")
 destination <- which(ha_data$tag_number == 1684 & ha_data$plot == "5756")
 ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
@@ -213,26 +193,10 @@ source <- which(ha_data$tag_number == 218 & ha_data$plot == "5753")
 destination <- which(ha_data$tag_number == 298 & ha_data$plot == "5753")
 ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-# tag checks
-# 
-# ha_data$plant_id_07 <- as.integer(ha_data$plant_id_07)
-# colnames(ha_data)
-# tag_checks <- ha_data %>%
-#   select(plot, tag_number, plant_id_07) %>%
-#   mutate(dble.chk = tag_number - plant_id_07)
-# tag_checks <- arrange(tag_checks, desc(dble.chk))
-# head(tag_checks, 20)
-# tag_checks <- arrange(tag_checks, dble.chk)
-# head(tag_checks, 20)
-# sum(tag_checks$dble.chk) # if NA=zero then all ok
-# 
-# tag_checks <- tag_checks %>%
-#   filter(dble.chk > 0 | dble.chk < 0) %>%
-#   arrange(plot)
 
 # DATA CLEANING -----------------------------------------------------------
 
-# delete unecessary columns
+# delete unnecessary columns
 ha_data<-ha_data %>% select(-plant_id_07, 
                             -row_07, 
                             -column_07, 
@@ -323,10 +287,10 @@ head(ha_data, 20)
 #   df %>%
 #     group_by(year, HA_ID_Number) %>%
 #     count() %>%
-#     filter(n>1) %>% 
-#     pull(HA_ID_Number) %>% 
+#     filter(n>1) %>%
+#     pull(HA_ID_Number) %>%
 #     unique()
-# }
+#   }
 # initial_dupes<-check_dupes(ha_data)
 # initial_dupes<-ha_data[initial_dupes,]
 # 
@@ -640,6 +604,8 @@ ha_data %>%
 
 ha_data <- ha_data %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row, column, year)
 ha_data$code <- as.factor(ha_data$code)
+ha_data$plot <- as.factor(ha_data$plot)
+ha_data$duplicate_tag <- as.factor(ha_data$duplicate_tag)
 levels(ha_data$code)
 summary(ha_data)
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
@@ -699,3 +665,28 @@ write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 # CaboFrio-CF: 194 in C10 and A8, need to be figured out in field
 # 5756: 16, 816.2 looks like a ULA but recorded number wrong, 2x in field, 
 # 933/332 in A7 check 2007 note for 1686 that it is "rebroto de velha sem placa"
+
+# TODO: 
+# fix tag 1864 / 1684
+# <<<<<<< dupes
+# source<-which(ha_data$tag_number==1864 & ha_data$plot=="5756")
+# destination<-which(ha_data$tag_number==1684 & ha_data$plot=="5756")
+# ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# ha_data[c(destination,source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
+# #TODO: What column(s) is this supposed to set to NA? Or should this remove 1864 entirely?
+# ha_data[which(ha_data$tag_number==1864 & ha_data$plot=="5756"),]<-NA 
+
+#TODO:   #came up after corerectionof ha_id number
+# HA_ID_Number 8612 not a plant, its a treefall record
+# delete_8612<-ha_data %>% filter(bdffp_reserve_no=="3209" & HA_ID_Number==8612)
+# ha_data <- anti_join(ha_data,delete_8612)
+
+
+# TODO: from merge_with_PA10
+# PA10_data_2006$tag_number[PA10_data_2006$row=="A" & 
+#                             PA10_data_2006$column=="3"  & 
+#                             is.na(PA10_data_2006$tag_number)==TRUE] <- 770 #missing on csv, 2x on form
+# PA10_data_2006$tag_number[PA10_data_2006$row=="E" &
+#                             PA10_data_2006$column=="5" & 
+#                             PA10_data$shoots==1 & 
+#                             is.na(PA10_data_2006$tag_number)==TRUE] <- 765 #missing on csv, 2x on form

@@ -89,7 +89,7 @@ merge_with_PA10 <- function(test) {
                               is.na(PA10_data_2006$tag_number)==TRUE] <- 765 #missing on csv, 2x on form
   
   
-  # there were two duplicates that were causing porblems with the merge, 
+  # there were two duplicates that were causing problems with the merge, 
   # so I dealt with it here
   delete_818<-PA10_data_2006 %>% filter(tag_number==818 &
                                       ht_2006==50)
@@ -196,13 +196,13 @@ merge_with_PA10 <- function(test) {
   pa_wide$bdffp_reserve_no <-as.factor(pa_wide$bdffp_reserve_no)
   pa_wide$column <-as.factor(pa_wide$column)
   
-  test2 <- bind_rows(test,pa_wide)
-  
   
   # add a unique id number for the pa_wide
-  # max_ha_id<-max(test$HA_ID_Number,na.rm=TRUE)
-  test3 <- test2 %>%
-    group_by(plotID,tag_number) %>%
-    mutate(HA_ID_Number = ifelse(is.na(HA_ID_Number), cur_group_id(),HA_ID_Number))
-  return(test3)
+  max_ha_id<-max(test$HA_ID_Number,na.rm=TRUE)
+  pa_wide <- rowid_to_column(pa_wide, "HA_ID_Number")
+  pa_wide$HA_ID_Number<-pa_wide$HA_ID_Number+max_ha_id
+  
+  test <- bind_rows(test,pa_wide)
+
+  return(test)
 }

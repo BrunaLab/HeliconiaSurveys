@@ -188,20 +188,20 @@ correct_5750 <- function(ha_data) {
                  ha_data$tag_number == 2061] <- "ULY (3)"
   
   # location
-  ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 962] <- 6
-  ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 977] <- 10
-  ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1133] <- "G"
-  ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1133] <- 6
-  ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1135] <- "G"
-  ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1135] <- 6
-  ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1280] <- "J"
-  ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1284] <- "J"
-  ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1577] <- 6
-  ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1778] <- 10
-  ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1790] <- 10
-  ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1836] <- "J"
-  ha_data$column[ha_data$plot == "5750" & ha_data$HA_ID_Number == 2149] <- 6
-  ha_data$row[ha_data$plot == "5750" & ha_data$HA_ID_Number == 1602] <- "J"
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 79] <- 6
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 106] <- 10
+  ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 272] <- "G"
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 272] <- 6
+  ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 274] <- "G"
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 274] <- 6
+  ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 422] <- "J"
+  ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 426] <- "J"
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 722] <- 6
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 927] <- 10
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 939] <- 10
+  ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 986] <- "J"
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 2360] <- 6
+  ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 747] <- "J"
   
 
   return(ha_data)

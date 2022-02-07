@@ -70,5 +70,12 @@ correct_5751 <- function(ha_data) {
   # location
   ha_data$column[ha_data$plot == "5751" & ha_data$column == 0] <- 1
   
+  
+  # Correcting duplicate "dead"
+  ha_data$code[ha_data$plot == "5751" &
+                 ha_data$year == 2008 &
+                 ha_data$tag_number == 310] <-  NA
+
+
   return(ha_data)
 }

@@ -95,7 +95,7 @@ correct_2108 <- function(ha_data) {
   
   
   # location
-  ha_data$row[ha_data$plot == "2108" & ha_data$HA_ID_Number == 504] <- "E"
+  ha_data$row[ha_data$plot == "2108" & ha_data$tag_number == 212] <- "E"
   
   # Updating Codes 
   # Plant 293: code say 'ULY (3)' in 2008, it's not. replace this with NA
