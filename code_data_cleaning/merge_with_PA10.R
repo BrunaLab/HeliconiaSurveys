@@ -1,4 +1,4 @@
-merge_with_PA10 <- function(test) {
+merge_with_PA10 <- function(ha_data) {
   #=============================================================================================================#
   # Script created by Emilio M. Bruna, embruna@ufl.edu
   # Script created in R version 3.3.1
@@ -145,7 +145,8 @@ merge_with_PA10 <- function(test) {
   
   
   pa_long_no_dupes <- pa_long %>% anti_join(pa_long_duplicate)
-  pa_wide_no_dupes <-pa_long_no_dupes %>%  pivot_wider(names_from = var, values_from = value)
+  
+  pa_wide_no_dupes <- pa_long_no_dupes %>%  pivot_wider(names_from = var, values_from = value)
   
   pa_long_duplicate<-pa_long_duplicate  %>%
     mutate(tag_number=paste(tag_number,column,sep ="."))
@@ -189,7 +190,7 @@ merge_with_PA10 <- function(test) {
   # PA10 <- read_csv("./data_midway/PA10_wide_to_join.csv")
   # 
   # PA10 <- PA10 %>% rename("plotID"="HA.plot")
-  str(test$column)
+  str(ha_data$column)
   pa_wide$column <-as.factor(pa_wide$column)
   pa_wide$plot <-as.factor(pa_wide$plot)
   pa_wide$year <-as.character(pa_wide$year)
@@ -198,11 +199,12 @@ merge_with_PA10 <- function(test) {
   
   
   # add a unique id number for the pa_wide
-  max_ha_id<-max(test$HA_ID_Number,na.rm=TRUE)
-  pa_wide <- rowid_to_column(pa_wide, "HA_ID_Number")
+  max_ha_id<-max(ha_data$HA_ID_Number,na.rm=TRUE)
+  pa_wide <- pa_wide %>% group_by(tag_number, row, column) %>% mutate(HA_ID_Number = cur_group_id())
+  # range(pa_wide$HA_ID_Number)
   pa_wide$HA_ID_Number<-pa_wide$HA_ID_Number+max_ha_id
   
-  test <- bind_rows(test,pa_wide)
+  ha_data <- bind_rows(ha_data,pa_wide)
 
-  return(test)
+  return(ha_data)
 }
