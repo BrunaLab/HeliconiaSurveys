@@ -1,4 +1,49 @@
 correct_5751 <- function(ha_data) {
+  
+  
+  # in 2008 data for 390 incorrectly entered as 154
+  # add to 390
+  ha_data$shts[ha_data$plot == 5751 &
+                 ha_data$tag_number == 390 & 
+                 ha_data$year == 2008] <- 3
+  
+  ha_data$ht[ha_data$plot == 5751 &
+               ha_data$tag_number == 390 & 
+               ha_data$year == 2008] <- 37
+  
+  # remove from 154
+  ha_data$shts[ha_data$plot == 5751 &
+                 ha_data$tag_number == 154 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5751 &
+               ha_data$tag_number == 154 &
+               ha_data$year == 2008] <- NA
+  
+  
+  
+  
+  # in 2008 data for 337 incorrectly entered as 264
+  # add 
+  ha_data$shts[ha_data$plot == 5751 &
+                 ha_data$tag_number == 337 & 
+                 ha_data$year == 2008] <- 7
+  
+  ha_data$ht[ha_data$plot == 5751 &
+               ha_data$tag_number == 337 & 
+               ha_data$year == 2008] <- 82
+  
+  # remove 
+  ha_data$shts[ha_data$plot == 5751 &
+                 ha_data$tag_number == 264 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5751 &
+               ha_data$tag_number == 264 &
+               ha_data$year == 2008] <- NA
+  
+  
+  
 # 401 is in A8; move 2007 record over to A8 and then delete record in E7
   # Move 2007 measurment to A7, delete E7
   ha_data$shts[ha_data$plot == "5751" & 

@@ -1,4 +1,68 @@
 correct_5753 <- function(ha_data) {
+  
+  # in 2008 data for 176 incorrectly entered as 199
+  # add 
+  ha_data$shts[ha_data$plot == 5753 &
+                 ha_data$tag_number == 176 & 
+                 ha_data$year == 2008] <- 1
+  
+  ha_data$ht[ha_data$plot == 5753 &
+               ha_data$tag_number == 176 & 
+               ha_data$year == 2008] <- 17
+  
+  # remove 
+  ha_data$shts[ha_data$plot == 5753 &
+                 ha_data$tag_number == 199 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5753 &
+               ha_data$tag_number == 199 &
+               ha_data$year == 2008] <- NA
+  
+  
+  
+  # in 2008 data for 176 incorrectly entered as 199
+  # add 
+  ha_data$shts[ha_data$plot == 5753 &
+                 ha_data$tag_number == 176 & 
+                 ha_data$year == 2008] <- 1
+  
+  ha_data$ht[ha_data$plot == 5753 &
+               ha_data$tag_number == 176 & 
+               ha_data$year == 2008] <- 17
+  
+  # remove 
+  ha_data$shts[ha_data$plot == 5753 &
+                 ha_data$tag_number == 199 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5753 &
+               ha_data$tag_number == 199 &
+               ha_data$year == 2008] <- NA
+  
+  
+  
+  # in 2008 data for 176 incorrectly entered as 199
+  # add 
+  ha_data$shts[ha_data$plot == 5753 &
+                 ha_data$tag_number == 218 & 
+                 ha_data$year == 2008] <- 1
+  
+  ha_data$ht[ha_data$plot == 5753 &
+               ha_data$tag_number == 218 & 
+               ha_data$year == 2008] <- 16
+  
+  # remove 
+  ha_data$shts[ha_data$plot == 5753 &
+                 ha_data$tag_number == 298 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5753 &
+               ha_data$tag_number == 298 &
+               ha_data$year == 2008] <- NA
+  
+  
+  
   #363 recorded to wrong location one year, created duplicate. it is in E10
   # add the measurments for 2009 to all, then delete dupe
   ha_data$shts[ha_data$plot == "5753" & 

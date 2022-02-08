@@ -1,5 +1,95 @@
 
 correct_5756 <- function(ha_data) {
+  
+  
+  # in 2008 data for 176 incorrectly entered as 199
+  # add 
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$tag_number == 480 & 
+                 ha_data$year == 2008] <- 3
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$tag_number == 480 & 
+               ha_data$year == 2008] <-50
+  
+  # remove 
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$tag_number == 431 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$tag_number == 431 &
+               ha_data$year == 2008] <- NA
+  
+  
+  
+  # in 2008 data for 1678 incorrectly entered as 551
+  # add 
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$tag_number == 1678 & 
+                 ha_data$year == 2008] <- 1
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$tag_number == 1678 & 
+               ha_data$year == 2008] <- 9
+  
+  # remove 
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$tag_number == 551 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$tag_number == 551 &
+               ha_data$year == 2008] <- NA
+  
+  # in 2008 data for 1714 incorrectly entered as 1231
+  # add 
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$tag_number == 1714 & 
+                 ha_data$year == 2008] <- 3
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$tag_number == 1714 & 
+               ha_data$year == 2008] <- 20
+  
+  # remove 
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$tag_number == 1231 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$tag_number == 1231 &
+               ha_data$year == 2008] <- NA
+  
+  
+  
+  # delete incorrect 2008 notes
+  ha_data$notes[ha_data$plot == 5756 &
+                 ha_data$tag_number == 1609 & 
+                 ha_data$year == 2008] <- NA
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$tag_number == 1629 & 
+               ha_data$year == 2008] <- NA
+  
+  # in 2008 data for 1684 incorrectly entered as 1864. There is no 1864
+  # add 
+  ha_data$shts[ha_data$plot == 5756 &
+                 ha_data$tag_number == 1684 & 
+                 ha_data$year == 2008] <- 1
+  ha_data$ht[ha_data$plot == 5756 &
+               ha_data$tag_number == 1684 & 
+               ha_data$year == 2008] <- 11
+  
+  # remove 1864
+  delete1864 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 1864)
+  ha_data <- anti_join(ha_data, delete1864)
+  rm(delete1864)
+   
+  
+  
+  
+  
   ha_data$code[ha_data$plot == '5756' &
                  (ha_data$year == 2005 |ha_data$year == 2006|ha_data$year == 2007) &
                  ha_data$tag_number == 983] <- NA

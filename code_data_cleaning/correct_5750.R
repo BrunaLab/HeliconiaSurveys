@@ -12,6 +12,30 @@ correct_5750 <- function(ha_data) {
   
 
   
+  # in 2008 data for 1339 incorrectly entered as 1338
+  # add to 1339
+  ha_data$shts[ha_data$plot == 5750 &
+                 ha_data$tag_number == 1339 & 
+                 ha_data$year == 2008] <- 2
+  
+  ha_data$ht[ha_data$plot == 5750 &
+               ha_data$tag_number == 1339 & 
+               ha_data$year == 2008] <- 11
+  
+  # remove from 1338
+  ha_data$shts[ha_data$plot == 5750 &
+                 ha_data$tag_number == 1338 &
+                 ha_data$year == 2008] <- NA
+  
+  ha_data$ht[ha_data$plot == 5750 &
+               ha_data$tag_number == 1338 &
+               ha_data$year == 2008] <- NA
+  
+  
+  
+  
+  
+  
   # The mess of 988,886...resolved! 
   # delete the 988 in D10
   delete988 <- ha_data %>%

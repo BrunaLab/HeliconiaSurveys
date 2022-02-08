@@ -124,74 +124,79 @@ ha_data <- rowid_to_column(ha_data, "HA_ID_Number")
 # correcting data assignment after replacing tag in field   ---------------
 
 # PLOT 2017
-
-# tags 68/275
-source <- which(ha_data$tag_number == 68 & ha_data$bdffp_reserve_no == "2107")
-destination <- which(ha_data$tag_number == 275 & ha_data$bdffp_reserve_no == "2107")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# 
+# # tags 68/275
+# source <- which(ha_data$tag_number == 68 & ha_data$bdffp_reserve_no == "2107")
+# ha_data[,49:53]
+# destination <- which(ha_data$tag_number == 275 & ha_data$bdffp_reserve_no == "2107")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 # fix 129/311
-source <- which(ha_data$tag_number == 129 & ha_data$bdffp_reserve_no == "2107")
-destination <- which(ha_data$tag_number == 311 & ha_data$bdffp_reserve_no == "2107")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# source <- which(ha_data$tag_number == 129 & ha_data$bdffp_reserve_no == "2107")
+# destination <- which(ha_data$tag_number == 311 & ha_data$bdffp_reserve_no == "2107")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-# PLOT 1501
+# PLOT 5750
 # tags 1338/1398
-source <- which(ha_data$tag_number == 1338 & ha_data$bdffp_reserve_no == "1501")
-destination <- which(ha_data$tag_number == 1398 & ha_data$bdffp_reserve_no == "1501")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# source <- which(ha_data$tag_number == 1338 & ha_data$bdffp_reserve_no == "1501")
+# destination <- which(ha_data$tag_number == 1398 & ha_data$bdffp_reserve_no == "1501")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 # Reserve 1104 (Colosso 1-ha)
 # fix 154/390
-source <- which(ha_data$tag_number == 154 & ha_data$bdffp_reserve_no == "1104")
-destination <- which(ha_data$tag_number == 390 & ha_data$bdffp_reserve_no == "1104")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+# 
+# source <- which(ha_data$tag_number == 154 & ha_data$bdffp_reserve_no == "1104")
+# destination <- which(ha_data$tag_number == 390 & ha_data$bdffp_reserve_no == "1104")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 # fix 364/337
-source <- which(ha_data$tag_number == 264 & ha_data$bdffp_reserve_no == "1104")
-destination <- which(ha_data$tag_number == 337 & ha_data$bdffp_reserve_no == "1104")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# source <- which(ha_data$tag_number == 264 & ha_data$bdffp_reserve_no == "1104")
+# destination <- which(ha_data$tag_number == 337 & ha_data$bdffp_reserve_no == "1104")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 # PLOT 5756
-# fix 431/480
-source <- which(ha_data$tag_number == 431 & ha_data$plot == "5756")
-destination <- which(ha_data$tag_number == 480 & ha_data$plot == "5756")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
-
-# fix tag 1629
-destination <- which(ha_data$tag_number == 1629 & ha_data$plot == "5756")
-ha_data[destination, 49:53] <- NA
-
-# fix tag 1609
-destination <- which(ha_data$tag_number == 1609 & ha_data$plot == "5756")
-ha_data[destination, 49:53] <- NA
+# # fix 431/480
+# source <- which(ha_data$tag_number == 431 & ha_data$plot == "5756")
+# destination <- which(ha_data$tag_number == 480 & ha_data$plot == "5756")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 # fix tag 551/1678
-source <- which(ha_data$tag_number == 551 & ha_data$plot == "5756")
-destination <- which(ha_data$tag_number == 1678 & ha_data$plot == "5756")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# source <- which(ha_data$tag_number == 551 & ha_data$plot == "5756")
+# destination <- which(ha_data$tag_number == 1678 & ha_data$plot == "5756")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
-# fix tag 1231/1714
-source <- which(ha_data$tag_number == 1231 & ha_data$plot == "5756")
-destination <- which(ha_data$tag_number == 1714 & ha_data$plot == "5756")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# # fix tag 1231/1714
+# source <- which(ha_data$tag_number == 1231 & ha_data$plot == "5756")
+# destination <- which(ha_data$tag_number == 1714 & ha_data$plot == "5756")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# 
+# # fix tag 1629
+# destination <- which(ha_data$tag_number == 1629 & ha_data$plot == "5756")
+# ha_data[destination, 49:53] <- NA
 
-source <- which(ha_data$tag_number == 1864 & ha_data$plot == "5756")
-destination <- which(ha_data$tag_number == 1684 & ha_data$plot == "5756")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
-ha_data[c(destination, source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
-ha_data[which(ha_data$tag_number == 1864 & ha_data$plot == "5756"), ] <- NA
+# # fix tag 1609
+# destination <- which(ha_data$tag_number == 1609 & ha_data$plot == "5756")
+# # ha_data[destination, 49:53] <- NA
+# 
+# source <- which(ha_data$tag_number == 1864 & ha_data$plot == "5756")
+# destination <- which(ha_data$tag_number == 1684 & ha_data$plot == "5756")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# ha_data[c(destination, source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
+# ha_data[which(ha_data$tag_number == 1864 & ha_data$plot == "5756"), ] <- NA
 
 # 5753
 # fix tags 176/199
-source <- which(ha_data$tag_number == 199 & ha_data$plot == "5753")
-destination <- which(ha_data$tag_number == 176 & ha_data$plot == "5753")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+
+# 
+# source <- which(ha_data$tag_number == 199 & ha_data$plot == "5753")
+# destination <- which(ha_data$tag_number == 176 & ha_data$plot == "5753")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 # fix tags 218/298
-source <- which(ha_data$tag_number == 218 & ha_data$plot == "5753")
-destination <- which(ha_data$tag_number == 298 & ha_data$plot == "5753")
-ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# source <- which(ha_data$tag_number == 218 & ha_data$plot == "5753")
+# destination <- which(ha_data$tag_number == 298 & ha_data$plot == "5753")
+# ha_data[c(destination, source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
 
 
 # DATA CLEANING -----------------------------------------------------------
