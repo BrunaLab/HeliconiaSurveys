@@ -31,6 +31,11 @@ correct_5750 <- function(ha_data) {
                ha_data$tag_number == 1338 &
                ha_data$year == 2008] <- NA
   
+  # 1339 in 2007 marked as dead but wasn't
+  
+  ha_data$code[ha_data$plot == 5750 &
+               ha_data$tag_number == 1339 & 
+               ha_data$year == 2007] <- NA
   
   
   

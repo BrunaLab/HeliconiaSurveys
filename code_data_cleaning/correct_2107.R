@@ -71,6 +71,61 @@ ha_data$code[ha_data$plot == 2107 &
                ha_data$year == 2006 &
                ha_data$tag_number == 282] <- "missing (60)"
 
+
+ha_data$code[ha_data$plot == 2107 &
+               ha_data$year == 2005 &
+               ha_data$tag_number == 282] <- NA
+
+ha_data$ht[ha_data$plot == 2107 &
+               ha_data$year == 2005 &
+               ha_data$tag_number == 282] <- NA
+
+ha_data$shts[ha_data$plot == 2107 &
+               ha_data$year == 2005 &
+               ha_data$tag_number == 282] <- NA
+
+
+
+# These were entered incorrectly in 2005
+# 157
+ha_data$shts[ha_data$plot == 2107 &
+               ha_data$year == 2005 &
+               ha_data$tag_number == 157] <- 3
+ha_data$ht[ha_data$plot == 2107 &
+             ha_data$year == 2005 &
+             ha_data$tag_number == 157] <- 65
+
+
+# 189
+ha_data$shts[ha_data$plot == 2107 &
+               ha_data$year == 2005 &
+               ha_data$tag_number == 189] <- 3
+ha_data$ht[ha_data$plot == 2107 &
+             ha_data$year == 2005 &
+             ha_data$tag_number == 189] <- 23
+
+
+# 282
+ha_data$shts[ha_data$plot == 2107 &
+               ha_data$year == 2005 &
+               ha_data$tag_number == 282] <- 0
+ha_data$ht[ha_data$plot == 2107 &
+             ha_data$year == 2005 &
+             ha_data$tag_number == 282] <- 0
+
+
+# 302
+ha_data$shts[ha_data$plot == 2107 &
+               ha_data$year == 2005 &
+               ha_data$tag_number == 282] <- 4
+ha_data$ht[ha_data$plot == 2107 &
+             ha_data$year == 2005 &
+             ha_data$tag_number == 282] <- 81
+
+
+
+
+
 return(ha_data)
 }
 

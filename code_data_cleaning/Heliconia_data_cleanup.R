@@ -535,28 +535,61 @@ levels(ha_data$code)
 summary(ha_data)
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
+
+names(ha_data)
+# wide form to make it easier to search for ULY matches -------------------
+
+wide_ha_data <- ha_data %>% 
+  select(plot,
+         HA_ID_Number,
+         tag_number,
+         row,
+         column,
+         year, 
+         shts,
+         ht,
+         infl,
+         code) %>%
+  pivot_wider(names_from = year, values_from=c("shts", "ht", "infl", "code")) %>%
+  relocate(contains("_1998"), .after = column) %>% 
+  relocate(contains("_1999"), .after = code_1998) %>%
+  relocate(contains("_2000"), .after = code_1999) %>%
+  relocate(contains("_2001"), .after = code_2000) %>% 
+  relocate(contains("_2002"), .after = code_2001) %>%
+  relocate(contains("_2003"), .after = code_2002) %>% 
+  relocate(contains("_2004"), .after = code_2003) %>%
+  relocate(contains("_2005"), .after = code_2004) %>% 
+  relocate(contains("_2006"), .after = code_2005) %>%
+  relocate(contains("_2007"), .after = code_2006) %>% 
+  relocate(contains("_2008"), .after = code_2007) %>% 
+  arrange(plot,
+          row,
+          column,
+          tag_number,
+          code_1999,
+          shts_1998,
+          shts_1999,
+          shts_2000,
+          shts_2001) 
+names(wide_ha_data)
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 # TODO: 5756
-# did 1616  change tag numbers? 2x
-# figure out which of the plants in the plot is  now 933 - tags lost in tfall in the first yr this showed up  
+# did 1616  change tag numbers? 
+    # RESPONSE: should be in D9, looks like it might be 521 originally
+# figure out which of the plants in the plot is  now 933  
+    # RESPONSE:  looks like was 332 lost tage and became 933
 
-# TODO: 5754
-# what happened to the data for 120? did it get lost in a tag switch?
-# 5754	10-ha	120	1998	NA	NA	NA	
-# 5754	10-ha	120	1999	NA	NA	NA	
-# 5754	10-ha	120	2000	NA	NA	NA	
-# 5754	10-ha	120	2001	NA	NA	NA	
-# 5754	10-ha	120	2002	NA	NA	NA	
-# 5754	10-ha	120	2003	0	0	dead (2)	
+# fix tag 1864 / 1684
+# source<-which(ha_data$tag_number==1864 & ha_data$plot=="5756")
+# destination<-which(ha_data$tag_number==1684 & ha_data$plot=="5756")
+# ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
+# ha_data[c(destination,source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
+# #TODO: What column(s) is this supposed to set to NA? Or should this remove 1864 entirely?
+# ha_data[which(ha_data$tag_number==1864 & ha_data$plot=="5756"),]<-NA 
+
 
 # TODO: 2107
-#  tag 237 : it looks like these are actually two different plants,
-# so need to 2x in the field. Note as such and treat as independent
-
-# FF-1	2107	1-ha	282	A	5	2005	4	81	NA  this
-# is actually 222, which was then retagged as 302 in 2006
-
 # track down these marked and mapped in 07/08
 # look for them in plant_id_07 for plants 1609 and 1629
 # filter(ha_data, tag_number == 1705 & plot == 5756)
@@ -565,49 +598,19 @@ write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 # check the xy 
 
 # TODO: 2108:
-# tag 17: these are the same plant, should actually be in A6. (was
-# marked as ULY in 1999 and position was subsequently corrected.)
-
 # tag 66: this is in C9, not a seedling C( - was not missing in 99,
 # but rather marked as a seedling in D10 (must be right on an edge()))
 
 
-# TODO: verify that CF-1, CF-2...FF-7 match Bruna (2003) Ecology and ConBio
+# TODO  5754 PA 10
+# Need to add 2006 seedling notations
 
-# TODO: should we treat non repor as 0 or na?
+# plant 46 in B4 is actually 6. (2,112 in 1999) can track down what appened to it?
 
-# TODO: what is the difference between "not on list" and "new plant in plot"? 
-# If nothing then collapse. 
+# find 879
+# ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==879 & ha_data$year==2005] <- "missing (60)"
 
-# TODO: "dead not on list...where they properly recorded as dead?
-# but had a tag on them, so they were marked in a previous year.  Not sure why -
-# could have been someone forgot to call it out. They are useful because they
-# are a true mortality (had a tag, now dead), or were alive in past year
-# summary(as.factor(ha_data$code))
-
-# TODO: Duplicated tag numbers to check in the field 
-# 2107 : 237 in C8 and D6
-# CaboFrio-CF: 194 in C10 and A8, need to be figured out in field
-# 5756: 16, 816.2 looks like a ULA but recorded number wrong, 2x in field, 
-# 933/332 in A7 check 2007 note for 1686 that it is "rebroto de velha sem placa"
-
-# TODO: 
-# fix tag 1864 / 1684
-# <<<<<<< dupes
-# source<-which(ha_data$tag_number==1864 & ha_data$plot=="5756")
-# destination<-which(ha_data$tag_number==1684 & ha_data$plot=="5756")
-# ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
-# ha_data[c(destination,source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
-# #TODO: What column(s) is this supposed to set to NA? Or should this remove 1864 entirely?
-# ha_data[which(ha_data$tag_number==1864 & ha_data$plot=="5756"),]<-NA 
-
-#TODO:   #came up after corerectionof ha_id number
-# HA_ID_Number 8612 not a plant, its a treefall record
-# delete_8612<-ha_data %>% filter(bdffp_reserve_no=="3209" & HA_ID_Number==8612)
-# ha_data <- anti_join(ha_data,delete_8612)
-
-
-# TODO: from merge_with_PA10
+# from merge_with_PA10
 # PA10_data_2006$tag_number[PA10_data_2006$row=="A" & 
 #                             PA10_data_2006$column=="3"  & 
 #                             is.na(PA10_data_2006$tag_number)==TRUE] <- 770 #missing on csv, 2x on form
@@ -615,3 +618,22 @@ write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 #                             PA10_data_2006$column=="5" & 
 #                             PA10_data$shoots==1 & 
 #                             is.na(PA10_data_2006$tag_number)==TRUE] <- 765 #missing on csv, 2x on form
+
+
+
+
+# TODO: Duplicated tag numbers to check in the field 
+# 2107 : 237 in C8 and D6
+# CaboFrio-CF: 194 in C10 and A8, need to be figured out in field
+# 5756: 16, 816.2 looks like a ULA but recorded number wrong, 2x in field, 
+# 933/332 in A7 check 2007 note for 1686 that it is "rebroto de velha sem placa"
+
+# TODO: verify that CF-1, CF-2...FF-7 match Bruna (2003) Ecology and ConBio
+# TODO: Make non repro 0 instead of NA
+# TODO: what is the difference between "not on list" and "new plant in plot"? 
+# If nothing then collapse. 
+# TODO: "dead not on list...where they properly recorded as dead?
+# but had a tag on them, so they were marked in a previous year.  Not sure why -
+# could have been someone forgot to call it out. They are useful because they
+# are a true mortality (had a tag, now dead), or were alive in past year
+# summary(as.factor(ha_data$code))
