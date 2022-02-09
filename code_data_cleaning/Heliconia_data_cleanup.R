@@ -98,14 +98,9 @@ levels(ha_data$plot)[match("Florestal", levels(ha_data$plot))] <- "Florestal-CF"
 
 plot_info <-
   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>%
-  rename(plotID = habitat_type, plot = HDP_plot_ID_no) %>%
-  select(plotID, plot)
-ha_data <- left_join(ha_data, plot_info, by = "plot")
+  select(plotID = habitat_type...1, plot=HDP_plot_ID_no)
+ha_data <- left_join(ha_data, plot_info,by="plot")
 
-#   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>% 
-#   rename(plotID = habitat_type...1, plot=HDP_plot_ID_no) %>% 
-#   select(plotID,plot)
-# ha_data <- left_join(ha_data, plot_info,by="plot") 
 
 rm(plot_info)
 ha_data$plot <- as.factor(ha_data$plot)
@@ -637,3 +632,4 @@ names(wide_ha_data)
 # could have been someone forgot to call it out. They are useful because they
 # are a true mortality (had a tag, now dead), or were alive in past year
 # summary(as.factor(ha_data$code))
+
