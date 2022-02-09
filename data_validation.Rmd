@@ -85,6 +85,7 @@ ha %>%
                    label = "infloresences between 0 and 3") %>%
   rows_distinct(actions = al_strict, 
                 label  = "duplicated rows") %>% 
+  col_vals_not_null(vars(HA_ID_Number), actions = al_strict) %>% 
   rows_distinct(columns = "HA_ID_Number",
                 segments = vars(year),
                 actions = al_strict,
