@@ -1,0 +1,120 @@
+---
+title: "Heliconia Data Paper - Tables"
+author: "E. M. Bruna et al."
+email: embruna@ufl.edu
+web: www.BrunaLab.org
+github: embruna
+twitter: BrunaLab
+phone: "(352) 846-0634"
+# date: "`r format(Sys.time(), '%B %Y')`"
+geometry: margin=1in
+# tables: true
+# fontawesome: yes
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyfoot{} # remove page number bottom of the page
+- \fancyhead[L]{Heliconia Data Paper - Tables}
+- \fancyhead[R]{p. \thepage}
+- \usepackage{setspace}
+- \usepackage{parskip} 
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+
+- \usepackage{caption}                            
+- \DeclareCaptionLabelFormat{Sformat}{#1 S#2}     
+- \captionsetup[table]{labelformat=Sformat}  
+- \captionsetup[figure]{labelformat=Sformat}  
+  
+output: 
+  pdf_document:
+    keep_tex: true
+   # html_document:
+   # df_print: paged
+   # toc: true
+
+---
+
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE)
+library(tidyverse)
+library(gridExtra)
+library(kableExtra)
+library(here)
+library(egg)
+# library(citr)
+```
+
+
+```{=tex}
+\newpage
+\blandscape
+```
+```{r Table1, echo=FALSE, message = FALSE, warning=FALSE, cached=TRUE}
+Table1 <- read_csv("./Manuscript/table_1.csv", col_names = TRUE) %>% 
+  replace_na(list("Variable" = "",	"Definition" = "",	"Storage" = "",	"Codes" = "",	"Units, range, and precision"=""))
+Table1<-as.data.frame(Table1)
+Table1<-Table1 %>% select(-`Units, range, and precision`) 
+
+tmp <- knitr::kable(Table1,
+     digits = 2,
+     format = "latex",
+     align="l",
+     longtable = TRUE,
+     # escape=FALSE,
+     row.names = FALSE,
+     booktabs=T,
+    linesep = "", #removes the blank line after every 5 lines
+     caption = "Column names for Heliconia-plot-descriptors.csv and the descriptions of the data in each column") %>%
+ 
+  
+   kable_styling(bootstrap_options = c("hover"),
+                 full_width = FALSE,
+                 latex_options = c("scale_down"),
+                 font_size = 10,
+                 position = "left"
+      ) %>%
+   # collapse_rows(columns = 1:3, valign = "top") %>% 
+    column_spec(2, width = "27em") %>% 
+  column_spec(4, width = "12em")
+
+knitr::asis_output(tmp)
+```
+\newpage
+```{r Table2, echo=FALSE, message = FALSE, warning=FALSE}
+Table2 <- read_csv("./Manuscript/table_2.csv", col_names = TRUE) %>% 
+  replace_na(list("Variable" = "",	"Definition" = "",	"Storage" = "",	"Codes" = "",	"Units, range, and precision"=""))
+Table2<-as.data.frame(Table2)
+# Table1_names <- c("Variable",	"Definition",	"Storage type",	"List & definition of variable codes",	"Units, range, & precision") 
+
+tmp <- knitr::kable(Table2,
+     digits = 2,
+     format = "latex",
+     align="l",
+     longtable = TRUE,
+     # escape=FALSE,
+     row.names = FALSE,
+     booktabs=T,
+    linesep = "", #removes the blank line after every 5 lines
+     caption = "Description of the column names for HDP-data-1997-2009.csv and description of the data in each column") %>%
+   kable_styling(bootstrap_options = c("hover"),
+                 full_width = FALSE,
+                 latex_options = c("scale_down"),
+                 font_size = 10,
+                 position = "left")%>%
+   # collapse_rows(columns = 1:3, valign = "top") %>% 
+    column_spec(2, width = "17em") %>% 
+  column_spec(4, width = "10em") %>% 
+  column_spec(5, width = "15em") 
+
+knitr::asis_output(tmp)
+```
+
+```{=tex}
+\elandscape
+\newpage
+```
+
