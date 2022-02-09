@@ -129,12 +129,12 @@ Check that size of seedlings is reasonable
 ha %>%
   filter(sdlg_status == "sdlg (1)") %>% 
   create_agent(
-    actions = al_strict,
+    actions = al_default,
     label = "Check seedlings"
   ) %>% 
   col_vals_lt(vars(shts), 3, na_pass = TRUE,
               label = "shoots < 3") %>% 
-  col_vals_lt(vars(ht), 20, na_pass = TRUE,
-              label = "height < 20cm") %>% 
+  col_vals_lt(vars(ht), 30, na_pass = TRUE,
+              label = "height < 30cm") %>% 
   interrogate()
 ```
