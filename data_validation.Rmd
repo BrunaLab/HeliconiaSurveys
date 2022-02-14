@@ -77,8 +77,8 @@ ha %>%
   col_vals_expr(label = "Number of inflorescences is integer",
                 expr = ~ infl %% 1 == 0, actions = al_strict) %>% 
   # check values are within reasonable range
-  col_vals_between(vars(shts), 1, 20, na_pass = TRUE,
-                   label = "shoots between 1 and 20") %>%
+  col_vals_between(vars(shts), 0, 20, na_pass = TRUE,
+                   label = "shoots between 0 and 20") %>%
   col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
                    label = "height between 0 and 200cm") %>%
   col_vals_between(vars(infl), 0, 3, na_pass = TRUE,
