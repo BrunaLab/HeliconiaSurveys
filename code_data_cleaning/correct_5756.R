@@ -650,74 +650,74 @@ correct_5756 <- function(ha_data) {
   
   ha_data<-ha_data %>% mutate(ht = ifelse(
     (plot==5756 & tag_number==1616 & year==1998),
-    (filter(data_521, year==1998) %>% select(ht)),
+    as.numeric(filter(data_521, year==1998) %>% select(ht)),
     ht))
   
   
   ha_data<-ha_data %>% mutate(ht = ifelse(
     (plot==5756 & tag_number==1616 & year==1999),
-    (filter(data_521, year==1999) %>% select(ht)),
+    as.numeric(filter(data_521, year==1999) %>% select(ht)),
     ht))
   
   
   ha_data<-ha_data %>% mutate(ht = ifelse(
     (plot==5756 & tag_number==1616 & year==2000),
-    (filter(data_521, year==2000) %>% select(ht)),
+    as.numeric(filter(data_521, year==2000) %>% select(ht)),
     ht))
   
   
   ha_data<-ha_data %>% mutate(ht = ifelse(
     (plot==5756 & tag_number==1616 & year==2001),
-    (filter(data_521, year==2001) %>% select(ht)),
+    as.numeric(filter(data_521, year==2001) %>% select(ht)),
     ht))
   
   
   ha_data<-ha_data %>% mutate(ht = ifelse(
     (plot==5756 & tag_number==1616 & year==2002),
-    (filter(data_521, year==2002) %>% select(ht)),
+    as.numeric(filter(data_521, year==2002) %>% select(ht)),
     ht))
   
   
   ha_data<-ha_data %>% mutate(ht = ifelse(
     (plot==5756 & tag_number==1616 & year==2003),
-    (filter(data_521, year==2003) %>% select(ht)),
+    as.numeric(filter(data_521, year==2003) %>% select(ht)),
     ht))
   
   # now shts
   
   ha_data<-ha_data %>% mutate(shts = ifelse(
     (plot==5756 & tag_number==1616 & year==1998),
-    (filter(data_521, year==1998) %>% select(shts)),
+    as.numeric(filter(data_521, year==1998) %>% select(shts)),
     shts))
   
   
   ha_data<-ha_data %>% mutate(shts = ifelse(
     (plot==5756 & tag_number==1616 & year==1999),
-    (filter(data_521, year==1999) %>% select(shts)),
+    as.numeric(filter(data_521, year==1999) %>% select(shts)),
     shts))
   
   
   ha_data<-ha_data %>% mutate(shts = ifelse(
     (plot==5756 & tag_number==1616 & year==2000),
-    (filter(data_521, year==2000) %>% select(shts)),
+    as.numeric(filter(data_521, year==2000) %>% select(shts)),
     shts))
   
   
   ha_data<-ha_data %>% mutate(shts = ifelse(
     (plot==5756 & tag_number==1616 & year==2001),
-    (filter(data_521, year==2001) %>% select(shts)),
+    as.numeric(filter(data_521, year==2001) %>% select(shts)),
     shts))
   
   
   ha_data<-ha_data %>% mutate(shts = ifelse(
     (plot==5756 & tag_number==1616 & year==2002),
-    (filter(data_521, year==2002) %>% select(shts)),
+    as.numeric(filter(data_521, year==2002) %>% select(shts)),
     shts))
   
   
   ha_data<-ha_data %>% mutate(shts = ifelse(
     (plot==5756 & tag_number==1616 & year==2003),
-    (filter(data_521, year==2003) %>% select(shts)),
+    as.numeric(filter(data_521, year==2003) %>% select(shts)),
     shts))
   
   
