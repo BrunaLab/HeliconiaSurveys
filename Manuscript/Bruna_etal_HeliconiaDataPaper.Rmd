@@ -140,18 +140,19 @@ library(kableExtra)
 # devtools::install_github("crsh/papaja")
 ```
 
+
 ```{r cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-heliconia_data <- read_csv("./data_clean/HA_survey_with_Zombies.csv", col_types = cols())
+# knitr::opts_chunk$set(echo = FALSE)
+heliconia_data <- read_csv("./data_clean/HA_survey_pre_submission.csv", col_types = cols())
 
 # Number of rows in the survey file
 file_2_rows <- nrow(heliconia_data)+1 
-file_2_size <- (file.info("./data_clean/HA_survey_with_Zombies.csv")$size)/1000000
-# heliconia_data$code.notes
+file_2_size <- (file.info("./data_clean/HA_survey_pre_submission.csv")$size)/1000000
+# heliconia_data$code
 
 # No. of plants per plot
 plants_per_plot <- heliconia_data %>% 
-  select(HA_ID_Number, plot, plotID, habitat, bdffp_reserve_no, code.notes) %>% 
+  select(HA_ID_Number, plot, plotID, habitat, bdffp_reserve_no, code) %>% 
   group_by(plotID) %>% 
   drop_na("plotID") %>% 
   summarise(count_plants=sum(n_distinct(HA_ID_Number)))
@@ -170,15 +171,15 @@ total_plants <- plants_per_plot %>%
 # in high-density plots (XX% and XX% were in plots A and B, respectively).
 
 uly_per_plot <- heliconia_data %>% 
-  select(HA_ID_Number, plot, plotID, habitat, bdffp_reserve_no, code.notes) %>% 
-  filter(code.notes=="ULY (3)") %>% 
+  select(HA_ID_Number, plot, plotID, habitat, bdffp_reserve_no, code) %>% 
+  filter(code=="ULY (3)") %>% 
   group_by(plotID) %>% 
   summarise(count_uly=sum(n_distinct(HA_ID_Number)))
 
 uly_per_yr_plot <- heliconia_data %>% 
-  select(HA_ID_Number, year, plot, plotID, habitat, bdffp_reserve_no, code.notes) %>% 
+  select(HA_ID_Number, year, plot, plotID, habitat, bdffp_reserve_no, code) %>% 
   # filter(year==1999) %>% 
-  filter(code.notes=="ULY (3)") %>% 
+  filter(code=="ULY (3)") %>% 
   group_by(plotID, year) %>% 
   summarise(count_uly=sum(n_distinct(HA_ID_Number))) %>% 
   arrange(desc(count_uly))
@@ -201,15 +202,15 @@ uly_table <- left_join(plants_per_plot,uly_per_plot) %>%
 # Note this is the number of plamns that at some point in their history 
 # were "missing" at least once
 missing_per_plot <- heliconia_data %>% 
-  select(HA_ID_Number, plot, plotID, habitat, bdffp_reserve_no, code.notes) %>% 
-  filter(code.notes=="plant missing (60)") %>% 
+  select(HA_ID_Number, plot, plotID, habitat, bdffp_reserve_no, code) %>% 
+  filter(code=="plant missing (60)") %>% 
   group_by(plotID) %>% 
   summarise(count_missing=sum(n_distinct(HA_ID_Number)))
 
 missing_per_yr_plot <- heliconia_data %>% 
-  select(HA_ID_Number, year, plot, plotID, habitat, bdffp_reserve_no, code.notes) %>% 
+  select(HA_ID_Number, year, plot, plotID, habitat, bdffp_reserve_no, code) %>% 
   # filter(year==1999) %>% 
-  filter(code.notes=="plant missing (60)") %>% 
+  filter(code=="plant missing (60)") %>% 
   group_by(plotID, year) %>% 
   summarise(count_missing=sum(n_distinct(HA_ID_Number))) %>% 
   arrange(desc(count_missing))
@@ -456,13 +457,9 @@ b.  **Study Design:** The study consists of 13 demographic plots
     support in the field, and student or postgraduate field assistants hired to assist with the
     surveys.
 
-a.  **Technicians:** Paulo Rubim (2007-2012),  
-    Maria Beatriz Nogueira (2002), Maria Rosa Darrigo
-    (2002-2003), Cris Follman Jurinitz (2003), Simone Benedet (2004).
+a.  **Technicians:** Paulo Rubim (2007-2012), Maria Beatriz Nogueira (2002), Maria Rosa Darrigo (2002-2003), Cris Follman Jurinitz (2003), Simone Benedet (2004).
 
-b.  **BDFFP Staff:** Osmaildo Ferreira da Silva, Francsico
-    Marques, Alaercio Marajó dos Reis, João de Deus Fragata, Romeu
-    Cardoso.
+b.  **BDFFP Staff:** Osmaildo Ferreira da Silva, Francisco Marques, Alaercio Marajó dos Reis, João de Deus Fragata, Romeu Cardoso.
 
 c.  **Student & Postgraduate Field Assistants:** Olavo Nardy (2000), Obed Garcia (2001), Sylvia Heredia (2001-2002), Maria Beatriz Nogueira (2002), Cris Follman Jurinitz (2003), David M. Lapola (2003), Denise Cruz (2003), Cristina Escate (2004), Bruno Turbiani (2005), Elisabete Marques da Costa (2006), Wesley Dáttilo da Cruz (2007), Jefferson José Valsko da Silva (2007). 
 
@@ -724,6 +721,9 @@ An update list can be found at [github].
 13. Brooks, M. E., K. Kristensen, M. R. Darrigo, P. Rubim, M.
     Uriarte, E. Bruna, B. M Bolker. 2019. Statistical modeling of
     patterns in annual reproductive rates. Ecology 100(7): e02706.
+    
+
+14. Eric GCB
 
 # ACKNOWLEDGMENTS
 
@@ -763,7 +763,9 @@ acceptable parts of data papers.
 
 ```{r Table1, echo=FALSE, message = FALSE, warning=FALSE}
 Table1 <- read_csv("./Manuscript/table_1.csv", col_names = TRUE) %>% 
-  replace_na(list("Variable" = "",	"Definition" = "",	"Storage type" = "",	"List and definition of variable codes" = "",	"Units, range, and precision"=""))
+  # rename("Storage type"="Storage","List and definition of variable codes"="Codes") %>% 
+  # replace_na(list("Variable" = "",	"Definition" = "",	"Storage type" = "",	"List and definition of variable codes" = "",	"Units, range, and precision"=""))
+replace_na(list("Variable" = "",	"Definition" = "",	"Storage type" = "",	"List and definition of variable codes" = ""))
 Table1<-as.data.frame(Table1)
 # Table1_names <- c("Variable",	"Definition",	"Storage type",	"List & definition of variable codes",	"Units, range, & precision") 
 
