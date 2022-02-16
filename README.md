@@ -1,2 +1,1 @@
-# HeliconiaDataPaper
-Data Paper summarizing 1998-2012 surveys
+### This is the README for the cleanup and organization of Heliconia demographic data. 

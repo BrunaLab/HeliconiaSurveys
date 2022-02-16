@@ -22,16 +22,21 @@ library(stringr)
 
 
 ```{r load-data}
-ha <- read_csv(here("data_clean", "Ha_survey_with_Zombies.csv"))
+ha <- read_csv(
+  here("data_clean", "Ha_survey_pre_submission.csv"),
+  col_types = cols(
+    notes = col_character()
+  )
+)
 ```
 
 **Action levels**
 
-By default, warn if 1% of rows fail and error if 5% fail.  A stricter level warns if *any* rows fail, and errors if 10 or more rows fail.
+By default, warn if 1 or more rows fail conditions and error if 2% or more fail.  Some checks are run with a stricter action level that errors if *any* rows fail.
 
 ```{r al, echo=TRUE}
-al_default <-  action_levels(warn_at = 0.01, stop_at = 0.05)
-al_strict <- action_levels(warn_at = 1, stop_at = 10)
+al_default <-  action_levels(warn_at = 1, stop_at = 0.02) #warn if even row fails, error if 2% of rows fail
+al_strict <- action_levels(stop_at = 1) #error if even one row fails
 ```
 
 
@@ -61,10 +66,8 @@ ha %>%
     actions = al_default,
     label = "Data Validation"
   ) %>%
-  col_is_character(vars(plot, habitat, ranch, bdffp_reserve_no, row, code.notes)) %>%
-  col_is_numeric(vars(HA_ID_Number, tag_number ,column, year, ht, shts, infl)) %>%
-  col_vals_in_set(vars(column), 1:10) %>%
-  col_vals_in_set(vars(row), LETTERS[1:10]) %>%
+  col_vals_in_set(vars(column), 1:10, actions = al_strict) %>%
+  col_vals_in_set(vars(row), LETTERS[1:10], actions = al_strict) %>%
   col_vals_in_set(vars(habitat), c("1-ha", "CF", "10-ha"),
                   actions = al_strict) %>%
   col_vals_expr(label = "Height is measured to nearest cm",
@@ -74,20 +77,19 @@ ha %>%
   col_vals_expr(label = "Number of inflorescences is integer",
                 expr = ~ infl %% 1 == 0, actions = al_strict) %>% 
   # check values are within reasonable range
-  col_vals_between(vars(shts), 1, 20, na_pass = TRUE,
-                   label = "shoots between 1 and 20") %>%
+  col_vals_between(vars(shts), 0, 20, na_pass = TRUE,
+                   label = "shoots between 0 and 20") %>%
   col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
-                   actions = al_strict,
                    label = "height between 0 and 200cm") %>%
   col_vals_between(vars(infl), 0, 3, na_pass = TRUE,
                    label = "infloresences between 0 and 3") %>%
-  col_vals_lte(vars(n), 1,
-               preconditions = ~ . %>%
-                 group_by(HA_ID_Number, year) %>%
-                 count(),
-               label = "duplicated ID numbers") %>% 
   rows_distinct(actions = al_strict, 
                 label  = "duplicated rows") %>% 
+  col_vals_not_null(vars(HA_ID_Number), actions = al_strict) %>% 
+  rows_distinct(columns = "HA_ID_Number",
+                segments = vars(year),
+                actions = al_strict,
+                label = "Check for duplicate ID's within each year") %>% 
   interrogate()
 ```
 
@@ -125,14 +127,14 @@ Check that size of seedlings is reasonable
 ```{r agent3}
 # check seedlings
 ha %>%
-  filter(code.notes == "sdlg (1)") %>% 
+  filter(sdlg_status == "sdlg (1)") %>% 
   create_agent(
-    actions = al_strict,
+    actions = al_default,
     label = "Check seedlings"
   ) %>% 
   col_vals_lt(vars(shts), 3, na_pass = TRUE,
               label = "shoots < 3") %>% 
-  col_vals_lt(vars(ht), 20, na_pass = TRUE,
-              label = "height < 20cm") %>% 
+  col_vals_lt(vars(ht), 30, na_pass = TRUE,
+              label = "height < 30cm") %>% 
   interrogate()
 ```
