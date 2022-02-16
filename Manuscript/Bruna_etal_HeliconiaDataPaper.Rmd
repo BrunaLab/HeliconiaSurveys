@@ -315,7 +315,7 @@ reproduction, growth, and survivorship of established plants, newly
 recruited seedlings are marked, measured, and assigned their own unique
 identification number. These data can be used for a broad range of
 analyses, but the primary purpose behind their collection was to
-parameterize models with which to compare the demography and population
+parameterize size-structured demographic models (e.g., Matrix models, CITE CASWELL) with which to compare the demography and population
 dynamics of *H. acuminata* populations in fragments and continuous forest.
 This paper reports 12 years of annual census data (1997-2009)
 
