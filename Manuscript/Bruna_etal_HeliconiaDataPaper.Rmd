@@ -86,7 +86,11 @@ affiliation:
     institution   : "Department of Botany, National Museum of Natural History, PO Box 37012, Smithsonian Institution, PO Box 37012, Washington DC, USA"
 abstract: |
  Habitat fragmentation is thought to be a leading cause of extinction, but the demography of species in fragmented landscapes remains poorly understood. This is particularly true in tropical ecosystems, where studies monitoring populations of species in both fragments and areas of continuous habitat across all life-history stages are virtually nonexistent. Here we report 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb _Heliconia acuminata_ (LC Rich.). These surveys were conducted in the experimentally fragmented landscape of the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plants are located in 50 x 100 m permanent plots located in forest fragments of different sizes (four 1-ha fragments and three 10-ha fragments) as well as 6 continuous forest sites. The population in each plot was censused annually, at which time we recorded the mortality of any previously marked plants and the size of surviving plants. We also marked and measured new seedlings. During the flowering season we also recorded the identity of flowering plants and how many inflorescences each of them produced. These data have been used in publications on topics ranging from how fragmentation-related reductions in germination influence population growth rates to tests of statistical methods for analyzing reproductive rates. 
-  
+
+Open Research Statement:
+
+
+      
 keywords: "Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, Integral projection models, Matrix models, population dynamics, vital rates"
 wordcount         : "------"
 # bibliography      : ["r-references.bib"]
@@ -246,7 +250,8 @@ fragmented landscapes [@didham2012; @driscoll2013; @selwood2015a].
 
 \noindent  
 **B. Data set identification code:**
-
+<!-- Database accession numbers or site-specific codes used to uniquely identify data set
+-->
 <!-- \setlength{\leftskip}{1cm} -->
 
 1.  Data set 1: HDP_plot_descriptors.csv\
@@ -259,7 +264,7 @@ fragmented landscapes [@didham2012; @driscoll2013; @selwood2015a].
 **C. Data set description**
 
 
-1. **Principal Investigator**: Emilio M. Bruna, Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA and Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611, USA.
+1. **Originators/Principal Investigator**: Emilio M. Bruna, Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA and Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611, USA.
 
 2. **Abstract**: The data set comprises 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb *Heliconia acuminata* (LC Rich.). The data were collected at the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plants are located in 50 x 100 m permanent plots located in forest fragments of different sizes (four 1-ha fragments and three 10-ha fragments) as well as 6 continuous forest sites. The population in each plot was censused annually, at which time we recorded the mortality of any previously marked plants and the size of surviving plants. We also marked and measured new seedlings. During the flowering season we also recorded the identity of flowering plants and how many inflorescences each of them produced. The data set can be used to study the ecological factors influencing the demography and
 population dynamics of tropical plants, as well as the consequences for plant demography and population dynamics of anthropogenic impacts such as deforestation or climate change. 
@@ -286,7 +291,7 @@ D. **Key words:** Amazon, Brazil, deforestation, demography, edge effects, flowe
     Biological Dynamics of Forest Fragments Project, located north of
     Manaus, Amazonas, Brazil
 
-5.  **Source(s) of funding:** The initial establishment of plots  and
+5.  **Sources of funding:** The initial establishment of plots  and
     1998-2002 surveys were supported by awards to E. M. Bruna from the
     Smithsonian Institution (Graduate Student Research Award), the
     University of California, Davis (Center for Population Biology
@@ -362,7 +367,7 @@ c.  **Site history:** A complete history of the BDFFP can be found in
 
 <!-- -->
 
-2.  **Study design**
+2.  **Sampling Design**
 
 <!-- -->
 

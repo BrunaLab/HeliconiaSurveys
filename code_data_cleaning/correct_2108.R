@@ -92,7 +92,7 @@ correct_2108 <- function(ha_data) {
   ha_data$code[ha_data$plot == "2108" & ha_data$year == 1999 & ha_data$tag_number == 66] <- NA
   # delete the value for D10
   ha_data <- ha_data[!(ha_data$plot == "2108" & ha_data$row == "D" & ha_data$tag_number == 66), ]
-  
+  ha_data$code[ha_data$plot == 2108 & (ha_data$year == 2006 | ha_data$year == 2007) & ha_data$tag_number == 66] <- NA
   
   # location
   ha_data$row[ha_data$plot == "2108" & ha_data$tag_number == 212] <- "E"

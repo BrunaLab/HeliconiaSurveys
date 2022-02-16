@@ -32,7 +32,7 @@ correct_5754 <- function(ha_data) {
   ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- "sdlg (1)"
   ha_data<-ha_data %>% filter(!(bdffp_reserve_no=="3209" & tag_number==770.5 & row=="A" & column==5))
   ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3] <- 770
-  
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770 & ha_data$year==2006] <- "dead (2)"
   
   ha_data$shts[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==308 & ha_data$column==5 & ha_data$row=="D" & ha_data$year==2006] <- 2
   ha_data$ht[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==308 & ha_data$column==5 & ha_data$row=="D" & ha_data$year==2006] <- 24
@@ -174,7 +174,7 @@ correct_5754 <- function(ha_data) {
   rm(delete1305)
   
   
-  # delete  120 (tage replaced with 984 in 2002)
+  # delete  120 (tag replaced with 984 in 2002)
   delete120 <- ha_data %>% filter(plot == 5754 & tag_number == 120)
   ha_data <- anti_join(ha_data, delete120)
   rm(delete120)

@@ -631,8 +631,107 @@ correct_5756 <- function(ha_data) {
   rm(delete976)
   
   
-
+  # 1616 is in D9
+  ha_data$row[ha_data$plot == 5756 &
+                 ha_data$column == "9" &
+                 ha_data$tag_number == 1616] <- "D"
   
+  
+  # tag change: 521 retagged as 1616 in 200
+  # shoots and height 1998-2003 from 521 to 1616
+  
+  
+  data_521<- ha_data %>% 
+    select(plot,tag_number,year, shts,ht) %>% 
+    filter(plot==5756) %>% 
+    filter(tag_number==521) %>% 
+    filter(year==1998|year==1999|year==2000|year==2001|year==2002|year==2003)
+    
+  
+  ha_data<-ha_data %>% mutate(ht = ifelse(
+    (plot==5756 & tag_number==1616 & year==1998),
+    (filter(data_521, year==1998) %>% select(ht)),
+    ht))
+  
+  
+  ha_data<-ha_data %>% mutate(ht = ifelse(
+    (plot==5756 & tag_number==1616 & year==1999),
+    (filter(data_521, year==1999) %>% select(ht)),
+    ht))
+  
+  
+  ha_data<-ha_data %>% mutate(ht = ifelse(
+    (plot==5756 & tag_number==1616 & year==2000),
+    (filter(data_521, year==2000) %>% select(ht)),
+    ht))
+  
+  
+  ha_data<-ha_data %>% mutate(ht = ifelse(
+    (plot==5756 & tag_number==1616 & year==2001),
+    (filter(data_521, year==2001) %>% select(ht)),
+    ht))
+  
+  
+  ha_data<-ha_data %>% mutate(ht = ifelse(
+    (plot==5756 & tag_number==1616 & year==2002),
+    (filter(data_521, year==2002) %>% select(ht)),
+    ht))
+  
+  
+  ha_data<-ha_data %>% mutate(ht = ifelse(
+    (plot==5756 & tag_number==1616 & year==2003),
+    (filter(data_521, year==2003) %>% select(ht)),
+    ht))
+  
+  # now shts
+  
+  ha_data<-ha_data %>% mutate(shts = ifelse(
+    (plot==5756 & tag_number==1616 & year==1998),
+    (filter(data_521, year==1998) %>% select(shts)),
+    shts))
+  
+  
+  ha_data<-ha_data %>% mutate(shts = ifelse(
+    (plot==5756 & tag_number==1616 & year==1999),
+    (filter(data_521, year==1999) %>% select(shts)),
+    shts))
+  
+  
+  ha_data<-ha_data %>% mutate(shts = ifelse(
+    (plot==5756 & tag_number==1616 & year==2000),
+    (filter(data_521, year==2000) %>% select(shts)),
+    shts))
+  
+  
+  ha_data<-ha_data %>% mutate(shts = ifelse(
+    (plot==5756 & tag_number==1616 & year==2001),
+    (filter(data_521, year==2001) %>% select(shts)),
+    shts))
+  
+  
+  ha_data<-ha_data %>% mutate(shts = ifelse(
+    (plot==5756 & tag_number==1616 & year==2002),
+    (filter(data_521, year==2002) %>% select(shts)),
+    shts))
+  
+  
+  ha_data<-ha_data %>% mutate(shts = ifelse(
+    (plot==5756 & tag_number==1616 & year==2003),
+    (filter(data_521, year==2003) %>% select(shts)),
+    shts))
+  
+  
+  
+    
+  
+  # 976 in C7: delete
+  
+  delete521 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 521)
+  ha_data <- anti_join(ha_data, delete521)
+  rm(delete521)
+  rm(data_521)
   
   
   return(ha_data)

@@ -575,18 +575,11 @@ names(wide_ha_data)
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 # TODO: 5756
-# did 1616  change tag numbers? 
-    # RESPONSE: should be in D9, looks like it might be 521 originally
 # figure out which of the plants in the plot is  now 933  
-    # RESPONSE:  looks like was 332 lost tage and became 933
+    # RESPONSE:  looks like was 332 lost tag and became 933
 
-# fix tag 1864 / 1684
-# source<-which(ha_data$tag_number==1864 & ha_data$plot=="5756")
-# destination<-which(ha_data$tag_number==1684 & ha_data$plot=="5756")
-# ha_data[c(destination,source), 49:53] <- rbind(ha_data[source, 49:53], rep(NA, 4))
-# ha_data[c(destination,source), 45:48] <- rbind(ha_data[source, 45:48], rep(NA, 4))
-# #TODO: What column(s) is this supposed to set to NA? Or should this remove 1864 entirely?
-# ha_data[which(ha_data$tag_number==1864 & ha_data$plot=="5756"),]<-NA 
+# 1864/1864: was there a tage switch? did these get confused?
+# 1684: was it a seedling in 1st year?
 
 
 # TODO: 2107
@@ -597,27 +590,14 @@ names(wide_ha_data)
 
 # check the xy 
 
-# TODO: 2108:
-# tag 66: this is in C9, not a seedling C( - was not missing in 99,
-# but rather marked as a seedling in D10 (must be right on an edge()))
-
-
 # TODO  5754 PA 10
+
 # Need to add 2006 seedling notations
 
 # plant 46 in B4 is actually 6. (2,112 in 1999) can track down what appened to it?
 
-# find 879
-# ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==879 & ha_data$year==2005] <- "missing (60)"
-
-# from merge_with_PA10
-# PA10_data_2006$tag_number[PA10_data_2006$row=="A" & 
-#                             PA10_data_2006$column=="3"  & 
-#                             is.na(PA10_data_2006$tag_number)==TRUE] <- 770 #missing on csv, 2x on form
-# PA10_data_2006$tag_number[PA10_data_2006$row=="E" &
-#                             PA10_data_2006$column=="5" & 
-#                             PA10_data$shoots==1 & 
-#                             is.na(PA10_data_2006$tag_number)==TRUE] <- 765 #missing on csv, 2x on form
+# 770 in 2006 missing on csv, 2x on form?
+# 765 in 2006 missing on csv, 2x on form?
 
 
 
