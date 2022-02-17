@@ -9,12 +9,13 @@ correct_2206 <- function(ha_data) {
   ha_data$code[ha_data$plot == 2206 & ha_data$year == 2006 & ha_data$tag_number == 270] <- "under branchfall (90)"
   
   # delete the one in C10
-  omit270<-ha_data %>% filter(plot==2206 & 
-                                tag_number==270 &
-                                row=="C" & 
-                                column==10)
-  ha_data<-anti_join(ha_data,omit270)
-  rm(omit270)
+  omit270 <- ha_data %>%
+    filter(plot == 2206 &
+             tag_number == 270 &
+             row == "C" &
+             column == 10)
+  ha_data <- anti_join(ha_data, omit270)
+
   
   return(ha_data)
 }
