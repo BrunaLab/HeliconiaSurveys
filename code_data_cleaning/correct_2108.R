@@ -9,28 +9,40 @@ correct_2108 <- function(ha_data) {
   # in all subsequent years 240 in this plot is missing and 249 is correct in this plot,
   # 240 should be in e8
   
-  move33<-ha_data %>% filter(plot == 2108 & tag_number == 33) %>% 
-    filter(is.na(shts)==FALSE) %>% 
-    mutate(tag_number=249) %>% 
-    select(plot,tag_number, year,shts,ht)
+  move33 <- ha_data %>%
+    filter(plot == 2108 & tag_number == 33) %>%
+    filter(is.na(shts) == FALSE) %>%
+    mutate(tag_number = 249) %>%
+    select(plot, tag_number, year, shts, ht)
+  
+  ha_data <- ha_data %>% 
+    mutate(shts = case_when(
+      plot == 2108 & tag_number == 249 ~ case_when(
+        year == 1998 ~ 2,
+        year == 1999 ~ 2,
+        year == 2000 ~ 3,
+        year == 2001 ~ 4,
+        year == 2002 ~ 5,
+        TRUE ~ shts
+      ),
+      TRUE ~ shts
+    )) %>% 
+    mutate(ht = case_when(
+      plot == 2108 & tag_number == 249 ~ case_when(
+        year == 1998 ~ 50,
+        year == 1999 ~ 52,
+        year == 2000 ~ 57,
+        year == 2001 ~ 83,
+        year == 2002 ~ 120,
+        TRUE ~ ht
+      ),
+      TRUE ~ ht
+    ))
   
   
-  ha_data$shts[ha_data$plot == 2108 & ha_data$year == 1998 & ha_data$tag_number == 249] <- 2
-  ha_data$shts[ha_data$plot == 2108 & ha_data$year == 1999 & ha_data$tag_number == 249] <- 2
-  ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2000 & ha_data$tag_number == 249] <- 3
-  ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2001 & ha_data$tag_number == 249] <- 4
-  ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2002 & ha_data$tag_number == 249] <- 5
-  
-  ha_data$ht[ha_data$plot == 2108 & ha_data$year == 1998 & ha_data$tag_number == 249] <- 50
-  ha_data$ht[ha_data$plot == 2108 & ha_data$year == 1999 & ha_data$tag_number == 249] <- 52
-  ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2000 & ha_data$tag_number == 249] <- 57
-  ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2001 & ha_data$tag_number == 249] <- 83
-  ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2002 & ha_data$tag_number == 249] <- 120
-  
-  
-  omit33<-ha_data %>% filter(plot==2108 & tag_number==33)
-  ha_data<-anti_join(ha_data,omit33)
-  rm(move33,omit33)
+  omit33 <- ha_data %>% filter(plot == 2108 & tag_number == 33)
+  ha_data <- anti_join(ha_data, omit33)
+  rm(move33, omit33)
   ha_data$code[ha_data$plot == 2108 & 
                  ha_data$year == 2006 & ha_data$tag_number == 249] <- NA
   
