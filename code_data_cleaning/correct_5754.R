@@ -14,15 +14,17 @@ correct_5754 <- function(ha_data) {
         TRUE ~ notes
       ),
       TRUE ~ notes
-    )) %>% 
+    )) 
+  
+  ha_data %>% 
     mutate(infl = case_when(
-      bdffp_reserve_no == "3209"  ~ case_when(
-        tag_number==88  & year==2005 & row=="A" ~ 2
-        tag_number==134 & year==2005 & row=="A" ~ 1
-        tag_number==245 & year==2005 & row=="A" ~ 3
-        tag_number==171 & year==2005 & row=="B" ~ 1
-        tag_number==171 & year==2006 & row=="B" ~ 1
-        tag_number==371 & year==2006 & row=="A" ~ 1
+      bdffp_reserve_no == "3209" ~ case_when(
+        tag_number==88  & year==2005 & row=="A" ~ 2,
+        tag_number==134 & year==2005 & row=="A" ~ 1,
+        tag_number==245 & year==2005 & row=="A" ~ 3,
+        tag_number==171 & year==2005 & row=="B" ~ 1,
+        tag_number==171 & year==2006 & row=="B" ~ 1,
+        tag_number==371 & year==2006 & row=="A" ~ 1,
         TRUE ~ infl
       ),
       TRUE ~ infl
