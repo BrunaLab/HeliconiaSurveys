@@ -60,7 +60,7 @@ correct_5750 <- function(ha_data) {
   # delete pre 2005 measurements
   ha_data <- ha_data %>% 
     mutate(across(c(ht, shts, infl), ~ ifelse(
-      plot == 5750 & tag_number ==886 & !year %in% 2006:2009, NA, .x)
+      plot == 5750 & tag_number == 886 & !year %in% 2006:2009, NA, .x)
     )) 
   
   # add the 2004 measurements
@@ -176,7 +176,7 @@ correct_5750 <- function(ha_data) {
   ha_data$code[ha_data$plot == "5750" & ha_data$year == 2005 & ha_data$tag_number == 864] <- "missing (60)"
   
   ha_data$code[ha_data$plot == 5750 &
-                 (ha_data$year == 2005 | ha_data$year == 2006 | ha_data$year == 2007) & 
+                 ha_data$year %in% 2005:2007 & 
                  ha_data$tag_number == 101] <- NA
   ha_data$ht[ha_data$plot == 5750 &
                ha_data$year == 2004 & 
