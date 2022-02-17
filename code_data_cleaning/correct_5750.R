@@ -233,13 +233,8 @@ correct_5750 <- function(ha_data) {
   ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 747] <- "J"
   
   
-  ha_data$ht[ha_data$plot == 5750 &
-                 ha_data$year == 2008 & 
-                 ha_data$tag_number == 469] <- ha_data$ht*10
-
-  
   # these were incorrectly ntered with a decimal in the ht
-  ha_data<-ha_data %>% mutate(ht = ifelse(plot == 5750 & 
+  ha_data<-ha_data %>% mutate(ht = if_else(plot == 5750 & 
                                              year==2008 &
                                              (tag_number ==469	|
                                              tag_number ==509	|
