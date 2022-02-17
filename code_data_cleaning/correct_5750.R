@@ -83,22 +83,20 @@ correct_5750 <- function(ha_data) {
                ha_data$tag_number == 886] <- 14
   
   
-  
-  ha_data<-ha_data %>% mutate(ht = ifelse((plot == 5750 & tag_number ==988 & 
-                                             (year!=2006 & 
-                                                year!=2007 &
-                                                year!=2008 &
-                                                year!=2009)),data988$ht, ht)) %>% 
-    mutate(shts = ifelse((plot == 5750 & tag_number ==988 & 
-                          (year!=2006 & 
-                             year!=2007 &
-                             year!=2008 &
-                             year!=2009)),data988$shts, shts)) %>% 
-    mutate(infl = ifelse((plot == 5750 & tag_number ==988 & 
-                          (year!=2006 & 
-                             year!=2007 &
-                             year!=2008 &
-                             year!=2009)),data988$infl, infl)) 
+  ha_data <-
+    ha_data %>% 
+    mutate(ht = ifelse(
+      (plot == 5750 & tag_number == 988 & !year %in% 2006:2009),
+      data988$ht,
+      ht)) %>%
+    mutate(shts = ifelse(
+      (plot == 5750 & tag_number == 988 & !year %in% 2006:2009),
+      data988$shts,
+      shts)) %>% 
+    mutate(infl = ifelse(
+      (plot == 5750 & tag_number == 988 & !year %in% 2006:2009),
+      data988$infl,
+      infl)) 
   
   
   # 2002 (J8) was incorrectly typed in as 2022 in 2007. Need to add the 2007 
@@ -224,24 +222,11 @@ correct_5750 <- function(ha_data) {
                  ha_data$tag_number == 469] <- ha_data$ht*10
 
   
-  # these were incorrectly ntered with a decimal in the ht
-  ha_data<-ha_data %>% mutate(ht = ifelse(plot == 5750 & 
-                                             year==2008 &
-                                             (tag_number ==469	|
-                                             tag_number ==509	|
-                                             tag_number ==563	|
-                                             tag_number ==584	|
-                                             tag_number ==620	|
-                                             tag_number ==745	|
-                                             tag_number ==819	|
-                                             tag_number ==856	|
-                                             tag_number ==888	|
-                                             tag_number ==1341|
-                                             tag_number ==1344),
-                              (ht*10), ht))
-  
-  
-  
+  # these were incorrectly entered with a decimal in the ht
+  ha_data <- ha_data %>%
+    mutate(ht = ifelse(plot == 5750 & year == 2008 &
+                         tag_number %in% c(469, 509, 563, 584, 620, 745, 819, 856, 888, 1341, 1344),
+                       (ht*10), ht))
   return(ha_data)
 }
 
