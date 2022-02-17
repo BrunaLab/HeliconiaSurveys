@@ -104,7 +104,7 @@ clean_codes <- function(ha_data) {
     mutate(code= na_if(code, "e E6")) %>%
     mutate(code= na_if(code, ", must have lost tag")) %>%
     mutate(code= na_if(code, "3 old infl")) %>% 
-    mutate(infl = if_else(infl=="0" & code == "1 new infl" , "1", infl)) %>% 
+    mutate(infl = if_else(infl==0 & code == "1 new infl" , 1, infl)) %>% 
     mutate(code= na_if(code,"1 new infl")) %>% 
     mutate(code= na_if(code, "horrible treefall in plot")) %>%
     mutate(code= na_if(code, "treefall in plot")) %>%

@@ -166,7 +166,7 @@ ha_data <-ha_data %>% rename("code"="notes")
 
 
 # stabndardize column classes ---------------------------------------------
-ha_data$infl <- as.character(ha_data$infl)
+ha_data$infl <- as.numeric(ha_data$infl) 
 ha_data$shts <- as.numeric(as.character(ha_data$shts))
 ha_data$ht <- as.numeric(as.character(ha_data$ht))
 ha_data$plot <- as.factor(ha_data$plot)
@@ -176,8 +176,6 @@ ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
 ha_data$row <- as.factor(ha_data$row)
 # make habitat (frag size) an ordered factor
 ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
-
-
 
 
 # clean up codes/notes ----------------------------------------------------
