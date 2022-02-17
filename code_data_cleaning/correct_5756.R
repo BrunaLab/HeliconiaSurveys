@@ -159,22 +159,33 @@ correct_5756 <- function(ha_data) {
   # tag no 29
   # 29 in 5756 was actually in E3, and was retagged as 1663 in 07
   ha_data <- ha_data %>%
-    mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 1998), 54, ht)) %>%
-    mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 1999), 56, ht)) %>%
-    mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 2000), 96, ht)) %>%
-    mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 2001), 79, ht)) %>%
-    mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 2002), 67, ht)) %>%
-    mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 2003), 55, ht)) %>%
-    mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 2004), 52, ht)) %>%
-    mutate(ht = if_else((plot == 5756 & tag_number == 1663 & year == 2005), 15, ht)) %>%
-    mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 1998), 2, shts)) %>%
-    mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 1999), 4, shts)) %>%
-    mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2000), 5, shts)) %>%
-    mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2001), 9, shts)) %>%
-    mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2002), 5, shts)) %>%
-    mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2003), 3, shts)) %>%
-    mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2004), 3, shts)) %>%
-    mutate(shts = if_else((plot == 5756 & tag_number == 1663 & year == 2005), 2, shts))
+    mutate(ht = case_when(
+      plot == 5756 & tag_number == 1663 ~ case_when(
+        year == 1998 ~ 54,
+        year == 1999 ~ 56,
+        year == 2000 ~ 96,
+        year == 2001 ~ 79,
+        year == 2002 ~ 67,
+        year == 2003 ~ 55,
+        year == 2004 ~ 52,
+        year == 2005 ~ 15,
+      ),
+      TRUE ~ ht
+    )) %>% 
+    mutate(shts = case_when(
+      plot == 5756 & tag_number == 1663 ~ case_when(
+        year == 1998 ~ 2,
+        year == 1999 ~ 4,
+        year == 2000 ~ 5,
+        year == 2001 ~ 9,
+        year == 2002 ~ 5,
+        year == 2003 ~ 3,
+        year == 2004 ~ 3,
+        year == 2005 ~ 2,
+      ),
+      TRUE ~ shts
+    ))
+    
   ha_data$code[ha_data$plot == "5756" &
                  (ha_data$year == 2005 |
                     ha_data$year == 2006) &
