@@ -111,7 +111,7 @@ correct_5754 <- function(ha_data) {
     mutate(code = if_else(
       bdffp_reserve_no == "3209" &
         year==2005 &
-        tag_number %in% c(137, 748, 303, 855, 198, 121, 911),
+        tag_number %in% c(1376, 748, 303, 855, 198, 121, 911),
       "missing (60)",
       code))
 
