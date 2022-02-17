@@ -51,31 +51,17 @@ correct_5750 <- function(ha_data) {
   ha_data <- anti_join(ha_data, delete988)
   rm(delete988)
   
-  data988<-ha_data %>% 
-    filter(plot==5750) %>% 
-    filter(tag_number==886) %>%
-    filter(year!=2006 & 
-             year!=2007 &
-             year!=2008 &
-             year!=2009) %>% 
+  data988 <- ha_data %>%
+    filter(plot == 5750) %>%
+    filter(tag_number == 886) %>%
+    filter(!year %in% 2006:2009) %>%
     select(year:notes)
   
   # delete pre 2005 measurements
-  ha_data<-ha_data %>% mutate(ht = ifelse((plot == 5750 & tag_number ==886 & 
-                                    (year!=2006 & 
-                                    year!=2007 &
-                                    year!=2008 &
-                                    year!=2009)),NA, ht)) %>% 
-    mutate(shts = ifelse((plot == 5750 & tag_number ==886 & 
-                          (year!=2006 & 
-                             year!=2007 &
-                             year!=2008 &
-                             year!=2009)), NA, shts)) %>% 
-    mutate(infl = ifelse((plot == 5750 & tag_number ==886 & 
-                          (year!=2006 & 
-                             year!=2007 &
-                             year!=2008 &
-                             year!=2009)), NA, infl))
+  ha_data <- ha_data %>% 
+    mutate(across(c(ht, shts, infl), ~ ifelse(
+      plot == 5750 & tag_number ==886 & !year %in% 2006:2009, NA, .x)
+    )) 
   
   # add the 2004 measurements
   ha_data$code[ha_data$plot == 5750 &
