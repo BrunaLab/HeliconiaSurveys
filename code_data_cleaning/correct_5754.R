@@ -1,26 +1,33 @@
 correct_5754 <- function(ha_data) {
   
-  ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==88 & ha_data$year==2005 & ha_data$row=="A"] <- 2
-  ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==88 & ha_data$year==2006 & ha_data$row=="A"] <- NA
+  ha_data <- ha_data %>% 
+    mutate(notes = case_when(
+      bdffp_reserve_no == "3209" & year == 2006 ~ case_when(
+        (tag_number==88  & row=="A") |
+        (tag_number==171 & row=="B") |
+        (tag_number==134 & row=="A") |
+        (tag_number==98  & row=="E") |
+        (tag_number==243 & row=="E") |
+        (tag_number==245 & row=="A") |
+        (tag_number==272 & row=="C") |
+        (tag_number==371 & row=="A") ~ NA_character_,
+        TRUE ~ notes
+      ),
+      TRUE ~ notes
+    )) %>% 
+    mutate(infl = case_when(
+      bdffp_reserve_no == "3209"  ~ case_when(
+        tag_number==88  & year==2005 & row=="A" ~ 2
+        tag_number==134 & year==2005 & row=="A" ~ 1
+        tag_number==245 & year==2005 & row=="A" ~ 3
+        tag_number==171 & year==2005 & row=="B" ~ 1
+        tag_number==171 & year==2006 & row=="B" ~ 1
+        tag_number==371 & year==2006 & row=="A" ~ 1
+        TRUE ~ infl
+      ),
+      TRUE ~ infl
+    ))
   
-  ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==98 & ha_data$year==2006 & ha_data$row=="E"] <- NA
-  
-  ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==134 & ha_data$year==2005 & ha_data$row=="A"] <- 1
-  ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==134 & ha_data$year==2006 & ha_data$row=="A"] <- NA
-  
-  ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==171 & ha_data$year==2005 & ha_data$row=="B"] <- 1
-  ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==171 & ha_data$year==2006 & ha_data$row=="B"] <- 1
-  ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==171 & ha_data$year==2006 & ha_data$row=="B"] <- NA
-  
-  ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==243 & ha_data$year==2006 & ha_data$row=="E"] <- NA
-  
-  ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==245 & ha_data$year==2005 & ha_data$row=="A"] <- 3
-  ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==245 & ha_data$year==2006 & ha_data$row=="A"] <- NA
-  
-  ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==272  & ha_data$year==2006 & ha_data$row=="C"] <- NA
-  
-  ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==371 & ha_data$year==2006 & ha_data$row=="A"] <- 1
-  ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==371 & ha_data$year==2006 & ha_data$row=="A"] <- NA
   
   ha_data$ht[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==382.5 & ha_data$column==5 & ha_data$year==2006] <- 70
   ha_data$shts[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==382.5 & ha_data$column==5 & ha_data$year==2006] <- 6
