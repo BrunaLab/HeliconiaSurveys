@@ -105,13 +105,14 @@ correct_5754 <- function(ha_data) {
   
   
   # These need to the code changed from "dead "to "missing"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1376 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==748 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==303 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==855 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==198 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==121 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==911 & ha_data$year==2005] <- "missing (60)"
+  ha_data <- ha_data %>% 
+    mutate(code = ifelse(
+      bdffp_reserve_no == "3209" &
+        year==2005 &
+        tag_number %in% c(137, 748, 303, 855, 198, 121, 911),
+      "missing (60)",
+      code))
+
   
   # This "missing" code needs to be changed to NA
   ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1353 & ha_data$year==2006] <- NA
@@ -217,16 +218,20 @@ correct_5754 <- function(ha_data) {
   
   
   # Zombie Correction
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==927 & ha_data$year==2005] <- NA
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==956 & ha_data$year==2005] <- NA
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1388 & ha_data$year==2005] <- NA
+  ha_data <- ha_data %>% 
+    mutate(code = ifelse(
+      bdffp_reserve_no == "3209" &
+        year == 2005 &
+        tag_number %in% c(927, 956, 1388),
+      NA_character_,
+      code))
   
   # change all the ones where a plant is dead but size was recorded as "0"
-  ha_data <- ha_data %>% 
-    mutate(shts = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), NA, shts)) %>% 
-    mutate(ht = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), NA, ht)) %>% 
-    mutate(infl = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), NA, infl))
-  
+  ha_data <- ha_data %>%
+    mutate(across(
+      c(shts, ht, infl),
+      ~ ifelse(shts == 0 & ht == 0 & code == "dead (2)", NA, .x)
+    ))
   
   return(ha_data)
 }
