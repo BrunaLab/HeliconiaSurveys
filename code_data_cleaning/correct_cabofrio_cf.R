@@ -34,7 +34,7 @@ correct_cabofrio_cf <- function(ha_data) {
     slice(1) %>%
     mutate(ht = if_else(year == 2009, 6, ht)) %>%
     mutate(shts = if_else(year == 2009, 1, shts)) %>%
-    mutate(code = ifelse(year == 2009, NA, code))
+    mutate(code = if_else(year == 2009, NA_character_, code))
   # remove the duplicates from the original df
   ha_data <- ha_data[!(ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 2121), ]
   # re-insert them

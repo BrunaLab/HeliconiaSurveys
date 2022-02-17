@@ -59,8 +59,8 @@ correct_5750 <- function(ha_data) {
   
   # delete pre 2005 measurements
   ha_data <- ha_data %>% 
-    mutate(across(c(ht, shts, infl), ~ ifelse(
-      plot == 5750 & tag_number == 886 & !year %in% 2006:2009, NA, .x)
+    mutate(across(c(ht, shts, infl), ~ if_else(
+      plot == 5750 & tag_number == 886 & !year %in% 2006:2009, NA_real_, .x)
     )) 
   
   # add the 2004 measurements
@@ -219,7 +219,7 @@ correct_5750 <- function(ha_data) {
   
   # these were incorrectly entered with a decimal in the ht
   ha_data <- ha_data %>%
-    mutate(ht = ifelse(plot == 5750 & year == 2008 &
+    mutate(ht = if_else(plot == 5750 & year == 2008 &
                          tag_number %in% c(469, 509, 563, 584, 620, 745, 819, 856, 888, 1341, 1344),
                        (ht*10), ht))
   return(ha_data)

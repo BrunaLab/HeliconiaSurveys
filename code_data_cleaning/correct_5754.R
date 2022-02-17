@@ -16,7 +16,7 @@ correct_5754 <- function(ha_data) {
       TRUE ~ notes
     )) 
   
-  ha_data %>% 
+  ha_data <- ha_data %>% 
     mutate(infl = case_when(
       bdffp_reserve_no == "3209" ~ case_when(
         tag_number==88  & year==2005 & row=="A" ~ 2,
@@ -108,7 +108,7 @@ correct_5754 <- function(ha_data) {
   
   # These need to the code changed from "dead "to "missing"
   ha_data <- ha_data %>% 
-    mutate(code = ifelse(
+    mutate(code = if_else(
       bdffp_reserve_no == "3209" &
         year==2005 &
         tag_number %in% c(137, 748, 303, 855, 198, 121, 911),
@@ -168,10 +168,10 @@ correct_5754 <- function(ha_data) {
   # correct the number
   # str(ha_data$tag_number)
   ha_data<-ha_data %>% 
-    mutate(tag_number = ifelse(plot==5754 & tag_number == 824.7, 824, tag_number))
+    mutate(tag_number = if_else(plot==5754 & tag_number == 824.7, 824, tag_number))
   
   ha_data<-ha_data %>% 
-    mutate(tag_number = ifelse(plot==5754 & tag_number == 823.7,823, tag_number))
+    mutate(tag_number = if_else(plot==5754 & tag_number == 823.7,823, tag_number))
   
   # Correcting 1305
   # Need to add the 2006 measurements to 1305 in B6, then delete the incorrect 1401 in B7
@@ -221,7 +221,7 @@ correct_5754 <- function(ha_data) {
   
   # Zombie Correction
   ha_data <- ha_data %>% 
-    mutate(code = ifelse(
+    mutate(code = if_else(
       bdffp_reserve_no == "3209" &
         year == 2005 &
         tag_number %in% c(927, 956, 1388),
@@ -232,7 +232,7 @@ correct_5754 <- function(ha_data) {
   ha_data <- ha_data %>%
     mutate(across(
       c(shts, ht, infl),
-      ~ ifelse(shts == 0 & ht == 0 & code == "dead (2)", NA, .x)
+      ~ if_else(shts == 0 & ht == 0 & code == "dead (2)", NA_real_, .x)
     ))
   
   return(ha_data)

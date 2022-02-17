@@ -38,7 +38,7 @@ correct_5752 <- function(ha_data) {
     slice(1) %>%
     mutate(ht = if_else(year == 2006, 110, ht)) %>%
     mutate(shts = if_else(year == 2006, 3, shts)) %>%
-    mutate(code = ifelse(year == 2006, NA, code))
+    mutate(code = if_else(year == 2006, NA_character_, code))
   # remove the duplicates from the original df
   ha_data <- ha_data[!(ha_data$plot == "5752" & ha_data$tag_number == 181), ]
   # re-insert them
@@ -53,7 +53,7 @@ correct_5752 <- function(ha_data) {
     slice(1) %>%
     mutate(ht = if_else(year == 2006, 14, ht)) %>%
     mutate(shts = if_else(year == 2006, 3, shts)) %>%
-    mutate(code = ifelse(year == 2006, NA, code))
+    mutate(code = if_else(year == 2006, NA_character_, code))
   # remove the duplicates from the original df
   ha_data <- ha_data[!(ha_data$plot == "5752" & ha_data$tag_number == 526), ]
   # re-insert them
@@ -61,7 +61,7 @@ correct_5752 <- function(ha_data) {
   rm(correct_526)
   
   ha_data <- ha_data %>% 
-    mutate(code = ifelse(
+    mutate(code = if_else(
       plot == 5752 & year == 2005 &
         tag_number %in% c(149, 499, 272, 736),
       "missing (60)",
