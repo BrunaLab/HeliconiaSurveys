@@ -60,10 +60,13 @@ correct_5752 <- function(ha_data) {
   ha_data <- bind_rows(ha_data, correct_526)
   rm(correct_526)
   
-  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 149] <- "missing (60)"
-  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 499] <- "missing (60)"
-  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 272] <- "missing (60)"
-  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 736] <- "missing (60)"
+  ha_data <- ha_data %>% 
+    mutate(code = ifelse(
+      plot == 5752 & year == 2005 &
+        tag_number %in% c(149, 499, 272, 736),
+      "missing (60)",
+      code
+    ))
   
   # incorrectly recorded as seedling
   ha_data$code[ha_data$plot == 5752 &
