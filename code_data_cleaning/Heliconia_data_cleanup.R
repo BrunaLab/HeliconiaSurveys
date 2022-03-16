@@ -678,10 +678,12 @@ ha_dryad <- ha_data %>%
   # change infl to be conditional - IF reproductive, how many infl? others ->NA 
   mutate(infl = replace(infl, infl == 0, NA)) %>%
   # convert column sdlg_status to be logical TRUE/FALSE/NA
-  mutate(sdlg_status = case_when(sdlg_status == "sdlg (1)"~ TRUE,
-                                 is.na(sdlg_status) &
-                                   is.na(ht) == FALSE &
-                                   is.na(shts) == FALSE ~ FALSE)) %>% 
+  # mutate(sdlg_status = case_when(sdlg_status == "sdlg (1)"~ TRUE,
+  #                                is.na(sdlg_status) &
+  #                                  is.na(ht) == FALSE &
+  #                                  is.na(shts) == FALSE ~ FALSE)) %>%
+  
+  mutate(sdlg_status = case_when(sdlg_status == "sdlg (1)"~ TRUE)) %>% 
   mutate(treefall_impact = case_when(code == "under branchfall (90)" ~ "branch",
                                         code == "under litter (70)" ~ "litter", 
                                         code == "under treefall (80)" ~ "crown")) %>%
@@ -690,7 +692,11 @@ ha_dryad <- ha_data %>%
                            code == "ULY (3)" ~ "ULY",
                            code == "new plant in plot (6)" ~ "ULY",
                            code == "not on list (40)" ~ "NOL",
-                           code == "dead and not on list (100)" ~ "NOL")) 
+                           code == "dead and not on list (100)" ~ "NOL")) %>% 
+  rename('plot'='plotID',
+         'plant_id'='HA_ID_Number') %>% 
+  mutate(across(where(is.character), as.factor))
+
 
 
 
@@ -702,8 +708,8 @@ summary(ha_dryad$sdlg_status)
 summary((ha_dryad$sdlg))
 levels(ha_dryad$code)
 levels(as.factor(ha_dryad$notes))
-write_csv(ha_dryad, "./data_clean/heliconia_dryad.csv")
-write_csv(ha_plots, "./data_clean/heliconia_plots_dryad.csv")
+write_csv(ha_dryad, "./data_clean/ha_plants_dryad.csv")
+write_csv(ha_plots, "./data_clean/ha_plots_dryad.csv")
 
 
 
