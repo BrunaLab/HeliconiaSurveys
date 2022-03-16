@@ -528,7 +528,12 @@ ha_data$plot <- as.factor(ha_data$plot)
 ha_data$duplicate_tag <- as.factor(ha_data$duplicate_tag)
 levels(ha_data$code)
 summary(ha_data)
+
+
+# The complete and comprehensive version of the data with all columns
+
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
+
 
 
 names(ha_data)
@@ -613,3 +618,103 @@ names(wide_ha_data)
 # are a true mortality (had a tag, now dead), or were alive in past year
 # summary(as.factor(ha_data$code))
 
+
+
+
+
+
+
+# dataset for dryad -------------------------------------------------------
+
+# This is the version of the dataset that will get uploaded to dryad
+
+names(ha_data)
+head(ha_data)
+
+ha_dryad <- ha_data %>%
+  arrange(row,as.numeric(column)) %>% 
+  mutate(subplot=paste(row, column, sep="")) %>% 
+  select(plotID, 
+         subplot,
+         HA_ID_Number,
+         year,
+         ht,
+         shts,
+         infl, 
+         code,
+         notes, 
+         sdlg_status) %>%
+  # change infl to be conditional - IF reproductive, how many infl? others ->NA 
+  mutate(infl = replace(infl, infl == 0, NA)) %>%
+  # convert column sdlg_status to be logical TRUE/FALSE/NA
+  mutate(sdlg_status = case_when(sdlg_status == "sdlg (1)"~ TRUE,
+                                 is.na(sdlg_status) &
+                                   is.na(ht) == FALSE &
+                                   is.na(shts) == FALSE ~ FALSE)) %>% 
+  mutate(treefall_status = case_when(code == "under branchfall (90)" ~ "branch",
+                                        code == "under litter (70)" ~ "litter", 
+                                        code == "under treefall (80)" ~ "crown")) %>%
+  mutate(code = recode(code, 'under branchfall (90)' = "none"))
+
+,
+                          versicolor = "VERSICOLOR",
+                          virginica = "VIRGINICA"
+  )
+  )
+  
+  
+  mutate(code = case_when(code == "under branchfall (90)" ~ NA,
+                                     code == "under litter (70)" ~ NA, 
+                                     code == "under treefall (80)" ~ is.na(code)))
+
+         
+
+
+  # THIS IS PROBABLY NOT RIGHT, NEED TO CHECK THIS OUT
+  mutate(census_status = case_when((code == "dead (2)" |"dead and not on list (100)")   ~ "DEAD",
+                                   code == "missing (60)" ~ "MISSING",
+                                   ((code !="dead (2)" | code !="missing (60)") & 
+                                   (is.na(ht) == FALSE |
+                                   is.na(shts) == FALSE)) ~ "ALIVE",
+                                   (is.na(code)== TRUE & 
+                                       is.na(ht) == FALSE |
+                                          is.na(shts) == FALSE) ~ "ALIVE"))
+
+
+
+head(ha_dryad)  
+glimpse(ha_dryad)
+summary(ha_dryad$infl)
+summary(ha_dryad$sdlg_status)
+summary((ha_dryad$sdlg))
+summary(ha_dryad$code)
+write_csv(ha_dryad, "./data_clean/heliconia_dryad.csv")
+
+
+
+
+
+# wide form to make it easier to search for ULY matches -------------------
+
+wide_ha_dryad <- ha_dryad %>% 
+  pivot_wider(names_from = year, values_from=c("shts", "ht", "infl", "code")) %>%
+  relocate(contains("_1998"), .after = subplot) %>% 
+  relocate(contains("_1999"), .after = code_1998) %>%
+  relocate(contains("_2000"), .after = code_1999) %>%
+  relocate(contains("_2001"), .after = code_2000) %>% 
+  relocate(contains("_2002"), .after = code_2001) %>%
+  relocate(contains("_2003"), .after = code_2002) %>% 
+  relocate(contains("_2004"), .after = code_2003) %>%
+  relocate(contains("_2005"), .after = code_2004) %>% 
+  relocate(contains("_2006"), .after = code_2005) %>%
+  relocate(contains("_2007"), .after = code_2006) %>% 
+  relocate(contains("_2008"), .after = code_2007) %>% 
+  arrange(plotID,
+          subplot,
+          HA_ID_Number,
+          code_1999,
+          shts_1998,
+          shts_1999,
+          shts_2000,
+          shts_2001) 
+names(wide_ha_dryad)
