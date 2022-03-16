@@ -626,6 +626,37 @@ names(wide_ha_data)
 
 # dataset for dryad -------------------------------------------------------
 
+# Create a df of plot characteristics
+
+# these are the years each fragment was isolated
+isolation<-tibble("bdffp_no"=c(2107, 2108,1104,3114, 2206, 1202, 3209),
+                  "yr_isolated"=c(1984,1984,1980,1983,1984,1980,1983)) %>% 
+  mutate(across(where(is.double), as.factor))
+
+# select the plot id variables
+ha_plots <- ha_data %>%
+  arrange(row,as.numeric(column)) %>% 
+  mutate(subplot=paste(row, column, sep="")) %>% 
+  select("plotID",
+         "habitat",
+         "ranch",
+         "bdffp_reserve_no",
+         "plot") %>% 
+  distinct() %>% 
+  arrange(plotID) %>% 
+  mutate(ranch=recode_factor(ranch, 'PortoAlegre'='PAL')) %>% 
+  mutate(habitat=recode_factor(habitat, '1-ha'='one')) %>% 
+  mutate(habitat=recode_factor(habitat, '10-ha'='ten')) %>% 
+  mutate(habitat=recode_factor(habitat, 'CF'='forest')) %>% 
+  rename("ha_plot_no"="plot", 
+         "bdffp_no"="bdffp_reserve_no",
+         'plot'='plotID') %>% 
+  select(-'ha_plot_no') %>% 
+  left_join(isolation)
+ha_plots
+  
+
+
 # This is the version of the dataset that will get uploaded to dryad
 
 names(ha_data)
@@ -638,8 +669,8 @@ ha_dryad <- ha_data %>%
          subplot,
          HA_ID_Number,
          year,
-         ht,
          shts,
+         ht,
          infl, 
          code,
          notes, 
@@ -651,23 +682,29 @@ ha_dryad <- ha_data %>%
                                  is.na(sdlg_status) &
                                    is.na(ht) == FALSE &
                                    is.na(shts) == FALSE ~ FALSE)) %>% 
-  mutate(treefall_status = case_when(code == "under branchfall (90)" ~ "branch",
+  mutate(treefall_impact = case_when(code == "under branchfall (90)" ~ "branch",
                                         code == "under litter (70)" ~ "litter", 
                                         code == "under treefall (80)" ~ "crown")) %>%
-  mutate(code = recode(code, 'under branchfall (90)' = "none"))
+  mutate(notes = case_when(code == "resprouting (10)" ~ "resprouting",
+                           code == "dried (7)" ~ "dried",
+                           code == "ULY (3)" ~ "ULY",
+                           code == "new plant in plot (6)" ~ "ULY",
+                           code == "not on list (40)" ~ "NOL",
+                           code == "dead and not on list (100)" ~ "NOL")) 
 
-,
-                          versicolor = "VERSICOLOR",
-                          virginica = "VIRGINICA"
-  )
-  )
-  
-  
-  mutate(code = case_when(code == "under branchfall (90)" ~ NA,
-                                     code == "under litter (70)" ~ NA, 
-                                     code == "under treefall (80)" ~ is.na(code)))
 
-         
+
+
+head(ha_dryad)  
+glimpse(ha_dryad)
+summary(ha_dryad$infl)
+summary(ha_dryad$sdlg_status)
+summary((ha_dryad$sdlg))
+levels(ha_dryad$code)
+levels(as.factor(ha_dryad$notes))
+write_csv(ha_dryad, "./data_clean/heliconia_dryad.csv")
+write_csv(ha_plots, "./data_clean/heliconia_plots_dryad.csv")
+
 
 
   # THIS IS PROBABLY NOT RIGHT, NEED TO CHECK THIS OUT
@@ -682,13 +719,6 @@ ha_dryad <- ha_data %>%
 
 
 
-head(ha_dryad)  
-glimpse(ha_dryad)
-summary(ha_dryad$infl)
-summary(ha_dryad$sdlg_status)
-summary((ha_dryad$sdlg))
-summary(ha_dryad$code)
-write_csv(ha_dryad, "./data_clean/heliconia_dryad.csv")
 
 
 
