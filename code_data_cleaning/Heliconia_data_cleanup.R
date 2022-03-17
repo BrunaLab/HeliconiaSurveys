@@ -674,7 +674,7 @@ ha_dryad <- ha_data %>%
          infl, 
          code,
          notes, 
-         sdlg_status) %>%
+         recorded_sdlg=sdlg_status) %>%
   # change infl to be conditional - IF reproductive, how many infl? others ->NA 
   mutate(infl = replace(infl, infl == 0, NA)) %>%
   # convert column sdlg_status to be logical TRUE/FALSE/NA
@@ -683,11 +683,23 @@ ha_dryad <- ha_data %>%
   #                                  is.na(ht) == FALSE &
   #                                  is.na(shts) == FALSE ~ FALSE)) %>%
   
-  mutate(sdlg_status = case_when(sdlg_status == "sdlg (1)"~ TRUE)) %>% 
+  mutate(recorded_dead = case_when(code == "dead (2)"~ TRUE,
+                                   code =="dead and not on list (100)"~ TRUE,
+                                   code != "dead (2)"~ FALSE,
+                                   is.na(code) == TRUE ~ FALSE)) %>%
+  mutate(code = replace(code, code == "dead (2)", NA)) %>%
+  mutate(code = replace(code, code == "dead and not on list (100)", "not on list (40)")) %>%
+  mutate(recorded_sdlg = case_when(recorded_sdlg == "sdlg (1)"~ TRUE,
+                                     recorded_sdlg != "sdlg (1)"~ FALSE,
+                                     is.na(recorded_sdlg)==TRUE~FALSE)) %>% 
+  mutate(code = replace(code, code == "sdlg (1)", NA)) %>%
   mutate(treefall_impact = case_when(code == "under branchfall (90)" ~ "branch",
                                         code == "under litter (70)" ~ "litter", 
                                         code == "under treefall (80)" ~ "crown")) %>%
-  mutate(notes = case_when(code == "resprouting (10)" ~ "resprouting",
+  mutate(code = replace(code, code == "under branchfall (90)",  NA)) %>%
+           mutate(code = replace(code, code == "under litter (70)",  NA)) %>%
+                    mutate(code = replace(code, code == "under treefall (80)",  NA)) %>%
+  mutate(code = case_when(code == "resprouting (10)" ~ "resprouting",
                            code == "dried (7)" ~ "dried",
                            code == "ULY (3)" ~ "ULY",
                            code == "new plant in plot (6)" ~ "ULY",
@@ -695,18 +707,29 @@ ha_dryad <- ha_data %>%
                            code == "dead and not on list (100)" ~ "NOL")) %>% 
   rename('plot'='plotID',
          'plant_id'='HA_ID_Number') %>% 
-  mutate(across(where(is.character), as.factor))
+  mutate(across(where(is.character), as.factor)) %>% 
+  unite("notes",code:notes, sep="", na.rm=TRUE)
 
 
 
+# create a new DF for treefall impact
+treefall_impact<-ha_dryad %>% select(plot, plant_id, year,treefall_impact) %>% 
+  drop_na(treefall_impact)
+# delete "trefall impact" colummn
+ha_dryad <- ha_dryad %>% select(-treefall_impact) 
 
+ha_dryad
 
+ha_dryad$code<-droplevels(ha_dryad$code)
+levels(ha_dryad$code)
 head(ha_dryad)  
 glimpse(ha_dryad)
 summary(ha_dryad$infl)
-summary(ha_dryad$sdlg_status)
-summary((ha_dryad$sdlg))
-levels(ha_dryad$code)
+summary(ha_dryad$recorded_sdlg)
+summary(ha_dryad$recorded_dead)
+summary(as.factor(ha_dryad$notes))
+summary((ha_dryad$sdlg_status)
+
 levels(as.factor(ha_dryad$notes))
 write_csv(ha_dryad, "./data_clean/ha_plants_dryad.csv")
 write_csv(ha_plots, "./data_clean/ha_plots_dryad.csv")
