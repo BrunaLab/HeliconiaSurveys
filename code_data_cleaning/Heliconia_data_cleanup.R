@@ -733,6 +733,7 @@ summary((ha_dryad$sdlg_status)
 levels(as.factor(ha_dryad$notes))
 write_csv(ha_dryad, "./data_clean/ha_plants_dryad.csv")
 write_csv(ha_plots, "./data_clean/ha_plots_dryad.csv")
+write_csv(ha_dryad, "./data_clean/treefall_impact_dryad.csv")
 
 
 
