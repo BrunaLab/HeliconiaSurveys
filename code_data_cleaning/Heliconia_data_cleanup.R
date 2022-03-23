@@ -285,7 +285,8 @@ ha_data<-correct_cabofrio_cf(ha_data)
 
 ha_data$sdlg_status<-ha_data$code 
 ha_data <- ha_data %>%
-  mutate(sdlg_status = replace(as.character(sdlg_status), sdlg_status!="sdlg (1)",NA))
+  mutate(sdlg_status = replace(as.character(sdlg_status), sdlg_status!="sdlg (1)",NA)) %>% 
+  mutate(sdlg_status = replace(as.character(sdlg_status), sdlg_status=="sdlg (1)","sdlg"))
 levels(as.factor(ha_data$sdlg_status))
 
 
@@ -408,6 +409,30 @@ nrow(duplicate_tags)==nrow(count_dupes)
 
 
 
+# delete the (numbers) from the codes -------------------------------------
+
+
+ha_data <- ha_data %>% 
+  arrange(habitat, 
+          plot, 
+          plotID, 
+          bdffp_reserve_no, 
+          tag_number, 
+          row, 
+          column, 
+          year)
+ha_data$code <- as.factor(ha_data$code)
+ha_data$plot <- as.factor(ha_data$plot)
+ha_data$duplicate_tag <- as.factor(ha_data$duplicate_tag)
+# ha_data$code<-as.character(ha_data$code)
+# levels(as.factor(ha_data$code))
+ha_data<-ha_data %>%
+  separate(code, c("code", "delcode"),sep = " \\(") %>% 
+  select(-delcode)
+
+levels(as.factor(ha_data$code))
+levels(as.factor(ha_data$notes))
+summary(ha_data)
 
 # simplify codes ----------------------------------------------------------
 
@@ -415,20 +440,20 @@ ha_data$code<-as.factor(ha_data$code)
 ha_data$code<-droplevels(ha_data$code)
 levels(ha_data$code)
 
-ha_data %>% filter(code=="dead and not on list (100)")
-ha_data %>% filter(code=="90, 10 (two codes)")
-ha_data %>% filter(code=="resprouting (10)")
-ha_data %>% filter(code=="new plant in plot (6)")
-ha_data %>% filter(code=="dried (7)")
-ha_data %>% filter(code=="not on list (40)")
-ha_data %>% filter(code=="ULY (3)")
-ha_data %>% filter(code=="under branchfall (90)")
-ha_data %>% filter(code=="under litter (70)")
-ha_data %>% filter(code=="no tag (50)")
-ha_data %>% filter(code=="missing (60)")
-ha_data %>% filter(code=="under treefall (80)")
-ha_data %>% filter(code=="under treefall (80)")
-ha_data %>% filter(code=="under treefall (80)")
+ha_data %>% filter(code=="dead and not on list")
+ha_data %>% filter(code=="90, 10")
+ha_data %>% filter(code=="resprouting")
+ha_data %>% filter(code=="new plant in plot")
+ha_data %>% filter(code=="dried")
+ha_data %>% filter(code=="not on list")
+ha_data %>% filter(code=="ULY")
+ha_data %>% filter(code=="under branchfall")
+ha_data %>% filter(code=="under litter")
+ha_data %>% filter(code=="no tag")
+ha_data %>% filter(code=="missing")
+ha_data %>% filter(code=="under treefall")
+ha_data %>% filter(code=="under treefall")
+ha_data %>% filter(code=="under treefall")
 
 # 
 # 
@@ -454,7 +479,7 @@ ha_data %>% filter(code=="under treefall (80)")
 
 ULYs <-
   ha_data %>%
-  filter(code == "no tag (50)" | code == "ULY (3)" | code == "new plant in plot (6)") %>%
+  filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
   arrange(notes,plot, year, tag_number) %>%
   select(-ht, -shts, -infl,-x_09,-y_09)
 write_csv(ULYs, "./data_check/ULY_plants.csv")
@@ -466,13 +491,13 @@ summary(as.factor(ha_data$code))
 MISC_OBS <-
   ha_data %>%
   filter(
-    code == "dried (7)" |
-      code == "under litter (70)" |
-      code == "2x in field (200)" |
-      code == "under branchfall (90)" |
-      code == "resprouting (10)" |
-      code == "under treefall (80)" |
-      code == "90, 10 (two codes)" |
+    code == "dried" |
+      code == "under litter" |
+      code == "2x in field" |
+      code == "under branchfall" |
+      code == "resprouting" |
+      code == "under treefall" |
+      code == "90, 10" |
       is.na(notes)== FALSE
   ) %>%
   arrange(notes,plot, year, tag_number) %>%
@@ -482,13 +507,35 @@ write_csv(MISC_OBS, "./data_clean/misc_observations.csv")
 # Save CSV of plants that were not on the survey list ---------------------
 
 Not_on_SurveyList <-
-  ha_data %>% filter(code == "not on list (40)" |
-                       code == "dead not on list (100)")
+  ha_data %>% filter(code == "not on list" |
+                       code == "dead not on list") %>% 
+  arrange(plot, tag_number)
 
 levels(as.factor(Not_on_SurveyList$code))
+levels(as.factor(Not_on_SurveyList$notes))
 write_csv(Not_on_SurveyList,
           "./data_check/Not_on_List_plants.csv")
 
+
+
+any_code <-
+  ha_data %>%
+  filter(!is.na(code)) %>%
+  filter(!code=="missing") %>%
+  filter(!code=="sdlg") %>%
+  filter(!code=="dead") %>%
+  filter(!code=="under branchfall") %>%
+  filter(!code=="under litter") %>%
+  filter(!code=="under treefall") %>%
+  filter(!code=="resprouting") %>%
+  filter(!code=="dried") %>%
+  arrange(code,plot, tag_number,year) %>%
+  select(-notes,-x_09,-y_09,-ranch,-plotID,-bdffp_reserve_no,-HA_ID_Number,-treefall_status)
+
+any_code$code<-droplevels(any_code$code)
+levels(as.factor(any_code$code))
+write_csv(any_code, "./data_check/any_code.csv")  
+write_csv(ULYs, "./data_check/ULY_plants.csv")
 
 # summaries ---------------------------------------------------------------
 
@@ -522,15 +569,11 @@ ha_data %>%
   summarize(total_plants=sum(N_plants))
 
 
-ha_data <- ha_data %>% arrange(habitat, plot, plotID, bdffp_reserve_no, tag_number, row, column, year)
-ha_data$code <- as.factor(ha_data$code)
-ha_data$plot <- as.factor(ha_data$plot)
-ha_data$duplicate_tag <- as.factor(ha_data$duplicate_tag)
-levels(ha_data$code)
-summary(ha_data)
-
-
 # The complete and comprehensive version of the data with all columns
+
+ha_data <- ha_data %>% 
+arrange(as.numeric(row),as.numeric(column)) %>% 
+  mutate(subplot=paste(row, column, sep=""))
 
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
@@ -540,11 +583,11 @@ names(ha_data)
 # wide form to make it easier to search for ULY matches -------------------
 
 wide_ha_data <- ha_data %>% 
-  select(plot,
-         HA_ID_Number,
-         tag_number,
+  select(plot, 
          row,
          column,
+         HA_ID_Number,
+         tag_number,
          year, 
          shts,
          ht,
@@ -570,8 +613,15 @@ wide_ha_data <- ha_data %>%
           shts_1998,
           shts_1999,
           shts_2000,
-          shts_2001) 
-names(wide_ha_data)
+          shts_2001) %>% 
+arrange(as.factor(row),as.numeric(column)) %>% 
+  mutate(subplot=paste(row, column, sep=""), .after=plot) %>% 
+  select(-row,-column) %>% 
+  relocate(contains("HA_ID"), .after = subplot) %>% 
+  relocate(contains("tag_number"), .after = HA_ID_Number) 
+
+
+names(wide_ha_data) 
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 # TODO: 5756
@@ -635,7 +685,7 @@ isolation<-tibble("bdffp_no"=c(2107, 2108,1104,3114, 2206, 1202, 3209),
 
 # select the plot id variables
 ha_plots <- ha_data %>%
-  arrange(row,as.numeric(column)) %>% 
+  arrange(as.numeric(row),as.numeric(column)) %>% 
   mutate(subplot=paste(row, column, sep="")) %>% 
   select("plotID",
          "habitat",
@@ -683,32 +733,33 @@ ha_dryad <- ha_data %>%
   #                                  is.na(ht) == FALSE &
   #                                  is.na(shts) == FALSE ~ FALSE)) %>%
   
-  mutate(recorded_dead = case_when(code == "dead (2)"~ TRUE,
-                                   code =="dead and not on list (100)"~ TRUE,
-                                   code != "dead (2)"~ FALSE,
+  mutate(recorded_dead = case_when(code == "dead"~ TRUE,
+                                   code =="dead and not on list"~ TRUE,
+                                   code != "dead"~ FALSE,
                                    is.na(code) == TRUE ~ FALSE)) %>%
-  mutate(code = replace(code, code == "dead (2)", NA)) %>%
-  mutate(code = replace(code, code == "dead and not on list (100)", "not on list (40)")) %>%
-  mutate(recorded_sdlg = case_when(recorded_sdlg == "sdlg (1)"~ TRUE,
-                                     recorded_sdlg != "sdlg (1)"~ FALSE,
+  mutate(code = replace(code, code == "dead", NA)) %>%
+  mutate(code = replace(code, code == "dead and not on list", "not on list")) %>%
+  mutate(recorded_sdlg = case_when(recorded_sdlg == "sdlg"~ TRUE,
+                                     recorded_sdlg != "sdlg"~ FALSE,
                                      is.na(recorded_sdlg)==TRUE~FALSE)) %>% 
-  mutate(code = replace(code, code == "sdlg (1)", NA)) %>%
-  mutate(treefall_impact = case_when(code == "under branchfall (90)" ~ "branch",
-                                        code == "under litter (70)" ~ "litter", 
-                                        code == "under treefall (80)" ~ "crown")) %>%
-  mutate(code = replace(code, code == "under branchfall (90)",  NA)) %>%
-           mutate(code = replace(code, code == "under litter (70)",  NA)) %>%
-                    mutate(code = replace(code, code == "under treefall (80)",  NA)) %>%
-  mutate(code = case_when(code == "resprouting (10)" ~ "resprouting",
-                           code == "dried (7)" ~ "dried",
-                           code == "ULY (3)" ~ "ULY",
-                           code == "new plant in plot (6)" ~ "ULY",
-                           code == "not on list (40)" ~ "NOL",
-                           code == "dead and not on list (100)" ~ "NOL")) %>% 
+  mutate(code = replace(code, code == "sdlg", NA)) %>%
+  mutate(treefall_impact = case_when(code == "under branchfall" ~ "branch",
+                                        code == "under litter" ~ "litter", 
+                                        code == "under treefall" ~ "crown")) %>%
+  mutate(code = replace(code, code == "under branchfall",  NA)) %>%
+           mutate(code = replace(code, code == "under litter",  NA)) %>%
+                    mutate(code = replace(code, code == "under treefall",  NA)) %>%
+  mutate(code = case_when(code == "resprouting" ~ "resprouting",
+                           code == "dried" ~ "dried",
+                           code == "ULY" ~ "ULY",
+                           code == "new plant in plot" ~ "ULY",
+                           code == "not on list" ~ "NOL",
+                           code == "dead and not on list" ~ "NOL")) %>% 
   rename('plot'='plotID',
          'plant_id'='HA_ID_Number') %>% 
   mutate(across(where(is.character), as.factor)) %>% 
-  unite("notes",code:notes, sep="", na.rm=TRUE)
+  unite("notes",code:notes, sep="", na.rm=TRUE) %>% 
+  mutate(notes = replace(notes, notes == "", NA))
 
 
 
@@ -728,25 +779,18 @@ summary(ha_dryad$infl)
 summary(ha_dryad$recorded_sdlg)
 summary(ha_dryad$recorded_dead)
 summary(as.factor(ha_dryad$notes))
-summary((ha_dryad$sdlg_status)
+summary(ha_dryad$sdlg_status)
 
 levels(as.factor(ha_dryad$notes))
+
+
 write_csv(ha_dryad, "./data_clean/ha_plants_dryad.csv")
+
+
+
 write_csv(ha_plots, "./data_clean/ha_plots_dryad.csv")
+
 write_csv(ha_dryad, "./data_clean/treefall_impact_dryad.csv")
-
-
-
-  # THIS IS PROBABLY NOT RIGHT, NEED TO CHECK THIS OUT
-  mutate(census_status = case_when((code == "dead (2)" |"dead and not on list (100)")   ~ "DEAD",
-                                   code == "missing (60)" ~ "MISSING",
-                                   ((code !="dead (2)" | code !="missing (60)") & 
-                                   (is.na(ht) == FALSE |
-                                   is.na(shts) == FALSE)) ~ "ALIVE",
-                                   (is.na(code)== TRUE & 
-                                       is.na(ht) == FALSE |
-                                          is.na(shts) == FALSE) ~ "ALIVE"))
-
 
 
 

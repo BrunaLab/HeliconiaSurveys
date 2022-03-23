@@ -250,6 +250,10 @@ correct_5750 <- function(ha_data) {
                               (ht*10), ht))
   
   
+  # Correcting NOL code
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5750 & year==2004 & tag_number==668, NA))
+  
   
   return(ha_data)
 }

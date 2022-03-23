@@ -734,5 +734,21 @@ correct_5756 <- function(ha_data) {
   rm(data_521)
   
   
+  # Correcting NOL code  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5756 & year==1999 & tag_number==439,NA)) %>% 
+    mutate(code=replace(code, plot==5756 & year==2001 & tag_number==842,NA)) %>% 
+    mutate(code=replace(code, plot==5756 & year==2008 & tag_number==1231,NA)) %>% 
+    mutate(code=replace(code, plot==5756 & year==2005 & tag_number==1285,NA)) %>% 
+    mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1285,"ULY (3)")) %>% 
+    mutate(shts=replace(shts, plot==5756 & year==2004 & tag_number==1285,3)) %>% 
+    mutate(ht=replace(ht, plot==5756 & year==2004 & tag_number==1285,68)) %>% 
+    mutate(code=replace(code, plot==5756 & year==2005 & tag_number==1608,NA)) %>% 
+    mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1608,"ULY (3)")) %>% 
+    mutate(shts=replace(shts, plot==5756 & year==2004 & tag_number==1608,3)) %>% 
+    mutate(ht=replace(ht, plot==5756 & year==2004 & tag_number==1608,50)) %>% 
+  
+  
+  
   return(ha_data)
   }

@@ -16,6 +16,13 @@ correct_2206 <- function(ha_data) {
   ha_data<-anti_join(ha_data,omit270)
   rm(omit270)
   
+  # Correcting NOL code  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==2206 & year==2005 & tag_number==201,NA)) %>% 
+    mutate(code=replace(code, plot==2206 & year==2004 & tag_number==201,"sdlg (1)")) %>% 
+    mutate(shts=replace(shts, plot==2206 & year==2004 & tag_number==201,1)) %>% 
+    mutate(ht=replace(ht, plot==2206 & year==2004 & tag_number==201,19))
+  
   return(ha_data)
 }
 

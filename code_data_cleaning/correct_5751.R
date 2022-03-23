@@ -121,6 +121,15 @@ correct_5751 <- function(ha_data) {
                  ha_data$year == 2008 &
                  ha_data$tag_number == 310] <-  NA
 
-
+# Correcting NOL code
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5751 & year==2004 & tag_number==71, "missing (60)"))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5751 & year==2005 & tag_number==398,NA)) %>% 
+    mutate(shts=replace(shts, plot==5751 & year==2004 & tag_number==398,3)) %>% 
+    mutate(ht=replace(ht, plot==5751 & year==2004 & tag_number==398,37))
+  
+  
   return(ha_data)
 }

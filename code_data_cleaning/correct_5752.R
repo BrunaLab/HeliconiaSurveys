@@ -70,5 +70,16 @@ correct_5752 <- function(ha_data) {
                  ha_data$year == 1999 & 
                  ha_data$tag_number == 378] <- "ULY (3)"
  
+  
+  
+  # Correcting NOL code
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5752 & year==2001 & tag_number==464, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5752 & year==1999 & tag_number==95,NA)) %>% 
+    mutate(shts=replace(shts, plot==5752 & year==1998 & tag_number==95,1)) %>% 
+    mutate(ht=replace(ht, plot==5752 & year==1998 & tag_number==95,17))
+  
   return(ha_data) 
 }

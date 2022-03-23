@@ -103,5 +103,30 @@ correct_2108 <- function(ha_data) {
   # Plant 293: code say 'dead (2)' in 2009, it's not. replace this with NA
   ha_data$code[ha_data$plot == "2108" & ha_data$year == 2009 & ha_data$tag_number == 293] <- NA
   return(ha_data)
+  
+  
+  
+  
+  
+  # # Incorrect Not On List codes
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==2108 & year==2008 & tag_number==332, NA))
+    
+  ha_data<-ha_data %>%
+    # filter(ht=replace(ht, plot==2107 & year==2008 & tag_number==333, 15))
+  filter(!(plot%in% 2108 & tag_number%in% 333))
+  # # This was a seedling in prior year
+  # ha_data<-ha_data %>%
+  #   mutate(code=replace(code, plot==2108 & year==2009 & tag_number==365, NA))
+  # ha_data<-ha_data %>%
+  #   mutate(shts=replace(shts, plot==2108 & year==2008 & tag_number==365, 1))
+  # ha_data<-ha_data %>%
+  #   mutate(ht=replace(ht, plot==2108 & year==2008 & tag_number==365, 11))
+  # ha_data<-ha_data %>%
+  #   mutate(code=replace(code, plot==2108 & year==2008 & tag_number==365, "sdlg (1)"))
+  # ha_data<-ha_data %>%
+  #   mutate(code=replace(code, plot==2108 & year==2008 & tag_number==365, "sdlg (1)"))
+  
+  
 }
 

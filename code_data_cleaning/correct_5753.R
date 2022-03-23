@@ -163,6 +163,74 @@ correct_5753 <- function(ha_data) {
                  ha_data$year == 2006 & 
                  ha_data$tag_number == 404] <- "under branchfall (90)"
   
+  
+  
+  
+  
+  
+  
+  # # Incorrect Not On List codes
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==28, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==32, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==39, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==76, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==97, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==194, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==222, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==227, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==245, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==260, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==267, NA))
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==325, NA))
+  
+  
+  
+  # Correcting NOL code
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==28, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==32, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==39, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==76, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==97, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==194, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==222, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==227, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==245, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==260, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==267, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2008 & tag_number==325, NA))
+
+  
+  # Correcting NOL code  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==1999 & tag_number==95,NA)) %>% 
+    mutate(shts=replace(shts, plot==5753 & year==1998 & tag_number==95,1)) %>% 
+    mutate(ht=replace(ht, plot==5753 & year==1998 & tag_number==95,17))
+  
+  
   return(ha_data)
   
 }

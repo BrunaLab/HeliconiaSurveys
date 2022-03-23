@@ -221,5 +221,17 @@ correct_5754 <- function(ha_data) {
     mutate(infl = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), NA, infl))
   
   
+  # Correcting NOL code  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="5754" & year==2006 & tag_number==98,NA)) %>% 
+    mutate(code=replace(code, plot=="5754" & year==2004 & tag_number==316,NA)) %>% 
+    mutate(code=replace(code, plot=="5754" & year==2005 & tag_number==737,NA))
+  
+  # delete the duplicate
+  delete18 <- ha_data %>% filter(plot == 5754 & tag_number == 18)
+  ha_data <- anti_join(ha_data, delete18)
+  rm(delete18)
+  
+    
   return(ha_data)
 }

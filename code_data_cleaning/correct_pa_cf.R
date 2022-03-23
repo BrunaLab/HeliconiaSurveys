@@ -21,5 +21,18 @@ correct_pa_cf <- function(ha_data) {
       (ha_data$row != "C") |
       (ha_data$column != 10)
     , ]
+  
+  
+  # Correcting NOL code  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="PortoAlegre-CF" & year==2008 & tag_number==32,NA)) %>% 
+    mutate(code=replace(code, plot=="PortoAlegre-CF" & year==2002 & tag_number==53,NA)) %>% 
+    mutate(code=replace(code, plot=="PortoAlegre-CF" & year==2002 & tag_number==89,NA)) %>% 
+    mutate(code=replace(code, plot=="PortoAlegre-CF" & year==2008 & tag_number==149,NA)) %>% 
+    mutate(code=replace(code, plot=="PortoAlegre-CF" & year==2008 & tag_number==195,NA)) %>% 
+    mutate(code=replace(code, plot=="PortoAlegre-CF" & year==2008 & tag_number==327,NA)) 
+  
+    
+  
   return(ha_data)
 }
