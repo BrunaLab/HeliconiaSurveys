@@ -163,6 +163,18 @@ correct_5754 <- function(ha_data) {
   ha_data<-ha_data %>% 
     mutate(tag_number = ifelse(plot==5754 & tag_number == 823.7,823, tag_number))
   
+  # correcting plot of 341 
+  # it is actually in c2 (note in 2006)
+  ha_data$notes[ha_data$plot == 5754 & ha_data$year == 2006 & ha_data$tag_number == 341] <- NA
+  ha_data$column[ha_data$plot == 5754 & ha_data$tag_number == 341] <- 2
+  
+  # correcting 46 note in 2006 
+  ha_data$notes[ha_data$plot == 5754 & ha_data$year == 2006 & ha_data$tag_number == 46] <- NA
+  
+  # correcting 845 location (noted in 2006)
+  ha_data$column[ha_data$plot == 5754 & ha_data$tag_number == 845] <- 5
+  ha_data$notes[ha_data$plot == 5754 & ha_data$year == 2006 & ha_data$tag_number == 845] <- NA
+  
   # Correcting 1305
   # Need to add the 2006 measurements to 1305 in B6, then delete the incorrect 1401 in B7
   ha_data$shts[ha_data$plot == 5754 & ha_data$year == 2006 & ha_data$tag_number == 1305.6] <- 2

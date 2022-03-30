@@ -23,8 +23,13 @@ correct_cabofrio_cf <- function(ha_data) {
   rm(delete2115)
   
   
+  # tag 350 has two codes in 2007: 90, 10
+  # 90: under branchfall
+  # 10: resprouting
   
-  
+  ha_data$code[ha_data$plot == "CaboFrio-CF" & 
+                 ha_data$tag_number == 350 &
+                 ha_data$year == 2007] <- "under branchfall, resprouting"
   
   # tag no. 2121
   # create the correct values

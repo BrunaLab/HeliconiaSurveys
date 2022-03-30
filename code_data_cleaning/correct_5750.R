@@ -124,7 +124,7 @@ correct_5750 <- function(ha_data) {
                  ha_data$year == 2007 &
                  ha_data$tag_number == 2002] <- 1
   ha_data$ht[ha_data$plot == 5750 &
-                 ha_data$year == 2006 &
+                 ha_data$year == 2007 &
                  ha_data$tag_number == 2002] <- 8
   
   # delete the duplicate

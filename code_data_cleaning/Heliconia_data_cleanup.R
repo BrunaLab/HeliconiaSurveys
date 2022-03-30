@@ -290,53 +290,6 @@ ha_data <- ha_data %>%
 levels(as.factor(ha_data$sdlg_status))
 
 
-# add alive (y / n) column ------------------------------------------------
-
-ha_data$survey_status<-ha_data$code 
-ha_data <- ha_data %>%
-  mutate(survey_status = replace(as.character(survey_status), ((survey_status!="dead (2)")&
-                                 (survey_status!="missing (60)")&
-                                 (survey_status!="dead and not on list (100)"))
-                                 ,NA)) %>% 
-  mutate(survey_status = replace(as.character(survey_status), survey_status=="dead and not on list (100)","dead (2)"))
-levels(as.factor(ha_data$survey_status))
-
-
-# add branchfall / treefall column ----------------------------------------
-
-ha_data$treefall_status<-ha_data$code 
-ha_data <- ha_data %>%
-  mutate(treefall_status = replace(as.character(treefall_status), ((treefall_status!="under branchfall (90)") &
-                                                                 (treefall_status!="under treefall (80)")&
-                                                                 (treefall_status!="under litter (70)")),NA)) 
-levels(as.factor(ha_data$treefall_status))
-
-
-# add column to note if recruited as adult (uly,new tag, etc) -------------
-
-
-ha_data$adult_recruit<-ha_data$code 
-ha_data <- ha_data %>%
-  mutate(adult_recruit = replace(as.character(adult_recruit), ((adult_recruit!="new plant in plot (6)")&
-                                                                 (adult_recruit!="no tag (50)")&
-                                                                 (adult_recruit!="not on list (40)")&
-                                                                 (adult_recruit!= "ULY (3)")& 
-                                                                 (adult_recruit!= "dead and not on list (100)")), NA)) %>%
-  mutate(adult_recruit = replace(as.character(adult_recruit), adult_recruit=="dead and not on list (100)","not on list (40)")) %>% 
-  mutate(adult_recruit = replace(as.character(adult_recruit), adult_recruit=="new plant in plot (6)","ULY (3)"))
-levels(as.factor(ha_data$adult_recruit))
-
-
-ha_data$sdlg_status<-as.factor(ha_data$sdlg_status)
-ha_data$survey_status<-as.factor(ha_data$survey_status)
-ha_data$adult_recruit<-as.factor(ha_data$adult_recruit)
-ha_data$treefall_status<-as.factor(ha_data$treefall_status)
-ha_data$x_09<-as.numeric(ha_data$x_09)
-ha_data$y_09<-as.numeric(ha_data$y_09)
-ha_data$year<-as.factor(ha_data$year)
-ha_data$infl<-as.integer(ha_data$infl)
-
-
 
 # correct & standardize tag numbers ---------------------------------------
 
@@ -362,6 +315,12 @@ zombies %>%
   arrange(habitat, desc(N_plants))
 
 # NB 1/226/22: the zombies are due to duplicate numbers
+
+
+
+
+
+
 
 # check for plants with duplicate tag numbers -----------------------------
 
@@ -441,7 +400,7 @@ ha_data$code<-droplevels(ha_data$code)
 levels(ha_data$code)
 
 ha_data %>% filter(code=="dead and not on list")
-ha_data %>% filter(code=="90, 10")
+ha_data %>% filter(code=="under branchfall, resprouting")
 ha_data %>% filter(code=="resprouting")
 ha_data %>% filter(code=="new plant in plot")
 ha_data %>% filter(code=="dried")
@@ -484,7 +443,20 @@ ULYs <-
   select(-ht, -shts, -infl,-x_09,-y_09)
 write_csv(ULYs, "./data_check/ULY_plants.csv")
 
+ha_data$year<-as.numeric(as.character(ha_data$year))
+ULYs_post99 <-
+  ha_data %>%
+  filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
+  filter(year>1999) %>% 
+  arrange(notes,plot, year, tag_number) %>%
+  select(-ht, -shts, -infl,-x_09,-y_09)
+write_csv(ULYs_post99, "./data_check/ULY_plants_post1999.csv")
 
+ULYs_post99_summary<-ULYs_post99 %>% 
+  group_by(plot,year,row,column) %>% 
+  summarize(n=n()) %>% 
+  arrange(desc(n))
+ULYs_post99_summary
 # Pull out 'Miscellaneous observations'; save to csv file -----------------
 
 summary(as.factor(ha_data$code))
@@ -496,19 +468,22 @@ MISC_OBS <-
       code == "2x in field" |
       code == "under branchfall" |
       code == "resprouting" |
+      code == "under branchfall, resprouting" |
       code == "under treefall" |
       code == "90, 10" |
       is.na(notes)== FALSE
   ) %>%
   arrange(notes,plot, year, tag_number) %>%
   select(-ht, -shts, -infl,-x_09,-y_09)
+levels(as.factor(MISC_OBS$code))
+levels(as.factor(MISC_OBS$notes))
 write_csv(MISC_OBS, "./data_clean/misc_observations.csv")
 
 # Save CSV of plants that were not on the survey list ---------------------
 
 Not_on_SurveyList <-
   ha_data %>% filter(code == "not on list" |
-                       code == "dead not on list") %>% 
+                       code == "dead and not on list") %>% 
   arrange(plot, tag_number)
 
 levels(as.factor(Not_on_SurveyList$code))
@@ -525,55 +500,160 @@ any_code <-
   filter(!code=="sdlg") %>%
   filter(!code=="dead") %>%
   filter(!code=="under branchfall") %>%
+  filter(!code=="under branchfall, resprouting") %>%
   filter(!code=="under litter") %>%
   filter(!code=="under treefall") %>%
   filter(!code=="resprouting") %>%
   filter(!code=="dried") %>%
   arrange(code,plot, tag_number,year) %>%
-  select(-notes,-x_09,-y_09,-ranch,-plotID,-bdffp_reserve_no,-HA_ID_Number,-treefall_status)
+  select(-notes,-x_09,-y_09,-ranch,-plotID,-bdffp_reserve_no,-HA_ID_Number)
 
 any_code$code<-droplevels(any_code$code)
 levels(as.factor(any_code$code))
 write_csv(any_code, "./data_check/any_code.csv")  
 write_csv(ULYs, "./data_check/ULY_plants.csv")
 
-# summaries ---------------------------------------------------------------
 
 
 
-ha_data %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
-  arrange(habitat, desc(N_plants))
+
+# Things that can be added for data paper ---------------------------------
 
 
-ha_data %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
-  arrange(habitat, desc(N_plants)) %>% 
-  summarize(N_plants=sum(N_plants))
+# add alive (y / n) column ------------------------------------------------
+# levels(ha_data$code)
+# ha_data$survey_status<-ha_data$code 
+# ha_data <- ha_data %>%
+#   mutate(survey_status = replace(as.character(survey_status), ((survey_status!="dead")&
+#                                                                  (survey_status!="missing")&
+#                                                                  (survey_status!="dead and not on list"))
+#                                  ,NA)) %>% 
+#   mutate(survey_status = replace(as.character(survey_status), survey_status=="dead and not on list","dead"))
+# levels(as.factor(ha_data$survey_status))
+
+
+# add branchfall / treefall column ----------------------------------------
+
+ha_data$treefall_status<-ha_data$code 
+ha_data <- ha_data %>%
+  mutate(treefall_status = replace(as.character(treefall_status), ((treefall_status!="under branchfall") &
+                                                                     (treefall_status!="under treefall") &
+                                                                     (treefall_status!="under branchfall, resprouting") &
+                                                                     (treefall_status!="under litter")),NA)) %>% 
+  mutate(treefall_status = replace(as.character(treefall_status), treefall_status=="under branchfall, resprouting", "under branchfall"))
+ha_data$treefall_status<-droplevels(as.factor(ha_data$treefall_status))
+levels(as.factor(ha_data$treefall_status))
+
+
+# add column to note if recruited as adult (uly,new tag, etc) -------------
+
+levels(ha_data$code)
+ha_data$plant_no_tag<-ha_data$code 
+ha_data <- ha_data %>%
+  mutate(plant_no_tag = replace(as.character(plant_no_tag), ((plant_no_tag!="new plant in plot")&
+                                                               (plant_no_tag!="no tag")&
+                                                               (plant_no_tag!="not on list")&
+                                                               (plant_no_tag!= "ULY")& 
+                                                               (plant_no_tag!= "dead and not on list")), NA)) %>%
+  mutate(plant_no_tag = replace(as.character(plant_no_tag), plant_no_tag=="dead and not on list","not on list")) %>% 
+  mutate(plant_no_tag = replace(as.character(plant_no_tag), plant_no_tag=="new plant in plot","plant without tag")) %>% 
+  mutate(plant_no_tag = replace(as.character(plant_no_tag), plant_no_tag=="no tag","plant without tag")) %>% 
+  mutate(plant_no_tag = replace(as.character(plant_no_tag), plant_no_tag=="ULY","plant without tag"))
+levels(as.factor(ha_data$plant_no_tag))
+
+# add column to check repro status -------------
+
+levels(ha_data$code)
+levels(as.factor(ha_data$notes))
+ha_data$repro_check<-ha_data$notes
+ha_data <- ha_data %>%
+  mutate(repro_check = replace(as.character(repro_check), repro_check=="1 new infl + 1 old infl","1 new infl, 1 old infl"))
+levels(as.factor(ha_data$repro_check))
+
+# add column to check condition (resprouting, dried) -------------
+
+levels(ha_data$code)
+ha_data$condition<-ha_data$code
+ha_data <- ha_data %>%
+  mutate(condition = replace(as.character(condition), ((condition!="dried") &
+                                                               (condition!="under branchfall, resprouting") &
+                                                               (condition!="resprouting")), NA)) %>% 
+  mutate(condition = replace(as.character(condition), condition=="under branchfall, resprouting","resprouting"))
+
+levels(as.factor(ha_data$condition))
 
 
 
-ha_data %>%
-  group_by(habitat) %>%
-  summarize(N_plants = n_distinct(HA_ID_Number))
+
+# ha_data$sdlg_status<-as.factor(ha_data$sdlg_status)
+# ha_data$survey_status<-as.factor(ha_data$survey_status)
+ha_data$plant_no_tag<-as.factor(ha_data$plant_no_tag)
+ha_data$treefall_status<-as.factor(ha_data$treefall_status)
+ha_data$condition<-as.factor(ha_data$condition)
+ha_data$treefall_status<-as.factor(ha_data$treefall_status)
+ha_data$repro_check<-as.factor(ha_data$repro_check)
+ha_data$x_09<-as.numeric(ha_data$x_09)
+ha_data$y_09<-as.numeric(ha_data$y_09)
+ha_data$year<-as.factor(ha_data$year)
+ha_data$infl<-as.integer(ha_data$infl)
 
 
+#TODO: Need to delete any with rows prior to being a seedling or after dead
 
-ha_data %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
-  arrange(habitat, desc(N_plants)) %>% 
-  ungroup() %>% 
-  summarize(total_plants=sum(N_plants))
+# Maybe Eric can figure out a way to make this lead/lag filter more efficient?
+  
+  
+levels(as.factor(ha_data$sdlg_status))
+levels(as.factor(ha_data$code))
+ha_data %>% 
+  group_by(HA_ID_Number) %>% 
+  filter(lag(sdlg_status=="sdlg", 1))
+
+dead_lags<-ha_data %>% 
+  select(plot, HA_ID_Number,tag_number, row, column,year, ht,shts,infl, code,notes) %>% 
+  group_by(HA_ID_Number) %>% 
+  filter(lag(code=="dead", 1) |
+           lag(code=="dead", 2) |
+           lag(code=="dead", 3) |
+           lag(code=="dead", 4) |
+           lag(code=="dead", 5) |
+           lag(code=="dead", 6) |
+           lag(code=="dead", 7) |
+           lag(code=="dead", 8) |
+           lag(code=="dead", 9) |
+           lag(code=="dead", 10) |
+           lag(code=="dead", 11)
+         )
 
 
+pre_sdlg_na<-ha_data %>% 
+  select(plot, HA_ID_Number,tag_number, row, column,year, ht,shts,infl, code,notes,sdlg_status) %>% 
+  group_by(HA_ID_Number) %>% 
+  filter(lead(sdlg_status=="sdlg", 1) |
+           lead(sdlg_status=="sdlg", 2) |
+           lead(sdlg_status=="sdlg", 3) |
+           lead(sdlg_status=="sdlg", 4) |
+           lead(sdlg_status=="sdlg", 5) |
+           lead(sdlg_status=="sdlg", 6) |
+           lead(sdlg_status=="sdlg", 7) |
+           lead(sdlg_status=="sdlg", 8) |
+           lead(sdlg_status=="sdlg", 9) |
+           lead(sdlg_status=="sdlg", 10) |
+           lead(sdlg_status=="sdlg", 11)
+  )
+
+summary(dead_lags)
+summary(pre_sdlg_na)
+
+delete_rows<-bind_rows(dead_lags,pre_sdlg_na)
+summary(delete_rows)
+ha_slim<-anti_join(ha_data,delete_rows)
 # The complete and comprehensive version of the data with all columns
 
 ha_data <- ha_data %>% 
 arrange(as.numeric(row),as.numeric(column)) %>% 
-  mutate(subplot=paste(row, column, sep=""))
+  mutate(subplot=paste(row, column, sep="")) %>% 
+  arrange(subplot,HA_ID_Number,year)
 
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
@@ -638,6 +718,25 @@ names(wide_ha_data)
 # filter(ha_data, tag_number == 1705 & plot == 5756)
 # filter(ha_data, tag_number == 1710 & plot == 5756)
 
+#TODO: 5753
+# 345 sdlg twice?
+# marked as ULY or seedling prior to seedling year?
+# 345
+
+#TODO:5752
+# marked as ULY or seedling prior to seedling year?
+# 401
+# 414
+# 426
+# 438
+# 456
+# 467
+# 484
+# 485
+# 503
+# 504
+# 560
+
 # check the xy 
 
 # TODO  5754 PA 10
@@ -649,7 +748,7 @@ names(wide_ha_data)
 # 770 in 2006 missing on csv, 2x on form?
 # 765 in 2006 missing on csv, 2x on form?
 
-
+#TODO: 17, 25 is missing every year?!
 
 
 # TODO: Duplicated tag numbers to check in the field 
@@ -667,8 +766,6 @@ names(wide_ha_data)
 # could have been someone forgot to call it out. They are useful because they
 # are a true mortality (had a tag, now dead), or were alive in past year
 # summary(as.factor(ha_data$code))
-
-
 
 
 
@@ -822,3 +919,42 @@ wide_ha_dryad <- ha_dryad %>%
           shts_2000,
           shts_2001) 
 names(wide_ha_dryad)
+
+
+
+
+
+
+# summaries ---------------------------------------------------------------
+
+
+
+ha_data %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
+  arrange(habitat, desc(N_plants))
+
+
+ha_data %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
+  arrange(habitat, desc(N_plants)) %>% 
+  summarize(N_plants=sum(N_plants))
+
+
+
+ha_data %>%
+  group_by(habitat) %>%
+  summarize(N_plants = n_distinct(HA_ID_Number))
+
+
+
+ha_data %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(HA_ID_Number)) %>%
+  arrange(habitat, desc(N_plants)) %>% 
+  ungroup() %>% 
+  summarize(total_plants=sum(N_plants))
+
+
+
