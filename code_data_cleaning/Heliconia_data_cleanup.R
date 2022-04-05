@@ -43,7 +43,8 @@ names(ha_data)
 
 # correct the data types assigned to each
 str(ha_data)
-
+# a few values for x_09 were entered with a comma instead of decimal
+ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
 
 # set these as a factor (ERS: why?)
 cols <-
@@ -201,10 +202,6 @@ head(ha_data, 20)
 ha_data <- ha_data %>% drop_na(plot, habitat, ranch) #ERS: this does nothing currently
 
 # correction - x/y coordinates and row/col--------------------------------
-#ERS: feels like this should have happened earlier on
-# a few were entered with a comma instead of decimal
-ha_data$x_09 <- gsub("[\\,;]", "\\.", ha_data$x_09)
-ha_data
 
 # some of the errors in plant location (Row/Column) corrected below found
 # by ES, see https://github.com/BrunaLab/HeliconiaDemography/issues/5
