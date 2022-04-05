@@ -610,16 +610,23 @@ unique(ha_data$condition)
 # then keep only those that are NA (ie, no "delete" tag)
 
 # then do the same with dead, except move forward from the year marked dead
-ha_data <- ha_data %>%
+ha_data <-
+  ha_data %>%
   group_by(HA_ID_Number) %>%
-  mutate(blank_yr_delete = case_when(lead(code=="sdlg",1) ~ "delete"),
-                                     .before='code') %>% 
+  mutate(
+    blank_yr_delete = if_else(lead(code, 1) == "sdlg", "delete", NA_character_),
+    .before = 'code'
+  ) %>% 
   fill(blank_yr_delete, .direction ="up") %>% 
   filter(is.na(blank_yr_delete)) %>% 
-  group_by(HA_ID_Number) %>%
-  mutate(blank_yr_delete = case_when(lag(code=="dead",1) ~ "delete",
-                                     lag(code=="dead and not on list",1) ~ "delete"),
-                                     .before='code') %>% 
+  mutate(
+    blank_yr_delete = if_else(
+      lag(code, 1) %in% c("dead", "dead and not on list"),
+      "delete",
+      NA_character_
+    ),
+    .before = 'code'
+  ) %>% 
   fill(blank_yr_delete, .direction ="down") %>% 
   filter(is.na(blank_yr_delete)) %>% 
   select(-blank_yr_delete)
