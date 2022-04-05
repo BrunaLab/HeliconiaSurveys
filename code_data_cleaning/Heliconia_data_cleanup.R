@@ -617,57 +617,104 @@ ha_data$infl <- as.integer(ha_data$infl)
 # TODO: Need to delete any with rows prior to being a seedling or after dead
 
 # Maybe Eric can figure out a way to make this lead/lag filter more efficient?
+# https://github.com/BrunaLab/HeliconiaDataPaper/issues/24
+# ha_data %>%
+#   group_by(HA_ID_Number) %>% 
+#   filter(pmin(cumsum(!is.na(shts))) != 0)
 
+# To delete seedlings:
+# if "seedling" make a counter 1
+# add 1 for all subsequent rows
+# delete everything less than 1
 
-levels(as.factor(ha_data$sdlg_status))
-levels(as.factor(ha_data$code))
-ha_data %>%
-  group_by(HA_ID_Number) %>%
-  filter(lag(sdlg_status == "sdlg", 1))
+# BETTER 
+# copy "seedling" code column to a new one
+# fill fill up , and fill down to mark as not alive yet
+# 
+# 
 
-dead_lags <- ha_data %>%
-  select(plot, HA_ID_Number, tag_number, row, column, year, ht, shts, infl, code, notes) %>%
-  group_by(HA_ID_Number) %>%
-  filter(lag(code == "dead", 1) |
-    lag(code == "dead", 2) |
-    lag(code == "dead", 3) |
-    lag(code == "dead", 4) |
-    lag(code == "dead", 5) |
-    lag(code == "dead", 6) |
-    lag(code == "dead", 7) |
-    lag(code == "dead", 8) |
-    lag(code == "dead", 9) |
-    lag(code == "dead", 10) |
-    lag(code == "dead", 11))
+# Attempt to deal with this more efficiently
 
+# first, for any plant with a seedling code, flag all the pre-seedling years.
+# in a new column, first indicate the seedling year, then muytate this column to 
+# fill back in time with the "delete" tag,
+# then keep only those that are NA (ie, no "delete" tag)
 
-pre_sdlg_na <- ha_data %>%
-  select(plot, HA_ID_Number, tag_number, row, column, year, ht, shts, infl, code, notes, sdlg_status) %>%
-  group_by(HA_ID_Number) %>%
-  filter(lead(sdlg_status == "sdlg", 1) |
-    lead(sdlg_status == "sdlg", 2) |
-    lead(sdlg_status == "sdlg", 3) |
-    lead(sdlg_status == "sdlg", 4) |
-    lead(sdlg_status == "sdlg", 5) |
-    lead(sdlg_status == "sdlg", 6) |
-    lead(sdlg_status == "sdlg", 7) |
-    lead(sdlg_status == "sdlg", 8) |
-    lead(sdlg_status == "sdlg", 9) |
-    lead(sdlg_status == "sdlg", 10) |
-    lead(sdlg_status == "sdlg", 11))
-
-summary(dead_lags)
-summary(pre_sdlg_na)
-
-delete_rows <- bind_rows(dead_lags, pre_sdlg_na)
-summary(delete_rows)
-ha_slim <- anti_join(ha_data, delete_rows)
-# The complete and comprehensive version of the data with all columns
-
+# then do the same with dead, except move forward from the year marked dead
 ha_data <- ha_data %>%
-  arrange(as.numeric(row), as.numeric(column)) %>%
-  mutate(subplot = paste(row, column, sep = "")) %>%
-  arrange(subplot, HA_ID_Number, year)
+  group_by(HA_ID_Number) %>%
+  mutate(blank_yr_delete = case_when(lead(code=="sdlg",1) ~ "delete"),
+                                     .before='code') %>% 
+  fill(blank_yr_delete, .direction ="up") %>% 
+  filter(is.na(blank_yr_delete)) %>% 
+  group_by(HA_ID_Number) %>%
+  mutate(blank_yr_delete = case_when(lag(code=="dead",1) ~ "delete",
+                                     lag(code=="dead and not on list",1) ~ "delete"),
+                                     .before='code') %>% 
+  fill(blank_yr_delete, .direction ="down") %>% 
+  filter(is.na(blank_yr_delete)) %>% 
+  select(-blank_yr_delete)
+
+#this is the less efficient way
+#   
+# levels(as.factor(ha_data$sdlg_status))
+# levels(as.factor(ha_data$code))
+# ha_data %>%
+#   group_by(HA_ID_Number) %>%
+#   filter(lag(sdlg_status == "sdlg", 1))
+# 
+# dead_lags <- ha_data %>%
+#   select(plot, subplot, HA_ID_Number, tag_number, row, column, year, ht, shts, infl, code, notes) %>%
+#   group_by(HA_ID_Number) %>%
+#   filter(lag(code == "dead", 1) |
+#     lag(code == "dead", 2) |
+#     lag(code == "dead", 3) |
+#     lag(code == "dead", 4) |
+#     lag(code == "dead", 5) |
+#     lag(code == "dead", 6) |
+#     lag(code == "dead", 7) |
+#     lag(code == "dead", 8) |
+#     lag(code == "dead", 9) |
+#     lag(code == "dead", 10) |
+#     lag(code == "dead", 11))
+# 
+# #didn't include the dead and not on list!
+# 
+# 
+# pre_sdlg_na <- ha_data %>%
+#   select(plot, subplot,HA_ID_Number, tag_number, row, column, year, ht, shts, infl, code, notes, sdlg_status) %>%
+#   group_by(HA_ID_Number) %>%
+#   filter(lead(sdlg_status == "sdlg", 1) |
+#     lead(sdlg_status == "sdlg", 2) |
+#     lead(sdlg_status == "sdlg", 3) |
+#     lead(sdlg_status == "sdlg", 4) |
+#     lead(sdlg_status == "sdlg", 5) |
+#     lead(sdlg_status == "sdlg", 6) |
+#     lead(sdlg_status == "sdlg", 7) |
+#     lead(sdlg_status == "sdlg", 8) |
+#     lead(sdlg_status == "sdlg", 9) |
+#     lead(sdlg_status == "sdlg", 10) |
+#     lead(sdlg_status == "sdlg", 11))
+# 
+# summary(dead_lags)
+# summary(pre_sdlg_na)
+# 
+# delete_rows <- bind_rows(dead_lags, pre_sdlg_na)
+# summary(delete_rows)
+# ha_slim <- anti_join(ha_data, delete_rows)
+# # The complete and comprehensive version of the data with all columns
+# 
+# 
+# # COMPARISON
+# nrow(ha_data_trim)==nrow(ha_slim) # different number of rows
+# nrow(ha_data_trim)-nrow(ha_slim) # different number of rows
+# # my more efficient one deleted 35 extra rows
+# diff_rows<-setdiff(ha_slim, ha_data_trim)
+# 
+# ha_data <- ha_data %>%
+#   arrange(as.numeric(row), as.numeric(column)) %>%
+#   mutate(subplot = paste(row, column, sep = "")) %>%
+#   arrange(subplot, HA_ID_Number, year)
 
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
