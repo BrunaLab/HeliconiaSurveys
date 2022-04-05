@@ -46,43 +46,23 @@ str(ha_data)
 # a few values for x_09 were entered with a comma instead of decimal
 ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
 
-# set these as a factor (ERS: why?)
-cols <-
-  c(
-    "plot",
-    "ranch",
-    "column",
-    "notes_1998",
-    "notes_1999",
-    "notes_2000",
-    "notes_2001",
-    "notes_2002",
-    "notes_2003",
-    "notes_2004",
-    "notes_2005",
-    "notes_2006",
-    "notes_2007",
-    "notes_2008",
-    "notes_2009"
-  )
-ha_data[cols] <- lapply(ha_data[cols], factor)
-str(ha_data)
-
 
 # Convert the names of ranches to 3 letter codes
-levels(ha_data$ranch)[match("PortoAlegre", levels(ha_data$ranch))] <- "PAL"
-levels(ha_data$ranch)[match("Esteio-Colosso", levels(ha_data$ranch))] <- "EST"
-levels(ha_data$ranch)[match("Dimona", levels(ha_data$ranch))] <- "DIM"
-summary(ha_data$ranch)
-
+ha_data <- ha_data %>% 
+  mutate(ranch = str_replace_all(
+    ranch,
+    c("PortoAlegre" = "PAL", "Esteio-Colosso" = "EST", "Dimona" = "DIM"))) %>% 
 # clean up the names of plots
-summary(ha_data$plot)
-levels(ha_data$plot)[match("Dimona CF", levels(ha_data$plot))] <- "Dimona-CF"
-levels(ha_data$plot)[match("PA-CF", levels(ha_data$plot))] <- "PortoAlegre-CF"
-levels(ha_data$plot)[match("Cabo Frio", levels(ha_data$plot))] <- "CaboFrio-CF"
-levels(ha_data$plot)[match("Florestal", levels(ha_data$plot))] <- "Florestal-CF"
-# summary(ha_data$plot)
+  mutate(plot = str_replace_all(
+    plot,
+    c("Dimona CF" = "Dimona-CF",
+      "PA-CF" = "PortoAlegre-CF",
+      "Cabo Frio" = "CaboFrio-CF",
+      "Florestal" = "Florestal-CF")
+  ))
 
+unique(ha_data$ranch)
+unique(ha_data$plot)
 
 plot_info <-
   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>%
@@ -91,14 +71,11 @@ ha_data <- left_join(ha_data, plot_info, by = "plot")
 
 
 rm(plot_info)
-ha_data$plot <- as.factor(ha_data$plot)
 str(ha_data)
-
 
 
 # ADD A UNIQUE ID NUMBER FOR EACH PLANT -----------------------------------
 ha_data <- rowid_to_column(ha_data, "HA_ID_Number")
-
 
 # DATA CLEANING -----------------------------------------------------------
 
