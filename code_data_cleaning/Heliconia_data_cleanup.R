@@ -98,17 +98,7 @@ ha_data <- ha_data %>% select(
   -y_08
 )
 
-# colnames(ha_data)
-# rearrange the columns  (ERS: is this necessary at this point?  You relocate again later.)
-ha_data <- ha_data %>% select(order(colnames(.)))
-ha_data <- ha_data %>% relocate(c(row, column, x_09, y_09), .after = habitat)
-ha_data <- ha_data %>% relocate(c(habitat, ranch, plot, plotID),
-  .before = bdffp_reserve_no
-)
-ha_data <- ha_data %>% relocate(tag_number, .after = HA_ID_Number)
-ha_data <- ha_data %>% relocate(starts_with(c("shts_", "ht_", "infl_", "notes_")), .after = y_09)
 
-colnames(ha_data)
 # remove NAs
 ha_data <- ha_data %>% filter(!is.na(HA_ID_Number)) #(ERS: this shouldn't do anything.  HA_ID_Number is just the row numbers at this point.)
 
@@ -119,14 +109,15 @@ ha_data <- ha_data %>%
     cols = starts_with(c("shts_", "ht_", "infl_", "notes_")),
     names_to = c(".value", "year"),
     names_sep = "_"
-  )
+  ) %>% 
+  mutate(year = as.numeric(year))
 
 
 # merge the PA10 data -----------------------------------------------------
 source("./code_data_cleaning/merge_with_PA10.R")
 ha_data <- merge_with_PA10(ha_data)
 names(ha_data)
-ha_data <- ha_data %>% rename("code" = "notes") #(ERS: this doesn't work and not sure why)
+ha_data <- ha_data %>% rename("code" = "notes") #(ERS: not sure why)
 
 
 # clean up codes/notes ----------------------------------------------------
@@ -134,6 +125,8 @@ source("./code_data_cleaning/clean_codes.R")
 ha_data <- clean_codes(ha_data) #ERS: Surprisingly doing things with the infl column.  Did not expect that from the function name.
 
 #TODO: clean_codes() currently adds codes with parenthetical numbers, then later on those are removed.  Just edit how clean_codes() works instead!
+
+#TODO: remove below code for publication?
 
 # unique(ha_data$code)
 # unique(ha_data$notes)
@@ -231,6 +224,7 @@ source("./code_data_cleaning/correct_cabofrio_cf.R")
 ha_data <- correct_cabofrio_cf(ha_data)
 
 # add Seedling (y / n) column  --------------------------------------------
+#TODO: this doesn't seem like it belongs in this section
 ha_data <- 
   ha_data %>% 
   mutate(sdlg_status = if_else(code == "sdlg (1)", "sdlg", NA_character_))
@@ -254,7 +248,7 @@ ha_data$tag_number <- as.integer(ha_data$tag_number)
 
 
 source("./code_data_cleaning/find_zombies.R")
-zombies <- find_zombies(ha_data) #ERS: some are not zombies, just dead in 2006
+zombies <- find_zombies(ha_data)
 zombies %>%
   group_by(habitat, plot) %>%
   # summarize(N_plants = n_distinct(tag_number)) %>%
@@ -262,11 +256,6 @@ zombies %>%
   arrange(habitat, desc(N_plants))
 
 # NB 1/226/22: the zombies are due to duplicate numbers
-
-
-
-
-
 
 
 # check for plants with duplicate tag numbers -----------------------------
@@ -316,7 +305,7 @@ nrow(duplicate_tags) == nrow(count_dupes)
 
 
 # delete the (numbers) from the codes -------------------------------------
-
+#TODO: move all this to clean_codes() instead
 # ERS: probably not necessary
 # ha_data <- ha_data %>%
 #   arrange(
@@ -345,9 +334,6 @@ unique(ha_data$notes)
 summary(ha_data)
 
 # simplify codes ----------------------------------------------------------
-#ERS: why factors?
-# ha_data$code <- as.factor(ha_data$code)
-# ha_data$code <- droplevels(ha_data$code)
 unique(ha_data$code)
 
 #TODO: document what is expected here
@@ -365,9 +351,6 @@ ha_data %>% filter(code == "missing")
 ha_data %>% filter(code == "under treefall")
 
 
-#
-#
-#
 # "dried (7)"
 # "2x in field (200)"
 # "90, 10 (two codes)"
@@ -394,7 +377,6 @@ ULYs <-
   select(-ht, -shts, -infl, -x_09, -y_09)
 write_csv(ULYs, "./data_check/ULY_plants.csv")
 
-ha_data$year <- as.numeric(as.character(ha_data$year))
 ULYs_post99 <-
   ha_data %>%
   filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
