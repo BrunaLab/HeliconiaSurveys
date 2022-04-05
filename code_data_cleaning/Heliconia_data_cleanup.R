@@ -10,6 +10,7 @@ library(tidyverse)
 # DATA ENTRY AND NAME CLEANUP ---------------------------------------------
 
 # load the CSV file
+
 ha_data <-
   read.csv(
     "./data_raw/Hacuminata_98-09_12oct2016.csv",
@@ -43,6 +44,11 @@ names(ha_data)
 
 # correct the data types assigned to each
 str(ha_data)
+ha_data <- 
+  ha_data %>%
+  mutate(across(starts_with("notes_"), as.character)) %>% 
+  mutate(across(starts_with("ht_"), as.double)) %>% 
+  mutate(column = as.character(column))
 # a few values for x_09 were entered with a comma instead of decimal
 ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
 
@@ -120,22 +126,7 @@ ha_data <- ha_data %>%
 source("./code_data_cleaning/merge_with_PA10.R")
 ha_data <- merge_with_PA10(ha_data)
 names(ha_data)
-ha_data <- ha_data %>% rename("code" = "notes") #(ERS: is this just to get clean_codes() to work?  Should probably just add an argument for column name to that function)
-
-
-
-# standardize column classes ---------------------------------------------
-#ERS: this doesn't matter if the output is .csv
-# ha_data$infl <- as.character(ha_data$infl)
-ha_data$plot <- as.factor(ha_data$plot)
-ha_data$plotID <- as.factor(ha_data$plotID)
-ha_data$ranch <- as.factor(ha_data$ranch)
-ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
-ha_data$row <- as.factor(ha_data$row)
-# make habitat (frag size) an ordered factor
-ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
-
-
+ha_data <- ha_data %>% rename("code" = "notes") #(ERS: this doesn't work and not sure why)
 
 
 # clean up codes/notes ----------------------------------------------------
@@ -669,6 +660,18 @@ ha_data <-
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
 
+# standardize column classes ---------------------------------------------
+#ERS: this doesn't matter if the output is .csv
+# ha_data$infl <- as.character(ha_data$infl)
+ha_data$plot <- as.factor(ha_data$plot)
+ha_data$plotID <- as.factor(ha_data$plotID)
+ha_data$ranch <- as.factor(ha_data$ranch)
+ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
+ha_data$row <- as.factor(ha_data$row)
+# make habitat (frag size) an ordered factor
+ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
+
+#TODO: write rds?
 
 names(ha_data)
 # wide form to make it easier to search for ULY matches -------------------
