@@ -515,42 +515,7 @@ ha_data <- ha_data %>%
 unique(ha_data$condition)
 
 
-
-# ERS: why factors?
-# ha_data$sdlg_status<-as.factor(ha_data$sdlg_status)
-# ha_data$survey_status<-as.factor(ha_data$survey_status)
-# ha_data$plant_no_tag <- as.factor(ha_data$plant_no_tag)
-# ha_data$treefall_status <- as.factor(ha_data$treefall_status)
-# ha_data$condition <- as.factor(ha_data$condition)
-# ha_data$treefall_status <- as.factor(ha_data$treefall_status)
-# ha_data$repro_check <- as.factor(ha_data$repro_check)
-# ha_data$x_09 <- as.numeric(ha_data$x_09)
-# ha_data$y_09 <- as.numeric(ha_data$y_09)
-# ha_data$year <- as.factor(ha_data$year)
-# ha_data$infl <- as.integer(ha_data$infl)
-
-
-# TODO: Need to delete any with rows prior to being a seedling or after dead
-
-# Maybe Eric can figure out a way to make this lead/lag filter more efficient?
-# https://github.com/BrunaLab/HeliconiaDataPaper/issues/24
-# ha_data %>%
-#   group_by(HA_ID_Number) %>% 
-#   filter(pmin(cumsum(!is.na(shts))) != 0)
-
-# To delete seedlings:
-# if "seedling" make a counter 1
-# add 1 for all subsequent rows
-# delete everything less than 1
-
-# BETTER 
-# copy "seedling" code column to a new one
-# fill fill up , and fill down to mark as not alive yet
-# 
-# 
-
-# Attempt to deal with this more efficiently
-
+# Delete any with rows prior to being a seedling or after dead:
 # first, for any plant with a seedling code, flag all the pre-seedling years.
 # in a new column, first indicate the seedling year, then muytate this column to 
 # fill back in time with the "delete" tag,
