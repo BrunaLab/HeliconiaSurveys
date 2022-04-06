@@ -3,25 +3,25 @@ clean_codes <- function(ha_data) {
   ha_data <- rename(ha_data, "code"="code")
   ha_data$code <- as.factor(ha_data$code)
   summary(ha_data$code)
-  levels(ha_data$code)[levels(ha_data$code) == "1"] <-  "sdlg (1)"
-  levels(ha_data$code)[levels(ha_data$code) == "ULY"] <-  "ULY (3)"
-  levels(ha_data$code)[levels(ha_data$code) == "3"] <- "ULY (3)"
-  levels(ha_data$code)[levels(ha_data$code) == "2"] <-  "dead (2)"
-  levels(ha_data$code)[levels(ha_data$code) == "4"] <-  "ULY (3)"
-  levels(ha_data$code)[levels(ha_data$code) == "5"] <-  "dead (2)"
-  levels(ha_data$code)[levels(ha_data$code) == "6"] <-  "new plant in plot (6)"
-  levels(ha_data$code)[levels(ha_data$code) == "7"] <-  "dried (7)"
-  levels(ha_data$code)[levels(ha_data$code) == "10"] <-  "resprouting (10)"
-  levels(ha_data$code)[levels(ha_data$code) == "40"] <-  "not on list (40)"
-  levels(ha_data$code)[levels(ha_data$code) == "50"] <-  "no tag (50)"
-  levels(ha_data$code)[levels(ha_data$code) == "60"] <-  "missing (60)"
-  levels(ha_data$code)[levels(ha_data$code) == "70"] <-  "under litter (70)"
-  levels(ha_data$code)[levels(ha_data$code) == "80"] <-  "under treefall (80)"
-  levels(ha_data$code)[levels(ha_data$code) == "90"] <-  "under branchfall (90)"
-  levels(ha_data$code)[levels(ha_data$code) == "100"] <-  "dead and not on list (100)"
-  levels(ha_data$code)[levels(ha_data$code) == "200"] <-  "2x in field (200)"
-  levels(ha_data$code)[levels(ha_data$code) == "300"] <-  "dead (2)"
-  levels(ha_data$code)[levels(ha_data$code) == "1, 200 "] <-  "sdlg (1)"
+  levels(ha_data$code)[levels(ha_data$code) == "1"] <-  "sdlg"
+  levels(ha_data$code)[levels(ha_data$code) == "ULY"] <-  "ULY"
+  levels(ha_data$code)[levels(ha_data$code) == "3"] <- "ULY"
+  levels(ha_data$code)[levels(ha_data$code) == "2"] <-  "dead"
+  levels(ha_data$code)[levels(ha_data$code) == "4"] <-  "ULY"
+  levels(ha_data$code)[levels(ha_data$code) == "5"] <-  "dead"
+  levels(ha_data$code)[levels(ha_data$code) == "6"] <-  "new plant in plot"
+  levels(ha_data$code)[levels(ha_data$code) == "7"] <-  "dried"
+  levels(ha_data$code)[levels(ha_data$code) == "10"] <-  "resprouting"
+  levels(ha_data$code)[levels(ha_data$code) == "40"] <-  "not on list"
+  levels(ha_data$code)[levels(ha_data$code) == "50"] <-  "no tag"
+  levels(ha_data$code)[levels(ha_data$code) == "60"] <-  "missing"
+  levels(ha_data$code)[levels(ha_data$code) == "70"] <-  "under litter"
+  levels(ha_data$code)[levels(ha_data$code) == "80"] <-  "under treefall"
+  levels(ha_data$code)[levels(ha_data$code) == "90"] <-  "under branchfall"
+  levels(ha_data$code)[levels(ha_data$code) == "100"] <-  "dead and not on list"
+  levels(ha_data$code)[levels(ha_data$code) == "200"] <-  "2x in field"
+  levels(ha_data$code)[levels(ha_data$code) == "300"] <-  "dead"
+  levels(ha_data$code)[levels(ha_data$code) == "1, 200 "] <-  "sdlg"
   levels(ha_data$code)[levels(ha_data$code) == ""] <- NA
   summary(as.factor(ha_data$code))
   levels(as.factor(ha_data$code))
@@ -53,33 +53,33 @@ clean_codes <- function(ha_data) {
     mutate(notes = if_else(code == "lots of small branchfalls in plot","lots of small branchfalls in plot", notes)) %>% 
     mutate(notes = if_else(code == "plot is 50% treefall","plot is 50% treefall", notes)) %>% 
     mutate(notes = if_else(code == "trefall","trefall", notes)) %>% 
-    mutate(code = if_else(code=="dead","dead (2)", code)) %>% 
+    mutate(code = if_else(code=="dead","dead", code)) %>% 
     mutate(code= na_if(code, "dead")) %>% 
-    mutate(code = if_else(code == "sdlg","sdlg (1)", code)) %>% 
+    mutate(code = if_else(code == "sdlg","sdlg", code)) %>% 
     mutate(code = na_if(code, "sdlg")) %>% 
-    mutate(code = if_else(code == "under trunk","under treefall (80)", code)) %>% 
-    mutate(code = if_else(code == "under treefall","under treefall (80)", code)) %>% 
-    mutate(code = if_else(code == "under fallen trunk","under treefall (80)", code)) %>% 
+    mutate(code = if_else(code == "under trunk","under treefall", code)) %>% 
+    mutate(code = if_else(code == "under treefall","under treefall", code)) %>% 
+    mutate(code = if_else(code == "under fallen trunk","under treefall", code)) %>% 
     mutate(code= na_if(code, "under trunk")) %>%
     mutate(code= na_if(code, "under treefall")) %>%
     mutate(code= na_if(code, "under fallen trunk")) %>%
     mutate(code = if_else(code == "under branch" | code == "under branch), must have lost tag",
-                          "under branchfall (90)", code)) %>% 
+                          "under branchfall", code)) %>% 
     mutate(code= na_if(code, "under branch")) %>%
     mutate(code= na_if(code, "under branch, must have lost tag")) %>%
-    mutate(code = if_else(code == "not on list","not on list (40)", code)) %>% 
+    mutate(code = if_else(code == "not on list","not on list", code)) %>% 
     mutate(code= na_if(code, "not on list")) %>% 
-    mutate(code = if_else(code == "missing","missing (60)", code)) %>% 
+    mutate(code = if_else(code == "missing","missing", code)) %>% 
     mutate(code= na_if(code, "missing")) %>% 
-    mutate(code = if_else(code== "ULY?","ULY (3)", code)) %>% 
+    mutate(code = if_else(code== "ULY?","ULY", code)) %>% 
     mutate(code= na_if(code, "ULY?")) %>% 
-    mutate(code = if_else(code== "not on list. must be313","not on list (40)", code)) %>% 
-    mutate(code = if_else(code== "not on list. must be96","not on list (40)", code)) %>% 
+    mutate(code = if_else(code== "not on list. must be313","not on list", code)) %>% 
+    mutate(code = if_else(code== "not on list. must be96","not on list", code)) %>% 
     mutate(code= na_if(code, "not on list. must be313")) %>% 
     mutate(code= na_if(code, "not on list. must be96")) %>% 
     mutate(code= na_if(code, "must be one of missing")) %>% 
-    mutate(code = if_else(code== "Dead, Not on List","dead and not on list (100)", code)) %>% 
-    mutate(code= if_else(code == "dead, not on list","dead and not on list (100)", code)) %>% 
+    mutate(code = if_else(code== "Dead, Not on List","dead and not on list", code)) %>% 
+    mutate(code= if_else(code == "dead, not on list","dead and not on list", code)) %>% 
     mutate(code= na_if(code, "Dead, Not on List")) %>% 
     mutate(code= na_if(code, "dead, not on list")) %>% 
     mutate(code= na_if(code, "could be one of missing")) %>% 
@@ -97,7 +97,7 @@ clean_codes <- function(ha_data) {
     mutate(code= na_if(code, "actually in A6")) %>% 
     mutate(code= na_if(code, "should be c5")) %>%
     mutate(code= na_if(code, "this number belongs to a pvc in a6")) %>%
-    mutate(code = if_else(code == "pvc stake not on list","not on list (40)", code)) %>% 
+    mutate(code = if_else(code == "pvc stake not on list","not on list", code)) %>% 
     mutate(code= na_if(code, "pvc stake not on list")) %>%
     # mutate(code= na_if(code, "pvc stake not on list")) %>%
     mutate(code= na_if(code, "its in C2")) %>%
