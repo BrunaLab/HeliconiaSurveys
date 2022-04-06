@@ -1,1155 +1,1152 @@
-habitat,ranch,plot,plotID,bdffp_reserve_no,HA_ID_Number,tag_number,row,column,year,code,notes,sdlg_status,survey_status,treefall_status,adult_recruit,duplicate_tag
-10-ha,PortoAlegre,5754,FF-7,3209,7941,290,E,4,2006,NA,1 new infl + 1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8009,357,E,4,2006,NA,1 new infl + 1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7766,112,A,9,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7797,144,C,9,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7805,152,B,9,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7851,200,A,9,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7940,289,E,4,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8017,365,E,4,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8098,445,C,3,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8189,632,C,3,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8336,778,C,6,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8339,781,C,3,2006,NA,1 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7925,274,B,6,2006,NA,2 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8027,375,E,4,2006,NA,2 old infl,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8378,816,C,3,2006,NA,2 old infl,NA,NA,NA,NA,duplicate tag number
-10-ha,PortoAlegre,5754,FF-7,3209,8426,845,B,4,2006,NA,in b5,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7993,341,C,3,2006,NA,its in C2,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7707,46,E,6,2006,NA,pvc stake not on list,NA,NA,NA,NA,NA
-1-ha,DIM,2107,FF-1,2107,2,2,C,7,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,10,10,C,5,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,51,52,D,7,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,102,106,B,10,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,125,131,A,5,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,16,16,C,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,34,35,C,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,40,41,E,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,54,55,C,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,71,75,B,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,79,83,B,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,90,94,B,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,93,97,B,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,103,107,E,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,106,110,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,110,114,B,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,135,142,B,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,191,199,B,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,238,246,C,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,28,29,A,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,35,36,C,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,131,138,E,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,155,162,C,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,171,178,C,5,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,DIM,2107,FF-1,2107,309,326,C,5,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,DIM,2107,FF-1,2107,33,34,A,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,79,83,B,4,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,89,93,A,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,103,107,E,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,106,110,E,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,243,251,B,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,304,314,B,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,8,8,B,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,13,13,A,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,112,117,C,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,121,126,A,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,137,144,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,188,196,B,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,208,216,A,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,268,276,C,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,283,293,C,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,115,120,A,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,121,126,A,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2107,FF-1,2107,155,162,C,10,2008,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,356,19,C,10,2001,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,DIM,2108,FF-2,2108,356,19,C,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,DIM,2108,FF-2,2108,358,21,E,8,2002,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,DIM,2108,FF-2,2108,365,28,E,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,419,84,D,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,446,125,A,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,452,136,A,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,453,137,B,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,494,197,D,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,517,228,A,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,464,150,C,2,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,344,8,E,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,356,19,C,10,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,DIM,2108,FF-2,2108,466,152,B,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,516,227,C,8,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,DIM,2108,FF-2,2108,538,249,C,8,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,DIM,2108,FF-2,2108,363,26,A,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,372,35,A,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,381,46,A,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,393,58,E,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,417,82,E,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,426,92,C,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,508,216,A,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,520,231,D,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,575,290,C,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,582,297,B,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,425,91,A,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,508,216,A,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,362,25,D,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,459,143,B,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,417,82,E,9,2008,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,DIM,2108,FF-2,2108,473,167,B,8,2008,resprouting (10),NA,NA,NA,NA,NA,NA
-1-ha,DIM,2108,FF-2,2108,641,391,C,8,2008,resprouting (10),NA,NA,NA,NA,NA,NA
-1-ha,DIM,2108,FF-2,2108,376,39,C,9,2009,resprouting (10),NA,NA,NA,NA,NA,NA
-1-ha,DIM,2108,FF-2,2108,524,235,A,9,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,702,58,A,4,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,664,15,A,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,668,21,B,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,678,32,D,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,720,78,A,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,726,84,C,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,742,102,D,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,743,103,E,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,787,151,E,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,836,204,D,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,841,210,E,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,728,86,D,2,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,757,120,A,9,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,769,132,A,9,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,770,133,A,4,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,659,10,B,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,662,13,A,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,664,15,A,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,666,17,A,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,728,86,D,2,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,757,120,A,9,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,769,132,A,9,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,771,134,D,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,774,137,A,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,781,144,A,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,787,151,E,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,798,163,E,9,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,910,280,A,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,787,151,E,10,2005,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,841,210,E,10,2005,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,848,217,B,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,863,233,B,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,885,255,B,4,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,711,67,B,1,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,770,133,A,4,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,DIM,2206,FF-5,2206,782,145,B,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,899,270,B,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,925,295,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,DIM,2206,FF-5,2206,935,331,C,10,2006,2x in field (200),NA,NA,NA,NA,NA,NA
-10-ha,DIM,2206,FF-5,2206,938,334,E,9,2006,2x in field (200),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1073,209,D,6,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1174,314,F,10,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1016,151,C,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1036,172,C,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1041,177,D,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1054,190,C,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1055,191,C,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1059,195,C,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1141,280,H,7,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1142,281,H,7,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1229,371,J,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1242,384,J,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1261,403,J,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1267,409,J,8,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1281,423,J,8,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1340,484,C,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1341,485,D,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1386,531,J,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1403,548,F,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1413,558,J,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1415,560,J,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1446,591,J,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1450,595,B,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1492,637,B,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1496,641,J,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1510,655,J,8,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1634,780,J,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1637,783,J,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1661,807,J,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1726,872,C,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1728,874,A,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1731,878,A,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1742,889,C,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1780,929,C,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1796,945,A,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1808,957,A,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1438,583,E,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1447,592,B,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1808,957,A,10,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,950,35,G,9,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1178,319,C,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1259,401,J,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1271,413,J,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1371,516,J,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1401,546,F,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1733,880,J,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,950,35,G,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,954,57,J,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,972,99,A,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,985,117,A,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1014,149,A,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1041,177,D,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1079,215,D,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1165,305,C,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1215,357,H,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1242,384,J,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1250,392,J,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1278,420,J,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1307,451,J,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1361,506,I,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1438,583,E,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1591,736,I,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1621,767,A,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1660,806,B,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1667,813,B,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1684,830,B,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1774,923,C,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1820,969,H,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1868,1317,J,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1872,1321,H,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1877,1326,J,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,944,1,I,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,950,35,G,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,961,77,I,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1070,206,D,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1148,288,H,6,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5750,CF-2,1501,1151,291,I,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1155,295,I,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1180,321,C,6,2006,under litter (70),NA,NA,NA,under litter (70),NA,NA
-CF,EST,5750,CF-2,1501,1200,341,E,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1214,356,I,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1215,357,H,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1234,376,H,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1251,393,I,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1266,408,J,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1293,435,J,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1307,451,J,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1341,485,D,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1342,486,D,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1410,555,C,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1430,575,C,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1481,626,B,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1660,806,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1675,821,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1763,912,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1766,915,I,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1780,929,C,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1789,938,I,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1820,969,H,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1009,144,A,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1066,202,D,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1098,234,F,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1151,291,I,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1165,305,C,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1220,362,H,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1227,369,H,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1234,376,H,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1235,377,H,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1259,401,J,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1278,420,J,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1286,428,J,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1288,430,J,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1308,452,A,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1372,517,J,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1397,542,F,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1481,626,B,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1557,702,J,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1566,711,J,8,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1590,735,E,6,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1665,811,C,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1675,821,B,9,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1726,872,C,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1735,882,G,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1751,899,D,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1785,934,C,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1787,936,C,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1813,962,F,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1816,965,H,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1820,969,H,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,957,65,F,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,995,130,A,9,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1106,241,E,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1136,275,F,7,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1137,276,G,9,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1165,305,C,10,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1193,334,E,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1200,341,E,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1301,443,J,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1393,538,G,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1397,542,F,9,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1417,562,J,9,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1469,614,F,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1562,707,B,8,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1671,817,D,10,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1722,868,H,10,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1756,904,F,10,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1815,964,D,7,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1819,968,D,8,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1859,1308,C,7,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1891,1340,A,7,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1935,1384,D,6,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,1954,1402,F,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,1970,1418,G,10,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,2076,2086,J,7,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5750,CF-2,1501,2094,2305,J,6,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5750,CF-2,1501,2097,2308,J,6,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2181,12,C,9,1998,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,EST,5751,FF-3,1104,2248,81,D,4,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2223,56,E,4,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2297,132,D,6,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2300,135,D,6,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2319,154,C,1,2001,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,EST,5751,FF-3,1104,2175,6,B,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2207,39,C,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2232,65,A,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2244,77,D,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2254,87,A,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2285,120,C,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2291,126,C,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2314,149,E,3,2002,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,EST,5751,FF-3,1104,2326,161,A,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2327,162,A,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2381,217,E,5,2002,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,EST,5751,FF-3,1104,2397,233,D,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2172,1,C,3,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2174,5,A,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2194,26,A,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2201,33,A,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2232,65,A,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2254,87,A,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2327,162,A,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2340,175,D,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2213,45,C,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2424,261,D,6,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,EST,5751,FF-3,1104,2207,39,C,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2281,116,E,5,2005,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,EST,5751,FF-3,1104,2424,261,D,6,2005,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,EST,5751,FF-3,1104,2244,77,D,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2278,113,D,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2281,116,E,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2364,200,D,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2424,261,D,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2504,342,C,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2508,349,E,9,2006,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,EST,5751,FF-3,1104,2218,51,D,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2239,72,D,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2258,91,D,6,2007,2x in field (200),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2285,120,C,3,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2332,167,D,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2351,187,D,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2385,221,B,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2459,296,E,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,EST,5751,FF-3,1104,2317,152,E,4,2008,resprouting (10),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2173,2,C,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2175,6,B,8,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2176,7,B,8,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2189,20,D,6,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2212,44,B,2,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2225,58,C,4,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2245,78,C,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2252,85,C,8,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2264,97,E,4,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2285,120,C,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2305,140,D,4,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2320,155,D,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2322,157,C,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2333,168,C,9,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2334,169,C,9,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2387,223,D,2,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2390,226,A,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2400,236,C,2,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2470,308,D,7,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2477,315,A,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2555,403,E,2,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,EST,5751,FF-3,1104,2569,432,E,2,2009,dried (7),NA,NA,NA,NA,NA,NA
-10-ha,EST,5752,FF-6,1202,2620,46,C,6,1998,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2621,47,C,6,1998,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2623,49,A,8,1998,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2729,164,B,5,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2780,217,E,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2799,237,D,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2807,245,D,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2608,32,B,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2610,34,B,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2620,46,C,6,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2621,47,C,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2750,184,A,5,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2757,192,A,2,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2804,242,C,3,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2816,255,A,1,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2851,290,B,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2865,304,D,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2588,12,A,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2590,14,E,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2609,33,B,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2630,58,B,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2635,64,C,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2638,67,B,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2655,84,D,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2667,96,C,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2671,101,D,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2694,125,D,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2700,134,A,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2750,184,A,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2757,192,A,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2795,233,C,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2835,274,C,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2841,280,D,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2845,284,E,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2856,295,C,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2858,297,C,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2872,313,E,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2873,314,D,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2874,315,B,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2895,336,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2932,373,C,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2939,380,C,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2970,411,C,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2975,416,C,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3002,443,C,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3082,523,E,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3084,525,B,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2583,7,E,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2600,24,C,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2682,112,D,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2692,123,E,10,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2703,138,B,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2704,139,C,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2716,151,A,3,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2750,184,A,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2756,191,D,1,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2785,222,C,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2791,228,C,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2795,233,C,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2816,255,A,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2863,302,B,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2936,377,A,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2961,402,D,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2982,423,A,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,2988,429,B,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,3024,465,A,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3067,508,B,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,3112,552,A,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,3152,591,A,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,3162,601,A,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,3163,602,B,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,EST,5752,FF-6,1202,3200,641,B,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2584,8,E,2,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2607,31,B,5,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2740,175,E,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2758,193,A,4,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2785,222,C,5,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3171,610,C,4,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3221,662,E,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3227,668,E,2,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2582,6,E,1,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2583,7,E,1,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2584,8,E,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2622,48,A,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2630,58,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2657,86,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2665,94,B,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2682,112,D,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2685,115,C,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2689,120,E,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2690,121,D,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2758,193,A,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2924,365,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,2983,424,B,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3043,484,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3208,649,C,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3227,668,E,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3239,680,E,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,EST,5752,FF-6,1202,3327,768,C,9,2006,2x in field (200),NA,NA,NA,NA,NA,NA
-10-ha,EST,5752,FF-6,1202,3348,789,C,10,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,PAL,5753,FF-4,3114,3447,51,E,9,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,PAL,5753,FF-4,3114,3462,67,E,9,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,PAL,5753,FF-4,3114,3479,84,B,4,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3498,105,B,9,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3540,174,D,10,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3479,84,B,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,PAL,5753,FF-4,3114,3415,17,A,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3416,18,A,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3481,86,B,10,2002,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,PAL,5753,FF-4,3114,3495,102,D,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3525,144,A,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3527,150,A,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3569,213,C,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3592,236,D,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3594,238,B,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3599,243,E,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3653,299,D,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3656,304,A,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3680,326,E,9,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,PAL,5753,FF-4,3114,3683,329,E,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3469,412,E,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3460,65,C,10,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3485,91,B,4,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3562,206,E,7,2003,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,PAL,5753,FF-4,3114,3597,241,E,8,2003,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,PAL,5753,FF-4,3114,3643,288,E,7,2003,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,PAL,5753,FF-4,3114,3684,330,E,9,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3425,28,C,2,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3501,108,B,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3683,329,E,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3686,332,E,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3415,17,A,7,2005,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,PAL,5753,FF-4,3114,3425,28,C,2,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3468,73,E,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3477,82,E,3,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3515,123,D,4,2005,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,PAL,5753,FF-4,3114,3517,125,A,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3531,158,D,4,2005,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-1-ha,PAL,5753,FF-4,3114,3553,196,E,3,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3597,241,E,8,2005,under litter (70),NA,NA,NA,under litter (70),NA,NA
-1-ha,PAL,5753,FF-4,3114,3410,12,E,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3423,26,D,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3480,85,E,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3575,219,B,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3576,220,D,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3584,228,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3611,255,A,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3617,261,D,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3692,339,E,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3753,404,D,1,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3407,7,E,5,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3410,12,E,3,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3518,126,A,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3564,208,B,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3656,304,A,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3658,306,C,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3743,393,E,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3484,90,A,10,2008,resprouting (10),NA,NA,NA,NA,NA,NA
-1-ha,PAL,5753,FF-4,3114,3643,288,E,7,2008,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3422,25,D,9,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,PAL,5753,FF-4,3114,3479,84,B,4,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,PAL,5753,FF-4,3114,3499,106,C,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,PAL,5753,FF-4,3114,3529,156,E,4,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-1-ha,PAL,5753,FF-4,3114,3640,285,E,10,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,PAL,5753,FF-4,3114,3672,319,E,10,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,PAL,5753,FF-4,3114,3717,364,E,2,2009,dried (7),NA,NA,NA,NA,NA,NA
-1-ha,PAL,5753,FF-4,3114,3731,381,E,3,2009,dried (7),NA,NA,NA,NA,NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7684,17,C,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7915,264,D,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7943,292,D,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7975,323,C,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7986,334,B,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7988,336,B,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7990,338,D,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7994,342,B,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7999,347,C,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8583,1316,B,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8651,1390,C,4,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7684,17,C,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7742,88,A,9,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7784,131,B,7,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7893,242,B,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7896,245,A,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7906,255,A,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7913,262,A,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7925,274,B,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7940,289,E,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7941,290,E,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7970,318,A,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7971,319,A,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7972,320,A,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7975,323,C,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7988,336,B,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7994,342,B,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8012,360,D,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8021,369,E,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8027,375,E,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8037,384,B,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8070,417,D,7,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8087,434,B,8,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8092,439,A,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8093,440,C,7,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8138,485,A,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8141,488,A,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8142,489,A,7,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8157,567,E,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8171,613,C,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8571,1305,B,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8576,1309,B,7,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8643,1383,A,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8651,1390,C,4,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7684,17,C,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7743,89,A,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7748,94,B,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7757,103,A,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7761,107,B,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7784,131,B,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7816,163,E,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7835,184,A,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7839,188,E,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7858,207,B,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7874,223,D,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7898,247,E,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7899,248,E,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7911,260,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7920,269,B,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7935,284,B,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7940,289,E,4,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7947,296,D,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7949,298,D,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7955,304,B,6,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7972,320,A,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7975,323,C,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7977,325,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7981,329,D,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7982,330,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7986,334,B,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7994,342,B,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8000,348,C,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8015,363,E,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8018,366,B,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8034,382,C,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8051,398,D,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8096,443,A,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8130,477,A,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8142,489,A,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8167,609,B,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8170,612,E,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8171,613,C,4,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8179,622,E,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8228,671,D,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8239,682,D,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8244,688,D,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8250,694,D,7,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8255,699,D,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8273,717,C,6,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8336,778,C,6,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8470,904,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8484,917,E,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8487,920,E,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8490,923,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8514,947,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8571,1305,B,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8576,1309,B,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8580,1313,E,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8585,1318,D,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8587,1320,C,7,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8620,1361,C,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7748,94,B,6,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7858,207,B,6,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7834,183,B,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7986,334,B,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8182,625,A,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8218,661,B,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8273,717,C,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8285,729,E,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8289,733,E,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8333,775,C,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8492,925,E,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8578,1311,E,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8586,1319,E,4,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8635,1375,B,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7786,133,C,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7794,141,C,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7810,157,C,9,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7848,197,B,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7866,215,A,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7935,284,B,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8017,365,E,4,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8056,403,B,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8268,712,C,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8357,800,C,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8368,810,A,5,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,duplicate tag number
-10-ha,PortoAlegre,5754,FF-7,3209,7732,76,E,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7788,135,B,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7853,202,C,9,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7864,213,A,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7891,240,A,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,7986,334,B,4,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8002,350,E,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8051,398,D,4,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8220,663,B,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8439,858,A,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,duplicate tag number
-10-ha,PortoAlegre,5754,FF-7,3209,8441,859,A,8,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,duplicate tag number
-10-ha,PortoAlegre,5754,FF-7,3209,8495,928,A,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-10-ha,PortoAlegre,5754,FF-7,3209,8527,960,B,7,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3828,22,A,5,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3868,61,A,5,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3877,70,B,5,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3890,83,B,6,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3898,91,B,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3901,94,B,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3902,95,B,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3905,98,B,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3908,101,B,6,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4090,287,A,5,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4225,426,B,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4233,434,B,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4248,449,B,8,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4271,472,B,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3902,95,B,7,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3905,98,B,7,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3998,194,A,4,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4044,240,D,2,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4090,287,A,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4137,334,A,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4202,403,B,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4206,407,A,6,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4225,426,B,7,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4248,449,B,8,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4271,472,B,7,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4285,486,D,8,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4306,507,D,8,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4316,517,E,8,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4326,527,E,8,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4397,598,D,5,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4464,665,A,2,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4679,880,E,8,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4128,325,A,5,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3820,15,A,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3832,26,A,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3844,37,D,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3877,70,B,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3901,94,B,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3916,109,C,8,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3921,114,A,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3922,115,C,8,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3983,179,B,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3997,193,A,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4007,203,C,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4053,249,D,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4078,274,E,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4080,276,E,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4088,284,C,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4092,289,A,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4093,290,A,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4129,326,A,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4137,334,A,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4149,347,E,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4162,360,C,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4175,374,E,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4181,380,B,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4192,391,C,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4195,394,B,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4218,419,B,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4229,430,D,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4249,450,E,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4323,524,E,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4341,542,A,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4364,565,D,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4386,587,D,8,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4396,597,E,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4397,598,D,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4398,599,C,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4515,716,C,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4524,725,E,4,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4526,727,D,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4542,743,D,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4545,746,D,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4625,826,A,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4647,848,C,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4651,852,C,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4679,880,E,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4739,939,D,10,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3837,30,A,4,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3877,70,B,5,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3985,181,A,3,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4038,234,D,2,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4084,280,A,5,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4212,413,C,10,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4386,587,D,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3893,86,C,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3894,87,B,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3901,94,B,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3925,118,E,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3949,143,A,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4017,213,A,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4019,215,A,2,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4030,226,D,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4082,278,A,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4157,355,E,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4185,384,A,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4202,403,B,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4215,416,B,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4226,427,C,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4238,439,C,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4253,454,C,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4269,470,B,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4331,532,A,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4351,552,D,7,2004,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,4389,590,A,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4483,684,E,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4505,706,C,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4656,857,B,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4700,901,A,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4708,909,A,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4714,915,A,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4799,999,A,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4832,1234,C,2,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4833,1235,B,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3897,90,B,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3901,94,B,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3916,109,C,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3928,121,A,2,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3944,138,A,3,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4061,257,E,2,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4100,297,A,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4108,305,A,5,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4169,368,E,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4181,380,B,5,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4185,384,A,5,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4192,391,C,5,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4253,454,C,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4389,590,A,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4426,628,E,2,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4542,743,D,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4641,842,B,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4656,857,B,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4688,889,D,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4777,977,E,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4913,1613,E,2,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3820,15,A,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3835,29,E,2,2006,2x in field (200),NA,NA,NA,NA,NA,NA
-CF,EST,5756,CF-3,1501,3857,50,A,2,2006,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3912,105,C,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3914,107,D,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3930,123,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3934,127,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3936,129,A,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3952,146,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3965,160,B,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3968,163,D,1,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3974,170,B,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3982,178,A,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3990,186,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3997,193,A,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4088,284,C,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4113,310,A,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4146,344,B,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4181,380,B,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4192,391,C,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4215,416,B,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4253,454,C,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4272,473,A,10,2006,under litter (70),NA,NA,NA,under litter (70),NA,NA
-CF,EST,5756,CF-3,1501,4296,497,C,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4299,500,D,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4331,532,A,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4444,646,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4641,842,B,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4738,938,C,8,2006,under litter (70),NA,NA,NA,under litter (70),NA,NA
-CF,EST,5756,CF-3,1501,4882,1283,B,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4926,1626,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3818,13,A,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3839,32,C,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3857,50,A,2,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,5756,CF-3,1501,3907,100,D,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3912,105,C,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3928,121,A,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4115,312,E,3,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4147,345,B,5,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,5756,CF-3,1501,4215,416,B,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4221,422,B,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4253,454,C,10,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4389,590,A,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4411,613,C,1,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4415,617,A,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4641,842,B,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4656,857,B,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4748,948,D,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4882,1283,B,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4957,1656,D,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4803,1203,C,7,2008,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4824,1224,A,3,2008,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,5756,CF-3,1501,4936,1636,D,9,2008,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,5756,CF-3,1501,3830,24,D,3,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3911,104,B,5,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3917,110,C,8,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3923,116,C,9,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,3973,169,A,4,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4036,232,E,1,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4045,241,E,1,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4114,311,A,4,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4119,316,A,4,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4177,376,D,5,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4192,391,C,5,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4228,429,B,7,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4365,566,B,4,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4435,637,A,2,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4459,660,D,2,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4524,725,E,4,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5756,CF-3,1501,4534,735,B,3,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4664,865,A,7,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,5756,CF-3,1501,4673,874,D,2,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4690,891,E,9,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4863,1266,B,7,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,4980,1679,C,2,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,5756,CF-3,1501,5035,1737,A,1,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5256,111,A,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5287,142,B,9,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5330,186,D,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5377,234,B,8,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5406,263,B,10,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5466,323,B,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5251,106,E,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5277,132,B,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5286,141,A,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5350,206,A,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5362,218,B,7,2004,under litter (70),NA,NA,NA,under litter (70),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5377,234,B,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5403,260,B,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5405,262,A,9,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5436,293,B,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5463,320,A,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5470,327,C,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5482,339,C,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5484,341,A,10,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5531,389,D,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5251,106,E,4,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5256,111,A,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5378,235,B,1,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5484,341,A,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5152,4,C,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5169,22,C,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5216,70,D,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5265,120,B,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5306,161,C,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5343,198,D,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5381,238,D,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5403,260,B,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5436,293,B,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5470,327,C,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5480,337,B,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5505,362,D,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5520,378,D,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5265,120,B,8,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5300,155,B,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5338,194,A,8,2007,2x in field (200),NA,NA,NA,NA,NA,duplicate tag number
-CF,PAL,CaboFrio-CF,CF-6,3402,5339,194,C,10,2007,2x in field (200),NA,NA,NA,NA,NA,duplicate tag number
-CF,PAL,CaboFrio-CF,CF-6,3402,5492,349,B,9,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5493,350,C,2,2007,"90, 10 (two codes)",NA,NA,NA,NA,NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5505,362,D,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5520,378,D,6,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5273,128,B,10,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5319,175,B,8,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5406,263,B,10,2009,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,PAL,CaboFrio-CF,CF-6,3402,5522,380,A,10,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5665,91,E,8,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5599,24,D,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5614,40,B,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5676,103,A,4,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5619,45,C,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5626,52,B,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5697,124,C,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5580,4,C,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5626,52,B,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5683,110,B,8,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5595,20,C,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5638,64,E,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5695,122,B,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5678,105,B,1,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,DIM,Dimona-CF,CF-4,none,5700,127,D,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5852,68,A,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5937,155,A,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5788,3,A,1,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5814,29,A,1,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5823,38,A,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5824,39,A,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5845,61,A,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5880,96,A,1,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5891,107,A,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5903,119,A,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5905,122,A,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5970,189,A,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6096,316,E,1,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6155,375,D,2,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6178,398,D,2,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6187,407,D,2,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6222,445,E,1,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6307,532,E,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6385,610,E,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6413,639,E,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6450,676,E,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6459,685,D,1,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6460,686,E,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6462,688,E,1,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6467,693,E,1,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6470,696,E,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6490,716,E,3,2000,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6524,750,E,4,2000,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5825,40,A,8,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6096,316,E,1,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6133,353,D,2,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6143,363,D,6,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6155,375,D,2,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6189,409,D,1,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6195,415,D,6,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6197,417,D,1,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6231,454,D,5,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6266,489,D,3,2001,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6302,526,E,1,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6320,545,D,3,2001,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6385,610,E,3,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6508,734,A,8,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6722,951,A,9,2001,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5898,114,A,1,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5914,132,A,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5958,177,B,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5996,215,C,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6038,258,B,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6073,293,D,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6136,356,C,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6156,376,D,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6189,409,D,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6231,454,D,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6302,526,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6348,573,E,1,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6354,578,E,1,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6371,595,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6390,615,C,5,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6436,662,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6467,693,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6518,744,A,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6577,803,A,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6724,953,A,7,2002,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6772,1001,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6867,1099,B,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6942,1175,E,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7023,1257,D,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5841,57,A,8,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5894,110,C,4,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5958,177,B,7,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5977,196,A,6,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6038,258,B,7,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6162,382,D,6,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6172,392,D,5,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6317,542,E,3,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6709,938,A,4,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6884,1116,A,1,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6904,1136,A,2,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6934,1167,A,2,2003,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5847,63,B,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5894,110,C,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5898,114,A,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5937,155,A,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5958,177,B,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6024,243,B,6,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6038,258,B,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6052,272,B,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6085,305,E,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6184,404,D,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6250,473,D,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6302,526,E,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6325,550,D,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6452,678,A,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6519,745,A,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6564,790,A,2,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6686,914,C,5,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6709,938,A,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6711,940,A,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6760,989,A,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6929,1162,A,4,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7082,1415,E,1,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7206,1541,A,7,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5910,127,B,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5958,177,B,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6038,258,B,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6062,282,B,6,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6325,550,D,4,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6940,1173,A,2,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7217,1552,C,10,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5841,57,A,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5910,127,B,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5927,145,A,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5935,153,A,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6015,234,B,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6062,282,B,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6066,286,B,7,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6091,311,E,1,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6175,395,D,5,2006,under litter (70),NA,NA,NA,under litter (70),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6235,458,C,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6390,615,C,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6418,644,B,6,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6522,748,A,10,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6631,857,B,9,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6708,937,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6714,943,A,4,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6904,1136,A,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7061,1294,A,8,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7198,1533,D,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5955,1912,C,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5816,31,C,5,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5825,40,A,8,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5826,41,A,8,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5833,49,A,4,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5845,61,A,3,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5852,68,A,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5905,122,A,3,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5928,146,A,8,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5935,153,A,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5936,154,B,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6035,254,B,7,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6053,273,C,6,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6091,311,E,1,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6100,320,D,6,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6118,338,D,9,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6133,353,D,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6168,388,D,1,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6184,404,D,4,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6283,506,E,3,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6285,508,E,3,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6287,511,E,3,2007,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6296,520,E,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6303,527,E,3,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6325,550,D,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6448,674,B,5,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6469,695,E,3,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6692,921,A,3,2007,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6727,956,A,4,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6774,1003,D,3,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6926,1159,B,3,2007,under litter (70),NA,NA,NA,under litter (70),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6934,1167,A,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7071,1404,A,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7108,1441,A,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7111,1444,A,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7112,1445,A,2,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6376,600,E,3,2008,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7134,1467,A,5,2008,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,5847,63,B,4,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6066,286,B,7,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6085,305,E,1,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6138,358,D,6,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6351,576,D,2,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,duplicate tag number
-CF,EST,Florestal-CF,CF-1,1301,6535,761,A,1,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6682,910,C,5,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,6976,1209,A,2,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7027,1261,B,2,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7054,1287,D,6,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7077,1410,B,2,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7142,1474,B,5,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7143,1475,B,5,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7151,1483,A,6,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,EST,Florestal-CF,CF-1,1301,7162,1495,E,6,2009,dried (7),NA,NA,NA,NA,NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7371,6,D,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7382,18,E,3,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7420,57,C,10,1999,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7444,84,E,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7502,144,D,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7508,150,D,7,1999,under treefall (80),NA,NA,NA,under treefall (80),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7508,150,D,7,2001,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7395,32,D,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7405,42,A,2,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7407,44,A,6,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7412,49,B,3,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7444,84,E,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7464,104,D,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7488,130,E,1,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7504,146,E,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7508,150,D,7,2002,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7399,36,D,3,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7557,206,E,8,2004,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7447,87,D,5,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7636,295,A,7,2005,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7369,4,E,5,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7453,93,B,3,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7506,148,C,2,2006,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7492,134,B,1,2007,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7626,284,C,10,2007,2x in field (200),NA,NA,NA,NA,NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7405,42,A,2,2008,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7552,201,E,9,2008,resprouting (10),NA,NA,NA,NA,NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7396,33,C,4,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7405,42,A,2,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
-CF,PAL,PortoAlegre-CF,CF-5,none,7524,169,A,3,2009,under branchfall (90),NA,NA,NA,under branchfall (90),NA,NA
+HA_ID_Number,plot,habitat,ranch,bdffp_reserve_no,tag_number,row,column,plotID,year,code,notes,sdlg_status,duplicate_tag
+7941,5754,10-ha,PortoAlegre,3209,290,E,4,FF-7,2006,NA,1 new infl + 1 old infl,NA,NA
+8009,5754,10-ha,PortoAlegre,3209,357,E,4,FF-7,2006,NA,1 new infl + 1 old infl,NA,NA
+7766,5754,10-ha,PortoAlegre,3209,112,A,9,FF-7,2006,NA,1 old infl,NA,NA
+7797,5754,10-ha,PortoAlegre,3209,144,C,9,FF-7,2006,NA,1 old infl,NA,NA
+7805,5754,10-ha,PortoAlegre,3209,152,B,9,FF-7,2006,NA,1 old infl,NA,NA
+7851,5754,10-ha,PortoAlegre,3209,200,A,9,FF-7,2006,NA,1 old infl,NA,NA
+7940,5754,10-ha,PortoAlegre,3209,289,E,4,FF-7,2006,NA,1 old infl,NA,NA
+8017,5754,10-ha,PortoAlegre,3209,365,E,4,FF-7,2006,NA,1 old infl,NA,NA
+8098,5754,10-ha,PortoAlegre,3209,445,C,3,FF-7,2006,NA,1 old infl,NA,NA
+8189,5754,10-ha,PortoAlegre,3209,632,C,3,FF-7,2006,NA,1 old infl,NA,NA
+8336,5754,10-ha,PortoAlegre,3209,778,C,6,FF-7,2006,NA,1 old infl,NA,NA
+8339,5754,10-ha,PortoAlegre,3209,781,C,3,FF-7,2006,NA,1 old infl,NA,NA
+7925,5754,10-ha,PortoAlegre,3209,274,B,6,FF-7,2006,NA,2 old infl,NA,NA
+8027,5754,10-ha,PortoAlegre,3209,375,E,4,FF-7,2006,NA,2 old infl,NA,NA
+8378,5754,10-ha,PortoAlegre,3209,816,C,3,FF-7,2006,NA,2 old infl,NA,duplicate tag number
+2,2107,1-ha,DIM,2107,2,C,7,FF-1,1999,under branchfall,NA,NA,NA
+10,2107,1-ha,DIM,2107,10,C,5,FF-1,1999,under branchfall,NA,NA,NA
+51,2107,1-ha,DIM,2107,52,D,7,FF-1,1999,under branchfall,NA,NA,NA
+102,2107,1-ha,DIM,2107,106,B,10,FF-1,1999,under branchfall,NA,NA,NA
+125,2107,1-ha,DIM,2107,131,A,5,FF-1,2001,under branchfall,NA,NA,NA
+16,2107,1-ha,DIM,2107,16,C,9,FF-1,2002,under branchfall,NA,NA,NA
+34,2107,1-ha,DIM,2107,35,C,8,FF-1,2002,under branchfall,NA,NA,NA
+40,2107,1-ha,DIM,2107,41,E,4,FF-1,2002,under branchfall,NA,NA,NA
+54,2107,1-ha,DIM,2107,55,C,7,FF-1,2002,under branchfall,NA,NA,NA
+71,2107,1-ha,DIM,2107,75,B,5,FF-1,2002,under branchfall,NA,NA,NA
+79,2107,1-ha,DIM,2107,83,B,4,FF-1,2002,under branchfall,NA,NA,NA
+90,2107,1-ha,DIM,2107,94,B,3,FF-1,2002,under branchfall,NA,NA,NA
+93,2107,1-ha,DIM,2107,97,B,9,FF-1,2002,under branchfall,NA,NA,NA
+103,2107,1-ha,DIM,2107,107,E,9,FF-1,2002,under branchfall,NA,NA,NA
+106,2107,1-ha,DIM,2107,110,E,1,FF-1,2002,under branchfall,NA,NA,NA
+110,2107,1-ha,DIM,2107,114,B,4,FF-1,2002,under branchfall,NA,NA,NA
+135,2107,1-ha,DIM,2107,142,B,10,FF-1,2002,under branchfall,NA,NA,NA
+191,2107,1-ha,DIM,2107,199,B,9,FF-1,2002,under branchfall,NA,NA,NA
+238,2107,1-ha,DIM,2107,246,C,10,FF-1,2002,under branchfall,NA,NA,NA
+28,2107,1-ha,DIM,2107,29,A,9,FF-1,2004,under branchfall,NA,NA,NA
+35,2107,1-ha,DIM,2107,36,C,1,FF-1,2004,under branchfall,NA,NA,NA
+131,2107,1-ha,DIM,2107,138,E,9,FF-1,2004,under branchfall,NA,NA,NA
+155,2107,1-ha,DIM,2107,162,C,10,FF-1,2004,under branchfall,NA,NA,NA
+171,2107,1-ha,DIM,2107,178,C,5,FF-1,2004,under treefall,NA,NA,NA
+309,2107,1-ha,DIM,2107,326,C,5,FF-1,2004,under treefall,NA,NA,NA
+33,2107,1-ha,DIM,2107,34,A,7,FF-1,2005,under branchfall,NA,NA,NA
+79,2107,1-ha,DIM,2107,83,B,4,FF-1,2005,under branchfall,NA,NA,NA
+89,2107,1-ha,DIM,2107,93,A,9,FF-1,2005,under branchfall,NA,NA,NA
+103,2107,1-ha,DIM,2107,107,E,9,FF-1,2005,under branchfall,NA,NA,NA
+106,2107,1-ha,DIM,2107,110,E,1,FF-1,2005,under branchfall,NA,NA,NA
+243,2107,1-ha,DIM,2107,251,B,10,FF-1,2005,under branchfall,NA,NA,NA
+304,2107,1-ha,DIM,2107,314,B,10,FF-1,2005,under branchfall,NA,NA,NA
+8,2107,1-ha,DIM,2107,8,B,6,FF-1,2006,under branchfall,NA,NA,NA
+13,2107,1-ha,DIM,2107,13,A,7,FF-1,2006,under branchfall,NA,NA,NA
+112,2107,1-ha,DIM,2107,117,C,6,FF-1,2006,under branchfall,NA,NA,NA
+121,2107,1-ha,DIM,2107,126,A,4,FF-1,2006,under branchfall,NA,NA,NA
+137,2107,1-ha,DIM,2107,144,B,9,FF-1,2006,under branchfall,NA,NA,NA
+188,2107,1-ha,DIM,2107,196,B,3,FF-1,2006,under branchfall,NA,NA,NA
+208,2107,1-ha,DIM,2107,216,A,9,FF-1,2006,under branchfall,NA,NA,NA
+268,2107,1-ha,DIM,2107,276,C,10,FF-1,2006,under branchfall,NA,NA,NA
+283,2107,1-ha,DIM,2107,293,C,8,FF-1,2006,under branchfall,NA,NA,NA
+115,2107,1-ha,DIM,2107,120,A,6,FF-1,2007,under branchfall,NA,NA,NA
+121,2107,1-ha,DIM,2107,126,A,4,FF-1,2007,under branchfall,NA,NA,NA
+155,2107,1-ha,DIM,2107,162,C,10,FF-1,2008,under branchfall,NA,NA,NA
+356,2108,1-ha,DIM,2108,19,C,10,FF-2,2001,under treefall,NA,NA,NA
+356,2108,1-ha,DIM,2108,19,C,10,FF-2,2002,under treefall,NA,NA,NA
+358,2108,1-ha,DIM,2108,21,E,8,FF-2,2002,under litter,NA,NA,NA
+365,2108,1-ha,DIM,2108,28,E,7,FF-2,2002,under branchfall,NA,NA,NA
+419,2108,1-ha,DIM,2108,84,D,9,FF-2,2002,under branchfall,NA,NA,NA
+446,2108,1-ha,DIM,2108,125,A,1,FF-2,2002,under branchfall,NA,NA,NA
+452,2108,1-ha,DIM,2108,136,A,1,FF-2,2002,under branchfall,NA,NA,NA
+453,2108,1-ha,DIM,2108,137,B,9,FF-2,2002,under branchfall,NA,NA,NA
+494,2108,1-ha,DIM,2108,197,D,1,FF-2,2002,under branchfall,NA,NA,NA
+517,2108,1-ha,DIM,2108,228,A,9,FF-2,2002,under branchfall,NA,NA,NA
+464,2108,1-ha,DIM,2108,150,C,2,FF-2,2003,under branchfall,NA,NA,NA
+344,2108,1-ha,DIM,2108,8,E,7,FF-2,2004,under branchfall,NA,NA,NA
+356,2108,1-ha,DIM,2108,19,C,10,FF-2,2004,under treefall,NA,NA,NA
+466,2108,1-ha,DIM,2108,152,B,3,FF-2,2004,under branchfall,NA,NA,NA
+516,2108,1-ha,DIM,2108,227,C,8,FF-2,2004,under treefall,NA,NA,NA
+538,2108,1-ha,DIM,2108,249,C,8,FF-2,2004,under treefall,NA,NA,NA
+363,2108,1-ha,DIM,2108,26,A,6,FF-2,2005,under branchfall,NA,NA,NA
+372,2108,1-ha,DIM,2108,35,A,8,FF-2,2005,under branchfall,NA,NA,NA
+381,2108,1-ha,DIM,2108,46,A,1,FF-2,2005,under branchfall,NA,NA,NA
+393,2108,1-ha,DIM,2108,58,E,9,FF-2,2005,under branchfall,NA,NA,NA
+417,2108,1-ha,DIM,2108,82,E,9,FF-2,2005,under branchfall,NA,NA,NA
+426,2108,1-ha,DIM,2108,92,C,6,FF-2,2005,under branchfall,NA,NA,NA
+508,2108,1-ha,DIM,2108,216,A,7,FF-2,2005,under branchfall,NA,NA,NA
+520,2108,1-ha,DIM,2108,231,D,1,FF-2,2005,under branchfall,NA,NA,NA
+575,2108,1-ha,DIM,2108,290,C,1,FF-2,2005,under branchfall,NA,NA,NA
+582,2108,1-ha,DIM,2108,297,B,10,FF-2,2005,under branchfall,NA,NA,NA
+425,2108,1-ha,DIM,2108,91,A,9,FF-2,2006,under branchfall,NA,NA,NA
+508,2108,1-ha,DIM,2108,216,A,7,FF-2,2006,under branchfall,NA,NA,NA
+362,2108,1-ha,DIM,2108,25,D,4,FF-2,2007,under branchfall,NA,NA,NA
+459,2108,1-ha,DIM,2108,143,B,2,FF-2,2007,under branchfall,NA,NA,NA
+417,2108,1-ha,DIM,2108,82,E,9,FF-2,2008,under branchfall,NA,NA,NA
+473,2108,1-ha,DIM,2108,167,B,8,FF-2,2008,resprouting,NA,NA,NA
+641,2108,1-ha,DIM,2108,391,C,8,FF-2,2008,resprouting,NA,NA,NA
+376,2108,1-ha,DIM,2108,39,C,9,FF-2,2009,resprouting,NA,NA,NA
+524,2108,1-ha,DIM,2108,235,A,9,FF-2,2009,under branchfall,NA,NA,NA
+702,2206,10-ha,DIM,2206,58,A,4,FF-5,2000,under branchfall,NA,NA,NA
+664,2206,10-ha,DIM,2206,15,A,6,FF-5,2002,under branchfall,NA,NA,NA
+668,2206,10-ha,DIM,2206,21,B,5,FF-5,2002,under branchfall,NA,NA,NA
+678,2206,10-ha,DIM,2206,32,D,3,FF-5,2002,under branchfall,NA,NA,NA
+720,2206,10-ha,DIM,2206,78,A,9,FF-5,2002,under branchfall,NA,NA,NA
+726,2206,10-ha,DIM,2206,84,C,3,FF-5,2002,under branchfall,NA,NA,NA
+742,2206,10-ha,DIM,2206,102,D,4,FF-5,2002,under branchfall,NA,NA,NA
+743,2206,10-ha,DIM,2206,103,E,7,FF-5,2002,under branchfall,NA,NA,NA
+787,2206,10-ha,DIM,2206,151,E,10,FF-5,2002,under treefall,NA,NA,NA
+836,2206,10-ha,DIM,2206,204,D,3,FF-5,2002,under branchfall,NA,NA,NA
+841,2206,10-ha,DIM,2206,210,E,10,FF-5,2002,under treefall,NA,NA,NA
+728,2206,10-ha,DIM,2206,86,D,2,FF-5,2003,under branchfall,NA,NA,NA
+757,2206,10-ha,DIM,2206,120,A,9,FF-5,2003,under branchfall,NA,NA,NA
+769,2206,10-ha,DIM,2206,132,A,9,FF-5,2003,under branchfall,NA,NA,NA
+770,2206,10-ha,DIM,2206,133,A,4,FF-5,2003,under branchfall,NA,NA,NA
+659,2206,10-ha,DIM,2206,10,B,1,FF-5,2004,under branchfall,NA,NA,NA
+662,2206,10-ha,DIM,2206,13,A,6,FF-5,2004,under branchfall,NA,NA,NA
+664,2206,10-ha,DIM,2206,15,A,6,FF-5,2004,under branchfall,NA,NA,NA
+666,2206,10-ha,DIM,2206,17,A,5,FF-5,2004,under branchfall,NA,NA,NA
+728,2206,10-ha,DIM,2206,86,D,2,FF-5,2004,under treefall,NA,NA,NA
+757,2206,10-ha,DIM,2206,120,A,9,FF-5,2004,under treefall,NA,NA,NA
+769,2206,10-ha,DIM,2206,132,A,9,FF-5,2004,under treefall,NA,NA,NA
+771,2206,10-ha,DIM,2206,134,D,1,FF-5,2004,under branchfall,NA,NA,NA
+774,2206,10-ha,DIM,2206,137,A,5,FF-5,2004,under branchfall,NA,NA,NA
+781,2206,10-ha,DIM,2206,144,A,4,FF-5,2004,under branchfall,NA,NA,NA
+787,2206,10-ha,DIM,2206,151,E,10,FF-5,2004,under branchfall,NA,NA,NA
+798,2206,10-ha,DIM,2206,163,E,9,FF-5,2004,under treefall,NA,NA,NA
+910,2206,10-ha,DIM,2206,280,A,9,FF-5,2004,under branchfall,NA,NA,NA
+787,2206,10-ha,DIM,2206,151,E,10,FF-5,2005,under treefall,NA,NA,NA
+841,2206,10-ha,DIM,2206,210,E,10,FF-5,2005,under treefall,NA,NA,NA
+848,2206,10-ha,DIM,2206,217,B,10,FF-5,2005,under branchfall,NA,NA,NA
+863,2206,10-ha,DIM,2206,233,B,10,FF-5,2005,under branchfall,NA,NA,NA
+885,2206,10-ha,DIM,2206,255,B,4,FF-5,2005,under branchfall,NA,NA,NA
+711,2206,10-ha,DIM,2206,67,B,1,FF-5,2006,under branchfall,NA,NA,NA
+770,2206,10-ha,DIM,2206,133,A,4,FF-5,2006,under treefall,NA,NA,NA
+782,2206,10-ha,DIM,2206,145,B,8,FF-5,2006,under branchfall,NA,NA,NA
+899,2206,10-ha,DIM,2206,270,B,10,FF-5,2006,under branchfall,NA,NA,NA
+925,2206,10-ha,DIM,2206,295,B,9,FF-5,2006,under branchfall,NA,NA,NA
+935,2206,10-ha,DIM,2206,331,C,10,FF-5,2006,2x in field,NA,NA,NA
+938,2206,10-ha,DIM,2206,334,E,9,FF-5,2006,2x in field,NA,NA,NA
+1073,5750,CF,EST,1501,209,D,6,CF-2,1999,under branchfall,NA,NA,NA
+1174,5750,CF,EST,1501,314,F,10,CF-2,1999,under branchfall,NA,NA,NA
+1016,5750,CF,EST,1501,151,C,8,CF-2,2002,under branchfall,NA,NA,NA
+1036,5750,CF,EST,1501,172,C,10,CF-2,2002,under treefall,NA,NA,NA
+1041,5750,CF,EST,1501,177,D,10,CF-2,2002,under treefall,NA,NA,NA
+1054,5750,CF,EST,1501,190,C,9,CF-2,2002,under treefall,NA,NA,NA
+1055,5750,CF,EST,1501,191,C,9,CF-2,2002,under treefall,NA,NA,NA
+1059,5750,CF,EST,1501,195,C,10,CF-2,2002,under treefall,NA,NA,NA
+1141,5750,CF,EST,1501,280,H,7,CF-2,2002,under treefall,NA,NA,NA
+1142,5750,CF,EST,1501,281,H,7,CF-2,2002,under treefall,NA,NA,NA
+1229,5750,CF,EST,1501,371,J,9,CF-2,2002,under treefall,NA,NA,NA
+1242,5750,CF,EST,1501,384,J,9,CF-2,2002,under branchfall,NA,NA,NA
+1261,5750,CF,EST,1501,403,J,9,CF-2,2002,under treefall,NA,NA,NA
+1267,5750,CF,EST,1501,409,J,8,CF-2,2002,under treefall,NA,NA,NA
+1281,5750,CF,EST,1501,423,J,8,CF-2,2002,under treefall,NA,NA,NA
+1340,5750,CF,EST,1501,484,C,10,CF-2,2002,under treefall,NA,NA,NA
+1341,5750,CF,EST,1501,485,D,9,CF-2,2002,under branchfall,NA,NA,NA
+1386,5750,CF,EST,1501,531,J,9,CF-2,2002,under treefall,NA,NA,NA
+1403,5750,CF,EST,1501,548,F,10,CF-2,2002,under branchfall,NA,NA,NA
+1413,5750,CF,EST,1501,558,J,9,CF-2,2002,under branchfall,NA,NA,NA
+1415,5750,CF,EST,1501,560,J,9,CF-2,2002,under treefall,NA,NA,NA
+1446,5750,CF,EST,1501,591,J,9,CF-2,2002,under treefall,NA,NA,NA
+1450,5750,CF,EST,1501,595,B,6,CF-2,2002,under branchfall,NA,NA,NA
+1492,5750,CF,EST,1501,637,B,6,CF-2,2002,under branchfall,NA,NA,NA
+1496,5750,CF,EST,1501,641,J,9,CF-2,2002,under treefall,NA,NA,NA
+1510,5750,CF,EST,1501,655,J,8,CF-2,2002,under treefall,NA,NA,NA
+1634,5750,CF,EST,1501,780,J,10,CF-2,2002,under treefall,NA,NA,NA
+1637,5750,CF,EST,1501,783,J,10,CF-2,2002,under treefall,NA,NA,NA
+1661,5750,CF,EST,1501,807,J,10,CF-2,2002,under treefall,NA,NA,NA
+1726,5750,CF,EST,1501,872,C,10,CF-2,2002,under branchfall,NA,NA,NA
+1728,5750,CF,EST,1501,874,A,10,CF-2,2002,under branchfall,NA,NA,NA
+1731,5750,CF,EST,1501,878,A,10,CF-2,2002,under branchfall,NA,NA,NA
+1742,5750,CF,EST,1501,889,C,10,CF-2,2002,under treefall,NA,NA,NA
+1780,5750,CF,EST,1501,929,C,10,CF-2,2002,under treefall,NA,NA,NA
+1796,5750,CF,EST,1501,945,A,10,CF-2,2002,under branchfall,NA,NA,NA
+1808,5750,CF,EST,1501,957,A,10,CF-2,2002,under branchfall,NA,NA,NA
+1438,5750,CF,EST,1501,583,E,8,CF-2,2003,under branchfall,NA,NA,NA
+1447,5750,CF,EST,1501,592,B,8,CF-2,2003,under branchfall,NA,NA,NA
+1808,5750,CF,EST,1501,957,A,10,CF-2,2003,under branchfall,NA,NA,NA
+950,5750,CF,EST,1501,35,G,9,CF-2,2004,under treefall,NA,NA,NA
+1178,5750,CF,EST,1501,319,C,8,CF-2,2004,under branchfall,NA,NA,NA
+1259,5750,CF,EST,1501,401,J,9,CF-2,2004,under branchfall,NA,NA,NA
+1271,5750,CF,EST,1501,413,J,10,CF-2,2004,under branchfall,NA,NA,NA
+1371,5750,CF,EST,1501,516,J,9,CF-2,2004,under branchfall,NA,NA,NA
+1401,5750,CF,EST,1501,546,F,10,CF-2,2004,under branchfall,NA,NA,NA
+1733,5750,CF,EST,1501,880,J,9,CF-2,2004,under branchfall,NA,NA,NA
+950,5750,CF,EST,1501,35,G,9,CF-2,2005,under branchfall,NA,NA,NA
+954,5750,CF,EST,1501,57,J,6,CF-2,2005,under branchfall,NA,NA,NA
+972,5750,CF,EST,1501,99,A,10,CF-2,2005,under branchfall,NA,NA,NA
+985,5750,CF,EST,1501,117,A,10,CF-2,2005,under branchfall,NA,NA,NA
+1014,5750,CF,EST,1501,149,A,6,CF-2,2005,under branchfall,NA,NA,NA
+1041,5750,CF,EST,1501,177,D,10,CF-2,2005,under branchfall,NA,NA,NA
+1079,5750,CF,EST,1501,215,D,7,CF-2,2005,under branchfall,NA,NA,NA
+1165,5750,CF,EST,1501,305,C,10,CF-2,2005,under branchfall,NA,NA,NA
+1215,5750,CF,EST,1501,357,H,7,CF-2,2005,under branchfall,NA,NA,NA
+1242,5750,CF,EST,1501,384,J,9,CF-2,2005,under branchfall,NA,NA,NA
+1250,5750,CF,EST,1501,392,J,9,CF-2,2005,under branchfall,NA,NA,NA
+1278,5750,CF,EST,1501,420,J,8,CF-2,2005,under branchfall,NA,NA,NA
+1307,5750,CF,EST,1501,451,J,7,CF-2,2005,under branchfall,NA,NA,NA
+1361,5750,CF,EST,1501,506,I,7,CF-2,2005,under branchfall,NA,NA,NA
+1438,5750,CF,EST,1501,583,E,8,CF-2,2005,under branchfall,NA,NA,NA
+1591,5750,CF,EST,1501,736,I,9,CF-2,2005,under branchfall,NA,NA,NA
+1621,5750,CF,EST,1501,767,A,8,CF-2,2005,under branchfall,NA,NA,NA
+1660,5750,CF,EST,1501,806,B,9,CF-2,2005,under branchfall,NA,NA,NA
+1667,5750,CF,EST,1501,813,B,9,CF-2,2005,under branchfall,NA,NA,NA
+1684,5750,CF,EST,1501,830,B,9,CF-2,2005,under branchfall,NA,NA,NA
+1774,5750,CF,EST,1501,923,C,9,CF-2,2005,under branchfall,NA,NA,NA
+1820,5750,CF,EST,1501,969,H,7,CF-2,2005,under branchfall,NA,NA,NA
+1868,5750,CF,EST,1501,1317,J,8,CF-2,2005,under branchfall,NA,NA,NA
+1872,5750,CF,EST,1501,1321,H,8,CF-2,2005,under branchfall,NA,NA,NA
+1877,5750,CF,EST,1501,1326,J,8,CF-2,2005,under branchfall,NA,NA,NA
+944,5750,CF,EST,1501,1,I,9,CF-2,2006,under branchfall,NA,NA,NA
+950,5750,CF,EST,1501,35,G,9,CF-2,2006,under branchfall,NA,NA,NA
+961,5750,CF,EST,1501,77,I,6,CF-2,2006,under branchfall,NA,NA,NA
+1070,5750,CF,EST,1501,206,D,6,CF-2,2006,under branchfall,NA,NA,NA
+1148,5750,CF,EST,1501,288,H,6,CF-2,2006,under treefall,NA,NA,NA
+1151,5750,CF,EST,1501,291,I,10,CF-2,2006,under branchfall,NA,NA,NA
+1155,5750,CF,EST,1501,295,I,10,CF-2,2006,under branchfall,NA,NA,NA
+1180,5750,CF,EST,1501,321,C,6,CF-2,2006,under litter,NA,NA,NA
+1200,5750,CF,EST,1501,341,E,6,CF-2,2006,under branchfall,NA,NA,NA
+1214,5750,CF,EST,1501,356,I,10,CF-2,2006,under branchfall,NA,NA,NA
+1215,5750,CF,EST,1501,357,H,7,CF-2,2006,under branchfall,NA,NA,NA
+1234,5750,CF,EST,1501,376,H,6,CF-2,2006,under branchfall,NA,NA,NA
+1251,5750,CF,EST,1501,393,I,6,CF-2,2006,under branchfall,NA,NA,NA
+1266,5750,CF,EST,1501,408,J,10,CF-2,2006,under branchfall,NA,NA,NA
+1293,5750,CF,EST,1501,435,J,8,CF-2,2006,under branchfall,NA,NA,NA
+1307,5750,CF,EST,1501,451,J,7,CF-2,2006,under branchfall,NA,NA,NA
+1341,5750,CF,EST,1501,485,D,9,CF-2,2006,under branchfall,NA,NA,NA
+1342,5750,CF,EST,1501,486,D,9,CF-2,2006,under branchfall,NA,NA,NA
+1410,5750,CF,EST,1501,555,C,6,CF-2,2006,under branchfall,NA,NA,NA
+1430,5750,CF,EST,1501,575,C,7,CF-2,2006,under branchfall,NA,NA,NA
+1481,5750,CF,EST,1501,626,B,6,CF-2,2006,under branchfall,NA,NA,NA
+1660,5750,CF,EST,1501,806,B,9,CF-2,2006,under branchfall,NA,NA,NA
+1675,5750,CF,EST,1501,821,B,9,CF-2,2006,under branchfall,NA,NA,NA
+1763,5750,CF,EST,1501,912,B,9,CF-2,2006,under branchfall,NA,NA,NA
+1766,5750,CF,EST,1501,915,I,10,CF-2,2006,under branchfall,NA,NA,NA
+1780,5750,CF,EST,1501,929,C,10,CF-2,2006,under branchfall,NA,NA,NA
+1789,5750,CF,EST,1501,938,I,10,CF-2,2006,under branchfall,NA,NA,NA
+1820,5750,CF,EST,1501,969,H,7,CF-2,2006,under branchfall,NA,NA,NA
+1009,5750,CF,EST,1501,144,A,7,CF-2,2007,under branchfall,NA,NA,NA
+1066,5750,CF,EST,1501,202,D,6,CF-2,2007,under branchfall,NA,NA,NA
+1098,5750,CF,EST,1501,234,F,8,CF-2,2007,under branchfall,NA,NA,NA
+1151,5750,CF,EST,1501,291,I,10,CF-2,2007,under branchfall,NA,NA,NA
+1165,5750,CF,EST,1501,305,C,10,CF-2,2007,under branchfall,NA,NA,NA
+1220,5750,CF,EST,1501,362,H,10,CF-2,2007,under branchfall,NA,NA,NA
+1227,5750,CF,EST,1501,369,H,6,CF-2,2007,under branchfall,NA,NA,NA
+1234,5750,CF,EST,1501,376,H,6,CF-2,2007,under branchfall,NA,NA,NA
+1235,5750,CF,EST,1501,377,H,6,CF-2,2007,under branchfall,NA,NA,NA
+1259,5750,CF,EST,1501,401,J,9,CF-2,2007,under branchfall,NA,NA,NA
+1278,5750,CF,EST,1501,420,J,8,CF-2,2007,under branchfall,NA,NA,NA
+1286,5750,CF,EST,1501,428,J,8,CF-2,2007,under branchfall,NA,NA,NA
+1288,5750,CF,EST,1501,430,J,6,CF-2,2007,under branchfall,NA,NA,NA
+1308,5750,CF,EST,1501,452,A,6,CF-2,2007,under branchfall,NA,NA,NA
+1372,5750,CF,EST,1501,517,J,7,CF-2,2007,under branchfall,NA,NA,NA
+1397,5750,CF,EST,1501,542,F,9,CF-2,2007,under branchfall,NA,NA,NA
+1481,5750,CF,EST,1501,626,B,6,CF-2,2007,under branchfall,NA,NA,NA
+1557,5750,CF,EST,1501,702,J,8,CF-2,2007,under branchfall,NA,NA,NA
+1566,5750,CF,EST,1501,711,J,8,CF-2,2007,resprouting,NA,NA,NA
+1590,5750,CF,EST,1501,735,E,6,CF-2,2007,resprouting,NA,NA,NA
+1665,5750,CF,EST,1501,811,C,10,CF-2,2007,under branchfall,NA,NA,NA
+1675,5750,CF,EST,1501,821,B,9,CF-2,2007,resprouting,NA,NA,NA
+1726,5750,CF,EST,1501,872,C,10,CF-2,2007,under branchfall,NA,NA,NA
+1735,5750,CF,EST,1501,882,G,9,CF-2,2007,under branchfall,NA,NA,NA
+1751,5750,CF,EST,1501,899,D,9,CF-2,2007,under branchfall,NA,NA,NA
+1785,5750,CF,EST,1501,934,C,10,CF-2,2007,under branchfall,NA,NA,NA
+1787,5750,CF,EST,1501,936,C,9,CF-2,2007,under branchfall,NA,NA,NA
+1813,5750,CF,EST,1501,962,F,8,CF-2,2007,under branchfall,NA,NA,NA
+1816,5750,CF,EST,1501,965,H,8,CF-2,2007,under branchfall,NA,NA,NA
+1820,5750,CF,EST,1501,969,H,7,CF-2,2007,under branchfall,NA,NA,NA
+957,5750,CF,EST,1501,65,F,6,CF-2,2009,under branchfall,NA,NA,NA
+995,5750,CF,EST,1501,130,A,9,CF-2,2009,dried,NA,NA,NA
+1106,5750,CF,EST,1501,241,E,6,CF-2,2009,under branchfall,NA,NA,NA
+1136,5750,CF,EST,1501,275,F,7,CF-2,2009,under branchfall,NA,NA,NA
+1137,5750,CF,EST,1501,276,G,9,CF-2,2009,dried,NA,NA,NA
+1165,5750,CF,EST,1501,305,C,10,CF-2,2009,under branchfall,NA,NA,NA
+1193,5750,CF,EST,1501,334,E,6,CF-2,2009,under branchfall,NA,NA,NA
+1200,5750,CF,EST,1501,341,E,6,CF-2,2009,under branchfall,NA,NA,NA
+1301,5750,CF,EST,1501,443,J,6,CF-2,2009,under branchfall,NA,NA,NA
+1393,5750,CF,EST,1501,538,G,6,CF-2,2009,under branchfall,NA,NA,NA
+1397,5750,CF,EST,1501,542,F,9,CF-2,2009,under branchfall,NA,NA,NA
+1417,5750,CF,EST,1501,562,J,9,CF-2,2009,under branchfall,NA,NA,NA
+1469,5750,CF,EST,1501,614,F,6,CF-2,2009,under branchfall,NA,NA,NA
+1562,5750,CF,EST,1501,707,B,8,CF-2,2009,dried,NA,NA,NA
+1671,5750,CF,EST,1501,817,D,10,CF-2,2009,dried,NA,NA,NA
+1722,5750,CF,EST,1501,868,H,10,CF-2,2009,dried,NA,NA,NA
+1756,5750,CF,EST,1501,904,F,10,CF-2,2009,under branchfall,NA,NA,NA
+1815,5750,CF,EST,1501,964,D,7,CF-2,2009,under branchfall,NA,NA,NA
+1819,5750,CF,EST,1501,968,D,8,CF-2,2009,dried,NA,NA,NA
+1859,5750,CF,EST,1501,1308,C,7,CF-2,2009,dried,NA,NA,NA
+1891,5750,CF,EST,1501,1340,A,7,CF-2,2009,under branchfall,NA,NA,NA
+1935,5750,CF,EST,1501,1384,D,6,CF-2,2009,dried,NA,NA,NA
+1954,5750,CF,EST,1501,1402,F,6,CF-2,2009,under branchfall,NA,NA,NA
+1970,5750,CF,EST,1501,1418,G,10,CF-2,2009,dried,NA,NA,NA
+2076,5750,CF,EST,1501,2086,J,7,CF-2,2009,under branchfall,NA,NA,NA
+2094,5750,CF,EST,1501,2305,J,6,CF-2,2009,dried,NA,NA,NA
+2097,5750,CF,EST,1501,2308,J,6,CF-2,2009,dried,NA,NA,NA
+2181,5751,1-ha,EST,1104,12,C,9,FF-3,1998,under treefall,NA,NA,NA
+2248,5751,1-ha,EST,1104,81,D,4,FF-3,1999,under branchfall,NA,NA,NA
+2223,5751,1-ha,EST,1104,56,E,4,FF-3,2000,under branchfall,NA,NA,NA
+2297,5751,1-ha,EST,1104,132,D,6,FF-3,2001,under branchfall,NA,NA,NA
+2300,5751,1-ha,EST,1104,135,D,6,FF-3,2001,under branchfall,NA,NA,NA
+2319,5751,1-ha,EST,1104,154,C,1,FF-3,2001,under treefall,NA,NA,NA
+2175,5751,1-ha,EST,1104,6,B,8,FF-3,2002,under branchfall,NA,NA,NA
+2207,5751,1-ha,EST,1104,39,C,9,FF-3,2002,under branchfall,NA,NA,NA
+2232,5751,1-ha,EST,1104,65,A,8,FF-3,2002,under branchfall,NA,NA,NA
+2244,5751,1-ha,EST,1104,77,D,2,FF-3,2002,under branchfall,NA,NA,NA
+2254,5751,1-ha,EST,1104,87,A,8,FF-3,2002,under branchfall,NA,NA,NA
+2285,5751,1-ha,EST,1104,120,C,3,FF-3,2002,under branchfall,NA,NA,NA
+2291,5751,1-ha,EST,1104,126,C,4,FF-3,2002,under branchfall,NA,NA,NA
+2314,5751,1-ha,EST,1104,149,E,3,FF-3,2002,under litter,NA,NA,NA
+2326,5751,1-ha,EST,1104,161,A,8,FF-3,2002,under branchfall,NA,NA,NA
+2327,5751,1-ha,EST,1104,162,A,8,FF-3,2002,under branchfall,NA,NA,NA
+2381,5751,1-ha,EST,1104,217,E,5,FF-3,2002,under litter,NA,NA,NA
+2397,5751,1-ha,EST,1104,233,D,5,FF-3,2002,under branchfall,NA,NA,NA
+2172,5751,1-ha,EST,1104,1,C,3,FF-3,2003,under branchfall,NA,NA,NA
+2174,5751,1-ha,EST,1104,5,A,8,FF-3,2003,under branchfall,NA,NA,NA
+2194,5751,1-ha,EST,1104,26,A,8,FF-3,2003,under branchfall,NA,NA,NA
+2201,5751,1-ha,EST,1104,33,A,8,FF-3,2003,under branchfall,NA,NA,NA
+2232,5751,1-ha,EST,1104,65,A,8,FF-3,2003,under branchfall,NA,NA,NA
+2254,5751,1-ha,EST,1104,87,A,8,FF-3,2003,under branchfall,NA,NA,NA
+2327,5751,1-ha,EST,1104,162,A,8,FF-3,2003,under branchfall,NA,NA,NA
+2340,5751,1-ha,EST,1104,175,D,8,FF-3,2003,under branchfall,NA,NA,NA
+2213,5751,1-ha,EST,1104,45,C,9,FF-3,2004,under branchfall,NA,NA,NA
+2424,5751,1-ha,EST,1104,261,D,6,FF-3,2004,under treefall,NA,NA,NA
+2207,5751,1-ha,EST,1104,39,C,9,FF-3,2005,under branchfall,NA,NA,NA
+2281,5751,1-ha,EST,1104,116,E,5,FF-3,2005,under treefall,NA,NA,NA
+2424,5751,1-ha,EST,1104,261,D,6,FF-3,2005,under treefall,NA,NA,NA
+2244,5751,1-ha,EST,1104,77,D,2,FF-3,2006,under branchfall,NA,NA,NA
+2278,5751,1-ha,EST,1104,113,D,3,FF-3,2006,under branchfall,NA,NA,NA
+2281,5751,1-ha,EST,1104,116,E,5,FF-3,2006,under branchfall,NA,NA,NA
+2364,5751,1-ha,EST,1104,200,D,8,FF-3,2006,under branchfall,NA,NA,NA
+2424,5751,1-ha,EST,1104,261,D,6,FF-3,2006,under branchfall,NA,NA,NA
+2504,5751,1-ha,EST,1104,342,C,8,FF-3,2006,under branchfall,NA,NA,NA
+2508,5751,1-ha,EST,1104,349,E,9,FF-3,2006,under litter,NA,NA,NA
+2218,5751,1-ha,EST,1104,51,D,10,FF-3,2007,under branchfall,NA,NA,NA
+2239,5751,1-ha,EST,1104,72,D,4,FF-3,2007,under branchfall,NA,NA,NA
+2258,5751,1-ha,EST,1104,91,D,6,FF-3,2007,2x in field,NA,NA,NA
+2285,5751,1-ha,EST,1104,120,C,3,FF-3,2007,under branchfall,NA,NA,NA
+2332,5751,1-ha,EST,1104,167,D,8,FF-3,2007,under branchfall,NA,NA,NA
+2351,5751,1-ha,EST,1104,187,D,8,FF-3,2007,under branchfall,NA,NA,NA
+2385,5751,1-ha,EST,1104,221,B,2,FF-3,2007,under branchfall,NA,NA,NA
+2459,5751,1-ha,EST,1104,296,E,9,FF-3,2007,under branchfall,NA,NA,NA
+2317,5751,1-ha,EST,1104,152,E,4,FF-3,2008,resprouting,NA,NA,NA
+2173,5751,1-ha,EST,1104,2,C,3,FF-3,2009,dried,NA,NA,NA
+2175,5751,1-ha,EST,1104,6,B,8,FF-3,2009,dried,NA,NA,NA
+2176,5751,1-ha,EST,1104,7,B,8,FF-3,2009,dried,NA,NA,NA
+2189,5751,1-ha,EST,1104,20,D,6,FF-3,2009,dried,NA,NA,NA
+2212,5751,1-ha,EST,1104,44,B,2,FF-3,2009,dried,NA,NA,NA
+2225,5751,1-ha,EST,1104,58,C,4,FF-3,2009,dried,NA,NA,NA
+2245,5751,1-ha,EST,1104,78,C,3,FF-3,2009,dried,NA,NA,NA
+2252,5751,1-ha,EST,1104,85,C,8,FF-3,2009,dried,NA,NA,NA
+2264,5751,1-ha,EST,1104,97,E,4,FF-3,2009,dried,NA,NA,NA
+2285,5751,1-ha,EST,1104,120,C,3,FF-3,2009,dried,NA,NA,NA
+2305,5751,1-ha,EST,1104,140,D,4,FF-3,2009,dried,NA,NA,NA
+2320,5751,1-ha,EST,1104,155,D,3,FF-3,2009,dried,NA,NA,NA
+2322,5751,1-ha,EST,1104,157,C,3,FF-3,2009,dried,NA,NA,NA
+2333,5751,1-ha,EST,1104,168,C,9,FF-3,2009,dried,NA,NA,NA
+2334,5751,1-ha,EST,1104,169,C,9,FF-3,2009,dried,NA,NA,NA
+2387,5751,1-ha,EST,1104,223,D,2,FF-3,2009,dried,NA,NA,NA
+2390,5751,1-ha,EST,1104,226,A,3,FF-3,2009,dried,NA,NA,NA
+2400,5751,1-ha,EST,1104,236,C,2,FF-3,2009,dried,NA,NA,NA
+2470,5751,1-ha,EST,1104,308,D,7,FF-3,2009,dried,NA,NA,NA
+2477,5751,1-ha,EST,1104,315,A,3,FF-3,2009,dried,NA,NA,NA
+2555,5751,1-ha,EST,1104,403,E,2,FF-3,2009,dried,NA,NA,NA
+2569,5751,1-ha,EST,1104,432,E,2,FF-3,2009,dried,NA,NA,NA
+2620,5752,10-ha,EST,1202,46,C,6,FF-6,1998,under treefall,NA,NA,NA
+2621,5752,10-ha,EST,1202,47,C,6,FF-6,1998,under treefall,NA,NA,NA
+2623,5752,10-ha,EST,1202,49,A,8,FF-6,1998,under treefall,NA,NA,NA
+2729,5752,10-ha,EST,1202,164,B,5,FF-6,1999,under treefall,NA,NA,NA
+2780,5752,10-ha,EST,1202,217,E,7,FF-6,1999,under treefall,NA,NA,NA
+2799,5752,10-ha,EST,1202,237,D,7,FF-6,1999,under treefall,NA,NA,NA
+2807,5752,10-ha,EST,1202,245,D,7,FF-6,1999,under treefall,NA,NA,NA
+2608,5752,10-ha,EST,1202,32,B,5,FF-6,2000,under treefall,NA,NA,NA
+2610,5752,10-ha,EST,1202,34,B,5,FF-6,2000,under treefall,NA,NA,NA
+2620,5752,10-ha,EST,1202,46,C,6,FF-6,2000,under branchfall,NA,NA,NA
+2621,5752,10-ha,EST,1202,47,C,6,FF-6,2000,under treefall,NA,NA,NA
+2750,5752,10-ha,EST,1202,184,A,5,FF-6,2000,under branchfall,NA,NA,NA
+2757,5752,10-ha,EST,1202,192,A,2,FF-6,2000,under branchfall,NA,NA,NA
+2804,5752,10-ha,EST,1202,242,C,3,FF-6,2000,under branchfall,NA,NA,NA
+2816,5752,10-ha,EST,1202,255,A,1,FF-6,2000,under branchfall,NA,NA,NA
+2851,5752,10-ha,EST,1202,290,B,5,FF-6,2000,under treefall,NA,NA,NA
+2865,5752,10-ha,EST,1202,304,D,6,FF-6,2000,under treefall,NA,NA,NA
+2588,5752,10-ha,EST,1202,12,A,3,FF-6,2002,under branchfall,NA,NA,NA
+2590,5752,10-ha,EST,1202,14,E,3,FF-6,2002,under branchfall,NA,NA,NA
+2609,5752,10-ha,EST,1202,33,B,5,FF-6,2002,under branchfall,NA,NA,NA
+2630,5752,10-ha,EST,1202,58,B,9,FF-6,2002,under branchfall,NA,NA,NA
+2635,5752,10-ha,EST,1202,64,C,9,FF-6,2002,under branchfall,NA,NA,NA
+2638,5752,10-ha,EST,1202,67,B,9,FF-6,2002,under branchfall,NA,NA,NA
+2655,5752,10-ha,EST,1202,84,D,10,FF-6,2002,under branchfall,NA,NA,NA
+2667,5752,10-ha,EST,1202,96,C,8,FF-6,2002,under branchfall,NA,NA,NA
+2671,5752,10-ha,EST,1202,101,D,10,FF-6,2002,under branchfall,NA,NA,NA
+2694,5752,10-ha,EST,1202,125,D,8,FF-6,2002,under branchfall,NA,NA,NA
+2700,5752,10-ha,EST,1202,134,A,6,FF-6,2002,under branchfall,NA,NA,NA
+2750,5752,10-ha,EST,1202,184,A,5,FF-6,2002,under branchfall,NA,NA,NA
+2757,5752,10-ha,EST,1202,192,A,2,FF-6,2002,under branchfall,NA,NA,NA
+2795,5752,10-ha,EST,1202,233,C,7,FF-6,2002,under branchfall,NA,NA,NA
+2835,5752,10-ha,EST,1202,274,C,6,FF-6,2002,under branchfall,NA,NA,NA
+2841,5752,10-ha,EST,1202,280,D,1,FF-6,2002,under branchfall,NA,NA,NA
+2845,5752,10-ha,EST,1202,284,E,2,FF-6,2002,under branchfall,NA,NA,NA
+2856,5752,10-ha,EST,1202,295,C,5,FF-6,2002,under branchfall,NA,NA,NA
+2858,5752,10-ha,EST,1202,297,C,6,FF-6,2002,under branchfall,NA,NA,NA
+2872,5752,10-ha,EST,1202,313,E,6,FF-6,2002,under branchfall,NA,NA,NA
+2873,5752,10-ha,EST,1202,314,D,6,FF-6,2002,under branchfall,NA,NA,NA
+2874,5752,10-ha,EST,1202,315,B,5,FF-6,2002,under branchfall,NA,NA,NA
+2895,5752,10-ha,EST,1202,336,E,1,FF-6,2002,under branchfall,NA,NA,NA
+2932,5752,10-ha,EST,1202,373,C,9,FF-6,2002,under branchfall,NA,NA,NA
+2939,5752,10-ha,EST,1202,380,C,8,FF-6,2002,under branchfall,NA,NA,NA
+2970,5752,10-ha,EST,1202,411,C,5,FF-6,2002,under branchfall,NA,NA,NA
+2975,5752,10-ha,EST,1202,416,C,5,FF-6,2002,under branchfall,NA,NA,NA
+3002,5752,10-ha,EST,1202,443,C,5,FF-6,2002,under branchfall,NA,NA,NA
+3082,5752,10-ha,EST,1202,523,E,7,FF-6,2002,under branchfall,NA,NA,NA
+3084,5752,10-ha,EST,1202,525,B,2,FF-6,2002,under branchfall,NA,NA,NA
+2583,5752,10-ha,EST,1202,7,E,1,FF-6,2004,under branchfall,NA,NA,NA
+2600,5752,10-ha,EST,1202,24,C,5,FF-6,2004,under branchfall,NA,NA,NA
+2682,5752,10-ha,EST,1202,112,D,10,FF-6,2004,under branchfall,NA,NA,NA
+2692,5752,10-ha,EST,1202,123,E,10,FF-6,2004,under treefall,NA,NA,NA
+2703,5752,10-ha,EST,1202,138,B,3,FF-6,2004,under branchfall,NA,NA,NA
+2704,5752,10-ha,EST,1202,139,C,3,FF-6,2004,under branchfall,NA,NA,NA
+2716,5752,10-ha,EST,1202,151,A,3,FF-6,2004,under treefall,NA,NA,NA
+2750,5752,10-ha,EST,1202,184,A,5,FF-6,2004,under branchfall,NA,NA,NA
+2756,5752,10-ha,EST,1202,191,D,1,FF-6,2004,under treefall,NA,NA,NA
+2785,5752,10-ha,EST,1202,222,C,5,FF-6,2004,under branchfall,NA,NA,NA
+2791,5752,10-ha,EST,1202,228,C,3,FF-6,2004,under branchfall,NA,NA,NA
+2795,5752,10-ha,EST,1202,233,C,7,FF-6,2004,under branchfall,NA,NA,NA
+2816,5752,10-ha,EST,1202,255,A,1,FF-6,2004,under branchfall,NA,NA,NA
+2863,5752,10-ha,EST,1202,302,B,4,FF-6,2004,under treefall,NA,NA,NA
+2936,5752,10-ha,EST,1202,377,A,7,FF-6,2004,under branchfall,NA,NA,NA
+2961,5752,10-ha,EST,1202,402,D,6,FF-6,2004,under branchfall,NA,NA,NA
+2982,5752,10-ha,EST,1202,423,A,4,FF-6,2004,under treefall,NA,NA,NA
+2988,5752,10-ha,EST,1202,429,B,4,FF-6,2004,under treefall,NA,NA,NA
+3024,5752,10-ha,EST,1202,465,A,10,FF-6,2004,under branchfall,NA,NA,NA
+3067,5752,10-ha,EST,1202,508,B,4,FF-6,2004,under treefall,NA,NA,NA
+3112,5752,10-ha,EST,1202,552,A,4,FF-6,2004,under treefall,NA,NA,NA
+3152,5752,10-ha,EST,1202,591,A,4,FF-6,2004,under treefall,NA,NA,NA
+3162,5752,10-ha,EST,1202,601,A,4,FF-6,2004,under treefall,NA,NA,NA
+3163,5752,10-ha,EST,1202,602,B,4,FF-6,2004,under treefall,NA,NA,NA
+3200,5752,10-ha,EST,1202,641,B,3,FF-6,2004,under branchfall,NA,NA,NA
+2584,5752,10-ha,EST,1202,8,E,2,FF-6,2005,under branchfall,NA,NA,NA
+2607,5752,10-ha,EST,1202,31,B,5,FF-6,2005,under branchfall,NA,NA,NA
+2740,5752,10-ha,EST,1202,175,E,1,FF-6,2005,under branchfall,NA,NA,NA
+2758,5752,10-ha,EST,1202,193,A,4,FF-6,2005,under branchfall,NA,NA,NA
+2785,5752,10-ha,EST,1202,222,C,5,FF-6,2005,under branchfall,NA,NA,NA
+3171,5752,10-ha,EST,1202,610,C,4,FF-6,2005,under branchfall,NA,NA,NA
+3221,5752,10-ha,EST,1202,662,E,1,FF-6,2005,under branchfall,NA,NA,NA
+3227,5752,10-ha,EST,1202,668,E,2,FF-6,2005,under branchfall,NA,NA,NA
+2582,5752,10-ha,EST,1202,6,E,1,FF-6,2006,under branchfall,NA,NA,NA
+2583,5752,10-ha,EST,1202,7,E,1,FF-6,2006,under branchfall,NA,NA,NA
+2584,5752,10-ha,EST,1202,8,E,2,FF-6,2006,under branchfall,NA,NA,NA
+2622,5752,10-ha,EST,1202,48,A,8,FF-6,2006,under branchfall,NA,NA,NA
+2630,5752,10-ha,EST,1202,58,B,9,FF-6,2006,under branchfall,NA,NA,NA
+2657,5752,10-ha,EST,1202,86,B,9,FF-6,2006,under branchfall,NA,NA,NA
+2665,5752,10-ha,EST,1202,94,B,10,FF-6,2006,under branchfall,NA,NA,NA
+2682,5752,10-ha,EST,1202,112,D,10,FF-6,2006,under branchfall,NA,NA,NA
+2685,5752,10-ha,EST,1202,115,C,10,FF-6,2006,under branchfall,NA,NA,NA
+2689,5752,10-ha,EST,1202,120,E,10,FF-6,2006,under branchfall,NA,NA,NA
+2690,5752,10-ha,EST,1202,121,D,8,FF-6,2006,under branchfall,NA,NA,NA
+2758,5752,10-ha,EST,1202,193,A,4,FF-6,2006,under branchfall,NA,NA,NA
+2924,5752,10-ha,EST,1202,365,B,9,FF-6,2006,under branchfall,NA,NA,NA
+2983,5752,10-ha,EST,1202,424,B,3,FF-6,2006,under branchfall,NA,NA,NA
+3043,5752,10-ha,EST,1202,484,B,9,FF-6,2006,under branchfall,NA,NA,NA
+3208,5752,10-ha,EST,1202,649,C,8,FF-6,2006,under branchfall,NA,NA,NA
+3227,5752,10-ha,EST,1202,668,E,2,FF-6,2006,under branchfall,NA,NA,NA
+3239,5752,10-ha,EST,1202,680,E,6,FF-6,2006,under branchfall,NA,NA,NA
+3327,5752,10-ha,EST,1202,768,C,9,FF-6,2006,2x in field,NA,NA,NA
+3348,5752,10-ha,EST,1202,789,C,10,FF-6,2006,under treefall,NA,NA,NA
+3447,5753,1-ha,PAL,3114,51,E,9,FF-4,1999,under treefall,NA,NA,NA
+3462,5753,1-ha,PAL,3114,67,E,9,FF-4,1999,under treefall,NA,NA,NA
+3479,5753,1-ha,PAL,3114,84,B,4,FF-4,1999,under branchfall,NA,NA,NA
+3498,5753,1-ha,PAL,3114,105,B,9,FF-4,1999,under branchfall,NA,NA,NA
+3540,5753,1-ha,PAL,3114,174,D,10,FF-4,1999,under branchfall,NA,NA,NA
+3479,5753,1-ha,PAL,3114,84,B,4,FF-4,2000,under treefall,NA,NA,NA
+3415,5753,1-ha,PAL,3114,17,A,7,FF-4,2002,under branchfall,NA,NA,NA
+3416,5753,1-ha,PAL,3114,18,A,7,FF-4,2002,under branchfall,NA,NA,NA
+3481,5753,1-ha,PAL,3114,86,B,10,FF-4,2002,under litter,NA,NA,NA
+3495,5753,1-ha,PAL,3114,102,D,3,FF-4,2002,under branchfall,NA,NA,NA
+3525,5753,1-ha,PAL,3114,144,A,4,FF-4,2002,under branchfall,NA,NA,NA
+3527,5753,1-ha,PAL,3114,150,A,4,FF-4,2002,under branchfall,NA,NA,NA
+3569,5753,1-ha,PAL,3114,213,C,10,FF-4,2002,under branchfall,NA,NA,NA
+3592,5753,1-ha,PAL,3114,236,D,7,FF-4,2002,under branchfall,NA,NA,NA
+3594,5753,1-ha,PAL,3114,238,B,1,FF-4,2002,under branchfall,NA,NA,NA
+3599,5753,1-ha,PAL,3114,243,E,10,FF-4,2002,under branchfall,NA,NA,NA
+3653,5753,1-ha,PAL,3114,299,D,2,FF-4,2002,under branchfall,NA,NA,NA
+3656,5753,1-ha,PAL,3114,304,A,8,FF-4,2002,under branchfall,NA,NA,NA
+3680,5753,1-ha,PAL,3114,326,E,9,FF-4,2002,under treefall,NA,NA,NA
+3683,5753,1-ha,PAL,3114,329,E,9,FF-4,2002,under branchfall,NA,NA,NA
+3469,5753,1-ha,PAL,3114,412,E,8,FF-4,2002,under branchfall,NA,NA,NA
+3460,5753,1-ha,PAL,3114,65,C,10,FF-4,2003,under branchfall,NA,NA,NA
+3485,5753,1-ha,PAL,3114,91,B,4,FF-4,2003,under branchfall,NA,NA,NA
+3562,5753,1-ha,PAL,3114,206,E,7,FF-4,2003,under litter,NA,NA,NA
+3597,5753,1-ha,PAL,3114,241,E,8,FF-4,2003,under litter,NA,NA,NA
+3643,5753,1-ha,PAL,3114,288,E,7,FF-4,2003,under litter,NA,NA,NA
+3684,5753,1-ha,PAL,3114,330,E,9,FF-4,2003,under branchfall,NA,NA,NA
+3425,5753,1-ha,PAL,3114,28,C,2,FF-4,2004,under branchfall,NA,NA,NA
+3501,5753,1-ha,PAL,3114,108,B,3,FF-4,2004,under branchfall,NA,NA,NA
+3683,5753,1-ha,PAL,3114,329,E,9,FF-4,2004,under branchfall,NA,NA,NA
+3686,5753,1-ha,PAL,3114,332,E,9,FF-4,2004,under branchfall,NA,NA,NA
+3415,5753,1-ha,PAL,3114,17,A,7,FF-4,2005,under treefall,NA,NA,NA
+3425,5753,1-ha,PAL,3114,28,C,2,FF-4,2005,under branchfall,NA,NA,NA
+3468,5753,1-ha,PAL,3114,73,E,10,FF-4,2005,under branchfall,NA,NA,NA
+3477,5753,1-ha,PAL,3114,82,E,3,FF-4,2005,under branchfall,NA,NA,NA
+3515,5753,1-ha,PAL,3114,123,D,4,FF-4,2005,under treefall,NA,NA,NA
+3517,5753,1-ha,PAL,3114,125,A,10,FF-4,2005,under branchfall,NA,NA,NA
+3531,5753,1-ha,PAL,3114,158,D,4,FF-4,2005,under treefall,NA,NA,NA
+3553,5753,1-ha,PAL,3114,196,E,3,FF-4,2005,under branchfall,NA,NA,NA
+3597,5753,1-ha,PAL,3114,241,E,8,FF-4,2005,under litter,NA,NA,NA
+3410,5753,1-ha,PAL,3114,12,E,3,FF-4,2006,under branchfall,NA,NA,NA
+3423,5753,1-ha,PAL,3114,26,D,10,FF-4,2006,under branchfall,NA,NA,NA
+3480,5753,1-ha,PAL,3114,85,E,10,FF-4,2006,under branchfall,NA,NA,NA
+3575,5753,1-ha,PAL,3114,219,B,8,FF-4,2006,under branchfall,NA,NA,NA
+3576,5753,1-ha,PAL,3114,220,D,9,FF-4,2006,under branchfall,NA,NA,NA
+3584,5753,1-ha,PAL,3114,228,A,2,FF-4,2006,under branchfall,NA,NA,NA
+3611,5753,1-ha,PAL,3114,255,A,4,FF-4,2006,under branchfall,NA,NA,NA
+3617,5753,1-ha,PAL,3114,261,D,4,FF-4,2006,under branchfall,NA,NA,NA
+3692,5753,1-ha,PAL,3114,339,E,2,FF-4,2006,under branchfall,NA,NA,NA
+3753,5753,1-ha,PAL,3114,404,D,1,FF-4,2006,under branchfall,NA,NA,NA
+3407,5753,1-ha,PAL,3114,7,E,5,FF-4,2007,under branchfall,NA,NA,NA
+3410,5753,1-ha,PAL,3114,12,E,3,FF-4,2007,under branchfall,NA,NA,NA
+3518,5753,1-ha,PAL,3114,126,A,10,FF-4,2007,under branchfall,NA,NA,NA
+3564,5753,1-ha,PAL,3114,208,B,4,FF-4,2007,under branchfall,NA,NA,NA
+3656,5753,1-ha,PAL,3114,304,A,8,FF-4,2007,under branchfall,NA,NA,NA
+3658,5753,1-ha,PAL,3114,306,C,4,FF-4,2007,under branchfall,NA,NA,NA
+3743,5753,1-ha,PAL,3114,393,E,9,FF-4,2007,under branchfall,NA,NA,NA
+3484,5753,1-ha,PAL,3114,90,A,10,FF-4,2008,resprouting,NA,NA,NA
+3643,5753,1-ha,PAL,3114,288,E,7,FF-4,2008,under branchfall,NA,NA,NA
+3422,5753,1-ha,PAL,3114,25,D,9,FF-4,2009,dried,NA,NA,NA
+3479,5753,1-ha,PAL,3114,84,B,4,FF-4,2009,dried,NA,NA,NA
+3499,5753,1-ha,PAL,3114,106,C,3,FF-4,2009,dried,NA,NA,NA
+3529,5753,1-ha,PAL,3114,156,E,4,FF-4,2009,under branchfall,NA,NA,NA
+3640,5753,1-ha,PAL,3114,285,E,10,FF-4,2009,dried,NA,NA,NA
+3672,5753,1-ha,PAL,3114,319,E,10,FF-4,2009,dried,NA,NA,NA
+3717,5753,1-ha,PAL,3114,364,E,2,FF-4,2009,dried,NA,NA,NA
+3731,5753,1-ha,PAL,3114,381,E,3,FF-4,2009,dried,NA,NA,NA
+7684,5754,10-ha,PortoAlegre,3209,17,C,4,FF-7,1999,under treefall,NA,NA,NA
+7915,5754,10-ha,PortoAlegre,3209,264,D,4,FF-7,1999,under treefall,NA,NA,NA
+7943,5754,10-ha,PortoAlegre,3209,292,D,4,FF-7,1999,under treefall,NA,NA,NA
+7975,5754,10-ha,PortoAlegre,3209,323,C,4,FF-7,1999,under treefall,NA,NA,NA
+7986,5754,10-ha,PortoAlegre,3209,334,B,4,FF-7,1999,under treefall,NA,NA,NA
+7988,5754,10-ha,PortoAlegre,3209,336,B,4,FF-7,1999,under treefall,NA,NA,NA
+7990,5754,10-ha,PortoAlegre,3209,338,D,4,FF-7,1999,under treefall,NA,NA,NA
+7994,5754,10-ha,PortoAlegre,3209,342,B,4,FF-7,1999,under treefall,NA,NA,NA
+7999,5754,10-ha,PortoAlegre,3209,347,C,4,FF-7,1999,under treefall,NA,NA,NA
+8583,5754,10-ha,PortoAlegre,3209,1316,B,4,FF-7,1999,under treefall,NA,NA,NA
+8651,5754,10-ha,PortoAlegre,3209,1390,C,4,FF-7,1999,under treefall,NA,NA,NA
+7684,5754,10-ha,PortoAlegre,3209,17,C,4,FF-7,2000,under treefall,NA,NA,NA
+7742,5754,10-ha,PortoAlegre,3209,88,A,9,FF-7,2000,under branchfall,NA,NA,NA
+7784,5754,10-ha,PortoAlegre,3209,131,B,7,FF-7,2000,under treefall,NA,NA,NA
+7893,5754,10-ha,PortoAlegre,3209,242,B,6,FF-7,2000,under treefall,NA,NA,NA
+7896,5754,10-ha,PortoAlegre,3209,245,A,5,FF-7,2000,under treefall,NA,NA,NA
+7906,5754,10-ha,PortoAlegre,3209,255,A,5,FF-7,2000,under treefall,NA,NA,NA
+7913,5754,10-ha,PortoAlegre,3209,262,A,5,FF-7,2000,under treefall,NA,NA,NA
+7925,5754,10-ha,PortoAlegre,3209,274,B,6,FF-7,2000,under treefall,NA,NA,NA
+7940,5754,10-ha,PortoAlegre,3209,289,E,4,FF-7,2000,under treefall,NA,NA,NA
+7941,5754,10-ha,PortoAlegre,3209,290,E,4,FF-7,2000,under treefall,NA,NA,NA
+7970,5754,10-ha,PortoAlegre,3209,318,A,6,FF-7,2000,under treefall,NA,NA,NA
+7971,5754,10-ha,PortoAlegre,3209,319,A,6,FF-7,2000,under treefall,NA,NA,NA
+7972,5754,10-ha,PortoAlegre,3209,320,A,5,FF-7,2000,under treefall,NA,NA,NA
+7975,5754,10-ha,PortoAlegre,3209,323,C,4,FF-7,2000,under treefall,NA,NA,NA
+7988,5754,10-ha,PortoAlegre,3209,336,B,4,FF-7,2000,under treefall,NA,NA,NA
+7994,5754,10-ha,PortoAlegre,3209,342,B,4,FF-7,2000,under treefall,NA,NA,NA
+8012,5754,10-ha,PortoAlegre,3209,360,D,4,FF-7,2000,under treefall,NA,NA,NA
+8021,5754,10-ha,PortoAlegre,3209,369,E,4,FF-7,2000,under treefall,NA,NA,NA
+8027,5754,10-ha,PortoAlegre,3209,375,E,4,FF-7,2000,under treefall,NA,NA,NA
+8037,5754,10-ha,PortoAlegre,3209,384,B,6,FF-7,2000,under treefall,NA,NA,NA
+8070,5754,10-ha,PortoAlegre,3209,417,D,7,FF-7,2000,under treefall,NA,NA,NA
+8087,5754,10-ha,PortoAlegre,3209,434,B,8,FF-7,2000,under treefall,NA,NA,NA
+8092,5754,10-ha,PortoAlegre,3209,439,A,4,FF-7,2000,under treefall,NA,NA,NA
+8093,5754,10-ha,PortoAlegre,3209,440,C,7,FF-7,2000,under branchfall,NA,NA,NA
+8138,5754,10-ha,PortoAlegre,3209,485,A,4,FF-7,2000,under treefall,NA,NA,NA
+8141,5754,10-ha,PortoAlegre,3209,488,A,5,FF-7,2000,under treefall,NA,NA,NA
+8142,5754,10-ha,PortoAlegre,3209,489,A,7,FF-7,2000,under treefall,NA,NA,NA
+8157,5754,10-ha,PortoAlegre,3209,567,E,4,FF-7,2000,under treefall,NA,NA,NA
+8171,5754,10-ha,PortoAlegre,3209,613,C,4,FF-7,2000,under treefall,NA,NA,NA
+8571,5754,10-ha,PortoAlegre,3209,1305,B,6,FF-7,2000,under treefall,NA,NA,NA
+8576,5754,10-ha,PortoAlegre,3209,1309,B,7,FF-7,2000,under treefall,NA,NA,NA
+8643,5754,10-ha,PortoAlegre,3209,1383,A,6,FF-7,2000,under treefall,NA,NA,NA
+8651,5754,10-ha,PortoAlegre,3209,1390,C,4,FF-7,2000,under treefall,NA,NA,NA
+7684,5754,10-ha,PortoAlegre,3209,17,C,4,FF-7,2002,under branchfall,NA,NA,NA
+7743,5754,10-ha,PortoAlegre,3209,89,A,9,FF-7,2002,under branchfall,NA,NA,NA
+7748,5754,10-ha,PortoAlegre,3209,94,B,6,FF-7,2002,under branchfall,NA,NA,NA
+7757,5754,10-ha,PortoAlegre,3209,103,A,10,FF-7,2002,under branchfall,NA,NA,NA
+7761,5754,10-ha,PortoAlegre,3209,107,B,9,FF-7,2002,under branchfall,NA,NA,NA
+7784,5754,10-ha,PortoAlegre,3209,131,B,7,FF-7,2002,under branchfall,NA,NA,NA
+7816,5754,10-ha,PortoAlegre,3209,163,E,9,FF-7,2002,under branchfall,NA,NA,NA
+7835,5754,10-ha,PortoAlegre,3209,184,A,9,FF-7,2002,under branchfall,NA,NA,NA
+7839,5754,10-ha,PortoAlegre,3209,188,E,5,FF-7,2002,under branchfall,NA,NA,NA
+7858,5754,10-ha,PortoAlegre,3209,207,B,6,FF-7,2002,under branchfall,NA,NA,NA
+7874,5754,10-ha,PortoAlegre,3209,223,D,7,FF-7,2002,under branchfall,NA,NA,NA
+7898,5754,10-ha,PortoAlegre,3209,247,E,3,FF-7,2002,under branchfall,NA,NA,NA
+7899,5754,10-ha,PortoAlegre,3209,248,E,5,FF-7,2002,under branchfall,NA,NA,NA
+7911,5754,10-ha,PortoAlegre,3209,260,E,1,FF-7,2002,under branchfall,NA,NA,NA
+7920,5754,10-ha,PortoAlegre,3209,269,B,2,FF-7,2002,under branchfall,NA,NA,NA
+7935,5754,10-ha,PortoAlegre,3209,284,B,1,FF-7,2002,under branchfall,NA,NA,NA
+7940,5754,10-ha,PortoAlegre,3209,289,E,4,FF-7,2002,under treefall,NA,NA,NA
+7947,5754,10-ha,PortoAlegre,3209,296,D,1,FF-7,2002,under branchfall,NA,NA,NA
+7949,5754,10-ha,PortoAlegre,3209,298,D,1,FF-7,2002,under branchfall,NA,NA,NA
+7955,5754,10-ha,PortoAlegre,3209,304,B,6,FF-7,2002,under treefall,NA,NA,NA
+7972,5754,10-ha,PortoAlegre,3209,320,A,5,FF-7,2002,under branchfall,NA,NA,NA
+7975,5754,10-ha,PortoAlegre,3209,323,C,4,FF-7,2002,under branchfall,NA,NA,NA
+7977,5754,10-ha,PortoAlegre,3209,325,E,1,FF-7,2002,under branchfall,NA,NA,NA
+7981,5754,10-ha,PortoAlegre,3209,329,D,5,FF-7,2002,under branchfall,NA,NA,NA
+7982,5754,10-ha,PortoAlegre,3209,330,E,1,FF-7,2002,under branchfall,NA,NA,NA
+7986,5754,10-ha,PortoAlegre,3209,334,B,4,FF-7,2002,under branchfall,NA,NA,NA
+7994,5754,10-ha,PortoAlegre,3209,342,B,4,FF-7,2002,under branchfall,NA,NA,NA
+8000,5754,10-ha,PortoAlegre,3209,348,C,4,FF-7,2002,under branchfall,NA,NA,NA
+8015,5754,10-ha,PortoAlegre,3209,363,E,2,FF-7,2002,under branchfall,NA,NA,NA
+8018,5754,10-ha,PortoAlegre,3209,366,B,4,FF-7,2002,under branchfall,NA,NA,NA
+8034,5754,10-ha,PortoAlegre,3209,382,C,5,FF-7,2002,under branchfall,NA,NA,NA
+8051,5754,10-ha,PortoAlegre,3209,398,D,4,FF-7,2002,under branchfall,NA,NA,NA
+8096,5754,10-ha,PortoAlegre,3209,443,A,9,FF-7,2002,under branchfall,NA,NA,NA
+8130,5754,10-ha,PortoAlegre,3209,477,A,3,FF-7,2002,under branchfall,NA,NA,NA
+8142,5754,10-ha,PortoAlegre,3209,489,A,7,FF-7,2002,under branchfall,NA,NA,NA
+8167,5754,10-ha,PortoAlegre,3209,609,B,7,FF-7,2002,under branchfall,NA,NA,NA
+8170,5754,10-ha,PortoAlegre,3209,612,E,5,FF-7,2002,under branchfall,NA,NA,NA
+8171,5754,10-ha,PortoAlegre,3209,613,C,4,FF-7,2002,under treefall,NA,NA,NA
+8179,5754,10-ha,PortoAlegre,3209,622,E,3,FF-7,2002,under branchfall,NA,NA,NA
+8228,5754,10-ha,PortoAlegre,3209,671,D,9,FF-7,2002,under branchfall,NA,NA,NA
+8239,5754,10-ha,PortoAlegre,3209,682,D,7,FF-7,2002,under branchfall,NA,NA,NA
+8244,5754,10-ha,PortoAlegre,3209,688,D,7,FF-7,2002,under branchfall,NA,NA,NA
+8250,5754,10-ha,PortoAlegre,3209,694,D,7,FF-7,2002,under treefall,NA,NA,NA
+8255,5754,10-ha,PortoAlegre,3209,699,D,9,FF-7,2002,under branchfall,NA,NA,NA
+8273,5754,10-ha,PortoAlegre,3209,717,C,6,FF-7,2002,under treefall,NA,NA,NA
+8336,5754,10-ha,PortoAlegre,3209,778,C,6,FF-7,2002,under treefall,NA,NA,NA
+8470,5754,10-ha,PortoAlegre,3209,904,E,1,FF-7,2002,under branchfall,NA,NA,NA
+8484,5754,10-ha,PortoAlegre,3209,917,E,5,FF-7,2002,under branchfall,NA,NA,NA
+8487,5754,10-ha,PortoAlegre,3209,920,E,2,FF-7,2002,under branchfall,NA,NA,NA
+8490,5754,10-ha,PortoAlegre,3209,923,E,1,FF-7,2002,under branchfall,NA,NA,NA
+8514,5754,10-ha,PortoAlegre,3209,947,E,1,FF-7,2002,under branchfall,NA,NA,NA
+8571,5754,10-ha,PortoAlegre,3209,1305,B,6,FF-7,2002,under branchfall,NA,NA,NA
+8576,5754,10-ha,PortoAlegre,3209,1309,B,7,FF-7,2002,under branchfall,NA,NA,NA
+8580,5754,10-ha,PortoAlegre,3209,1313,E,4,FF-7,2002,under branchfall,NA,NA,NA
+8585,5754,10-ha,PortoAlegre,3209,1318,D,5,FF-7,2002,under branchfall,NA,NA,NA
+8587,5754,10-ha,PortoAlegre,3209,1320,C,7,FF-7,2002,under treefall,NA,NA,NA
+8620,5754,10-ha,PortoAlegre,3209,1361,C,4,FF-7,2002,under branchfall,NA,NA,NA
+7748,5754,10-ha,PortoAlegre,3209,94,B,6,FF-7,2003,under branchfall,NA,NA,NA
+7858,5754,10-ha,PortoAlegre,3209,207,B,6,FF-7,2003,under branchfall,NA,NA,NA
+7834,5754,10-ha,PortoAlegre,3209,183,B,9,FF-7,2004,under branchfall,NA,NA,NA
+7986,5754,10-ha,PortoAlegre,3209,334,B,4,FF-7,2004,under branchfall,NA,NA,NA
+8182,5754,10-ha,PortoAlegre,3209,625,A,8,FF-7,2004,under branchfall,NA,NA,NA
+8218,5754,10-ha,PortoAlegre,3209,661,B,8,FF-7,2004,under branchfall,NA,NA,NA
+8273,5754,10-ha,PortoAlegre,3209,717,C,6,FF-7,2004,under branchfall,NA,NA,NA
+8285,5754,10-ha,PortoAlegre,3209,729,E,4,FF-7,2004,under treefall,NA,NA,NA
+8289,5754,10-ha,PortoAlegre,3209,733,E,4,FF-7,2004,under treefall,NA,NA,NA
+8333,5754,10-ha,PortoAlegre,3209,775,C,8,FF-7,2004,under branchfall,NA,NA,NA
+8492,5754,10-ha,PortoAlegre,3209,925,E,3,FF-7,2004,under branchfall,NA,NA,NA
+8578,5754,10-ha,PortoAlegre,3209,1311,E,4,FF-7,2004,under treefall,NA,NA,NA
+8586,5754,10-ha,PortoAlegre,3209,1319,E,4,FF-7,2004,under treefall,NA,NA,NA
+8635,5754,10-ha,PortoAlegre,3209,1375,B,10,FF-7,2004,under branchfall,NA,NA,NA
+7786,5754,10-ha,PortoAlegre,3209,133,C,8,FF-7,2005,under branchfall,NA,NA,NA
+7794,5754,10-ha,PortoAlegre,3209,141,C,8,FF-7,2005,under branchfall,NA,NA,NA
+7810,5754,10-ha,PortoAlegre,3209,157,C,9,FF-7,2005,under branchfall,NA,NA,NA
+7848,5754,10-ha,PortoAlegre,3209,197,B,8,FF-7,2005,under branchfall,NA,NA,NA
+7866,5754,10-ha,PortoAlegre,3209,215,A,8,FF-7,2005,under branchfall,NA,NA,NA
+7935,5754,10-ha,PortoAlegre,3209,284,B,1,FF-7,2005,under branchfall,NA,NA,NA
+8017,5754,10-ha,PortoAlegre,3209,365,E,4,FF-7,2005,under branchfall,NA,NA,NA
+8056,5754,10-ha,PortoAlegre,3209,403,B,1,FF-7,2005,under branchfall,NA,NA,NA
+8268,5754,10-ha,PortoAlegre,3209,712,C,8,FF-7,2005,under branchfall,NA,NA,NA
+8357,5754,10-ha,PortoAlegre,3209,800,C,8,FF-7,2005,under branchfall,NA,NA,NA
+8368,5754,10-ha,PortoAlegre,3209,810,A,5,FF-7,2005,under branchfall,NA,NA,duplicate tag number
+7732,5754,10-ha,PortoAlegre,3209,76,E,9,FF-7,2006,under branchfall,NA,NA,NA
+7788,5754,10-ha,PortoAlegre,3209,135,B,10,FF-7,2006,under branchfall,NA,NA,NA
+7853,5754,10-ha,PortoAlegre,3209,202,C,9,FF-7,2006,under treefall,NA,NA,NA
+7864,5754,10-ha,PortoAlegre,3209,213,A,8,FF-7,2006,under branchfall,NA,NA,NA
+7891,5754,10-ha,PortoAlegre,3209,240,A,9,FF-7,2006,under branchfall,NA,NA,NA
+7986,5754,10-ha,PortoAlegre,3209,334,B,4,FF-7,2006,under treefall,NA,NA,NA
+8002,5754,10-ha,PortoAlegre,3209,350,E,3,FF-7,2006,under branchfall,NA,NA,NA
+8051,5754,10-ha,PortoAlegre,3209,398,D,4,FF-7,2006,under treefall,NA,NA,NA
+8220,5754,10-ha,PortoAlegre,3209,663,B,2,FF-7,2006,under branchfall,NA,NA,NA
+8439,5754,10-ha,PortoAlegre,3209,858,A,8,FF-7,2006,under branchfall,NA,NA,duplicate tag number
+8441,5754,10-ha,PortoAlegre,3209,859,A,8,FF-7,2006,under treefall,NA,NA,duplicate tag number
+8495,5754,10-ha,PortoAlegre,3209,928,A,9,FF-7,2006,under branchfall,NA,NA,NA
+8527,5754,10-ha,PortoAlegre,3209,960,B,7,FF-7,2006,under treefall,NA,NA,NA
+3828,5756,CF,EST,1501,22,A,5,CF-3,1999,under branchfall,NA,NA,NA
+3868,5756,CF,EST,1501,61,A,5,CF-3,1999,under branchfall,NA,NA,NA
+3877,5756,CF,EST,1501,70,B,5,CF-3,1999,under branchfall,NA,NA,NA
+3890,5756,CF,EST,1501,83,B,6,CF-3,1999,under treefall,NA,NA,NA
+3898,5756,CF,EST,1501,91,B,7,CF-3,1999,under treefall,NA,NA,NA
+3901,5756,CF,EST,1501,94,B,7,CF-3,1999,under treefall,NA,NA,NA
+3902,5756,CF,EST,1501,95,B,7,CF-3,1999,under treefall,NA,NA,NA
+3905,5756,CF,EST,1501,98,B,7,CF-3,1999,under treefall,NA,NA,NA
+3908,5756,CF,EST,1501,101,B,6,CF-3,1999,under treefall,NA,NA,NA
+4090,5756,CF,EST,1501,287,A,5,CF-3,1999,under treefall,NA,NA,NA
+4225,5756,CF,EST,1501,426,B,7,CF-3,1999,under treefall,NA,NA,NA
+4233,5756,CF,EST,1501,434,B,7,CF-3,1999,under treefall,NA,NA,NA
+4248,5756,CF,EST,1501,449,B,8,CF-3,1999,under treefall,NA,NA,NA
+4271,5756,CF,EST,1501,472,B,7,CF-3,1999,under treefall,NA,NA,NA
+3902,5756,CF,EST,1501,95,B,7,CF-3,2000,under treefall,NA,NA,NA
+3905,5756,CF,EST,1501,98,B,7,CF-3,2000,under treefall,NA,NA,NA
+3998,5756,CF,EST,1501,194,A,4,CF-3,2000,under branchfall,NA,NA,NA
+4044,5756,CF,EST,1501,240,D,2,CF-3,2000,under branchfall,NA,NA,NA
+4090,5756,CF,EST,1501,287,A,5,CF-3,2000,under treefall,NA,NA,NA
+4137,5756,CF,EST,1501,334,A,5,CF-3,2000,under treefall,NA,NA,NA
+4202,5756,CF,EST,1501,403,B,6,CF-3,2000,under treefall,NA,NA,NA
+4206,5756,CF,EST,1501,407,A,6,CF-3,2000,under treefall,NA,NA,NA
+4225,5756,CF,EST,1501,426,B,7,CF-3,2000,under treefall,NA,NA,NA
+4248,5756,CF,EST,1501,449,B,8,CF-3,2000,under treefall,NA,NA,NA
+4271,5756,CF,EST,1501,472,B,7,CF-3,2000,under treefall,NA,NA,NA
+4285,5756,CF,EST,1501,486,D,8,CF-3,2000,under treefall,NA,NA,NA
+4306,5756,CF,EST,1501,507,D,8,CF-3,2000,under treefall,NA,NA,NA
+4316,5756,CF,EST,1501,517,E,8,CF-3,2000,under treefall,NA,NA,NA
+4326,5756,CF,EST,1501,527,E,8,CF-3,2000,under treefall,NA,NA,NA
+4397,5756,CF,EST,1501,598,D,5,CF-3,2000,under treefall,NA,NA,NA
+4464,5756,CF,EST,1501,665,A,2,CF-3,2000,under branchfall,NA,NA,NA
+4679,5756,CF,EST,1501,880,E,8,CF-3,2000,under treefall,NA,NA,NA
+4128,5756,CF,EST,1501,325,A,5,CF-3,2001,under branchfall,NA,NA,NA
+3820,5756,CF,EST,1501,15,A,5,CF-3,2002,under branchfall,NA,NA,NA
+3832,5756,CF,EST,1501,26,A,5,CF-3,2002,under branchfall,NA,NA,NA
+3844,5756,CF,EST,1501,37,D,3,CF-3,2002,under branchfall,NA,NA,NA
+3877,5756,CF,EST,1501,70,B,5,CF-3,2002,under branchfall,NA,NA,NA
+3901,5756,CF,EST,1501,94,B,7,CF-3,2002,under branchfall,NA,NA,NA
+3916,5756,CF,EST,1501,109,C,8,CF-3,2002,under treefall,NA,NA,NA
+3921,5756,CF,EST,1501,114,A,3,CF-3,2002,under branchfall,NA,NA,NA
+3922,5756,CF,EST,1501,115,C,8,CF-3,2002,under treefall,NA,NA,NA
+3983,5756,CF,EST,1501,179,B,1,CF-3,2002,under branchfall,NA,NA,NA
+3997,5756,CF,EST,1501,193,A,3,CF-3,2002,under branchfall,NA,NA,NA
+4007,5756,CF,EST,1501,203,C,1,CF-3,2002,under branchfall,NA,NA,NA
+4053,5756,CF,EST,1501,249,D,2,CF-3,2002,under branchfall,NA,NA,NA
+4078,5756,CF,EST,1501,274,E,3,CF-3,2002,under branchfall,NA,NA,NA
+4080,5756,CF,EST,1501,276,E,4,CF-3,2002,under branchfall,NA,NA,NA
+4088,5756,CF,EST,1501,284,C,3,CF-3,2002,under branchfall,NA,NA,NA
+4092,5756,CF,EST,1501,289,A,3,CF-3,2002,under branchfall,NA,NA,NA
+4093,5756,CF,EST,1501,290,A,5,CF-3,2002,under branchfall,NA,NA,NA
+4129,5756,CF,EST,1501,326,A,5,CF-3,2002,under branchfall,NA,NA,NA
+4137,5756,CF,EST,1501,334,A,5,CF-3,2002,under branchfall,NA,NA,NA
+4149,5756,CF,EST,1501,347,E,6,CF-3,2002,under branchfall,NA,NA,NA
+4162,5756,CF,EST,1501,360,C,1,CF-3,2002,under branchfall,NA,NA,NA
+4175,5756,CF,EST,1501,374,E,6,CF-3,2002,under branchfall,NA,NA,NA
+4181,5756,CF,EST,1501,380,B,5,CF-3,2002,under branchfall,NA,NA,NA
+4192,5756,CF,EST,1501,391,C,5,CF-3,2002,under branchfall,NA,NA,NA
+4195,5756,CF,EST,1501,394,B,5,CF-3,2002,under branchfall,NA,NA,NA
+4218,5756,CF,EST,1501,419,B,5,CF-3,2002,under branchfall,NA,NA,NA
+4229,5756,CF,EST,1501,430,D,7,CF-3,2002,under branchfall,NA,NA,NA
+4249,5756,CF,EST,1501,450,E,7,CF-3,2002,under branchfall,NA,NA,NA
+4323,5756,CF,EST,1501,524,E,9,CF-3,2002,under branchfall,NA,NA,NA
+4341,5756,CF,EST,1501,542,A,4,CF-3,2002,under branchfall,NA,NA,NA
+4364,5756,CF,EST,1501,565,D,8,CF-3,2002,under branchfall,NA,NA,NA
+4386,5756,CF,EST,1501,587,D,8,CF-3,2002,under treefall,NA,NA,NA
+4396,5756,CF,EST,1501,597,E,3,CF-3,2002,under branchfall,NA,NA,NA
+4397,5756,CF,EST,1501,598,D,5,CF-3,2002,under branchfall,NA,NA,NA
+4398,5756,CF,EST,1501,599,C,4,CF-3,2002,under branchfall,NA,NA,NA
+4515,5756,CF,EST,1501,716,C,6,CF-3,2002,under branchfall,NA,NA,NA
+4524,5756,CF,EST,1501,725,E,4,CF-3,2002,under treefall,NA,NA,NA
+4526,5756,CF,EST,1501,727,D,1,CF-3,2002,under branchfall,NA,NA,NA
+4542,5756,CF,EST,1501,743,D,6,CF-3,2002,under branchfall,NA,NA,NA
+4545,5756,CF,EST,1501,746,D,8,CF-3,2002,under branchfall,NA,NA,NA
+4625,5756,CF,EST,1501,826,A,5,CF-3,2002,under branchfall,NA,NA,NA
+4647,5756,CF,EST,1501,848,C,8,CF-3,2002,under branchfall,NA,NA,NA
+4651,5756,CF,EST,1501,852,C,1,CF-3,2002,under branchfall,NA,NA,NA
+4679,5756,CF,EST,1501,880,E,8,CF-3,2002,under branchfall,NA,NA,NA
+4739,5756,CF,EST,1501,939,D,10,CF-3,2002,under treefall,NA,NA,NA
+3837,5756,CF,EST,1501,30,A,4,CF-3,2003,under branchfall,NA,NA,NA
+3877,5756,CF,EST,1501,70,B,5,CF-3,2003,under branchfall,NA,NA,NA
+3985,5756,CF,EST,1501,181,A,3,CF-3,2003,under branchfall,NA,NA,NA
+4038,5756,CF,EST,1501,234,D,2,CF-3,2003,under branchfall,NA,NA,NA
+4084,5756,CF,EST,1501,280,A,5,CF-3,2003,under branchfall,NA,NA,NA
+4212,5756,CF,EST,1501,413,C,10,CF-3,2003,under branchfall,NA,NA,NA
+4386,5756,CF,EST,1501,587,D,8,CF-3,2003,under branchfall,NA,NA,NA
+3893,5756,CF,EST,1501,86,C,8,CF-3,2004,under branchfall,NA,NA,NA
+3894,5756,CF,EST,1501,87,B,7,CF-3,2004,under branchfall,NA,NA,NA
+3901,5756,CF,EST,1501,94,B,7,CF-3,2004,under branchfall,NA,NA,NA
+3925,5756,CF,EST,1501,118,E,9,CF-3,2004,under branchfall,NA,NA,NA
+3949,5756,CF,EST,1501,143,A,4,CF-3,2004,under branchfall,NA,NA,NA
+4017,5756,CF,EST,1501,213,A,1,CF-3,2004,under branchfall,NA,NA,NA
+4019,5756,CF,EST,1501,215,A,2,CF-3,2004,under branchfall,NA,NA,NA
+4030,5756,CF,EST,1501,226,D,1,CF-3,2004,under branchfall,NA,NA,NA
+4082,5756,CF,EST,1501,278,A,5,CF-3,2004,under branchfall,NA,NA,NA
+4157,5756,CF,EST,1501,355,E,7,CF-3,2004,under branchfall,NA,NA,NA
+4185,5756,CF,EST,1501,384,A,5,CF-3,2004,under branchfall,NA,NA,NA
+4202,5756,CF,EST,1501,403,B,6,CF-3,2004,under branchfall,NA,NA,NA
+4215,5756,CF,EST,1501,416,B,6,CF-3,2004,under branchfall,NA,NA,NA
+4226,5756,CF,EST,1501,427,C,9,CF-3,2004,under branchfall,NA,NA,NA
+4238,5756,CF,EST,1501,439,C,6,CF-3,2004,under branchfall,NA,NA,NA
+4253,5756,CF,EST,1501,454,C,10,CF-3,2004,under branchfall,NA,NA,NA
+4269,5756,CF,EST,1501,470,B,9,CF-3,2004,under branchfall,NA,NA,NA
+4331,5756,CF,EST,1501,532,A,6,CF-3,2004,under branchfall,NA,NA,NA
+4351,5756,CF,EST,1501,552,D,7,CF-3,2004,under treefall,NA,NA,NA
+4389,5756,CF,EST,1501,590,A,7,CF-3,2004,under branchfall,NA,NA,NA
+4483,5756,CF,EST,1501,684,E,1,CF-3,2004,under branchfall,NA,NA,NA
+4505,5756,CF,EST,1501,706,C,3,CF-3,2004,under branchfall,NA,NA,NA
+4656,5756,CF,EST,1501,857,B,7,CF-3,2004,under branchfall,NA,NA,NA
+4700,5756,CF,EST,1501,901,A,6,CF-3,2004,under branchfall,NA,NA,NA
+4708,5756,CF,EST,1501,909,A,6,CF-3,2004,under branchfall,NA,NA,NA
+4714,5756,CF,EST,1501,915,A,6,CF-3,2004,under branchfall,NA,NA,NA
+4799,5756,CF,EST,1501,999,A,6,CF-3,2004,under branchfall,NA,NA,NA
+4832,5756,CF,EST,1501,1234,C,2,CF-3,2004,under branchfall,NA,NA,NA
+4833,5756,CF,EST,1501,1235,B,6,CF-3,2004,under branchfall,NA,NA,NA
+3897,5756,CF,EST,1501,90,B,6,CF-3,2005,under branchfall,NA,NA,NA
+3901,5756,CF,EST,1501,94,B,7,CF-3,2005,under branchfall,NA,NA,NA
+3916,5756,CF,EST,1501,109,C,8,CF-3,2005,under branchfall,NA,NA,NA
+3928,5756,CF,EST,1501,121,A,2,CF-3,2005,under branchfall,NA,NA,NA
+3944,5756,CF,EST,1501,138,A,3,CF-3,2005,under branchfall,NA,NA,NA
+4061,5756,CF,EST,1501,257,E,2,CF-3,2005,under branchfall,NA,NA,NA
+4100,5756,CF,EST,1501,297,A,6,CF-3,2005,under branchfall,NA,NA,NA
+4108,5756,CF,EST,1501,305,A,5,CF-3,2005,under branchfall,NA,NA,NA
+4169,5756,CF,EST,1501,368,E,7,CF-3,2005,under branchfall,NA,NA,NA
+4181,5756,CF,EST,1501,380,B,5,CF-3,2005,under branchfall,NA,NA,NA
+4185,5756,CF,EST,1501,384,A,5,CF-3,2005,under branchfall,NA,NA,NA
+4192,5756,CF,EST,1501,391,C,5,CF-3,2005,under branchfall,NA,NA,NA
+4253,5756,CF,EST,1501,454,C,10,CF-3,2005,under branchfall,NA,NA,NA
+4389,5756,CF,EST,1501,590,A,7,CF-3,2005,under branchfall,NA,NA,NA
+4426,5756,CF,EST,1501,628,E,2,CF-3,2005,under branchfall,NA,NA,NA
+4542,5756,CF,EST,1501,743,D,6,CF-3,2005,under branchfall,NA,NA,NA
+4641,5756,CF,EST,1501,842,B,7,CF-3,2005,under branchfall,NA,NA,NA
+4656,5756,CF,EST,1501,857,B,7,CF-3,2005,under branchfall,NA,NA,NA
+4688,5756,CF,EST,1501,889,D,10,CF-3,2005,under branchfall,NA,NA,NA
+4777,5756,CF,EST,1501,977,E,6,CF-3,2005,under branchfall,NA,NA,NA
+4913,5756,CF,EST,1501,1613,E,2,CF-3,2005,under branchfall,NA,NA,NA
+3820,5756,CF,EST,1501,15,A,5,CF-3,2006,under branchfall,NA,NA,NA
+3835,5756,CF,EST,1501,29,E,2,CF-3,2006,2x in field,NA,NA,NA
+3857,5756,CF,EST,1501,50,A,2,CF-3,2006,under treefall,NA,NA,NA
+3912,5756,CF,EST,1501,105,C,9,CF-3,2006,under branchfall,NA,NA,NA
+3914,5756,CF,EST,1501,107,D,8,CF-3,2006,under branchfall,NA,NA,NA
+3930,5756,CF,EST,1501,123,A,2,CF-3,2006,under branchfall,NA,NA,NA
+3934,5756,CF,EST,1501,127,A,2,CF-3,2006,under branchfall,NA,NA,NA
+3936,5756,CF,EST,1501,129,A,3,CF-3,2006,under branchfall,NA,NA,NA
+3952,5756,CF,EST,1501,146,A,2,CF-3,2006,under branchfall,NA,NA,NA
+3965,5756,CF,EST,1501,160,B,2,CF-3,2006,under branchfall,NA,NA,NA
+3968,5756,CF,EST,1501,163,D,1,CF-3,2006,under branchfall,NA,NA,NA
+3974,5756,CF,EST,1501,170,B,3,CF-3,2006,under branchfall,NA,NA,NA
+3982,5756,CF,EST,1501,178,A,4,CF-3,2006,under branchfall,NA,NA,NA
+3990,5756,CF,EST,1501,186,A,2,CF-3,2006,under branchfall,NA,NA,NA
+3997,5756,CF,EST,1501,193,A,3,CF-3,2006,under branchfall,NA,NA,NA
+4088,5756,CF,EST,1501,284,C,3,CF-3,2006,under branchfall,NA,NA,NA
+4113,5756,CF,EST,1501,310,A,4,CF-3,2006,under branchfall,NA,NA,NA
+4146,5756,CF,EST,1501,344,B,5,CF-3,2006,under branchfall,NA,NA,NA
+4181,5756,CF,EST,1501,380,B,5,CF-3,2006,under branchfall,NA,NA,NA
+4192,5756,CF,EST,1501,391,C,5,CF-3,2006,under branchfall,NA,NA,NA
+4215,5756,CF,EST,1501,416,B,6,CF-3,2006,under branchfall,NA,NA,NA
+4253,5756,CF,EST,1501,454,C,10,CF-3,2006,under branchfall,NA,NA,NA
+4272,5756,CF,EST,1501,473,A,10,CF-3,2006,under litter,NA,NA,NA
+4296,5756,CF,EST,1501,497,C,9,CF-3,2006,under branchfall,NA,NA,NA
+4299,5756,CF,EST,1501,500,D,9,CF-3,2006,under branchfall,NA,NA,NA
+4331,5756,CF,EST,1501,532,A,6,CF-3,2006,under branchfall,NA,NA,NA
+4444,5756,CF,EST,1501,646,A,2,CF-3,2006,under branchfall,NA,NA,NA
+4641,5756,CF,EST,1501,842,B,7,CF-3,2006,under branchfall,NA,NA,NA
+4738,5756,CF,EST,1501,938,C,8,CF-3,2006,under litter,NA,NA,NA
+4882,5756,CF,EST,1501,1283,B,4,CF-3,2006,under branchfall,NA,NA,NA
+4926,5756,CF,EST,1501,1626,A,2,CF-3,2006,under branchfall,NA,NA,NA
+3818,5756,CF,EST,1501,13,A,2,CF-3,2007,under branchfall,NA,NA,NA
+3839,5756,CF,EST,1501,32,C,2,CF-3,2007,under branchfall,NA,NA,NA
+3857,5756,CF,EST,1501,50,A,2,CF-3,2007,under treefall,NA,NA,NA
+3907,5756,CF,EST,1501,100,D,7,CF-3,2007,under branchfall,NA,NA,NA
+3912,5756,CF,EST,1501,105,C,9,CF-3,2007,under branchfall,NA,NA,NA
+3928,5756,CF,EST,1501,121,A,2,CF-3,2007,under branchfall,NA,NA,NA
+4115,5756,CF,EST,1501,312,E,3,CF-3,2007,under branchfall,NA,NA,NA
+4147,5756,CF,EST,1501,345,B,5,CF-3,2007,resprouting,NA,NA,NA
+4215,5756,CF,EST,1501,416,B,6,CF-3,2007,under branchfall,NA,NA,NA
+4221,5756,CF,EST,1501,422,B,6,CF-3,2007,under branchfall,NA,NA,NA
+4253,5756,CF,EST,1501,454,C,10,CF-3,2007,under branchfall,NA,NA,NA
+4389,5756,CF,EST,1501,590,A,7,CF-3,2007,under branchfall,NA,NA,NA
+4411,5756,CF,EST,1501,613,C,1,CF-3,2007,under branchfall,NA,NA,NA
+4415,5756,CF,EST,1501,617,A,2,CF-3,2007,under branchfall,NA,NA,NA
+4641,5756,CF,EST,1501,842,B,7,CF-3,2007,under branchfall,NA,NA,NA
+4656,5756,CF,EST,1501,857,B,7,CF-3,2007,under branchfall,NA,NA,NA
+4748,5756,CF,EST,1501,948,D,9,CF-3,2007,under branchfall,NA,NA,NA
+4882,5756,CF,EST,1501,1283,B,4,CF-3,2007,under branchfall,NA,NA,NA
+4957,5756,CF,EST,1501,1656,D,7,CF-3,2007,under branchfall,NA,NA,NA
+4803,5756,CF,EST,1501,1203,C,7,CF-3,2008,under branchfall,NA,NA,NA
+4824,5756,CF,EST,1501,1224,A,3,CF-3,2008,resprouting,NA,NA,NA
+4936,5756,CF,EST,1501,1636,D,9,CF-3,2008,resprouting,NA,NA,NA
+3830,5756,CF,EST,1501,24,D,3,CF-3,2009,under branchfall,NA,NA,NA
+3911,5756,CF,EST,1501,104,B,5,CF-3,2009,under branchfall,NA,NA,NA
+3917,5756,CF,EST,1501,110,C,8,CF-3,2009,under branchfall,NA,NA,NA
+3923,5756,CF,EST,1501,116,C,9,CF-3,2009,under branchfall,NA,NA,NA
+3973,5756,CF,EST,1501,169,A,4,CF-3,2009,under branchfall,NA,NA,NA
+4036,5756,CF,EST,1501,232,E,1,CF-3,2009,under branchfall,NA,NA,NA
+4045,5756,CF,EST,1501,241,E,1,CF-3,2009,under branchfall,NA,NA,NA
+4114,5756,CF,EST,1501,311,A,4,CF-3,2009,under branchfall,NA,NA,NA
+4119,5756,CF,EST,1501,316,A,4,CF-3,2009,under branchfall,NA,NA,NA
+4177,5756,CF,EST,1501,376,D,5,CF-3,2009,under branchfall,NA,NA,NA
+4192,5756,CF,EST,1501,391,C,5,CF-3,2009,under branchfall,NA,NA,NA
+4228,5756,CF,EST,1501,429,B,7,CF-3,2009,under branchfall,NA,NA,NA
+4365,5756,CF,EST,1501,566,B,4,CF-3,2009,under branchfall,NA,NA,NA
+4435,5756,CF,EST,1501,637,A,2,CF-3,2009,under branchfall,NA,NA,NA
+4459,5756,CF,EST,1501,660,D,2,CF-3,2009,under branchfall,NA,NA,NA
+4524,5756,CF,EST,1501,725,E,4,CF-3,2009,dried,NA,NA,NA
+4534,5756,CF,EST,1501,735,B,3,CF-3,2009,under branchfall,NA,NA,NA
+4664,5756,CF,EST,1501,865,A,7,CF-3,2009,dried,NA,NA,NA
+4673,5756,CF,EST,1501,874,D,2,CF-3,2009,under branchfall,NA,NA,NA
+4690,5756,CF,EST,1501,891,E,9,CF-3,2009,under branchfall,NA,NA,NA
+4863,5756,CF,EST,1501,1266,B,7,CF-3,2009,under branchfall,NA,NA,NA
+4980,5756,CF,EST,1501,1679,C,2,CF-3,2009,under branchfall,NA,NA,NA
+5035,5756,CF,EST,1501,1737,A,1,CF-3,2009,dried,NA,NA,NA
+5256,CaboFrio-CF,CF,PAL,3402,111,A,10,CF-6,2002,under branchfall,NA,NA,NA
+5287,CaboFrio-CF,CF,PAL,3402,142,B,9,CF-6,2002,under branchfall,NA,NA,NA
+5330,CaboFrio-CF,CF,PAL,3402,186,D,7,CF-6,2002,under branchfall,NA,NA,NA
+5377,CaboFrio-CF,CF,PAL,3402,234,B,8,CF-6,2002,under branchfall,NA,NA,NA
+5406,CaboFrio-CF,CF,PAL,3402,263,B,10,CF-6,2002,under branchfall,NA,NA,NA
+5466,CaboFrio-CF,CF,PAL,3402,323,B,2,CF-6,2002,under branchfall,NA,NA,NA
+5251,CaboFrio-CF,CF,PAL,3402,106,E,4,CF-6,2004,under branchfall,NA,NA,NA
+5277,CaboFrio-CF,CF,PAL,3402,132,B,9,CF-6,2004,under branchfall,NA,NA,NA
+5286,CaboFrio-CF,CF,PAL,3402,141,A,10,CF-6,2004,under branchfall,NA,NA,NA
+5350,CaboFrio-CF,CF,PAL,3402,206,A,10,CF-6,2004,under branchfall,NA,NA,NA
+5362,CaboFrio-CF,CF,PAL,3402,218,B,7,CF-6,2004,under litter,NA,NA,NA
+5377,CaboFrio-CF,CF,PAL,3402,234,B,8,CF-6,2004,under branchfall,NA,NA,NA
+5403,CaboFrio-CF,CF,PAL,3402,260,B,8,CF-6,2004,under branchfall,NA,NA,NA
+5405,CaboFrio-CF,CF,PAL,3402,262,A,9,CF-6,2004,under branchfall,NA,NA,NA
+5436,CaboFrio-CF,CF,PAL,3402,293,B,8,CF-6,2004,under branchfall,NA,NA,NA
+5463,CaboFrio-CF,CF,PAL,3402,320,A,5,CF-6,2004,under branchfall,NA,NA,NA
+5470,CaboFrio-CF,CF,PAL,3402,327,C,4,CF-6,2004,under branchfall,NA,NA,NA
+5482,CaboFrio-CF,CF,PAL,3402,339,C,5,CF-6,2004,under branchfall,NA,NA,NA
+5484,CaboFrio-CF,CF,PAL,3402,341,A,10,CF-6,2004,under branchfall,NA,NA,NA
+5531,CaboFrio-CF,CF,PAL,3402,389,D,1,CF-6,2004,under branchfall,NA,NA,NA
+5251,CaboFrio-CF,CF,PAL,3402,106,E,4,CF-6,2005,under branchfall,NA,NA,NA
+5256,CaboFrio-CF,CF,PAL,3402,111,A,10,CF-6,2005,under branchfall,NA,NA,NA
+5378,CaboFrio-CF,CF,PAL,3402,235,B,1,CF-6,2005,under branchfall,NA,NA,NA
+5484,CaboFrio-CF,CF,PAL,3402,341,A,10,CF-6,2005,under branchfall,NA,NA,NA
+5152,CaboFrio-CF,CF,PAL,3402,4,C,5,CF-6,2006,under branchfall,NA,NA,NA
+5169,CaboFrio-CF,CF,PAL,3402,22,C,5,CF-6,2006,under branchfall,NA,NA,NA
+5216,CaboFrio-CF,CF,PAL,3402,70,D,9,CF-6,2006,under branchfall,NA,NA,NA
+5265,CaboFrio-CF,CF,PAL,3402,120,B,8,CF-6,2006,under branchfall,NA,NA,NA
+5306,CaboFrio-CF,CF,PAL,3402,161,C,8,CF-6,2006,under branchfall,NA,NA,NA
+5343,CaboFrio-CF,CF,PAL,3402,198,D,9,CF-6,2006,under branchfall,NA,NA,NA
+5381,CaboFrio-CF,CF,PAL,3402,238,D,7,CF-6,2006,under branchfall,NA,NA,NA
+5403,CaboFrio-CF,CF,PAL,3402,260,B,8,CF-6,2006,under branchfall,NA,NA,NA
+5436,CaboFrio-CF,CF,PAL,3402,293,B,8,CF-6,2006,under branchfall,NA,NA,NA
+5470,CaboFrio-CF,CF,PAL,3402,327,C,4,CF-6,2006,under branchfall,NA,NA,NA
+5480,CaboFrio-CF,CF,PAL,3402,337,B,8,CF-6,2006,under branchfall,NA,NA,NA
+5505,CaboFrio-CF,CF,PAL,3402,362,D,7,CF-6,2006,under branchfall,NA,NA,NA
+5520,CaboFrio-CF,CF,PAL,3402,378,D,6,CF-6,2006,under branchfall,NA,NA,NA
+5265,CaboFrio-CF,CF,PAL,3402,120,B,8,CF-6,2007,under branchfall,NA,NA,NA
+5300,CaboFrio-CF,CF,PAL,3402,155,B,9,CF-6,2007,under branchfall,NA,NA,NA
+5338,CaboFrio-CF,CF,PAL,3402,194,A,8,CF-6,2007,2x in field,NA,NA,duplicate tag number
+5339,CaboFrio-CF,CF,PAL,3402,194,C,10,CF-6,2007,2x in field,NA,NA,duplicate tag number
+5492,CaboFrio-CF,CF,PAL,3402,349,B,9,CF-6,2007,under branchfall,NA,NA,NA
+5493,CaboFrio-CF,CF,PAL,3402,350,C,2,CF-6,2007,"under branchfall, resprouting",NA,NA,NA
+5505,CaboFrio-CF,CF,PAL,3402,362,D,7,CF-6,2007,under branchfall,NA,NA,NA
+5520,CaboFrio-CF,CF,PAL,3402,378,D,6,CF-6,2007,under treefall,NA,NA,NA
+5273,CaboFrio-CF,CF,PAL,3402,128,B,10,CF-6,2009,dried,NA,NA,NA
+5319,CaboFrio-CF,CF,PAL,3402,175,B,8,CF-6,2009,dried,NA,NA,NA
+5406,CaboFrio-CF,CF,PAL,3402,263,B,10,CF-6,2009,resprouting,NA,NA,NA
+5522,CaboFrio-CF,CF,PAL,3402,380,A,10,CF-6,2009,under branchfall,NA,NA,NA
+5665,Dimona-CF,CF,DIM,none,91,E,8,CF-4,1999,under treefall,NA,NA,NA
+5599,Dimona-CF,CF,DIM,none,24,D,1,CF-4,2002,under branchfall,NA,NA,NA
+5614,Dimona-CF,CF,DIM,none,40,B,6,CF-4,2002,under branchfall,NA,NA,NA
+5676,Dimona-CF,CF,DIM,none,103,A,4,CF-4,2002,under branchfall,NA,NA,NA
+5619,Dimona-CF,CF,DIM,none,45,C,5,CF-4,2004,under branchfall,NA,NA,NA
+5626,Dimona-CF,CF,DIM,none,52,B,7,CF-4,2004,under branchfall,NA,NA,NA
+5697,Dimona-CF,CF,DIM,none,124,C,6,CF-4,2004,under branchfall,NA,NA,NA
+5580,Dimona-CF,CF,DIM,none,4,C,6,CF-4,2005,under branchfall,NA,NA,NA
+5626,Dimona-CF,CF,DIM,none,52,B,7,CF-4,2005,under branchfall,NA,NA,NA
+5683,Dimona-CF,CF,DIM,none,110,B,8,CF-4,2005,under branchfall,NA,NA,NA
+5595,Dimona-CF,CF,DIM,none,20,C,2,CF-4,2006,under branchfall,NA,NA,NA
+5638,Dimona-CF,CF,DIM,none,64,E,9,CF-4,2006,under branchfall,NA,NA,NA
+5695,Dimona-CF,CF,DIM,none,122,B,3,CF-4,2006,under branchfall,NA,NA,NA
+5678,Dimona-CF,CF,DIM,none,105,B,1,CF-4,2007,under branchfall,NA,NA,NA
+5700,Dimona-CF,CF,DIM,none,127,D,6,CF-4,2009,under branchfall,NA,NA,NA
+5852,Florestal-CF,CF,EST,1301,68,A,7,CF-1,1999,under treefall,NA,NA,NA
+5937,Florestal-CF,CF,EST,1301,155,A,7,CF-1,1999,under treefall,NA,NA,NA
+5788,Florestal-CF,CF,EST,1301,3,A,1,CF-1,2000,under treefall,NA,NA,NA
+5814,Florestal-CF,CF,EST,1301,29,A,1,CF-1,2000,under treefall,NA,NA,NA
+5823,Florestal-CF,CF,EST,1301,38,A,3,CF-1,2000,under treefall,NA,NA,NA
+5824,Florestal-CF,CF,EST,1301,39,A,3,CF-1,2000,under treefall,NA,NA,NA
+5845,Florestal-CF,CF,EST,1301,61,A,3,CF-1,2000,under treefall,NA,NA,NA
+5880,Florestal-CF,CF,EST,1301,96,A,1,CF-1,2000,under treefall,NA,NA,NA
+5891,Florestal-CF,CF,EST,1301,107,A,3,CF-1,2000,under treefall,NA,NA,NA
+5903,Florestal-CF,CF,EST,1301,119,A,3,CF-1,2000,under treefall,NA,NA,NA
+5905,Florestal-CF,CF,EST,1301,122,A,3,CF-1,2000,under treefall,NA,NA,NA
+5970,Florestal-CF,CF,EST,1301,189,A,3,CF-1,2000,under treefall,NA,NA,NA
+6096,Florestal-CF,CF,EST,1301,316,E,1,CF-1,2000,under treefall,NA,NA,NA
+6155,Florestal-CF,CF,EST,1301,375,D,2,CF-1,2000,under treefall,NA,NA,NA
+6178,Florestal-CF,CF,EST,1301,398,D,2,CF-1,2000,under treefall,NA,NA,NA
+6187,Florestal-CF,CF,EST,1301,407,D,2,CF-1,2000,under treefall,NA,NA,NA
+6222,Florestal-CF,CF,EST,1301,445,E,1,CF-1,2000,under treefall,NA,NA,NA
+6307,Florestal-CF,CF,EST,1301,532,E,3,CF-1,2000,under treefall,NA,NA,NA
+6385,Florestal-CF,CF,EST,1301,610,E,3,CF-1,2000,under treefall,NA,NA,NA
+6413,Florestal-CF,CF,EST,1301,639,E,3,CF-1,2000,under treefall,NA,NA,NA
+6450,Florestal-CF,CF,EST,1301,676,E,3,CF-1,2000,under treefall,NA,NA,NA
+6459,Florestal-CF,CF,EST,1301,685,D,1,CF-1,2000,under treefall,NA,NA,NA
+6460,Florestal-CF,CF,EST,1301,686,E,3,CF-1,2000,under treefall,NA,NA,NA
+6462,Florestal-CF,CF,EST,1301,688,E,1,CF-1,2000,under treefall,NA,NA,NA
+6467,Florestal-CF,CF,EST,1301,693,E,1,CF-1,2000,under branchfall,NA,NA,NA
+6470,Florestal-CF,CF,EST,1301,696,E,3,CF-1,2000,under treefall,NA,NA,NA
+6490,Florestal-CF,CF,EST,1301,716,E,3,CF-1,2000,under treefall,NA,NA,NA
+6524,Florestal-CF,CF,EST,1301,750,E,4,CF-1,2000,under branchfall,NA,NA,NA
+5825,Florestal-CF,CF,EST,1301,40,A,8,CF-1,2001,under branchfall,NA,NA,NA
+6096,Florestal-CF,CF,EST,1301,316,E,1,CF-1,2001,under branchfall,NA,NA,NA
+6133,Florestal-CF,CF,EST,1301,353,D,2,CF-1,2001,under branchfall,NA,NA,NA
+6143,Florestal-CF,CF,EST,1301,363,D,6,CF-1,2001,under branchfall,NA,NA,NA
+6155,Florestal-CF,CF,EST,1301,375,D,2,CF-1,2001,under branchfall,NA,NA,NA
+6189,Florestal-CF,CF,EST,1301,409,D,1,CF-1,2001,under branchfall,NA,NA,NA
+6195,Florestal-CF,CF,EST,1301,415,D,6,CF-1,2001,under branchfall,NA,NA,NA
+6197,Florestal-CF,CF,EST,1301,417,D,1,CF-1,2001,under branchfall,NA,NA,NA
+6231,Florestal-CF,CF,EST,1301,454,D,5,CF-1,2001,under branchfall,NA,NA,NA
+6266,Florestal-CF,CF,EST,1301,489,D,3,CF-1,2001,under treefall,NA,NA,NA
+6302,Florestal-CF,CF,EST,1301,526,E,1,CF-1,2001,under branchfall,NA,NA,NA
+6320,Florestal-CF,CF,EST,1301,545,D,3,CF-1,2001,under treefall,NA,NA,NA
+6385,Florestal-CF,CF,EST,1301,610,E,3,CF-1,2001,under branchfall,NA,NA,NA
+6508,Florestal-CF,CF,EST,1301,734,A,8,CF-1,2001,under branchfall,NA,NA,NA
+6722,Florestal-CF,CF,EST,1301,951,A,9,CF-1,2001,under treefall,NA,NA,NA
+5898,Florestal-CF,CF,EST,1301,114,A,1,CF-1,2002,under treefall,NA,NA,NA
+5914,Florestal-CF,CF,EST,1301,132,A,3,CF-1,2002,under branchfall,NA,NA,NA
+5958,Florestal-CF,CF,EST,1301,177,B,7,CF-1,2002,under branchfall,NA,NA,NA
+5996,Florestal-CF,CF,EST,1301,215,C,5,CF-1,2002,under branchfall,NA,NA,NA
+6038,Florestal-CF,CF,EST,1301,258,B,7,CF-1,2002,under branchfall,NA,NA,NA
+6073,Florestal-CF,CF,EST,1301,293,D,3,CF-1,2002,under branchfall,NA,NA,NA
+6136,Florestal-CF,CF,EST,1301,356,C,7,CF-1,2002,under branchfall,NA,NA,NA
+6156,Florestal-CF,CF,EST,1301,376,D,5,CF-1,2002,under branchfall,NA,NA,NA
+6189,Florestal-CF,CF,EST,1301,409,D,1,CF-1,2002,under branchfall,NA,NA,NA
+6231,Florestal-CF,CF,EST,1301,454,D,5,CF-1,2002,under branchfall,NA,NA,NA
+6302,Florestal-CF,CF,EST,1301,526,E,1,CF-1,2002,under branchfall,NA,NA,NA
+6348,Florestal-CF,CF,EST,1301,573,E,1,CF-1,2002,under treefall,NA,NA,NA
+6354,Florestal-CF,CF,EST,1301,578,E,1,CF-1,2002,under treefall,NA,NA,NA
+6371,Florestal-CF,CF,EST,1301,595,E,1,CF-1,2002,under branchfall,NA,NA,NA
+6390,Florestal-CF,CF,EST,1301,615,C,5,CF-1,2002,under branchfall,NA,NA,NA
+6436,Florestal-CF,CF,EST,1301,662,E,1,CF-1,2002,under branchfall,NA,NA,NA
+6467,Florestal-CF,CF,EST,1301,693,E,1,CF-1,2002,under branchfall,NA,NA,NA
+6518,Florestal-CF,CF,EST,1301,744,A,3,CF-1,2002,under branchfall,NA,NA,NA
+6577,Florestal-CF,CF,EST,1301,803,A,1,CF-1,2002,under branchfall,NA,NA,NA
+6724,Florestal-CF,CF,EST,1301,953,A,7,CF-1,2002,under treefall,NA,NA,NA
+6772,Florestal-CF,CF,EST,1301,1001,E,1,CF-1,2002,under branchfall,NA,NA,NA
+6867,Florestal-CF,CF,EST,1301,1099,B,2,CF-1,2002,under branchfall,NA,NA,NA
+6942,Florestal-CF,CF,EST,1301,1175,E,7,CF-1,2002,under branchfall,NA,NA,NA
+7023,Florestal-CF,CF,EST,1301,1257,D,1,CF-1,2002,under branchfall,NA,NA,NA
+5841,Florestal-CF,CF,EST,1301,57,A,8,CF-1,2003,under branchfall,NA,NA,NA
+5894,Florestal-CF,CF,EST,1301,110,C,4,CF-1,2003,under branchfall,NA,NA,NA
+5958,Florestal-CF,CF,EST,1301,177,B,7,CF-1,2003,under branchfall,NA,NA,NA
+5977,Florestal-CF,CF,EST,1301,196,A,6,CF-1,2003,under branchfall,NA,NA,NA
+6038,Florestal-CF,CF,EST,1301,258,B,7,CF-1,2003,under branchfall,NA,NA,NA
+6162,Florestal-CF,CF,EST,1301,382,D,6,CF-1,2003,under branchfall,NA,NA,NA
+6172,Florestal-CF,CF,EST,1301,392,D,5,CF-1,2003,under branchfall,NA,NA,NA
+6317,Florestal-CF,CF,EST,1301,542,E,3,CF-1,2003,under branchfall,NA,NA,NA
+6709,Florestal-CF,CF,EST,1301,938,A,4,CF-1,2003,under branchfall,NA,NA,NA
+6884,Florestal-CF,CF,EST,1301,1116,A,1,CF-1,2003,under branchfall,NA,NA,NA
+6904,Florestal-CF,CF,EST,1301,1136,A,2,CF-1,2003,under branchfall,NA,NA,NA
+6934,Florestal-CF,CF,EST,1301,1167,A,2,CF-1,2003,under branchfall,NA,NA,NA
+5847,Florestal-CF,CF,EST,1301,63,B,4,CF-1,2004,under branchfall,NA,NA,NA
+5894,Florestal-CF,CF,EST,1301,110,C,4,CF-1,2004,under branchfall,NA,NA,NA
+5898,Florestal-CF,CF,EST,1301,114,A,1,CF-1,2004,under branchfall,NA,NA,NA
+5937,Florestal-CF,CF,EST,1301,155,A,7,CF-1,2004,under branchfall,NA,NA,NA
+5958,Florestal-CF,CF,EST,1301,177,B,7,CF-1,2004,under branchfall,NA,NA,NA
+6024,Florestal-CF,CF,EST,1301,243,B,6,CF-1,2004,under branchfall,NA,NA,NA
+6038,Florestal-CF,CF,EST,1301,258,B,7,CF-1,2004,under branchfall,NA,NA,NA
+6052,Florestal-CF,CF,EST,1301,272,B,5,CF-1,2004,under branchfall,NA,NA,NA
+6085,Florestal-CF,CF,EST,1301,305,E,1,CF-1,2004,under branchfall,NA,NA,NA
+6184,Florestal-CF,CF,EST,1301,404,D,4,CF-1,2004,under branchfall,NA,NA,NA
+6250,Florestal-CF,CF,EST,1301,473,D,4,CF-1,2004,under branchfall,NA,NA,NA
+6302,Florestal-CF,CF,EST,1301,526,E,1,CF-1,2004,under branchfall,NA,NA,NA
+6325,Florestal-CF,CF,EST,1301,550,D,4,CF-1,2004,under branchfall,NA,NA,NA
+6452,Florestal-CF,CF,EST,1301,678,A,7,CF-1,2004,under branchfall,NA,NA,NA
+6519,Florestal-CF,CF,EST,1301,745,A,7,CF-1,2004,under branchfall,NA,NA,NA
+6564,Florestal-CF,CF,EST,1301,790,A,2,CF-1,2004,under branchfall,NA,NA,NA
+6686,Florestal-CF,CF,EST,1301,914,C,5,CF-1,2004,under branchfall,NA,NA,NA
+6709,Florestal-CF,CF,EST,1301,938,A,4,CF-1,2004,under branchfall,NA,NA,NA
+6711,Florestal-CF,CF,EST,1301,940,A,1,CF-1,2004,under branchfall,NA,NA,NA
+6760,Florestal-CF,CF,EST,1301,989,A,4,CF-1,2004,under branchfall,NA,NA,NA
+6929,Florestal-CF,CF,EST,1301,1162,A,4,CF-1,2004,under branchfall,NA,NA,NA
+7082,Florestal-CF,CF,EST,1301,1415,E,1,CF-1,2004,under branchfall,NA,NA,NA
+7206,Florestal-CF,CF,EST,1301,1541,A,7,CF-1,2004,under branchfall,NA,NA,NA
+5910,Florestal-CF,CF,EST,1301,127,B,6,CF-1,2005,under branchfall,NA,NA,NA
+5958,Florestal-CF,CF,EST,1301,177,B,7,CF-1,2005,under branchfall,NA,NA,NA
+6038,Florestal-CF,CF,EST,1301,258,B,7,CF-1,2005,under branchfall,NA,NA,NA
+6062,Florestal-CF,CF,EST,1301,282,B,6,CF-1,2005,under branchfall,NA,NA,NA
+6325,Florestal-CF,CF,EST,1301,550,D,4,CF-1,2005,under branchfall,NA,NA,NA
+6940,Florestal-CF,CF,EST,1301,1173,A,2,CF-1,2005,under branchfall,NA,NA,NA
+7217,Florestal-CF,CF,EST,1301,1552,C,10,CF-1,2005,under branchfall,NA,NA,NA
+5841,Florestal-CF,CF,EST,1301,57,A,8,CF-1,2006,under branchfall,NA,NA,NA
+5910,Florestal-CF,CF,EST,1301,127,B,6,CF-1,2006,under branchfall,NA,NA,NA
+5927,Florestal-CF,CF,EST,1301,145,A,10,CF-1,2006,under branchfall,NA,NA,NA
+5935,Florestal-CF,CF,EST,1301,153,A,6,CF-1,2006,under branchfall,NA,NA,NA
+6015,Florestal-CF,CF,EST,1301,234,B,7,CF-1,2006,under branchfall,NA,NA,NA
+6062,Florestal-CF,CF,EST,1301,282,B,6,CF-1,2006,under branchfall,NA,NA,NA
+6066,Florestal-CF,CF,EST,1301,286,B,7,CF-1,2006,under branchfall,NA,NA,NA
+6091,Florestal-CF,CF,EST,1301,311,E,1,CF-1,2006,under branchfall,NA,NA,NA
+6175,Florestal-CF,CF,EST,1301,395,D,5,CF-1,2006,under litter,NA,NA,NA
+6235,Florestal-CF,CF,EST,1301,458,C,10,CF-1,2006,under branchfall,NA,NA,NA
+6390,Florestal-CF,CF,EST,1301,615,C,5,CF-1,2006,under branchfall,NA,NA,NA
+6418,Florestal-CF,CF,EST,1301,644,B,6,CF-1,2006,under branchfall,NA,NA,NA
+6522,Florestal-CF,CF,EST,1301,748,A,10,CF-1,2006,under branchfall,NA,NA,NA
+6631,Florestal-CF,CF,EST,1301,857,B,9,CF-1,2006,under branchfall,NA,NA,NA
+6708,Florestal-CF,CF,EST,1301,937,A,2,CF-1,2006,under branchfall,NA,NA,NA
+6714,Florestal-CF,CF,EST,1301,943,A,4,CF-1,2006,under branchfall,NA,NA,NA
+6904,Florestal-CF,CF,EST,1301,1136,A,2,CF-1,2006,under branchfall,NA,NA,NA
+7061,Florestal-CF,CF,EST,1301,1294,A,8,CF-1,2006,under branchfall,NA,NA,NA
+7198,Florestal-CF,CF,EST,1301,1533,D,3,CF-1,2006,under branchfall,NA,NA,NA
+5955,Florestal-CF,CF,EST,1301,1912,C,2,CF-1,2006,under branchfall,NA,NA,NA
+5816,Florestal-CF,CF,EST,1301,31,C,5,CF-1,2007,under branchfall,NA,NA,NA
+5825,Florestal-CF,CF,EST,1301,40,A,8,CF-1,2007,under treefall,NA,NA,NA
+5826,Florestal-CF,CF,EST,1301,41,A,8,CF-1,2007,under treefall,NA,NA,NA
+5833,Florestal-CF,CF,EST,1301,49,A,4,CF-1,2007,under treefall,NA,NA,NA
+5845,Florestal-CF,CF,EST,1301,61,A,3,CF-1,2007,resprouting,NA,NA,NA
+5852,Florestal-CF,CF,EST,1301,68,A,7,CF-1,2007,under branchfall,NA,NA,NA
+5905,Florestal-CF,CF,EST,1301,122,A,3,CF-1,2007,resprouting,NA,NA,NA
+5928,Florestal-CF,CF,EST,1301,146,A,8,CF-1,2007,under treefall,NA,NA,NA
+5935,Florestal-CF,CF,EST,1301,153,A,6,CF-1,2007,under branchfall,NA,NA,NA
+5936,Florestal-CF,CF,EST,1301,154,B,4,CF-1,2007,under branchfall,NA,NA,NA
+6035,Florestal-CF,CF,EST,1301,254,B,7,CF-1,2007,under branchfall,NA,NA,NA
+6053,Florestal-CF,CF,EST,1301,273,C,6,CF-1,2007,under branchfall,NA,NA,NA
+6091,Florestal-CF,CF,EST,1301,311,E,1,CF-1,2007,under branchfall,NA,NA,NA
+6100,Florestal-CF,CF,EST,1301,320,D,6,CF-1,2007,resprouting,NA,NA,NA
+6118,Florestal-CF,CF,EST,1301,338,D,9,CF-1,2007,resprouting,NA,NA,NA
+6133,Florestal-CF,CF,EST,1301,353,D,2,CF-1,2007,under branchfall,NA,NA,NA
+6168,Florestal-CF,CF,EST,1301,388,D,1,CF-1,2007,resprouting,NA,NA,NA
+6184,Florestal-CF,CF,EST,1301,404,D,4,CF-1,2007,resprouting,NA,NA,NA
+6283,Florestal-CF,CF,EST,1301,506,E,3,CF-1,2007,under treefall,NA,NA,NA
+6285,Florestal-CF,CF,EST,1301,508,E,3,CF-1,2007,under treefall,NA,NA,NA
+6287,Florestal-CF,CF,EST,1301,511,E,3,CF-1,2007,under treefall,NA,NA,NA
+6296,Florestal-CF,CF,EST,1301,520,E,4,CF-1,2007,under branchfall,NA,NA,NA
+6303,Florestal-CF,CF,EST,1301,527,E,3,CF-1,2007,under branchfall,NA,NA,NA
+6325,Florestal-CF,CF,EST,1301,550,D,4,CF-1,2007,under branchfall,NA,NA,NA
+6448,Florestal-CF,CF,EST,1301,674,B,5,CF-1,2007,under branchfall,NA,NA,NA
+6469,Florestal-CF,CF,EST,1301,695,E,3,CF-1,2007,under branchfall,NA,NA,NA
+6692,Florestal-CF,CF,EST,1301,921,A,3,CF-1,2007,resprouting,NA,NA,NA
+6727,Florestal-CF,CF,EST,1301,956,A,4,CF-1,2007,under branchfall,NA,NA,NA
+6774,Florestal-CF,CF,EST,1301,1003,D,3,CF-1,2007,under branchfall,NA,NA,NA
+6926,Florestal-CF,CF,EST,1301,1159,B,3,CF-1,2007,under litter,NA,NA,NA
+6934,Florestal-CF,CF,EST,1301,1167,A,2,CF-1,2007,under branchfall,NA,NA,NA
+7071,Florestal-CF,CF,EST,1301,1404,A,2,CF-1,2007,under branchfall,NA,NA,NA
+7108,Florestal-CF,CF,EST,1301,1441,A,2,CF-1,2007,under branchfall,NA,NA,NA
+7111,Florestal-CF,CF,EST,1301,1444,A,2,CF-1,2007,under branchfall,NA,NA,NA
+7112,Florestal-CF,CF,EST,1301,1445,A,2,CF-1,2007,under branchfall,NA,NA,NA
+6376,Florestal-CF,CF,EST,1301,600,E,3,CF-1,2008,resprouting,NA,NA,NA
+7134,Florestal-CF,CF,EST,1301,1467,A,5,CF-1,2008,under treefall,NA,NA,NA
+5847,Florestal-CF,CF,EST,1301,63,B,4,CF-1,2009,under branchfall,NA,NA,NA
+6066,Florestal-CF,CF,EST,1301,286,B,7,CF-1,2009,dried,NA,NA,NA
+6085,Florestal-CF,CF,EST,1301,305,E,1,CF-1,2009,under branchfall,NA,NA,NA
+6138,Florestal-CF,CF,EST,1301,358,D,6,CF-1,2009,under branchfall,NA,NA,NA
+6351,Florestal-CF,CF,EST,1301,576,D,2,CF-1,2009,under branchfall,NA,NA,duplicate tag number
+6535,Florestal-CF,CF,EST,1301,761,A,1,CF-1,2009,dried,NA,NA,NA
+6682,Florestal-CF,CF,EST,1301,910,C,5,CF-1,2009,under branchfall,NA,NA,NA
+6976,Florestal-CF,CF,EST,1301,1209,A,2,CF-1,2009,under branchfall,NA,NA,NA
+7027,Florestal-CF,CF,EST,1301,1261,B,2,CF-1,2009,under branchfall,NA,NA,NA
+7054,Florestal-CF,CF,EST,1301,1287,D,6,CF-1,2009,dried,NA,NA,NA
+7077,Florestal-CF,CF,EST,1301,1410,B,2,CF-1,2009,dried,NA,NA,NA
+7142,Florestal-CF,CF,EST,1301,1474,B,5,CF-1,2009,dried,NA,NA,NA
+7143,Florestal-CF,CF,EST,1301,1475,B,5,CF-1,2009,dried,NA,NA,NA
+7151,Florestal-CF,CF,EST,1301,1483,A,6,CF-1,2009,dried,NA,NA,NA
+7162,Florestal-CF,CF,EST,1301,1495,E,6,CF-1,2009,dried,NA,NA,NA
+7371,PortoAlegre-CF,CF,PAL,none,6,D,7,CF-5,1999,under treefall,NA,NA,NA
+7382,PortoAlegre-CF,CF,PAL,none,18,E,3,CF-5,1999,under branchfall,NA,NA,NA
+7420,PortoAlegre-CF,CF,PAL,none,57,C,10,CF-5,1999,under branchfall,NA,NA,NA
+7444,PortoAlegre-CF,CF,PAL,none,84,E,7,CF-5,1999,under treefall,NA,NA,NA
+7502,PortoAlegre-CF,CF,PAL,none,144,D,7,CF-5,1999,under treefall,NA,NA,NA
+7508,PortoAlegre-CF,CF,PAL,none,150,D,7,CF-5,1999,under treefall,NA,NA,NA
+7508,PortoAlegre-CF,CF,PAL,none,150,D,7,CF-5,2001,under branchfall,NA,NA,NA
+7395,PortoAlegre-CF,CF,PAL,none,32,D,2,CF-5,2002,under branchfall,NA,NA,NA
+7405,PortoAlegre-CF,CF,PAL,none,42,A,2,CF-5,2002,under branchfall,NA,NA,NA
+7407,PortoAlegre-CF,CF,PAL,none,44,A,6,CF-5,2002,under branchfall,NA,NA,NA
+7412,PortoAlegre-CF,CF,PAL,none,49,B,3,CF-5,2002,under branchfall,NA,NA,NA
+7444,PortoAlegre-CF,CF,PAL,none,84,E,7,CF-5,2002,under branchfall,NA,NA,NA
+7464,PortoAlegre-CF,CF,PAL,none,104,D,7,CF-5,2002,under branchfall,NA,NA,NA
+7488,PortoAlegre-CF,CF,PAL,none,130,E,1,CF-5,2002,under branchfall,NA,NA,NA
+7504,PortoAlegre-CF,CF,PAL,none,146,E,7,CF-5,2002,under branchfall,NA,NA,NA
+7508,PortoAlegre-CF,CF,PAL,none,150,D,7,CF-5,2002,under branchfall,NA,NA,NA
+7399,PortoAlegre-CF,CF,PAL,none,36,D,3,CF-5,2004,under branchfall,NA,NA,NA
+7557,PortoAlegre-CF,CF,PAL,none,206,E,8,CF-5,2004,under branchfall,NA,NA,NA
+7447,PortoAlegre-CF,CF,PAL,none,87,D,5,CF-5,2005,under branchfall,NA,NA,NA
+7636,PortoAlegre-CF,CF,PAL,none,295,A,7,CF-5,2005,under branchfall,NA,NA,NA
+7369,PortoAlegre-CF,CF,PAL,none,4,E,5,CF-5,2006,under branchfall,NA,NA,NA
+7453,PortoAlegre-CF,CF,PAL,none,93,B,3,CF-5,2006,under branchfall,NA,NA,NA
+7506,PortoAlegre-CF,CF,PAL,none,148,C,2,CF-5,2006,under branchfall,NA,NA,NA
+7492,PortoAlegre-CF,CF,PAL,none,134,B,1,CF-5,2007,under branchfall,NA,NA,NA
+7626,PortoAlegre-CF,CF,PAL,none,284,C,10,CF-5,2007,2x in field,NA,NA,NA
+7405,PortoAlegre-CF,CF,PAL,none,42,A,2,CF-5,2008,under branchfall,NA,NA,NA
+7552,PortoAlegre-CF,CF,PAL,none,201,E,9,CF-5,2008,resprouting,NA,NA,NA
+7396,PortoAlegre-CF,CF,PAL,none,33,C,4,CF-5,2009,under branchfall,NA,NA,NA
+7405,PortoAlegre-CF,CF,PAL,none,42,A,2,CF-5,2009,under branchfall,NA,NA,NA
+7524,PortoAlegre-CF,CF,PAL,none,169,A,3,CF-5,2009,under branchfall,NA,NA,NA

@@ -191,12 +191,9 @@ merge_with_PA10 <- function(ha_data) {
   # 
   # PA10 <- PA10 %>% rename("plotID"="HA.plot")
   str(ha_data$column)
-  pa_wide$column <-as.factor(pa_wide$column)
-  pa_wide$plot <-as.factor(pa_wide$plot)
-  pa_wide$year <-as.character(pa_wide$year)
-  pa_wide$bdffp_reserve_no <-as.factor(pa_wide$bdffp_reserve_no)
-  pa_wide$column <-as.factor(pa_wide$column)
-  
+  pa_wide$column <-as.character(pa_wide$column)
+  pa_wide$year <-as.numeric(pa_wide$year)
+
   
   # add a unique id number for the pa_wide
   max_ha_id<-max(ha_data$HA_ID_Number,na.rm=TRUE)

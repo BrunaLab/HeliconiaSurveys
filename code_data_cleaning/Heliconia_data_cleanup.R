@@ -10,6 +10,7 @@ library(tidyverse)
 # DATA ENTRY AND NAME CLEANUP ---------------------------------------------
 
 # load the CSV file
+
 ha_data <-
   read.csv(
     "./data_raw/Hacuminata_98-09_12oct2016.csv",
@@ -39,64 +40,35 @@ ha_data <- ha_data %>% rename(
   "code_to_eb" = "notes to emilio"
 )
 names(ha_data)
-#
-# names(ha_data)[2] <- "habitat"
-# names(ha_data)[48] <- "plant_id_07"
-# names(ha_data)[49] <- "row_07"
-# names(ha_data)[50] <- "column_07"
-# names(ha_data)[55] <- "x_08"
-# names(ha_data)[56] <- "y_08"
-# names(ha_data)[57] <- "plant_id_08"
-# names(ha_data)[58] <- "row_08"
-# names(ha_data)[59] <- "column_08"
-# names(ha_data)[64] <- "x_09"
-# names(ha_data)[65] <- "y_09"
-# names(ha_data)[66] <- "code_to_eb"
-# names(ha_data)
+
 
 # correct the data types assigned to each
 str(ha_data)
-
-# set as character
-ha_data$code_to_eb <- as.character(ha_data$code_to_eb)
-
-# set these as a factor
-cols <-
-  c(
-    "plot",
-    "ranch",
-    "column",
-    "notes_1998",
-    "notes_1999",
-    "notes_2000",
-    "notes_2001",
-    "notes_2002",
-    "notes_2003",
-    "notes_2004",
-    "notes_2005",
-    "notes_2006",
-    "notes_2007",
-    "notes_2008",
-    "notes_2009"
-  )
-ha_data[cols] <- lapply(ha_data[cols], factor)
-str(ha_data)
+ha_data <- 
+  ha_data %>%
+  mutate(across(starts_with("notes_"), as.character)) %>% 
+  mutate(across(starts_with("ht_"), as.double)) %>% 
+  mutate(column = as.character(column))
+# a few values for x_09 were entered with a comma instead of decimal
+ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
 
 
 # Convert the names of ranches to 3 letter codes
-levels(ha_data$ranch)[match("PortoAlegre", levels(ha_data$ranch))] <- "PAL"
-levels(ha_data$ranch)[match("Esteio-Colosso", levels(ha_data$ranch))] <- "EST"
-levels(ha_data$ranch)[match("Dimona", levels(ha_data$ranch))] <- "DIM"
-summary(ha_data$ranch)
-
+ha_data <- ha_data %>% 
+  mutate(ranch = str_replace_all(
+    ranch,
+    c("PortoAlegre" = "PAL", "Esteio-Colosso" = "EST", "Dimona" = "DIM"))) %>% 
 # clean up the names of plots
-summary(ha_data$plot)
-levels(ha_data$plot)[match("Dimona CF", levels(ha_data$plot))] <- "Dimona-CF"
-levels(ha_data$plot)[match("PA-CF", levels(ha_data$plot))] <- "PortoAlegre-CF"
-levels(ha_data$plot)[match("Cabo Frio", levels(ha_data$plot))] <- "CaboFrio-CF"
-levels(ha_data$plot)[match("Florestal", levels(ha_data$plot))] <- "Florestal-CF"
-# summary(ha_data$plot)
+  mutate(plot = str_replace_all(
+    plot,
+    c("Dimona CF" = "Dimona-CF",
+      "PA-CF" = "PortoAlegre-CF",
+      "Cabo Frio" = "CaboFrio-CF",
+      "Florestal" = "Florestal-CF")
+  ))
 
+unique(ha_data$ranch)
+unique(ha_data$plot)
 
 plot_info <-
   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>%
@@ -105,14 +77,11 @@ ha_data <- left_join(ha_data, plot_info, by = "plot")
 
 
 rm(plot_info)
-ha_data$plot <- as.factor(ha_data$plot)
 str(ha_data)
-
 
 
 # ADD A UNIQUE ID NUMBER FOR EACH PLANT -----------------------------------
 ha_data <- rowid_to_column(ha_data, "HA_ID_Number")
-
 
 # DATA CLEANING -----------------------------------------------------------
 
@@ -129,72 +98,38 @@ ha_data <- ha_data %>% select(
   -y_08
 )
 
-# colnames(ha_data)
-# rearrange the columns
-ha_data <- ha_data %>% select(order(colnames(.)))
-ha_data <- ha_data %>% relocate(c(row, column, x_09, y_09), .after = habitat)
-ha_data <- ha_data %>% relocate(c(habitat, ranch, plot, plotID),
-  .before = bdffp_reserve_no
-)
-ha_data <- ha_data %>% relocate(tag_number, .after = HA_ID_Number)
-ha_data <- ha_data %>% relocate(starts_with(c("shts_", "ht_", "infl_", "notes_")), .after = y_09)
 
-colnames(ha_data)
 # remove NAs
-ha_data <- ha_data %>% filter(!is.na(HA_ID_Number))
+ha_data <- ha_data %>% filter(!is.na(HA_ID_Number)) #(ERS: this shouldn't do anything.  HA_ID_Number is just the row numbers at this point.)
 
-# # alternate solution using most recent version of tidyr:
-ha_data <- ha_data %>%
-  mutate(across(
-    starts_with(c("shts_", "ht_", "infl_", "notes_")),
-    as.character
-  )) %>%
+# Convert from wide to long format
+
+ha_data <- ha_data %>% 
   pivot_longer(
     cols = starts_with(c("shts_", "ht_", "infl_", "notes_")),
-    names_sep = "\\_",
-    names_to = c("var", "year")
-  ) %>%
-  pivot_wider(names_from = var, values_from = value)
-
-# head(ha_data, 10)
-# colnames(ha_data)
-# summary(ha_data)
-
-ha_data$shts <- as.numeric(as.numeric(ha_data$shts))
-ha_data$ht <- as.numeric(as.numeric(ha_data$ht))
-ha_data$infl <- as.numeric(as.numeric(ha_data$infl))
+    names_to = c(".value", "year"),
+    names_sep = "_"
+  ) %>% 
+  mutate(year = as.numeric(year))
 
 
 # merge the PA10 data -----------------------------------------------------
 source("./code_data_cleaning/merge_with_PA10.R")
 ha_data <- merge_with_PA10(ha_data)
 names(ha_data)
-ha_data <- ha_data %>% rename("code" = "notes")
-# %>%
-#   replace_na(list(infl = 0))   #convert all NA in infl column to zero
-
-
-# stabndardize column classes ---------------------------------------------
-ha_data$infl <- as.character(ha_data$infl)
-ha_data$shts <- as.numeric(as.character(ha_data$shts))
-ha_data$ht <- as.numeric(as.character(ha_data$ht))
-ha_data$plot <- as.factor(ha_data$plot)
-ha_data$plotID <- as.factor(ha_data$plotID)
-ha_data$ranch <- as.factor(ha_data$ranch)
-ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
-ha_data$row <- as.factor(ha_data$row)
-# make habitat (frag size) an ordered factor
-ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
-
-
+ha_data <- ha_data %>% rename("code" = "notes") #(ERS: not sure why)
 
 
 # clean up codes/notes ----------------------------------------------------
 source("./code_data_cleaning/clean_codes.R")
-ha_data <- clean_codes(ha_data)
+ha_data <- clean_codes(ha_data) #ERS: Surprisingly doing things with the infl column.  Did not expect that from the function name.
 
-# levels(as.factor(ha_data$code))
-# levels(as.factor(ha_data$notes))
+#TODO: clean_codes() currently adds codes with parenthetical numbers, then later on those are removed.  Just edit how clean_codes() works instead!
+
+#TODO: remove below code for publication?
+
+# unique(ha_data$code)
+# unique(ha_data$notes)
 
 #
 # codes_to_fix<-ha_data %>% select(tag_number,code) %>%
@@ -203,7 +138,7 @@ ha_data <- clean_codes(ha_data)
 # summary(as.factor(codes_to_fix$code))
 
 # Rearrange plot, then tag number, then year
-ha_data <- ha_data %>% arrange(plot, tag_number, year)
+ha_data <- ha_data %>% arrange(plot, tag_number, year) #ERS: probably not necessary
 head(ha_data, 20)
 
 
@@ -225,13 +160,9 @@ head(ha_data, 20)
 
 
 # remove the rows with NA across all columns -----------------------------
-ha_data <- ha_data %>% drop_na(plot, habitat, ranch)
+ha_data <- ha_data %>% drop_na(plot, habitat, ranch) #ERS: this does nothing currently
 
 # correction - x/y coordinates and row/col--------------------------------
-
-# a few were entered with a comma instead of decimal
-ha_data$x_09 <- gsub("[\\,;]", "\\.", ha_data$x_09)
-ha_data
 
 # some of the errors in plant location (Row/Column) corrected below found
 # by ES, see https://github.com/BrunaLab/HeliconiaDemography/issues/5
@@ -293,12 +224,11 @@ source("./code_data_cleaning/correct_cabofrio_cf.R")
 ha_data <- correct_cabofrio_cf(ha_data)
 
 # add Seedling (y / n) column  --------------------------------------------
-
-ha_data$sdlg_status <- ha_data$code
-ha_data <- ha_data %>%
-  mutate(sdlg_status = replace(as.character(sdlg_status), sdlg_status != "sdlg (1)", NA)) %>%
-  mutate(sdlg_status = replace(as.character(sdlg_status), sdlg_status == "sdlg (1)", "sdlg"))
-levels(as.factor(ha_data$sdlg_status))
+#TODO: this doesn't seem like it belongs in this section
+ha_data <- 
+  ha_data %>% 
+  mutate(sdlg_status = if_else(code == "sdlg (1)", "sdlg", NA_character_))
+unique(ha_data$sdlg_status)
 
 
 
@@ -312,7 +242,7 @@ ha_data$tag_number <- as.integer(ha_data$tag_number)
 
 # correct zombie plants  --------------------------------------------------
 
-# Zombia Plants = marked dead in year t but with measurement of shts or ht
+# Zombie Plants = marked dead in year t but with measurement of shts or ht
 # in a subsequent year, indicating they had lost above-ground parts
 # but were still alive
 
@@ -326,11 +256,6 @@ zombies %>%
   arrange(habitat, desc(N_plants))
 
 # NB 1/226/22: the zombies are due to duplicate numbers
-
-
-
-
-
 
 
 # check for plants with duplicate tag numbers -----------------------------
@@ -380,38 +305,38 @@ nrow(duplicate_tags) == nrow(count_dupes)
 
 
 # delete the (numbers) from the codes -------------------------------------
-
+#TODO: move all this to clean_codes() instead
+# ERS: probably not necessary
+# ha_data <- ha_data %>%
+#   arrange(
+#     habitat,
+#     plot,
+#     plotID,
+#     bdffp_reserve_no,
+#     tag_number,
+#     row,
+#     column,
+#     year
+#   )
+#ERS: why convert to factors?
+# ha_data$code <- as.factor(ha_data$code)
+# ha_data$plot <- as.factor(ha_data$plot)
+# ha_data$duplicate_tag <- as.factor(ha_data$duplicate_tag)
+unique(ha_data$code)
 
 ha_data <- ha_data %>%
-  arrange(
-    habitat,
-    plot,
-    plotID,
-    bdffp_reserve_no,
-    tag_number,
-    row,
-    column,
-    year
-  )
-ha_data$code <- as.factor(ha_data$code)
-ha_data$plot <- as.factor(ha_data$plot)
-ha_data$duplicate_tag <- as.factor(ha_data$duplicate_tag)
-# ha_data$code<-as.character(ha_data$code)
-# levels(as.factor(ha_data$code))
-ha_data <- ha_data %>%
-  separate(code, c("code", "delcode"), sep = " \\(") %>%
+  separate(code, c("code", "delcode"), sep = " \\(") %>% 
+  #gives warning for 1 row with no parenthetical number.  Can be safely ignored.
   select(-delcode)
 
-levels(as.factor(ha_data$code))
-levels(as.factor(ha_data$notes))
+unique(ha_data$code)
+unique(ha_data$notes)
 summary(ha_data)
 
 # simplify codes ----------------------------------------------------------
+unique(ha_data$code)
 
-ha_data$code <- as.factor(ha_data$code)
-ha_data$code <- droplevels(ha_data$code)
-levels(ha_data$code)
-
+#TODO: document what is expected here
 ha_data %>% filter(code == "dead and not on list")
 ha_data %>% filter(code == "under branchfall, resprouting")
 ha_data %>% filter(code == "resprouting")
@@ -424,12 +349,8 @@ ha_data %>% filter(code == "under litter")
 ha_data %>% filter(code == "no tag")
 ha_data %>% filter(code == "missing")
 ha_data %>% filter(code == "under treefall")
-ha_data %>% filter(code == "under treefall")
-ha_data %>% filter(code == "under treefall")
 
-#
-#
-#
+
 # "dried (7)"
 # "2x in field (200)"
 # "90, 10 (two codes)"
@@ -451,12 +372,11 @@ ha_data %>% filter(code == "under treefall")
 
 ULYs <-
   ha_data %>%
-  filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
+  filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>% 
   arrange(notes, plot, year, tag_number) %>%
   select(-ht, -shts, -infl, -x_09, -y_09)
 write_csv(ULYs, "./data_check/ULY_plants.csv")
 
-ha_data$year <- as.numeric(as.character(ha_data$year))
 ULYs_post99 <-
   ha_data %>%
   filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
@@ -488,8 +408,8 @@ MISC_OBS <-
   ) %>%
   arrange(notes, plot, year, tag_number) %>%
   select(-ht, -shts, -infl, -x_09, -y_09)
-levels(as.factor(MISC_OBS$code))
-levels(as.factor(MISC_OBS$notes))
+unique(MISC_OBS$code)
+unique(MISC_OBS$notes)
 write_csv(MISC_OBS, "./data_clean/misc_observations.csv")
 
 # Save CSV of plants that were not on the survey list ---------------------
@@ -500,8 +420,8 @@ Not_on_SurveyList <-
     code == "dead and not on list") %>%
   arrange(plot, tag_number)
 
-levels(as.factor(Not_on_SurveyList$code))
-levels(as.factor(Not_on_SurveyList$notes))
+unique(Not_on_SurveyList$code)
+unique(Not_on_SurveyList$notes)
 write_csv(
   Not_on_SurveyList,
   "./data_check/Not_on_List_plants.csv"
@@ -524,8 +444,8 @@ any_code <-
   arrange(code, plot, tag_number, year) %>%
   select(-notes, -x_09, -y_09, -ranch, -plotID, -bdffp_reserve_no, -HA_ID_Number)
 
-any_code$code <- droplevels(any_code$code)
-levels(as.factor(any_code$code))
+# any_code$code <- droplevels(any_code$code)
+unique(any_code$code)
 write_csv(any_code, "./data_check/any_code.csv")
 write_csv(ULYs, "./data_check/ULY_plants.csv")
 
@@ -549,108 +469,76 @@ write_csv(ULYs, "./data_check/ULY_plants.csv")
 
 
 # add branchfall / treefall column ----------------------------------------
+ha_data <- ha_data %>% 
+  mutate(treefall_status = if_else(
+    code %in% c("under branchfall", "under treefall", "under branchfall, resprouting", "under litter"),
+    code,
+    NA_character_)) %>% 
+  mutate(treefall_status = replace(treefall_status, treefall_status == "under branchfall, resprouting", "under branchfall"))
 
-ha_data$treefall_status <- ha_data$code
-ha_data <- ha_data %>%
-  mutate(treefall_status = replace(as.character(treefall_status), ((treefall_status != "under branchfall") &
-    (treefall_status != "under treefall") &
-    (treefall_status != "under branchfall, resprouting") &
-    (treefall_status != "under litter")), NA)) %>%
-  mutate(treefall_status = replace(as.character(treefall_status), treefall_status == "under branchfall, resprouting", "under branchfall"))
-ha_data$treefall_status <- droplevels(as.factor(ha_data$treefall_status))
-levels(as.factor(ha_data$treefall_status))
+unique(ha_data$treefall_status)
 
 
 # add column to note if recruited as adult (uly,new tag, etc) -------------
 
-levels(ha_data$code)
-ha_data$plant_no_tag <- ha_data$code
-ha_data <- ha_data %>%
-  mutate(plant_no_tag = replace(as.character(plant_no_tag), ((plant_no_tag != "new plant in plot") &
-    (plant_no_tag != "no tag") &
-    (plant_no_tag != "not on list") &
-    (plant_no_tag != "ULY") &
-    (plant_no_tag != "dead and not on list")), NA)) %>%
-  mutate(plant_no_tag = replace(as.character(plant_no_tag), plant_no_tag == "dead and not on list", "not on list")) %>%
-  mutate(plant_no_tag = replace(as.character(plant_no_tag), plant_no_tag == "new plant in plot", "plant without tag")) %>%
-  mutate(plant_no_tag = replace(as.character(plant_no_tag), plant_no_tag == "no tag", "plant without tag")) %>%
-  mutate(plant_no_tag = replace(as.character(plant_no_tag), plant_no_tag == "ULY", "plant without tag"))
-levels(as.factor(ha_data$plant_no_tag))
+unique(ha_data$code)
+ha_data <- ha_data %>% 
+  mutate(plant_no_tag = case_when(
+    code %in% c("not on list", "dead and not on list") ~ "not on list",
+    code %in% c("no tag", "plant without tag", "new plant in plot", "ULY") ~ "plant without tag",
+    #else:
+    TRUE ~ NA_character_
+  ))
+
+unique(ha_data$plant_no_tag)
 
 # add column to check repro status -------------
 
-levels(ha_data$code)
-levels(as.factor(ha_data$notes))
-ha_data$repro_check <- ha_data$notes
+unique(ha_data$code)
+unique(ha_data$notes)
+
 ha_data <- ha_data %>%
-  mutate(repro_check = replace(as.character(repro_check), repro_check == "1 new infl + 1 old infl", "1 new infl, 1 old infl"))
-levels(as.factor(ha_data$repro_check))
+  mutate(repro_check = replace(notes, notes == "1 new infl + 1 old infl", "1 new infl, 1 old infl"))
+unique(ha_data$repro_check)
 
 # add column to check condition (resprouting, dried) -------------
 
-levels(ha_data$code)
-ha_data$condition <- ha_data$code
-ha_data <- ha_data %>%
-  mutate(condition = replace(as.character(condition), ((condition != "dried") &
-    (condition != "under branchfall, resprouting") &
-    (condition != "resprouting")), NA)) %>%
-  mutate(condition = replace(as.character(condition), condition == "under branchfall, resprouting", "resprouting"))
+unique(ha_data$code)
+ha_data <- ha_data %>% 
+  mutate(condition = case_when(
+    code == "dried" ~ "dried",
+    code %in% c("under branchfall, resprouting", "resprouting") ~ "resprouting",
+    #else
+    TRUE ~ NA_character_
+  ))
 
-levels(as.factor(ha_data$condition))
-
-
-
-
-# ha_data$sdlg_status<-as.factor(ha_data$sdlg_status)
-# ha_data$survey_status<-as.factor(ha_data$survey_status)
-ha_data$plant_no_tag <- as.factor(ha_data$plant_no_tag)
-ha_data$treefall_status <- as.factor(ha_data$treefall_status)
-ha_data$condition <- as.factor(ha_data$condition)
-ha_data$treefall_status <- as.factor(ha_data$treefall_status)
-ha_data$repro_check <- as.factor(ha_data$repro_check)
-ha_data$x_09 <- as.numeric(ha_data$x_09)
-ha_data$y_09 <- as.numeric(ha_data$y_09)
-ha_data$year <- as.factor(ha_data$year)
-ha_data$infl <- as.integer(ha_data$infl)
+unique(ha_data$condition)
 
 
-# TODO: Need to delete any with rows prior to being a seedling or after dead
-
-# Maybe Eric can figure out a way to make this lead/lag filter more efficient?
-# https://github.com/BrunaLab/HeliconiaDataPaper/issues/24
-# ha_data %>%
-#   group_by(HA_ID_Number) %>% 
-#   filter(pmin(cumsum(!is.na(shts))) != 0)
-
-# To delete seedlings:
-# if "seedling" make a counter 1
-# add 1 for all subsequent rows
-# delete everything less than 1
-
-# BETTER 
-# copy "seedling" code column to a new one
-# fill fill up , and fill down to mark as not alive yet
-# 
-# 
-
-# Attempt to deal with this more efficiently
-
+# Delete any with rows prior to being a seedling or after dead:
 # first, for any plant with a seedling code, flag all the pre-seedling years.
 # in a new column, first indicate the seedling year, then muytate this column to 
 # fill back in time with the "delete" tag,
 # then keep only those that are NA (ie, no "delete" tag)
 
 # then do the same with dead, except move forward from the year marked dead
-ha_data <- ha_data %>%
+ha_data <-
+  ha_data %>%
   group_by(HA_ID_Number) %>%
-  mutate(blank_yr_delete = case_when(lead(code=="sdlg",1) ~ "delete"),
-                                     .before='code') %>% 
+  mutate(
+    blank_yr_delete = if_else(lead(code, 1) == "sdlg", "delete", NA_character_),
+    .before = 'code'
+  ) %>% 
   fill(blank_yr_delete, .direction ="up") %>% 
   filter(is.na(blank_yr_delete)) %>% 
-  group_by(HA_ID_Number) %>%
-  mutate(blank_yr_delete = case_when(lag(code=="dead",1) ~ "delete",
-                                     lag(code=="dead and not on list",1) ~ "delete"),
-                                     .before='code') %>% 
+  mutate(
+    blank_yr_delete = if_else(
+      lag(code, 1) %in% c("dead", "dead and not on list"),
+      "delete",
+      NA_character_
+    ),
+    .before = 'code'
+  ) %>% 
   fill(blank_yr_delete, .direction ="down") %>% 
   filter(is.na(blank_yr_delete)) %>% 
   select(-blank_yr_delete)
@@ -719,6 +607,18 @@ ha_data <- ha_data %>%
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
 
+# standardize column classes ---------------------------------------------
+#ERS: this doesn't matter if the output is .csv
+# ha_data$infl <- as.character(ha_data$infl)
+ha_data$plot <- as.factor(ha_data$plot)
+ha_data$plotID <- as.factor(ha_data$plotID)
+ha_data$ranch <- as.factor(ha_data$ranch)
+ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
+ha_data$row <- as.factor(ha_data$row)
+# make habitat (frag size) an ordered factor
+ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
+
+#TODO: write rds?
 
 names(ha_data)
 # wide form to make it easier to search for ULY matches -------------------
@@ -930,7 +830,8 @@ ha_dryad <- ha_data %>%
     code == "ULY" ~ "ULY",
     code == "new plant in plot" ~ "ULY",
     code == "not on list" ~ "NOL",
-    code == "dead and not on list" ~ "NOL"
+    code == "dead and not on list" ~ "NOL",
+    TRUE ~ as.character(code)
   )) %>%
   rename(
     "plot" = "plotID",
@@ -951,8 +852,8 @@ ha_dryad <- ha_dryad %>% select(-treefall_impact)
 
 ha_dryad
 
-ha_dryad$code <- droplevels(ha_dryad$code)
-levels(ha_dryad$code)
+# ha_dryad$code <- droplevels(ha_dryad$code)
+# levels(ha_dryad$code)
 head(ha_dryad)
 glimpse(ha_dryad)
 summary(ha_dryad$infl)
@@ -981,29 +882,18 @@ write_csv(ha_dryad, "./data_clean/treefall_impact_dryad.csv")
 # wide form to make it easier to search for ULY matches -------------------
 
 wide_ha_dryad <- ha_dryad %>%
-  pivot_wider(names_from = year, values_from = c("shts", "ht", "infl", "code")) %>%
-  relocate(contains("_1998"), .after = subplot) %>%
-  relocate(contains("_1999"), .after = code_1998) %>%
-  relocate(contains("_2000"), .after = code_1999) %>%
-  relocate(contains("_2001"), .after = code_2000) %>%
-  relocate(contains("_2002"), .after = code_2001) %>%
-  relocate(contains("_2003"), .after = code_2002) %>%
-  relocate(contains("_2004"), .after = code_2003) %>%
-  relocate(contains("_2005"), .after = code_2004) %>%
-  relocate(contains("_2006"), .after = code_2005) %>%
-  relocate(contains("_2007"), .after = code_2006) %>%
-  relocate(contains("_2008"), .after = code_2007) %>%
+  pivot_wider(
+    names_from = year,
+    values_from = c("shts", "ht", "infl", "notes"),
+    names_vary = "slowest"
+  ) %>% 
   arrange(
-    plotID,
+    plot,
     subplot,
-    HA_ID_Number,
-    code_1999,
-    shts_1998,
-    shts_1999,
-    shts_2000,
-    shts_2001
+    plant_id
   )
 names(wide_ha_dryad)
+#recorded_* columns no longer make sense in this format.  Why not just keep it all in notes?
 
 
 
@@ -1040,3 +930,4 @@ ha_data %>%
   arrange(habitat, desc(N_plants)) %>%
   ungroup() %>%
   summarize(total_plants = sum(N_plants))
+
