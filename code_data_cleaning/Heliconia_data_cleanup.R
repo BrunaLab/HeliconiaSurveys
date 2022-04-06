@@ -49,8 +49,6 @@ ha_data <-
   mutate(across(starts_with("notes_"), as.character)) %>% 
   mutate(across(starts_with("ht_"), as.double)) %>% 
   mutate(column = as.character(column))
-# a few values for x_09 were entered with a comma instead of decimal
-ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
 
 
 # Convert the names of ranches to 3 letter codes
@@ -117,29 +115,17 @@ ha_data <- ha_data %>%
 source("./code_data_cleaning/merge_with_PA10.R")
 ha_data <- merge_with_PA10(ha_data)
 names(ha_data)
-ha_data <- ha_data %>% rename("code" = "notes") #(ERS: not sure why)
+# to match up file from PA with others need to do the following:
+ha_data <- ha_data %>% rename("code" = "notes") 
+
+
+# a few values for x_09 were entered with a comma instead of decimal
+ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
 
 
 # clean up codes/notes ----------------------------------------------------
 source("./code_data_cleaning/clean_codes.R")
-ha_data <- clean_codes(ha_data) #ERS: Surprisingly doing things with the infl column.  Did not expect that from the function name.
-
-#TODO: clean_codes() currently adds codes with parenthetical numbers, then later on those are removed.  Just edit how clean_codes() works instead!
-
-#TODO: remove below code for publication?
-
-# unique(ha_data$code)
-# unique(ha_data$notes)
-
-#
-# codes_to_fix<-ha_data %>% select(tag_number,code) %>%
-#   drop_na() %>% distinct(code,.keep_all = TRUE) %>%
-#   arrange(code) # make a summary table of all the different codes in the PA10 dataset
-# summary(as.factor(codes_to_fix$code))
-
-# Rearrange plot, then tag number, then year
-ha_data <- ha_data %>% arrange(plot, tag_number, year) #ERS: probably not necessary
-head(ha_data, 20)
+ha_data <- clean_codes(ha_data)
 
 
 
@@ -223,13 +209,6 @@ ha_data <- correct_dimona_cf(ha_data)
 source("./code_data_cleaning/correct_cabofrio_cf.R")
 ha_data <- correct_cabofrio_cf(ha_data)
 
-# add Seedling (y / n) column  --------------------------------------------
-#TODO: this doesn't seem like it belongs in this section
-ha_data <- 
-  ha_data %>% 
-  mutate(sdlg_status = if_else(code == "sdlg (1)", "sdlg", NA_character_))
-unique(ha_data$sdlg_status)
-
 
 
 # correct & standardize tag numbers ---------------------------------------
@@ -255,7 +234,7 @@ zombies %>%
   summarize(N_plants = n_distinct(HA_ID_Number)) %>%
   arrange(habitat, desc(N_plants))
 
-# NB 1/226/22: the zombies are due to duplicate numbers
+# NB: 1/226/22: the zombies are due to duplicate numbers
 
 
 # check for plants with duplicate tag numbers -----------------------------
@@ -302,36 +281,6 @@ count_dupes <- ha_data %>%
 nrow(duplicate_tags) == nrow(count_dupes)
 # check_dupes(ha_data)
 
-
-
-# delete the (numbers) from the codes -------------------------------------
-#TODO: move all this to clean_codes() instead
-# ERS: probably not necessary
-# ha_data <- ha_data %>%
-#   arrange(
-#     habitat,
-#     plot,
-#     plotID,
-#     bdffp_reserve_no,
-#     tag_number,
-#     row,
-#     column,
-#     year
-#   )
-#ERS: why convert to factors?
-# ha_data$code <- as.factor(ha_data$code)
-# ha_data$plot <- as.factor(ha_data$plot)
-# ha_data$duplicate_tag <- as.factor(ha_data$duplicate_tag)
-unique(ha_data$code)
-
-ha_data <- ha_data %>%
-  separate(code, c("code", "delcode"), sep = " \\(") %>% 
-  #gives warning for 1 row with no parenthetical number.  Can be safely ignored.
-  select(-delcode)
-
-unique(ha_data$code)
-unique(ha_data$notes)
-summary(ha_data)
 
 # simplify codes ----------------------------------------------------------
 unique(ha_data$code)
@@ -467,6 +416,13 @@ write_csv(ULYs, "./data_check/ULY_plants.csv")
 #   mutate(survey_status = replace(as.character(survey_status), survey_status=="dead and not on list","dead"))
 # levels(as.factor(ha_data$survey_status))
 
+
+# add Seedling (y / n) column  --------------------------------------------
+#TODO: this doesn't seem like it belongs in this section
+ha_data <- 
+  ha_data %>% 
+  mutate(sdlg_status = if_else(code == "sdlg (1)", "sdlg", NA_character_))
+unique(ha_data$sdlg_status)
 
 # add branchfall / treefall column ----------------------------------------
 ha_data <- ha_data %>% 
