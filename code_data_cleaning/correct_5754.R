@@ -32,7 +32,7 @@ correct_5754 <- function(ha_data) {
   ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- "sdlg"
   ha_data<-ha_data %>% filter(!(bdffp_reserve_no=="3209" & tag_number==770.5 & row=="A" & column==5))
   ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3] <- 770
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770 & ha_data$year==2006] <- "dead (2)"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770 & ha_data$year==2006] <- "dead"
   
   ha_data$shts[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==308 & ha_data$column==5 & ha_data$row=="D" & ha_data$year==2006] <- 2
   ha_data$ht[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==308 & ha_data$column==5 & ha_data$row=="D" & ha_data$year==2006] <- 24
@@ -228,9 +228,9 @@ correct_5754 <- function(ha_data) {
   
   # change all the ones where a plant is dead but size was recorded as "0"
   ha_data <- ha_data %>% 
-    mutate(shts = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), NA, shts)) %>% 
-    mutate(ht = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), NA, ht)) %>% 
-    mutate(infl = ifelse((shts == 0 & ht == 0 & code== "dead (2)"), NA, infl))
+    mutate(shts = ifelse((shts == 0 & ht == 0 & code== "dead"), NA, shts)) %>% 
+    mutate(ht = ifelse((shts == 0 & ht == 0 & code== "dead"), NA, ht)) %>% 
+    mutate(infl = ifelse((shts == 0 & ht == 0 & code== "dead"), NA, infl))
   
   
   # Correcting NOL code  

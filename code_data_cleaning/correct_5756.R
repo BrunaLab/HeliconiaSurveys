@@ -533,7 +533,7 @@ correct_5756 <- function(ha_data) {
                  ha_data$row == "E" &
                  ha_data$column == "2" &
                  ha_data$tag_number == 1686 & 
-                 ha_data$year ==2007] <- "no tag (50)"
+                 ha_data$year ==2007] <- "no tag"
   
   # delete the duplicate 1686  
   keep1686 <- ha_data %>%
