@@ -23,9 +23,9 @@ clean_codes <- function(ha_data) {
   levels(ha_data$code)[levels(ha_data$code) == "300"] <-  "dead"
   levels(ha_data$code)[levels(ha_data$code) == "1, 200 "] <-  "sdlg"
   levels(ha_data$code)[levels(ha_data$code) == ""] <- NA
-  summary(as.factor(ha_data$code))
-  levels(as.factor(ha_data$code))
-  
+  # summary(as.factor(ha_data$code))
+  # levels(as.factor(ha_data$code))
+  # 
   # CLEAN UP CODES FROM PA10
   ha_data$notes <-as.character(NA)
   ha_data$code<-as.character(ha_data$code)
@@ -55,8 +55,8 @@ clean_codes <- function(ha_data) {
     mutate(notes = if_else(code == "trefall","trefall", notes)) %>% 
     mutate(code = if_else(code=="dead","dead", code)) %>% 
     mutate(code= na_if(code, "dead")) %>% 
-    mutate(code = if_else(code == "sdlg","sdlg", code)) %>% 
-    mutate(code = na_if(code, "sdlg")) %>% 
+    # mutate(code = if_else(code == "sdlg","sdlg", code)) %>% 
+    # mutate(code = na_if(code, "sdlg")) %>% 
     mutate(code = if_else(code == "under trunk","under treefall", code)) %>% 
     mutate(code = if_else(code == "under treefall","under treefall", code)) %>% 
     mutate(code = if_else(code == "under fallen trunk","under treefall", code)) %>% 
