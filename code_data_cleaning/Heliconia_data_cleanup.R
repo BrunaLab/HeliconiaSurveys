@@ -319,6 +319,10 @@ ha_data %>% filter(code == "under treefall")
 
 # Pull out 'ULY'; save to csv file -----------------
 
+# NOTE plots weere still being completely surveyed through 99, which is why so
+# many ULY - most were from that year. We want to focus on those AFTER the 
+# initial survey sweep so lets instead mark uly only after 1999
+
 ULYs <-
   ha_data %>%
   filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>% 
@@ -335,10 +339,18 @@ ULYs_post99 <-
 write_csv(ULYs_post99, "./data_check/ULY_plants_post1999.csv")
 
 ULYs_post99_summary <- ULYs_post99 %>%
-  group_by(plot, year, row, column) %>%
+  # group_by(plot, year, row, column) %>%
+  # group_by(plot, year) %>%
+  group_by(plot) %>%
   summarize(n = n()) %>%
   arrange(desc(n))
 ULYs_post99_summary
+
+# GO AHEAD AND DELETE THE ULY CODE FOR PLANTS AFTER 1999
+
+ha_data <- ha_data %>% 
+  mutate(code = if_else((code == "ULY" & year == 1999), NA_character_, code))
+
 # Pull out 'Miscellaneous observations'; save to csv file -----------------
 
 summary(as.factor(ha_data$code))
@@ -421,7 +433,7 @@ write_csv(ULYs, "./data_check/ULY_plants.csv")
 #TODO: this doesn't seem like it belongs in this section
 ha_data <- 
   ha_data %>% 
-  mutate(sdlg_status = if_else(code == "sdlg (1)", "sdlg", NA_character_))
+  mutate(sdlg_status = if_else(code == "sdlg", "sdlg", NA_character_))
 unique(ha_data$sdlg_status)
 
 # add branchfall / treefall column ----------------------------------------
@@ -499,8 +511,8 @@ ha_data <-
   filter(is.na(blank_yr_delete)) %>% 
   select(-blank_yr_delete)
 
-#this is the less efficient way
-#   
+# this is the less efficient way
+# 
 # levels(as.factor(ha_data$sdlg_status))
 # levels(as.factor(ha_data$code))
 # ha_data %>%
@@ -508,7 +520,7 @@ ha_data <-
 #   filter(lag(sdlg_status == "sdlg", 1))
 # 
 # dead_lags <- ha_data %>%
-#   select(plot, subplot, HA_ID_Number, tag_number, row, column, year, ht, shts, infl, code, notes) %>%
+#   select(plot, HA_ID_Number, tag_number, row, column, year, ht, shts, infl, code, notes) %>%
 #   group_by(HA_ID_Number) %>%
 #   filter(lag(code == "dead", 1) |
 #     lag(code == "dead", 2) |
@@ -526,7 +538,7 @@ ha_data <-
 # 
 # 
 # pre_sdlg_na <- ha_data %>%
-#   select(plot, subplot,HA_ID_Number, tag_number, row, column, year, ht, shts, infl, code, notes, sdlg_status) %>%
+#   select(plot, HA_ID_Number, tag_number, row, column, year, ht, shts, infl, code, notes, sdlg_status) %>%
 #   group_by(HA_ID_Number) %>%
 #   filter(lead(sdlg_status == "sdlg", 1) |
 #     lead(sdlg_status == "sdlg", 2) |
@@ -550,11 +562,11 @@ ha_data <-
 # 
 # 
 # # COMPARISON
-# nrow(ha_data_trim)==nrow(ha_slim) # different number of rows
-# nrow(ha_data_trim)-nrow(ha_slim) # different number of rows
+# nrow(ha_data)==nrow(ha_slim) # different number of rows
+# nrow(ha_data)-nrow(ha_slim) # different number of rows
 # # my more efficient one deleted 35 extra rows
-# diff_rows<-setdiff(ha_slim, ha_data_trim)
-# 
+# diff_rows<-setdiff(ha_slim, ha_data)
+
 # ha_data <- ha_data %>%
 #   arrange(as.numeric(row), as.numeric(column)) %>%
 #   mutate(subplot = paste(row, column, sep = "")) %>%
@@ -578,51 +590,51 @@ ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
 names(ha_data)
 # wide form to make it easier to search for ULY matches -------------------
-
-wide_ha_data <- ha_data %>%
-  select(
-    plot,
-    row,
-    column,
-    HA_ID_Number,
-    tag_number,
-    year,
-    shts,
-    ht,
-    infl,
-    code
-  ) %>%
-  pivot_wider(names_from = year, values_from = c("shts", "ht", "infl", "code")) %>%
-  relocate(contains("_1998"), .after = column) %>%
-  relocate(contains("_1999"), .after = code_1998) %>%
-  relocate(contains("_2000"), .after = code_1999) %>%
-  relocate(contains("_2001"), .after = code_2000) %>%
-  relocate(contains("_2002"), .after = code_2001) %>%
-  relocate(contains("_2003"), .after = code_2002) %>%
-  relocate(contains("_2004"), .after = code_2003) %>%
-  relocate(contains("_2005"), .after = code_2004) %>%
-  relocate(contains("_2006"), .after = code_2005) %>%
-  relocate(contains("_2007"), .after = code_2006) %>%
-  relocate(contains("_2008"), .after = code_2007) %>%
-  arrange(
-    plot,
-    row,
-    column,
-    tag_number,
-    code_1999,
-    shts_1998,
-    shts_1999,
-    shts_2000,
-    shts_2001
-  ) %>%
-  arrange(as.factor(row), as.numeric(column)) %>%
-  mutate(subplot = paste(row, column, sep = ""), .after = plot) %>%
-  select(-row, -column) %>%
-  relocate(contains("HA_ID"), .after = subplot) %>%
-  relocate(contains("tag_number"), .after = HA_ID_Number)
-
-
-names(wide_ha_data)
+# 
+# wide_ha_data <- ha_data %>%
+#   select(
+#     plot,
+#     row,
+#     column,
+#     HA_ID_Number,
+#     tag_number,
+#     year,
+#     shts,
+#     ht,
+#     infl,
+#     code
+#   ) %>%
+#   pivot_wider(names_from = year, values_from = c("shts", "ht", "infl", "code")) %>%
+#   relocate(contains("_1998"), .after = column) %>%
+#   relocate(contains("_1999"), .after = code_1998) %>%
+#   relocate(contains("_2000"), .after = code_1999) %>%
+#   relocate(contains("_2001"), .after = code_2000) %>%
+#   relocate(contains("_2002"), .after = code_2001) %>%
+#   relocate(contains("_2003"), .after = code_2002) %>%
+#   relocate(contains("_2004"), .after = code_2003) %>%
+#   relocate(contains("_2005"), .after = code_2004) %>%
+#   relocate(contains("_2006"), .after = code_2005) %>%
+#   relocate(contains("_2007"), .after = code_2006) %>%
+#   relocate(contains("_2008"), .after = code_2007) %>%
+#   arrange(
+#     plot,
+#     row,
+#     column,
+#     tag_number,
+#     code_1999,
+#     shts_1998,
+#     shts_1999,
+#     shts_2000,
+#     shts_2001
+#   ) %>%
+#   arrange(as.factor(row), as.numeric(column)) %>%
+#   mutate(subplot = paste(row, column, sep = ""), .after = plot) %>%
+#   select(-row, -column) %>%
+#   relocate(contains("HA_ID"), .after = subplot) %>%
+#   relocate(contains("tag_number"), .after = HA_ID_Number)
+# 
+# 
+# names(wide_ha_data)
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 # TODO: 5756
@@ -823,7 +835,7 @@ levels(as.factor(ha_dryad$notes))
 
 write_csv(ha_dryad, "./data_clean/ha_plants_dryad.csv")
 
-
+# unique(ha_dryad$notes)
 
 write_csv(ha_plots, "./data_clean/ha_plots_dryad.csv")
 
@@ -878,6 +890,13 @@ ha_data %>%
   group_by(habitat) %>%
   summarize(N_plants = n_distinct(HA_ID_Number))
 
+
+ha_dryad %>%
+  group_by(plot) %>%
+  filter(recorded_sdlg==TRUE) %>%
+  group_by(plot) %>% 
+  tally() %>% 
+  arrange(desc(n))
 
 
 ha_data %>%
