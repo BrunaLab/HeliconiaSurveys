@@ -19,31 +19,31 @@ correct_florestal <- function(ha_data) {
   
   ha_data$code[ha_data$plot == 'Florestal-CF' &
                  ha_data$year == 2005 &
-                 ha_data$tag_number == 1] <- "missing (60)"
+                 ha_data$tag_number == 1] <- "missing"
   
   
   ha_data$code[ha_data$plot == 'Florestal-CF' &
                  ha_data$year == 2004 &
-                 ha_data$tag_number == 1508] <- "missing (60)"
+                 ha_data$tag_number == 1508] <- "missing"
   
   
   ha_data$code[ha_data$plot == 'Florestal-CF' &
                  ha_data$year == 2004 &
-                 ha_data$tag_number == 1508] <- "missing (60)"
+                 ha_data$tag_number == 1508] <- "missing"
   
   
   ha_data$code[ha_data$plot == 'Florestal-CF' &
                  ha_data$year == 2005 &
-                 ha_data$tag_number == 1508] <- "missing (60)"
+                 ha_data$tag_number == 1508] <- "missing"
   
   
   ha_data$code[ha_data$plot == 'Florestal-CF' &
                  ha_data$year == 2004 &
-                 ha_data$tag_number == 799] <- "missing (60)"
+                 ha_data$tag_number == 799] <- "missing"
   
   ha_data$code[ha_data$plot == 'Florestal-CF' &
                  ha_data$year == 2005 &
-                 ha_data$tag_number == 799] <- "missing (60)"
+                 ha_data$tag_number == 799] <- "missing"
   
   # correcting location
   ha_data$column[ha_data$plot == "Florestal-CF" & ha_data$column == 0] <- 1
@@ -57,7 +57,7 @@ correct_florestal <- function(ha_data) {
   # incorrectly recorded as seedling
   ha_data$code[ha_data$plot == "Florestal-CF" &
                  ha_data$year == 2008 & 
-                 ha_data$tag_number == 1916] <- "ULY (3)"
+                 ha_data$tag_number == 1916] <- "ULY"
   
   # incorrectly recorded the ht as 73 (it is 7.3). Rounded down.
   ha_data$ht[ha_data$plot == "Florestal-CF" &
@@ -67,17 +67,17 @@ correct_florestal <- function(ha_data) {
   # incorrectly recorded as seedling
   ha_data$code[ha_data$plot == "Florestal-CF" &
                  ha_data$year == 2007 & 
-                 ha_data$tag_number == 378] <- "ULY (3)"
+                 ha_data$tag_number == 378] <- "ULY"
   
   # incorrectly recorded as seedling
   ha_data$code[ha_data$plot == "Florestal-CF" &
                  ha_data$year == 2007 & 
-                 ha_data$tag_number == 378] <- "ULY (3)"
+                 ha_data$tag_number == 378] <- "ULY"
   
   # incorrectly recorded as seedling ("nova com cara de velha")
   ha_data$code[ha_data$plot == "Florestal-CF" &
                  ha_data$year == 2007 & 
-                 ha_data$tag_number == 1578] <- "ULY (3)"
+                 ha_data$tag_number == 1578] <- "ULY"
   
   # correction (found after referring to the datasheet to fix 378 above)
   ha_data$shts[ha_data$plot == "Florestal-CF" &

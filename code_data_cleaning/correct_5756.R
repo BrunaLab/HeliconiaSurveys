@@ -120,7 +120,7 @@ correct_5756 <- function(ha_data) {
   ha_data$code[ha_data$plot == 5756 &
                  (ha_data$year == 2005 |
                     ha_data$year == 2006) &
-                 ha_data$tag_number == 793] <- "missing (60)"
+                 ha_data$tag_number == 793] <- "missing"
   
   # Tag 372
   ha_data$ht[ha_data$plot == "5756" & ha_data$year == 2005 & ha_data$tag_number == 372] <- 26
@@ -131,7 +131,7 @@ correct_5756 <- function(ha_data) {
   ha_data$shts[ha_data$plot == "5756" & ha_data$year == 2004 & ha_data$tag_number == 1616] <- 4
   ha_data$code[ha_data$plot == 5756 &
                  (ha_data$year == 2005 | ha_data$year == 2006) &
-                 ha_data$tag_number == 1616] <- "missing (60)"
+                 ha_data$tag_number == 1616] <- "missing"
   
   
 
@@ -145,7 +145,7 @@ correct_5756 <- function(ha_data) {
                  ha_data$year == 2007 &
                  ha_data$row == "C" &
                  ha_data$column == 8 &
-                 ha_data$tag_number == 929] <- "ULY (3)"
+                 ha_data$tag_number == 929] <- "ULY"
   
   # Plant 816
   # 816 in D9 is a renumber after tag was lost, I think it was written down
@@ -154,7 +154,7 @@ correct_5756 <- function(ha_data) {
                  ha_data$year == 2009 &
                  ha_data$row == "D" &
                  ha_data$column == 9 &
-                 ha_data$tag_number == 816] <- "ULY (3)"
+                 ha_data$tag_number == 816] <- "ULY"
   
   # tag no 29
   # 29 in 5756 was actually in E3, and was retagged as 1663 in 07
@@ -196,43 +196,43 @@ correct_5756 <- function(ha_data) {
   # Updating Codes 
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2006 &
-                 ha_data$tag_number == 1261] <- "missing (60)"
+                 ha_data$tag_number == 1261] <- "missing"
   
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2005 &
-                 ha_data$tag_number == 1292] <- "missing (60)"
+                 ha_data$tag_number == 1292] <- "missing"
   
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2006 &
-                 ha_data$tag_number == 1294] <- "missing (60)"
+                 ha_data$tag_number == 1294] <- "missing"
   
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2005 &
-                 ha_data$tag_number == 141] <- "missing (60)"
+                 ha_data$tag_number == 141] <- "missing"
   
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2006 &
-                 ha_data$tag_number == 690] <- "missing (60)"
+                 ha_data$tag_number == 690] <- "missing"
   
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2004 &
-                 ha_data$tag_number == 707] <- "missing (60)"
+                 ha_data$tag_number == 707] <- "missing"
   
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2005 &
-                 ha_data$tag_number == 707] <- "missing (60)"
+                 ha_data$tag_number == 707] <- "missing"
   
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2006 &
-                 ha_data$tag_number == 707] <- "missing (60)"
+                 ha_data$tag_number == 707] <- "missing"
   
   ha_data$code[ha_data$plot == "5756" &
                  ha_data$year == 2006 &
-                 ha_data$tag_number == 50] <- "under treefall (80)"
+                 ha_data$tag_number == 50] <- "under treefall"
   
   ha_data$code[ha_data$plot == "5756" &
                  (ha_data$year == 2008 | ha_data$year == 2009) &
-                 ha_data$tag_number == 1662] <- "missing (60)"
+                 ha_data$tag_number == 1662] <- "missing"
   
   # incorrectly recorded 10 infl in 2007, should be NA
   ha_data$infl[ha_data$plot == "5756" &
@@ -243,7 +243,7 @@ correct_5756 <- function(ha_data) {
   # upon 2x of data sheet found it also had infl
   ha_data$code[ha_data$plot == 5756 &
                  ha_data$year == 2008 & 
-                 ha_data$tag_number == 1789] <- "ULY (3)"
+                 ha_data$tag_number == 1789] <- "ULY"
   
   ha_data$infl[ha_data$plot == 5756 &
                  ha_data$year == 2008 & 
@@ -484,7 +484,7 @@ correct_5756 <- function(ha_data) {
                  ha_data$row == "B" &
                  ha_data$column == "8" &
                  ha_data$tag_number == 1655 & 
-                 ha_data$year ==2008] <- "missing (60)"
+                 ha_data$year ==2008] <- "missing"
   
   # delete the duplicate 1655  
   keep1655 <- ha_data %>%
@@ -740,11 +740,11 @@ correct_5756 <- function(ha_data) {
     mutate(code=replace(code, plot==5756 & year==2001 & tag_number==842,NA)) %>% 
     mutate(code=replace(code, plot==5756 & year==2008 & tag_number==1231,NA)) %>% 
     mutate(code=replace(code, plot==5756 & year==2005 & tag_number==1285,NA)) %>% 
-    mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1285,"ULY (3)")) %>% 
+    mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1285,"ULY")) %>% 
     mutate(shts=replace(shts, plot==5756 & year==2004 & tag_number==1285,3)) %>% 
     mutate(ht=replace(ht, plot==5756 & year==2004 & tag_number==1285,68)) %>% 
     mutate(code=replace(code, plot==5756 & year==2005 & tag_number==1608,NA)) %>% 
-    mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1608,"ULY (3)")) %>% 
+    mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1608,"ULY")) %>% 
     mutate(shts=replace(shts, plot==5756 & year==2004 & tag_number==1608,3)) %>% 
     mutate(ht=replace(ht, plot==5756 & year==2004 & tag_number==1608,50)) %>% 
   

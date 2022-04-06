@@ -60,15 +60,15 @@ correct_5752 <- function(ha_data) {
   ha_data <- bind_rows(ha_data, correct_526)
   rm(correct_526)
   
-  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 149] <- "missing (60)"
-  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 499] <- "missing (60)"
-  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 272] <- "missing (60)"
-  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 736] <- "missing (60)"
+  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 149] <- "missing"
+  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 499] <- "missing"
+  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 272] <- "missing"
+  ha_data$code[ha_data$plot == 5752 & ha_data$year == 2005 & ha_data$tag_number == 736] <- "missing"
   
   # incorrectly recorded as seedling
   ha_data$code[ha_data$plot == 5752 &
                  ha_data$year == 1999 & 
-                 ha_data$tag_number == 378] <- "ULY (3)"
+                 ha_data$tag_number == 378] <- "ULY"
  
   
   

@@ -8,11 +8,11 @@ correct_pa_cf <- function(ha_data) {
   
   
   # Missing status
-  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2004 & ha_data$tag_number == 196] <- "missing (60)"
-  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2005 & ha_data$tag_number == 196] <- "missing (60)"
-  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2006 & ha_data$tag_number == 238] <- "missing (60)"
-  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2005 & ha_data$tag_number == 139] <- "missing (60)"
-  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2006 & ha_data$tag_number == 139] <- "missing (60)"
+  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2004 & ha_data$tag_number == 196] <- "missing"
+  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2005 & ha_data$tag_number == 196] <- "missing"
+  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2006 & ha_data$tag_number == 238] <- "missing"
+  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2005 & ha_data$tag_number == 139] <- "missing"
+  ha_data$code[ha_data$plot == "PortoAlegre-CF" & ha_data$year == 2006 & ha_data$tag_number == 139] <- "missing"
   
   # Remove duplicated record 
   ha_data<-ha_data[

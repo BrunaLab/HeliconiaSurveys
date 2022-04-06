@@ -13,7 +13,7 @@ correct_dimona_cf <- function(ha_data) {
   # correcting 194
   ha_data$code[ha_data$plot == "Dimona-CF" &
                  ha_data$tag_number == 194 &
-                 ha_data$year == 2006] <- "sdlg (1)"
+                 ha_data$year == 2006] <- "sdlg"
   
   ha_data$infl[ha_data$plot == "Dimona-CF" &
                  ha_data$tag_number == 194 &
@@ -44,7 +44,7 @@ correct_dimona_cf <- function(ha_data) {
   
   ha_data$code[ha_data$plot == "Dimona-CF" &
                  ha_data$tag_number == 297 &
-                 ha_data$year == 2007] <- "sdlg (1)"
+                 ha_data$year == 2007] <- "sdlg"
   
   ha_data$shts[ha_data$plot == "Dimona-CF" &
                  ha_data$tag_number == 297 &
@@ -89,15 +89,15 @@ correct_dimona_cf <- function(ha_data) {
   # plant 81 was not dead in 06
   ha_data$code[ha_data$plot == "Dimona-CF" &
                  ha_data$tag_number == 81 &
-                 ha_data$year == 2006] <- "missing (60)"
+                 ha_data$year == 2006] <- "missing"
   
   ha_data$code[ha_data$plot == "Dimona-CF" &
                  ha_data$tag_number == 81 &
-                 ha_data$year == 2008] <- "missing (60)"
+                 ha_data$year == 2008] <- "missing"
   
   ha_data$code[ha_data$plot == "Dimona-CF" &
                  ha_data$tag_number == 81 &
-                 ha_data$year == 2009] <- "missing (60)"
+                 ha_data$year == 2009] <- "missing"
   
   # location
   ha_data$row[ha_data$plot == "Dimona-CF" & ha_data$tag_number == 89] <- "E"
@@ -110,7 +110,7 @@ correct_dimona_cf <- function(ha_data) {
   # Add it's measurments in 2006 to 185
   ha_data$shts[ha_data$plot == "Dimona-CF" & ha_data$year == 2006 & ha_data$tag_number == 195] <- 2
   ha_data$ht[ha_data$plot == "Dimona-CF" & ha_data$year == 2006 & ha_data$tag_number == 195] <- 8
-  ha_data$code[ha_data$plot == "Dimona-CF" & ha_data$year == 2006 & ha_data$tag_number == 195] <- "sdlg (1)"
+  ha_data$code[ha_data$plot == "Dimona-CF" & ha_data$year == 2006 & ha_data$tag_number == 195] <- "sdlg"
   
   # delete the incorrect one recorded as 195 in C10
   omit185<-ha_data %>% filter(plot=="Dimona-CF" & 

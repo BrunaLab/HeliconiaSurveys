@@ -29,7 +29,7 @@ correct_5754 <- function(ha_data) {
   
   ha_data$shts[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- 1
   ha_data$ht[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- 8
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- "sdlg (1)"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3 & ha_data$row=="A" & ha_data$year==2005] <- "sdlg"
   ha_data<-ha_data %>% filter(!(bdffp_reserve_no=="3209" & tag_number==770.5 & row=="A" & column==5))
   ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770.3 & ha_data$column==3] <- 770
   ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==770 & ha_data$year==2006] <- "dead (2)"
@@ -46,7 +46,7 @@ correct_5754 <- function(ha_data) {
   
   ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==816.3 & ha_data$column==3 & ha_data$row=="C" & ha_data$year==2005] <- 2
   ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==816.3 & ha_data$column==3 & ha_data$row=="C" & ha_data$year==2006] <- NA
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==816.8 & ha_data$column==8 & ha_data$row=="A" & ha_data$year==2006] <- "sdlg (1)"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==816.8 & ha_data$column==8 & ha_data$row=="A" & ha_data$year==2006] <- "sdlg"
   ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==845 & ha_data$year==2006 & ha_data$row=="B"] <- NA
   
   ha_data$shts[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==820.7 & ha_data$column==7 & ha_data$row=="B" & ha_data$year==2006] <- 3
@@ -58,9 +58,9 @@ correct_5754 <- function(ha_data) {
   ha_data<-ha_data %>% filter(!(bdffp_reserve_no=="3209" & tag_number==821.8))
   ha_data$tag_number[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==821.6] <- 821
   
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==835.4 & ha_data$column==4 & ha_data$row=="E" & ha_data$year==2006] <- "sdlg (1)"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==835.4 & ha_data$column==4 & ha_data$row=="E" & ha_data$year==2006] <- "sdlg"
   
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==832.4 & ha_data$column==4 & ha_data$row=="A" & ha_data$year==2006] <- "sdlg (1)"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==832.4 & ha_data$column==4 & ha_data$row=="A" & ha_data$year==2006] <- "sdlg"
   
   ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==830.6 & ha_data$column==6 & ha_data$row=="C" & ha_data$year==2006] <- NA
   
@@ -98,13 +98,13 @@ correct_5754 <- function(ha_data) {
   
   
   # These need to the code changed from "dead "to "missing"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1376 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==748 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==303 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==855 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==198 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==121 & ha_data$year==2005] <- "missing (60)"
-  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==911 & ha_data$year==2005] <- "missing (60)"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1376 & ha_data$year==2005] <- "missing"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==748 & ha_data$year==2005] <- "missing"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==303 & ha_data$year==2005] <- "missing"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==855 & ha_data$year==2005] <- "missing"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==198 & ha_data$year==2005] <- "missing"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==121 & ha_data$year==2005] <- "missing"
+  ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==911 & ha_data$year==2005] <- "missing"
   
   # This "missing" code needs to be changed to NA
   ha_data$code[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==1353 & ha_data$year==2006] <- NA
@@ -150,7 +150,7 @@ correct_5754 <- function(ha_data) {
   # replace the values for the 1st year 
   ha_data$shts[ha_data$plot == 5754 & (ha_data$row == "C" & ha_data$column == "7") & ha_data$year == 2003 & (ha_data$tag_number == 823.7|ha_data$tag_number == 824.7)] <- 1
   ha_data$ht[ha_data$plot == 5754 & (ha_data$row == "C" & ha_data$column == "7") & ha_data$year == 2003 & (ha_data$tag_number == 823.7|ha_data$tag_number == 824.7)] <- 1
-  ha_data$code[ha_data$plot == 5754 & (ha_data$row == "C" & ha_data$column == "7") & ha_data$year == 2003 & (ha_data$tag_number == 823.7|ha_data$tag_number == 824.7)] <- "sdlg (1)" 
+  ha_data$code[ha_data$plot == 5754 & (ha_data$row == "C" & ha_data$column == "7") & ha_data$year == 2003 & (ha_data$tag_number == 823.7|ha_data$tag_number == 824.7)] <- "sdlg" 
   # delete the duplicates
   ha_data<-ha_data[!(ha_data$plot==5754 & ha_data$row=="B" & ha_data$column==7 & ha_data$tag_number == 823.7),]
   

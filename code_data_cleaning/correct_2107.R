@@ -61,15 +61,15 @@ ha_data$tag_number[ha_data$plot == 2107 &
                      ha_data$tag_number == 237] <- 337
 
 # Updating Codes 
-# Plant 228: code say 'dead (2)' in 2006, should be missing (60)
+# Plant 228: code say 'dead (2)' in 2006, should be missing
 ha_data$code[ha_data$plot == 2107 &
                ha_data$year == 2006 &
-               ha_data$tag_number == 228] <- "missing (60)"
+               ha_data$tag_number == 228] <- "missing"
 
-# Plant 282: code say 'dead (2)' in 2006, should be missing (60)
+# Plant 282: code say 'dead (2)' in 2006, should be missing
 ha_data$code[ha_data$plot == 2107 &
                ha_data$year == 2006 &
-               ha_data$tag_number == 282] <- "missing (60)"
+               ha_data$tag_number == 282] <- "missing"
 
 
 ha_data$code[ha_data$plot == 2107 &
@@ -125,7 +125,7 @@ ha_data$ht[ha_data$plot == 2107 &
 
 # This was recorded in 2108 but is actually in 2107
 ha_data<-ha_data %>%
-  mutate(code=replace(code, plot==2107 & year==2008 & tag_number==333, "sdlg (1)"))
+  mutate(code=replace(code, plot==2107 & year==2008 & tag_number==333, "sdlg"))
 ha_data<-ha_data %>%
   mutate(shts=replace(shts, plot==2107 & year==2008 & tag_number==333, 2))
 ha_data<-ha_data %>%

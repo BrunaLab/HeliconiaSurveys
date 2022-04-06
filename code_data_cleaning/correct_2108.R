@@ -39,7 +39,7 @@ correct_2108 <- function(ha_data) {
   
   ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2004 & ha_data$tag_number == 249] <- 5
   ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2004 & ha_data$tag_number == 249] <- 128
-  ha_data$code[ha_data$plot == 2108 & ha_data$year == 2004 & ha_data$tag_number == 249] <- "under treefall (80)"
+  ha_data$code[ha_data$plot == 2108 & ha_data$year == 2004 & ha_data$tag_number == 249] <- "under treefall"
   
   ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 249] <- 7
   ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 249] <- 140
@@ -123,9 +123,9 @@ correct_2108 <- function(ha_data) {
   # ha_data<-ha_data %>%
   #   mutate(ht=replace(ht, plot==2108 & year==2008 & tag_number==365, 11))
   # ha_data<-ha_data %>%
-  #   mutate(code=replace(code, plot==2108 & year==2008 & tag_number==365, "sdlg (1)"))
+  #   mutate(code=replace(code, plot==2108 & year==2008 & tag_number==365, "sdlg"))
   # ha_data<-ha_data %>%
-  #   mutate(code=replace(code, plot==2108 & year==2008 & tag_number==365, "sdlg (1)"))
+  #   mutate(code=replace(code, plot==2108 & year==2008 & tag_number==365, "sdlg"))
   
   
 }

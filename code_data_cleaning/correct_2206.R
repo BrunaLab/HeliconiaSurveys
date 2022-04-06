@@ -6,7 +6,7 @@ correct_2206 <- function(ha_data) {
   
   ha_data$shts[ha_data$plot == 2206 & ha_data$year == 2006 & ha_data$tag_number == 270] <- 1
   ha_data$ht[ha_data$plot == 2206 & ha_data$year == 2006 & ha_data$tag_number == 270] <- 15
-  ha_data$code[ha_data$plot == 2206 & ha_data$year == 2006 & ha_data$tag_number == 270] <- "under branchfall (90)"
+  ha_data$code[ha_data$plot == 2206 & ha_data$year == 2006 & ha_data$tag_number == 270] <- "under branchfall"
   
   # delete the one in C10
   omit270<-ha_data %>% filter(plot==2206 & 
@@ -19,7 +19,7 @@ correct_2206 <- function(ha_data) {
   # Correcting NOL code  
   ha_data<-ha_data %>%
     mutate(code=replace(code, plot==2206 & year==2005 & tag_number==201,NA)) %>% 
-    mutate(code=replace(code, plot==2206 & year==2004 & tag_number==201,"sdlg (1)")) %>% 
+    mutate(code=replace(code, plot==2206 & year==2004 & tag_number==201,"sdlg")) %>% 
     mutate(shts=replace(shts, plot==2206 & year==2004 & tag_number==201,1)) %>% 
     mutate(ht=replace(ht, plot==2206 & year==2004 & tag_number==201,19))
   

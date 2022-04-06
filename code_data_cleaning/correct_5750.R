@@ -7,34 +7,34 @@ correct_5750 <- function(ha_data) {
   
   # If you want to convert these to 0 to say they are inside the plot,
   # then uncomment these two lines
-  # ha_data$x_09[ha_data$x_09 < 1] <- 0
-  # ha_data$y_09[ha_data$x_09 < 1] <- 0
+  # ha_data$x_09[ha_data$x_09 <] <- 0
+  # ha_data$y_09[ha_data$x_09 <] <- 0
   
 
   
-  # in 2008 data for 1339 incorrectly entered as 1338
-  # add to 1339
+  # in 2008 data for339 incorrectly entered as338
+  # add to339
   ha_data$shts[ha_data$plot == 5750 &
-                 ha_data$tag_number == 1339 & 
+                 ha_data$tag_number ==339 & 
                  ha_data$year == 2008] <- 2
   
   ha_data$ht[ha_data$plot == 5750 &
-               ha_data$tag_number == 1339 & 
-               ha_data$year == 2008] <- 11
+               ha_data$tag_number ==339 & 
+               ha_data$year == 2008] <-1
   
-  # remove from 1338
+  # remove from338
   ha_data$shts[ha_data$plot == 5750 &
-                 ha_data$tag_number == 1338 &
+                 ha_data$tag_number ==338 &
                  ha_data$year == 2008] <- NA
   
   ha_data$ht[ha_data$plot == 5750 &
-               ha_data$tag_number == 1338 &
+               ha_data$tag_number ==338 &
                ha_data$year == 2008] <- NA
   
-  # 1339 in 2007 marked as dead but wasn't
+  #339 in 2007 marked as dead but wasn't
   
   ha_data$code[ha_data$plot == 5750 &
-               ha_data$tag_number == 1339 & 
+               ha_data$tag_number ==339 & 
                ha_data$year == 2007] <- NA
   
   
@@ -47,7 +47,7 @@ correct_5750 <- function(ha_data) {
     filter(plot == 5750 &
              tag_number == 988 &
              row == "D" &
-             column == 10)
+             column ==0)
   ha_data <- anti_join(ha_data, delete988)
   rm(delete988)
   
@@ -80,13 +80,13 @@ correct_5750 <- function(ha_data) {
   # add the 2004 measurements
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2004 &
-                 ha_data$tag_number == 886] <- "sdlg (1)"
+                 ha_data$tag_number == 886] <- "sdlg"
   ha_data$shts[ha_data$plot == 5750 &
                  ha_data$year == 2004 &
-                 ha_data$tag_number == 886] <- 1
+                 ha_data$tag_number == 886] <-
   ha_data$ht[ha_data$plot == 5750 &
                ha_data$year == 2004 &
-               ha_data$tag_number == 886] <- 10
+               ha_data$tag_number == 886] <-0
   
   # add the 2005 measurements
   ha_data$shts[ha_data$plot == 5750 &
@@ -94,7 +94,7 @@ correct_5750 <- function(ha_data) {
                  ha_data$tag_number == 886] <- 2
   ha_data$ht[ha_data$plot == 5750 &
                ha_data$year == 2005 &
-               ha_data$tag_number == 886] <- 14
+               ha_data$tag_number == 886] <-4
   
   
   
@@ -119,10 +119,10 @@ correct_5750 <- function(ha_data) {
   # measurements to 2002, then delete the incorrect 2022 in J8
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2007 &
-                 ha_data$tag_number == 2002] <- "sdlg (1)"
+                 ha_data$tag_number == 2002] <- "sdlg"
   ha_data$shts[ha_data$plot == 5750 &
                  ha_data$year == 2007 &
-                 ha_data$tag_number == 2002] <- 1
+                 ha_data$tag_number == 2002] <-
   ha_data$ht[ha_data$plot == 5750 &
                  ha_data$year == 2007 &
                  ha_data$tag_number == 2002] <- 8
@@ -137,26 +137,26 @@ correct_5750 <- function(ha_data) {
   rm(delete2022)
   
   
-  # 1409 (H10) was incorrectly typed in as 1401 in 2006. Need to add the 2006 
-  # measurements to 1409, then delete the incorrect 1401 in H10
+  #409 (H10) was incorrectly typed in as401 in 2006. Need to add the 2006 
+  # measurements to409, then delete the incorrect401 in H10
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2006 &
-                 ha_data$tag_number == 1409] <- "sdlg (1)"
+                 ha_data$tag_number ==409] <- "sdlg"
   ha_data$shts[ha_data$plot == 5750 &
                  ha_data$year == 2006 &
-                 ha_data$tag_number == 1409] <- 1
+                 ha_data$tag_number ==409] <-
   ha_data$ht[ha_data$plot == 5750 &
                ha_data$year == 2006 &
-               ha_data$tag_number == 1409] <- 8
+               ha_data$tag_number ==409] <- 8
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2007 &
-                 ha_data$tag_number == 1409] <-NA
+                 ha_data$tag_number ==409] <-NA
   # delete the duplicate
   delete1401 <- ha_data %>%
     filter(plot == 5750 &
-             tag_number == 1401 &
+             tag_number ==401 &
              row == "H" &
-             column == 10)
+             column ==0)
   ha_data <- anti_join(ha_data, delete1401)
   rm(delete1401)
   
@@ -166,19 +166,19 @@ correct_5750 <- function(ha_data) {
   # it duplicate numbers, delete incorrect plot
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2006 &
-                 ha_data$tag_number == 236] <- "missing (60)"
+                 ha_data$tag_number == 236] <- "missing"
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2008 &
-                 ha_data$tag_number == 236] <- "missing (60)"
+                 ha_data$tag_number == 236] <- "missing"
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2009 &
-                 ha_data$tag_number == 236] <- "missing (60)"
+                 ha_data$tag_number == 236] <- "missing"
   ha_data$shts[ha_data$plot == 5750 &
                  ha_data$year == 2007 &
-                 ha_data$tag_number == 236] <- 1
+                 ha_data$tag_number == 236] <-
   ha_data$ht[ha_data$plot == 5750 &
                ha_data$year == 2007 &
-               ha_data$tag_number == 236] <- 10
+               ha_data$tag_number == 236] <-0
   # delete the duplicate
   to_delete <- ha_data %>%
     filter(plot == 5750 &
@@ -189,36 +189,36 @@ correct_5750 <- function(ha_data) {
   rm(to_delete)
   
   # Updating Codes 
-  ha_data$code[ha_data$plot == "5750" & ha_data$year == 2005 & ha_data$tag_number == 864] <- "missing (60)"
+  ha_data$code[ha_data$plot == "5750" & ha_data$year == 2005 & ha_data$tag_number == 864] <- "missing"
   
   ha_data$code[ha_data$plot == 5750 &
                  (ha_data$year == 2005 | ha_data$year == 2006 | ha_data$year == 2007) & 
-                 ha_data$tag_number == 101] <- NA
+                 ha_data$tag_number ==01] <- NA
   ha_data$ht[ha_data$plot == 5750 &
                ha_data$year == 2004 & 
-               ha_data$tag_number == 101] <- NA
+               ha_data$tag_number ==01] <- NA
   
   ha_data$shts[ha_data$plot == 5750 &
                  ha_data$year == 2004 & 
-                 ha_data$tag_number == 101] <- NA
+                 ha_data$tag_number ==01] <- NA
   
   ha_data$infl[ha_data$plot == 5750 &
                  ha_data$year == 2004 & 
-                 ha_data$tag_number == 101] <- NA
+                 ha_data$tag_number ==01] <- NA
   
   # incorrectly recorded as seedling
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2009 & 
-                 ha_data$tag_number == 2341] <- "ULY (3)"
+                 ha_data$tag_number == 2341] <- "ULY"
   
   # incorrectly recorded as seedling
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2007 & 
-                 ha_data$tag_number == 2061] <- "ULY (3)"
+                 ha_data$tag_number == 2061] <- "ULY"
   
   # location
   ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 79] <- 6
-  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 106] <- 10
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number ==06] <-0
   ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 272] <- "G"
   ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 272] <- 6
   ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 274] <- "G"
@@ -226,8 +226,8 @@ correct_5750 <- function(ha_data) {
   ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 422] <- "J"
   ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 426] <- "J"
   ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 722] <- 6
-  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 927] <- 10
-  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 939] <- 10
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 927] <-0
+  ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 939] <-0
   ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 986] <- "J"
   ha_data$column[ha_data$plot == "5750" & ha_data$tag_number == 2360] <- 6
   ha_data$row[ha_data$plot == "5750" & ha_data$tag_number == 747] <- "J"

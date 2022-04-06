@@ -12,7 +12,7 @@ correct_cabofrio_cf <- function(ha_data) {
   
   ha_data$code[ha_data$plot == "CaboFrio-CF" & 
                  ha_data$tag_number == 2105 &
-                 ha_data$year == 2008] <- "sdlg (1)"
+                 ha_data$year == 2008] <- "sdlg"
   # Then delete the incorrect 2115 in D9
   delete2115 <- ha_data %>%
     filter(plot == "CaboFrio-CF" &

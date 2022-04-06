@@ -56,7 +56,7 @@ correct_5751 <- function(ha_data) {
   
   ha_data$code[ha_data$plot == "5751" & 
                ha_data$tag_number == 401 &
-               ha_data$year == 2007] <- "sdlg (1)"
+               ha_data$year == 2007] <- "sdlg"
   
   #delete the not on list code in 2006
   ha_data$code[ha_data$plot == "5751" & 
@@ -106,11 +106,11 @@ correct_5751 <- function(ha_data) {
   
   ha_data$code[ha_data$plot == "5751" &
                  ha_data$year == 2004 &
-                 ha_data$tag_number == 128] <- "missing (60)"
+                 ha_data$tag_number == 128] <- "missing"
   
   ha_data$code[ha_data$plot == "5751" &
                  ha_data$year == 2005 &
-                 ha_data$tag_number == 128] <- "missing (60)"
+                 ha_data$tag_number == 128] <- "missing"
   
   # location
   ha_data$column[ha_data$plot == "5751" & ha_data$column == 0] <- 1
@@ -123,7 +123,7 @@ correct_5751 <- function(ha_data) {
 
 # Correcting NOL code
   ha_data<-ha_data %>%
-    mutate(code=replace(code, plot==5751 & year==2004 & tag_number==71, "missing (60)"))
+    mutate(code=replace(code, plot==5751 & year==2004 & tag_number==71, "missing"))
   
   ha_data<-ha_data %>%
     mutate(code=replace(code, plot==5751 & year==2005 & tag_number==398,NA)) %>% 
