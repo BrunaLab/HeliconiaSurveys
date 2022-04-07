@@ -23,6 +23,10 @@ clean_codes <- function(ha_data) {
   levels(ha_data$code)[levels(ha_data$code) == "300"] <-  "dead"
   levels(ha_data$code)[levels(ha_data$code) == "1, 200 "] <-  "sdlg"
   levels(ha_data$code)[levels(ha_data$code) == ""] <- NA
+  
+  
+  
+  
   # summary(as.factor(ha_data$code))
   # levels(as.factor(ha_data$code))
   # 
@@ -54,7 +58,7 @@ clean_codes <- function(ha_data) {
     mutate(notes = if_else(code == "plot is 50% treefall","plot is 50% treefall", notes)) %>% 
     mutate(notes = if_else(code == "trefall","trefall", notes)) %>% 
     mutate(code = if_else(code=="dead","dead", code)) %>% 
-    mutate(code= na_if(code, "dead")) %>% 
+    # mutate(code= na_if(code, "dead")) %>% 
     # mutate(code = if_else(code == "sdlg","sdlg", code)) %>% 
     # mutate(code = na_if(code, "sdlg")) %>% 
     mutate(code = if_else(code == "under trunk","under treefall", code)) %>% 
@@ -70,7 +74,7 @@ clean_codes <- function(ha_data) {
     mutate(code = if_else(code == "not on list","not on list", code)) %>% 
     mutate(code= na_if(code, "not on list")) %>% 
     mutate(code = if_else(code == "missing","missing", code)) %>% 
-    mutate(code= na_if(code, "missing")) %>% 
+    # mutate(code= na_if(code, "missing")) %>% 
     mutate(code = if_else(code== "ULY?","ULY", code)) %>% 
     mutate(code= na_if(code, "ULY?")) %>% 
     mutate(code = if_else(code== "not on list. must be313","not on list", code)) %>% 
@@ -113,8 +117,7 @@ clean_codes <- function(ha_data) {
     mutate(code= na_if(code, "plot is 50% treefall")) %>%
     mutate(code= na_if(code, "trefall")) 
   
-  
-  ha_data$code<-trimws(ha_data$code)
+    ha_data$code<-trimws(ha_data$code)
   # ha_data$code<-as.factor(ha_data$code)
   # ha_data$code<-as.character(ha_data$code)
   # levels(as.factor(ha_data$code))

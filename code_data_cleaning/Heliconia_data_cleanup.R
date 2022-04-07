@@ -496,16 +496,16 @@ unique(ha_data$condition)
 
 ha_data <- ha_data %>% 
   mutate(census_status = case_when(
-    (ht >= 0 | shts >= 0 | infl > 0) ~ "measured",
-    code %in% c("sdlg") ~ "measured",
-    code %in% c("dead", "dead and not on list") ~ "dead",
+    (ht >= 0 | shts >= 0 | infl > 0) ~ "measured",  # anything with a measuremnt is alive
+    code %in% c("sdlg") ~ "measured", # new seedlings are alive, even if no ht or sht measurment
+    code %in% c("dead", "dead and not on list") ~ "dead", # anything dead is dead
     # code %in% c("sdlg","no tag","plant_no_tag", "ULY","new plant in plot") ~ "new",
-    code %in% c("missing") ~ code,
+    code %in% c("missing") ~ code,  # in some years maked missing
     TRUE ~ NA_character_
   )) %>%
   group_by(plot,HA_ID_Number) %>%
-  fill(census_status, .direction = "down") %>% 
-  group_by(plot,HA_ID_Number, census_status) 
+  fill(census_status, .direction = "down") %>%  # fill in the rows down. Any "missing will be recordfed as missing until they bump up against another category (dead, measured) 
+  arrange(plot,HA_ID_Number, year) 
 
 
 # I THINK THIS IS ALL YOU NEED TO KEEWP ONLY THOSE ACTUALLY ALIVE, MISSING OR DEAD
@@ -521,6 +521,14 @@ ha_dead<- ha_data %>%
   
 ha_data<-bind_rows(ha_measured,ha_na,ha_dead,ha_missing)
 
+
+ha_recruit_yr<- ha_data %>% filter(census_status=="measured") %>% filter(row_number()==1)
+hist(ha_recruit_yr$year)
+ha_recruit_yr %>% group_by(year) %>% count() %>%
+  ungroup() %>% 
+  mutate(freq = (n/ sum(n)*100)) %>% 
+  mutate(cumulative_freq = (cumsum(n)/ sum(n)*100))
+  
 # 
 # 
 # %>% 
