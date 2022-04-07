@@ -111,10 +111,13 @@ ha_data <- ha_data %>%
   mutate(year = as.numeric(year))
 
 
+
+
 # merge the PA10 data -----------------------------------------------------
 source("./code_data_cleaning/merge_with_PA10.R")
 ha_data <- merge_with_PA10(ha_data)
 names(ha_data)
+
 # to match up file from PA with others need to do the following:
 ha_data <- ha_data %>% rename("code" = "notes") 
 
@@ -123,10 +126,11 @@ ha_data <- ha_data %>% rename("code" = "notes")
 ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
 
 
+
+
 # clean up codes/notes ----------------------------------------------------
 source("./code_data_cleaning/clean_codes.R")
 ha_data <- clean_codes(ha_data)
-
 
 
 # Check for Duplicate ID Numbers ------------------------------------------
@@ -156,6 +160,9 @@ ha_data <- ha_data %>% drop_na(plot, habitat, ranch) #ERS: this does nothing cur
 ha_data %>%
   group_by(HA_ID_Number) %>%
   summarize(n_distinct(HA_ID_Number))
+
+
+
 
 # corrections 5750 --------------------------------------------------------
 source("./code_data_cleaning/correct_5750.R")
@@ -225,7 +232,6 @@ ha_data$tag_number <- as.integer(ha_data$tag_number)
 # in a subsequent year, indicating they had lost above-ground parts
 # but were still alive
 
-
 source("./code_data_cleaning/find_zombies.R")
 zombies <- find_zombies(ha_data)
 zombies %>%
@@ -280,6 +286,7 @@ count_dupes <- ha_data %>%
   summarize(N_plants = n_distinct(tag_number))
 nrow(duplicate_tags) == nrow(count_dupes)
 # check_dupes(ha_data)
+
 
 
 # simplify codes ----------------------------------------------------------
@@ -417,9 +424,7 @@ write_csv(ULYs, "./data_check/ULY_plants.csv")
 # Things that can be added for data paper ---------------------------------
 
 
-# add alive (y / n) column ------------------------------------------------
-# levels(ha_data$code)
-# ha_data$survey_status<-ha_data$code
+# ha_data$missing<-ha_data$code
 # ha_data <- ha_data %>%
 #   mutate(survey_status = replace(as.character(survey_status), ((survey_status!="dead")&
 #                                                                  (survey_status!="missing")&
@@ -429,8 +434,8 @@ write_csv(ULYs, "./data_check/ULY_plants.csv")
 # levels(as.factor(ha_data$survey_status))
 
 
-# add Seedling (y / n) column  --------------------------------------------
-#TODO: this doesn't seem like it belongs in this section
+# add Seedling (T/F) column  --------------------------------------------
+
 ha_data <- 
   ha_data %>% 
   mutate(sdlg_status = if_else(code == "sdlg", "sdlg", NA_character_))
@@ -483,12 +488,71 @@ ha_data <- ha_data %>%
 unique(ha_data$condition)
 
 
+
+
+# add census_status (measured/missing)column ------------------------------
+# unique(ha_data$code)
+
+
+ha_data <- ha_data %>% 
+  mutate(census_status = case_when(
+    (ht >= 0 | shts >= 0 | infl > 0) ~ "measured",
+    code %in% c("sdlg") ~ "measured",
+    code %in% c("dead", "dead and not on list") ~ "dead",
+    # code %in% c("sdlg","no tag","plant_no_tag", "ULY","new plant in plot") ~ "new",
+    code %in% c("missing") ~ code,
+    TRUE ~ NA_character_
+  )) %>%
+  group_by(plot,HA_ID_Number) %>%
+  fill(census_status, .direction = "down") %>% 
+  group_by(plot,HA_ID_Number, census_status) 
+
+
+# I THINK THIS IS ALL YOU NEED TO KEEWP ONLY THOSE ACTUALLY ALIVE, MISSING OR DEAD
+ha_measured<- ha_data %>% filter(census_status=="measured")
+ha_missing<- ha_data %>% filter(census_status=="missing")
+ha_na<- ha_data %>% filter(is.na(census_status))
+ha_na<-ha_na %>% filter(!is.na(duplicate_tag))
+ha_dead<- ha_data %>%  
+  filter(census_status=="dead") %>% 
+  arrange(plot,HA_ID_Number,year) %>% 
+  group_by(plot,HA_ID_Number) %>% 
+  filter(row_number()==1)
+  
+ha_data<-bind_rows(ha_measured,ha_na,ha_dead,ha_missing)
+
+# 
+# 
+# %>% 
+#   mutate(census_status = if_else(
+#     (
+#       (is.na(ht) & is.na(shts)) & 
+#        (lag(census_status,1)=="measured" |(lag(census_status,1)=="missing"|  & lead(census_status=="measured")))
+#       ),
+#     "missing",
+#     census_status)) 
+# %>% 
+#   
+  
+
+# 
+# 
+# mutate(census_status = case_when(
+#   (is.na(census_status) & is.na(ht) & is.na(shts))  ~ "missing",
+#   TRUE ~ NA_character_
+# )) 
+
+
 # Delete any with rows prior to being a seedling or after dead:
+# AFTER ADDING CENSUS STATUS, this is incredibly easy
+
+# ha_data <- ha_data %>% filter(!is.na(census_status) | !is.na(duplicate_tag))
+
+
 # first, for any plant with a seedling code, flag all the pre-seedling years.
 # in a new column, first indicate the seedling year, then muytate this column to 
 # fill back in time with the "delete" tag,
 # then keep only those that are NA (ie, no "delete" tag)
-
 # then do the same with dead, except move forward from the year marked dead
 ha_data <-
   ha_data %>%
@@ -510,6 +574,10 @@ ha_data <-
   fill(blank_yr_delete, .direction ="down") %>% 
   filter(is.na(blank_yr_delete)) %>% 
   select(-blank_yr_delete)
+
+unique(ha_data$census_status)
+
+foo<-ha_data %>% filter(is.na(census_status))
 
 # this is the less efficient way
 # 
@@ -565,12 +633,15 @@ ha_data <-
 # nrow(ha_data)==nrow(ha_slim) # different number of rows
 # nrow(ha_data)-nrow(ha_slim) # different number of rows
 # # my more efficient one deleted 35 extra rows
-# diff_rows<-setdiff(ha_slim, ha_data)
+# diff_rows<-setdiff(foo, foo2)
 
 # ha_data <- ha_data %>%
 #   arrange(as.numeric(row), as.numeric(column)) %>%
 #   mutate(subplot = paste(row, column, sep = "")) %>%
 #   arrange(subplot, HA_ID_Number, year)
+
+
+unique(ha_data$missing)
 
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
