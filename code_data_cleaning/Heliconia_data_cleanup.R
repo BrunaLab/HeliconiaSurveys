@@ -492,23 +492,29 @@ unique(ha_data$condition)
 
 # add census_status (measured/missing)column ------------------------------
 # unique(ha_data$code)
-
+# ha_data_original<-ha_data
+ha_data<-ha_data_original
 
 ha_data <- ha_data %>% 
   mutate(census_status = case_when(
-    (ht >= 0 | shts >= 0 | infl > 0) ~ "measured",  # anything with a measuremnt is alive
+    (ht >= 0 | shts >= 0 | infl > 0) ~ "measured",  # anything with a measurement is alive
     code %in% c("sdlg") ~ "measured", # new seedlings are alive, even if no ht or sht measurment
     code %in% c("dead", "dead and not on list") ~ "dead", # anything dead is dead
     # code %in% c("sdlg","no tag","plant_no_tag", "ULY","new plant in plot") ~ "new",
-    code %in% c("missing") ~ code,  # in some years maked missing
-    TRUE ~ NA_character_
+    code %in% c("missing") ~ code,  # in some years plants were marked missing
+    # (is.na(ht) & is.na(shts) & is.na(infl)) ~ "missing",  # anything with a measurement is alive
+    TRUE ~ NA_character_  # anything not measured or marked "missing", "dead" or "seedling" is NA
   )) %>%
   group_by(plot,HA_ID_Number) %>%
-  fill(census_status, .direction = "down") %>%  # fill in the rows down. Any "missing will be recordfed as missing until they bump up against another category (dead, measured) 
+  # fill in the rows down. Any "missing will be recorded as missing until 
+  # they bump up against another category (dead, measured). Dead will be 
+  # filled in as dead until the last year of census
+  fill(census_status, .direction = "down") %>%  
   arrange(plot,HA_ID_Number, year) 
 
+unique(ha_data$census_status)
 
-# I THINK THIS IS ALL YOU NEED TO KEEWP ONLY THOSE ACTUALLY ALIVE, MISSING OR DEAD
+# Now keep only those alive, missing, and the first year marked dead
 ha_measured<- ha_data %>% filter(census_status=="measured")
 ha_missing<- ha_data %>% filter(census_status=="missing")
 ha_na<- ha_data %>% filter(is.na(census_status))
@@ -519,10 +525,32 @@ ha_dead<- ha_data %>%
   group_by(plot,HA_ID_Number) %>% 
   filter(row_number()==1)
   
-ha_data<-bind_rows(ha_measured,ha_na,ha_dead,ha_missing)
+ha_data<-bind_rows(ha_measured,ha_na,ha_dead,ha_missing) %>% 
+  arrange(plot, HA_ID_Number, year)
+unique(ha_data$census_status)
+
+# Some that were NA in all measurments but were duplicate tage numbers weren getting marked
+# as NA instead of missing in census_status so this takes care of that
+
+ha_data <- ha_data %>% 
+  mutate(
+    census_status = case_when(
+      (is.na(ht) & is.na(shts)  & is.na(infl) & census_status=="measured" & (is.na(code)==TRUE  & is.na(notes)==TRUE & is.na(duplicate_tag)==TRUE))  ~ "missing",
+      TRUE ~ census_status)  # anything not measured or marked "missing", "dead" or "seedling" is NA
+  )
+
+## The ones under trefalls coming back "measured"
+ha_data <- ha_data %>% 
+  mutate(census_status = case_when(
+        (is.na(ht) & is.na(shts)  & is.na(infl) & census_status=="measured" & (treefall_status=="under treefall" |  treefall_status=="under branchfall")) ~ "missing",
+      TRUE ~ census_status)  # anything not measured or marked "missing", "dead" or "seedling" is NA
+  )
 
 
-ha_recruit_yr<- ha_data %>% filter(census_status=="measured") %>% filter(row_number()==1)
+# TODO: some that were measured but thjen never marked as missing in the
+# subsequent year were filled as measured.
+
+ha_recruit_yr<- ha_data_1 %>% filter(census_status=="measured") %>% filter(row_number()==1)
 hist(ha_recruit_yr$year)
 ha_recruit_yr %>% group_by(year) %>% count() %>%
   ungroup() %>% 
@@ -556,36 +584,34 @@ ha_recruit_yr %>% group_by(year) %>% count() %>%
 
 # ha_data <- ha_data %>% filter(!is.na(census_status) | !is.na(duplicate_tag))
 
-
+# NOT AS GOOD AS METHOD ABOVE!
 # first, for any plant with a seedling code, flag all the pre-seedling years.
 # in a new column, first indicate the seedling year, then muytate this column to 
 # fill back in time with the "delete" tag,
 # then keep only those that are NA (ie, no "delete" tag)
 # then do the same with dead, except move forward from the year marked dead
-ha_data <-
-  ha_data %>%
-  group_by(HA_ID_Number) %>%
-  mutate(
-    blank_yr_delete = if_else(lead(code, 1) == "sdlg", "delete", NA_character_),
-    .before = 'code'
-  ) %>% 
-  fill(blank_yr_delete, .direction ="up") %>% 
-  filter(is.na(blank_yr_delete)) %>% 
-  mutate(
-    blank_yr_delete = if_else(
-      lag(code, 1) %in% c("dead", "dead and not on list"),
-      "delete",
-      NA_character_
-    ),
-    .before = 'code'
-  ) %>% 
-  fill(blank_yr_delete, .direction ="down") %>% 
-  filter(is.na(blank_yr_delete)) %>% 
-  select(-blank_yr_delete)
-
-unique(ha_data$census_status)
-
-foo<-ha_data %>% filter(is.na(census_status))
+# ha_data <-
+#   ha_data %>%
+#   group_by(HA_ID_Number) %>%
+#   mutate(
+#     blank_yr_delete = if_else(lead(code, 1) == "sdlg", "delete", NA_character_),
+#     .before = 'code'
+#   ) %>% 
+#   fill(blank_yr_delete, .direction ="up") %>% 
+#   filter(is.na(blank_yr_delete)) %>% 
+#   mutate(
+#     blank_yr_delete = if_else(
+#       lag(code, 1) %in% c("dead", "dead and not on list"),
+#       "delete",
+#       NA_character_
+#     ),
+#     .before = 'code'
+#   ) %>% 
+#   fill(blank_yr_delete, .direction ="down") %>% 
+#   filter(is.na(blank_yr_delete)) %>% 
+#   select(-blank_yr_delete)
+# 
+# # NB: this isn't removing any ULY that aren't ULY that weren't marked as such'
 
 # this is the less efficient way
 # 
@@ -638,10 +664,13 @@ foo<-ha_data %>% filter(is.na(census_status))
 # 
 # 
 # # COMPARISON
-# nrow(ha_data)==nrow(ha_slim) # different number of rows
-# nrow(ha_data)-nrow(ha_slim) # different number of rows
-# # my more efficient one deleted 35 extra rows
-# diff_rows<-setdiff(foo, foo2)
+# nrow(ha_data)==nrow(ha_data_1) # different number of rows
+# nrow(ha_data)-nrow(ha_data_1) # different number of rows
+# # my more efficient one deleted 6656 extra rows
+# names(ha_data)
+# names(ha_data_1)
+# ha_data_1.1<-ha_data_1 %>% select(-census_status)
+# diff_rows<-setdiff(ha_data, ha_data_1.1)
 
 # ha_data <- ha_data %>%
 #   arrange(as.numeric(row), as.numeric(column)) %>%
@@ -649,8 +678,8 @@ foo<-ha_data %>% filter(is.na(census_status))
 #   arrange(subplot, HA_ID_Number, year)
 
 
-unique(ha_data$missing)
-
+unique(ha_data$census_status)
+summary(as.factor(ha_data$census_status))
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
 
@@ -723,6 +752,7 @@ names(ha_data)
 # 1864/1864: was there a tage switch? did these get confused?
 # 1684: was it a seedling in 1st year?
 
+# tag 976 plant id 4775 the 06 and 07 measurments are obs wrong
 
 # TODO: 2107
 # track down these marked and mapped in 07/08
@@ -760,6 +790,10 @@ names(ha_data)
 # 770 in 2006 missing on csv, 2x on form?
 # 765 in 2006 missing on csv, 2x on form?
 
+# ha id 7775  marked as mewasured in 03 but was missing
+# ha id 8478  marked as mewasured in 01 but was missing, misisng but measured 05
+
+
 # TODO: 17, 25 is missing every year?!
 
 
@@ -780,7 +814,7 @@ names(ha_data)
 # summary(as.factor(ha_data$code))
 
 
-
+# TODO: PACF ha id 7416 shts and ht NA in a year marked with 1 infl 2x
 
 
 # dataset for dryad -------------------------------------------------------
@@ -839,7 +873,10 @@ ha_dryad <- ha_data %>%
     infl,
     code,
     notes,
-    recorded_sdlg = sdlg_status
+    recorded_sdlg = sdlg_status,
+    treefall_status,
+    condition,
+    census_status
   ) %>%
   # change infl to be conditional - IF reproductive, how many infl? others ->NA
   mutate(infl = replace(infl, infl == 0, NA)) %>%
@@ -849,14 +886,14 @@ ha_dryad <- ha_data %>%
   #                                  is.na(ht) == FALSE &
   #                                  is.na(shts) == FALSE ~ FALSE)) %>%
 
-  mutate(recorded_dead = case_when(
-    code == "dead" ~ TRUE,
-    code == "dead and not on list" ~ TRUE,
-    code != "dead" ~ FALSE,
-    is.na(code) == TRUE ~ FALSE
-  )) %>%
-  mutate(code = replace(code, code == "dead", NA)) %>%
-  mutate(code = replace(code, code == "dead and not on list", "not on list")) %>%
+  # mutate(recorded_dead = case_when(
+  #   code == "dead" ~ TRUE,
+  #   code == "dead and not on list" ~ TRUE,
+  #   code != "dead" ~ FALSE,
+  #   is.na(code) == TRUE ~ FALSE
+  # )) %>%
+  # mutate(code = replace(code, code == "dead", NA)) %>%
+  # mutate(code = replace(code, code == "dead and not on list", "not on list")) %>%
   mutate(recorded_sdlg = case_when(
     recorded_sdlg == "sdlg" ~ TRUE,
     recorded_sdlg != "sdlg" ~ FALSE,
@@ -880,6 +917,8 @@ ha_dryad <- ha_data %>%
     code == "dead and not on list" ~ "NOL",
     TRUE ~ as.character(code)
   )) %>%
+  ungroup() %>% 
+  select(-plot) %>% 
   rename(
     "plot" = "plotID",
     "plant_id" = "HA_ID_Number"
@@ -888,14 +927,25 @@ ha_dryad <- ha_data %>%
   unite("notes", code:notes, sep = "", na.rm = TRUE) %>%
   mutate(notes = replace(notes, notes == "", NA))
 
+#TODO: checking, cleanup
+
+test<-ha_dryad %>% select(plant_id,notes,census_status) %>% filter(notes=="missing")
+test$test<-test$notes==test$census_status
+test %>% filter(test==FALSE)
+
+test<-ha_dryad %>% 
+  # select(plant_id,notes,ht,shts,infl,census_status) %>% 
+  filter(is.na(ht) & is.na(shts) & is.na(infl)) %>% 
+  filter(census_status=="measured")
+view(test)
 
 
 # create a new DF for treefall impact
 treefall_impact <- ha_dryad %>%
-  select(plot, plant_id, year, treefall_impact) %>%
-  drop_na(treefall_impact)
+  select(plot, plant_id, year, treefall_status) %>%
+  drop_na(treefall_status)
 # delete "trefall impact" colummn
-ha_dryad <- ha_dryad %>% select(-treefall_impact)
+ha_dryad <- ha_dryad %>% select(-treefall_status)
 
 ha_dryad
 
