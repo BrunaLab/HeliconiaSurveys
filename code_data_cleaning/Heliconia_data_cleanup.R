@@ -945,10 +945,19 @@ treefall_impact <- ha_dryad %>%
   select(plot, plant_id, year, treefall_status) %>%
   drop_na(treefall_status)
 # delete "trefall impact" colummn
-ha_dryad <- ha_dryad %>% select(-treefall_status)
+ha_dryad <- ha_dryad %>% select(-treefall_impact)
 
 ha_dryad
 
+unique(ha_dryad$notes)
+#TODO: if notes = status (i.e., missing, then delete from notes)
+# ha_dryad <- ha_dryad %>% 
+# mutate(notes = case_when(
+#   notes == census_status ~ NA_character_,
+#   TRUE ~ notes)
+# )
+# unique(ha_dryad$notes)
+# unique(ha_dryad$census_status)
 # ha_dryad$code <- droplevels(ha_dryad$code)
 # levels(ha_dryad$code)
 head(ha_dryad)
