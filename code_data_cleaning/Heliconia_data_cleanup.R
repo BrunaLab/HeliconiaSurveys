@@ -493,7 +493,7 @@ unique(ha_data$condition)
 # add census_status (measured/missing)column ------------------------------
 # unique(ha_data$code)
 # ha_data_original<-ha_data
-ha_data<-ha_data_original
+# ha_data<-ha_data_original
 
 ha_data <- ha_data %>% 
   mutate(census_status = case_when(
@@ -550,7 +550,7 @@ ha_data <- ha_data %>%
 # TODO: some that were measured but thjen never marked as missing in the
 # subsequent year were filled as measured.
 
-ha_recruit_yr<- ha_data_1 %>% filter(census_status=="measured") %>% filter(row_number()==1)
+ha_recruit_yr<- ha_data %>% filter(census_status=="measured") %>% filter(row_number()==1)
 hist(ha_recruit_yr$year)
 ha_recruit_yr %>% group_by(year) %>% count() %>%
   ungroup() %>% 
@@ -804,7 +804,6 @@ names(ha_data)
 # 933/332 in A7 check 2007 note for 1686 that it is "rebroto de velha sem placa"
 
 # TODO: verify that CF-1, CF-2...FF-7 match Bruna (2003) Ecology and ConBio
-# TODO: Make non repro 0 instead of NA
 # TODO: what is the difference between "not on list" and "new plant in plot"?
 # If nothing then collapse.
 # TODO: "dead not on list...where they properly recorded as dead?
