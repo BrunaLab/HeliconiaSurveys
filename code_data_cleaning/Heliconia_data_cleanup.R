@@ -418,8 +418,9 @@ write_csv(any_code, "./data_check/any_code.csv")
 write_csv(ULYs, "./data_check/ULY_plants.csv")
 
 
-
-
+# this is just here so don;'t have to clean from step one every time
+ha_data_original<-ha_data
+# ha_data<-ha_data_original
 
 # Things that can be added for data paper ---------------------------------
 
@@ -438,8 +439,11 @@ write_csv(ULYs, "./data_check/ULY_plants.csv")
 
 ha_data <- 
   ha_data %>% 
-  mutate(sdlg_status = if_else(code == "sdlg", "sdlg", NA_character_))
+  mutate(sdlg_status = if_else(code == "sdlg", TRUE, FALSE)) %>% 
+  mutate(sdlg_status = if_else(is.na(sdlg_status), FALSE, sdlg_status))  
 unique(ha_data$sdlg_status)
+summary(ha_data$sdlg_status)
+
 
 # add branchfall / treefall column ----------------------------------------
 ha_data <- ha_data %>% 
@@ -453,26 +457,30 @@ unique(ha_data$treefall_status)
 
 
 # add column to note if recruited as adult (uly,new tag, etc) -------------
-
+unique(ha_data$code)
 unique(ha_data$code)
 ha_data <- ha_data %>% 
-  mutate(plant_no_tag = case_when(
-    code %in% c("not on list", "dead and not on list") ~ "not on list",
-    code %in% c("no tag", "plant without tag", "new plant in plot", "ULY") ~ "plant without tag",
+  mutate(found_without_tag = case_when(
+    # code %in% c("not on list", "dead and not on list") ~ "not on list",
+    code %in% c("no tag", "plant without tag", "new plant in plot", "ULY") ~ TRUE,
     #else:
-    TRUE ~ NA_character_
+    TRUE ~ FALSE
   ))
 
-unique(ha_data$plant_no_tag)
-
-# add column to check repro status -------------
-
-unique(ha_data$code)
-unique(ha_data$notes)
-
+unique(ha_data$found_without_tag)
+summary(ha_data$found_without_tag)
+# add the repor checks to code, delete notes col -----
+# 
+# unique(ha_data$code)
+# unique(ha_data$notes)
+# 
 ha_data <- ha_data %>%
-  mutate(repro_check = replace(notes, notes == "1 new infl + 1 old infl", "1 new infl, 1 old infl"))
-unique(ha_data$repro_check)
+  mutate(code = if_else(
+    notes %in% c("1 old infl","2 old infl","1 new infl + 1 old infl"),
+    notes,
+    code)) %>% 
+  select(-notes) 
+
 
 # add column to check condition (resprouting, dried) -------------
 
@@ -492,8 +500,7 @@ unique(ha_data$condition)
 
 # add census_status (measured/missing)column ------------------------------
 # unique(ha_data$code)
-# ha_data_original<-ha_data
-# ha_data<-ha_data_original
+
 
 ha_data <- ha_data %>% 
   mutate(census_status = case_when(
@@ -527,27 +534,72 @@ ha_dead<- ha_data %>%
   
 ha_data<-bind_rows(ha_measured,ha_na,ha_dead,ha_missing) %>% 
   arrange(plot, HA_ID_Number, year)
-unique(ha_data$census_status)
 
-# Some that were NA in all measurments but were duplicate tage numbers weren getting marked
+
+# Some that were NA in all measurements but were duplicate tag numbers weren't getting marked
 # as NA instead of missing in census_status so this takes care of that
 
 ha_data <- ha_data %>% 
   mutate(
     census_status = case_when(
-      (is.na(ht) & is.na(shts)  & is.na(infl) & census_status=="measured" & (is.na(code)==TRUE  & is.na(notes)==TRUE & is.na(duplicate_tag)==TRUE))  ~ "missing",
+      (is.na(ht) & is.na(shts)  & is.na(infl) & census_status=="measured" & (is.na(code)==TRUE & is.na(duplicate_tag)==TRUE))  ~ "missing",
       TRUE ~ census_status)  # anything not measured or marked "missing", "dead" or "seedling" is NA
   )
 
-## The ones under trefalls coming back "measured"
+## The ones under treefalls coming back "measured"
 ha_data <- ha_data %>% 
   mutate(census_status = case_when(
         (is.na(ht) & is.na(shts)  & is.na(infl) & census_status=="measured" & (treefall_status=="under treefall" |  treefall_status=="under branchfall")) ~ "missing",
       TRUE ~ census_status)  # anything not measured or marked "missing", "dead" or "seedling" is NA
   )
 
+# 
+#   
+# # now bring over the information on "seedlings" to indicate the year they were marked as a dseedling
+# ha_data <- ha_data %>%
+#   mutate(census_status = case_when(
+#     sdlg_status=="sdlg" ~ "sdlg",
+#     TRUE ~ census_status)  # anything not measured or marked "missing", "dead" or "seedling" is NA
+#   )
 
-# TODO: some that were measured but thjen never marked as missing in the
+unique(ha_data$census_status)
+# 
+# 
+# 
+# unique(ha_data$census_status)
+# unique(ha_data$sdlg)
+# summary(ha_data$sdlg)
+# unique(ha_data$dead)
+# summary(ha_data$dead)
+
+
+# TODO: decide if we want all the census data in one mixed column or multiple indep
+# names(ha_data)
+# ha_data <- ha_data %>% 
+#   mutate(sdlg_status = sdlg_status=="sdlg") %>% 
+#   mutate(dead = census_status=="dead") %>% 
+#   replace_na(list(sdlg_status=FALSE,dead_status=FALSE)) %>% 
+#   rename("sdlg"="sdlg_status")
+# unique(ha_data$sdlg)
+
+# ha_data <- ha_data %>% 
+#   arrange(plot,HA_ID_Number,year) %>% 
+#   group_by(plot,HA_ID_Number) %>% 
+#   mutate(census_status = if_else((row_number()==1 & census_status!="sdlg"), "marked-adult",census_status))
+# 
+# 
+# ha_data <- ha_data %>% 
+#   arrange(plot,HA_ID_Number,year) %>% 
+#   group_by(plot,HA_ID_Number) %>% 
+#   mutate(census_status = if_else(row_number()==1, "tagged",census_status))
+# 
+
+unique(ha_data$census_status)
+
+
+## 
+
+# TODO: some that were measured but then never marked as missing in the
 # subsequent year were filled as measured.
 
 ha_recruit_yr<- ha_data %>% filter(census_status=="measured") %>% filter(row_number()==1)
@@ -676,10 +728,11 @@ ha_recruit_yr %>% group_by(year) %>% count() %>%
 #   arrange(as.numeric(row), as.numeric(column)) %>%
 #   mutate(subplot = paste(row, column, sep = "")) %>%
 #   arrange(subplot, HA_ID_Number, year)
-
-
+unique(ha_data$notes)
+unique(ha_data$code)
 unique(ha_data$census_status)
 summary(as.factor(ha_data$census_status))
+names(ha_data)
 write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
 
@@ -838,9 +891,14 @@ ha_plots <- ha_data %>%
     "bdffp_reserve_no",
     "plot"
   ) %>%
+  ungroup() %>% 
+  select(-HA_ID_Number) %>% 
   distinct() %>%
   arrange(plotID) %>%
-  mutate(ranch = recode_factor(ranch, "PortoAlegre" = "PAL")) %>%
+  mutate(ranch = recode_factor(ranch, "PortoAlegre" = "Porto Alegre")) %>%
+  mutate(ranch = recode_factor(ranch, "DIM" = "Dimona")) %>%
+  mutate(ranch = recode_factor(ranch, "PAL" = "Porto Alegre")) %>%
+  mutate(ranch = recode_factor(ranch, "EST" = "Esteio")) %>%
   mutate(habitat = recode_factor(habitat, "1-ha" = "one")) %>%
   mutate(habitat = recode_factor(habitat, "10-ha" = "ten")) %>%
   mutate(habitat = recode_factor(habitat, "CF" = "forest")) %>%
@@ -871,8 +929,8 @@ ha_dryad <- ha_data %>%
     ht,
     infl,
     code,
-    notes,
     recorded_sdlg = sdlg_status,
+    found_without_tag,
     treefall_status,
     condition,
     census_status
@@ -922,21 +980,23 @@ ha_dryad <- ha_data %>%
     "plot" = "plotID",
     "plant_id" = "HA_ID_Number"
   ) %>%
-  mutate(across(where(is.character), as.factor)) %>%
-  unite("notes", code:notes, sep = "", na.rm = TRUE) %>%
-  mutate(notes = replace(notes, notes == "", NA))
+  mutate(across(where(is.character), as.factor)) 
+
+# %>%
+#   unite("notes", code:notes, sep = "", na.rm = TRUE) %>%
+#   mutate(notes = replace(notes, notes == "", NA))
 
 #TODO: checking, cleanup
 
-test<-ha_dryad %>% select(plant_id,notes,census_status) %>% filter(notes=="missing")
-test$test<-test$notes==test$census_status
+test<-ha_dryad %>% select(plant_id,code,census_status) %>% filter(code=="missing")
+test$test<-as.character(test$code)==as.character(test$census_status)
 test %>% filter(test==FALSE)
 
 test<-ha_dryad %>% 
   # select(plant_id,notes,ht,shts,infl,census_status) %>% 
   filter(is.na(ht) & is.na(shts) & is.na(infl)) %>% 
   filter(census_status=="measured")
-view(test)
+# view(test)
 
 
 # create a new DF for treefall impact
@@ -948,7 +1008,7 @@ ha_dryad <- ha_dryad %>% select(-treefall_impact)
 
 ha_dryad
 
-unique(ha_dryad$notes)
+
 #TODO: if notes = status (i.e., missing, then delete from notes)
 # ha_dryad <- ha_dryad %>% 
 # mutate(notes = case_when(
@@ -963,20 +1023,20 @@ head(ha_dryad)
 glimpse(ha_dryad)
 summary(ha_dryad$infl)
 summary(ha_dryad$recorded_sdlg)
-summary(ha_dryad$recorded_dead)
-summary(as.factor(ha_dryad$notes))
-summary(ha_dryad$sdlg_status)
-
-levels(as.factor(ha_dryad$notes))
 
 
-write_csv(ha_dryad, "./data_clean/ha_plants_dryad.csv")
+
+names(ha_data)
+
+ha_dryad<-ha_dryad %>% rename("check_pre_dryad"="code")
+
+write_csv(ha_dryad, "./data_clean/HDP_1997_2009.csv")
 
 # unique(ha_dryad$notes)
 
-write_csv(ha_plots, "./data_clean/ha_plots_dryad.csv")
+write_csv(ha_plots, "./data_clean/HDP_plots.csv")
 
-write_csv(ha_dryad, "./data_clean/treefall_impact_dryad.csv")
+write_csv(ha_dryad, "./data_clean/treefall_data.csv")
 
 
 
