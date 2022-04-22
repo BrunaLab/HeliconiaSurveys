@@ -257,12 +257,6 @@ correct_5756 <- function(ha_data) {
   # and noting a field 2x to be conducted.
   
   
-  # Plant 933
-  # ha_data$HA_ID_Number <- as.character(ha_data$HA_ID_Number)
-  # ha_data <- ha_data %>%
-  #   mutate(HA_ID_Number = if_else((plot == 5756 & tag_number == 933 & year < 2006), "4733.1", HA_ID_Number)) %>%
-  #   mutate(HA_ID_Number = if_else((plot == 5756 & tag_number == 933 & year > 2005), "4733.2", HA_ID_Number))
-  # 
   
   ha_data$shts[ha_data$plot == 5756 &
                  ha_data$row == "A" &
@@ -282,11 +276,6 @@ correct_5756 <- function(ha_data) {
                     ha_data$year == 2008 |
                     ha_data$year == 2009) ] <- NA
   
-  
-  # ha_data$HA_ID_Number[ha_data$plot == 5756 &
-  #              ha_data$row == "A" &
-  #              ha_data$column == "7" &
-  #              (ha_data$HA_ID_Number == 4733.1 | 4733.2)] <- round(4733)
   
   # add correct data to  332
   

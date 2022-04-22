@@ -2,9 +2,9 @@
 find_zombies <- function(test) {
   # 
   # test<-ha_data %>% filter(code=="dead (2)"|code == "dead") %>% 
-  #   select(plot, tag_number, HA_ID_Number, year)
+  #   select(plot, tag_number, plant_id, year)
   #   
-  # test<-ha_data %>% filter(HA_ID_Number%in% test$HA_ID_Number) %>% 
+  # test<-ha_data %>% filter(plant_id%in% test$plant_id) %>% 
   #   group_by(plot, tag_number) %>%
   #   mutate(code = as.character(code), # can be avoided if key is a character to begin with
   #          code3 = (cumsum(lag(
@@ -20,7 +20,8 @@ find_zombies <- function(test) {
   # test<-pa_wide
   df2 <- test
   df2$code2 <- NA
-  df2$code2[df2$code == "dead (2)"] <- "dead"
+  df2$code2[df2$code == "dead"] <- "dead"
+  df2$code2[df2$code == "dead and not on list"] <- "dead"
   df2 <- df2 %>%
     group_by(plot, tag_number) %>%
     mutate(code2 = as.character(code2), # can be avoided if key is a character to begin with
@@ -49,8 +50,8 @@ find_zombies <- function(test) {
   # 
   zombies_all_yrs <-
     semi_join(test, df3, by = c("plot", "tag_number")) %>% 
-    select(plot, habitat,HA_ID_Number, tag_number, row, column,year, shts, ht, code) %>% 
-    arrange(habitat, plot, HA_ID_Number,tag_number, year)
+    select(plot, habitat,plant_id, tag_number, row, column,year, shts, ht, code) %>% 
+    arrange(habitat, plot, plant_id,tag_number, year)
   # zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
   # write.csv(zombies_all_yrs, "./data_check/zombies.csv", row.names = FALSE)
   if (nrow(zombies_all_yrs)==0) {

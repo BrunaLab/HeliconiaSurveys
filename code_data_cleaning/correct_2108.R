@@ -102,11 +102,6 @@ correct_2108 <- function(ha_data) {
   ha_data$code[ha_data$plot == "2108" & ha_data$year == 2008 & ha_data$tag_number == 293] <- NA
   # Plant 293: code say 'dead (2)' in 2009, it's not. replace this with NA
   ha_data$code[ha_data$plot == "2108" & ha_data$year == 2009 & ha_data$tag_number == 293] <- NA
-  return(ha_data)
-  
-  
-  
-  
   
   # # Incorrect Not On List codes
   ha_data<-ha_data %>%
@@ -115,18 +110,22 @@ correct_2108 <- function(ha_data) {
   ha_data<-ha_data %>%
     # filter(ht=replace(ht, plot==2107 & year==2008 & tag_number==333, 15))
   filter(!(plot%in% 2108 & tag_number%in% 333))
-  # # This was a seedling in prior year
-  # ha_data<-ha_data %>%
-  #   mutate(code=replace(code, plot==2108 & year==2009 & tag_number==365, NA))
-  # ha_data<-ha_data %>%
-  #   mutate(shts=replace(shts, plot==2108 & year==2008 & tag_number==365, 1))
-  # ha_data<-ha_data %>%
-  #   mutate(ht=replace(ht, plot==2108 & year==2008 & tag_number==365, 11))
-  # ha_data<-ha_data %>%
-  #   mutate(code=replace(code, plot==2108 & year==2008 & tag_number==365, "sdlg"))
-  # ha_data<-ha_data %>%
-  #   mutate(code=replace(code, plot==2108 & year==2008 & tag_number==365, "sdlg"))
   
+  
+  # the number for 365 was incorrectly read in as 369 when initially marked in 2008
+  # correct the tag and measurment 
+  ha_data<-ha_data %>%
+    mutate(tag_number=if_else(plot==2108 & year==2008 & tag_number==369, 365, tag_number)) %>% 
+    mutate(shts=if_else(plot==2108 & year==2008 & tag_number==365, 1, shts)) %>%
+    mutate(ht=if_else(plot==2108 & year==2008 & tag_number==365, 11, ht)) %>%
+    mutate(code=if_else(plot==2108 & year==2008 & tag_number==365, "sdlg", code))
+  # delete the duplicate year
+  ha_data<-ha_data %>% filter(!(plot==2108 & year==2008 & tag_number==365 & x_09==1.37))    
+  # delete the 369
+  ha_data<-ha_data %>% filter(!(plot==2108 & year==2009 & tag_number==369))
+  
+  
+  return(ha_data)
   
 }
 

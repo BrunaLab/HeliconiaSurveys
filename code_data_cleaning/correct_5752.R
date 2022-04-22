@@ -21,14 +21,6 @@ correct_5752 <- function(ha_data) {
                ha_data$tag_number == 566 &
                ha_data$year == 2006] <- 1
   
-  delete566 <- ha_data %>%
-    filter(plot == "5752" &
-             tag_number == 566 &
-             HA_ID_Number == 3127)
-  ha_data <- anti_join(ha_data, delete566)
-  rm(delete566)
-  
-  
   
   # tag no. 181
   # create the correct values

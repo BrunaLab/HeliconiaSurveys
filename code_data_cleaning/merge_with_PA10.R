@@ -195,12 +195,6 @@ merge_with_PA10 <- function(ha_data) {
   pa_wide$year <-as.numeric(pa_wide$year)
 
   
-  # add a unique id number for the pa_wide
-  max_ha_id<-max(ha_data$HA_ID_Number,na.rm=TRUE)
-  pa_wide <- pa_wide %>% group_by(tag_number, row, column) %>% mutate(HA_ID_Number = cur_group_id())
-  # range(pa_wide$HA_ID_Number)
-  pa_wide$HA_ID_Number<-pa_wide$HA_ID_Number+max_ha_id
-  
   ha_data <- bind_rows(ha_data,pa_wide)
 
   return(ha_data)

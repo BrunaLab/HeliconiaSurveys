@@ -15,12 +15,12 @@ detect_duplicate_plants <- function(test) {
   
   dupes <-
     semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% 
-    select(plotID,plot, habitat,  HA_ID_Number,   tag_number, year, row,column, shts, ht, code) %>% 
+    select(plotID,plot, habitat,  plant_id,   tag_number, year, row,column, shts, ht, code) %>% 
     arrange(plot, habitat, tag_number,  row,column,year) %>% # detect all the ones with decimals
     bind_rows(ha_data %>% filter(str_detect(tag_number, "\\.")))
   
   dupe_simplified <- dupes %>% 
-    select(plot,tag_number,HA_ID_Number,row,column) %>% 
+    select(plot,tag_number,plant_id,row,column) %>% 
     group_by(plot,tag_number,row,column) %>% 
     slice(1)
   

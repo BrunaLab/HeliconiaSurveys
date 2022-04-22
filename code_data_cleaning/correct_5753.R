@@ -155,6 +155,10 @@ correct_5753 <- function(ha_data) {
                  ha_data$tag_number == 345] <- "missing"
   
   ha_data$code[ha_data$plot == 5753 &
+                 ha_data$year == 2009 &
+                 ha_data$tag_number == 345] <- NA
+  
+  ha_data$code[ha_data$plot == 5753 &
                  ha_data$year == 2008 &
                  ha_data$tag_number == 412] <- "missing"
   
