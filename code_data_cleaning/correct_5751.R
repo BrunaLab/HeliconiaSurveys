@@ -131,5 +131,37 @@ correct_5751 <- function(ha_data) {
     mutate(ht=replace(ht, plot==5751 & year==2004 & tag_number==398,37))
   
   
+  
+  # tag switch - 71 became400 in 2004
+  
+  
+  # remove "sdlg" note on 400
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5751 & year==2004 & tag_number==400, NA))
+  
+  delete71 <- ha_data %>%
+    filter(plot == "5751" &
+             tag_number == 71 &
+             (year > 2003 & year < 2010))
+  ha_data <- anti_join(ha_data, delete71)
+  rm(delete71)
+  
+  delete400 <- ha_data %>%
+    filter(plot == "5751" &
+             tag_number == 400 &
+             (year < 2004))
+  ha_data <- anti_join(ha_data, delete400)
+  rm(delete400)
+  
+  
+  ha_data<-ha_data %>%
+    mutate(x_09=replace(x_09,(plot==5751 & tag_number==71), 5.2)) %>% 
+    mutate(y_09=replace(y_09,(plot==5751 & tag_number==71), 2.4)) %>% 
+    mutate(tag_number=replace(tag_number,(plot==5751 & tag_number==71), 400))
+  
+  
+  
+  
+  
   return(ha_data)
 }

@@ -91,7 +91,13 @@ correct_florestal <- function(ha_data) {
                  ha_data$tag_number == 1290] <- NA
   
   
-  
+  # correcting 576
+  ha_data<-ha_data %>%
+    mutate(row=replace(row,(plot=="Florestal-CF" & tag_number==576), "E")) %>% 
+    mutate(shts=replace(shts,(plot=="Florestal-CF" & tag_number==576 & year==2008), 4)) %>% 
+    mutate(ht=replace(ht,(plot=="Florestal-CF" & tag_number==576 & year==2008), 66)) %>% 
+    filter(!(plot=="Florestal-CF" & tag_number==576 & column==1))
+    
   
   # Correcting NOL code  
   ha_data<-ha_data %>%

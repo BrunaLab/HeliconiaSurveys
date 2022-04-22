@@ -181,7 +181,7 @@ ha_data$tag_number <- as.integer(ha_data$tag_number)
 
 # Add a unique plant_id index number for each plant -----------------------
 ha_data <- ha_data %>% 
-  group_by(plot, tag_number) %>%
+  group_by(plot, row,column,tag_number) %>%
   mutate(plant_id = cur_group_id(),.before=1)
 
 # Check for Duplicate ID Numbers ------------------------------------------
@@ -719,28 +719,29 @@ names(ha_data)
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 # TODO: 5756
-# figure out which of the plants in the plot is  now 933
+
+# figure out which of the plants in the plot is now 933
 # RESPONSE:  looks like was 332 lost tag and became 933
 
 # 1864/1864: was there a tage switch? did these get confused?
+ha_data %>% filter(plot==5756 & (tag_number==1846))
 # 1684: was it a seedling in 1st year?
+ha_data %>% filter(plot==5756 & (tag_number==1684))
+# tag 976  the 06 and 07 measurments are obs wrong
+ha_data %>% filter(plot==5756 & (tag_number==976))
+# 16, 816 looks like a ULA but recorded number wrong, 2x in field,
+ha_data %>% filter(plot==5756 & (tag_number==816))
 
-# tag 976 plant id 4775 the 06 and 07 measurments are obs wrong
-
-# 16, 816.2 looks like a ULA but recorded number wrong, 2x in field,
 # 933/332 in A7 check 2007 note for 1686 that it is "rebroto de velha sem placa"
-
+ha_data %>% filter(plot==5756 & (tag_number==933))
+ha_data %>% filter(plot==5756 & (tag_number==332))
+ha_data %>% filter(plot==5756 & (tag_number==1686))
 # track down these marked and mapped in 07/08
 # look for them in plant_id_07 for plants 1609 and 1629
 # filter(ha_data, tag_number == 1705 & plot == 5756)
 # filter(ha_data, tag_number == 1710 & plot == 5756)
-
-
-# TODO:5751
-# 2x 71 in 07/08 uly or missing?
-# looks like 71 lost tag in 04 and was retagged as 400!!
-# meed to make changes and add tag change to tag_+changes file
-ha_data %>% filter(plot==5751 & (tag_number==71|tag_number==400))
+ha_data %>% filter(plot==5756 & (tag_number==1609))
+ha_data %>% filter(plot==5756 & (tag_number==1629))
 
 
 # TODO:5752
@@ -762,23 +763,32 @@ ha_data %>% filter(plot==5751 & (tag_number==71|tag_number==400))
 
 # TODO  5754 PA 10
 # Need to add 2006 seedling notations
-# plant 46 in B4 is actually 6. (2,112 in 1999) can track down what appened to it?
-# 770 in 2006 missing on csv, 2x on form?
-# 765 in 2006 missing on csv, 2x on form?
-# ha id 7775  marked as mewasured in 03 but was missing
-# ha id 8478  marked as mewasured in 01 but was missing, misisng but measured 05
-# 290 357 2006: # Add infl to 2005 (2x)
 
+# plant 46 in B4 is actually 6. (2,112 in 1999) can track down what appened to it?
+
+# 770 in 2006 missing on csv, 2x on form?
+ha_data %>% filter(plot==5754 & (tag_number==770))
+
+# 765 in 2006 missing on csv, 2x on form?
+ha_data %>% filter(plot==5754 & (tag_number==765))
+
+# ha id 7775  marked as mewasured in 03 but was missing
+
+# ha id 8478  marked as mewasured in 01 but was missing, misisng but measured 05
+
+# 290 357 2006: # Add infl to 2005 (2x)
+ha_data %>% filter(plot==5754 & (tag_number==290))
+ha_data %>% filter(plot==5754 & (tag_number==357))
 
 # TODO: 2107
+ha_data %>% filter(plot==2107 & (tag_number==17|tag_number==25))
 # 17, 25 is missing every year?!
 # 17 looks like itr was retagged 216 (uly) in 99
 # 25 187 or 182
-foo<-ha_data %>% filter(plot==2107 & (tag_number==25|tag_number==25))
 
-# TODO: CaboFrio-CF
-# 194 in C10 and A8, need to be figured out in field
-ha_data %>% filter(plot=="CaboFrio-CF" & (tag_number==194))
+
+ha_data %>% filter(plot==2107 & (tag_number==25|tag_number==17))
+
 
 # TODO: 2206
 # 45 / 7 / 70 / 25 2004 3x
@@ -786,12 +796,6 @@ ha_data %>% filter(plot=="CaboFrio-CF" & (tag_number==194))
 ha_data %>% filter(plot==2206 & (tag_number==45|tag_number==25))
 ha_data %>% filter(plot==2206 & (tag_number==70|tag_number==7))
 ha_dryad %>% filter(plot=="FF-5" & (plant_id==686|plant_id==731))
-
-# TODO: Florestal
-# 576 2x
-# 738 2x
-
-ha_data %>% filter(plot=="Florestal-CF" & (tag_number==576|tag_number==738))
 
 
 # TODO: MISC
