@@ -718,30 +718,6 @@ names(ha_data)
 # names(wide_ha_data)
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
-# TODO: 5756
-
-# figure out which of the plants in the plot is now 933
-# RESPONSE:  looks like was 332 lost tag and became 933
-
-# 1864/1864: was there a tage switch? did these get confused?
-ha_data %>% filter(plot==5756 & (tag_number==1846))
-# 1684: was it a seedling in 1st year?
-ha_data %>% filter(plot==5756 & (tag_number==1684))
-# tag 976  the 06 and 07 measurments are obs wrong
-ha_data %>% filter(plot==5756 & (tag_number==976))
-# 16, 816 looks like a ULA but recorded number wrong, 2x in field,
-ha_data %>% filter(plot==5756 & (tag_number==816))
-
-# 933/332 in A7 check 2007 note for 1686 that it is "rebroto de velha sem placa"
-ha_data %>% filter(plot==5756 & (tag_number==933))
-ha_data %>% filter(plot==5756 & (tag_number==332))
-ha_data %>% filter(plot==5756 & (tag_number==1686))
-# track down these marked and mapped in 07/08
-# look for them in plant_id_07 for plants 1609 and 1629
-# filter(ha_data, tag_number == 1705 & plot == 5756)
-# filter(ha_data, tag_number == 1710 & plot == 5756)
-ha_data %>% filter(plot==5756 & (tag_number==1609))
-ha_data %>% filter(plot==5756 & (tag_number==1629))
 
 
 # TODO:5752
@@ -758,47 +734,38 @@ ha_data %>% filter(plot==5756 & (tag_number==1629))
 # 503
 # 504
 # 560
+ha_data %>% filter(plot==5752 & (tag_number==426))
 
 # check the xy
 
 # TODO  5754 PA 10
 # Need to add 2006 seedling notations
 
-# plant 46 in B4 is actually 6. (2,112 in 1999) can track down what appened to it?
-
 # 770 in 2006 missing on csv, 2x on form?
 ha_data %>% filter(plot==5754 & (tag_number==770))
-
 # 765 in 2006 missing on csv, 2x on form?
 ha_data %>% filter(plot==5754 & (tag_number==765))
 
-# ha id 7775  marked as mewasured in 03 but was missing
-
-# ha id 8478  marked as mewasured in 01 but was missing, misisng but measured 05
-
-# 290 357 2006: # Add infl to 2005 (2x)
-ha_data %>% filter(plot==5754 & (tag_number==290))
-ha_data %>% filter(plot==5754 & (tag_number==357))
 
 # TODO: 2107
-ha_data %>% filter(plot==2107 & (tag_number==17|tag_number==25))
 # 17, 25 is missing every year?!
 # 17 looks like itr was retagged 216 (uly) in 99
 # 25 187 or 182
-
-
-ha_data %>% filter(plot==2107 & (tag_number==25|tag_number==17))
+ha_data %>% filter(plot==2107 & (tag_number==17))
+ha_data %>% filter(plot==2107 & (tag_number==25))
+ha_data %>% filter(plot==2107 & (tag_number==17|tag_number==25))
 
 
 # TODO: 2206
 # 45 / 7 / 70 / 25 2004 3x
-
 ha_data %>% filter(plot==2206 & (tag_number==45|tag_number==25))
 ha_data %>% filter(plot==2206 & (tag_number==70|tag_number==7))
 ha_dryad %>% filter(plot=="FF-5" & (plant_id==686|plant_id==731))
 
 
 # TODO: MISC
+
+# 1.  not sure of plot plant 46 in B4 is actually 6. (2,112 in 1999) can track down what appened to it?
 
 # 1. what is the difference between "not on list" and "new plant in plot"?
 # If nothing then collapse.
@@ -894,11 +861,16 @@ ha_dryad <- ha_data %>%
   # )) %>%
   # mutate(code = replace(code, code == "dead", NA)) %>%
   # mutate(code = replace(code, code == "dead and not on list", "not on list")) %>%
-  mutate(recorded_sdlg = case_when(
-    recorded_sdlg == "sdlg" ~ TRUE,
-    recorded_sdlg != "sdlg" ~ FALSE,
-    is.na(recorded_sdlg) == TRUE ~ FALSE
-  )) %>%
+mutate(recorded_sdlg = case_when(
+  recorded_sdlg == TRUE ~ TRUE,
+  recorded_sdlg == FALSE ~ FALSE,
+  is.na(recorded_sdlg) == TRUE ~ FALSE
+)) %>%  
+# mutate(recorded_sdlg = case_when(
+#     recorded_sdlg == "sdlg" ~ TRUE,
+#     recorded_sdlg != "sdlg" ~ FALSE,
+#     is.na(recorded_sdlg) == TRUE ~ FALSE
+#   )) %>%
   mutate(code = replace(code, code == "sdlg", NA)) %>%
   mutate(treefall_impact = case_when(
     code == "under branchfall" ~ "branch",
@@ -965,6 +937,7 @@ ha_dryad
 head(ha_dryad)
 glimpse(ha_dryad)
 summary(ha_dryad$infl)
+summary(ha_dryad$code)
 summary(ha_dryad$recorded_sdlg)
 
 

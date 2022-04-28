@@ -244,6 +244,20 @@ correct_5754 <- function(ha_data) {
   ha_data <- anti_join(ha_data, delete18)
   rm(delete18)
   
-    
+  # Add infloresence in 2006 to 290 & 357, then remove code
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="5754" & year==2006 & tag_number==290,NA)) %>% 
+    mutate(code=replace(code, plot=="5754" & year==2006 & tag_number==357,NA)) %>% 
+    mutate(notes=replace(code, plot=="5754" & year==2006 & tag_number==290,NA)) %>% 
+    mutate(notes=replace(code, plot=="5754" & year==2006 & tag_number==357,NA)) %>% 
+    mutate(infl=replace(infl, plot=="5754" & year==2006 & tag_number==290,1)) %>% 
+    mutate(infl=replace(infl, plot=="5754" & year==2006 & tag_number==357,1)) 
+  # 
+  # ha_data %>% filter(plot==5754 & (tag_number==290)) 
+  # ha_data %>% filter(plot==5754 & (tag_number==357)) 
+  # 
+  
+  
   return(ha_data)
 }

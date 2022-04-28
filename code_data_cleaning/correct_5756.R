@@ -79,6 +79,13 @@ correct_5756 <- function(ha_data) {
                ha_data$tag_number == 1684 & 
                ha_data$year == 2008] <- 11
   
+  # add the 2007 data incorrectly recorded as 1864
+  ha_data<-ha_data %>%
+    mutate(shts=if_else((plot == 5756 & tag_number == 1684 & year==2007),1,shts)) %>% 
+    mutate(ht=if_else((plot == 5756 & tag_number == 1684 & year == 2007),14,ht)) %>% 
+    mutate(code=if_else((plot == 5756 & tag_number == 1684 & year == 2007),"sdlg",code))
+    
+  
   # remove 1864
   delete1864 <- ha_data %>%
     filter(plot == 5756 &
@@ -562,6 +569,32 @@ correct_5756 <- function(ha_data) {
   ha_data <- anti_join(ha_data, delete659)
   rm(delete659)
   
+  # 1290 was missing in 07, appears top have been retagged as 1686
+    # add the 2007 data incorrectly recorded as 1864
+  #  also fixed missings shts in 2008
+  
+  ha_data<-ha_data %>%
+    mutate(shts=if_else((plot == 5756 & tag_number == 1686 & year == 2008),1,shts)) %>% 
+    mutate(shts=if_else((plot == 5756 & tag_number == 1686 & year==2006),1,shts)) %>% 
+    mutate(ht=if_else((plot == 5756 & tag_number == 1686 & year == 2006),13,ht)) %>% 
+  mutate(shts=if_else((plot == 5756 & tag_number == 1686 & year==2005),1,shts)) %>% 
+    mutate(ht=if_else((plot == 5756 & tag_number == 1686 & year == 2005),13,ht)) %>% 
+  mutate(shts=if_else((plot == 5756 & tag_number == 1686 & year==2004),1,shts)) %>% 
+    mutate(ht=if_else((plot == 5756 & tag_number == 1686 & year == 2004),15,ht)) %>% 
+    mutate(code=if_else((plot == 5756 & tag_number == 1686 & year == 2004),"ULY",code)) %>% 
+        mutate(code=replace(code,(plot == 5756 & tag_number == 1686 & year == 2007),NA))
+  
+  # Delete 1290
+  
+  delete1290 <- ha_data %>%
+    filter(plot == 5756 &
+             tag_number == 1290 &
+             row == "E" &
+             column == 2)
+  ha_data <- anti_join(ha_data, delete1290)
+  rm(delete1290)
+  
+  
   # 976
   # On B7/C7 border, so recorded in C7 in 2 yrs. 
   # add 06 and 07 measuremnts to B7 and delete C7
@@ -577,12 +610,12 @@ correct_5756 <- function(ha_data) {
                  ha_data$row == "B" &
                  ha_data$column == "7" &
                  ha_data$tag_number == 976 & 
-                 ha_data$year ==2006] <- 31
+                 ha_data$year ==2006] <- 3
   
   
   ha_data$code[ha_data$plot == 5756 &
-                 ha_data$row == "E" &
-                 ha_data$column == "2" &
+                 ha_data$row == "B" &
+                 ha_data$column == "7" &
                  ha_data$tag_number == 976 & 
                  ha_data$year ==2006] <- NA
   
@@ -591,19 +624,19 @@ correct_5756 <- function(ha_data) {
                ha_data$row == "B" &
                ha_data$column == "7" &
                ha_data$tag_number == 976 & 
-               ha_data$year ==2007] <- 31
+               ha_data$year ==2007] <- 28
   
   
   ha_data$shts[ha_data$plot == 5756 &
                  ha_data$row == "B" &
                  ha_data$column == "7" &
                  ha_data$tag_number == 976 & 
-                 ha_data$year ==2007] <- 28
+                 ha_data$year ==2007] <- 3
   
   
   ha_data$code[ha_data$plot == 5756 &
-                 ha_data$row == "E" &
-                 ha_data$column == "2" &
+                 ha_data$row == "B" &
+                 ha_data$column == "7" &
                  ha_data$tag_number == 976 & 
                  ha_data$year ==2007] <- NA
   
