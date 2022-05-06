@@ -768,9 +768,14 @@ correct_5756 <- function(ha_data) {
     mutate(code=replace(code, plot==5756 & year==2005 & tag_number==1608,NA)) %>% 
     mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1608,"ULY")) %>% 
     mutate(shts=replace(shts, plot==5756 & year==2004 & tag_number==1608,3)) %>% 
-    mutate(ht=replace(ht, plot==5756 & year==2004 & tag_number==1608,50)) %>% 
+    mutate(ht=replace(ht, plot==5756 & year==2004 & tag_number==1608,50)) 
   
   
+    
+    # 1258 ios a seedling in 2003
+    
+    ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5756 & year==2003 & tag_number==1258,"sdlg"))
   
   return(ha_data)
   }

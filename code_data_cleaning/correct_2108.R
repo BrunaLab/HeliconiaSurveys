@@ -51,9 +51,14 @@ correct_2108 <- function(ha_data) {
   
   
   # Adding the year that was missing for 240
-  ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 240] <- 2
-  ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 240] <- 22
+  ha_data$ht[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 240] <- 22
+  ha_data$shts[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 240] <- 2
   ha_data$code[ha_data$plot == 2108 & ha_data$year == 2005 & ha_data$tag_number == 240] <- NA
+  
+  # now delete 227 record (33 became 227, which became 249)
+  omit227<-ha_data %>% filter(plot==2108 & tag_number==227)
+  ha_data<-anti_join(ha_data,omit227)
+  rm(omit227)
   
   # 17 plot corrected but failed to correct on datasheet
   ha_data$code[ha_data$plot == 2108 & ha_data$year == 2006 & ha_data$tag_number == 17] <- NA
@@ -85,15 +90,29 @@ correct_2108 <- function(ha_data) {
   ha_data$column[ha_data$plot == 2108 & ha_data$column == 7 & ha_data$tag_number == 17] <- 6
   
   
-  # tag_no 66
-  # Correct the value for C9
+  # tag_no 66 and 69 are different plants but 69 was incorerctly enterred as 66
+  ha_data<-ha_data %>%
+    mutate(tag_number=replace(tag_number, plot==2108 & row=="C" & tag_number==66, 69))
+  
+  
+  # correct the value for D10 (66)
   ha_data$ht[ha_data$plot == "2108" & ha_data$year == 1999 & ha_data$tag_number == 66] <- 13
   ha_data$shts[ha_data$plot == "2108" & ha_data$year == 1999 & ha_data$tag_number == 66] <- 1
   ha_data$code[ha_data$plot == "2108" & ha_data$year == 1999 & ha_data$tag_number == 66] <- NA
-  # delete the value for D10
-  ha_data <- ha_data[!(ha_data$plot == "2108" & ha_data$row == "D" & ha_data$tag_number == 66), ]
-  ha_data$code[ha_data$plot == 2108 & (ha_data$year == 2006 | ha_data$year == 2007) & ha_data$tag_number == 66] <- NA
-  
+  # correct the values for 69 (in c9)
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot==2108 & year==2000 & tag_number==69, 31)) %>% 
+    mutate(ht=replace(ht, plot==2108 & year==1999 & tag_number==69, NA)) %>% 
+    mutate(shts=replace(shts, plot==2108 & year==1999 & tag_number==69, NA)) %>% 
+    mutate(code=replace(code, plot==2108 & year==1999 & tag_number==69, "missing")) %>% 
+    mutate(ht=replace(ht, plot==2108 & year==2004 & tag_number==69, NA)) %>% 
+    mutate(shts=replace(shts, plot==2108 & year==2004 & tag_number==69, NA)) %>% 
+    mutate(code=replace(code, plot==2108 & year==2004 & tag_number==69, "missing")) %>% 
+    mutate(code=replace(code, plot==2108 & year==2006 & tag_number==69, NA)) %>% 
+    mutate(code=replace(code, plot==2108 & year==2007 & tag_number==69, NA)) 
+  # ha_data <- ha_data[!(ha_data$plot == "2108" & ha_data$row == "D" & ha_data$tag_number == 66), ]
+  # ha_data$code[ha_data$plot == 2108 & (ha_data$year == 2006 | ha_data$year == 2007) & ha_data$tag_number == 66] <- NA
+  # 
   # location
   ha_data$row[ha_data$plot == "2108" & ha_data$tag_number == 212] <- "E"
   
@@ -118,11 +137,25 @@ correct_2108 <- function(ha_data) {
     mutate(tag_number=if_else(plot==2108 & year==2008 & tag_number==369, 365, tag_number)) %>% 
     mutate(shts=if_else(plot==2108 & year==2008 & tag_number==365, 1, shts)) %>%
     mutate(ht=if_else(plot==2108 & year==2008 & tag_number==365, 11, ht)) %>%
-    mutate(code=if_else(plot==2108 & year==2008 & tag_number==365, "sdlg", code))
+    mutate(code=if_else(plot==2108 & year==2008 & tag_number==365, "sdlg", code))  
+    
   # delete the duplicate year
   ha_data<-ha_data %>% filter(!(plot==2108 & year==2008 & tag_number==365 & x_09==1.37))    
   # delete the 369
-  ha_data<-ha_data %>% filter(!(plot==2108 & year==2009 & tag_number==369))
+  ha_data<-ha_data %>% filter(!(plot==2108 & tag_number==369))
+  
+  # # correcxt the xy coordinates
+  ha_data<-ha_data %>%
+  mutate(x_09=replace(x_09, plot==2108 & tag_number==365, 1.37)) %>% 
+   mutate(y_09=replace(y_09, plot==2108 & tag_number==365, 5.55)) 
+  
+  # 332 is a seedling in 2007
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==2108 & year==2007 & tag_number==332,"sdlg")) %>% 
+    mutate(ht=replace(ht, plot==2108 & year==2007 & tag_number==332,10)) %>% 
+    mutate(shts=replace(shts, plot==2108 & year==2007 & tag_number==332,1))  
+  
   
   
   return(ha_data)

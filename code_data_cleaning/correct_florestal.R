@@ -106,5 +106,14 @@ correct_florestal <- function(ha_data) {
     mutate(code=replace(code, plot=="Florestal-CF" & year==2002 & tag_number==941,NA)) %>% 
     mutate(code=replace(code, plot=="Florestal-CF" & year==2002 & tag_number==1053,NA))
   
+  
+  # 738: can tell from numbering on 00 survbey sheet it was a seedling marked in 
+  # 2000 but measuremtns weren't recorded, then not measured in 2001
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="Florestal-CF" & year==2000 & tag_number==738,"sdlg")) %>% 
+    mutate(code=replace(code, plot=="Florestal-CF" & year==2001 & tag_number==738,"missing"))
+  
+  
+  
   return(ha_data)
 }

@@ -73,5 +73,35 @@ correct_5752 <- function(ha_data) {
     mutate(shts=replace(shts, plot==5752 & year==1998 & tag_number==95,1)) %>% 
     mutate(ht=replace(ht, plot==5752 & year==1998 & tag_number==95,17))
   
-  return(ha_data) 
+  
+  # 464: didn't record measurements in 2000 when initially tagged 
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5752 & year==2000 & tag_number==464,"sdlg")) 
+
+  # 456, 485, 504, 560: Incorrect code in 1999
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5752 & year==1999 & tag_number==456,NA)) %>% 
+    mutate(code=replace(code, plot==5752 & year==1999 & tag_number==485,NA)) %>% 
+    mutate(code=replace(code, plot==5752 & year==1999 & tag_number==560,NA)) %>% 
+    mutate(code=replace(code, plot==5752 & year==1999 & tag_number==504,NA))
+  
+  # 481 was retagged as 681 in 2003
+  ha_data<-ha_data %>%
+    mutate(shts=replace(shts, plot==5752 & year==2000 & tag_number==681,1)) %>% 
+    mutate(ht=replace(ht, plot==5752 & year==2000 & tag_number==681,10)) %>% 
+    mutate(shts=replace(shts, plot==5752 & year==2001 & tag_number==681,1)) %>% 
+    mutate(ht=replace(ht, plot==5752 & year==2001 & tag_number==681,8)) %>% 
+    mutate(code=replace(code, plot==5752 & year==2000 & tag_number==681,"sdlg")) 
+  
+  # delete 481
+  
+  # delete the duplicate
+  delete481 <- ha_data %>% filter(plot == 5752 & tag_number == 481)
+  ha_data <- anti_join(ha_data, delete481)
+  rm(delete481)
+  
+  
+  
+  
+    return(ha_data) 
 }

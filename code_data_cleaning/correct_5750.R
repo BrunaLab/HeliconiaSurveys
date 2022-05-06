@@ -41,52 +41,84 @@ correct_5750 <- function(ha_data) {
   
   
   
-  # The mess of 988,886...resolved! 
+  # The mess of 988,886...resolved!  886 is in D10
+  # 988 is in C8 (it must have been read upside down as 886)
+  
+  # 83 in c8 was retagged as 988 in 2004 BUT the tag number was accidentally
+  # entered as 886 (read upside down). there IS an 886 in D10
+
   # delete the 988 in D10
   delete988 <- ha_data %>%
     filter(plot == 5750 &
              tag_number == 988 &
              row == "D" &
-             column ==0)
+             column ==10)
   ha_data <- anti_join(ha_data, delete988)
   rm(delete988)
+  # 
+  # Correct the data for 988
+  ha_data<-ha_data %>%
+    mutate(shts=replace(shts, plot==5750 & year==1998 & tag_number==988, 3)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==1998 & tag_number==988, 64)) %>% 
+    mutate(shts=replace(shts, plot==5750 & year==1999 & tag_number==988, 4)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==1999 & tag_number==988, 65)) %>% 
+    mutate(shts=replace(shts, plot==5750 & year==2000 & tag_number==988, 4)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==2000 & tag_number==988, 72)) %>% 
+    mutate(shts=replace(shts, plot==5750 & year==2001 & tag_number==988, 4)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==2001 & tag_number==988, 87)) %>% 
+    mutate(shts=replace(shts, plot==5750 & year==2002 & tag_number==988, 4)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==2002 & tag_number==988, 83)) %>% 
+    mutate(shts=replace(shts, plot==5750 & year==2003 & tag_number==988, 3)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==2003 & tag_number==988, 72)) %>% 
+    mutate(shts=replace(shts, plot==5750 & year==2004 & tag_number==988, 3)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==2004 & tag_number==988, 68)) %>% 
+    mutate(shts=replace(shts, plot==5750 & year==2005 & tag_number==988, 4)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==2005 & tag_number==988, 63)) %>% 
+    mutate(shts=replace(shts, plot==5750 & year==2006 & tag_number==988, 3)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==2006 & tag_number==988, 50)) %>% 
+    # mutate(shts=replace(shts, plot==5750 & year==2007 & tag_number==988, 3)) %>% 
+    # mutate(ht=replace(ht, plot==5750 & year==2007 & tag_number==988, 36)) %>% 
+    # mutate(shts=replace(shts, plot==5750 & year==2008 & tag_number==988, 2)) %>% 
+    # mutate(ht=replace(ht, plot==5750 & year==2008 & tag_number==988, 60)) %>% 
+    # mutate(shts=replace(shts, plot==5750 & year==2008 & tag_number==988, 3)) %>% 
+    # mutate(ht=replace(ht, plot==5750 & year==2008 & tag_number==988, 66)) %>% 
+    mutate(infl=replace(infl, plot==5750 & year==2001 & tag_number==988, NA)) %>% 
+    mutate(code=replace(code, plot==5750 & year==2008 & tag_number==988, NA)) 
+    # mutate(x_09=replace(x_09, plot==5750 & tag_number==988, 2.6)) %>% 
+    # mutate(y_09=replace(y_09, plot==5750 & tag_number==988, 8.3)) 
   
-  data988<-ha_data %>% 
-    filter(plot==5750) %>% 
-    filter(tag_number==886) %>%
-    filter(year!=2006 & 
-             year!=2007 &
-             year!=2008 &
-             year!=2009) %>% 
-    select(year:notes)
+  # Now fix 886
+  ha_data<-ha_data %>%
+    mutate(x_09=replace(x_09, plot==5750 & tag_number==886, 2.6)) %>% 
+    mutate(y_09=replace(y_09, plot==5750 & tag_number==886, 8.3)) 
   
-  # delete pre 2005 measurements
-  ha_data<-ha_data %>% mutate(ht = ifelse((plot == 5750 & tag_number ==886 & 
-                                    (year!=2006 & 
+  # # delete pre 2005 measurements
+  ha_data<-ha_data %>% mutate(ht = ifelse((plot == 5750 & tag_number ==886 &
+                                    (year!=2006 &
                                     year!=2007 &
                                     year!=2008 &
-                                    year!=2009)),NA, ht)) %>% 
-    mutate(shts = ifelse((plot == 5750 & tag_number ==886 & 
-                          (year!=2006 & 
+                                    year!=2009)),NA, ht)) %>%
+    mutate(shts = ifelse((plot == 5750 & tag_number ==886 &
+                          (year!=2006 &
                              year!=2007 &
                              year!=2008 &
-                             year!=2009)), NA, shts)) %>% 
-    mutate(infl = ifelse((plot == 5750 & tag_number ==886 & 
-                          (year!=2006 & 
+                             year!=2009)), NA, shts)) %>%
+    mutate(infl = ifelse((plot == 5750 & tag_number ==886 &
+                          (year!=2006 &
                              year!=2007 &
                              year!=2008 &
                              year!=2009)), NA, infl))
-  
+  # 
   # add the 2004 measurements
   ha_data$code[ha_data$plot == 5750 &
                  ha_data$year == 2004 &
                  ha_data$tag_number == 886] <- "sdlg"
   ha_data$shts[ha_data$plot == 5750 &
                  ha_data$year == 2004 &
-                 ha_data$tag_number == 886] <-
+                 ha_data$tag_number == 886] <-1
   ha_data$ht[ha_data$plot == 5750 &
                ha_data$year == 2004 &
-               ha_data$tag_number == 886] <-0
+               ha_data$tag_number == 886] <-10
   
   # add the 2005 measurements
   ha_data$shts[ha_data$plot == 5750 &
@@ -94,25 +126,29 @@ correct_5750 <- function(ha_data) {
                  ha_data$tag_number == 886] <- 2
   ha_data$ht[ha_data$plot == 5750 &
                ha_data$year == 2005 &
-               ha_data$tag_number == 886] <-4
+               ha_data$tag_number == 886] <-14
   
+  ha_data$code[ha_data$plot == 5750 &
+               ha_data$year == 2007 &
+               ha_data$tag_number == 886] <-"dried"
   
-  
-  ha_data<-ha_data %>% mutate(ht = ifelse((plot == 5750 & tag_number ==988 & 
-                                             (year!=2006 & 
-                                                year!=2007 &
-                                                year!=2008 &
-                                                year!=2009)),data988$ht, ht)) %>% 
-    mutate(shts = ifelse((plot == 5750 & tag_number ==988 & 
-                          (year!=2006 & 
-                             year!=2007 &
-                             year!=2008 &
-                             year!=2009)),data988$shts, shts)) %>% 
-    mutate(infl = ifelse((plot == 5750 & tag_number ==988 & 
-                          (year!=2006 & 
-                             year!=2007 &
-                             year!=2008 &
-                             year!=2009)),data988$infl, infl)) 
+  # 
+  # 
+  # ha_data<-ha_data %>% mutate(ht = ifelse((plot == 5750 & tag_number ==988 & 
+  #                                            (year!=2006 & 
+  #                                               year!=2007 &
+  #                                               year!=2008 &
+  #                                               year!=2009)),data988$ht, ht)) %>% 
+  #   mutate(shts = ifelse((plot == 5750 & tag_number ==988 & 
+  #                         (year!=2006 & 
+  #                            year!=2007 &
+  #                            year!=2008 &
+  #                            year!=2009)),data988$shts, shts)) %>% 
+  #   mutate(infl = ifelse((plot == 5750 & tag_number ==988 & 
+  #                         (year!=2006 & 
+  #                            year!=2007 &
+  #                            year!=2008 &
+  #                            year!=2009)),data988$infl, infl)) 
   
   
   # 2002 (J8) was incorrectly typed in as 2022 in 2007. Need to add the 2007 
@@ -253,6 +289,30 @@ correct_5750 <- function(ha_data) {
   # Correcting NOL code
   ha_data<-ha_data %>%
     mutate(code=replace(code, plot==5750 & year==2004 & tag_number==668, NA))
+
+  
+  # 286 was repro in 2002
+  ha_data$infl[ha_data$plot == 5750 &
+                 ha_data$year == 2002 & 
+                 ha_data$tag_number == 286] <- 1
+  
+  
+  
+  
+  
+  # 1398 incorrectly entered as 1338 in 2008-2009
+  
+# add correct measurments to 1338
+  ha_data<-ha_data %>%
+    mutate(shts=replace(shts, plot==5750 & year==2008 & tag_number==1398, 2)) %>% 
+    mutate(ht=replace(ht, plot==5750 & year==2008 & tag_number==1398, 11)) 
+    delete1338 <- ha_data %>%
+    filter(plot == 5750 &
+             tag_number == 1338 &
+             (year == 2008 |
+             year == 2009))
+  ha_data <- anti_join(ha_data, delete1338)
+  rm(delete1338)
   
   
   return(ha_data)

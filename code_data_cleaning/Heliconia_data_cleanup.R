@@ -140,6 +140,7 @@ ha_data <- correct_5754(ha_data)
 source("./code_data_cleaning/correct_5751.R")
 ha_data <- correct_5751(ha_data)
 
+
 # Corrections 2108 --------------------------------------------------------
 source("./code_data_cleaning/correct_2108.R")
 ha_data <- correct_2108(ha_data)
@@ -378,6 +379,13 @@ ha_data_original<-ha_data
 # ha_data<-ha_data_original
 
 # Additional columns for the data paper ---------------------------------
+
+# Infl column is conditional - if repro, how many infl. 
+# Any that are 0 need to be changed to NA
+
+ha_data<-ha_data %>%
+  mutate(infl=replace(infl, infl==0,NA)) 
+
 
 # Seedling (T/F) column  
 
@@ -718,11 +726,7 @@ names(ha_data)
 # names(wide_ha_data)
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
-
-
-# TODO:5752
-# 464 in 2001
-# marked as ULY or seedling prior to seedling year?
+# Not sure why these were highlighted, all look fine
 # 401
 # 414
 # 426
@@ -734,39 +738,53 @@ names(ha_data)
 # 503
 # 504
 # 560
-ha_data %>% filter(plot==5752 & (tag_number==426))
 
-# check the xy
 
 # TODO  5754 PA 10
 # Need to add 2006 seedling notations
-
-# 770 in 2006 missing on csv, 2x on form?
-ha_data %>% filter(plot==5754 & (tag_number==770))
-# 765 in 2006 missing on csv, 2x on form?
-ha_data %>% filter(plot==5754 & (tag_number==765))
-
-
-# TODO: 2107
-# 17, 25 is missing every year?!
-# 17 looks like itr was retagged 216 (uly) in 99
-# 25 187 or 182
-ha_data %>% filter(plot==2107 & (tag_number==17))
-ha_data %>% filter(plot==2107 & (tag_number==25))
-ha_data %>% filter(plot==2107 & (tag_number==17|tag_number==25))
-
-
-# TODO: 2206
-# 45 / 7 / 70 / 25 2004 3x
-ha_data %>% filter(plot==2206 & (tag_number==45|tag_number==25))
-ha_data %>% filter(plot==2206 & (tag_number==70|tag_number==7))
-ha_dryad %>% filter(plot=="FF-5" & (plant_id==686|plant_id==731))
+# ha_data %>% filter(plot==5750 & (tag_number==1339)) %>% select(year,shts,ht,code, duplicate_tag)
+# looks like a bunch of these are duplicate plant numbers?
+# 829
+# 816
+# 813
+# 860
+# 834
+# 833
+# 819
+# 821
+# 826
+# 827
+# 859
+# 810
+# 812
+# 835
+# 858
 
 
 # TODO: MISC
+# plants to check:
+#
+# # 1. there are a few with "missing" or other codes after "dead" like 680 in 5754
+# #  remove post-dead codes 
 
-# 1.  not sure of plot plant 46 in B4 is actually 6. (2,112 in 1999) can track down what appened to it?
+foo<-ha_data %>% filter(plot==5756 & (tag_number==1205)) %>% view()
+foo<-ha_data %>% filter(plot==5754 & (tag_number==680)) %>% view()
+foo<-ha_data %>% filter(plot==5752 & (tag_number==460)) %>% view()
 
+
+# This finds all the plants that have  a record of any kind the year AFTER being
+# marked dead. 
+rows_2_delete<-ha_data %>% 
+  mutate(counter = if_else(census_status=="dead",1,0)) %>% 
+  group_by(plot,tag_number) %>% 
+  mutate(counter = sum(counter)) %>% 
+  filter(counter>0) %>% 
+  slice_tail(n = 1) %>% 
+  filter(census_status!="dead") 
+
+ha_data<-anti_join(ha_data,rows_2_delete)
+  
+# Argh need to do this several times until no more in last row. There has to be a way to like in zombie finder 
 # 1. what is the difference between "not on list" and "new plant in plot"?
 # If nothing then collapse.
 

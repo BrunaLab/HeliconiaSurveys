@@ -258,6 +258,20 @@ correct_5754 <- function(ha_data) {
   # ha_data %>% filter(plot==5754 & (tag_number==357)) 
   # 
   
+  # added missing measurments for 765
+  ha_data<-ha_data %>%
+    mutate(shts=replace(shts, plot==5754 & year==2006 & tag_number==765,1)) %>% 
+    mutate(ht=replace(ht, plot==5754 & year==2006 & tag_number==765,14)) 
+  
+  # 770 us in A5, not A3. corrected, and deleted duplicate
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5754 & year==2006 & tag_number==770,"dead")) 
+  
+  # delete the duplicate
+  delete770 <- ha_data %>% filter(plot == 5754 & tag_number == 770 & column==3)
+  ha_data <- anti_join(ha_data, delete770)
+  rm(delete770)
+  
   
   return(ha_data)
 }
