@@ -1,10 +1,10 @@
 
-find_zombies <- function(test) {
+find_zombies <- function(ha_data) {
   # 
-  # test<-ha_data %>% filter(code=="dead (2)"|code == "dead") %>% 
+  # ha_data<-ha_data %>% filter(code=="dead (2)"|code == "dead") %>% 
   #   select(plot, tag_number, plant_id, year)
   #   
-  # test<-ha_data %>% filter(plant_id%in% test$plant_id) %>% 
+  # ha_data<-ha_data %>% filter(plant_id%in% ha_data$plant_id) %>% 
   #   group_by(plot, tag_number) %>%
   #   mutate(code = as.character(code), # can be avoided if key is a character to begin with
   #          code3 = (cumsum(lag(
@@ -16,9 +16,9 @@ find_zombies <- function(test) {
   # 
   # 
   
-  # test<-ha_data
-  # test<-pa_wide
-  df2 <- test
+  # ha_data<-ha_data
+  # ha_data<-pa_wide
+  df2 <- ha_data
   df2$code2 <- NA
   df2$code2[df2$code == "dead"] <- "dead"
   df2$code2[df2$code == "dead and not on list"] <- "dead"
@@ -49,7 +49,7 @@ find_zombies <- function(test) {
   #   bind_rows(df2, df3) %>% select(plot, tag_number, year, ht, shts) %>% unique()
   # 
   zombies_all_yrs <-
-    semi_join(test, df3, by = c("plot", "tag_number")) %>% 
+    semi_join(ha_data, df3, by = c("plot", "tag_number")) %>% 
     select(plot, habitat,plant_id, tag_number, row, column,year, shts, ht, code) %>% 
     arrange(habitat, plot, plant_id,tag_number, year)
   # zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
@@ -74,14 +74,14 @@ find_zombies <- function(test) {
   
   
   
-  # # df4 - these are the ones you can delete from test. no data after being marked "dead"
+  # # df4 - these are the ones you can delete from ha_data. no data after being marked "dead"
   # df4 <- anti_join(df2, df3, by = c("plot", "tag_number", "year"))
   # # you can make sure that they in fact they *are* all NA by looking over them
   # summary(df4)
   
   # 
   # # then delete them from the Ha survey with an anti_join
-  # test <- anti_join(test, df4, by = c("plot", "tag_number", "year"))
+  # ha_data <- anti_join(ha_data, df4, by = c("plot", "tag_number", "year"))
   # 
   # rm(df, df2, df3, df4, zombies_all_yrs_new)
   

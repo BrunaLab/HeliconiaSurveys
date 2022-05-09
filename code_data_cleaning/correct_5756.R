@@ -771,7 +771,10 @@ correct_5756 <- function(ha_data) {
     mutate(ht=replace(ht, plot==5756 & year==2004 & tag_number==1608,50)) 
   
   
-    
+  # Correct code for 1205 in 2003
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1205,"dead"))
+  
     # 1258 ios a seedling in 2003
     
     ha_data<-ha_data %>%

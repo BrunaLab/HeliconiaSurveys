@@ -7,8 +7,38 @@ correct_5752 <- function(ha_data) {
                        ha_data$column == 1] <- 849
   
   
-  # 566 mistakenly marked as a seedling in 2007, which created duplicate record
-  # correct and merge
+  # 566 mistakenly marked as a seedling in 2006, which created duplicate record
+  # first remove the incorrect code in 07, then delete the duplicates by
+  # deleting rows with NA in shts and ht, then reinsert the missing 04,05 years
+  
+  
+  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5752 & year==2006 & tag_number==566,NA)) %>% 
+    mutate(notes=replace(notes, plot==5752 & year==2006 & tag_number==566,NA))
+  
+  ha_data <- ha_data[!(ha_data$plot == 5752 &
+                         ha_data$tag_number == 566 &
+                         is.na(ha_data$shts)==TRUE &
+                         is.na(ha_data$ht)==TRUE), ]
+  
+  add_566<-ha_data %>%
+    filter(plot==5752 & tag_number==566 &  (year==2006|year==2003)) %>% 
+    mutate(shts=NA) %>% 
+    mutate(ht=NA) %>%
+    mutate(code="missing") %>% 
+    mutate(year=replace(year, year==2003,2004)) %>% 
+    mutate(year=replace(year, year==2006,2005))
+  
+  ha_data<-bind_rows(ha_data,add_566)
+  
+  rm(add_566)
+  
+  
+    
+    
+  
+  
   ha_data$code[ha_data$plot == "5752" & 
                        ha_data$tag_number == 566 &
                        ha_data$year == 2006] <- NA
@@ -99,6 +129,17 @@ correct_5752 <- function(ha_data) {
   delete481 <- ha_data %>% filter(plot == 5752 & tag_number == 481)
   ha_data <- anti_join(ha_data, delete481)
   rm(delete481)
+  
+  
+  delete481 <- ha_data %>% filter(plot == 5752 & tag_number == 481)
+  ha_data <- anti_join(ha_data, delete481)
+  rm(delete481)
+  
+  
+  # DELETE ALL ROWS WITH 2007 (no survey that year)
+  delete2007 <- ha_data %>% filter(plot == 5752 & year == 2007)
+  ha_data <- anti_join(ha_data, delete2007)
+  rm(delete2007)
   
   
   
