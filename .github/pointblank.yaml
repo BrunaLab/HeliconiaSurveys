@@ -1,5 +1,3 @@
-# Set the list of files that when modified will trigger GitHub Actions
-# (GA) continuous integration (CI) to run
 on:
   push:
     branches:
@@ -8,8 +6,6 @@ on:
     branches:
       - master
 
-# Name the workflow as it will appear on GA status page
-# https://github.com/SCBI-ForestGEO/Dendrobands/actions
 name: QA_QC_checks
 
 jobs:
@@ -43,8 +39,7 @@ jobs:
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
       
-# Create data outputs from resources/raw_data/YEAR/
-      # csv's
+# Create data outputs from data_raw
       - name: Run data cleaning scripts
         id: create_master_csv
         run: |
