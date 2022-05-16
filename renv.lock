@@ -156,22 +156,6 @@
         "vctrs"
       ]
     },
-    "bookdown": {
-      "Package": "bookdown",
-      "Version": "0.24",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "3837766a1e1b527af25fa3e2d12a2800",
-      "Requirements": [
-        "htmltools",
-        "jquerylib",
-        "knitr",
-        "rmarkdown",
-        "tinytex",
-        "xfun",
-        "yaml"
-      ]
-    },
     "brio": {
       "Package": "brio",
       "Version": "1.1.3",
@@ -881,29 +865,6 @@
         "askpass"
       ]
     },
-    "papaja": {
-      "Package": "papaja",
-      "Version": "0.1.0.9999",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "crsh",
-      "RemoteRepo": "papaja",
-      "RemoteRef": "master",
-      "RemoteSha": "2572124f7cba193bbbaf02e6e5edcbcc0d3dfc8f",
-      "Hash": "ade1399c7799e667a42146f8d3aa9685",
-      "Requirements": [
-        "bookdown",
-        "broom",
-        "glue",
-        "knitr",
-        "rmarkdown",
-        "rmdfiltr",
-        "tinylabels",
-        "yaml",
-        "zip"
-      ]
-    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.7.0",
@@ -1146,17 +1107,6 @@
         "yaml"
       ]
     },
-    "rmdfiltr": {
-      "Package": "rmdfiltr",
-      "Version": "0.1.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "d2e1277195d221e6118d8a77dda2e877",
-      "Requirements": [
-        "assertthat",
-        "rmarkdown"
-      ]
-    },
     "rprojroot": {
       "Package": "rprojroot",
       "Version": "2.0.2",
@@ -1397,14 +1347,6 @@
         "xml2"
       ]
     },
-    "tinylabels": {
-      "Package": "tinylabels",
-      "Version": "0.2.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "2cba68be303261e64987a11f6997fdfb",
-      "Requirements": []
-    },
     "tinytex": {
       "Package": "tinytex",
       "Version": "0.35",
@@ -1542,14 +1484,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "2826c5d9efb0a88f657c7a679c7106db",
-      "Requirements": []
-    },
-    "zip": {
-      "Package": "zip",
-      "Version": "2.2.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c7eef2996ac270a18c2715c997a727c5",
       "Requirements": []
     }
   }

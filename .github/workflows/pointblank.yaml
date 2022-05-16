@@ -25,6 +25,9 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - uses: r-lib/actions/setup-pandoc@v1
       
+      - name: Install cURL Headers
+        run: sudo apt-get install libcurl4-openssl-dev
+      
       - name: Cache packages
         uses: actions/cache@v1
         with:
@@ -43,7 +46,7 @@ jobs:
       - name: Run data cleaning scripts
         id: create_master_csv
         run: |
-          source("Rscripts/code_data_cleaning/Heliconia_data_cleanup.R")
+          source("code_data_cleaning/Heliconia_data_cleanup.R")
         shell: Rscript {0}     
 
 # knit data validation report
