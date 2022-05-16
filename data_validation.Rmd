@@ -23,10 +23,13 @@ library(stringr)
 
 ```{r load-data}
 ha <- read_csv(
-  here("data_clean", "Ha_survey_pre_submission.csv"),
+  here("data_clean", "HDP_1997_2009.csv"),
   col_types = cols(
     notes = col_character()
   )
+)
+ha_plots <- read_csv(
+  here("data_clean", "HDP_plots.csv")
 )
 ```
 
@@ -41,22 +44,23 @@ al_strict <- action_levels(stop_at = 1) #error if even one row fails
 
 
 ```{r funs}
-# Function for preconditions for some steps
-calc_changes <- function(x) {
-  x %>%
-    group_by(HA_ID_Number) %>%
-    arrange(HA_ID_Number, year) %>%
-    mutate(ht_prev = lag(ht),
-           shts_prev = lag(shts),
-           ht_diff = ht - ht_prev,
-           shts_diff = shts - shts_prev,
-           ht_pc = abs(ht_diff / ht_prev),
-           shts_pc = abs(shts_diff / shts_prev)) %>%
-    ungroup()
-}
+#calculate percent changes
+ha_change <- 
+  ha %>%
+  group_by(plant_id) %>%
+  arrange(plant_id, year) %>%
+  mutate(ht_prev = lag(ht),
+         shts_prev = lag(shts),
+         ht_diff = ht - ht_prev,
+         shts_diff = shts - shts_prev,
+         ht_pc = abs(ht_diff / ht_prev),
+         shts_pc = abs(shts_diff / shts_prev)) %>%
+  ungroup()
 ```
 
 # Data Validation
+
+The two datasets being submitted with the data paper are `HDP_plots.csv` and `HDP_1997_2009.csv`
 
 Checks for data type, range, and duplicates
 
@@ -66,9 +70,9 @@ ha %>%
     actions = al_default,
     label = "Data Validation"
   ) %>%
-  col_vals_in_set(vars(column), 1:10, actions = al_strict) %>%
-  col_vals_in_set(vars(row), LETTERS[1:10], actions = al_strict) %>%
-  col_vals_in_set(vars(habitat), c("1-ha", "CF", "10-ha"),
+  col_vals_in_set(vars(subplot), unlist(lapply(LETTERS[1:10], paste0, 1:10)),
+                  actions = al_strict) %>%
+  col_vals_in_set(vars(plot), ha_plots$plot,
                   actions = al_strict) %>%
   col_vals_expr(label = "Height is measured to nearest cm",
                 expr = ~ ht %% 1 == 0, actions = al_strict) %>%
@@ -85,8 +89,8 @@ ha %>%
                    label = "infloresences between 0 and 3") %>%
   rows_distinct(actions = al_strict, 
                 label  = "duplicated rows") %>% 
-  col_vals_not_null(vars(HA_ID_Number), actions = al_strict) %>% 
-  rows_distinct(columns = "HA_ID_Number",
+  col_vals_not_null(vars(plant_id), actions = al_strict) %>% 
+  rows_distinct(columns = "plant_id",
                 segments = vars(year),
                 actions = al_strict,
                 label = "Check for duplicate ID's within each year") %>% 
@@ -99,7 +103,7 @@ ha %>%
 Checks that year to year change in size is reasonable
 
 ```{r agent2}
-ha %>%
+ha_change %>%
   create_agent(
     actions = al_default,
     label = "Check growth & regression"
@@ -107,14 +111,11 @@ ha %>%
   
   # check that year-to-year change is reasonable
   col_vals_lt(vars(ht_pc), 2, na_pass = TRUE,
-              preconditions = ~ . %>% calc_changes(),
               label = "|% change in height| < 200%") %>%
   col_vals_between(vars(ht_diff), -100, 100, na_pass = TRUE,
-                   preconditions = ~. %>% calc_changes(),
                    label = "|∆ height| < 100cm",
                    actions = al_strict) %>%
   col_vals_between(vars(shts_diff), -5, 5, na_pass = TRUE,
-                   preconditions = ~. %>% calc_changes(),
                    label = "|∆ shoot number| < 5",
                    actions = al_strict) %>%
   interrogate()
@@ -127,7 +128,7 @@ Check that size of seedlings is reasonable
 ```{r agent3}
 # check seedlings
 ha %>%
-  filter(sdlg_status == "sdlg (1)") %>% 
+  filter(recorded_sdlg) %>% 
   create_agent(
     actions = al_default,
     label = "Check seedlings"
