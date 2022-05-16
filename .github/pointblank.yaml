@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - validation
   pull_request:
     branches:
       - master
