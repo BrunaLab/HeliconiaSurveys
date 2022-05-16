@@ -11,11 +11,11 @@ name: QA_QC_checks
 jobs:
   QA_QC_checks:
     # Set the operating system CI assumes
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     
-    # Allow only authorized collaborators to trigger GA
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_PATHS_ROOT: ~/.local/share/renv
       
     # All steps in workflow
     steps:
