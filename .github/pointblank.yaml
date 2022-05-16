@@ -1,0 +1,63 @@
+# Set the list of files that when modified will trigger GitHub Actions
+# (GA) continuous integration (CI) to run
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+# Name the workflow as it will appear on GA status page
+# https://github.com/SCBI-ForestGEO/Dendrobands/actions
+name: QA_QC_checks
+
+jobs:
+  QA_QC_checks:
+    # Set the operating system CI assumes
+    runs-on: macOS-latest
+    
+    # Allow only authorized collaborators to trigger GA
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      
+    # All steps in workflow
+    steps:
+      # Housekeeping: various GA tools, install R, install pandoc
+      # (to be able to use RMarkdown)
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      
+      - name: Cache packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+            
+      - name: Restore packages
+        shell: Rscript {0}
+        run: |
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
+      
+# Create data outputs from resources/raw_data/YEAR/
+      # csv's
+      - name: Run data cleaning scripts
+        id: create_master_csv
+        run: |
+          source("Rscripts/code_data_cleaning/Heliconia_data_cleanup.R")
+        shell: Rscript {0}     
+
+# knit data validation report
+      - name: Generate report
+        id: generate_error_reports
+        run: |
+          rmarkdown::render("data_validation.Rmd")
+      - name: Commit results
+        run: |
+          git commit data_validation.html -m 'Rendered data_validation.Rmd' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+          
