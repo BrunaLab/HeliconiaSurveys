@@ -23,10 +23,7 @@ library(stringr)
 
 ```{r load-data}
 ha <- read_csv(
-  here("data_clean", "HDP_1997_2009.csv"),
-  col_types = cols(
-    notes = col_character()
-  )
+  here("data_clean", "HDP_1997_2009.csv")
 )
 ha_plots <- read_csv(
   here("data_clean", "HDP_plots.csv")
