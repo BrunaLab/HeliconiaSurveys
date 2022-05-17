@@ -52,8 +52,7 @@ jobs:
 # knit data validation report
       - name: Generate report
         id: generate_error_reports
-        run: |
-          rmarkdown::render("data_validation.Rmd")
+        run: Rscript -e 'rmarkdown::render("data_validation.Rmd")'
       - name: Commit results
         run: |
           git commit data_validation.html -m 'Rendered data_validation.Rmd' || echo "No changes to commit"
