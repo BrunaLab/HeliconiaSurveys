@@ -55,6 +55,8 @@ jobs:
         run: Rscript -e 'rmarkdown::render("data_validation.Rmd")'
       - name: Commit results
         run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
           git commit data_validation.html -m 'Rendered data_validation.Rmd' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
           
