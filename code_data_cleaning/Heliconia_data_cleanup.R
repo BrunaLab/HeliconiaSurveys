@@ -1018,7 +1018,7 @@ write_csv(treefall_impact, "./data_clean/treefall_data.csv")
 wide_ha_dryad <- ha_dryad %>%
   pivot_wider(
     names_from = year,
-    values_from = c("shts", "ht", "infl", "notes"),
+    values_from = c("shts", "ht", "infl"),
     names_vary = "slowest"
   ) %>%
   arrange(
@@ -1112,3 +1112,4 @@ ha_data %>%
   group_by(tag_number, plot) %>%
   count() %>%
   nrow()
+

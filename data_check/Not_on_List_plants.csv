@@ -1,44 +1,8 @@
-HA_ID_Number,plot,habitat,ranch,bdffp_reserve_no,tag_number,row,column,x_09,y_09,plotID,year,shts,ht,infl,code,notes,sdlg_status,duplicate_tag
-363,2108,1-ha,DIM,2108,26,A,6,8.1,4.9,FF-2,1999,3,34,0,not on list,NA,NA,NA
-375,2108,1-ha,DIM,2108,38,B,4,0.5,6.4,FF-2,1999,1,22,0,not on list,NA,NA,NA
-615,2108,1-ha,DIM,2108,332,B,3,3.7,8.3,FF-2,2008,1,13,NA,not on list,NA,NA,NA
-616,2108,1-ha,DIM,2108,333,A,1,9.4,4.6,FF-2,2008,2,15,NA,not on list,NA,NA,NA
-638,2108,1-ha,DIM,2108,365,D,1,2.3,5.4,FF-2,2009,2,17,NA,not on list,NA,NA,NA
-690,2206,10-ha,DIM,2206,45,C,2,NA,NA,FF-5,2004,2,27,0,not on list,NA,NA,NA
-905,2206,10-ha,DIM,2206,275,B,9,NA,NA,FF-5,2005,2,23,0,not on list,NA,NA,NA
-974,5750,CF,EST,1501,101,D,6,NA,NA,CF-2,2004,NA,NA,NA,dead and not on list,NA,NA,NA
-1542,5750,CF,EST,1501,687,C,9,1.6,4,CF-2,2004,2,14,0,not on list,NA,NA,NA
-1721,5750,CF,EST,1501,867,E,7,3.6,9.8,CF-2,2003,4,113,1,not on list,NA,NA,NA
-2238,5751,1-ha,EST,1104,71,A,5,NA,NA,FF-3,2008,NA,NA,NA,not on list,NA,NA,NA
-3019,5752,10-ha,EST,1202,460,B,6,NA,NA,FF-6,2001,NA,NA,NA,dead and not on list,NA,NA,NA
-3054,5752,10-ha,EST,1202,495,C,8,NA,NA,FF-6,2001,3,43,0,not on list,NA,NA,NA
-3527,5753,1-ha,PAL,3114,150,A,4,3.7,0.2,FF-4,1999,3,41,0,not on list,NA,NA,NA
-3680,5753,1-ha,PAL,3114,326,E,9,1.9,8,FF-4,2001,1,24,0,not on list,NA,NA,NA
-8169,5754,10-ha,PortoAlegre,3209,611,E,6,NA,NA,FF-7,2000,1,12,0,not on list,NA,NA,NA
-8321,5754,10-ha,PortoAlegre,3209,764,E,5,NA,NA,FF-7,2006,1,16,NA,not on list,NA,NA,NA
-8476,5754,10-ha,PortoAlegre,3209,909,E,5,NA,NA,FF-7,2000,1,22,0,not on list,NA,NA,NA
-8579,5754,10-ha,PortoAlegre,3209,1312,E,5,NA,NA,FF-7,2002,3,50,0,not on list,NA,NA,NA
-3813,5756,CF,EST,1501,7,A,8,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,NA,NA,NA
-3815,5756,CF,EST,1501,9,A,5,3.3,5.9,CF-3,1999,3,94,0,not on list,NA,NA,NA
-4590,5756,CF,EST,1501,792,A,7,0.3,2.9,CF-3,2001,2,12,0,not on list,NA,NA,NA
-4646,5756,CF,EST,1501,847,B,7,0.9,0.5,CF-3,2001,2,25,0,not on list,NA,NA,NA
-4689,5756,CF,EST,1501,890,A,5,2.7,2,CF-3,2002,2,15,0,not on list,NA,NA,NA
-4783,5756,CF,EST,1501,983,A,7,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,NA,NA,NA
-4805,5756,CF,EST,1501,1205,A,4,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,NA,NA,NA
-5094,5756,CF,EST,1501,1796,A,3,3.8,6.1,CF-3,2008,1,34,NA,not on list,NA,NA,NA
-5410,CaboFrio-CF,CF,PAL,3402,267,A,9,9.4,5.5,CF-6,2004,3,26,0,not on list,NA,NA,NA
-5659,Dimona-CF,CF,DIM,none,86,E,10,NA,NA,CF-4,1999,2,39,0,not on list,NA,NA,NA
-5804,Florestal-CF,CF,EST,1301,19,B,4,8.5,9.3,CF-1,2004,3,14,0,not on list,NA,NA,NA
-5817,Florestal-CF,CF,EST,1301,32,C,4,4.7,1.4,CF-1,1999,4,57,0,not on list,NA,NA,NA
-5889,Florestal-CF,CF,EST,1301,105,C,4,2,3.9,CF-1,1999,3,60,0,not on list,NA,NA,NA
-5890,Florestal-CF,CF,EST,1301,106,B,4,NA,NA,CF-1,1999,NA,NA,NA,dead and not on list,NA,NA,NA
-5968,Florestal-CF,CF,EST,1301,187,A,9,NA,NA,CF-1,1999,NA,NA,NA,dead and not on list,NA,NA,NA
-5969,Florestal-CF,CF,EST,1301,188,A,4,5.8,1.5,CF-1,1999,3,48,0,not on list,NA,NA,NA
-6057,Florestal-CF,CF,EST,1301,277,D,3,NA,NA,CF-1,2004,NA,NA,NA,dead and not on list,NA,NA,NA
-6132,Florestal-CF,CF,EST,1301,352,E,7,4.1,7.9,CF-1,1999,3,73,0,not on list,NA,NA,NA
-6173,Florestal-CF,CF,EST,1301,393,D,4,5,8.3,CF-1,1999,3,35,0,not on list,NA,NA,NA
-6352,Florestal-CF,CF,EST,1301,576,E,1,5.2,0.9,CF-1,2008,4,16,NA,not on list,NA,NA,duplicate tag number
-6512,Florestal-CF,CF,EST,1301,738,A,2,NA,NA,CF-1,2002,1,10,0,not on list,NA,NA,NA
-6676,Florestal-CF,CF,EST,1301,904,D,3,7.4,5.7,CF-1,1999,2,56,0,not on list,NA,NA,NA
-6743,Florestal-CF,CF,EST,1301,972,A,3,9,8.2,CF-1,2002,2,32,0,not on list,NA,NA,NA
-6798,Florestal-CF,CF,EST,1301,1028,D,2,NA,NA,CF-1,2002,2,9,0,not on list,NA,NA,NA
+plant_id,plot,habitat,ranch,bdffp_reserve_no,tag_number,row,column,x_09,y_09,plotID,year,shts,ht,infl,code,notes,duplicate_tag
+1361,5750,CF,EST,1501,101,D,6,NA,NA,CF-2,2004,NA,0,0,dead and not on list,dead and not on list,NA
+2847,5752,10-ha,EST,1202,460,B,6,NA,NA,FF-6,2001,NA,NA,NA,dead and not on list,dead and not on list,NA
+5118,5756,CF,EST,1501,7,A,8,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,dead and not on list,NA
+5108,5756,CF,EST,1501,983,A,7,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,dead and not on list,NA
+7313,Florestal-CF,CF,EST,1301,106,B,4,NA,NA,CF-1,1999,NA,NA,NA,dead and not on list,dead and not on list,NA
+7176,Florestal-CF,CF,EST,1301,187,A,9,NA,NA,CF-1,1999,NA,NA,NA,dead and not on list,dead and not on list,NA
+7828,Florestal-CF,CF,EST,1301,277,D,3,NA,NA,CF-1,2004,NA,NA,NA,dead and not on list,dead and not on list,NA
