@@ -696,7 +696,7 @@ unique(ha_data$code)
 unique(ha_data$census_status)
 summary(as.factor(ha_data$census_status))
 names(ha_data)
-write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
+# write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
 
 # standardize column classes ---------------------------------------------
@@ -819,15 +819,18 @@ unique(ha_data$code)
 # # 1. there are a few with "missing" or other codes after "dead" like 680 in 5754
 # #  remove post-dead codes
 
-foo <- ha_data %>%
-  filter(plot == 5756 & (tag_number == 1205)) %>%
-  view()
-foo <- ha_data %>%
-  filter(plot == 5754 & (tag_number == 680)) %>%
-  view()
-foo <- ha_data %>%
-  filter(plot == 5752 & (tag_number == 460)) %>%
-  view()
+ha_data %>%
+  filter(plot == 5756 & (tag_number == 1205)) 
+# %>%
+#   view()
+ha_data %>%
+  filter(plot == 5754 & (tag_number == 680)) 
+# %>%
+#   view()
+ha_data %>%
+  filter(plot == 5752 & (tag_number == 460)) 
+# %>%
+#   view()
 
 
 # This finds all the plants that have  a record of any kind the year AFTER being
