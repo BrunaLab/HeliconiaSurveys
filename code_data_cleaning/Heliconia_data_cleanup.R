@@ -777,7 +777,7 @@ names(ha_data)
 
 
 
-foo<-ha_data %>% filter(plot==5752 & (year==2007)) %>% view()
+# foo<-ha_data %>% filter(plot==5752 & (year==2007)) %>% view()
 
 # TODO  5754 PA 10
 # Need to add 2006 seedling notations
@@ -809,6 +809,9 @@ foo<-ha_data %>% filter(plot==5752 & (year==2007)) %>% view()
 # Florestal-CF 106 B4
 # Florestal-CF 277 D3
 
+# TODO: 5756
+# 1726 is it a seedling? 2007
+# 1616 ht and shts are not 5756 fix!
 
 unique(ha_data$code)
 # TODO: MISC
@@ -837,7 +840,7 @@ rows_2_delete <- ha_data %>%
   filter(counter > 0) %>%
   slice_tail(n = 1) %>%
   filter(census_status != "dead")
-
+rows_2_delete
 ha_data <- anti_join(ha_data, rows_2_delete)
 
 # Argh need to do this several times until no more in last row. There has to be a way to like in zombie finder
@@ -901,6 +904,7 @@ ha_plots
 
 names(ha_data)
 head(ha_data)
+# unique(ha_data$code)
 
 ha_dryad <- ha_data %>%
   arrange(row, as.numeric(column)) %>%
@@ -952,6 +956,7 @@ ha_dryad <- ha_data %>%
   ) %>%
   mutate(across(where(is.character), as.factor))
 
+
 # TODO: checking, cleanup
 
 test <- ha_dryad %>%
@@ -977,6 +982,13 @@ ha_dryad <- ha_dryad %>% select(-treefall_impact)
 ha_dryad
 
 
+# DELETE CODE COLUMN
+ha_dryad <- ha_dryad %>% select(-code)
+
+
+
+
+
 # TODO: if notes = status (i.e., missing, then delete from notes)
 # ha_dryad <- ha_dryad %>%
 # mutate(notes = case_when(
@@ -997,8 +1009,8 @@ summary(ha_dryad$recorded_sdlg)
 
 names(ha_data)
 
-ha_dryad <- ha_dryad %>% rename("check_pre_dryad" = "code")
-
+# ha_dryad <- ha_dryad %>% rename("check_pre_dryad" = "code")
+# 
 write_csv(ha_dryad, "./data_clean/HDP_1997_2009.csv")
 
 # unique(ha_dryad$notes)
