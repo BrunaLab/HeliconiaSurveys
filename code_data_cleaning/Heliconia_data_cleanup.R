@@ -811,8 +811,7 @@ names(ha_data)
 
 # TODO: 5756
 # 1726 is it a seedling? 2007
-# 1616 ht and shts are not 5756 fix!
-
+# ha_data %>% filter(plot==5756 & (tag_number==1616))
 unique(ha_data$code)
 # TODO: MISC
 # plants to check:
