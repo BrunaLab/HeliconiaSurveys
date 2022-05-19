@@ -91,6 +91,11 @@ correct_florestal <- function(ha_data) {
                  ha_data$tag_number == 1290] <- NA
   
   
+  # correcting 682 height in 2003 (entered as 266 instead of 26)
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht,(plot=="Florestal-CF" & tag_number==682 & year==2003), 26))
+  
+  
   # correcting 576
   ha_data<-ha_data %>%
     mutate(row=replace(row,(plot=="Florestal-CF" & tag_number==576), "E")) %>% 

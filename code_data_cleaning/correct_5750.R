@@ -298,8 +298,21 @@ correct_5750 <- function(ha_data) {
   
   
   
+  # 106 correct column
+    ha_data<-ha_data %>%
+    mutate(column=replace(column, plot==5750 & tag_number==106, 10))
   
-  
+    
+    # 939 correct column
+    ha_data<-ha_data %>%
+      mutate(column=replace(column, plot==5750 & tag_number==939, 10))
+    
+    # 927 correct column
+    ha_data<-ha_data %>%
+      mutate(column=replace(column, plot==5750 & tag_number==927, 10))
+    
+    
+    
   # 1398 incorrectly entered as 1338 in 2008-2009
   
 # add correct measurments to 1338

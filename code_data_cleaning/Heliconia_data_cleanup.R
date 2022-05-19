@@ -818,6 +818,8 @@ unique(ha_data$code)
 #
 # # 1. there are a few with "missing" or other codes after "dead" like 680 in 5754
 # #  remove post-dead codes
+ha_data %>%
+  filter(plot == 5750 & (plant_id == 1092)) 
 
 ha_data %>%
   filter(plot == 5756 & (tag_number == 1205)) 
