@@ -809,6 +809,10 @@ names(ha_data)
 # Florestal-CF 106 B4
 # Florestal-CF 277 D3
 
+#TODO: 5753
+# did 269 become 311?
+# did 232 become  322?
+# 315 maybe became 321?
 # TODO: 5756
 # 1726 is it a seedling? 2007
 # ha_data %>% filter(plot==5756 & (tag_number==1616))
@@ -1014,10 +1018,14 @@ summary(ha_dryad$recorded_sdlg)
 names(ha_data)
 
 # ha_dryad <- ha_dryad %>% rename("check_pre_dryad" = "code")
-# 
-write_csv(ha_dryad, "./data_clean/HDP_1997_2009.csv")
-
 # unique(ha_dryad$notes)
+
+
+
+# Save the files ----------------------------------------------------------
+
+ 
+write_csv(ha_dryad, "./data_clean/HDP_1997_2009.csv")
 
 write_csv(ha_plots, "./data_clean/HDP_plots.csv")
 

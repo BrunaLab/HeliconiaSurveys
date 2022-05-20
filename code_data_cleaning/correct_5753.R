@@ -1,5 +1,259 @@
 correct_5753 <- function(ha_data) {
   
+  
+  # The person that entered the data for 2003 
+  # for this plot made a major error when merging into excel
+  # plants 205 through 319 are offset by 1: e.g.,
+  # the value for 242 was entered into 241, 
+  # with the addition of new plants this became an occasional offset
+  # by 2 numbers.
+  # to fix this:
+  # 
+  # 1. remove 2003 values for all plants tag no 205 to 319 from ha_data_original
+  # 2. fix them as needed
+  # 2. reinsert them
+  # 
+  # Also fix 205/329 tag switch
+  
+  # remove the 2003 values for the offset plants
+  fixes_2003<- ha_data %>% 
+    filter(year==2003 & 
+             plot==5753 & 
+             (tag_number > 204 & tag_number < 320)) 
+  # delete them from ha_data
+  ha_data<-anti_join(ha_data, fixes_2003)
+  
+  #correct the 2003 data
+  new_tag<-fixes_2003$tag_number
+  new_row<-fixes_2003$row
+  new_col<-fixes_2003$column
+  
+  fixes_2003$new_tag<-lead(new_tag,n=1) 
+  fixes_2003$new_row<-lead(new_row,n=1) 
+  fixes_2003$new_col<-lead(new_col,n=1) 
+  
+  rm(new_tag, new_col, new_row)
+  
+  # most were offset, but because some are seedlings in subsequent years you 
+  # can't just assign to the shiften number - a few of them need to be corrected
+  # mannually after review. The first two rows add the value to now correct 
+  # tag number, the next delete the value from the original one
+  # here is the file for review: 
+  # write_csv(fixes_2003,"./fixes_2003.csv")
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==210, 2)) %>% 
+    mutate(ht=replace(ht, new_tag==210, 27)) %>% 
+    mutate(shts=replace(shts, new_tag==209, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==209, NA)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==212, 5)) %>% 
+    mutate(ht=replace(ht, new_tag==212, 38)) %>% 
+    mutate(shts=replace(shts, new_tag==211, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==211, NA)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(ht=replace(ht, new_tag==217, NA))
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==212, 5)) %>% 
+    mutate(ht=replace(ht, new_tag==212, 38)) %>% 
+    mutate(shts=replace(shts, new_tag==211, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==211, NA)) 
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==223, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==223, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==224, 3)) %>% 
+    mutate(ht=replace(ht, new_tag==224, 60)) 
+  
+  names(ha_data)
+  fixes_2003<-fixes_2003 %>%
+    mutate(code=replace(code, new_tag==229, "dead"))
+  ha_data <- ha_data %>% 
+  mutate(code=replace(code, plot==5753 & tag_number==229 & year>2003, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & tag_number==248 &
+                          (year==2003 | year==2009), "missing")) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==233, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==233, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==234, 4)) %>% 
+    mutate(ht=replace(ht, new_tag==234, 27)) 
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==235, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==235, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==236, 1)) %>% 
+    mutate(ht=replace(ht, new_tag==236, 9)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==223, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==223, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==224, 3)) %>% 
+    mutate(ht=replace(ht, new_tag==224, 60)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==239, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==239, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==240, 1)) %>% 
+    mutate(ht=replace(ht, new_tag==240, 25)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(code=replace(code, new_tag==248, NA)) %>% 
+    mutate(code=replace(code, new_tag==249, NA))  
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==251, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==251, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==253, 2)) %>% 
+    mutate(ht=replace(ht, new_tag==253, 30)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==271, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==271, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==272, 1)) %>% 
+    mutate(ht=replace(ht, new_tag==272, 32)) 
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==279, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==279, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==281, 2)) %>% 
+    mutate(ht=replace(ht, new_tag==281, 24)) 
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(code=replace(code, new_tag==282, NA)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==286, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==286, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==288, 1)) %>% 
+    mutate(ht=replace(ht, new_tag==288, 14)) 
+  
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==294, 3)) %>% 
+    mutate(ht=replace(ht, new_tag==294, 80)) %>% 
+    mutate(infl=replace(infl, new_tag==294, 1))
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==286, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==286, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==288, 1)) %>% 
+    mutate(ht=replace(ht, new_tag==288, 14)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(code=replace(code, new_tag==296, NA)) %>% 
+    mutate(code=replace(code, new_tag==297, "missing")) 
+  
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==309, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==309, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==310, 1)) %>% 
+    mutate(ht=replace(ht, new_tag==310, 10)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==312, 1)) %>% 
+    mutate(ht=replace(ht, new_tag==312, 21)) %>% 
+    mutate(code=replace(code, new_tag==312, NA)) 
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==316, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==316, NA)) %>% 
+    mutate(code=replace(code, new_tag==316, "missing")) %>% 
+    mutate(shts=replace(shts, new_tag==315, 5)) %>% 
+    mutate(ht=replace(ht, new_tag==315, 69)) 
+  
+
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==319 & new_row=="D", NA)) %>% 
+    mutate(ht=replace(ht, new_tag==319 & new_row=="D", NA)) %>% 
+    mutate(shts=replace(shts, new_tag==319 & new_row=="E", 1)) %>% 
+    mutate(ht=replace(ht, new_tag==319 & new_row=="E", 10)) 
+  
+  #delete duplicate 319 in D7
+  delete319<-fixes_2003 %>%
+    filter((new_tag==319 & new_row=="D") | (tag_number==319 & row=="E"))
+  fixes_2003<-anti_join(fixes_2003, delete319)
+  delete319<-ha_data %>%
+    filter(plot==5753 & tag_number==319 & row=="D")
+  ha_data<-anti_join(ha_data,delete319)
+  rm(delete319)
+  
+  #add the data for 319 in E10 that was missing
+  ha_data <- ha_data %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==319 & year==1999, NA)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==319 & year==1999, NA)) %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==319 & year==2000, 1)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==319 & year==2000, 11)) %>% 
+    mutate(code=replace(code, plot==5753 & tag_number==319 & year==2000, "sdlg")) %>%  
+    mutate(shts=replace(shts, plot==5753 & tag_number==319 & year==2001, 1)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==319 & year==2001, 14)) %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==319 & year==2002, 2)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==319 & year==2002, 12)) %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==319 & year==2004, 1)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==319 & year==2004, 8)) %>%
+    mutate(shts=replace(shts, plot==5753 & tag_number==319 & year==2005, 1)) %>%
+    mutate(ht=replace(ht, plot==5753 & tag_number==319 & year==2005, 7)) %>% 
+    mutate(code=replace(code, plot==5753 & tag_number==319 & year==2006, NA))
+      
+  
+  # Make sure to record, seedling, dead, missing, etc. correctly
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(code=replace(code, new_tag==279, "dead")) %>% 
+    mutate(code=replace(code, new_tag==273, "dead")) %>% 
+    mutate(code=replace(code, new_tag==250, "missing")) %>% 
+    mutate(code=replace(code, new_tag==251, "missing")) %>% 
+    mutate(infl=replace(infl, new_tag==273, 1)) %>% 
+    mutate(code=replace(code, new_tag==273, "uly, prob 321")) %>% 
+    mutate(infl=replace(infl, new_tag==274, 1)) %>% 
+    mutate(new_row=replace(new_row, new_tag==293, "D")) 
+  
+  # 293 was in wrong location in databse, so correcting both 2003 and other years here
+  fixes_2003<-fixes_2003 %>%
+    mutate(new_row=replace(new_row, new_tag==293, "D")) 
+  ha_data <- ha_data %>% 
+    mutate(row=replace(row, plot==5753 & tag_number==293, "D")) %>% 
+    mutate(y_09=replace(y_09, plot==5753 & tag_number==293, NA)) %>% 
+    mutate(x_09=replace(x_09, plot==5753 & tag_number==293, NA)) %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==293 & year==1999, 2)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==293 & year==1999, 10)) %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==293 & year==2000, 1)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==293 & year==2000, 8)) %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==293 & year==2001, 1)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==293 & year==2001, 7)) %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==293 & year==2002, 1)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==293 & year==2002, 10)) %>% 
+    mutate(shts=replace(shts, plot==5753 & tag_number==293 & year==2004, NA)) %>% 
+    mutate(ht=replace(ht, plot==5753 & tag_number==293 & year==2004, NA)) %>% 
+    mutate(code=replace(code, plot==5753 & tag_number==293 & year==2004, "dead")) 
+    
+  
+  # add the corrected 2003 data back
+  
+  
+  ha_data<-bind_rows(ha_data,fixes_2003)
+  rm(fixes_2003)
+    
   # in 2008 data for 176 incorrectly entered as 199
   # add 
   ha_data$shts[ha_data$plot == 5753 &

@@ -108,6 +108,17 @@ correct_5752 <- function(ha_data) {
   ha_data<-ha_data %>%
     mutate(code=replace(code, plot==5752 & year==2000 & tag_number==464,"sdlg")) 
 
+  
+  # correct size of 17 in 2001
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot==5752 & year==2001 & tag_number==17,111)) 
+  
+  
+  
+  # correct size of 50 in 2003 (must have forgotten to record second 0)
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot==5752 & year==2003 & tag_number==50,100))  
+  
   # 456, 485, 504, 560: Incorrect code in 1999
   ha_data<-ha_data %>%
     mutate(code=replace(code, plot==5752 & year==1999 & tag_number==456,NA)) %>% 

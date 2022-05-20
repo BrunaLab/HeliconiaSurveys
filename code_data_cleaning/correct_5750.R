@@ -173,28 +173,41 @@ correct_5750 <- function(ha_data) {
   rm(delete2022)
   
   
-  #409 (H10) was incorrectly typed in as401 in 2006. Need to add the 2006 
-  # measurements to409, then delete the incorrect401 in H10
-  ha_data$code[ha_data$plot == 5750 &
-                 ha_data$year == 2006 &
-                 ha_data$tag_number ==409] <- "sdlg"
-  ha_data$shts[ha_data$plot == 5750 &
-                 ha_data$year == 2006 &
-                 ha_data$tag_number ==409] <-
-  ha_data$ht[ha_data$plot == 5750 &
-               ha_data$year == 2006 &
-               ha_data$tag_number ==409] <- 8
-  ha_data$code[ha_data$plot == 5750 &
-                 ha_data$year == 2007 &
-                 ha_data$tag_number ==409] <-NA
-  # delete the duplicate
-  delete1401 <- ha_data %>%
-    filter(plot == 5750 &
-             tag_number ==401 &
-             row == "H" &
-             column ==0)
-  ha_data <- anti_join(ha_data, delete1401)
-  rm(delete1401)
+  # 1409 Not entered in seedling year (2006)
+  
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot==5750 & tag_number==1409 & year==2006, 8)) %>%
+    mutate(shts=replace(shts, plot==5750 & tag_number==1409 & year==2006, 1)) %>% 
+    mutate(code=replace(code, plot==5750 & tag_number==1409 & year==2006, "sdlg")) %>% 
+    mutate(code=replace(code, plot==5750 & tag_number==1409 & year==2007, NA))
+  
+  # plant 2107 shts entered incorrectly in 2007 
+  ha_data<-ha_data %>%
+    mutate(shts=replace(shts, plot==5750 & tag_number==2002 & year==2007, 1)) 
+    
+  
+  # #409 (H10) was incorrectly typed in as401 in 2006. Need to add the 2006 
+  # # measurements to409, then delete the incorrect401 in H10
+  # ha_data$code[ha_data$plot == 5750 &
+  #                ha_data$year == 2006 &
+  #                ha_data$tag_number ==409] <- "sdlg"
+  # ha_data$shts[ha_data$plot == 5750 &
+  #                ha_data$year == 2006 &
+  #                ha_data$tag_number ==409] <-
+  # ha_data$ht[ha_data$plot == 5750 &
+  #              ha_data$year == 2006 &
+  #              ha_data$tag_number ==409] <- 8
+  # ha_data$code[ha_data$plot == 5750 &
+  #                ha_data$year == 2007 &
+  #                ha_data$tag_number ==409] <-NA
+  # # delete the duplicate
+  # delete1401 <- ha_data %>%
+  #   filter(plot == 5750 &
+  #            tag_number ==401 &
+  #            row == "H" &
+  #            column ==0)
+  # ha_data <- anti_join(ha_data, delete1401)
+  # rm(delete1401)
   
   
   
