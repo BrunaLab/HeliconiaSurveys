@@ -8,13 +8,7 @@ plot,habitat,tag_number,row,column,year,shts,ht,infl,code,duplicate_tag
 CaboFrio-CF,CF,194,A,8,2007,3,42,NA,2x in field,duplicate tag number
 CaboFrio-CF,CF,194,C,10,2007,2,39,NA,2x in field,duplicate tag number
 PortoAlegre-CF,CF,284,C,10,2007,1,8,NA,2x in field,NA
-5750,CF,101,D,6,2004,NA,0,0,dead and not on list,NA
 5752,10-ha,460,B,6,2001,NA,NA,NA,dead and not on list,NA
-5756,CF,7,A,8,2004,NA,NA,NA,dead and not on list,NA
-5756,CF,983,A,7,2004,NA,NA,NA,dead and not on list,NA
-Florestal-CF,CF,106,B,4,1999,NA,NA,NA,dead and not on list,NA
-Florestal-CF,CF,187,A,9,1999,NA,NA,NA,dead and not on list,NA
-Florestal-CF,CF,277,D,3,2004,NA,NA,NA,dead and not on list,NA
 2107,1-ha,318,E,1,2008,2,30,NA,new plant in plot,NA
 2107,1-ha,383,A,9,2008,3,43,NA,new plant in plot,NA
 2107,1-ha,386,D,10,2008,4,35,NA,new plant in plot,NA
@@ -229,7 +223,6 @@ PortoAlegre-CF,CF,350,C,10,2008,5,81,NA,new plant in plot,NA
 5753,1-ha,267,C,3,2000,3,26,0,no tag,NA
 5753,1-ha,308,E,9,2001,1,28,0,no tag,NA
 5753,1-ha,317,E,9,2001,2,35,0,no tag,NA
-5753,1-ha,322,E,2,2003,2,50,0,no tag,NA
 5753,1-ha,329,E,9,2000,1,30,0,no tag,NA
 5753,1-ha,332,E,9,2001,1,17,0,no tag,NA
 5753,1-ha,336,C,10,2000,2,50,0,no tag,NA
@@ -686,13 +679,14 @@ PortoAlegre-CF,CF,363,E,10,2004,2,111,0,no tag,NA
 5753,1-ha,265,C,2,2000,2,58,0,ULY,NA
 5753,1-ha,268,A,8,2000,1,13,0,ULY,NA
 5753,1-ha,272,C,3,2000,2,32,0,ULY,NA
+5753,1-ha,273,A,9,2003,NA,NA,1,ULY,NA
 5753,1-ha,295,C,1,2000,1,18,0,ULY,NA
 5753,1-ha,304,A,8,2000,1,21,0,ULY,NA
 5753,1-ha,305,C,2,2000,2,22,0,ULY,NA
 5753,1-ha,306,C,4,2000,2,66,0,ULY,NA
 5753,1-ha,313,B,8,2002,1,21,0,ULY,NA
+5753,1-ha,315,C,3,2002,4,69,NA,ULY,NA
 5753,1-ha,318,C,2,2002,2,30,0,ULY,NA
-5753,1-ha,321,C,3,2002,4,69,0,ULY,NA
 5753,1-ha,324,C,7,2001,2,18,0,ULY,NA
 5753,1-ha,337,C,2,2002,3,31,0,ULY,NA
 5753,1-ha,358,C,3,2004,2,17,0,ULY,NA
