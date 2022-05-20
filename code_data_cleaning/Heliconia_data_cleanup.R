@@ -1029,112 +1029,37 @@ write_csv(treefall_impact, "./data_clean/treefall_data.csv")
 
 
 
-
-# wide form to make it easier to search for ULY matches -------------------
-
-wide_ha_dryad <- ha_dryad %>%
-  pivot_wider(
-    names_from = year,
-    values_from = c("shts", "ht", "infl"),
-    names_vary = "slowest"
-  ) %>%
-  arrange(
-    plot,
-    subplot,
-    plant_id
-  )
-names(wide_ha_dryad)
-# recorded_* columns no longer make sense in this format.  Why not just keep it all in notes?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# summaries ---------------------------------------------------------------
-
-glimpse(ha_data) %>% 
-  filter(!is.na(ht))
-
-
-ha_data %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id)) %>%
-  arrange(habitat, desc(N_plants))
-
-
-ha_data %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id)) %>%
-  arrange(habitat, desc(N_plants))
-
-
-ha_data %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id)) %>%
-  arrange(habitat, desc(N_plants)) %>%
-  summarize(N_plants = sum(N_plants))
-
-
-
-ha_data %>%
-  group_by(habitat) %>%
-  summarize(N_plants = n_distinct(plant_id))
-
-
-ha_dryad %>%
-  group_by(plot) %>%
-  filter(recorded_sdlg == TRUE) %>%
-  group_by(plot) %>%
-  tally() %>%
-  arrange(desc(n))
-
-
-ha_data %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id)) %>%
-  arrange(habitat, desc(N_plants)) %>%
-  ungroup() %>%
-  summarize(total_plants = sum(N_plants))
-
-
-
-ha_data %>%
-  filter(found_without_tag == TRUE) %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id))
-
-
-
-
-ha_data %>% group_by(plant_id, census_status)
-
-
-ha_data %>%
-  ungroup() %>%
-  summarize(n_distinct(plant_id))
-
-ha_data %>%
-  group_by(tag_number, plant_id) %>%
-  count() %>%
-  nrow()
-
-ha_data %>%
-  group_by(tag_number, plot) %>%
-  count() %>%
-  nrow()
-
+# 
+# # wide form to make it easier to search for ULY matches -------------------
+# 
+# wide_ha_dryad <- ha_dryad %>%
+#   pivot_wider(
+#     names_from = year,
+#     values_from = c("shts", "ht", "infl"),
+#     names_vary = "slowest"
+#   ) %>%
+#   arrange(
+#     plot,
+#     subplot,
+#     plant_id
+#   )
+# names(wide_ha_dryad)
+# # recorded_* columns no longer make sense in this format.  Why not just keep it all in notes?
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
