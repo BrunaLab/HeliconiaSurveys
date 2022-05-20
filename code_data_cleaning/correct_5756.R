@@ -109,6 +109,20 @@ correct_5756 <- function(ha_data) {
   ha_data$infl[ha_data$plot == '5756' &
                  ha_data$year == 2004 &
                  ha_data$tag_number == 983] <- NA
+  ha_data$ht[ha_data$plot == '5756' &
+               ha_data$year == 2003 &
+               ha_data$tag_number == 983] <- 3
+  ha_data$shts[ha_data$plot == '5756' &
+                 ha_data$year == 2003 &
+                 ha_data$tag_number == 983] <- 1
+  ha_data$code[ha_data$plot == '5756' &
+                 ha_data$year == 2004 &
+                 ha_data$tag_number == 983] <- "dead"
+  ha_data$code[ha_data$plot == '5756' &
+                 ha_data$year == 2002 &
+                 ha_data$tag_number == 983] <- "sdlg"
+  # we know it was a seedling in 2002 because it is n the datasheet in 2003
+  
   
   ha_data$code[ha_data$plot == '5756' &
                  (ha_data$year == 2005 |ha_data$year == 2006) &
@@ -193,6 +207,8 @@ correct_5756 <- function(ha_data) {
              column == 3)
   ha_data <- anti_join(ha_data, to_delete)
   rm(to_delete)
+  
+  
   
   # tag_no 1602 delete the incorrect duplicate in A5
   ha_data <- ha_data[!(ha_data$plot == "5756" &
@@ -731,5 +747,23 @@ correct_5756 <- function(ha_data) {
     ha_data<-ha_data %>%
       mutate(ht=replace(ht, plot==5756 & year==2008 & tag_number==424,102))
     
-  return(ha_data)
+    
+    
+    # 1726 ios a seedling in 2000, ht correction in 2006
+    ha_data<-ha_data %>%
+      mutate(code=replace(code, plot==5756 & year==2007 & tag_number==1726,"sdlg")) %>% 
+      mutate(code=replace(code, plot==5756 & year==2008 & tag_number==1726,"dead")) 
+  
+    
+    # delete the 7 that didn't get deleted when converting tag to 956
+    to_delete <- ha_data %>%
+      filter(plot == "5756" &
+               tag_number == 7)
+    ha_data <- anti_join(ha_data, to_delete)
+    rm(to_delete)
+    
+    
+    
+    
+    return(ha_data)
   }

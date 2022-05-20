@@ -1,11 +1,12 @@
 correct_5752 <- function(ha_data) {
   
+  
+  
   # 841 in c1 is actually 849
   ha_data$tag_number[ha_data$plot == "5752" & 
                        ha_data$tag_number == 841 &
                        ha_data$row == "C" &
                        ha_data$column == 1] <- 849
-  
   
   # 566 mistakenly marked as a seedling in 2006, which created duplicate record
   # first remove the incorrect code in 07, then delete the duplicates by
@@ -113,7 +114,14 @@ correct_5752 <- function(ha_data) {
   ha_data<-ha_data %>%
     mutate(ht=replace(ht, plot==5752 & year==2001 & tag_number==17,111)) 
   
-  
+  # 460: must be a seedling in 1999 that wasn't written down
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5752 & 
+                          year==2000 & 
+                          tag_number==460,"dead")) %>% 
+    mutate(code=replace(code, plot==5752 
+                        & year==1999 &
+                          tag_number==460,"sdlg"))  
   
   # correct size of 50 in 2003 (must have forgotten to record second 0)
   ha_data<-ha_data %>%

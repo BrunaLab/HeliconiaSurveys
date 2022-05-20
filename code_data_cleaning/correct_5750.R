@@ -329,10 +329,28 @@ correct_5750 <- function(ha_data) {
     ha_data<-ha_data %>%
       mutate(column=replace(column, plot==5750 & tag_number==927, 10))
     
+# correct code on 101
+    ha_data<-ha_data %>%
+      mutate(code=replace(code, plot==5750 & year==2004 & tag_number==101, "dead")) %>% 
+      mutate(ht=replace(ht, plot==5750 & year==2004 & tag_number==101, 0)) 
+        
     
     
-  # 1398 incorrectly entered as 1338 in 2008-2009
-  
+# correct code on 202
+    ha_data<-ha_data %>%
+      mutate(shts=replace(shts, plot==5750 & year==2002 & tag_number==202, 2)) %>% 
+      mutate(ht=replace(ht, plot==5750 & year==2002 & tag_number==202, 15)) 
+    
+# delete 101
+    
+    
+    to_delete <- ha_data %>%
+      filter(plot == 5750 &
+               tag_number == 101)
+    ha_data <- anti_join(ha_data, to_delete)
+    rm(to_delete)
+    
+# 1398 incorrectly entered as 1338 in 2008-2009
 # add correct measurments to 1338
   ha_data<-ha_data %>%
     mutate(shts=replace(shts, plot==5750 & year==2008 & tag_number==1398, 2)) %>% 

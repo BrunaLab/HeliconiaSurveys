@@ -760,6 +760,7 @@ names(ha_data)
 #
 #
 # names(wide_ha_data)
+
 # FIXES AFTER REVIEWING THE FILES -----------------------------------
 
 # Not sure why these were highlighted, all look fine
@@ -775,13 +776,12 @@ names(ha_data)
 # 504
 # 560
 
-
-
 # foo<-ha_data %>% filter(plot==5752 & (year==2007)) %>% view()
 
 # TODO  5754 PA 10
-# Need to add 2006 seedling notations
-# ha_data %>% filter(plot==5750 & (tag_number==1339)) %>% select(year,shts,ht,code, duplicate_tag)
+
+# Add 2006 seedling notations
+
 # looks like a bunch of these are duplicate plant numbers?
 # 829
 # 816
@@ -799,24 +799,10 @@ names(ha_data)
 # 835
 # 858
 
+# foo<-ha_data %>% filter(plot==5753 & (tag_number==232|tag_number==322))
 
-# TODO: Dead and not on list
-# 5750 101 D6
-# 5752 460 B6
-# 5756 983 A7
-# 5756 7 A8
-# Florestal-CF 187 A9
-# Florestal-CF 106 B4
-# Florestal-CF 277 D3
 
-#TODO: 5753
-# did 269 become 311?
-# did 232 become  322?
-# 315 maybe became 321?
 
-# TODO: 5756
-# 1726 is it a seedling? 2007
-# ha_data %>% filter(plot==5756 & (tag_number==1616))
 unique(ha_data$code)
 
 # TODO: MISC
@@ -833,6 +819,11 @@ ha_data %>%
 #   view()
 ha_data %>%
   filter(plot == 5754 & (tag_number == 680)) 
+
+ha_data %>%
+  filter(plot == 2107 & (tag_number == 82)) 
+
+
 # %>%
 #   view()
 ha_data %>%
@@ -840,7 +831,7 @@ ha_data %>%
 # %>%
 #   view()
 
-
+#TODO: need to make this work on its own without repeating
 # This finds all the plants that have  a record of any kind the year AFTER being
 # marked dead.
 rows_2_delete <- ha_data %>%

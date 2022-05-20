@@ -227,7 +227,7 @@ correct_5753 <- function(ha_data) {
     mutate(code=replace(code, new_tag==250, "missing")) %>% 
     mutate(code=replace(code, new_tag==251, "missing")) %>% 
     mutate(infl=replace(infl, new_tag==273, 1)) %>% 
-    mutate(code=replace(code, new_tag==273, "uly, prob 321")) %>% 
+    mutate(code=replace(code, new_tag==273, "ULY")) %>% 
     mutate(infl=replace(infl, new_tag==274, 1)) %>% 
     mutate(new_row=replace(new_row, new_tag==293, "D")) 
   
@@ -262,13 +262,41 @@ correct_5753 <- function(ha_data) {
            "row"="new_row",
            "column"="new_col",
            "x_09"="new_x",
-           "y_09"="new_y") %>% 
-    bind_rows(ha_data,fixes_2003)
+           "y_09"="new_y") 
+  
+   
+    ha_data <-bind_rows(ha_data,fixes_2003)
   rm(fixes_2003)
     
   # 90 in 2002 should be 19
   ha_data <- ha_data %>% 
     mutate(ht=replace(ht, plot==5753 & tag_number==90 & year==2002, 19)) 
+  
+  
+  # looks like 269 was retagged as 311 in 2003
+  # 2003 data for 311
+  ha_data<-ha_data %>%
+    mutate(shts=replace(shts, plot==5753 & year==2003 & tag_number==311,3)) %>% 
+    mutate(ht=replace(ht, plot==5753 & year==2003 & tag_number==311,27)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2003 & tag_number==311,NA)) %>% 
+    mutate(infl=replace(infl, plot==5753 & year==2003 & tag_number==311,NA)) %>% 
+    mutate(shts=replace(shts, plot==5753 & year==2000 & tag_number==311,1)) %>% 
+    mutate(ht=replace(ht, plot==5753 & year==2000 & tag_number==311,14)) %>% 
+    mutate(shts=replace(shts, plot==5753 & year==2001 & tag_number==311,2)) %>% 
+    mutate(ht=replace(ht, plot==5753 & year==2001 & tag_number==311,16)) %>% 
+    mutate(shts=replace(shts, plot==5753 & year==2002 & tag_number==311,2)) %>% 
+    mutate(ht=replace(ht, plot==5753 & year==2002 & tag_number==311,18)) %>% 
+    mutate(code=replace(code, plot==5753 & year==2000 & tag_number==311,"sdlg"))
+  
+  # delete the original 269
+  
+  
+  delete269 <- ha_data %>% filter(plot == 5753 & tag_number == 269)
+  ha_data <- anti_join(ha_data, delete269)
+  rm(delete269)
+  
+  
+  
   
   
   # in 2008 data for 176 incorrectly entered as 199
@@ -504,6 +532,52 @@ correct_5753 <- function(ha_data) {
     mutate(code=replace(code, plot==5753 & year==1999 & tag_number==95,NA)) %>% 
     mutate(shts=replace(shts, plot==5753 & year==1998 & tag_number==95,1)) %>% 
     mutate(ht=replace(ht, plot==5753 & year==1998 & tag_number==95,17))
+  
+  
+  # Correcting 232 dead  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2001 & tag_number==232,"dead"))
+  
+  
+  
+  # Correcting 250 dead  
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==1999 & tag_number==322,"ULY")) %>% 
+    mutate(code=replace(code, plot==5753 & year==2001 & tag_number==322,"missing")) %>% 
+    mutate(code=replace(code, plot==5753 & year==2002 & tag_number==322,"missing")) %>% 
+    mutate(code=replace(code, plot==5753 & year==2003 & tag_number==322,NA)) %>% 
+    mutate(infl=replace(infl, plot==5753 & year==2003 & tag_number==322,1)) %>% 
+    mutate(shts=replace(shts, plot==5753 & year==1999 & tag_number==322,3)) %>% 
+    mutate(ht=replace(ht, plot==5753 & year==1999 & tag_number==322,42)) %>% 
+    mutate(shts=replace(shts, plot==5753 & year==2000 & tag_number==322,3)) %>% 
+    mutate(ht=replace(ht, plot==5753 & year==2000 & tag_number==322,40)) 
+  
+  
+  
+  delete250 <- ha_data %>%
+    filter(plot == "5753" &
+             tag_number == 250)
+  ha_data <- anti_join(ha_data, delete250)
+  rm(delete250)
+  
+  
+  
+  #  321 retagged as 315 in 2003
+  # add values from 315 to 321, then delete 321 
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot==5753 & year==2002 & tag_number==315,"ULY")) %>% 
+    mutate(shts=replace(shts, plot==5753 & year==2002 & tag_number==315,4)) %>% 
+    mutate(ht=replace(ht, plot==5753 & year==2002 & tag_number==315,69)) 
+  
+  
+  
+  delete321 <- ha_data %>%
+    filter(plot == "5753" &
+             tag_number == 321)
+  ha_data <- anti_join(ha_data, delete321)
+  rm(delete321)
+  
+  
   
   
   return(ha_data)

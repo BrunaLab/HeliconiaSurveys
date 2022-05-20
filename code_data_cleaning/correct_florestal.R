@@ -155,6 +155,44 @@ correct_florestal <- function(ha_data) {
   # 96
   ha_data<-ha_data %>%
     mutate(code=replace(code, plot=="Florestal-CF" & year==2000 & tag_number==96,"under treefall")) 
+ 
   
+  # 1004 dead in 2007. also need to delete 277 
+  # (277 tag changed to 1004 but 1 row not deleted )
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="Florestal-CF" & year==2007 & tag_number==1004,"dead")) 
+  to_delete <- ha_data %>%
+    filter(plot == "Florestal-CF" &
+             tag_number == 277)
+  ha_data <- anti_join(ha_data, to_delete)
+  rm(to_delete)
+  
+  # 1002 dead in 2009 
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="Florestal-CF" & year==2009 & tag_number==1002,"dead")) 
+  
+  
+  
+  
+  
+  
+  
+  # delete the 187: couldn't find any info on it
+  to_delete <- ha_data %>%
+    filter(plot == "Florestal-CF" &
+             tag_number == 187)
+  ha_data <- anti_join(ha_data, to_delete)
+  rm(to_delete)
+  
+  # delete the 187: couldn't find any info on it
+  to_delete <- ha_data %>%
+    filter(plot == "Florestal-CF" &
+             tag_number == 106)
+  ha_data <- anti_join(ha_data, to_delete)
+  rm(to_delete)
+  
+  
+  
+   
   return(ha_data)
 }
