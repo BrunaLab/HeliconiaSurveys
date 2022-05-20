@@ -52,6 +52,8 @@ ha_change <-
          shts_diff = shts - shts_prev,
          ht_pc = abs(ht_diff / ht_prev),
          shts_pc = abs(shts_diff / shts_prev)) %>%
+  #re-order columns so easier to see errors
+  select(plot, subplot, plant_id, year, shts_prev, shts, shts_diff, shts_pc, ht_prev, ht, ht_diff, ht_pc, everything()) %>% 
   ungroup()
 ```
 
