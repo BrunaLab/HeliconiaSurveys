@@ -813,10 +813,12 @@ names(ha_data)
 # did 269 become 311?
 # did 232 become  322?
 # 315 maybe became 321?
+
 # TODO: 5756
 # 1726 is it a seedling? 2007
 # ha_data %>% filter(plot==5756 & (tag_number==1616))
 unique(ha_data$code)
+
 # TODO: MISC
 # plants to check:
 #
@@ -1074,6 +1076,14 @@ names(wide_ha_dryad)
 
 # summaries ---------------------------------------------------------------
 
+glimpse(ha_data) %>% 
+  filter(!is.na(ht))
+
+
+ha_data %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(plant_id)) %>%
+  arrange(habitat, desc(N_plants))
 
 
 ha_data %>%

@@ -106,10 +106,10 @@ correct_florestal <- function(ha_data) {
   
   # 285 incorrect height in 1998
   ha_data<-ha_data %>%
-    mutate(ht=replace(ht, plot=="Florestal-CF" & year==1998 & tag_number==285,0))
+    mutate(ht=replace(ht, plot=="Florestal-CF" & year==1998 & tag_number==285,NA))
   # 201 incorrect height in 2002
   ha_data<-ha_data %>%
-    mutate(ht=replace(ht, plot=="Florestal-CF" & year==2002 & tag_number==201,NA))
+    mutate(ht=replace(ht, plot=="Florestal-CF" & year==2001 & tag_number==201,NA))
   
   # Correcting NOL code  
   ha_data<-ha_data %>%
