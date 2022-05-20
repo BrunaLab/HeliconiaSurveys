@@ -102,7 +102,14 @@ correct_florestal <- function(ha_data) {
     mutate(shts=replace(shts,(plot=="Florestal-CF" & tag_number==576 & year==2008), 4)) %>% 
     mutate(ht=replace(ht,(plot=="Florestal-CF" & tag_number==576 & year==2008), 66)) %>% 
     filter(!(plot=="Florestal-CF" & tag_number==576 & column==1))
-    
+
+  
+  # 285 incorrect height in 1998
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot=="Florestal-CF" & year==1998 & tag_number==285,0))
+  # 201 incorrect height in 2002
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot=="Florestal-CF" & year==2002 & tag_number==201,NA))
   
   # Correcting NOL code  
   ha_data<-ha_data %>%
@@ -119,6 +126,35 @@ correct_florestal <- function(ha_data) {
     mutate(code=replace(code, plot=="Florestal-CF" & year==2001 & tag_number==738,"missing"))
   
   
+  # in 2002 578 inder treefall
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="Florestal-CF" & year==2002 & tag_number==578,"under treefall"))
+  
+  # height correction in 374 in 1999
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot=="Florestal-CF" & year==1999 & tag_number==374,101)) 
+  
+  # 28: infl in 2003 (from 2004 record) and correcting ht/shts in 2005 
+  #  the numbers are written over each other, so it looks like 1, 10 but is 
+  # actually 4, 110
+  ha_data<-ha_data %>%
+    mutate(infl=replace(infl, plot=="Florestal-CF" & year==2003 & tag_number==28,1)) %>% 
+    mutate(shts=replace(shts, plot=="Florestal-CF" & year==2005 & tag_number==28,4)) %>% 
+    mutate(ht=replace(ht, plot=="Florestal-CF" & year==2005 & tag_number==28,110))
+    
+  
+  # 1079: 
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="Florestal-CF" & year==2004 & tag_number==1079,"dead")) 
+  
+  # 1163: 
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="Florestal-CF" & year==2004 & tag_number==1163,"dead")) 
+  
+  
+  # 96
+  ha_data<-ha_data %>%
+    mutate(code=replace(code, plot=="Florestal-CF" & year==2000 & tag_number==96,"under treefall")) 
   
   return(ha_data)
 }

@@ -273,5 +273,17 @@ correct_5754 <- function(ha_data) {
   rm(delete770)
   
   
+  # 303 size in 1999
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot==5754 & year==1999 & tag_number==303,32)) 
+  
+  
+  
+  
+  # 896 size in 2006 is almost certainly 110
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot==5754 & year==2006 & tag_number==896,110)) 
+  
+  
   return(ha_data)
 }

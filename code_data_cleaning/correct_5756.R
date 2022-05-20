@@ -718,9 +718,18 @@ correct_5756 <- function(ha_data) {
     mutate(code=replace(code, plot==5756 & year==2004 & tag_number==1205,"dead"))
   
     # 1258 ios a seedling in 2003
-    
     ha_data<-ha_data %>%
     mutate(code=replace(code, plot==5756 & year==2003 & tag_number==1258,"sdlg"))
   
+    # 873 ios a seedling in 2000, ht correction in 2006
+    ha_data<-ha_data %>%
+      mutate(code=replace(code, plot==5756 & year==2000 & tag_number==873,"sdlg")) %>% 
+      mutate(ht=replace(ht, plot==5756 & year==2006 & tag_number==873,102))
+    
+    # 424 ht in 2008 - the data sheet says 12, but this is clearly an error. 
+    # could be 120, could be 102. opeted for conservative based on prior yr
+    ha_data<-ha_data %>%
+      mutate(ht=replace(ht, plot==5756 & year==2008 & tag_number==424,102))
+    
   return(ha_data)
   }

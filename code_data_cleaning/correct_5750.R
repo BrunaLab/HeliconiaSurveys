@@ -299,6 +299,11 @@ correct_5750 <- function(ha_data) {
                               (ht*10), ht))
   
   
+  
+  # Correcting 688 height
+  ha_data<-ha_data %>%
+    mutate(ht=replace(ht, plot==5750 & year==2004 & tag_number==688, 130))
+  
   # Correcting NOL code
   ha_data<-ha_data %>%
     mutate(code=replace(code, plot==5750 & year==2004 & tag_number==668, NA))
