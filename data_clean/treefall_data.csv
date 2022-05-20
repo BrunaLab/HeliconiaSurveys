@@ -5,6 +5,7 @@ FF-2,343,2002,under branchfall
 FF-6,2582,2000,under branchfall
 FF-6,2582,2004,under branchfall
 CF-3,4810,2004,under branchfall
+CF-1,6781,2000,under treefall
 CF-1,6782,2004,under branchfall
 CF-1,6805,2002,under branchfall
 CF-1,6826,2004,under branchfall
@@ -667,6 +668,7 @@ CF-1,8019,2001,under branchfall
 CF-1,8028,2001,under branchfall
 CF-1,8028,2002,under branchfall
 CF-1,8028,2004,under branchfall
+CF-1,8032,2002,under treefall
 CF-1,8034,2002,under branchfall
 CF-1,8035,2002,under branchfall
 CF-1,8037,2000,under branchfall
@@ -735,8 +737,6 @@ FF-2,623,2004,under branchfall
 FF-2,624,2002,under branchfall
 FF-5,928,2002,under branchfall
 FF-6,3372,2002,under branchfall
-FF-4,3747,2003,under litter
-FF-4,3749,2003,under litter
 FF-4,3749,2008,under branchfall
 CF-3,6072,2004,under branchfall
 CF-3,6074,2005,under branchfall
@@ -747,7 +747,6 @@ CF-5,8646,2002,under branchfall
 FF-2,635,2002,under litter
 CF-2,1476,2003,under branchfall
 CF-2,1476,2005,under branchfall
-FF-4,3767,2003,under litter
 FF-4,3767,2005,under litter
 FF-4,3774,2002,under branchfall
 CF-3,6113,2002,under branchfall

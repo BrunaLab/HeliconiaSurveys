@@ -1,8 +1,8 @@
-plant_id,plot,habitat,ranch,bdffp_reserve_no,tag_number,row,column,x_09,y_09,plotID,year,shts,ht,infl,code,notes,new_tag,new_row,new_col,duplicate_tag
-1361,5750,CF,EST,1501,101,D,6,NA,NA,CF-2,2004,NA,0,0,dead and not on list,dead and not on list,NA,NA,NA,NA
-2847,5752,10-ha,EST,1202,460,B,6,NA,NA,FF-6,2001,NA,NA,NA,dead and not on list,dead and not on list,NA,NA,NA,NA
-5118,5756,CF,EST,1501,7,A,8,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,dead and not on list,NA,NA,NA,NA
-5108,5756,CF,EST,1501,983,A,7,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,dead and not on list,NA,NA,NA,NA
-7313,Florestal-CF,CF,EST,1301,106,B,4,NA,NA,CF-1,1999,NA,NA,NA,dead and not on list,dead and not on list,NA,NA,NA,NA
-7176,Florestal-CF,CF,EST,1301,187,A,9,NA,NA,CF-1,1999,NA,NA,NA,dead and not on list,dead and not on list,NA,NA,NA,NA
-7828,Florestal-CF,CF,EST,1301,277,D,3,NA,NA,CF-1,2004,NA,NA,NA,dead and not on list,dead and not on list,NA,NA,NA,NA
+plant_id,plot,habitat,ranch,bdffp_reserve_no,tag_number,row,column,x_09,y_09,plotID,year,shts,ht,infl,code,notes,duplicate_tag
+1361,5750,CF,EST,1501,101,D,6,NA,NA,CF-2,2004,NA,0,0,dead and not on list,dead and not on list,NA
+2847,5752,10-ha,EST,1202,460,B,6,NA,NA,FF-6,2001,NA,NA,NA,dead and not on list,dead and not on list,NA
+5118,5756,CF,EST,1501,7,A,8,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,dead and not on list,NA
+5108,5756,CF,EST,1501,983,A,7,NA,NA,CF-3,2004,NA,NA,NA,dead and not on list,dead and not on list,NA
+7313,Florestal-CF,CF,EST,1301,106,B,4,NA,NA,CF-1,1999,NA,NA,NA,dead and not on list,dead and not on list,NA
+7176,Florestal-CF,CF,EST,1301,187,A,9,NA,NA,CF-1,1999,NA,NA,NA,dead and not on list,dead and not on list,NA
+7828,Florestal-CF,CF,EST,1301,277,D,3,NA,NA,CF-1,2004,NA,NA,NA,dead and not on list,dead and not on list,NA
