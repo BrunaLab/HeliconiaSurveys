@@ -29,13 +29,15 @@ correct_5753 <- function(ha_data) {
   new_col<-fixes_2003$column
   new_x<-fixes_2003$x_09
   new_y<-fixes_2003$y_09
+  new_plant_id<-fixes_2003$plant_id
   
   fixes_2003$new_tag<-lead(new_tag,n=1) 
   fixes_2003$new_row<-lead(new_row,n=1) 
   fixes_2003$new_col<-lead(new_col,n=1) 
   fixes_2003$new_x<-lead(new_x,n=1) 
   fixes_2003$new_y<-lead(new_y,n=1) 
-  rm(new_tag, new_col, new_row, new_x,new_y)
+  fixes_2003$new_plant_id<-lead(new_plant_id,n=1) 
+  rm(new_tag, new_col, new_row, new_x,new_y,new_plant_id)
   
   # most were offset, but because some are seedlings in subsequent years you 
   # can't just assign to the shiften number - a few of them need to be corrected
@@ -108,6 +110,14 @@ correct_5753 <- function(ha_data) {
     mutate(ht=replace(ht, new_tag==239, NA)) %>% 
     mutate(shts=replace(shts, new_tag==240, 1)) %>% 
     mutate(ht=replace(ht, new_tag==240, 25)) 
+  
+  
+  fixes_2003<-fixes_2003 %>%
+    mutate(shts=replace(shts, new_tag==242, NA)) %>% 
+    mutate(ht=replace(ht, new_tag==242, NA)) %>% 
+    mutate(shts=replace(shts, new_tag==243, 2)) %>% 
+    mutate(ht=replace(ht, new_tag==243, 28)) %>% 
+    mutate(code=replace(code, new_tag==243, "under litter")) 
   
   
   fixes_2003<-fixes_2003 %>%
@@ -257,16 +267,19 @@ correct_5753 <- function(ha_data) {
   # first delete the old tag, row, column, then rename, then bind
   fixes_2003<-fixes_2003 %>%
     ungroup() %>% 
-    select(-tag_number,-row,-column,-x_09,-y_09) %>% 
+    select(-tag_number,-row,-column,-x_09,-y_09,-plant_id) %>% 
     rename("tag_number"="new_tag",
            "row"="new_row",
            "column"="new_col",
            "x_09"="new_x",
-           "y_09"="new_y") 
+           "y_09"="new_y",
+           "plant_id"="new_plant_id") 
   
    
-    ha_data <-bind_rows(ha_data,fixes_2003)
-  rm(fixes_2003)
+    ha_data <-bind_rows(ha_data,fixes_2003) %>% 
+      arrange(plot,plant_id,year)
+    
+    rm(fixes_2003)
     
   # 90 in 2002 should be 19
   ha_data <- ha_data %>% 

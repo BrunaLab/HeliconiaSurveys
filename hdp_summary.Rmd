@@ -50,6 +50,7 @@ output:
 library(knitr)
 library(rmdformats)
 library(tidyverse)
+library(kableExtra)
 knitr::opts_chunk$set(echo = TRUE)
 ## Global options
 options(max.print="75")
@@ -135,6 +136,18 @@ ha_plants %>%
 no_tag
 ```
 
-
+```{r recrt_yr, cached=TRUE, warning=FALSE,message = FALSE}
+ha_recruit_yr <- ha_plants %>%
+  group_by(plant_id) %>% 
+  filter(census_status == "measured") %>%
+  filter(row_number() == 1)
+hist(ha_recruit_yr$year)
+ha_recruit_yr %>%
+  group_by(year) %>%
+  count() %>%
+  ungroup() %>%
+  mutate(freq = (n / sum(n) * 100)) %>%
+  mutate(cumulative_freq = (cumsum(n) / sum(n) * 100))
+```
 
 
