@@ -16,6 +16,8 @@ library(readr)
 library(here)
 library(dplyr)
 library(stringr)
+library(ggplot2)
+library(gghighlight)
 # Use `validate_rmd()` here to set options for the
 # pointblank validation workflow within R Markdown documents
 ```
@@ -29,6 +31,25 @@ ha_plots <- read_csv(
   here("data_clean", "HDP_plots.csv")
 )
 ```
+
+# Check missing values
+
+```{r echo=FALSE}
+ha %>% 
+  group_by(plot, year) %>% 
+  summarize(prop_na = sum(is.na(ht))/n(), .groups = "drop") %>% 
+  ggplot(aes(x = year, y = prop_na)) +
+  geom_point(color="red") +
+  facet_wrap(~plot) +
+  theme_bw() +
+  scale_x_continuous(breaks = scales::breaks_pretty()) +
+  scale_y_continuous(breaks = c(0,0.5,1)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  gghighlight(prop_na > .5) +
+  labs(y = "Proportion missing values for height")
+  
+```
+
 
 **Action levels**
 
