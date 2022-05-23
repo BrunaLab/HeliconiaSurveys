@@ -85,10 +85,10 @@ nplants<-ha_plants %>%
 ```
 
 
-## Total Number of Plants Tagged: `r nplants`
+## Total No, of Plants in the Dataset: `r nplants`
 
 
-## Total No. of plants tagged per plot
+## Total No. of Plants Tagged in Each Plot
 
 ```{r nplants_total, cached=TRUE, warning=FALSE,message = FALSE}
 nplants_total<-ha_plants %>%
@@ -97,7 +97,7 @@ nplants_total<-ha_plants %>%
   arrange(habitat, desc(N))
 kbl(nplants_total)
 ```
-## Total No of plants tagged per habitat type
+## Total No of Plants Tagged per Habitat Type
 
 ```{r n_by_habitat, cached=TRUE, warning=FALSE,message = FALSE}
 n_by_habitat<-
@@ -110,7 +110,7 @@ kbl(n_by_habitat)
 ```
 
 
-## Total No. of seedlings tagged per plot
+## Total No. of Seedlings Tagged in Each Plot
 
 ```{r sldgs, cached=TRUE, warning=FALSE,message = FALSE}
 n_sdlgs<-
@@ -135,6 +135,9 @@ ha_plants %>%
 kbl(no_tag)
 ```
 
+
+
+## Plants tagged per year and Cumulative Prop. of Plants in the Dataset Tagged Each Year 
 ```{r recrt_yr, cached=TRUE, warning=FALSE,message = FALSE}
 marked_per_yr <- ha_plants %>%
   group_by(plant_id) %>%
