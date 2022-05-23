@@ -1,0 +1,97 @@
+---
+title: "Heliconia Demography Project - Updates in Progress"
+date: "updated: `r Sys.Date()`"
+header-includes:
+- \AtBeginDocument{\let\maketitle\relax} # this removes default title section
+- \usepackage[default]{sourcesanspro}
+- \usepackage{fancyhdr} # modify header into left, center, right
+- \pagestyle{fancy} # cues the use of fancy headers
+- \fancyfoot{} # cues the use of fancy footer
+- \fancyhead[R]{HDP Updates, p. \thepage} 
+- \fancyfoot[R]{Last update `r format(Sys.time(), '%d %B %Y')`}
+- \usepackage{parskip} # manipulate indents and spacing before/after paragra phs 
+- \usepackage{xcolor} # changes colors of text
+# more info # https://www.ctan.org/pkg/sectsty
+- \usepackage{sectsty} \sectionfont{\centering\color{darkmidnightblue}}
+- \usepackage{sectsty} \subsectionfont{\color{darkmidnightblue}}
+# http://latexcolor.com/ to choose colors
+- \definecolor{darkcerulean}{rgb}{0.03, 0.27, 0.49}
+- \definecolor{darkmidnightblue}{rgb}{0.0, 0.2, 0.4}
+# https://tex.stackexchange.com/questions/258714/prevent-hyphenation-across-lines-enforce-right-margin
+# https://babichmorrowc.github.io/post/changing-fonts-in-rmarkdown-pdfs/
+# bibliography: references.bib
+mainfont: SourceSansPro
+geometry: margin=1in
+fontsize: 12pt
+linkcolor: blue
+urlcolor: blue
+output:
+  # pdf_document: default
+  # html_document:
+  #   df_print: paged
+  rmdformats::robobook: default
+# editor_options: 
+#   markdown: 
+#     wrap: 72
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(rmdformats)
+library(tidyverse)
+library(kableExtra)
+
+knitr::opts_chunk$set(echo = TRUE)
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+# Heliconia Demography Project - In-Progress Updates
+
+### Plot?
+
+1.  Not sure why these were highlighted, they all look fine: 
+
+    401 &nbsp;&nbsp; 456 &nbsp;&nbsp; 503  
+    414 &nbsp;&nbsp; 467 &nbsp;&nbsp; 504    
+    426 &nbsp;&nbsp; 484 &nbsp;&nbsp; 560  
+    438 &nbsp;&nbsp; 485  
+
+### 5754: PA-10
+
+1.  Verify 2006 seedlings
+2.  Verify these (appear to be duplicate plant numbers).  
+
+    829 &nbsp;&nbsp; 834 &nbsp;&nbsp; 826  
+    816 &nbsp;&nbsp; 860 &nbsp;&nbsp; 827  
+    813 &nbsp;&nbsp; 819 &nbsp;&nbsp; 859  
+    834 &nbsp;&nbsp; 821 &nbsp;&nbsp; 810  
+    812 &nbsp;&nbsp; 835 &nbsp;&nbsp; 858  
+
+3. PA-10 ha has several duplicated tag numbers that need to be resolved.
+
+<!-- ```{r pa10_dupes} -->
+<!-- dupes_pa10<-filter(dupes,plot=="5754") -->
+<!-- dupes_pa10<-filter(dupes_pa10,(is.na(shts)==FALSE) & is.na(ht)==FALSE) %>% -->
+<!--   select(plot, tag_number, year, row, column,shts, ht, code) -->
+<!-- rownames(dupes_pa10) <- NULL -->
+<!-- dupes_pa10 -->
+<!-- write_csv(dupes_pa10, "./data_check/dupes_pa10.csv") -->
+
+<!-- dupes_pa10_short<-filter(dupes,plot=="5754") %>% -->
+<!--   group_by(tag_number) %>% -->
+<!--   slice(1) -->
+<!-- dupes_pa10_short$tag_number -->
+<!-- ``` -->
+
+### TODO: MISC
+
+1. a few things are coming back as "measured" even if NA in `shts` or `ht`

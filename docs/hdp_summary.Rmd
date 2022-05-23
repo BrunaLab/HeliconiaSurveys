@@ -33,7 +33,7 @@ header-includes:
 # - \setstretch{1.0}
 
 # https://babichmorrowc.github.io/post/changing-fonts-in-rmarkdown-pdfs/
-bibliography: references.bib
+# bibliography: references.bib
 mainfont: SourceSansPro
 geometry: margin=1in
 fontsize: 12pt
@@ -82,36 +82,35 @@ nplants<-ha_plants %>%
   arrange(habitat, desc(N_plants)) %>%
   ungroup() %>%
   summarize(total_plants = sum(N_plants))
-
 ```
 
 
-## Total Number of Plants: `r nplants`
+## Total Number of Plants Tagged: `r nplants`
 
 
-## Plants per Plot
+## Total No. of plants tagged per plot
 
 ```{r nplants_total, cached=TRUE, warning=FALSE,message = FALSE}
 nplants_total<-ha_plants %>%
   group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id)) %>%
-  arrange(habitat, desc(N_plants))
-nplants_total
+  summarize(N = n_distinct(plant_id)) %>%
+  arrange(habitat, desc(N))
+kbl(nplants_total)
 ```
-## Plants per Habitat Type
+## Total No of plants tagged per habitat type
 
 ```{r n_by_habitat, cached=TRUE, warning=FALSE,message = FALSE}
 n_by_habitat<-
 ha_plants %>%
   group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id)) %>%
-  arrange(habitat, desc(N_plants)) %>%
-  summarize(N_plants = sum(N_plants))
-n_by_habitat
+  summarize(N = n_distinct(plant_id)) %>%
+  arrange(habitat, desc(N)) %>%
+  summarize(N = sum(N))
+kbl(n_by_habitat)
 ```
 
 
-## Seedlings per plot
+## Total No. of seedlings tagged per plot
 
 ```{r sldgs, cached=TRUE, warning=FALSE,message = FALSE}
 n_sdlgs<-
@@ -121,33 +120,32 @@ ha_plants %>%
   group_by(plot) %>%
   tally() %>%
   arrange(desc(n))
-n_sdlgs
+kbl(n_sdlgs)
 ```
 
-## Plants without Tags
+## Total No. of established plants found without tags during surveys
 
 ```{r no_tag, cached=TRUE, warning=FALSE,message = FALSE}
 no_tag<-
 ha_plants %>%
   filter(found_without_tag == TRUE) %>%
   group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id))
+  summarize(N = n_distinct(plant_id))
 
-no_tag
+kbl(no_tag)
 ```
 
 ```{r recrt_yr, cached=TRUE, warning=FALSE,message = FALSE}
-ha_recruit_yr <- ha_plants %>%
-  group_by(plant_id) %>% 
+marked_per_yr <- ha_plants %>%
+  group_by(plant_id) %>%
   filter(census_status == "measured") %>%
-  filter(row_number() == 1)
-hist(ha_recruit_yr$year)
-ha_recruit_yr %>%
+  filter(row_number() == 1) %>% 
   group_by(year) %>%
   count() %>%
   ungroup() %>%
-  mutate(freq = (n / sum(n) * 100)) %>%
-  mutate(cumulative_freq = (cumsum(n) / sum(n) * 100))
+  mutate(freq = round((n / sum(n) * 100),1)) %>%
+  mutate(cumulative_freq = round((cumsum(n) / sum(n) * 100),1))
+kbl(marked_per_yr)
 ```
 
 
