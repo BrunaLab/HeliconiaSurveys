@@ -1,5 +1,5 @@
 ---
-title: "Heliconia Demography Project - Summary"
+title: "Heliconia Demography Project"
 date: "updated: `r Sys.Date()`"
 header-includes:
 - \AtBeginDocument{\let\maketitle\relax} # this removes default title section
@@ -65,7 +65,6 @@ ha_plots <- read_csv("./data_clean/HDP_plots.csv", col_types = cols())
 ha_plants <- ha_plants %>% left_join(ha_plots)
 ```
 
-## Summary
 
 
 ```{r nplants, cached=TRUE, warning=FALSE,message = FALSE}
@@ -78,9 +77,7 @@ nplants<-ha_plants %>%
 ```
 
 
-## Total No, of Plants in the Dataset:  
-
-      `r nplants`
+## Total No, of Plants in the Dataset: N = `r nplants`
 
 
 ## Total No. of Plants Tagged in Each Plot
@@ -100,7 +97,8 @@ ha_plants %>%
   group_by(habitat, plot) %>%
   summarize(N = n_distinct(plant_id)) %>%
   arrange(habitat, desc(N)) %>%
-  summarize(N = sum(N))
+  summarize(N = sum(N)) %>% 
+  arrange(N)
 kbl(n_by_habitat)
 ```
 
@@ -114,7 +112,7 @@ ha_plants %>%
   filter(recorded_sdlg == TRUE) %>%
   group_by(plot) %>%
   tally() %>%
-  arrange(desc(n))
+  arrange(plot)
 kbl(n_sdlgs)
 ```
 
@@ -125,7 +123,8 @@ no_tag<-
 ha_plants %>%
   filter(found_without_tag == TRUE) %>%
   group_by(habitat, plot) %>%
-  summarize(N = n_distinct(plant_id))
+  summarize(N = n_distinct(plant_id)) %>% 
+  arrange(plot)
 kbl(no_tag)
 ```
 
@@ -140,8 +139,8 @@ marked_per_yr <- ha_plants %>%
   group_by(year) %>%
   count() %>%
   ungroup() %>%
-  mutate(freq = round((n / sum(n) * 100),1)) %>%
-  mutate(cumulative_freq = round((cumsum(n) / sum(n) * 100),1))
+  mutate('%' = round((n / sum(n) * 100),1)) %>%
+  mutate('cumulative %' = round((cumsum(n) / sum(n) * 100),1))
 kbl(marked_per_yr)
 ```
 
