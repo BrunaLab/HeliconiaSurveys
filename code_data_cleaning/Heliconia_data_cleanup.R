@@ -501,7 +501,8 @@ ha_data <-
   ) %>%
   fill(blank_yr_delete, .direction ="down") %>%
   filter(is.na(blank_yr_delete)==TRUE) %>% 
-  select(-blank_yr_delete)
+  select(-blank_yr_delete) %>% 
+  ungroup()
 
 
 
@@ -530,14 +531,14 @@ ha_data %>% filter(census_status=="measured"&is.na(shts))
 # standardize column classes ---------------------------------------------
 
 # ERS: this doesn't matter if the output is .csv
-# ha_data$infl <- as.character(ha_data$infl)
-ha_data$plot <- as.factor(ha_data$plot)
-ha_data$plotID <- as.factor(ha_data$plotID)
-ha_data$ranch <- as.factor(ha_data$ranch)
-ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
-ha_data$row <- as.factor(ha_data$row)
-# make habitat (frag size) an ordered factor
-ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
+# # ha_data$infl <- as.character(ha_data$infl)
+# ha_data$plot <- as.factor(ha_data$plot)
+# ha_data$plotID <- as.factor(ha_data$plotID)
+# ha_data$ranch <- as.factor(ha_data$ranch)
+# ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
+# ha_data$row <- as.factor(ha_data$row)
+# # make habitat (frag size) an ordered factor
+# ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
 
 # TODO: write rds?
 
@@ -603,17 +604,12 @@ isolation <- tibble(
 
 # select the plot id variables
 ha_plots <- ha_data %>%
-  arrange(as.numeric(row), as.numeric(column)) %>%
-  mutate(subplot = paste(row, column, sep = "")) %>%
   select(
     "plotID",
     "habitat",
     "ranch",
-    "bdffp_reserve_no",
-    "plot"
+    "bdffp_reserve_no"
   ) %>%
-  ungroup() %>%
-  select(-plant_id) %>%
   distinct() %>%
   arrange(plotID) %>%
   mutate(ranch = recode_factor(ranch, "PortoAlegre" = "Porto Alegre")) %>%
@@ -624,11 +620,9 @@ ha_plots <- ha_data %>%
   mutate(habitat = recode_factor(habitat, "10-ha" = "ten")) %>%
   mutate(habitat = recode_factor(habitat, "CF" = "forest")) %>%
   rename(
-    "ha_plot_no" = "plot",
     "bdffp_no" = "bdffp_reserve_no",
     "plot" = "plotID"
   ) %>%
-  select(-"ha_plot_no") %>%
   left_join(isolation)
 ha_plots
 
