@@ -653,15 +653,12 @@ ha_dryad <- ha_data %>%
     code == "new plant in plot" ~ "ULY",
     code == "not on list" ~ "NOL",
     code == "dead and not on list" ~ "NOL",
-    TRUE ~ as.character(code)
+    TRUE ~ code
   )) %>%
   ungroup() %>%
-  # select(-plot) %>%
   rename(
     "plot" = "plotID",
-    # "plant_id" = "plant_id"
-  ) %>%
-  mutate(across(where(is.character), as.factor))
+  ) 
 
 
 # TODO: checking, cleanup
