@@ -646,11 +646,6 @@ ha_dryad <- ha_data %>%
     census_status,
     tag_number
   ) %>%
-  mutate(recorded_sdlg = case_when(
-    recorded_sdlg == TRUE ~ TRUE,
-    recorded_sdlg == FALSE ~ FALSE,
-    is.na(recorded_sdlg) == TRUE ~ FALSE
-  )) %>%
   mutate(code = replace(code, code == "sdlg", NA)) %>%
   mutate(treefall_impact = case_when(
     code == "under branchfall" ~ "branch",
