@@ -67,9 +67,9 @@ ha_data <- ha_data %>%
       "Florestal" = "Florestal-CF"
     )
   ))
-
-unique(ha_data$ranch)
-unique(ha_data$plot)
+# 
+# unique(ha_data$ranch)
+# unique(ha_data$plot)
 
 plot_info <-
   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>%
@@ -219,7 +219,7 @@ check_dupes <- function(ha_data) {
 }
 initial_dupes <- check_dupes(ha_data)
 initial_dupes <- ha_data %>% filter(plant_id %in% initial_dupes)
-
+initial_dupes
 # tag numbers
 source("./code_data_cleaning/detect_duplicate_plants.R")
 dupes <- detect_duplicate_plants(ha_data)
@@ -251,7 +251,7 @@ nrow(duplicate_tags) == nrow(count_dupes)
 # simplify codes ----------------------------------------------------------
 unique(ha_data$code)
 
-# TODO: document what is expected here
+# This is simply to see how many have these different codes
 ha_data %>% filter(code == "dead and not on list")
 ha_data %>% filter(code == "under branchfall, resprouting")
 ha_data %>% filter(code == "resprouting")
@@ -270,20 +270,25 @@ ha_data %>% filter(code == "under treefall")
 # many ULY - most were from that year. We want to focus on those AFTER the
 # initial survey sweep so lets instead mark uly only after 1999
 
+###
+# TODO: Move this over to the in-progress corrections
 ULYs <-
   ha_data %>%
   filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
   arrange(notes, plot, year, tag_number) %>%
-  select(-ht, -shts, -infl, -x_09, -y_09)
-write_csv(ULYs, "./data_check/ULY_plants.csv")
+  select(-ht, -shts, -infl, -x_09, -y_09,-notes)
 
+summary(as.factor(ULYs$code==ULYs$notes))
+
+write_csv(ULYs, "./data_check/uly_heliconia.csv")
+# 
 ULYs_post99 <-
   ha_data %>%
   filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
   filter(year > 1999) %>%
   arrange(notes, plot, year, tag_number) %>%
   select(-ht, -shts, -infl, -x_09, -y_09)
-write_csv(ULYs_post99, "./data_check/ULY_plants_post1999.csv")
+# write_csv(ULYs_post99, "./data_check/ULY_plants_post1999.csv")
 
 ULYs_post99_summary <- ULYs_post99 %>%
   # group_by(plot, year, row, column) %>%
@@ -292,7 +297,7 @@ ULYs_post99_summary <- ULYs_post99 %>%
   summarize(n = n()) %>%
   arrange(desc(n))
 ULYs_post99_summary
-
+###
 # GO AHEAD AND DELETE THE ULY CODE FOR PLANTS AFTER 1999
 ha_data <- ha_data %>%
   mutate(code = if_else((code == "ULY" & year == 1999), NA_character_, code))
@@ -319,6 +324,7 @@ ha_data <- ha_data %>%
 # write_csv(MISC_OBS, "./data_clean/misc_observations.csv")
 
 # Save CSV of plants that were not on the survey list ---------------------
+# TODO: Move this over to the in-progress corrections
 Not_on_SurveyList <-
   ha_data %>%
   filter(code == "not on list" |
@@ -327,37 +333,35 @@ Not_on_SurveyList <-
 
 unique(Not_on_SurveyList$code)
 unique(Not_on_SurveyList$notes)
-write_csv(
-  Not_on_SurveyList,
-  "./data_check/Not_on_List_plants.csv"
-)
+# write_csv(
+#   Not_on_SurveyList,
+#   "./data_check/Not_on_List_plants.csv"
+# )
 
-any_code <-
-  ha_data %>%
-  filter(!is.na(code)) %>%
-  filter(!code == "missing") %>%
-  filter(!code == "sdlg") %>%
-  filter(!code == "dead") %>%
-  filter(!code == "under branchfall") %>%
-  filter(!code == "under branchfall, resprouting") %>%
-  filter(!code == "under litter") %>%
-  filter(!code == "under treefall") %>%
-  filter(!code == "resprouting") %>%
-  filter(!code == "dried") %>%
-  arrange(code, plot, tag_number, year) %>%
-  select(-notes, -x_09, -y_09, -ranch, -plotID, -bdffp_reserve_no, -plant_id)
-
-# any_code$code <- droplevels(any_code$code)
-unique(any_code$code)
-write_csv(any_code, "./data_check/any_code.csv")
-write_csv(ULYs, "./data_check/ULY_plants.csv")
-
-
+# any_code <-
+#   ha_data %>%
+#   filter(!is.na(code)) %>%
+#   filter(!code == "missing") %>%
+#   filter(!code == "sdlg") %>%
+#   filter(!code == "dead") %>%
+#   filter(!code == "under branchfall") %>%
+#   filter(!code == "under branchfall, resprouting") %>%
+#   filter(!code == "under litter") %>%
+#   filter(!code == "under treefall") %>%
+#   filter(!code == "resprouting") %>%
+#   filter(!code == "dried") %>%
+#   arrange(code, plot, tag_number, year) %>%
+#   select(-notes, -x_09, -y_09, -ranch, -plotID, -bdffp_reserve_no, -plant_id)
+# 
+# # any_code$code <- droplevels(any_code$code)
+# unique(any_code$code)
+# write_csv(any_code, "./data_check/any_code.csv")
+# write_csv(ULYs, "./data_check/ULY_plants.csv")
 
 # ha_data midway ----------------------------------------------------------
 
 #  this is just here so don't have to clean from step one every time
-ha_data_original <- ha_data
+# ha_data_original <- ha_data
 # ha_data<-ha_data_original
 
 # Additional columns for the data paper ---------------------------------
@@ -505,7 +509,10 @@ ha_data <-
   select(-blank_yr_delete)
 
 
-
+# TODO: these are plants measured bit with no shts, ht, or both. look into it
+ha_data %>% filter(census_status=="measured"&is.na(shts)&is.na(ht))
+ha_data %>% filter(census_status=="measured"&is.na(shts))
+ha_data %>% filter(census_status=="measured"&is.na(ht))
 # once the plants cave been assigned census status, can delete Dead from the
 # 'code' column
 
@@ -525,9 +532,7 @@ unique(ha_data$code)
 unique(ha_data$census_status)
 summary(as.factor(ha_data$census_status))
 names(ha_data)
-# write_csv(ha_data, "./data_clean/Ha_survey_pre_submission.csv")
 
-ha_data %>% filter(census_status=="measured"&is.na(shts))
 # standardize column classes ---------------------------------------------
 
 # ERS: this doesn't matter if the output is .csv
@@ -539,7 +544,7 @@ ha_data$bdffp_reserve_no <- as.factor(ha_data$bdffp_reserve_no)
 ha_data$row <- as.factor(ha_data$row)
 # make habitat (frag size) an ordered factor
 ha_data$habitat <- ordered(ha_data$habitat, levels = c("1-ha", "10-ha", "CF"))
-
+write_csv(ha_data, "./data_clean/Ha_survey_pre_dyad.csv")
 # TODO: write rds?
 
 names(ha_data)
