@@ -19,7 +19,7 @@ detect_duplicate_plants <- function(test) {
     slice(1)
   
   
-  write.csv(dupe_simplified, "./data_check/dupes_heliconia_numbers.csv", row.names = FALSE)
+  write.csv(dupe_simplified, "./data_check/dupe_heliconia_tags.csv", row.names = FALSE)
   
   # This just prints them out with each plant separated by a row
   if (nrow(dupes)==0) {
@@ -34,7 +34,7 @@ detect_duplicate_plants <- function(test) {
   }
   
   
-  write.csv(dupes, "./data_check/dupes_heliconia.csv", row.names = FALSE)
+  # write.csv(dupes, "./data_check/dupes_heliconia.csv", row.names = FALSE)
   
   
   return(dupes)

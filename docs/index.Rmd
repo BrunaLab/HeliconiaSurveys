@@ -1,0 +1,147 @@
+---
+title: "Heliconia Demography Project"
+date: "updated: `r Sys.Date()`"
+header-includes:
+- \AtBeginDocument{\let\maketitle\relax} # this removes default title section
+- \usepackage[default]{sourcesanspro}
+- \usepackage{fancyhdr} # modify header into left, center, right
+- \pagestyle{fancy} # cues the use of fancy headers
+- \fancyfoot{} # cues the use of fancy footer
+- \fancyhead[R]{HDP Summary, p. \thepage} 
+- \fancyfoot[R]{Last update `r format(Sys.time(), '%d %B %Y')`}
+
+- \usepackage{parskip} # manipulate indents and spacing before/after paragra phs 
+- \usepackage{xcolor} # changes colors of text
+# more info # https://www.ctan.org/pkg/sectsty
+- \usepackage{sectsty} \sectionfont{\centering\color{darkmidnightblue}}
+- \usepackage{sectsty} \subsectionfont{\color{darkmidnightblue}}
+# http://latexcolor.com/ to choose colors
+- \definecolor{darkcerulean}{rgb}{0.03, 0.27, 0.49}
+- \definecolor{darkmidnightblue}{rgb}{0.0, 0.2, 0.4}
+# https://tex.stackexchange.com/questions/258714/prevent-hyphenation-across-lines-enforce-right-margin
+# https://babichmorrowc.github.io/post/changing-fonts-in-rmarkdown-pdfs/
+# bibliography: references.bib
+mainfont: SourceSansPro
+geometry: margin=1in
+fontsize: 12pt
+linkcolor: blue
+urlcolor: blue
+output:
+  # pdf_document: default
+  # html_document:
+  #   df_print: paged
+  rmdformats::robobook: default
+# editor_options: 
+#   markdown: 
+#     wrap: 72
+---
+
+
+
+```{r setup, include=FALSE}
+library(knitr)
+library(rmdformats)
+library(tidyverse)
+library(kableExtra)
+
+knitr::opts_chunk$set(echo = TRUE)
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+
+```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
+# knitr::opts_chunk$set(echo = FALSE)
+ha_plants <- read_csv("./data_clean/HDP_1997_2009.csv", col_types = cols())
+ha_plots <- read_csv("./data_clean/HDP_plots.csv", col_types = cols())
+ha_plants <- ha_plants %>% left_join(ha_plots)
+```
+
+
+
+```{r nplants, cached=TRUE, warning=FALSE,message = FALSE}
+nplants<-ha_plants %>%
+  group_by(habitat, plot) %>%
+  summarize(N_plants = n_distinct(plant_id)) %>%
+  arrange(habitat, desc(N_plants)) %>%
+  ungroup() %>%
+  summarize(total_plants = sum(N_plants))
+```
+
+
+## Total No, of Plants in the Dataset: N = `r nplants`
+
+
+## Total No. of Plants Tagged in Each Plot
+
+```{r nplants_total, cached=TRUE, warning=FALSE,message = FALSE}
+nplants_total<-ha_plants %>%
+  group_by(habitat, plot) %>%
+  summarize(N = n_distinct(plant_id)) %>%
+  arrange(habitat, desc(N))
+kbl(nplants_total)
+```
+## Total No of Plants Tagged per Habitat Type
+
+```{r n_by_habitat, cached=TRUE, warning=FALSE,message = FALSE}
+n_by_habitat<-
+ha_plants %>%
+  group_by(habitat, plot) %>%
+  summarize(N = n_distinct(plant_id)) %>%
+  arrange(habitat, desc(N)) %>%
+  summarize(N = sum(N)) %>% 
+  arrange(N)
+kbl(n_by_habitat)
+```
+
+
+## Total No. of Seedlings Tagged in Each Plot
+
+```{r sldgs, cached=TRUE, warning=FALSE,message = FALSE}
+n_sdlgs<-
+ha_plants %>%
+  group_by(plot) %>%
+  filter(recorded_sdlg == TRUE) %>%
+  group_by(plot) %>%
+  tally() %>%
+  arrange(plot)
+kbl(n_sdlgs)
+```
+
+## Total No. of established plants found without tags during surveys
+
+```{r no_tag, cached=TRUE, warning=FALSE,message = FALSE}
+no_tag<-
+ha_plants %>%
+  filter(found_without_tag == TRUE) %>%
+  group_by(habitat, plot) %>%
+  summarize(N = n_distinct(plant_id)) %>% 
+  arrange(plot)
+kbl(no_tag)
+```
+
+
+
+## Plants tagged per year and Cumulative Prop. of Plants in the Dataset Tagged Each Year 
+```{r recrt_yr, cached=TRUE, warning=FALSE,message = FALSE}
+marked_per_yr <- ha_plants %>%
+  group_by(plant_id) %>%
+  filter(census_status == "measured") %>%
+  filter(row_number() == 1) %>% 
+  group_by(year) %>%
+  count() %>%
+  ungroup() %>%
+  mutate('%' = round((n / sum(n) * 100),1)) %>%
+  mutate('cumulative %' = round((cumsum(n) / sum(n) * 100),1))
+kbl(marked_per_yr)
+```
+
+

@@ -43,8 +43,8 @@ correct_cabofrio_cf <- function(ha_data) {
   # remove the duplicates from the original df
   ha_data <- ha_data[!(ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 2121), ]
   # re-insert them
-  str(ha_data$code)
-  str(correct_2121$code)
+  # str(ha_data$code)
+  # str(correct_2121$code)
   ha_data <- bind_rows(ha_data, correct_2121)
   rm(correct_2121)
   
