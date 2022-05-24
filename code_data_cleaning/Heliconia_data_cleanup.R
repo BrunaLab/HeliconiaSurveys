@@ -646,8 +646,6 @@ ha_dryad <- ha_data %>%
     census_status,
     tag_number
   ) %>%
-  # change infl to be conditional - IF reproductive, how many infl? others ->NA
-  mutate(infl = replace(infl, infl == 0, NA)) %>%
   mutate(recorded_sdlg = case_when(
     recorded_sdlg == TRUE ~ TRUE,
     recorded_sdlg == FALSE ~ FALSE,
