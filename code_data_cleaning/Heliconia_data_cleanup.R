@@ -265,7 +265,7 @@ ha_data %>% filter(code == "missing")
 ha_data %>% filter(code == "under treefall")
 
 # Pull out 'ULY'; save to csv file -----------------
-# NOTE plots weere still being completely surveyed through 99, which is why so
+# NOTE plots were still being completely surveyed through 99, which is why so
 # many ULY - most were from that year. We want to focus on those AFTER the
 # initial survey sweep so lets instead mark uly only after 1999
 
@@ -346,7 +346,6 @@ any_code <-
   arrange(code, plot, tag_number, year) %>%
   select(-notes, -x_09, -y_09, -ranch, -plotID, -bdffp_reserve_no, -plant_id)
 
-# any_code$code <- droplevels(any_code$code)
 unique(any_code$code)
 write_csv(any_code, "./data_check/any_code.csv")
 write_csv(ULYs, "./data_check/ULY_plants.csv")
@@ -394,11 +393,11 @@ unique(ha_data$treefall_status)
 unique(ha_data$code)
 unique(ha_data$code)
 ha_data <- ha_data %>%
-  mutate(found_without_tag = case_when(
-    # code %in% c("not on list", "dead and not on list") ~ "not on list",
-    code %in% c("no tag", "plant without tag", "new plant in plot", "ULY") ~ TRUE,
+  mutate(found_without_tag = if_else(
+    code %in% c("no tag", "plant without tag", "new plant in plot", "ULY"),
+    TRUE,
     # else:
-    TRUE ~ FALSE
+    FALSE
   ))
 
 unique(ha_data$found_without_tag)
@@ -439,8 +438,7 @@ ha_data <- ha_data %>%
     code %in% c("sdlg") ~ "measured", # new seedlings are alive, even if no ht or sht measurment
     code %in% c("dead", "dead and not on list") ~ "dead", # anything dead is dead
     # code %in% c("sdlg","no tag","plant_no_tag", "ULY","new plant in plot") ~ "new",
-    code %in% c("missing") ~ code, # in some years plants were marked missing
-    # (is.na(ht) & is.na(shts) & is.na(infl)) ~ "missing",  # anything with a measurement is alive
+    code == "missing" ~ code, # in some years plants were marked missing
     TRUE ~ NA_character_ # anything not measured or marked "missing", "dead" or "seedling" is NA
   )) %>%
   group_by(plot, plant_id) %>%
@@ -473,18 +471,20 @@ ha_data <- bind_rows(ha_measured, ha_na, ha_dead, ha_missing) %>%
 
 ha_data <- ha_data %>%
   mutate(
-    census_status = case_when(
-      (is.na(ht) & is.na(shts) & is.na(infl) & census_status == "measured" & (is.na(code) == TRUE & is.na(duplicate_tag) == TRUE)) ~ "missing",
-      TRUE ~ census_status
+    census_status = if_else(
+      (is.na(ht) & is.na(shts) & is.na(infl) & census_status == "measured" & (is.na(code) == TRUE & is.na(duplicate_tag) == TRUE)),
+      "missing",
+      census_status
     ) # anything not measured or marked "missing", "dead" or "seedling" is NA
   )
 
 ## The ones under treefalls coming back "measured"
 ha_data <- ha_data %>%
   mutate(
-    census_status = case_when(
-      (is.na(ht) & is.na(shts) & is.na(infl) & census_status == "measured" & (treefall_status == "under treefall" | treefall_status == "under branchfall")) ~ "missing",
-      TRUE ~ census_status
+    census_status = if_else(
+      (is.na(ht) & is.na(shts) & is.na(infl) & census_status == "measured" & (treefall_status == "under treefall" | treefall_status == "under branchfall")),
+      "missing",
+      census_status
     ) # anything not measured or marked "missing", "dead" or "seedling" is NA
   )
 
