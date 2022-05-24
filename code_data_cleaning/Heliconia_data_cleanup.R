@@ -627,7 +627,7 @@ ha_plots
 names(ha_data)
 head(ha_data)
 # unique(ha_data$code)
-
+# any(ha_data$code %in% c("sdlg", "under branchfall", "under litter", "under treefall"))
 ha_dryad <- ha_data %>%
   arrange(row, as.numeric(column)) %>%
   mutate(subplot = paste(row, column, sep = "")) %>%
@@ -646,11 +646,6 @@ ha_dryad <- ha_data %>%
     census_status,
     tag_number
   ) %>%
-  mutate(code = replace(code, code == "sdlg", NA)) %>%
-  
-  mutate(code = replace(code, code == "under branchfall", NA)) %>%
-  mutate(code = replace(code, code == "under litter", NA)) %>%
-  mutate(code = replace(code, code == "under treefall", NA)) %>%
   mutate(code = case_when(
     code == "resprouting" ~ "resprouting",
     code == "dried" ~ "dried",
