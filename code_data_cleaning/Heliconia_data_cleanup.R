@@ -202,7 +202,6 @@ source("./code_data_cleaning/find_zombies.R")
 zombies <- find_zombies(ha_data)
 zombies %>%
   group_by(habitat, plot) %>%
-  # summarize(N_plants = n_distinct(tag_number)) %>%
   summarize(N_plants = n_distinct(plant_id)) %>%
   arrange(habitat, desc(N_plants))
 
