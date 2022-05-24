@@ -1,121 +1,37 @@
 
 find_zombies <- function(ha_data) {
-  # 
-  # ha_data<-ha_data %>% filter(code=="dead (2)"|code == "dead") %>% 
-  #   select(plot, tag_number, plant_id, year)
-  #   
-  # ha_data<-ha_data %>% filter(plant_id%in% ha_data$plant_id) %>% 
-  #   group_by(plot, tag_number) %>%
-  #   mutate(code = as.character(code), # can be avoided if key is a character to begin with
-  #          code3 = (cumsum(lag(
-  #            code == "dead (2)" & !is.na(code == "dead (2)"), default = 0
-  #          )))) %>% 
-  # filter(code3 > 0) %>%
-  #   arrange(plot, tag_number, year) %>%
-  #   ungroup()
-  # 
-  # # 
-  # 
-  # # ha_data<-ha_data
-  # # ha_data<-pa_wide
-  # df2 <- ha_data
-  # df2$code2 <- NA
-  # df2$code2[df2$code == "dead"] <- "dead"
-  # df2$code2[df2$code == "dead and not on list"] <- "dead"
-  # df2 <- df2 %>%
-  #   group_by(plot, tag_number) %>%
-  #   mutate(code2 = as.character(code2), # can be avoided if key is a character to begin with
-  #          code3 = (cumsum(lag(
-  #            code2 == "dead" & !is.na(code2 == "dead"), default = 0
-  #          )))) %>%
-  #   filter(code3 > 0) %>%
-  #   arrange(plot, tag_number, year) %>%
-  #   ungroup()
-  # 
-  # summary(df2)
-  # #All plamts post -dead records, including NA in ALL columnS
-  # # write.csv(dbl.chk, "./data_check/post_dead_records.csv",row.names = FALSE)
-  # 
-  # # df3 - keep these for review (they are the ones that are marked dead but have data after)
-  # df3 <-
-  #   df2 %>% filter((!is.na(ht) | !is.na(shts))) %>% 
-  #   arrange(plot, tag_number, year) %>% 
-  #   select(-code3) %>% ungroup()
-  # 
-  # df3$code2<-NULL
-  # 
-  # 
-  # # df3 <-
-  # #   bind_rows(df2, df3) %>% select(plot, tag_number, year, ht, shts) %>% unique()
-  # # 
-  # zombies_all_yrs <-
-  #   semi_join(ha_data, df3, by = c("plot", "tag_number")) %>% 
-  #   select(plot, habitat,plant_id, tag_number, row, column,year, shts, ht, code) %>% 
-  #   arrange(habitat, plot, plant_id,tag_number, year)
-  # # zombies_all_yrs<-split(zombies_all_yrs, zombies_all_yrs$tag_number)
-  # # write.csv(zombies_all_yrs, "./data_check/zombies.csv", row.names = FALSE)
-  # if (nrow(zombies_all_yrs)==0) {
-  #     print("there are no zombies in your dataset")
-  #   } else {
-  # # This just prints them out with each plant separated by a row
-  # zombies_all_yrs_new <-
-  #   as.data.frame(lapply(zombies_all_yrs, as.character), stringsAsfactors = FALSE)
-  # zombies_all_yrs_new <-
-  #   head(do.call(
-  #     rbind,
-  #     by(zombies_all_yrs_new, zombies_all_yrs_new$tag_number, rbind, "")
-  #   ),-1)
-  # write.csv(zombies_all_yrs_new,
-  #           "./data_check/zombies_formatted.csv",
-  #           row.names = FALSE)
-  #   }
-  # 
-  # 
-  # 
-  # 
-  # 
-  # # # df4 - these are the ones you can delete from ha_data. no data after being marked "dead"
-  # # df4 <- anti_join(df2, df3, by = c("plot", "tag_number", "year"))
-  # # # you can make sure that they in fact they *are* all NA by looking over them
-  # # summary(df4)
-  # 
-  # # 
-  # # # then delete them from the Ha survey with an anti_join
-  # # ha_data <- anti_join(ha_data, df4, by = c("plot", "tag_number", "year"))
-  # # 
-  # # rm(df, df2, df3, df4, zombies_all_yrs_new)
   
-zombies<-
-  ha_data %>%
+  zombies <-
+    ha_data %>%
     group_by(plant_id) %>%
     mutate(
       zombie = if_else(lag(code, 1) == "dead", "delete", NA_character_),
       .before = 'code'
     ) %>%
     fill(zombie, .direction ="down") %>% 
-  filter(zombie=="delete") %>% 
-  mutate(zombie = if_else((is.na(shts) & is.na(ht)), "delete", "zombie")) %>% 
-  filter(zombie=="zombie")
+    filter(zombie=="delete") %>% 
+    mutate(zombie = if_else((is.na(shts) & is.na(ht)), "delete", "zombie")) %>% 
+    filter(zombie=="zombie")
   
   
-
-if (nrow(zombies)==0) {
-      print("there are no zombies in your dataset")
-    } else {
-  # This just prints them out with each plant separated by a row
-      zombies <-
-    as.data.frame(lapply(zombies, as.character), stringsAsfactors = FALSE)
-  zombies_all_yrs_new <-
-    head(do.call(
-      rbind,
-      by(zombies, zombies$tag_number, rbind, "")
-    ),-1)
-  write.csv(zombies_all_yrs_new,
-            "./data_check/zombies_formatted.csv",
-            row.names = FALSE)
-    }
-
-
-
+  
+  if (nrow(zombies)==0) {
+    print("there are no zombies in your dataset")
+  } else {
+    # This just prints them out with each plant separated by a row
+    zombies <-
+      as.data.frame(lapply(zombies, as.character), stringsAsfactors = FALSE)
+    zombies_all_yrs_new <-
+      head(do.call(
+        rbind,
+        by(zombies, zombies$tag_number, rbind, "")
+      ),-1)
+    write.csv(zombies_all_yrs_new,
+              "./data_check/zombies_formatted.csv",
+              row.names = FALSE)
+  }
+  
+  
+  
   return(zombies)
 }
