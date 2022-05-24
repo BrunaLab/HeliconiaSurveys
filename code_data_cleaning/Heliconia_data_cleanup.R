@@ -647,11 +647,7 @@ ha_dryad <- ha_data %>%
     tag_number
   ) %>%
   mutate(code = replace(code, code == "sdlg", NA)) %>%
-  mutate(treefall_impact = case_when(
-    code == "under branchfall" ~ "branch",
-    code == "under litter" ~ "litter",
-    code == "under treefall" ~ "crown"
-  )) %>%
+  
   mutate(code = replace(code, code == "under branchfall", NA)) %>%
   mutate(code = replace(code, code == "under litter", NA)) %>%
   mutate(code = replace(code, code == "under treefall", NA)) %>%
@@ -692,8 +688,6 @@ test <- ha_dryad %>%
 treefall_impact <- ha_dryad %>%
   select(plot, plant_id, year, treefall_status) %>%
   drop_na(treefall_status)
-# delete "trefall impact" colummn
-ha_dryad <- ha_dryad %>% select(-treefall_impact)
 
 ha_dryad
 
