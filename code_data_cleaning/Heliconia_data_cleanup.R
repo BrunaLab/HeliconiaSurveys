@@ -391,7 +391,7 @@ unique(ha_data$treefall_status)
 
 # add column to note if recruited as adult (uly,new tag, etc)
 unique(ha_data$code)
-unique(ha_data$code)
+
 ha_data <- ha_data %>%
   mutate(found_without_tag = if_else(
     code %in% c("no tag", "plant without tag", "new plant in plot", "ULY"),
@@ -435,10 +435,10 @@ unique(ha_data$condition)
 ha_data <- ha_data %>%
   mutate(census_status = case_when(
     (ht >= 0 | shts >= 0 | infl > 0) ~ "measured", # anything with a measurement is alive
-    code %in% c("sdlg") ~ "measured", # new seedlings are alive, even if no ht or sht measurment
+    code == "sdlg" ~ "measured", # new seedlings are alive, even if no ht or sht measurment
     code %in% c("dead", "dead and not on list") ~ "dead", # anything dead is dead
     # code %in% c("sdlg","no tag","plant_no_tag", "ULY","new plant in plot") ~ "new",
-    code == "missing" ~ code, # in some years plants were marked missing
+    code == "missing" ~ "missing", # in some years plants were marked missing
     TRUE ~ NA_character_ # anything not measured or marked "missing", "dead" or "seedling" is NA
   )) %>%
   group_by(plot, plant_id) %>%
@@ -471,20 +471,28 @@ ha_data <- bind_rows(ha_measured, ha_na, ha_dead, ha_missing) %>%
 
 ha_data <- ha_data %>%
   mutate(
-    census_status = if_else(
-      (is.na(ht) & is.na(shts) & is.na(infl) & census_status == "measured" & (is.na(code) == TRUE & is.na(duplicate_tag) == TRUE)),
-      "missing",
-      census_status
+    census_status = case_when(
+      census_status == "measured" & 
+        is.na(ht) &
+        is.na(shts) &
+        is.na(infl) & 
+        is.na(code) & 
+        is.na(duplicate_tag) ~ "missing",
+      TRUE ~ census_status
     ) # anything not measured or marked "missing", "dead" or "seedling" is NA
   )
 
 ## The ones under treefalls coming back "measured"
 ha_data <- ha_data %>%
   mutate(
-    census_status = if_else(
-      (is.na(ht) & is.na(shts) & is.na(infl) & census_status == "measured" & (treefall_status == "under treefall" | treefall_status == "under branchfall")),
-      "missing",
-      census_status
+    census_status = case_when(
+      is.na(ht) &
+        is.na(shts) & 
+        is.na(infl) &
+        census_status == "measured" &
+        (treefall_status == "under treefall" |
+           treefall_status == "under branchfall") ~ "missing",
+      TRUE ~ census_status
     ) # anything not measured or marked "missing", "dead" or "seedling" is NA
   )
 
