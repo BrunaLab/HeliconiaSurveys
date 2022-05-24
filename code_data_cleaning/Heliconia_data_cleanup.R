@@ -666,7 +666,7 @@ ha_dryad <- ha_data %>%
 test <- ha_dryad %>%
   select(plant_id, code, census_status) %>%
   filter(code == "missing")
-test$test <- as.character(test$code) == as.character(test$census_status)
+test$test <- test$code == test$census_status
 test %>% filter(test == FALSE)
 
 test <- ha_dryad %>%
@@ -687,16 +687,10 @@ ha_dryad
 # DELETE CODE COLUMN
 ha_dryad <- ha_dryad %>% select(-code)
 
-
-
-
 head(ha_dryad)
 glimpse(ha_dryad)
 summary(ha_dryad$infl)
-summary(ha_dryad$code)
 summary(ha_dryad$recorded_sdlg)
-
-
 
 names(ha_data)
 
