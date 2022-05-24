@@ -663,6 +663,13 @@ ha_dryad <- ha_data %>%
 
 # TODO: checking, cleanup
 
+#Why no measurements for some plots in 2000, 2003?
+ha_dryad %>% 
+  group_by(plot, year) %>%
+  summarize(non_na = sum(!is.na(shts))) %>%
+  filter(non_na < 5)
+
+
 test <- ha_dryad %>%
   select(plant_id, code, census_status) %>%
   filter(code == "missing")
