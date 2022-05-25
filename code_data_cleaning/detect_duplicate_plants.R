@@ -1,18 +1,12 @@
 detect_duplicate_plants <- function(test) {
   # test<-ha_data
-  test$row_col <- do.call(paste, c(test[c("row", "column")], sep = "")) 
+  test$row_col <- do.call(paste, c(test[c("row", "column")], sep = ""))
   
   
   duplicates <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1)
-  # duplicates_row <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1)
-  # duplicates_row_col <- test %>% group_by(habitat, plot, row_col,tag_number, year) %>% filter(n()>1) %>% ungroup()
-  # duplicates_row_col <- test %>% group_by(habitat, plot, tag_number, year) %>% filter(n()>1) %>% ungroup()
-  
-  # anti_join(duplicates_col,duplicates_row)
   
   duplicates_row_col <- duplicates %>%  select(plot, tag_number) %>% unique()
-  # duplicates_row_col <- duplicates_row_col %>%  select(plot, tag_number) %>% unique()
-  
+
   dupes <-
     semi_join(test, duplicates_row_col, by = c("plot", "tag_number")) %>% 
     select(plotID,plot, habitat,  plant_id,   tag_number, year, row,column, shts, ht, code) %>% 

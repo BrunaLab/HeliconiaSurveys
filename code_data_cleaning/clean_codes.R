@@ -1,6 +1,5 @@
 clean_codes <- function(ha_data) {
   
-  ha_data <- rename(ha_data, "code"="code")
   ha_data$code <- as.factor(ha_data$code)
   summary(ha_data$code)
   levels(ha_data$code)[levels(ha_data$code) == "1"] <-  "sdlg"
@@ -26,9 +25,7 @@ clean_codes <- function(ha_data) {
   
   
   
-  
-  # summary(as.factor(ha_data$code))
-  # levels(as.factor(ha_data$code))
+  # unique(ha_data$code)
   # 
   # CLEAN UP CODES FROM PA10
   ha_data$notes <-as.character(NA)
@@ -58,9 +55,7 @@ clean_codes <- function(ha_data) {
     mutate(notes = if_else(code == "plot is 50% treefall","plot is 50% treefall", notes)) %>% 
     mutate(notes = if_else(code == "trefall","trefall", notes)) %>% 
     mutate(code = if_else(code=="dead","dead", code)) %>% 
-    # mutate(code= na_if(code, "dead")) %>% 
-    # mutate(code = if_else(code == "sdlg","sdlg", code)) %>% 
-    # mutate(code = na_if(code, "sdlg")) %>% 
+    
     mutate(code = if_else(code == "under trunk","under treefall", code)) %>% 
     mutate(code = if_else(code == "under treefall","under treefall", code)) %>% 
     mutate(code = if_else(code == "under fallen trunk","under treefall", code)) %>% 
@@ -74,7 +69,7 @@ clean_codes <- function(ha_data) {
     mutate(code = if_else(code == "not on list","not on list", code)) %>% 
     mutate(code= na_if(code, "not on list")) %>% 
     mutate(code = if_else(code == "missing","missing", code)) %>% 
-    # mutate(code= na_if(code, "missing")) %>% 
+
     mutate(code = if_else(code== "ULY?","ULY", code)) %>% 
     mutate(code= na_if(code, "ULY?")) %>% 
     mutate(code = if_else(code== "not on list. must be313","not on list", code)) %>% 
@@ -103,12 +98,11 @@ clean_codes <- function(ha_data) {
     mutate(code= na_if(code, "this number belongs to a pvc in a6")) %>%
     mutate(code = if_else(code == "pvc stake not on list","not on list", code)) %>% 
     mutate(code= na_if(code, "pvc stake not on list")) %>%
-    # mutate(code= na_if(code, "pvc stake not on list")) %>%
     mutate(code= na_if(code, "its in C2")) %>%
     mutate(code= na_if(code, "e E6")) %>%
     mutate(code= na_if(code, ", must have lost tag")) %>%
     mutate(code= na_if(code, "3 old infl")) %>% 
-    mutate(infl = if_else(infl==0 & code == "1 new infl" , 1, infl)) %>% 
+    mutate(infl = if_else(infl==0 & code == "1 new infl" , 1L, infl)) %>% 
     mutate(code= na_if(code,"1 new infl")) %>% 
     mutate(code= na_if(code, "horrible treefall in plot")) %>%
     mutate(code= na_if(code, "treefall in plot")) %>%
@@ -118,9 +112,8 @@ clean_codes <- function(ha_data) {
     mutate(code= na_if(code, "trefall")) 
   
     ha_data$code<-trimws(ha_data$code)
-  # ha_data$code<-as.factor(ha_data$code)
-  # ha_data$code<-as.character(ha_data$code)
-  # levels(as.factor(ha_data$code))
-  
+
+  ha_data$code<-as.character(ha_data$code)
+
   return(ha_data)
 }
