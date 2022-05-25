@@ -389,6 +389,8 @@ file_plants_size <- (file.info("./data_clean/HDP_1997_2009.csv")$size)/1000000
 
 9. **Data anomalies:** Following each survey, the measurements of plant height and stem number were compared with those from the previous year to identify potential errors in either plant measurement or entry (e.g., a plant with 1 shoot in year t and 11 shoots in year t+1 is likely an error in data entry). Discrepancies were investigated by referring to the original data sheets and, on occasion, returning to the field to remeasure plants. Following data entry the original data sheets were copied and stored in a secure location. 
 
+No surey in cabo frio in 2003, some missing in 2000?
+
 ```{r uly_count, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
 
 ent<-ha_plants %>% 
@@ -804,7 +806,7 @@ knitr::asis_output(tmp)
 
 ```{r map, out.width = "100%", fig.cap='Satellite image of the Biological Dynamics of Forest Fragments Project showing the location of the \\textit{Heliconia} Demographic Plots. Plots are located in Continuous Forest (CF) or Forest Fragments (FF). Dark green is primary forest, light green is regenerating forest, and red indicates pasture and recently cleared areas. For additional details on each plot see Table 1.'}
 
-ggdraw() + draw_image('./manuscript/figures/bdffp_sat.jpeg', scale = 1.0)
+ggdraw() + draw_image('./manuscript/figures/bdffp_sat.jpg', scale = 1.0)
 
 ```
 

@@ -717,25 +717,3 @@ write_csv(ha_dryad, "./data_clean/HDP_1997_2009.csv")
 write_csv(ha_plots, "./data_clean/HDP_plots.csv")
 
 write_csv(treefall_impact, "./data_clean/treefall_data.csv")
-
-
-
-
-
-# 
-# # wide form to make it easier to search for ULY matches -------------------
-# 
-# wide_ha_dryad <- ha_dryad %>%
-#   pivot_wider(
-#     names_from = year,
-#     values_from = c("shts", "ht", "infl"),
-#     names_vary = "slowest"
-#   ) %>%
-#   arrange(
-#     plot,
-#     subplot,
-#     plant_id
-#   )
-# names(wide_ha_dryad)
-# # recorded_* columns no longer make sense in this format.  Why not just keep it all in notes?
-#
