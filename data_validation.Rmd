@@ -11,7 +11,6 @@ This uses `pointblank` to create a data validation report. In the resulting tabl
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
 
 library(pointblank)
-library(pointblank)
 library(readr)
 library(here)
 library(dplyr)
