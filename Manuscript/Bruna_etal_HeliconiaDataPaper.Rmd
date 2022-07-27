@@ -1,11 +1,10 @@
 ---
-title             : "**Demographic data from populations of the understory herb _Heliconia acuminata_ (Heliconiaceae) in an experimentally fragmented tropical landscape (1997-2013)**"
+title             : "**Demographic data from populations of the understory herb _Heliconia acuminata_ (Heliconiaceae) in an experimentally fragmented tropical landscape (1997-2009)**"
 shorttitle        : "Tropical plant demography"
 author: 
-    
-      
   - name          : "Emilio M. Bruna"
     affiliation   : "1,2,3"
+    # address       : "Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA"
     email         : "embruna@ufl.edu"
     role:
       - Methodology
@@ -13,7 +12,7 @@ author:
       - Investigation
       - Funding acquisition
       - Conceptualization
-      - Formal Analysis
+      - Formal analysis
       - Methodology
       - Project administration
       - Resources
@@ -22,7 +21,7 @@ author:
       - Validation
       - Visualization
       - Writing – original draft
-    corresponding : yes 
+    corresponding : yes
   - name          : "Maria Uriarte"
     affiliation   : "4"
     role:
@@ -30,7 +29,7 @@ author:
       - Investigation
       - Funding acquisition
       - Conceptualization
-      - Formal Analysis
+      - Formal analysis
       - Methodology
       - Project administration
       - Resources
@@ -54,8 +53,16 @@ author:
       - Investigation
       - Project administration
       - Writing – review & editing
+  - name          : "Cristiane F. Jurinitz"
+    affiliation   : "3"
+    role: 
+      - Methodology
+      - Investigation
+      - Project administration
+      - Writing – review & editing
   - name          : "Eric R. Scott"
     affiliation   : "1"
+    # affiliation   : "1,*"
     role:
       - Methodology
       - Data curation
@@ -77,20 +84,37 @@ affiliation:
   - id            : "1"
     institution   : "Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA"
   - id            : "2"
-    institution   : "Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611, USA"
+    institution   : "Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611-5530, USA"
   - id            : "3"
     institution   : "Biological Dynamics of Forest Fragments Project, INPA-PDBFF, CP 478, Manaus, AM 69011-970, Brazil"
   - id            : "4"
     institution   : "Department of Ecology, Evolution and Environmental Biology, Columbia University, 1200 Amsterdam Ave., New York, New York 10027, USA"
   - id            : "5"
     institution   : "Department of Botany, National Museum of Natural History, PO Box 37012, Smithsonian Institution, PO Box 37012, Washington DC, USA"
-# abstract: |
-#  Habitat fragmentation is thought to be a leading cause of extinction, but the demography of species in fragmented landscapes remains poorly understood. This is particularly true in tropical ecosystems, where studies monitoring populations of species in both fragments and areas of continuous habitat across all life-history stages are virtually nonexistent. Here we report 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb _Heliconia acuminata_ (LC Rich.). These surveys were conducted in the experimentally fragmented landscape of the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plants are located in 50 x 100 m permanent plots located in forest fragments of different sizes (four 1-ha fragments and three 10-ha fragments) as well as 6 continuous forest sites. The population in each plot was censused annually, at which time we recorded the mortality of any previously marked plants and the size of surviving plants. We also marked and measured new seedlings. During the flowering season we also recorded the identity of flowering plants and how many inflorescences each of them produced. These data have been used in publications on topics ranging from how fragmentation-related reductions in germination influence population growth rates to tests of statistical methods for analyzing reproductive rates. 
+  # - id            : "*"
+  #   institution   : "Current Address: ---, University of Arizona, Pheonix, AZ ZIP CODE, USA"
+    
+abstract: ""
+# 
+#   text
+# 
+note: | 
+  
+  _Open Research Statement_: Data are available as Supporting Information and are also available in Dryad at https://doi.org/------
 
-Open Research Statement: Data are available as Supporting Information and are also available in Dryad at https://doi.org/------
+  \newpage 
 
-# keywords: "Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, integral projection models, matrix models, population dynamics, vital rates"
-wordcount         : "------"
+wordcount: "4718"
+  
+authornote: |
+  
+  _Corresponding author_: Emilio M. Bruna (embruna@ufl.edu)
+  
+  _Word count_: 4718 (text), 1729 (references)
+
+keywords: "Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, integral projection models, matrix models, population dynamics, vital rates"  
+# 
+
 floatsintext      : no
 figurelist        : yes
 tablelist         : no
@@ -102,7 +126,7 @@ documentclass     : "apa6"
 # classoption       : "man"
 classoption       : "man, donotrepeattitle" # suppresses title on 1st page of MS
 output            : "papaja::apa6_pdf"
-bibliography: references.bib
+bibliography: ["references.bib"]
 csl: ecology.csl
 fig_caption: yes #yes will automatically add "Figure X" to the start 
 always_allow_html: yes
@@ -190,7 +214,7 @@ nrows<-nrow(ha_plants)
 **I. CLASS I. Data Set Descriptors**  
 
 \noindent
-**A. Data set identity:** Demographic data from populations of the understory herb _Heliconia acuminata_ (Heliconiaceae) in an experimentally fragmented tropical landscape (1997-2013).  
+**A. Data set identity:** Demographic data from populations of the understory herb _Heliconia acuminata_ (Heliconiaceae) in an experimentally fragmented tropical landscape (1997-2009).  
 
 \noindent
 **B. Data set identification code:**  
@@ -203,10 +227,10 @@ nrows<-nrow(ha_plants)
 
 1. **Originators:** Emilio M. Bruna, Department of Wildlife Ecology and Conservation, University of Florida, PO Box 110430, Gainesville, FL 32611-0430, USA and Center for Latin American Studies, University of Florida, PO Box 115530, Gainesville, FL 32611, USA.
 
-<!-- Be sure to include number of plabnts, transitions, years, etc in abstract abnd text! -->
+<!-- Be sure to include number of plants, transitions, years, etc in abstract and text! -->
 
 
-2. **Abstract:** Habitat fragmentation is thought to be a leading cause of extinction, but the demography of species in fragmented landscapes remains poorly understood. This is particularly true in tropical ecosystems, where studies monitoring populations of species in both fragments and areas of continuous habitat across all life-history stages are virtually nonexistent. Here we report 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb _Heliconia acuminata_ (LC Rich.). These surveys were conducted in plots established in the experimentally fragmented landscape of the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plots, each 50 x 100 m, are located in forest fragments of different sizes (N = 4 plots in 1-ha fragments and N = 3 plots in 10-ha fragments) as well as continuous forest (N = 6 plots). The population in each plot was censused annually, at which time we recorded identified, marked, and measured new seedlings, identified any previously marked plants that had died, and recorded the size of individuals that survived. During the flowering season we conducted regular surveys to recorded the identity of flowering plants and the number of inflorescences each produced. The resulting dataset comprises >`r round(nrows,-3)` plant x year records of N = `r nplants` plants, including N = `r nsdlgs` seedlings that became established after the initial census. These data have been used in publications on topics ranging from how fragmentation-related reductions in germination influence population growth rates to tests of statistical methods for analyzing reproductive rates. 
+2. **Abstract:** Habitat fragmentation is thought to be a leading cause of extinction, but the demography of species in fragmented landscapes remains poorly understood. This is particularly true in tropical ecosystems, where studies monitoring populations of species in both fragments and areas of continuous habitat across all life-history stages are virtually nonexistent. Here we report 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb _Heliconia acuminata_ (LC Rich.). These surveys were conducted in plots established in the experimentally fragmented landscape of the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plots, each 50 x 100 m, are located in forest fragments of different sizes (N = 4 plots in 1-ha fragments and N = 3 plots in 10-ha fragments) as well as continuous forest (N = 6 plots). The population in each plot was censused annually, at which time we recorded identified, marked, and measured new seedlings, identified any previously marked plants that had died, and recorded the size of individuals that survived. During the flowering season we conducted regular surveys to recorded the identity of flowering plants and the number of inflorescences each produced. The resulting dataset comprises >`r round(nrows,-3)` plant x year records of N = `r nplants` plants, including N = `r nsdlgs` seedlings that became established after the initial census. These data have been used in publications on topics ranging from how fragmentation-related reductions in germination influence population dynamics to tests of statistical methods for analyzing reproductive rates. 
 
 
 \noindent
@@ -232,7 +256,7 @@ nrows<-nrow(ha_plants)
 
 5. **Abstract:** Here we report 12 years (1997-2009) of annual censuses of 13 populations of the Amazonian understory herb _Heliconia acuminata_ (LC Rich.). These surveys were conducted in plots established in the experimentally fragmented landscape of the Biological Dynamics of Forest Fragments Project, located north of Manaus, Brazil. The plots, each 50 x 100 m, are located in forest fragments of different sizes (N = 4 plots in 1-ha fragments and N = 3 plots in 10-ha fragments) as well as continuous forest (N = 6 plots). The population in each plot was censused annually, at which time we recorded identified, marked, and measured new seedlings, identified any previously marked plants that had died, and recorded the size of individuals that survived. During the flowering season we conducted regular surveys to recorded the identity of flowering plants and the number of inflorescences each produced. The resulting dataset comprises >`r round(nrows,-3)` plant x year records of N = `r nplants` plants, including N = `r nsdlgs` seedlings that became established after the initial census. These data have been used in publications on topics ranging from how fragmentation-related reductions in germination influence population growth rates to tests of statistical methods for analyzing reproductive rates. 
 
-6.  **Sources of funding:** The initial establishment of plots and the 1998-2002 surveys were supported by grants to E. M. Bruna from the Smithsonian Institution (Graduate Student Research Award), the University of California, Davis (Center for Population Biology Graduate Research Grant, M. E. Mathias Graduate Research Grant), the Biological Dynamics of Forest Fragments Project (Graduate Student Logistics Grant), the National Science Foundation (Dissertation Improvement Grant INT 98-06351), and the Ford Foundation (Dissertation Year Fellowship). The 2001-2005 surveys were supported a grant from the National Science Foundation to E. M. Bruna (Research Starter Grant DEB-0309819). The 2006-2009 surveys were supported by grants from the National Science Foundation to E. M. Bruna (DEB-0614149) and María Uriarte (DEB-0614339). Subsequent analyses and the preparation of these data for archiving were supported by the National Science Foundation (DEB-1948607).  
+6.  **Sources of funding:** The initial establishment of plots and the 1997-2002 surveys were supported by grants to E. M. Bruna from the Smithsonian Institution (Graduate Student Research Award), the University of California, Davis (Center for Population Biology Graduate Research Grant, M. E. Mathias Graduate Research Grant), the Biological Dynamics of Forest Fragments Project (Graduate Student Logistics Grant), the National Science Foundation (Dissertation Improvement Grant INT 98-06351), and the Ford Foundation (Dissertation Year Fellowship). The 2001-2005 surveys were supported a grant from the National Science Foundation to E. M. Bruna (Research Starter Grant DEB-0309819). The 2006-2009 surveys were supported by grants from the National Science Foundation to E. M. Bruna (DEB-0614149) and María Uriarte (DEB-0614339). Subsequent analyses and the preparation of these data for archiving were supported by the National Science Foundation (DEB-1948607).  
 
 \noindent  
 **B. Subproject description**  
@@ -251,7 +275,7 @@ nrows<-nrow(ha_plants)
 
 >f. **Site history:** A complete history of the BDFFP can be found in @gasconBiologicalDynamicsForest2001 and @bierregaardLessonsAmazoniaEcology2002. Briefly, the BDFFP reserves were established on three cattle ranches. Fragments were isolated between 1980-1984 by felling the trees surrounding the patch of forest to be isolated [@lovejoyEdgeOtherEffects1986]. Fragment reserves were fenced to prevent the incursion of cattle from the surrounding pastures. To ensure fragments remain isolated, a 100m strip around each fragment is regularly cleared of the secondary growth [@gasconBiologicalDynamicsForest2001]. The structure and species composition of the secondary growth that surrounds a fragment, which is strongly dependent on whether fire was used to clear land prior to planting pasture grasses [@mesquitaAlternativeSuccessionalPathways2001], can have large effects on the species composition, ecological processes, and abiotic conditions in fragments [reviewed in @lauranceEcosystemDecayAmazonian2002; @lauranceFateAmazonianForest2011]. The BDFFP is currently administered collaboratively by the Smithsonian Tropical Research Institute and Brazil's Instituto Nacional de Pesquisas da Amazônia (INPA).  
 
->g.  **Climate:** Mean annual temperature at the site is 26$^\circ$C (range 19-39$^\circ$C). Annual rainfall ranges from 1900-2300 mm [@scottDelayedEffectsClimate2021], with a pronounced dry season from June-December in which there is \<100 mm rain per month.   
+>g.  **Climate:** Mean annual temperature at the site is 26$^\circ$C (range 19-39$^\circ$C). Annual rainfall ranges from 1900-2300 mm [@scottDelayedEffectsClimate2022], with a pronounced dry season from June-December in which there is \<100 mm rain per month.   
 
 <!-- -->
 
@@ -261,7 +285,7 @@ nrows<-nrow(ha_plants)
 
 >a. **Focal species:** *Heliconia acuminata* (Heliconiaceae) is a perennial, self-incompatible monocot native to Amazonia [@kressDiversityDistributionHeliconia1990] and widely distributed throughout the Amazon basin [@kressDiversityDistributionHeliconia1990]. Although many species of *Heliconia* grow in large aggregations on roadsides, gaps, and in other disturbed habitats, others, including *H. acuminata*, grow primarily in the shaded forest understory [@kressSelfincompatibilityCentralAmerican1983]. _Heliconia acuminata_ is the most abundant understory herb throughout much of the BDFFP [@ribeiroInfluencePostclearingTreatment2010]; the other two _Heliconia_ species found in the BDFFP reserves are either very rare (_H. latispatha_) and restricted saturated soils adjacent to streams (_H. tarumaensis_).  
 
->> Each _Heliconia acuminata_ has a basal rhizome from which emerge erect vegetative shoots with broad leaves, as well as one or more flowering shoots if the plant is reproductive. Plants grow slowly [@brunaCompensatoryResponsesUnderstory2005] and the proportion of plants that flower is low [@gagnonGrowthUnderstoryHerb2011]. The primary herbivores of _Heliconia_ species are Hispine beetles, whose larvae and adults scrape the surface of unrolled immamture leaves [@strongRolledleafHispineBeetles1977]. The beetle species associated with _H. acuminata_ is *Cephaloleia nigriceps* Baly [@stainesGenusCephaloleiaChevrolat2014]; it actually does little damage to leaves but can cause extensive damage to bracts, flowers, and developing ovaries.
+>> Each _Heliconia acuminata_ has a basal rhizome from which emerge erect vegetative shoots with broad leaves. Reproductive plants have one or more flowering shoots, each of which has a single infloresence. Plants grow slowly [@brunaCompensatoryResponsesUnderstory2005;@gagnonGrowthUnderstoryHerb2011] and the proportion of plants that flower is low [@brunaEffectsForestFragmentation2002; @brunaHabitatFragmentationDemographic2002]. The primary herbivores of _Heliconia_ species are Hispine beetles, whose larvae and adults scrape the surface of unrolled immamture leaves [@strongRolledleafHispineBeetles1977]. The beetle species associated with _H. acuminata_ is *Cephaloleia nigriceps* Baly [@stainesGenusCephaloleiaChevrolat2014]; it actually does little damage to leaves but can cause extensive damage to bracts, flowers, and developing ovaries.
 
 ```{r infl, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
 infl_table<-ha_plants %>% select(infl) %>% na.omit() %>% group_by(infl) %>% summarize(n=n()) %>% mutate(perc=n/sum(infl))
@@ -270,17 +294,19 @@ min_infl<-infl_table %>% select(infl) %>% min()
 max_infl<-infl_table %>% select(infl) %>% max()
 ```
 
->> *Heliconia* can be propagated by segmenting the rhizome [@berryHeliconiaIdentificationGuide1991; @brunaEdgeEffectsGrowth2011], and clonal spread is common in the _Heliconia_ species found in open or disturbed habitats [@schleuningFloodingCanopyDynamics2008]. However, recruitment in _H. acuminata_ and other understory species is primarily via seeds [@brunaEffectsForestFragmentation2002; @brunaSeedGerminationRainforest1999]. Plants that flower do so during the rainy season, with the propbability of flowering increasing with plant size [@brunaHabitatFragmentationDemographic2002]. The overwhelming majority of plants that flower (`r mode_infl`%) produce just one infloresence (range = `r min_infl`-`r max_infl`), each of which has on average 22.28 ± 1.17 SE flowers (range 4-62) that remain open for one day before falling from the plant. Pollen transfer experiments indicate self-compatibility is extremely low (Bruna and Darrigo, _unpubl. data_); succesfully pollinated flowers can produce 1-3 seeds, with an average of 2 seeds per fruit [@brunaHabitatFragmentationDemographic2002].    
+>> *Heliconia* can be propagated by segmenting the rhizome [@berryHeliconiaIdentificationGuide1991; @brunaEdgeEffectsGrowth2011], and clonal spread is common in the _Heliconia_ species found in open or disturbed habitats [@schleuningFloodingCanopyDynamics2008]. However, recruitment in _H. acuminata_ and other understory species is primarily via seeds [@brunaEffectsForestFragmentation2002; @brunaSeedGerminationRainforest1999]. Plants that flower do so during the rainy season, with the propbability of flowering increasing with plant size [@brunaHabitatFragmentationDemographic2002]. The overwhelming majority of plants in our dataset that flowered (`r mode_infl`%) produced a single infloresence (range = `r min_infl`-`r max_infl`). Infloresences have an average 22.28 ± 1.17 SE flowers (range 4-62); each flower remains open for one day before falling from the plant. Pollen transfer experiments indicate self-compatibility is extremely low (Bruna and Darrigo, _unpubl. data_); succesfully pollinated flowers can produce 1-3 seeds, with an average of 2 seeds per fruit [@Bruna2014].    
 
->> _Heliconia acuminata_ is pollinated by the 'traplining' hummingbirds *Phaeothornis superciliosus* and *P. bourcieri*. Visitation rates to flowers are extremely low [<1 visit hour^-1^, @brunaHeliconiaAcuminataReproductive2004], as are rates of fruit production [@brunaHabitatFragmentationDemographic2002]. The fleshy blue fruits are consumed by birds [@uriarteDisentanglingDriversReduced2011]; in our study sites the primary dispersers are the White-necked Thrush (_Turdus albicollis_), the Thrush-like-Manakin (_Schiffornis turdinus_), and several species of manakin (_Pipra erythrocephala_, _P. pipra_, _Lepidothrix serena_, and _Corapipo gutturalis_). The seeds germinate 6-7 months after dispersal, which coincides with the onset of the rainy season [@brunaSeedGerminationRainforest1999; @brunaEffectsForestFragmentation2002]. Post-dispersal seed predation is negligible. Experiments revealed that few _H. acuminata_ seeds germinate after one year unless protected from burial under leaf-litter [@brunaSeedGerminationRainforest1999; @brunaEffectsForestFragmentation2002], which is consistent with the generalization that few plant species in lowland tropical forests have seed banks .
+>> _Heliconia acuminata_ is pollinated by the 'traplining' hummingbirds *Phaeothornis superciliosus* and *P. bourcieri*. Visitation rates to flowers are extremely low [<1 visit hour^-1^, @brunaHeliconiaAcuminataReproductive2004], as are rates of fruit production [@brunaHabitatFragmentationDemographic2002]. The fleshy blue fruits are consumed by birds [@uriarteDisentanglingDriversReduced2011]; in our study sites the primary dispersers are the White-necked Thrush (_Turdus albicollis_), the Thrush-like-Manakin (_Schiffornis turdinus_), and several species of manakin (_Pipra erythrocephala_, _P. pipra_, _Lepidothrix serena_, and _Corapipo gutturalis_). The seeds germinate 6-7 months after dispersal, which coincides with the onset of the rainy season [@brunaSeedGerminationRainforest1999; @brunaEffectsForestFragmentation2002]. Post-dispersal seed predation is negligible. Experiments revealed that few _H. acuminata_ seeds germinate after one year unless protected from burial under leaf-litter [@brunaSeedGerminationRainforest1999; @brunaEffectsForestFragmentation2002], which is consistent with the generalization that few plant species in lowland tropical forests have seed banks [@vazquez-yanesPatternsSeedLongevity1993a].
 
->b.  **Taxonomy, systematics, and voucher specimens:** *Heliconia* is the only genus in the family Heliconiaceae. This family is distinguished from the others in the order Zingiberales by inverted flowers, having a single staminode, and fruits that are drupes. It is estimated that there are 200-250 species of *Heliconia*, almost all of which are native to the Neotropics. *Heliconia acuminata* L. C. (Rich.) (Richard 1831) is one of the approximately 20 *Heliconia* species found in the Brazilian Amazon [@kressDiversityDistributionHeliconia1990].  We deposited voucher specimens of _H. acuminata_  collected in areas adjacent to demographic plots at the herbaria of the Instituto Nacional de Pesquisas da Amazônia (Accession Numbers INPA 189569-189573) and the University of California, Davis (Accession Numbers DAV 69391-69396).
+>b.  **Taxonomy, systematics, and voucher specimens:** *Heliconia* is the only genus in the family Heliconiaceae. This family is distinguished from the others in the order Zingiberales by having inverted flowers, a single staminode, and drupaceous fruits [@kressDiversityDistributionHeliconia1990]. It is estimated that there are 200-250 species of *Heliconia*, almost all of which are native to the Neotropics. *Heliconia acuminata* L. C. (Rich.) (Richard 1831) is one of the approximately 20 *Heliconia* species found in the Brazilian Amazon [@kressDiversityDistributionHeliconia1990].  We deposited voucher specimens of _H. acuminata_  collected in areas adjacent to demographic plots at the herbaria of the Instituto Nacional de Pesquisas da Amazônia (Accession Numbers INPA 189569-189573) and the University of California, Davis (Accession Numbers DAV 69391-69396).
 
 >c.  **Permanent Plots:** Surveys of _Heliconia acuminata_ demography were carried out in 13 permanent demographic plots distributed across the BDFFP landscape [@brunaHabitatFragmentationDemographic2002]. Six plots are in continuous forest, four are in 1-ha fragments, and three are in 10-ha fragments (Fig. 1). Each demographic plot is 50m x 100m and is subdivided into 50 contiguous subplots of 10 x 10 m to facilitate the surveys. Plots in 1-ha fragments were established in a randomly selected half of the fragment, plots in 10-ha fragments are located in the center of the fragment, and plots in continuous forest are located 500-4000 m from any borders with cattle pastures or secondary forest (Fig. 2). The plots furthest apart are from each other are separated by \~70 km.
 
->>Plots 1-ha fragments, 10-ha fragments, and three of the continuous forest sites were established from January-April 1997, the remaining three plots in continuous forest were established in January 1998. To mark the plants, a team of 2-3 people slowly walked through each subplot and located all *Heliconia acuminata* and marked them with a wooden stake to which was attached an individually numbered aluminum tag. The size of each plant was measured in two ways: (1) by counting its number of vegetative shoots and (2) by measuring the height of the plant from the ground to the top of its highest leaf (rounded to the nearest cm). Three additional plots were established in continuous forest sites in 1998 (CF 4-6); all plants in these plots were tagged and measuring in the same way as in other plots.
+>>Plots 1-ha fragments, 10-ha fragments, and three of the continuous forest sites were established from January-April 1997, the remaining three plots in continuous forest were established in January 1997. To mark the plants, a team of 2-3 people slowly walked through each subplot and located all *Heliconia acuminata* and marked them with a wooden stake to which was attached an individually numbered aluminum tag. The size of each plant was measured in two ways: (1) by counting its number of vegetative shoots and (2) by measuring the height of the plant from the ground to the top of its highest leaf (rounded to the nearest cm). Three additional plots were established in continuous forest sites in 1998 (CF 4-6); all plants in these plots were tagged and measuring in the same way as in other plots.
 
->d. **Frequency of Data Collection**  Plots were censused annually at the onset of the rainy season to coincide with seedling establishment (generally late January to February). The exception to this was the three continuous forest plots established in August 1998, which were censused in August 1999. During each census team members recorded which plants died, the size (i.e., height and number of shoots) of all surviving plants, and the size of all new seedlings, which were also marked with a numbered tag. Regular visits were made to all 13 plots throughout the rainy season to identify reproductive individuals, at which time we recorded the number of inflorescences.  
+>d. **Frequency of Data Collection**  Plots were censused annually at the onset of the rainy season to coincide with seedling establishment (generally late January to February). The exception to this was the three continuous forest plots established in August 1998, which were censused in August 1999. During each census team members recorded which plants died, the size (i.e., height and number of shoots) of all surviving plants, and the size of all new seedlings, which were also marked with a numbered tag. Survey team members also noted any new canopy gaps created by fallen trees or limbs, estimated the proportion of any suplot that was affected by a treefall (available at the HDP Github repository: https://github.com/BrunaLab/HeliconiaDataPaper), and recorded if plants were damaged by fallen branches or palm fronds (reported here). 
+
+>Regular visits were made to all 13 plots throughout the rainy season to identify reproductive individuals, at which time we recorded the number of reproductive shoots (i.e., infloresences) each plant had.  
 
 3.  **Project personnel:** In addition to the Originators, other key personnel include the Project Managers that were responsible for coordinating the annual censuses and other field activities, BDFFP Technicians (*"Mateiros"*) that assisted with data collection and provided logistical support in the field, and undergraduate and postgraduate field assistants hired to assist with the surveys.
 
@@ -302,14 +328,16 @@ max_infl<-infl_table %>% select(infl) %>% max()
 
 3.  **Metadata status:** Complete (last update: `r substr(file.info("./manuscript/Bruna_etal_HeliconiaDataPaper.Rmd")$mtime, 1,10)`)
 
-4.  **Data verification & quality control procedures:** An extensive review of the data was conducted prior to the dataset's archiving. We began by generating a list of potential anomalies that could indicate errors (e.g. extremely large changes in size from one year to the next, plants marked as dead that had subsequent measurments), and then wrote code to search for these anomalies using the R statistical programming language [@rcoredevelopmentteamLanguageEnvironmentStatistical2014]. We also used the `pointblank` library [@iannonePointblankDataValidation2022], which similarly identifies cases in a dataset for review and validation. All records flagged were evaluated by E. M. Bruna by checking the values in the electronic records against the original data sheets. Any necessary corrections to the dataset were also made using R scripts; the code for these changes and for preparing the datasets for archiving is archived at Zenodo [url to be added]. Questions from future users of the database should be referred to E. M. Bruna, who will investigate and update the database as needed. Code for any post-archiving updates is maintained at Github (https://github.com/BrunaLab/HeliconiaDataPaper).  
+4.  **Data verification & quality control procedures:** Following each survey, the measurements of plant height and stem number were compared with those from the previous year to identify potential errors in either plant measurement or entry (e.g., a plant with 1 shoot in year t and 11 shoots in year t+1 is likely an error in data entry). Discrepancies were investigated by referring to the original data sheets and, on occasion, returning to the field to remeasure plants. 
+
+>An extensive review of the data was also conducted in preparation for archiving. We began by generating a list of potential anomalies that could indicate errors (e.g. extremely large changes in size from one year to the next, plants marked as dead that had subsequent measurements), and then wrote code to search for these anomalies using the R statistical programming language [@rcoredevelopmentteamLanguageEnvironmentStatistical2014]. We also used the `pointblank` library [@iannonePointblankDataValidation2022], which similarly identifies cases in a dataset for review and validation. All records flagged were evaluated by E. M. Bruna by checking the values in the electronic records against the original data sheets. Corrections to the dataset were also made using R scripts; the code documenting and implementing these changes is archived at Zenodo [_url to be added upon acceptance_]. Questions regarding the dataset or code should be referred to E. M. Bruna, who will investigate and update the database or code as needed. Code for any post-publication updates is maintained at the [HDP Github Repository](https://github.com/BrunaLab/HeliconiaDataPaper).  
 
 \noindent 
 **B. Accessibility**  
 
 1. **Storage location and medium:** Ecological Society of America Data Archives [url to be added] and the Dryad Digital Repository [url to be added].
     
-2. **Location of original data forms, electronic files, and archived copies:** Original data sheets and electronic data files are stored at the University of Florida. Original data files and paper copies are stored in separate locations, with electronic copies of data sheets (.pdf format) and electronic data files (.csv and .xlsx format) are stored on a desktop computer, a synced institutional cloud storage account, and a portable hard drive. The integrity of digital files is verified semi-annually.
+2. **Location of original data forms, electronic files, and archived copies:** Original data sheets are stored at the University of Florida. Scanned copies of the data sheets (in .pdf format) and the electronic copies of the data in (in .csv format) are stored on a desktop computer at the University of Florida that is backed up daily to two portable hard drives and two cloud storage services. The integrity of digital files is verified semi-annually.
 
 3.  **Contact person(s):** Emilio M. Bruna, Department of Wildlife Ecology and Conservation, Box 110430, Gainesville, FL 32611 USA. Phone: (352) 846-0634. Email: [embruna\@ufl.edu](mailto:embruna@ufl.edu){.email}
 
@@ -319,9 +347,9 @@ max_infl<-infl_table %>% select(infl) %>% max()
 
 >a. **Proprietary restrictions:** None.  
 
->b. **Conditions of Reuse:** Any publication using data collected at the BDFFP must include a BDFFP Technical Series Number in the Acknowledgments. Authors can request a series number upon the acceptance of their article by contacting the BDFFP's Scientific Coordinator or E. M. Bruna.  
+>b. **Conditions of Reuse:** Any publication using data collected at the BDFFP must include a BDFFP Technical Series Number in the Acknowledgments. Authors can request this series number upon the acceptance of their article by contacting the BDFFP's Scientific Coordinator or E. M. Bruna.  
 
->c. **Citation:** Authors of any publications or products using these data cite should the data paper and data archive as per _Ecological Archives_ and _Dryad_ policy. We also request that they provide E.M. Bruna a copy of their article upon acceptance, which allows us to track the dataset's usage, inform users of any corrections or updates, report articles using the data to the funding agencies that provided support, and document that different ways in which the scientific community uses the data.  
+>c. **Citation:** Authors of any publications or products using these data should cite both this data paper and the Dryad data archive [_citation of Dryad archive to be added upon acceptance_]. We also request that they provide E.M. Bruna a copy of their article upon acceptance, which allows us to track the dataset's usage, inform users of any corrections or updates, report articles using the data to the funding agencies that provided support, and document the different ways in which the scientific community uses the data.  
 
 >d. **Disclaimers:** While the data are provided in good faith and are accurrate to the best of our knowledge, they are provided "as is". We do not assume any legal liability or responsibility for their accuracy, completeness, or utility. The responsibility for use and analysis of these data lies completely with the user.   
 
@@ -387,7 +415,7 @@ file_plants_size <- (file.info("./data_clean/HDP_1997_2009.csv")$size)/1000000
 
 8. **Start & End Columns:** Start: ``r names(ha_plants)[1]``, End: ``r names(ha_plants)[ncol(ha_plants)]``
 
-9. **Data anomalies:** Following each survey, the measurements of plant height and stem number were compared with those from the previous year to identify potential errors in either plant measurement or entry (e.g., a plant with 1 shoot in year t and 11 shoots in year t+1 is likely an error in data entry). Discrepancies were investigated by referring to the original data sheets and, on occasion, returning to the field to remeasure plants. 
+9. **Data anomalies:** Plants that could not be found during a survey were recorded as 'missing' but maintained on the survey list to be searched for in subsequent years. The same is true of plants under branches or the crowns of fallen trees, which might not be found for several years when the crown's leaves dried and fell or the area under the crown could be safely searched. The codes used to denote such cases are defined in Table 2.
 
 ```{r uly_count, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
 
@@ -417,11 +445,11 @@ fwt_perc <- fwt_plots %>%
   round(0)
 ```
 
->Plants that could not be found during a survey were recorded as 'missing' but maintained on the survey list to be searched for in subsequent years. The same is true of plants under branches or the crowns of fallen trees, which might not be found for several years when the crown's leaves dried and fell or the area under the crown could be safely searched. The codes used to denote such cases are defined in Table 2.
+>The stakes and numbered tags used to mark plants were sometimes displaced, broken, or buried under leaf litter as a result of tree falls or other disturbances. If a plant's tag couldn't be found after an extensive search, it would be marked with a new tag. In some cases, it was straightforward to determine such a plant's original number when entering the survey data (e.g., when all plants in a low-density subplot were found except one, which in the prior year was similar in size as the plant found without a tag). In those cases, the plant's prior measurements were transferred to the new number and we logged the details of the change in tag number; the log is available at the [HDP Github repository](https://github.com/BrunaLab/HeliconiaDataPaper). In other cases, it was impossible to definitively determine a plant's original number (e.g., when two similarly sized plants in a subplots were both missing their tags). In these cases the original number was maintained in the database with the plant's status noted as 'missing' in subsequent surveys. The record for the new number indicates the plant with which it is associated is an established plant that was found without a tag (see Section IV, Table 2) and not a new seedling. 
 
->The stakes and numbered tags used to mark plants were sometimes displaced, broken, or buried under leaf litter as a result of tree falls or other disturbances. If a tag couldn't be found after an extensive search, the plant would be marked with a new tag number. In some cases, determining such a plant's original number was straightforward (e.g., all plants in a low-density subplot were found except one, which in the prior year was similar in size as the plant found without a tag). In those cases, the plant's prior measurements were transferred to the new number and we logged the details of the tag number transfer (e.g., old number, new number, year; the latest version of the log is archived at [zenodo url to be added]. In other cases, however, it was impossible to definitively determine a plant's original number (e.g., when two adjacent and similarly sized plants were both missing their tags). In these cases the original number was maintained in the database with the plant's status noted as 'missing' in subsequent surveys. The record for the new number indicates the plant with which it is associated is an established plant that was found without a tag (and not a new seedling; see Section IV and Table 2). There were also cases in which established plants were found without tags in subplots where all previously tagged plants had already been located and measured (i.e., previous survey teams failed to find and mark the plants). These plants were also marked, measured, and added to the database as an established but unmarked plant. Of the N = `r ent` plants in the dataset, `r perc_ent`% were found without tags after the plot had been established. Almost half of these (`r fwt_perc`%) were in the three plots where _H. acuminata_ density was highest (`r top_3_fwt`).
+>There were also cases in which established plants were found without tags in subplots where all previously tagged plants had already been located and measured, indicating previous survey teams had failed to find and mark them. These plants were marked, measured, and added to the database with a code indicating they were a established (i.e., post-seedling) but previously unmarked plant (See Table 2). Of the N = `r ent` plants in the dataset, `r perc_ent`% were found without tags after the plot had been established. Almost half of these (`r fwt_perc`%) were in the three plots where _H. acuminata_ density was highest (`r top_3_fwt`).
 
->Finally, no survey was conducted in plot CF-6 (Cabo Frio, Continuous Forest) in 2003 due to logistical constraints.
+>Due to logistical constraints, no survey was conducted in plot CF-6 (Cabo Frio, Continuous Forest) in 2003.
 
 8.  **Variable information:** Each row in the data set is a demographic plot, with columns of data describing that plot. Blanks do not denote missing information, but rather nothing relevant to report.
 
@@ -432,10 +460,10 @@ fwt_perc <- fwt_plots %>%
 **CLASS V. SUPPLEMENTAL DESCRIPTORS**
 
 \noindent  
-A. **Computer programs and data-processing algorithms:** The code used to process the data and prepare it for archiving is archived at Zenodo [url to be added] and available for continuous improvement at Github (https://github.com/BrunaLab/HeliconiaDataPaper). The Github repository also includes the up-to-date list of tag changes and any corrections to the dataset made after its archiving.  
+A. **Computer programs and data-processing algorithms:** The version of the R code used to prepare the data for archiving can be found at Zenodo [_url to be added_]. Post-publication updates to the code or data can be found at the HDP Github Repository (https://github.com/BrunaLab/HeliconiaDataPaper).  
 
 \noindent  
-B. **Publications and results:** The following articles have included analyses of part or all of the dataset. An update list can be found in the HDP's Github repository (https://github.com/BrunaLab/HeliconiaDataPaper).
+B. **Publications and results:** The following articles have included analyses of part or all of the dataset. An update list can be found at the HDP Github repository (https://github.com/BrunaLab/HeliconiaDataPaper).
 
 <!-- no cite: @brunaEffectsForestFragmentation2002; @cortesLowPlantDensity2013 -->
 
@@ -468,13 +496,15 @@ B. **Publications and results:** The following articles have included analyses o
 14. Scott, E. R., M. Uriarte, and E. M. Bruna. 2022. Delayed effects of climate on vital rates lead to demographic divergence in Amazonian forest fragments. _Global Change Biology_. 28(2):463-479.
 
 \noindent  
-C. **Other relevant publications and datasets:** The following articles and archives include data that can be used in concert with the census data to conduct demographic modeling and other analyses (e.g., seeds per fruit, seed germination rates, seedling survival rates, plant growth rates following damage, etc). An updated list can be found in the HDP's Github repository (https://github.com/BrunaLab/HeliconiaDataPaper).
+C. **Other relevant publications and datasets:** The following data archives and articles include information (e.g., seeds per fruit, seed germination rates, seedling survival rates, plant growth rates following damage) that can be used in concert with the census data to conduct demographic modeling and other analyses. An updated list can be found in the HDP's Github repository (https://github.com/BrunaLab/HeliconiaDataPaper).
+
+1. Bruna, Emilio M. 2014. _Heliconia acuminata_ seed set (seeds per fruit), 2008. Figshare. Dataset. https://doi.org/10.6084/m9.figshare.1273926.v2 
 
 1. Emilio M. Bruna and Ana Segalin Andrade. 2011. Edge effects on growth and biomass partitioning of an Amazonian understory herb (_Heliconia acuminata_; Heliconiaceae). _American Journal of Botany_. 98(10):1727–1734. 
 
 1. M. C. Cortes, V. Gowda, W. J. Kress, E. M. Bruna, and M. Uriarte. 2009. Characterization of 10 microsatellite markers for the understorey Amazonian herb _Heliconia acuminata_. _Molecular Ecology Resources_ 9(4):1261–1264.
 
-1.  Emilio M. Bruna and Maria Beatriz Nogueira Ribeiro. 2005. Regeneration and population structure of extitHeliconia acuminata in Amazonian secondary forests with contrasting land-use histories. _Journal of Tropical Ecology_. 21(1):127–131.
+1.  Emilio M. Bruna and Maria Beatriz Nogueira Ribeiro. 2005. Regeneration and population structure of _Heliconia acuminata_ in Amazonian secondary forests with contrasting land-use histories. _Journal of Tropical Ecology_. 21(1):127–131.
 
 1. Emilio M. Bruna, W. John Kress, Francisco Marques, and Osmaildo Ferreira da Silva. 2004. _Heliconia acuminata_ reproductive success is independent of local floral density. _Acta Amazonica_ 34(3):467–471.
  
@@ -485,8 +515,7 @@ C. **Other relevant publications and datasets:** The following articles and arch
 1. Emilio M. Bruna and Maria Beatriz Nogueira Ribeiro. 2005. The compensatory responses of an understory herb to experimental damage are habitat‐dependent. _American Journal of Botany_ 92(12):2101–2106.
   
 1. Emilio M. Bruna and Maria Beatriz Nogueira Ribeiro. 2005. Regeneration and population structure of _Heliconia acuminata_ in Amazonian secondary forests with contrasting land-use histories. _Journal of Tropical Ecology_ 21(1):127–131.
-  
-1. Bruna, Emilio M. 2014. _Heliconia acuminata_ seed set (seeds per fruit), 2008. Figshare. Dataset. https://doi.org/10.6084/m9.figshare.1273926.v2 
+
 
 # ACKNOWLEDGMENTS
 \noindent  
@@ -532,6 +561,7 @@ This work would not have been possible without the technicians and field assista
 ```{=tex}
 \newpage
 \blandscape
+\nolinenumbers 
 ```
 
 <!-- \renewcommand{\arraystretch}{1.5} -->
@@ -580,7 +610,7 @@ Storage<-c(
 )
 
 table1<-bind_cols(Variable=Variables,
-                  'Definition, Units, and Precision'=Definition,
+                  'Definition'=Definition,
                   'Codes'=Code,
                   Storage=Storage)
 
@@ -626,17 +656,16 @@ Definition<-c(
   \n(Units: shoots; Precision: 1)",
   "Plant height when surveyed
   \n(Units: cm; Precision: 1)",
-  "If reproductive, the no. of inflorescences
+  "No. of inflorescences (if flowering)
   \n(Units: Infloresences; Precision: 1)",
-  "Whether plant was new seedling in a survey year",
-  "Whether plant was found without tag during a survey",
-  "Whether plant was under tree- or branch-fall in survey",
-  "Obs. of resprouting by plants that had lost above-ground parts",
+  "Plant was new seedling",
+  "Plant was found without a tag",
+  "Plant was under fallen branch/tree",
+  "Obs. of resprouting by plants that had previously lost above-ground parts",
   "Status in a census"
   )
 
-Codes<-c("FF1-FF7
-         \nCF1-CF6",
+Codes<-c("FF1-FF7, CF1-CF6",
   "A1-A10, B1-B10, C1-C10, D1-D10, E1-E10, (CF3 only: F6-F10, G6-G10, H1-H10, J1-J10)",
   " - ",
   " - ",
@@ -647,7 +676,7 @@ Codes<-c("FF1-FF7
   \nFALSE = not a seedling)",
   "TRUE = established plant with no tag
   \nFALSE = seedling or previously marked plant",
-  " ",
+  "under branchfall, under treefall, under litter, NA",
   " ",
   "measured = plant alive, measured
   \ndead = plant died between this and prior census
@@ -769,8 +798,8 @@ table2<-table2 %>% mutate(Range=case_when(
 
 # table2$Definition<-paste(table2$Definition, table2$Range, sep="(Range: ")
 table2<-table2 %>% 
-  filter(Variable !="condition") %>% 
-  filter(Variable !="treefall_status")
+  # filter(Variable !="treefall_status") %>% 
+  filter(Variable !="condition") 
 
 tmp<-knitr::kable(table2,
      digits = 2,
@@ -794,7 +823,7 @@ tmp<-knitr::kable(table2,
    #                                "repeat_header"),
    #              font_size = 10,
    #              position = "left") %>%
-  row_spec(c(1:9), hline_after = T) %>% 
+  row_spec(c(1:10), hline_after = T) %>% 
   column_spec(1, width = "9em") %>%
   column_spec(2, width = "16em") %>%
   column_spec(3, width = "21em") %>%
@@ -808,7 +837,7 @@ knitr::asis_output(tmp)
 ```
 
 
-```{r map, out.width = "100%", fig.cap='Satellite image (est. 1997) of the Biological Dynamics of Forest Fragments Project showing the location of the \\textit{Heliconia} Demographic Plots. Plots are located in Continuous Forest (CF1-CF6) or Forest Fragments (FF1-FF7). Dark green is primary forest, light green is regenerating forest, and red indicates pasture and recently cleared areas. The BDFFP is located ~70 km north of Manaus, Brazil (inset map); for additional details on each plot see Table 1.'}
+```{r map, out.width = "100%", fig.cap='Satellite image of the Biological Dynamics of Forest Fragments Project showing the location of the \\textit{Heliconia} Demographic Plots and landscape cover at the time plots were established. Plots are located in Continuous Forest (CF1-CF6) or Forest Fragments (FF1-FF7). Dark green is primary forest, light green is regenerating forest, and red indicates pasture and recently cleared areas. The BDFFP is located ~70 km north of Manaus, Brazil (inset map); for additional details on each plot see Table 1.'}
 
 ggdraw() + draw_image('./manuscript/figures/bdffp_sat.jpg', scale = 1.0)
 
