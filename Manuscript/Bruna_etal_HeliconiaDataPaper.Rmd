@@ -306,7 +306,7 @@ max_infl<-infl_table %>% select(infl) %>% max()
 
 >d. **Frequency of Data Collection**  Plots were censused annually at the onset of the rainy season to coincide with seedling establishment (generally late January to February). The exception to this was the three continuous forest plots established in August 1998, which were censused in August 1999. During each census team members recorded which plants died, the size (i.e., height and number of shoots) of all surviving plants, and the size of all new seedlings, which were also marked with a numbered tag. Survey team members also noted any new canopy gaps created by fallen trees or limbs, estimated the proportion of any suplot that was affected by a treefall (available at the HDP Github repository: https://github.com/BrunaLab/HeliconiaDataPaper), and recorded if plants were damaged by fallen branches or palm fronds (reported here). 
 
->Regular visits were made to all 13 plots throughout the rainy season to identify reproductive individuals, at which time we recorded the number of reproductive shoots (i.e., infloresences) each plant had.  
+>>Regular visits were made to all 13 plots throughout the rainy season to identify reproductive individuals and record the number of flowering shoots (i.e., infloresences) that they had produced.  
 
 3.  **Project personnel:** In addition to the Originators, other key personnel include the Project Managers that were responsible for coordinating the annual censuses and other field activities, BDFFP Technicians (*"Mateiros"*) that assisted with data collection and provided logistical support in the field, and undergraduate and postgraduate field assistants hired to assist with the surveys.
 
