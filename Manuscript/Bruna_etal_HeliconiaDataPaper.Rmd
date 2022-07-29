@@ -110,7 +110,7 @@ authornote: |
   
   _Corresponding author_: Emilio M. Bruna (embruna@ufl.edu)
   
-  _Word count_: 4718 (text), 1729 (references)
+  _Word count_: 4760 (text), 1734 (references)
 
 keywords: "Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, integral projection models, matrix models, population dynamics, vital rates"  
 # 
