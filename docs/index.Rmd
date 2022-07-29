@@ -59,7 +59,7 @@ opts_knit$set(width=75)
 
 
 ```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
-# knitr::opts_chunk$set(echo = FALSE)
+
 ha_plants <- read_csv("./data_clean/HDP_1997_2009.csv", col_types = cols())
 ha_plots <- read_csv("./data_clean/HDP_plots.csv", col_types = cols())
 ha_plants <- ha_plants %>% left_join(ha_plots)

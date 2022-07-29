@@ -85,8 +85,9 @@ merge_with_PA10 <- function(ha_data) {
                               is.na(PA10_data_2006$tag_number)==TRUE] <- 770 #missing on csv, 2x on form
   PA10_data_2006$tag_number[PA10_data_2006$row=="E" &
                               PA10_data_2006$column=="5" & 
-                              PA10_data$shoots==1 & 
+                              PA10_data$shts_2006==1 & 
                               is.na(PA10_data_2006$tag_number)==TRUE] <- 765 #missing on csv, 2x on form
+  
   
   
   # there were two duplicates that were causing problems with the merge, 
@@ -167,7 +168,7 @@ merge_with_PA10 <- function(ha_data) {
   # REARRANGE BY plot, then tag number, then year
   pa <- pa %>% arrange(row,column,tag_number, year)
  
-  #return:
-  bind_rows(ha_data,pa)
-
+  # bind up wiht ha_data and return
+  ha_data<-bind_rows(ha_data,pa)
+  return(ha_data)
 }
