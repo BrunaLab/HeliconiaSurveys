@@ -453,7 +453,15 @@ ha_data <- ha_data %>%
   # they bump up against another category (dead, measured). Dead will be
   # filled in as dead until the last year of census
   fill(census_status, .direction = "down") %>%
-  arrange(plot, plant_id, year)
+  arrange(plot, plant_id, year) 
+
+# %>% 
+#   mutate(census_status = case_when(
+#     (year == 2003 & plotID== "CF-6") ~ "no_census", # missing a census in these years 
+#     (year == 2000 & (plotID== "CF-4"|plotID== "CF-5"|plotID== "CF-6")) ~ "no_census", # missing a census in these years 
+#     ((year == 2008 |year == 2009) & (plotID== "FF-5"|plotID== "FF-6"|plotID== "FF-7")) ~ "no_census", # missing a census in these years 
+#     TRUE ~ census_status # anything not measured or marked "missing", "dead" or "seedling" is NA
+#   ))
 
 unique(ha_data$census_status)
 
