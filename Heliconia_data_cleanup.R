@@ -622,13 +622,14 @@ ha_plots <- ha_data %>%
   ) %>%
   distinct() %>%
   arrange(plotID) %>%
-  mutate(ranch = recode_factor(ranch, "PortoAlegre" = "Porto Alegre")) %>%
-  mutate(ranch = recode_factor(ranch, "DIM" = "Dimona")) %>%
-  mutate(ranch = recode_factor(ranch, "PAL" = "Porto Alegre")) %>%
-  mutate(ranch = recode_factor(ranch, "EST" = "Esteio")) %>%
+  mutate(ranch = recode_factor(ranch, "PortoAlegre" = "porto alegre")) %>%
+  mutate(ranch = recode_factor(ranch, "DIM" = "dimona")) %>%
+  mutate(ranch = recode_factor(ranch, "PAL" = "porto alegre")) %>%
+  mutate(ranch = recode_factor(ranch, "EST" = "esteio")) %>%
   mutate(habitat = recode_factor(habitat, "1-ha" = "one")) %>%
   mutate(habitat = recode_factor(habitat, "10-ha" = "ten")) %>%
   mutate(habitat = recode_factor(habitat, "CF" = "forest")) %>%
+  mutate(bdffp_reserve_no=replace(bdffp_reserve_no, bdffp_reserve_no=="none",NA)) %>% 
   rename(
     "bdffp_no" = "bdffp_reserve_no",
     "plot" = "plotID"
@@ -671,6 +672,12 @@ ha_dryad <- ha_data %>%
     code == "dead and not on list" ~ "NOL",
     TRUE ~ code
   )) %>%
+  mutate(treefall_status = case_when(
+    treefall_status == "under branchfall" ~ "branch",
+    treefall_status == "under treefall" ~ "tree",
+    treefall_status == "under litter" ~ "litter",
+    TRUE ~ treefall_status
+    )) %>% 
   ungroup() %>%
   rename(
     "plot" = "plotID",
