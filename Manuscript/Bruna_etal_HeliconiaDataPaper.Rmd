@@ -802,11 +802,19 @@ ggdraw() + draw_image('./manuscript/figures/bdffp_sat.jpg', scale = 1.0)
 ```
 
 
+```{=tex}
+\elandscape
+```
+<!-- renaming and renumbering SI: https://github.com/crsh/papaja/issues/259 -->
+\appendix
+\renewcommand{\appendixname}{Supplementary Material}
+\renewcommand{\thefigure}{S\arabic{figure}} \setcounter{figure}{0}
 
-<!-- \appendix -->
-<!-- # Figures S1 & S2 -->
+<!-- \renewcommand{\thetable}{SI\arabic{table}} \setcounter{table}{0} -->
+<!-- \renewcommand{\theequation}{SI\arabic{table}} \setcounter{equation}{0} -->
+# Figures S1 & S2
 
-
+\setcounter{page}{1}
 ```{r figs, out.width = "100%", fig.cap='Schematic of the location, orientation, and layout of each \\textit{Heliconia} Demographic Plots. The plots are located in Forest Fragments (A-G) or Continuous Forest (H-M).', echo=FALSE}
 
 
@@ -842,6 +850,6 @@ plot_grid(cf1,cf2,cf3,cf4,cf5,cf6,
 ```
 
 
-```{=tex}
-\elandscape
-```
+<!-- ```{=tex} -->
+<!-- \elandscape -->
+<!-- ``` -->
