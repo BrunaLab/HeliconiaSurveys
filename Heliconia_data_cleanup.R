@@ -1,5 +1,6 @@
 
 # Code Overview -----------------------------------------------------------
+
 # Code to conduct the analyses and generate the figures in:
 # Script created by Emilio M. Bruna, embruna@ufl.edu
 # Script created in R version 3.3.1
@@ -68,7 +69,7 @@ ha_data <- ha_data %>%
       "Florestal" = "Florestal-CF"
     )
   ))
-# 
+#
 # unique(ha_data$ranch)
 # unique(ha_data$plot)
 
@@ -190,10 +191,11 @@ ha_data$tag_number <- floor(ha_data$tag_number)
 ha_data$tag_number <- as.integer(ha_data$tag_number)
 
 # correction - x/y coordinates and row/col--------------------------------
+
 # some of the errors in plant location (Row/Column) corrected below found
 # by ES, see https://github.com/BrunaLab/HeliconiaDemography/issues/5
 
-# correct zombie plants  --------------------------------------------------
+# correct "zombie plants"  ------------------------------------------------
 
 # Zombie Plants = marked dead in year t but with measurement of shts or ht
 # in a subsequent year, indicating they had lost above-ground parts
@@ -208,7 +210,7 @@ zombies %>%
 
 # check for duplicate id and tag numbers -----------------------------
 
-# ID Numbers 
+# ID Numbers
 check_dupes <- function(ha_data) {
   ha_data %>%
     group_by(year, plant_id) %>%
@@ -266,22 +268,25 @@ ha_data %>% filter(code == "missing")
 ha_data %>% filter(code == "under treefall")
 
 # Pull out 'ULY'; save to csv file -----------------
+
 # NOTE plots were still being completely surveyed through 99, which is why so
 # many ULY - most were from that year. We want to focus on those AFTER the
 # initial survey sweep so lets instead mark uly only after 1999
 
-###
+
 # TODO: Move this over to the in-progress corrections
 ULYs <-
   ha_data %>%
   filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
   arrange(notes, plot, year, tag_number) %>%
-  select(-ht, -shts, -infl, -x_09, -y_09,-notes)
+  select(-ht, -shts, -infl, -x_09, -y_09, -notes)
 
-summary(as.factor(ULYs$code==ULYs$notes))
+summary(as.factor(ULYs$code == ULYs$notes))
 
 write_csv(ULYs, "./data_check/uly_heliconia.csv")
-# 
+
+# These are the ULY plants marked after 1999 (by which time plots had been 
+# surveyed quite a bit and so would expect very few
 ULYs_post99 <-
   ha_data %>%
   filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
@@ -290,6 +295,7 @@ ULYs_post99 <-
   select(-ht, -shts, -infl, -x_09, -y_09)
 # write_csv(ULYs_post99, "./data_check/ULY_plants_post1999.csv")
 
+# Summary of the post-1999 ULYs
 ULYs_post99_summary <- ULYs_post99 %>%
   # group_by(plot, year, row, column) %>%
   # group_by(plot, year) %>%
@@ -297,33 +303,13 @@ ULYs_post99_summary <- ULYs_post99 %>%
   summarize(n = n()) %>%
   arrange(desc(n))
 ULYs_post99_summary
-###
-# GO AHEAD AND DELETE THE ULY CODE FOR PLANTS AFTER 1999
+
+# Remove the ULY code from plants in 1999
 ha_data <- ha_data %>%
   mutate(code = if_else((code == "ULY" & year == 1999), NA_character_, code))
 
-# # Pull out 'Miscellaneous observations'; save to csv file -----------------
-# summary(as.factor(ha_data$code))
-# MISC_OBS <-
-#   ha_data %>%
-#   filter(
-#     code == "dried" |
-#       code == "under litter" |
-#       code == "2x in field" |
-#       code == "under branchfall" |
-#       code == "resprouting" |
-#       code == "under branchfall, resprouting" |
-#       code == "under treefall" |
-#       code == "90, 10" |
-#       is.na(notes) == FALSE
-#   ) %>%
-#   arrange(notes, plot, year, tag_number) %>%
-#   select(-ht, -shts, -infl, -x_09, -y_09)
-# unique(MISC_OBS$code)
-# unique(MISC_OBS$notes)
-# write_csv(MISC_OBS, "./data_clean/misc_observations.csv")
-
 # Save CSV of plants that were not on the survey list ---------------------
+
 # TODO: Move this over to the in-progress corrections
 Not_on_SurveyList <-
   ha_data %>%
@@ -339,26 +325,6 @@ unique(Not_on_SurveyList$notes)
 #   "./data_check/Not_on_List_plants.csv"
 # )
 
-# any_code <-
-#   ha_data %>%
-#   filter(!is.na(code)) %>%
-#   filter(!code == "missing") %>%
-#   filter(!code == "sdlg") %>%
-#   filter(!code == "dead") %>%
-#   filter(!code == "under branchfall") %>%
-#   filter(!code == "under branchfall, resprouting") %>%
-#   filter(!code == "under litter") %>%
-#   filter(!code == "under treefall") %>%
-#   filter(!code == "resprouting") %>%
-#   filter(!code == "dried") %>%
-#   arrange(code, plot, tag_number, year) %>%
-#   select(-notes, -x_09, -y_09, -ranch, -plotID, -bdffp_reserve_no, -plant_id)
-# 
-# # any_code$code <- droplevels(any_code$code)
-# unique(any_code$code)
-# write_csv(any_code, "./data_check/any_code.csv")
-# write_csv(ULYs, "./data_check/ULY_plants.csv")
-
 # ha_data midway ----------------------------------------------------------
 
 #  this is just here so don't have to clean from step one every time
@@ -369,20 +335,16 @@ unique(Not_on_SurveyList$notes)
 
 # Infl column is conditional - if repro, how many infl.
 # Any that are 0 need to be changed to NA
-
 ha_data <- ha_data %>%
   mutate(infl = replace(infl, infl == 0, NA))
 
-
 # Seedling (T/F) column
-
 ha_data <-
   ha_data %>%
   mutate(sdlg_status = if_else(code == "sdlg", TRUE, FALSE)) %>%
   mutate(sdlg_status = if_else(is.na(sdlg_status), FALSE, sdlg_status))
 unique(ha_data$sdlg_status)
 summary(ha_data$sdlg_status)
-
 
 # branchfall / treefall column
 ha_data <- ha_data %>%
@@ -397,7 +359,7 @@ unique(ha_data$treefall_status)
 
 
 # add column to note if recruited as adult (uly,new tag, etc)
-unique(ha_data$code)
+# unique(ha_data$code)
 
 ha_data <- ha_data %>%
   mutate(found_without_tag = if_else(
@@ -407,10 +369,10 @@ ha_data <- ha_data %>%
     FALSE
   ))
 
-unique(ha_data$found_without_tag)
-summary(ha_data$found_without_tag)
+# unique(ha_data$found_without_tag)
+# summary(ha_data$found_without_tag)
 
-# add the repor checks to code, delete notes col -----
+# add the repro checks to code, delete notes col -----
 #
 # unique(ha_data$code)
 # unique(ha_data$notes)
@@ -437,8 +399,8 @@ ha_data <- ha_data %>%
 unique(ha_data$condition)
 
 # add census_status (measured/missing)
-# unique(ha_data$code)
 
+# unique(ha_data$code)
 ha_data <- ha_data %>%
   mutate(census_status = case_when(
     (ht >= 0 | shts >= 0 | infl > 0) ~ "measured", # anything with a measurement is alive
@@ -453,15 +415,7 @@ ha_data <- ha_data %>%
   # they bump up against another category (dead, measured). Dead will be
   # filled in as dead until the last year of census
   fill(census_status, .direction = "down") %>%
-  arrange(plot, plant_id, year) 
-
-# %>% 
-#   mutate(census_status = case_when(
-#     (year == 2003 & plotID== "CF-6") ~ "no_census", # missing a census in these years 
-#     (year == 2000 & (plotID== "CF-4"|plotID== "CF-5"|plotID== "CF-6")) ~ "no_census", # missing a census in these years 
-#     ((year == 2008 |year == 2009) & (plotID== "FF-5"|plotID== "FF-6"|plotID== "FF-7")) ~ "no_census", # missing a census in these years 
-#     TRUE ~ census_status # anything not measured or marked "missing", "dead" or "seedling" is NA
-#   ))
+  arrange(plot, plant_id, year)
 
 unique(ha_data$census_status)
 
@@ -483,15 +437,14 @@ ha_data <- bind_rows(ha_measured, ha_na, ha_dead, ha_missing) %>%
 
 # Some that were NA in all measurements but were duplicate tag numbers weren't getting marked
 # as NA instead of missing in census_status so this takes care of that
-
 ha_data <- ha_data %>%
   mutate(
     census_status = case_when(
-      census_status == "measured" & 
+      census_status == "measured" &
         is.na(ht) &
         is.na(shts) &
-        is.na(infl) & 
-        is.na(code) & 
+        is.na(infl) &
+        is.na(code) &
         is.na(duplicate_tag) ~ "missing",
       TRUE ~ census_status
     ) # anything not measured or marked "missing", "dead" or "seedling" is NA
@@ -502,11 +455,11 @@ ha_data <- ha_data %>%
   mutate(
     census_status = case_when(
       is.na(ht) &
-        is.na(shts) & 
+        is.na(shts) &
         is.na(infl) &
         census_status == "measured" &
         (treefall_status == "under treefall" |
-           treefall_status == "under branchfall") ~ "missing",
+          treefall_status == "under branchfall") ~ "missing",
       TRUE ~ census_status
     ) # anything not measured or marked "missing", "dead" or "seedling" is NA
   )
@@ -520,86 +473,39 @@ ha_data <-
   group_by(plant_id) %>%
   mutate(
     blank_yr_delete = if_else(lag(census_status, 1) == "dead", "delete", NA_character_),
-    .before = 'code'
+    .before = "code"
   ) %>%
-  fill(blank_yr_delete, .direction ="down") %>%
-  filter(is.na(blank_yr_delete)==TRUE) %>% 
-  select(-blank_yr_delete) %>% 
+  fill(blank_yr_delete, .direction = "down") %>%
+  filter(is.na(blank_yr_delete) == TRUE) %>%
+  select(-blank_yr_delete) %>%
   ungroup()
 
 
-# TODO: these are plants measured bit with no shts, ht, or both. look into it
-ha_data %>% filter(census_status=="measured"&is.na(shts)&is.na(ht))
-ha_data %>% filter(census_status=="measured"&is.na(shts))
-ha_data %>% filter(census_status=="measured"&is.na(ht))
+# TODO: these are plants measured but with no shts, ht, or both. look into it
+ha_data %>% filter(census_status == "measured" & is.na(shts) & is.na(ht))
+ha_data %>% filter(census_status == "measured" & is.na(shts))
+ha_data %>% filter(census_status == "measured" & is.na(ht))
 # once the plants cave been assigned census status, can delete Dead from the
 # 'code' column
 
-ha_data<-ha_data %>%
-  mutate(code=replace(code, code=="dead",NA)) %>% 
-  mutate(code=replace(code, code=="dried",NA)) %>% 
-  mutate(code=replace(code, code=="under branchfall",NA)) %>%
-  mutate(code=replace(code, code=="under branchfall, resprouting",NA)) %>%
-  mutate(code=replace(code, code=="under litter",NA)) %>%
-  mutate(code=replace(code, code=="under treefall",NA)) %>%
-  mutate(code=replace(code, code=="resprouting",NA)) %>%
-  mutate(code=replace(code, code=="missing",NA)) %>%
-  mutate(code=replace(code, code=="2x in field",NA)) %>% 
-  mutate(code=replace(code, code=="sdlg",NA)) 
+ha_data <- ha_data %>%
+  mutate(code = replace(code, code == "dead", NA)) %>%
+  mutate(code = replace(code, code == "dried", NA)) %>%
+  mutate(code = replace(code, code == "under branchfall", NA)) %>%
+  mutate(code = replace(code, code == "under branchfall, resprouting", NA)) %>%
+  mutate(code = replace(code, code == "under litter", NA)) %>%
+  mutate(code = replace(code, code == "under treefall", NA)) %>%
+  mutate(code = replace(code, code == "resprouting", NA)) %>%
+  mutate(code = replace(code, code == "missing", NA)) %>%
+  mutate(code = replace(code, code == "2x in field", NA)) %>%
+  mutate(code = replace(code, code == "sdlg", NA))
 
 unique(ha_data$code)
 unique(ha_data$census_status)
 summary(as.factor(ha_data$census_status))
 names(ha_data)
 
-ha_data %>% filter(census_status=="measured"&is.na(shts))
-
-# wide form to make it easier to search for ULY matches -------------------
-#
-# wide_ha_data <- ha_data %>%
-#   select(
-#     plot,
-#     row,
-#     column,
-#     plant_id,
-#     tag_number,
-#     year,
-#     shts,
-#     ht,
-#     infl,
-#     code
-#   ) %>%
-#   pivot_wider(names_from = year, values_from = c("shts", "ht", "infl", "code")) %>%
-#   relocate(contains("_1998"), .after = column) %>%
-#   relocate(contains("_1999"), .after = code_1998) %>%
-#   relocate(contains("_2000"), .after = code_1999) %>%
-#   relocate(contains("_2001"), .after = code_2000) %>%
-#   relocate(contains("_2002"), .after = code_2001) %>%
-#   relocate(contains("_2003"), .after = code_2002) %>%
-#   relocate(contains("_2004"), .after = code_2003) %>%
-#   relocate(contains("_2005"), .after = code_2004) %>%
-#   relocate(contains("_2006"), .after = code_2005) %>%
-#   relocate(contains("_2007"), .after = code_2006) %>%
-#   relocate(contains("_2008"), .after = code_2007) %>%
-#   arrange(
-#     plot,
-#     row,
-#     column,
-#     tag_number,
-#     code_1999,
-#     shts_1998,
-#     shts_1999,
-#     shts_2000,
-#     shts_2001
-#   ) %>%
-#   arrange(as.factor(row), as.numeric(column)) %>%
-#   mutate(subplot = paste(row, column, sep = ""), .after = plot) %>%
-#   select(-row, -column) %>%
-#   relocate(contains("HA_ID"), .after = subplot) %>%
-#   relocate(contains("tag_number"), .after = plant_id)
-#
-#
-# names(wide_ha_data)
+ha_data %>% filter(census_status == "measured" & is.na(shts))
 
 # dataset for dryad -------------------------------------------------------
 
@@ -629,15 +535,13 @@ ha_plots <- ha_data %>%
   mutate(habitat = recode_factor(habitat, "1-ha" = "one")) %>%
   mutate(habitat = recode_factor(habitat, "10-ha" = "ten")) %>%
   mutate(habitat = recode_factor(habitat, "CF" = "forest")) %>%
-  mutate(bdffp_reserve_no=replace(bdffp_reserve_no, bdffp_reserve_no=="none",NA)) %>% 
+  mutate(bdffp_reserve_no = replace(bdffp_reserve_no, bdffp_reserve_no == "none", NA)) %>%
   rename(
     "bdffp_no" = "bdffp_reserve_no",
     "plot" = "plotID"
   ) %>%
   left_join(isolation)
 ha_plots
-
-
 
 # This is the version of the dataset that will get uploaded to dryad
 
@@ -677,28 +581,23 @@ ha_dryad <- ha_data %>%
     treefall_status == "under treefall" ~ "tree",
     treefall_status == "under litter" ~ "litter",
     TRUE ~ treefall_status
-    )) %>% 
+  )) %>%
   ungroup() %>%
   rename(
     "plot" = "plotID",
-  ) 
+  )
 
 
 # TODO: checking, cleanup
 
-#Why no measurements for some plots in 2000, 2003?
-ha_dryad %>% 
+# no measurements for some plots in 2000, 2003
+ha_dryad %>%
   group_by(plot, year) %>%
   summarize(non_na = sum(!is.na(shts))) %>%
   filter(non_na < 5)
 
 
-test <- ha_dryad %>%
-  select(plant_id, code, census_status) %>%
-  filter(code == "missing")
-test$test <- test$code == test$census_status
-test %>% filter(test == FALSE)
-
+# TODO: clarify what this is for
 test <- ha_dryad %>%
   # select(plant_id,notes,ht,shts,infl,census_status) %>%
   filter(is.na(ht) & is.na(shts) & is.na(infl)) %>%
@@ -711,28 +610,25 @@ treefall_impact <- ha_dryad %>%
   select(plot, plant_id, year, treefall_status) %>%
   drop_na(treefall_status)
 
-ha_dryad
+# ha_dryad
 
 
 # DELETE CODE COLUMN
 ha_dryad <- ha_dryad %>% select(-code)
-
-head(ha_dryad)
-glimpse(ha_dryad)
-summary(ha_dryad$infl)
-summary(ha_dryad$recorded_sdlg)
-
-names(ha_data)
+# 
+# head(ha_dryad)
+# glimpse(ha_dryad)
+# summary(ha_dryad$infl)
+# summary(ha_dryad$recorded_sdlg)
+# 
+# names(ha_data)
 
 
 # Save the files ----------------------------------------------------------
 
- 
+
 write_csv(ha_dryad, "./data_clean/HDP_1997_2009.csv")
 
 write_csv(ha_plots, "./data_clean/HDP_plots.csv")
 
 # write_csv(treefall_impact, "./data_clean/treefall_data.csv")
-
-
-
