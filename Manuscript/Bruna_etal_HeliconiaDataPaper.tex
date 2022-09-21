@@ -3,6 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
+  12pt,
   man, donotrepeattitle]{apa6}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -15,6 +16,7 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{Times New Roman}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -166,14 +168,14 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Demography of the understory herb Heliconia acuminata (Heliconiaceae) in an experimentally fragmented tropical landscape},
   pdfauthor={Emilio M. Bruna1,2,3, Maria Uriarte4, Maria Rosa Darrigo3, Paulo Rubim3, Cristiane F. Jurinitz3, Eric R. Scott1, \& W. John Kress5},
   pdflang={en-EN},
   pdfkeywords={Amazon, Brazil, deforestation, demography, edge effects, flowering, forest fragments, habitat fragmentation, integral projection models, matrix models, population dynamics, vital rates},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{\textbf{Demography of the understory herb \emph{Heliconia acuminata} (Heliconiaceae) in an experimentally fragmented tropical landscape}}
+\title{\emph{Ecology}: Data Paper\\
+\textbf{Demography of the understory herb \emph{Heliconia acuminata} (Heliconiaceae) in an experimentally fragmented tropical landscape}}
 \author{Emilio M. Bruna\textsuperscript{1,2,3}, Maria Uriarte\textsuperscript{4}, Maria Rosa Darrigo\textsuperscript{3}, Paulo Rubim\textsuperscript{3}, Cristiane F. Jurinitz\textsuperscript{3}, Eric R. Scott\textsuperscript{1}, \& W. John Kress\textsuperscript{5}}
 \date{}
 
@@ -190,7 +192,9 @@
 
 \emph{Corresponding author}: Emilio M. Bruna (\href{mailto:embruna@ufl.edu}{\nolinkurl{embruna@ufl.edu}})
 
-\emph{Word count}: 4798 (text), 1734 (references)
+\emph{Word count}: 4826 (text), 1734 (references)
+
+\emph{Conflict of interest Statement}: The authors declare no conflict of interest.
 
 The authors made the following contributions. Emilio M. Bruna: Methodology, Data curation, Investigation, Funding acquisition, Conceptualization, Formal analysis, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing -- original draft; Maria Uriarte: Methodology, Investigation, Funding acquisition, Conceptualization, Formal analysis, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing -- review \& editing; Maria Rosa Darrigo: Methodology, Investigation, Project administration, Writing -- review \& editing; Paulo Rubim: Methodology, Investigation, Project administration, Writing -- review \& editing; Cristiane F. Jurinitz: Methodology, Investigation, Project administration, Writing -- review \& editing; Eric R. Scott: Methodology, Data curation, Software, Validation, Visualization, Writing -- review \& editing; W. John Kress: Methodology, Investigation, Funding acquisition, Conceptualization, Methodology, Resources, Writing -- review \& editing.
 
@@ -480,11 +484,11 @@ Regular visits were made to all 13 plots throughout the rainy season to identify
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Latest update:} 2022-08-17
+  \textbf{Latest update:} 2022-09-19
 \item
-  \textbf{Latest archive date:} 2022-08-17 \emph{(to replace with date of archiving at Dryad)}
+  \textbf{Latest archive date:} 2022-09-19 \emph{(to replace with date of archiving at Dryad)}
 \item
-  \textbf{Metadata status:} Complete (last update: 2022-08-17)
+  \textbf{Metadata status:} Complete (last update: 2022-09-21)
 \item
   \textbf{Data verification \& quality control procedures:} Following each survey, the measurements of plant height and stem number were compared with those from the previous year to identify potential errors in either plant measurement or entry (e.g., a plant with 1 shoot in year t and 11 shoots in year t+1 is likely an error in data entry). Discrepancies were investigated by referring to the original data sheets and, on occasion, returning to the field to remeasure plants.
 \end{enumerate}
@@ -560,7 +564,7 @@ An extensive review of the data was also conducted in preparation for archiving.
 \item
   \textbf{Identity:} \texttt{HDP\_plot\_descriptors.csv}
 \item
-  \textbf{Size:} 14 rows (including header), 408 bytes.
+  \textbf{Size:} 14 rows (including header), 404 bytes.
 \item
   \textbf{Format and storage mode:} ASCII text, comma delimited. No
   compression scheme used.
@@ -589,7 +593,7 @@ An extensive review of the data was also conducted in preparation for archiving.
 \item
   \textbf{Identity:} \texttt{HDP\_data\_1997-2009.csv}
 \item
-  \textbf{Size:} 66785 rows (including header), 3.79
+  \textbf{Size:} 66785 rows (including header), 3.78
   kilobytes.
 \item
   \textbf{Format and storage mode:} ASCII text, comma delimited. No compression scheme used.
@@ -889,91 +893,71 @@ Zartman, C. E., J. A. Amaral, J. N. Figueiredo, and C. D. Dambros. 2015. Drought
 \blandscape
 \nolinenumbers 
 
-\begin{tabular}{>{\raggedright\arraybackslash}p{6em}>{\raggedright\arraybackslash}p{15em}>{\raggedright\arraybackslash}p{16em}>{\raggedright\arraybackslash}p{3em}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{5em}>{\raggedright\arraybackslash}p{16em}>{\raggedright\arraybackslash}p{22em}>{\raggedright\arraybackslash}p{3em}}
 \toprule
 Variable & Definition & Codes & Storage\\
 \midrule
-plot & Code used to identify a plot & FF1-FF7: plots in fragments 
+plot & Code used to identify a plot & FF1-FF7: plots in fragments
   
 CF1-CF6: plots in continuous forest & string\\
 \midrule
-habitat & Habitat type in which a plot is located & one: 1-ha fragment 
+habitat & Habitat in which a plot is located & one: 1-ha fragment
   
-ten: 10-ha fragment 
+ten: 10-ha fragment
   
 forest: continuous forest & string\\
 \midrule
-ranch & Ranch in which a plot is located & Porto Alegre, Esteio, Dimona & string\\
+ranch & Ranch in which a plot is located & porto alegre
+  
+esteio
+  
+dimona & string\\
 \midrule
-bdffp\_no & The BDFFP Reserve Number for the reserve in which plot is located & 2017, 2018, 1104, 1301, 2206, 1202, 3209, 1501, or 'none' (for plots outside BDFFP reserve boundaries) & string\\
+bdffp\_no & The ID code assigned by the BDFFP to a reserve & 1104, 1202, 1301, 1501, 2107, 2108, 2206, 3209, 3402, NA: For an explanation of the numbering scheme see Gascon and Bierregaard 2001. `NA` indicates a plot is not inside the boundaries of a demarcated BDFFP reserve. & string\\
 \midrule
-yr\_isolated & Year in which a fragment was initially isolated & 1980, 1983, 1984 & integer\\
+yr\_isolated & For fragments, the year they were initially isolated & 1980, 1983, 1984 & integer\\
 \bottomrule
 \end{tabular}
 
 \resizebox{\linewidth}{!}{
-\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{9em}>{\raggedright\arraybackslash}p{16em}>{\raggedright\arraybackslash}p{21em}>{\raggedright\arraybackslash}p{5em}>{\raggedright\arraybackslash}p{3em}}
+\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{9em}>{\raggedright\arraybackslash}p{16em}>{\raggedright\arraybackslash}p{21em}>{\raggedright\arraybackslash}p{3em}}
 \toprule
-Variable & Definition & Codes & Range & Storage\\
+Variable & Definition & Codes or Range of Values (Units, Precision) & Storage\\
 \midrule
-plot & Plot in which plant is located & FF1-FF7, CF1-CF6 & - & string\\
+plot & Plot in which plant is located & FF1-FF7, CF1-CF6 & string\\
 \midrule
-subplot & Subplot in which plant is located & A1-A10, B1-B10, C1-C10, D1-D10, E1-E10, (CF3 only: F6-F10, G6-G10, H1-H10, J1-J10) & - & string\\
+subplot & Subplot in which plant is located & A1-E10 in all plots except CF3, where F6-J10 & string\\
 \midrule
-plant\_id & Unique ID number assigned to plant & - & 1-8660 & integer\\
+plant\_id & Unique ID no. assigned to plant & range = 1-8660 (units = number, precision = 1) & integer\\
 \midrule
-year & Calendar year of survey & - & 1998-2009 & integer\\
+year & Calendar year of survey & range = 1998-2009 (units = year, precision = 1) & integer\\
 \midrule
-shts & No. of shoots when surveyed
+shts & No. of shoots when surveyed & range = 0-24 (units = shoots, precision = 1) & integer\\
+\midrule
+ht & Plant height when surveyed & range = 0-226 (units = cm, precision = 1) & integer\\
+\midrule
+infl & if flowering, the no. of inflorescences & range = 1-7 (units = shoots, precision = 1) & integer\\
+\midrule
+recorded\_sdlg & Plant was new seedling that year & TRUE, FALSE & logical\\
+\midrule
+found\_without\_tag & Plant was established, post-seedling individual with no tag & TRUE, FALSE & logical\\
+\midrule
+treefall\_status & Plants under fallen trees trunks or crowns, branches, or leaf litter & branch: under fallen branches or tree limbs
   
-(Units: shoots; Precision: 1) & - & 0-24 & integer\\
-\midrule
-ht & Plant height when surveyed
+tree: under tree crown or multiple fallen trees
   
-(Units: cm; Precision: 1) & - & 0-226 & integer\\
+litter: under accumulated leaf-litter & string\\
 \midrule
-infl & No. of inflorescences (if flowering)
+census\_status & Plant status in a census & measured: alive, measured
   
-(Units: Infloresences; Precision: 1) & - & 1-7 & integer\\
-\midrule
-recorded\_sdlg & Plant was new seedling & TRUE = seedling
+dead: died between current and prior census
   
-FALSE = not a seedling) & - & logical\\
-\midrule
-found\_without\_tag & Plant was found without a tag & TRUE = established plant with no tag
-  
-FALSE = seedling or previously marked plant & - & logical\\
-\midrule
-treefall\_status & Plant was under fallen branch/tree & under branchfall, under treefall, under litter, NA & - & string\\
-\midrule
-census\_status & Status in a census & measured = plant alive, measured
-  
-dead = plant died between this and prior census
-  
-missing = plant not found in census & - & string\\
+missing: not found during census & string\\
 \bottomrule
 \end{tabu}}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{Bruna_etal_HeliconiaDataPaper_files/figure-latex/map-1} \caption{Satellite image of the Biological Dynamics of Forest Fragments Project showing the location of the \textit{Heliconia} Demographic Plots and landscape cover at the time plots were established. Plots are located in Continuous Forest (CF1-CF6) or Forest Fragments (FF1-FF7). Dark green is primary forest, light green is regenerating forest, and red indicates pasture and recently cleared areas. The BDFFP is located ~70 km north of Manaus, Brazil (inset map); for additional details on each plot see Table 1.}\label{fig:map}
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics{Bruna_etal_HeliconiaDataPaper_files/figure-latex/fig2-1} 
-
-}
-
-\caption{Schematic of the orientation and layout of each \textit{Heliconia} Demographic Plots in Forest Fragments.}\label{fig:fig2}
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics{Bruna_etal_HeliconiaDataPaper_files/figure-latex/fig3-1} 
-
-}
-
-\caption{Schematic of the orientation and layout of each \textit{Heliconia} Demographic Plot in Continuous Forest.}\label{fig:fig3}
+\includegraphics[width=1\linewidth]{Bruna_etal_HeliconiaDataPaper_files/figure-latex/map-1} \caption{Satellite image of the Biological Dynamics of Forest Fragments Project (ca. 1995) showing the location of the \textit{Heliconia} Demographic Plots. Plots are located in Continuous Forest (CF1-CF6) or Forest Fragments (FF1-FF7), both of which are dark green. Light green areas are regenerating forest, while red indicates pasture. The BDFFP is located ~70 km north of Manaus, Brazil (inset map). For additional details on each plot see Table 1.}\label{fig:map}
 \end{figure}
 
 \elandscape
