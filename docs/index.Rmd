@@ -59,7 +59,7 @@ opts_knit$set(width=75)
 
 ## Introduction
 
-This is site provides additional information on the Heliconia Demography project and updates to the data published in Bruna et al. (20--).
+This is site provides additional information on the _Heliconia_ Demography project and updates to the data published in Bruna et al. (20--).
 
 ## Contact for Questions or Suggestions
 
