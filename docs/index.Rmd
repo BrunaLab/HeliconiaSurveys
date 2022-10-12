@@ -160,3 +160,6 @@ kbl(marked_per_yr)
 ```
 
 
+## Publications
+
+A list of all publications is available [here](https://brunalab.github.io/HeliconiaSurveys/hdp_papers.html).
