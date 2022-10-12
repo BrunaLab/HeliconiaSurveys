@@ -1,0 +1,1 @@
+window.LogRocket && LogRocket.track('Access Denied HTML');

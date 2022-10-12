@@ -1,0 +1,328 @@
+/* reset styles */
+#wbg-footer a, #wbg-footer ul, #wbg-footer ol, #wbg-footer li, #wbg-footer div,
+#wbg-header a, #wbg-header ul, #wbg-header ol, #wbg-header li, #wbg-header div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-style:normal;
+}
+
+#wbg-header ol, #wbg-header ul, #wbg-footer ol, #wbg-footer ul { list-style: none; }
+
+#wbg-header, #wbg-footer
+{
+    font-size: 16px;
+    font-family: Arial;
+    color: #333;
+	line-height: 1;
+}
+
+#wbg-header a, #wbg-footer a
+{
+    color: #333;
+    text-decoration: none;
+}
+#wbg-header a:hover, #wbg-header a:focus,
+#wbg-footer a:hover, #wbg-footer a:focus
+{
+  text-decoration: underline;
+}
+
+#wbg-footer .pull-left, #wbg-header .pull-left
+{
+    float: left;
+}
+#wbg-footer .pull-right, #wbg-header .pull-right
+{
+    float: right;
+}
+
+#wbg-header div.wbg-logo
+{
+     height: 42px;
+    background: #2B292A;
+    }
+#wbg-header a.wbg-logo {
+  float: left;
+  height: 42px;
+  width: 390px;
+  background: transparent url(images/WB-LOGO-EN.gif) no-repeat;
+}
+
+#wbg-header.wbg-zh a.wbg-logo {background: transparent url(images/WB-LOGO-CN.gif) no-repeat;}
+#wbg-header.wbg-fr a.wbg-logo {background: transparent url(images/WB-LOGO-FR.gif) no-repeat;}
+#wbg-header.wbg-ru a.wbg-logo {background: transparent url(images/WB-LOGO-RU.gif) no-repeat;}
+#wbg-header.wbg-es a.wbg-logo {background: transparent url(images/WB-LOGO-ES.gif) no-repeat;}
+#wbg-header.wbg-ar a.wbg-logo {background: transparent url(images/WB-LOGO-AR.gif) no-repeat -20px;}
+
+#wbg-footer
+{
+    background-color: #F4F3EF;
+}
+#wbg-header .global-search
+{
+	float: right;
+    margin: 8px 10px 8px 0;
+    font-size: 12px;
+    background: #353535;
+    border: 1px solid #484647;
+    width: 172px;
+    height: 23px;
+    line-height: 23px;
+}
+#wbg-header .search-text
+{
+    color: #fff;
+    float: left;
+    height: 23px;
+    padding: 0 10px 0px 10px;
+    width: 130px;
+    line-height: 23px;
+    font-size: 12px;
+    font-weight: normal;
+    outline: none;
+    line-height: 18px;
+    background: #353535;
+    border: 0;
+}
+
+#wbg-header .search-btn
+{
+    padding-right: 7px;
+    display: inline-block;
+    background: url(images/globalsearch-icon.png);
+    width: 22px;
+    height: 23px;
+    float: right;
+    border: 0;
+    border-left: none;
+    font-size: 0.1%;
+    margin-left: -1px;
+}
+
+
+#wbg-header .global-language-selector
+{
+	float: right;
+    padding-right: 6px;
+    border-right: solid #6A6A6A 1px;
+    margin-right: 10px;
+    margin: 8px 10px 8px 0;
+}
+
+#wbg-header .global-language-selector ul li
+{
+    float: left;
+    padding: 7px 6px;
+    font-size: 11px;
+    color: white;
+    font-weight: bold;
+}
+
+#wbg-header .global-language-selector ul li a:visited, #wbg-header .global-language-selector ul li a
+{
+    color: white;
+}
+#wbg-header .global-language-selector ul li a.more
+{
+    background: url("images/sprite.png") no-repeat scroll -918px -258px transparent;
+    float: left;
+    height: 12px;
+    overflow: hidden;
+    width: 7px;
+}
+
+#wbg-header .global-nav ul li
+{
+    float: left;
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px 12px;
+}
+
+#wbg-header .global-nav ul li:first-child
+{
+    padding-left: 0px;
+}
+#wbg-header .global-nav ul li a:visited, #wbg-header .global-nav ul li a:hover, #wbg-header .global-nav ul li a:focus, #wbg-header .global-nav ul li.active a
+{
+    text-decoration: none;
+    color: #333;
+    border-bottom: #8A0000 4px solid;
+}
+
+#wbg-footer .footer-breadcrumb
+{
+    font: bold 0.75em Arial, Helvetica, sans-serif;
+color: #333;
+background-color: #EDEBE7; display:inline-block; width:100%
+    
+    }
+#wbg-footer .footer-breadcrumb ul {
+list-style: none;
+padding: 12px 17px 12px 17px;
+margin: 0px; display:inline-block; float:left
+}
+
+
+#wbg-footer .footer-breadcrumb ul li.first {
+padding-left: 0;
+}
+
+#wbg-footer .footer-breadcrumb ul li {
+float: left;
+padding: 0px 5px;
+color: #000;
+}
+
+#wbg-footer .footer-fat{
+
+margin: 0px;
+position: relative;
+
+}
+#wbg-footer .footer-links{padding: 17px 12px 20px 40px;}
+#wbg-footer .columns
+{
+    float:left;
+    }
+    
+#wbg-footer .link-set-1{ width:188px; margin-right:5px; margin-left:0}
+#wbg-footer .link-set-2{ width:628px;  display: inline;
+float: left;
+position: relative;
+margin-left: 6px;
+margin-right: 6px;}
+
+#wbg-footer .link-block {
+width: 148px; float:left; margin:0 6px
+}
+#wbg-footer .link-block.first { margin-left:0}
+#wbg-footer .link-block.last { margin-right:0}
+
+#wbg-footer ul li a{ font-size:12px}
+#wbg-footer .link-set-1 ul li{
+font: 0.75em/1.25em Arial, Helvetica, sans-serif;
+padding: 0px 0px 7px 10px;
+color: #333;}
+
+#wbg-footer .link-set-2 ul li
+{
+   font: 0.75em/1.25em Arial, Helvetica, sans-serif;
+padding: 0px 0px 7px 0;
+color: #333;  line-height:12px
+    
+    }
+#wbg-footer ul li.header{
+font: bold 0.75em Arial, Helvetica, sans-serif;
+padding: 0px 0px 9px 0px;
+text-transform: uppercase;
+color: #333;}
+#wbg-footer ul li.subheader{
+font: bold 0.75em Arial, Helvetica, sans-serif;
+padding: 0px 0px 7px 0px;
+color: #333;}
+
+#wbg-footer .columns ul{ display:inline-block; width:100%}
+
+#wbg-footer .columns ul li.margin-bottom20{ margin-bottom:20px; width:100%; display:inline-block}
+#wbg-footer .columns ul li.margin-bottom10{ margin-bottom:10px;width:100%; display:inline-block}
+
+#wbg-footer .wbg-partners{
+padding: 0;
+margin: 0 15px;
+}
+
+#wbg-footer span.wbg-logo {
+  display: block;
+  float: left;
+  padding-right: 30px;
+  margin-bottom: 10px;
+  border-right: 1px solid #d2d2d2;
+  height: 33px;
+  width: 162px;
+  background: transparent url(images/wbg-footer-en.gif) no-repeat;
+}
+#wbg-footer.wbg-zh span.wbg-logo {  background: transparent url(images/wbg-footer-zh.gif) no-repeat;width:100px}
+#wbg-footer.wbg-fr span.wbg-logo {  background: transparent url(images/wbg-footer-fr.gif) no-repeat; width: 245px;}
+#wbg-footer.wbg-ru span.wbg-logo {  background: transparent url(images/wbg-footer-ru.gif) no-repeat; width: 245px;}
+#wbg-footer.wbg-es span.wbg-logo {  background: transparent url(images/wbg-footer-es.gif) no-repeat; width: 220px;}
+
+#wbg-footer .worldbank-group{
+height: 33px;
+float: left;
+margin: 0px 0px 10px;border-right:1px solid #D3D2D2; padding-right:30px;}
+
+#wbg-footer .worldbank-partner {
+float: left;
+margin: 6px 0px 0px 30px; *padding-left:30px}
+#wbg-footer .worldbank-partner a {
+font: bold 0.813em Arial, Helvetica, sans-serif;
+color: #111C24;
+padding: 0px 10px 0px 0px;
+text-transform: uppercase;
+}
+
+#wbg-footer .wbg-misc-links{
+margin: 0 15px;
+padding: 12px 0;
+display:block;
+border-top: 1px solid #d2d2d2;
+}
+#wbg-footer .misc-links-list
+{
+    width: 60%;
+	float: left;
+}
+    
+#wbg-footer .misc-links-list li.links {
+font: 0.75em Arial, Helvetica, sans-serif;
+padding: 0px;
+color: #333;
+}
+
+#wbg-footer .misc-links-list li a{ 
+padding: 0px 3px;
+}
+
+#wbg-footer .hotlineNumber{
+float: right;
+text-align: right;
+font: 0.75em Arial, Helvetica, sans-serif; width:40%}
+#wbg-footer .hotlineNumber a {
+color: #333;
+text-decoration: none;
+line-height: 20px;
+}
+
+/* Optional. #wbg-site-name defines styles for the red bar just below the header */
+#wbg-site-name {
+  background: #8a0000;
+  font-size: 26px;
+  line-height: 45px;
+  overflow: hidden;
+  color: #fff;
+  font-style: normal;
+}
+
+#wbg-site-name a {
+  color: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  display: block;
+  margin-left: 15px;
+}
+
+#wbg-site-name a:hover {
+  text-decoration: underline;
+}
+
+.ieClearFix{clear:both;}
+.footer-fat{ *float:left}

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="https://bam.nr-data.net/1/c8a587b836?a=183848059&amp;v=1169.7b094c0&amp;to=JwtbQ0FZVFwHQxYWWRQBR0QcRVBfFQ%3D%3D&amp;rst=2236&amp;ck=1&amp;ref=https://joss.theoj.org/papers/10.21105/joss.01686&amp;qt=17&amp;ap=452&amp;be=822&amp;fe=1788&amp;dc=1389&amp;perf=%7B%22timing%22:%7B%22of%22:1593650942887,%22n%22:0,%22f%22:0,%22dn%22:0,%22dne%22:0,%22c%22:1,%22s%22:40,%22ce%22:94,%22rq%22:94,%22rp%22:134,%22rpe%22:134,%22dl%22:780,%22di%22:1355,%22ds%22:1388,%22de%22:1395,%22dc%22:1784,%22l%22:1784,%22le%22:1788%7D,%22navigation%22:%7B%7D%7D&amp;jsonp=NREUM.setToken"></script><script src="nr-1169.js"></script><script async="" src="analytics.js"></script><script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"c8a587b836","applicationID":"183848059","transactionName":"JwtbQ0FZVFwHQxYWWRQBR0QcRVBfFQ==","queueTime":17,"applicationTime":452,"agent":""}</script>
+<script>(window.NREUM||(NREUM={})).loader_config={licenseKey:"c8a587b836",applicationID:"183848059"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1169.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+  <title>Journal of Open Source Software: Welcome to the Tidyverse</title>
+  <link rel="stylesheet" media="all" href="application-5253821a2efc4eeaf9c0d9a50dd288f473dc867865e9cead.css">
+  <script src="application-52116aa326c0a1d8bed0a5700fec1455b50d901fb66827b29.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="hzDPVMfWAgkP6bcAW7lcHun2VbS9GC5NpCAQmqyP+06TLH4Z2mbzBMiKWds+rVa0JaZlz6pjKq0QJr7EGe2KYQ==">
+  <link rel="apple-touch-icon" sizes="57x57" href="https://joss.theoj.org/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://joss.theoj.org/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://joss.theoj.org/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://joss.theoj.org/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://joss.theoj.org/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://joss.theoj.org/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://joss.theoj.org/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://joss.theoj.org/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://joss.theoj.org/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://joss.theoj.org/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://joss.theoj.org/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://joss.theoj.org/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://joss.theoj.org/favicon-16x16.png">
+  <link rel="manifest" href="https://joss.theoj.org/manifest.json">
+  <link rel="home" type="application/atom+xml" title="Papers" href="https://joss.theoj.org/papers.atom">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- clipboard.js -->
+  <script src="clipboard.js"></script>
+
+  <!-- Altmetric -->
+  <script type="text/javascript" src="embed.js"></script><script id="altmetric-embed-js" src="altmetric_badges-75bc9437b4bcd96622a3f013e4e9519d1b65ea847ab6.js"></script>
+
+  <!-- Dimensions -->
+  <script async="" src="badge.js" charset="utf-8"></script>
+
+  <!-- facebook open graph tags -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://joss.theoj.org/papers/10.21105/joss.01686">
+  <meta property="og:site_name" content="Journal of Open Source Software">
+  <meta property="og:title" content="Welcome to the Tidyverse">
+  <meta property="og:description" content="Wickham et al., (2019). Welcome to the Tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686">
+  <meta property="og:image" content="http://joss.theoj.org/logo_large.jpg">
+
+  <!-- twitter card tags additive with the og: tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" value="Welcome to the Tidyverse">
+  <meta name="twitter:site" content="@JOSS_TheOJ">
+  <meta name="twitter:description" value="Wickham et al., (2019). Welcome to the Tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686">
+  <meta name="twitter:image" content="http://joss.theoj.org/logo_large.jpg">
+  <meta name="twitter:url" value="https://joss.theoj.org/papers/10.21105/joss.01686">
+  <meta name="twitter:label1" value="ISSN">
+  <meta name="twitter:data1" value="2475-9066">
+
+  <!-- Google Scholar Tags -->
+
+  <meta name="citation_title" content="Welcome to the Tidyverse">
+  <meta name="citation_author" content="Hadley Wickham">
+<meta name="citation_author" content="Mara Averick">
+<meta name="citation_author" content="Jennifer Bryan">
+<meta name="citation_author" content="Winston Chang">
+<meta name="citation_author" content="Lucy D'Agostino McGowan">
+<meta name="citation_author" content="Romain François">
+<meta name="citation_author" content="Garrett Grolemund">
+<meta name="citation_author" content="Alex Hayes">
+<meta name="citation_author" content="Lionel Henry">
+<meta name="citation_author" content="Jim Hester">
+<meta name="citation_author" content="Max Kuhn">
+<meta name="citation_author" content="Thomas Lin Pedersen">
+<meta name="citation_author" content="Evan Miller">
+<meta name="citation_author" content="Stephan Milton Bache">
+<meta name="citation_author" content="Kirill Müller">
+<meta name="citation_author" content="Jeroen Ooms">
+<meta name="citation_author" content="David Robinson">
+<meta name="citation_author" content="Dana Paige Seidel">
+<meta name="citation_author" content="Vitalie Spinu">
+<meta name="citation_author" content="Kohske Takahashi">
+<meta name="citation_author" content="Davis Vaughan">
+<meta name="citation_author" content="Claus Wilke">
+<meta name="citation_author" content="Kara Woo">
+<meta name="citation_author" content="Hiroaki Yutani">
+
+  <meta name="citation_publication_date" content="2019/11/21">
+  <meta name="citation_journal_title" content="Journal of Open Source Software">
+  <meta name="citation_doi" content="10.21105/joss.01686">
+  <meta name="citation_issn" content="2475-9066">
+  <meta name="citation_volume" content="4">
+  <meta name="citation_issue" content="43">
+  <meta name="citation_firstpage" content="1686">
+  <meta name="citation_abstract_html_url" content="https://joss.theoj.org/papers/10.21105/joss.01686">
+  <meta name="citation_pdf_url" content="https://joss.theoj.org/papers/10.21105/joss.01686.pdf">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-47852178-4', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+<link rel="stylesheet" href="badge.css"><link id="altmetric-embed-css" rel="stylesheet" type="text/css" href="embed-a458e1093bac38cf5adc51eff02159de22f9e260b3636d0ecefba2.css"></head>
+<body>
+  <header class="container-fluid">
+    <nav class="navbar navbar-expand-lg">
+
+  <a class="navbar-brand" href="https://joss.theoj.org/">
+    <img src="logo_medium-5f8ee81bd1f2a8d84c42254f1addc510aad3b4acd4242be8.png" width="48" height="48">
+    <img src="joss-3941a7301703d0bb0ca6eb564b9856ccf41d2452909d7404c83fc58.svg">
+  </a>
+
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+
+
+
+      <a class="nav-item nav-link" href="https://joss.theoj.org/about">About</a>
+      <a class="nav-item nav-link" href="https://joss.theoj.org/papers/published">Papers</a>
+      <a target="_blank" class="nav-item nav-link" href="https://joss.readthedocs.io/en/latest/index.html">Docs</a>
+      <a class="nav-item nav-link" href="http://blog.joss.theoj.org/">Blog</a>
+      <a class="nav-item nav-link" href="https://joss.theoj.org/papers/new">Submit</a>
+      <a class="nav-item nav-link btn orcid" href="https://joss.theoj.org/auth/orcid">Log in with ORCID</a>
+      <a target="_blank" class="nav-item nav-link" href="https://github.com/openjournals/joss"><img src="github-602a2a727b721fb4f2162df06888f580f65cdc14cdc2dfd7c82f3.svg"></a>
+    </div>
+
+    <div class="rss-dropdown dropdown">
+      <a class="dropdown-toggle" size="48" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><img src="rss-sm-9288eaac3970144f8632d608dce86b4c008ead8e14e74dfd6d9fb.svg"></a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+        
+        <a class="dropdown-item" href="https://joss.theoj.org/papers/active.atom">Active Papers</a>
+        <a class="dropdown-item" href="https://joss.theoj.org/papers/published.atom">Published Papers</a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+  </header>
+
+  <div class="container">
+    
+
+
+    
+  </div>
+
+  <div class="container paper-show">
+    
+
+    <div class="paper-title">
+      <span class="__dimensions_badge_embed__" data-doi="10.21105/joss.01686" data-hide-zero-citations="true" data-dimensions-badge-installed="true"><a class="__dimensions_Link" href="https://badge.dimensions.ai/details/doi/10.21105/joss.01686?domain=https://joss.theoj.org" target="_blank" style="display: none;"><div class="__dimensions_Badge __dimensions_Badge_style_medium_circle"><div class="__dimensions_Badge_Image">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+    <defs>
+      <filter id="y778hj-blur" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="40"></feGaussianBlur>
+      </filter>
+      <mask id="y778hj-shape-mask">
+        <path fill="white" d="M546.5,287.3l-111.8-194c-1.8-3-4.1-5.6-6.7-7.7c-2.2-2.7-5.4-4.3-8.9-4.5c-2.3-0.7-4.7-1-7-1
+          L188.2,80c-9.3,0-18,5-22.6,13.1l-112,193.8c-4.7,8.1-4.7,18,0,26.1l111.9,193.9c4.7,8.1,13.3,13,22.6,13.1l223.9,0.1
+          c9.3,0,17.9-4.8,22.6-12.8l112-193.7l0,0C551.1,305.1,551.2,295.4,546.5,287.3z M516.6,287.4l-41.5,0.1l-26.7-118.2L516.6,287.4z
+           M337.2,106.2l-114.5,36.3l-20.3-36.4L337.2,106.2z M180.7,119l20.1,36.2L112,237.7L180.7,119z M181,481.8l-69.3-120l89.2,84
+          L181,481.8z M203.3,493.8l19.6-35.6l114.6,35.7L203.3,493.8z M408.1,489.3l-152.7-47.5l-32.3-10.6l-25.3-23.2L82.6,299.6
+          l114.6-106.9l25-23.1v-0.2l0.7-0.2l32.4-10.7l153.6-48.7l35.5,156.6l7.5,33.4l-7.6,33.5L408.1,489.3z M447.1,432.9l27.9-120.3
+          l41.7-0.1L447.1,432.9z"></path>
+      </mask>
+      <g id="y778hj-gradient" filter="url(#y778hj-blur)">
+        <g>
+          <path fill="#006EB6" d="M0,0l300,300v-424.4C182.9-124.4,76.8-76.9,0,0z"></path>
+          <path fill="#28348A" d="M300-124.4V300L600,0C523.2-76.9,417.1-124.4,300-124.4z"></path>
+          <path fill="#E20613" d="M600,600c76.8-76.8,124.3-182.9,124.3-300H300L600,600z"></path>
+          <path fill="#DA0078" d="M300,300h424.4c0-117.1-47.5-223.2-124.3-300L300,300z"></path>
+          <path fill="#5BC4F1" d="M-124.4,300H300L0,0C-76.9,76.8-124.4,182.9-124.4,300z"></path>
+          <path fill="#A1C517" d="M0,600l300-300h-424.4C-124.4,417.1-76.9,523.2,0,600z"></path>
+          <path fill="#F08800" d="M300,724.4c117.1,0,223.2-47.5,300-124.3L300,300V724.4z"></path>
+          <path fill="#FFCB00" d="M300,724.4V300L0,600C76.8,676.9,182.9,724.4,300,724.4z"></path>
+        </g>
+      </g>
+    </defs>
+  </svg>
+
+  <div class="__db_background"></div>
+
+  <div class="__db_shape">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" xlink="http://www.w3.org/1999/xlink">
+      <use mask="url(#y778hj-shape-mask)" xlink:href="#y778hj-gradient"></use>
+    </svg>
+  </div>
+
+  <div class="__db_score __db_score_normal">143</div>
+  <div class="__db_label">CITATIONS</div>
+
+  <img src="badge.png" class="__dimensions_png" alt="143 total citations on Dimensions.">
+</div>
+</div><div class="__dimensions_Badge_Legend_padding __dimensions_Badge_Legend_hover-right  __dimensions_Badge_Legend_style_medium_circle"><div class="__dimensions_Badge_Legend">
+      <div class="__dimensions_Badge_stat_group __dimensions_Badge_stat_group_citations">
+        <div class="__dimensions_Badge_stat __dimensions_Badge_stat_total_citations">
+          <span class="__dimensions_Badge_stat_icon"></span>
+          <span class="__dimensions_Badge_stat_count">143</span>
+          <span class="__dimensions_Badge_stat_text">Total citations</span>
+        </div>
+        <div class="__dimensions_Badge_stat __dimensions_Badge_stat_recent_citations">
+          <span class="__dimensions_Badge_stat_icon"></span>
+          <span class="__dimensions_Badge_stat_count">143</span>
+          <span class="__dimensions_Badge_stat_text">Recent citations</span>
+        </div>
+      </div>
+      <div class="__dimensions_Badge_stat_group __dimensions_Badge_stat_group_cr">
+        <div class="__dimensions_Badge_stat __dimensions_Badge_stat_fcr">
+          <span class="__dimensions_Badge_stat_icon"></span>
+          <span class="__dimensions_Badge_stat_count">n/a</span>
+          <span class="__dimensions_Badge_stat_text">Field Citation Ratio</span>
+        </div>
+        <div class="__dimensions_Badge_stat __dimensions_Badge_stat_rcr">
+          <span class="__dimensions_Badge_stat_icon"></span>
+          <span class="__dimensions_Badge_stat_count">n/a</span>
+          <span class="__dimensions_Badge_stat_text">Relative Citation Ratio</span>
+        </div>
+      </div></div></div></a></span>
+      <div class="paper-meta">
+        <h1>Welcome to the Tidyverse</h1>
+        <span class="badge-lang"><a href="https://joss.theoj.org/papers/in/R">R</a></span>
+        <span class="small">Submitted 09 August 2019</span>
+        •
+        <span class="small">Published 21 November 2019</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div id="joss-paper-pdf-container" class="col-md-9">
+        <object id="joss-paper" data="10_002.pdf" type="application/pdf" style="width: 100%; height: 132.936px;">
+          <embed src="10.pdf" type="application/pdf" style="width:100%; height:100%;">
+        </object>
+      </div>
+
+      <div class="col-md-3 paper-sidebar">
+        <div class="btn-group-vertical" role="group" aria-label="...">
+          <a class="btn paper-btn" href="http://github.com/tidyverse/tidyverse">
+            <img src="gh-icon-0770aa38f90d61397e1eef2cc5796caac609a4986481504fd863.svg">
+            Software repository
+</a>
+          <a class="btn paper-btn" href="https://github.com/openjournals/joss-reviews/issues/1686">
+            <img src="icon_docs-06db54444289117db462aed3899d5ac70c0de20b80ffee740d.svg">
+            Paper review
+</a>
+          <a class="btn paper-btn" href="https://www.theoj.org/joss-papers/joss.01686/10.21105.joss.01686.pdf">
+            <img src="dl-icon-0171a5e2a9533e28a07f7f640c7b4542ea8ef7cff0ed14fc6b6a.svg">
+            Download paper
+</a>
+          <a class="btn paper-btn" href="https://doi.org/10.5281/zenodo.3547813">
+            <img src="hist-icon-a85e687858da8b643689f5a325d3e90655f5cad46da5d84986.svg">
+            Software archive
+</a>        </div>
+
+        <div class="label">Review</div>
+        <p>Editor: <a title="GitHub profile for @karthik" target="_blank" href="https://github.com/karthik">@karthik</a> (<a href="https://joss.theoj.org/papers/edited_by/@karthik">all papers</a>)<br>Reviewers: <a title="GitHub profile for @ldecicco-USGS" target="_blank" href="https://github.com/ldecicco-USGS">@ldecicco-USGS</a> (<a title="All papers reviewed by @ldecicco-USGS" href="https://joss.theoj.org/papers/reviewed_by/@ldecicco-USGS">all reviews</a>), <a title="GitHub profile for @jeffreyhanson" target="_blank" href="https://github.com/jeffreyhanson">@jeffreyhanson</a> (<a title="All papers reviewed by @jeffreyhanson" href="https://joss.theoj.org/papers/reviewed_by/@jeffreyhanson">all reviews</a>)</p>
+
+        <div class="label">Authors</div>
+        <p><a href="https://joss.theoj.org/papers/by/Hadley%20Wickham">Hadley Wickham</a> (<a target="_blank" href="http://orcid.org/0000-0003-4757-117X">0000-0003-4757-117X</a>), <a href="https://joss.theoj.org/papers/by/Mara%20Averick">Mara Averick</a> (<a target="_blank" href="http://orcid.org/0000-0001-9659-6192">0000-0001-9659-6192</a>), <a href="https://joss.theoj.org/papers/by/Jennifer%20Bryan">Jennifer Bryan</a> (<a target="_blank" href="http://orcid.org/0000-0002-6983-2759">0000-0002-6983-2759</a>), <a href="https://joss.theoj.org/papers/by/Winston%20Chang">Winston Chang</a> (<a target="_blank" href="http://orcid.org/0000-0002-1576-2126">0000-0002-1576-2126</a>), <a href="https://joss.theoj.org/papers/by/Lucy%20D'Agostino%20McGowan">Lucy D'Agostino McGowan</a> (<a target="_blank" href="http://orcid.org/0000-0001-7297-9359">0000-0001-7297-9359</a>), <a href="https://joss.theoj.org/papers/by/Romain%20Fran%C3%A7ois">Romain François</a> (<a target="_blank" href="http://orcid.org/0000-0002-2444-4226">0000-0002-2444-4226</a>), <a href="https://joss.theoj.org/papers/by/Garrett%20Grolemund">Garrett Grolemund</a> (<a target="_blank" href="http://orcid.org/0000-0002-7765-6011">0000-0002-7765-6011</a>), <a href="https://joss.theoj.org/papers/by/Alex%20Hayes">Alex Hayes</a> (<a target="_blank" href="http://orcid.org/0000-0002-4985-5160">0000-0002-4985-5160</a>), <a href="https://joss.theoj.org/papers/by/Lionel%20Henry">Lionel Henry</a> (<a target="_blank" href="http://orcid.org/0000-0002-8143-5908">0000-0002-8143-5908</a>), <a href="https://joss.theoj.org/papers/by/Jim%20Hester">Jim Hester</a> (<a target="_blank" href="http://orcid.org/0000-0002-2739-7082">0000-0002-2739-7082</a>), <a href="https://joss.theoj.org/papers/by/Max%20Kuhn">Max Kuhn</a> (<a target="_blank" href="http://orcid.org/0000-0003-2402-136X">0000-0003-2402-136X</a>), <a href="https://joss.theoj.org/papers/by/Thomas%20Lin%20Pedersen">Thomas Lin Pedersen</a> (<a target="_blank" href="http://orcid.org/0000-0002-5147-4711">0000-0002-5147-4711</a>), <a href="https://joss.theoj.org/papers/by/Evan%20Miller">Evan Miller</a>, <a href="https://joss.theoj.org/papers/by/Stephan%20Milton%20Bache">Stephan Milton Bache</a>, <a href="https://joss.theoj.org/papers/by/Kirill%20M%C3%BCller">Kirill Müller</a> (<a target="_blank" href="http://orcid.org/0000-0002-1416-3412">0000-0002-1416-3412</a>), <a href="https://joss.theoj.org/papers/by/Jeroen%20Ooms">Jeroen Ooms</a>, <a href="https://joss.theoj.org/papers/by/David%20Robinson">David Robinson</a>, <a href="https://joss.theoj.org/papers/by/Dana%20Paige%20Seidel">Dana Paige Seidel</a> (<a target="_blank" href="http://orcid.org/0000-0002-9088-5767">0000-0002-9088-5767</a>), <a href="https://joss.theoj.org/papers/by/Vitalie%20Spinu">Vitalie Spinu</a> (<a target="_blank" href="http://orcid.org/0000-0002-2138-3413">0000-0002-2138-3413</a>), <a href="https://joss.theoj.org/papers/by/Kohske%20Takahashi">Kohske Takahashi</a> (<a target="_blank" href="http://orcid.org/0000-0001-6076-4828">0000-0001-6076-4828</a>), <a href="https://joss.theoj.org/papers/by/Davis%20Vaughan">Davis Vaughan</a> (<a target="_blank" href="http://orcid.org/0000-0003-4777-038X">0000-0003-4777-038X</a>), <a href="https://joss.theoj.org/papers/by/Claus%20Wilke">Claus Wilke</a> (<a target="_blank" href="http://orcid.org/0000-0002-7470-9261">0000-0002-7470-9261</a>), <a href="https://joss.theoj.org/papers/by/Kara%20Woo">Kara Woo</a> (<a target="_blank" href="http://orcid.org/0000-0002-5125-4188">0000-0002-5125-4188</a>), <a href="https://joss.theoj.org/papers/by/Hiroaki%20Yutani">Hiroaki Yutani</a> (<a target="_blank" href="http://orcid.org/0000-0002-3385-7233">0000-0002-3385-7233</a>)</p>
+
+        <div class="label">Citation</div>
+        <p id="citationstring" style="padding-bottom: 0px;margin: 0px;">Wickham
+ et al., (2019). Welcome to the Tidyverse. Journal of Open Source 
+Software, 4(43), 1686, https://doi.org/10.21105/joss.01686</p>
+
+        <div id="bibtex" style="visibility:hidden;height:0px;padding:0px;">@article{Wickham2019,
+
+  doi = {10.21105/joss.01686},
+  url = {https://doi.org/10.21105/joss.01686},
+  year = {2019},
+  publisher = {The Open Journal},
+  volume = {4},
+  number = {43},
+  pages = {1686},
+  author = {Hadley Wickham and Mara Averick and Jennifer Bryan and 
+Winston Chang and Lucy D'Agostino McGowan and Romain François and 
+Garrett Grolemund and Alex Hayes and Lionel Henry and Jim Hester and Max
+ Kuhn and Thomas Lin Pedersen and Evan Miller and Stephan Milton Bache 
+and Kirill Müller and Jeroen Ooms and David Robinson and Dana Paige 
+Seidel and Vitalie Spinu and Kohske Takahashi and Davis Vaughan and 
+Claus Wilke and Kara Woo and Hiroaki Yutani},
+  title = {Welcome to the Tidyverse},
+  journal = {Journal of Open Source Software}
+}
+</div>
+        <div style="margin-bottom: 10px;"><a class="clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#citationstring" href="#">Copy citation string</a> · <a class="clipboard-btn" data-clipboard-action="copy" data-clipboard-target="#bibtex" href="#">Copy BibTeX</a>&nbsp;&nbsp;<svg height="16" class="octicon octicon-clippy" aria-label="Copy" viewBox="0 0 14 16" version="1.1" width="14" role="img"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"></path></svg></div>
+
+        <div class="label">Tags</div>
+        <p>
+          <span class="badge-lang"><a href="https://joss.theoj.org/papers/tagged/data%20science">data science</a></span>
+        </p>
+        <div class="label">Altmetrics</div>
+        <div style="padding-bottom: 10px;" data-badge-type="donut" class="altmetric-embed" data-badge-popover="right" data-hide-no-mentions="false" data-doi="10.21105/joss.01686" data-uuid="0ac89f70-b184-f454-35a5-a883e8d5513e"><a target="_self" href="https://www.altmetric.com/details.php?domain=joss.theoj.org&amp;citation_id=74075039" rel="popover" data-content="&lt;div&gt;    &lt;div style='padding-left: 10px; line-height:18px; border-left: 16px solid #9f79f2;'&gt;
+      &lt;a class='link-to-altmetric-details-tab' target='_self' href='https://www.altmetric.com/details.php?domain=joss.theoj.org&amp;citation_id=74075039&amp;tab=policy-documents'&gt;
+          Referenced in &lt;b&gt;1&lt;/b&gt; policy sources
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div style='padding-left: 10px; line-height:18px; border-left: 16px solid #74CFED;'&gt;
+      &lt;a class='link-to-altmetric-details-tab' target='_self' href='https://www.altmetric.com/details.php?domain=joss.theoj.org&amp;citation_id=74075039&amp;tab=twitter'&gt;
+          Tweeted by &lt;b&gt;30&lt;/b&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div style='margin-top: 10px; text-align: center;'&gt;
+        &lt;a class='altmetric_details' target='_self' href='https://www.altmetric.com/details.php?domain=joss.theoj.org&amp;citation_id=74075039'&gt;
+            See more details
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;" style="display:inline-block;" data-badge-popover="right">
+        <img alt="Article has an altmetric score of 27" src="a.png" style="border:0; margin:0; max-width: none;" width="64px" height="64px">
+</a></div>
+
+        <div class="label">Markdown badge</div>
+        <p><img src="status.svg"> &nbsp; <a href="#" class="clippy" data-clipboard-action="copy" data-clipboard-text="[![DOI](https://joss.theoj.org/papers/10.21105/joss.01686/status.svg)](https://doi.org/10.21105/joss.01686)"><svg height="16" class="octicon octicon-clippy" aria-label="Copy" viewBox="0 0 14 16" version="1.1" width="14" role="img"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"></path></svg></a></p>
+
+        <div class="label">License</div>
+        <p>Authors of JOSS papers retain copyright.</p>
+        <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+        <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="88x31"></a></p>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="container-fluid">
+    <div class="row footer">
+  <div class="col-sm-6">
+    <a href="https://opensource.org/"><img src="osi-fba45a3fe3a1a7a2aea190b377d03d9ee2471c56d8a38400e50550b2.png" height="65px"></a>
+    <p>Journal of Open Source Software is an <a href="https://opensource.org/affiliates/list">affiliate</a> of the <a href="https://opensource.org/">Open Source Inititative</a>.</p>
+  </div>
+
+  <div class="col-sm-6">
+    <a href="https://numfocus.org/"><img src="numfocus-7fc6cca1c1f7ce876e711d8b5e847f86dc12cfca0715cbd2ad2.png" height="60px"></a>
+    <p>Journal of Open Source Software is part of <a href="http://www.theoj.org/">Open Journals</a>, which is a <a href="https://www.numfocus.org/open-source-projects/">NumFOCUS-sponsored project</a>.</p>
+  </div>
+</div>
+
+<div class="row cc">
+  <img src="cc-logo-6bd73c91b31e18e58c9d77aae34fac59234b70adf38e1d711353.svg" height="48px">
+  <p>Public user content licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> unless otherwise specified.<br>ISSN 2475-9066</p>
+</div>
+
+  </div>
+
+
+<script type="text/javascript" src="joss.01686"></script><div class="altmetric-embed altmetric-popover altmetric-right" data-uuid="0ac89f70-b184-f454-35a5-a883e8d5513e" id="_altmetric_popover_el_0ac89f70-b184-f454-35a5-a883e8d5513e" style="margin: 0px; display: none;"><div class="altmetric_container" id="_altmetric_container"><div class="altmetric_arrow altmetric-right"></div><div id="_altmetric_popover_inner" class="altmetric-embed altmetric-popover-inner altmetric-floating altmetric-right" data-uuid="0ac89f70-b184-f454-35a5-a883e8d5513e"><div class="altmetric-embed altmetric-popover-content altmetric-floating"><div>    <div style="padding-left: 10px; line-height:18px; border-left: 16px solid #9f79f2;">
+      <a class="link-to-altmetric-details-tab" target="_self" href="https://www.altmetric.com/details.php?domain=joss.theoj.org&amp;citation_id=74075039&amp;tab=policy-documents">
+          Referenced in <b>1</b> policy sources
+      </a>
+    </div>
+    <div style="padding-left: 10px; line-height:18px; border-left: 16px solid #74CFED;">
+      <a class="link-to-altmetric-details-tab" target="_self" href="https://www.altmetric.com/details.php?domain=joss.theoj.org&amp;citation_id=74075039&amp;tab=twitter">
+          Tweeted by <b>30</b>
+      </a>
+    </div>
+
+    <div style="margin-top: 10px; text-align: center;">
+        <a class="altmetric_details" target="_self" href="https://www.altmetric.com/details.php?domain=joss.theoj.org&amp;citation_id=74075039">
+            See more details
+        </a>
+    </div>
+</div></div></div></div></div></body></html>

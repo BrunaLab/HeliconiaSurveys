@@ -1,0 +1,72 @@
+body {
+	padding-top: 0px;	
+	
+}
+.helda-header {
+	height: 141px;		
+}
+.helda-header .language-selector a {
+	color: #567D7B;
+}
+
+.helda-header .sitename {
+	position: absolute; 
+	top: 30px; 
+	left: 200px;
+}
+.helda-header .sitename h1 {
+	font-size: 44px;
+	font-style: normal;
+	font-weight: bold; 
+	color: #000000;
+	letter-spacing: -2.0px;	
+	line-height: 5.5px;
+	text-transform: none;
+	border: none;
+}
+
+.helda-mainmenu-container {
+	background-color: #A49B4D;	 
+}
+
+.helda-search-container {
+	background: #000000; 
+}
+
+.search-btn {
+	background-color: #A49B4D;
+
+}
+
+.helda-mainmenu-container .search-tab {
+	background: #000000;
+}
+
+a,  .breadcrumb a, .breadcrumb span {
+	color: #567D7B;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #567D7B;
+}
+
+
+.breadcrumb span {
+	text-decoration: none;
+}
+
+p.intro-text {
+	text-align: left;
+}
+.pagination-links2 li {
+	background-color: #A49B4D;
+}
+.pagination-links2 a:hover {
+	text-decoration: none;
+}
+ul#aspect_browseArtifacts_CommunityBrowse_list_community-browse li a, ul#aspect_browseArtifacts_CollectionBrowse_list_collection-browse li a {
+        background-color: #A49B4D;
+
+}
+

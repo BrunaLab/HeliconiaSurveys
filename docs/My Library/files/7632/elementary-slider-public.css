@@ -1,0 +1,138 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+.container {
+    margin: 0 auto;
+    max-width: 90%;
+    width: 1140px;
+}
+
+.slick-slide .elementary-slide {
+    background-size: cover;
+    background-position: center center;
+    height: 300px;
+}
+
+.slick-slide .elementary-slide h1 {
+    color: #FFFFFF;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.slick-slide .elementary-slide h1 strong {
+    color: #F43131;
+    font-weight: 300;
+}
+
+.slick-slide .elementary-slide h2 {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 40px 0 0 0;
+    max-width: 1000px;
+}
+
+.slick-slide .elementary-slide h2 strong {
+    color: #F43131;
+    font-weight: 500;
+}
+
+.slick-slide .elementary-slide p {
+    margin: 0;
+}
+
+.slick-slide .elementary-slide .elementary-slide__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.slick-slide .elementary-slide .elementary-slide__overlay {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #181818 100%);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+@media only screen and (min-width: 400px) {
+
+    .slick-slide .elementary-slide h1 {
+        font-size: 32px;
+    }
+
+    .slick-slide .elementary-slide h2 {
+        font-size: 26px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .slick-slide .elementary-slide {
+        height: 470px;
+    }
+
+    .slick-slide .elementary-slide h1 {
+        font-size: 60px;
+    }
+
+    .slick-slide .elementary-slide h2 {
+        font-size: 45px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+
+    .slick-slide .elementary-slide {
+        height: 575px;
+    }
+
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+.active-text {
+    opacity: 1;
+    transform: translateY(0);
+}

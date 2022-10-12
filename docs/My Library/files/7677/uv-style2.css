@@ -1,0 +1,629 @@
+/* CSS specified by WPO */
+
+body.uv-primaryColor-dark{
+  /* color:#403e3c; */
+
+background: #dadccf;
+margin:0px 0px 20px; padding:0px; 
+text-align:center; /*workaround for centering div in IE*/ 
+}
+
+#wrapper {
+background: url(mainbg-dark-newgrid.png);
+/*background: url(background-images/mainbg.png); lighter background version*/
+background-repeat: repeat-y;
+margin: 0 auto;
+width: 998px;
+font: 12px arial,verdana,sans-serif;
+padding: 0px;
+text-align: left; 
+overflow:hidden;
+position: relative;
+}
+
+#main-content {margin: 20px 25px 10px; }
+
+#wbg-header, #wbg-footer, #main-content, #wbg-site-name {
+  width: 948px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/*--------------header-----------------*/
+
+#header a, #header a:visited, #header a:hover{text-decoration: none; color: #850000;}
+#header  a:hover {text-decoration: underline;color: #850000; }
+#header h6 a, h6 a:visited {text-decoration: none; color: #000 !important;} 
+#header h6 a:hover {color: #850000; text-decoration: underline;}
+#header h5.title a, h5.title a:visited {color: #850000; text-decoration: underline; }
+#header h1, #header h2, #header h3, #header h4, #header.comment-num {font-family: Georgia; color: #000}
+#header h1 {font-size: 2.2em; color: #000; padding: 0px 0px 0px;}
+#header h2 {font-size: 1.3em; color: #000; padding: 0px 0px 0px;}
+#header h3 {font-size: 1.3em; line-height: 20px;}
+#header h4, #header h4.title{font-size: 1.0em; line-height: 1.4em; padding: 0px 0px 0px;}
+#header h4.small{font-size: 0.833em; line-height: 1.3em; margin: 0px 2px 0px 0px;
+padding: 0px 0px;}
+#header h6, .type, h6.ital, .type-red, h5 {text-transform: uppercase; font-size: 0.916em; color: #000; font-weight: bold;}
+#header h5 {font-size: 0.916em;  }
+	
+
+#header h6.ital {font-family: Georgia;
+font-style: italic; text-transform: none; font-size: 1em;
+margin: 0px 0px 10px;  color: #333;
+}
+
+#header p {margin: 10px 0px;}
+
+
+
+#header {margin: 0px 25px; padding: 0px; width: 948px;}
+
+/*Global Language Region */
+
+#header .global-languages {text-align: right;
+font-size: 11px;
+font-weight: bold; padding: 4px 0px; color: #ccc;
+}
+.global-languages a, .global-languages a:visited {margin: 0px 2px;color: #666 !important;}
+.global-languages a:hover {color: #333; text-decoration: none;}
+
+#header .global-languages a.cn, #header .global-languages a.cn:visited {font-size: 10px;}
+
+a.active-language , a:visited.active-language  {color: #333 !important; background:#e3e5db; padding: 5px 8px;
+}
+
+.global-languages a img {width: 4px;
+vertical-align: baseline;
+}
+
+a.logo, a.logo-es, a.logo-fr, a.logo-cn, a.logo-ru  {background:transparent url(sprite3.png) no-repeat scroll 10px -5px;
+float:left;
+height:65px;
+margin:0 0 23px;
+overflow:hidden;
+text-indent:-9999px;
+width:300px;}
+
+
+#global-search {
+	margin-top:20px;
+	position:relative;
+	width:265px;
+	float:right;
+	font-size:11px;
+	padding: 5px 0px;
+}
+
+#global-search input.search-text  {background:transparent url(sprite.png) no-repeat scroll 0 -296px;
+border:1px solid #CCCCCC;
+float:right;
+height:13px;
+padding-left:20px;
+width:223px;
+padding: 5px 20px;
+color: #666;
+position: absolute;
+z-index: 2;
+}
+
+#global-search .search-submit {p
+osition:absolute;
+right:7px;
+top:15px;}
+
+#header #global-search a.search-submit-text {
+position:absolute;
+right:15px;
+top:12px;
+font-size:10px;
+font-weight:bold;
+z-index: 100;
+color: #666;
+} 
+
+.top-smlink {
+	color: #e3e5db;
+	position: relative;
+	top: 51px;
+	_top: 51px;
+	left: 260px;
+
+}
+
+.top-smlink img {margin: 0px 5px;}
+
+/*---------------Navigation--------------------------*/
+
+html>/**/body #global-nav table#nav-table tr td a, html>/**/body #global-nav table#nav-table tr td a:visited{
+font-size: 11px !important;
+font-weight: 600;
+text-transform:uppercase;
+line-height:15px;
+margin:6px 0 0;
+padding:0px 19px 0px 18px;
+color: white;
+}
+#global-nav {
+	margin: 30px 0px 0px;
+	height:27px;
+	margin: 0px 25px;
+	background:transparent url(sprite.png) repeat-x scroll 0 -72px;
+	clear:both;
+}
+
+#global-nav table, #global-nav table tr, #global-nav table td{ padding-bottom:5px}
+
+#global-nav table#nav-table tr td#home a, #global-nav table#nav-table tr td#home a:visited {text-align: left; border: none; padding: 0px !important; margin: 0px !important;  }
+
+#global-nav table#nav-table tr td#home a:hover  {background: none; border: none; }
+#global-nav table#nav-table tr td#home {border-right: 2px solid white;}
+
+
+#global-nav table#nav-table tr td a, #global-nav table#nav-table tr td a:visited, #global-nav table#nav-table tr td.fr a, #global-nav table#nav-table tr td.fr a:visited, #global-nav table#nav-table tr td.es a, #global-nav table#nav-table tr td.es a:visited {
+	font-size: 11px !important;
+	font-weight: bold;
+	text-transform:uppercase;
+	border-right:1px solid #848884;
+	line-height:15px;
+	margin:6px 0 0;
+	padding:0 21px;
+	color: white;
+	text-decoration:none;
+	}
+
+#global-nav table#nav-table tr td.fr a, #global-nav table#nav-table tr td.fr a:visited  {padding:0 19px 0 19px;}
+
+#global-nav table#nav-table tr td.es a, #global-nav table#nav-table tr td.es a:visited  {padding:0 17px;}
+
+#global-nav table#nav-table tr td a.last, #global-nav table#nav-table tr td a.last:visited {border: none;}
+
+#global-nav table#nav-table tr td a.countries,#global-nav table#nav-table tr td a.countries:visited {border-right: 1px solid #6c7163;}
+/*#global-nav table#nav-table tr td a.topics, #global-nav table#nav-table tr td a.topics:visited {border-left: 1px solid #bcc2bd;}*/
+
+.last2 {border-right:none !important;}
+
+/**Hover*/
+#global-nav table#nav-table tr td a:hover { text-decoration: underline;}
+
+
+#global-nav ul.special-links {background:transparent url(sprite.png) repeat-x scroll 0 -100px;
+border-left:2px solid #FFFFFF;
+}
+
+#global-nav img {vertical-align: top;}
+
+
+#global-nav td.last {border-right: 2px solid #fff;}
+
+#global-nav td.secondary {
+  background: url('g03v1-global-navigation.png') repeat-x scroll 0 -228px transparent;
+}
+
+#global-nav td.secondary a {
+  border-right: 1px solid #6c7163;
+}
+
+#global-nav td.active {
+  background: url('g03v1-global-navigation.png') no-repeat scroll center -91px transparent;
+}
+
+#global-nav td.last a, #global-nav td.active a, #global-nav td.pre-active a {
+  border-right: none !important;
+}
+
+#global-nav td.secondary.last {
+  border-right: none;
+}
+
+/*--------------END header-----------------*/
+
+
+
+/*--------------local navigation-----------------*/
+#local-nav {
+  margin: 0 25px 5px;
+}
+
+#local-nav .site-name {
+  background: url(sprite3.png) repeat-x scroll 0 -170px;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 60px;
+  padding: 0 15px;
+  height: 60px;
+}
+
+#local-nav a, #local-nav a:visited {
+  color: white;
+}
+
+#local-nav ul.primary-links {
+  float: left;
+}
+
+#local-nav ul.secondary-links {
+  float: right;
+}
+
+#local-nav ul.links li {
+  float: left;
+}
+
+#local-nav div.local-nav-links {
+  line-height: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+#local-nav ul.links a, #local-nav ul.links a:visited  {
+  color: #989a94;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 0 10px;
+  height: 34px;
+  float: left;
+}
+
+#local-nav ul.links a.active, #local-nav ul.links a.active:visited {
+  color: #222;
+  background: white;
+  height: 35px;
+}
+
+#local-nav ul.links li {
+  border-right: 1px solid #ddd;
+}
+
+#local-nav ul.secondary-links li.first {
+  border-left: 1px solid #ddd;
+}
+
+#local-nav ul.secondary-links li.last {
+  border-right: none;
+}
+
+#local-nav ul.links a:hover {
+  color: #444;
+  text-decoration: none;
+}
+
+/*--------------END local navigation-----------------*/
+
+/*--------------Custom Home Page Buttons-------------*/
+
+#custom-buttons {
+  margin-top: 10px;
+}
+
+#custom-buttons a {
+  float: left;
+  display: block;
+  background: #a92123 url(uv-browse.png) 8px 50% no-repeat;
+  border-radius: 4px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 7px;
+  padding: 10px 10px 10px 38px;
+  width: 175px;
+  height: 60px;
+  text-align: center;
+  line-height: 18px;
+}
+
+#custom-buttons a:hover {
+  text-decoration: underline;
+}
+
+#custom-buttons a.ask {
+  background-image: url(uv-ask.png);
+  line-height: 40px;
+}
+
+#custom-buttons a.feedback {
+  background-image: url(uv-idea.png);
+  line-height: 40px;
+}
+
+/*----------END Custom Home Page Buttons-------------*/
+
+/*--------------footer-----------------*/
+
+html>/**/body #footer .footer-hidden {margin: -1px 0px 1px;} /* Fix Hairline Top Spacing for Hidden Footer */
+
+#footer h1, #footer h2, #footer h3, #footer h4, #footer.comment-num {font-family: Georgia; color: #000}
+
+#footer h1 {font-size: 2.2em; color: #000; padding: 0px 0px 0px;}
+
+#footer h2 {font-size: 1.3em; color: #000; padding: 0px 0px 0px;}
+
+#footer h3 {font-size: 1.3em; line-height: 20px;}
+
+#footer h4, #header h4.title{font-size: 1.0em; line-height: 1.4em; padding: 0px 0px 0px;}
+
+#footer h4.small{font-size: 0.833em; line-height: 1.3em; margin: 0px 2px 0px 0px;
+padding: 0px 0px;}
+
+#footer h6, .type, h6.ital, .type-red, h5 {text-transform: uppercase; font-size: 0.916em; color: #333333; font-weight: bold;} /* Fix Section Titles */
+
+#footer h5 {font-size: 0.916em;  }
+
+#footer a, #footer a:visited, #footer a:hover{text-decoration: none; color: white;}
+#footer  a:hover {text-decoration: underline;color: white; }
+
+#footer h6 a, #footer h6 a:visited {text-decoration: none; color: #000 !important;} 
+
+#footer h6 a:hover {color: #850000; text-decoration: underline;}
+
+#footer h5.title a, h5.title a:visited {color: #850000; text-decoration: underline; }
+
+
+#footer {margin: 0px 0px 20px; padding: 0px; width: 948px; position:relative; background: transparent url(footer-bg.png) repeat-x 0 0px;  color: white; line-height: 35px; 
+}
+
+#footer p {line-height: 20px; margin: 5px 0px; color: #73746e; font-stretch: extra-expanded;}
+#footer .footer-breadcrumb {margin: 0px; padding: 10px; font-size:0.916em; color:#fff; font-weight:bold; }
+
+#footer .footer-breadcrumb a, #footer .footer-breadcrumb a:visited { color:#fff; font-weight:bold;}
+
+.breadcrumb-first, .breadcrumb-second, .breadcrumb-last {background:transparent url(breadcrumb-wbg.png) no-repeat right center;
+float: left;
+margin-bottom:2px; /* White Gutter Fix - 2px */
+padding:0 20px 0 14px; 
+font-size:11px; font-weight:bold; /* Breadcrumb font fix */
+}
+
+.breadcrumb-last {background: none; padding-left: 8px;} /* Fix Breadcrumb Padding */
+
+#footer #ext-footer {background: #f3f4ec;
+padding: 0px;
+color:white;
+margin-bottom: 0px;}
+
+#footer h6.resources{text-transform:none; padding-top:20px;}
+
+#footer .open-footer a, #footer .open-footer a:visited {color: #73746e; font-size: 0.916em; padding: 0px 2px;}
+
+#footer .open-footer {margin-top: 0px;} /* White Gutter Fix */
+
+#footer .footer-hidden {float: left;
+background: #F3F4EC;
+width:924px;
+padding: 20px 8px 20px 16px;
+margin: -1px 0 1px;
+} /* Fix Hidden Footer Width, Hairline Margin and Side Padding*/
+
+#footer .footer-hidden h6 {line-height: 1.16em; margin-top: 10px; margin-bottom:0px;}
+
+#footer .footer-hidden .columns {float: left;
+width:122px;
+margin-right: 12px; 
+} /* Fix Section Spacing */
+
+#footer .footer-hidden .publications {margin:0 0 0 -2px;} /* Fix Publications Section Spacing */
+#footer .footer-hidden .border-vert {border-left: 1px solid #c6c9bd; padding-left: 3px; padding-left: 18px; float:right; margin:0; width:110px;} /* Fix Last Section Column and Divider */
+
+#footer .footer-hidden .columns ul {list-style-type: none; margin: 10px 0px 0px; padding-left:0px }
+
+#footer .footer-hidden .columns ul li {padding: 0px 0px 8px 0px;
+line-height: 1.16em;}
+
+#footer .footer-hidden .columns ul li a,
+#footer .footer-hidden .columns ul li a:visited {color: #666666; font-size:0.916em; } /* Fix Section Links Color */
+
+#footer .footer-visible {background: #5d6056; clear: both;
+padding: 11px 12px 11px;
+height: 35px;
+margin: 0px;
+color: #fff;} /* Fix Gray Footer */
+
+#footer .footer-visibleleft {
+    float: left;
+    padding: 0 0 3px;
+    width: 500px;
+	line-height: normal;
+}  /* Fix Visible Left */
+
+#footer div.theworldbankgroup a.glbe {
+    background: url("footer-white-wbicon.png") no-repeat scroll transparent;
+    padding: 6px 0 7px 33px;
+	line-height:25px;
+}  /* Fix logo 25px x 25px */
+
+#footer .footer-visibleleft div.theworldbankgroup {
+    background: url("images.sprite.png") no-repeat scroll right -128px transparent;
+    float: left;
+    height: 35px;
+    padding: 5px 30px 0 2px;
+} /* Fix Divider */ 
+
+#footer .footer-visible a, #footer .footer-visible a:visited {color: #fff;
+text-transform: uppercase;
+font-weight: bold;}
+
+#footer .footer-visible img {vertical-align: middle;}
+
+#footer .footer-visible .partner {margin-left: 28px; margin-top:9px; float:left;} /* Fix Partners Padding */
+
+#footer .footer-visible .partner a, #footer .footer-visible .partner a:visited {font-size: 1.1em; color: #c4c5c1; padding-right: 10px;}
+
+#footer .footer-left {float: left; width: 600px; margin: 0 0 30px 6px;} /* Fix Copyright Padding */
+
+#footer .footer-right {float: right; width: 172px; text-align: right; margin-right: 6px;} /* Fix Hotline Padding */
+
+
+#wbservices-trigger {
+  display: block;
+  float: right;
+  margin: 8px 10px 0 0;
+  width: 18px;
+  height: 18px;
+}
+
+#wbservices-trigger {
+  background: url(plus.png) no-repeat;
+}
+
+#wbservices-trigger.open {
+  background: url(minus.png) no-repeat;
+}
+
+#wbservices {
+  display: none;
+}
+
+#wbservices.open {
+  display: block;
+}
+
+p.top-smlink {
+  display: none;
+}
+
+
+
+/*----------------end footer------------------------------------ */
+
+
+/* Resolve conflicts b/t WPO and UV */
+#global-nav * {
+  vertical-align: middle;
+}
+
+.uvFieldPlaceholder {
+  color: #aaa;
+}
+
+.uvModule-session {
+  color: #666;
+}
+
+.uvBody {
+  background: transparent;
+  border-top: none;
+  padding: 25px 0;
+}
+
+.uvModule {
+  background: transparent;
+  border: 1px solid #ddd;
+}
+
+.uvModule-message {
+  border: none;
+  line-height: 1.25em;
+  padding: 20px;
+}
+
+.uvModule-topSidebar p {
+  margin: 0 0 1em;
+}
+
+.uvModule-topSidebar p.last {
+  margin: 0;
+}
+
+.uvModule a.devels {
+  font-weight: bold;
+}
+
+.uvField {
+  background: transparent;
+  border: 1px solid #ddd;
+}
+
+/* email field background must be white, so that it covers up the "New and returning users..." text */
+form.uvjSigninStandalone .uvField-email {
+  background: white;
+}
+
+form.uvjSigninStandalone p.label-note {
+  padding-bottom: 10px;
+}
+
+.uvSidebar .uvModule {
+  margin: 7px 0;
+}
+
+.uvSidebar .uvModule-topSidebar {
+  margin-top: 6px;
+  padding: 19px;
+}
+
+.uvModule-featuredForum, .uvModule-knowledgebase {
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* for now, kill all vanity icons */
+.uvModuleTitle, .uvNavListItem {
+  padding-left: 0 !important;
+  background: none !important;
+}
+
+.uvModule-mainSidebar ul.uvList {
+  margin-left: 20px;
+}
+
+/* no rounding on search boxes */
+.uvModuleSection-search .uvField-search {
+  border-radius: 0px;
+}
+
+.uvModuleSection-search .uvField-search .uvFieldButton {
+  border-radius: 0 0px 0px 0;
+}
+
+div.uvModule-session .uvStyle-button,
+div.uvCol-8 .uvStyle-button {
+  background: #9a1222;
+  /* background: -moz-linear-gradient(0% 100% 90deg, #982022, #9a1222) repeat scroll 0 0 transparent; */
+  color: white;
+  text-shadow: none;
+  box-shadow: none;
+  border-color: #9a1222;
+}
+
+div.uvModule-session .uvStyle-signin {
+  font-size: inherit;
+}
+
+h1, h1.uvPageTitle {
+  color: #000;
+}
+
+span.acronym {
+  border-bottom: 1px dotted #a92123;
+}
+
+div.ender {
+  height: 20px;
+}
+
+
+/*
+** Markup free clearing
+** Details: http://www.positioniseverything.net/easyclearing.html
+*/
+.clear-block:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clear-block {
+  display: inline-block;
+}
+
+/* Hides from IE-mac \*/
+* html .clear-block {
+  height: 1%;
+}
+.clear-block {
+  display: block;
+}
+/* End hide from IE-mac */

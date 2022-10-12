@@ -1,0 +1,330 @@
+
+
+SciELO - Scientific Electronic Library Online
+	
+ 
+vol.31 Alternative Metrics and Open Science in Latin America: Challenges for democratization of knowledge The Open Government partnership as a platform for the advancement of Open Science in Brazil   author index subject index articles search 	Home Page alphabetic serial listing  
+
+Services on Demand
+Journal
+
+    SciELO Analytics
+    Google Scholar H5M5 ( 2018 )
+
+Article
+
+    text new page (beta)
+    English (pdf)
+    Article in xml format
+    How to cite this article
+    SciELO Analytics
+    Curriculum ScienTI
+    Automatic translation
+
+Indicators
+
+    Have no cited articles Cited by SciELO
+    Access statistics
+    Article has an altmetric score of 32
+
+Related links
+
+    Indexed by Google Cited by Google
+    Have no similar articles Similars in SciELO
+    Indexed by Google Similars in Google
+
+Share
+
+    Google Bookmark Twitter Digg CiteULike AddThis More
+    AddThis More
+
+    Permalink
+
+Transinformação
+Print version  ISSN 0103-3786 On-line version  ISSN 2318-0889
+Transinformação vol.31  Campinas  2019  Epub Apr 04, 2019
+http://dx.doi.org/10.1590/2318-0889201931e180045 
+
+Thematic Session: Altmetrics and Open Science in Latin America
+
+The adoption of Article Processing Charges as a business model by Brazilian Open Access journals
+
+A adoção de Taxas de Processamento de Artigos como modelo de negócio por periódicos de Acesso Aberto brasileiros
+
+Andre Luiz APPEL 1  
+http://orcid.org/0000-0002-9608-803X
+
+Sarita ALBAGLI 2  
+http://orcid.org/0000-0003-0030-8964
+
+1 Universidade Federal do Rio de Janeiro, Instituto Brasileiro de Informação em Ciência e Tecnologia, Escola de Comunicação, Programa de Pós-Graduação em Ciência da Informação. Rio de Janeiro, RJ, Brasil.
+
+2 Instituto Brasileiro de Informação em Ciência e Tecnologia, Coordenação de Ensino e Pesquisa. R. Lauro Muller, 455, Botafogo, 22290-160, Rio de Janeiro, RJ, Brasil.
+
+Abstract
+
+Different funding and business model alternatives for Open Access to scientific publication have been discussed and tried, either by Gold open access journals or by the ‘hybrid’ ones. A growing number of both types of scholarly journals have adopted a publication fee – more specifically an Article Processing Charge – as their open access business model, a procedure that has been the subject of controversies. The objective of this study is to characterize Brazilian open access journals that adopt article processing charges. The main contribution of this study is to audit and support decision making of editorial policies and business models for open access that are being proposed by and for Brazilian journals. We defined a sample of Brazilian open access journals using article processing charges extracted from the Directory of Open Access Journals database in April 2018 along with their classification in the Scimago Journal Ranking, Journal Citation Reports and Qualis Capes system, considered as an indicator of prestige of academic journals. The study reveals that a small number of Brazilian open access journals are currently applying article processing charges, with practices varying mainly according to fields of study, types of organization and classification according to the Qualis system.
+
+Keywords  Article Processing Charges; Brazil; Open Access; Open Access Journals
+
+Resumo
+
+Diferentes alternativas de financiamento e de modelos de negócio para o acesso aberto às publicações científicas vêm sendo discutidas e testadas, tanto por periódicos da chamada via dourada, quanto por periódicos híbridos. Um crescente número dessas duas modalidades de periódicos tem adotado uma taxa de publicação – mais especificamente uma Taxa de Processamento de Artigo – como seu modelo de negócio, o que tem sido tema de controvérsias. O objetivo deste estudo é apresentar características de periódicos brasileiros de acesso aberto que adotam taxas de processamento de artigos. A principal contribuição do estudo reside em subsidiar e ´auditar´ políticas editoriais e modelos de negócio para o acesso aberto que vêm sendo propostos para e por parte dos periódicos científicos brasileiros. Partiu-se de uma amostra de periódicos brasileiros que aplicam taxas extraída do Directory of Open Access Journals em abril de 2018, juntamente com sua classificação no Scimago Journal Ranking, Journal Citation Reports, e Qualis Capes, entendida como um indicador de prestígio desses periódicos. O estudo revela que um número ainda pequeno de periódicos brasileiros de acesso aberto aplica taxas de processamento de artigos, com práticas variando de acordo com suas áreas do conhecimento, tipos organização e prestígio relacionado ao Sistema Qualis.
+
+Palavras-chave  Taxas de processamento de artigos; Brasil; Acesso aberto; Periódicos de acesso aberto
+
+Introduction
+
+Different funding and business model alternatives for Open Access (OA) to scientific publication have been discussed and tried, either by Gold OA journals or by the ‘hybrid’ ones. Hybrid journals, a relatively new concept, are defined as “traditional closed access subscription journals that offer individual authors the opportunity to open their articles for free access from day one, against a payment” ( Björk, 2012 , p.1496). A growing number of both types of scholarly journals have adopted a publication fee – more specifically an Article Processing Charge (APC) – as their OA business model ( Solomon; Björk, 2016 ; Björk, 2017 ), a procedure that has been the subject of many controversies, particularly regarding the practice of hybrid journals of ‘double dipping’, i.e. charging twice for the same articles, both through publication charge and subscription ( Kingsley, 2014 ; Björk, 2107 ). The adoption of APC has been perceived both as a new business model by commercial publishers given the expansion of the OA movement, and as a means of economic sustainability by originally free of charge, Gold OA journals. On the other hand, the adoption of APC is also seen as a new barrier to open access publication especially by authors, fields of study and countries with fewer financial resources, thus, reproducing, increasing and favoring researchers of the scientific elite and regional disparities; it has also been considered as a factor contributing to the proliferation of “predatory” journals.
+
+In Brazil and Latin America in general – differently from North-American and European countries where journals published by commercial publishers are predominant – the publishing of scientific journals has mostly been an initiative of the academic community itself. Brazil is the third country with the largest number of OA journals registered (1,241) in the Directory of Open Access Journals (DOAJ) in 2018, behind Indonesia (1,288) and the United Kingdom (1,336). Brazilian journals have been mainly publicly funded, either through public grants or academic labor and infrastructure provided by public universities and research institutes. Nevertheless, a growing fraction of these journals have also been testing the APC business model.
+
+The purpose of this study is to characterize Brazilian OA journals that adopt article processing charges. The main contribution of the study consists in providing subsidies to and auditing editorial policies and business models for open access that are being proposed for and by some scientific journals.
+
+In order to achieve this objective, we decided to work with somewhat aggregated data about the Brazilian OA journals adopting APC by extracting a sample from DOAJ’s database in April 2018 and updating the sample records according to the information available on the websites of the selected journals. Some variables chosen for the analysis were as follows: fields of study, type of publisher ( e.g. foundations, professional associations, universities, among others), languages, platforms used etc., and APC prices. We have also collected data related to the journals’ indicators of ‘prestige and influence’, based on citation measures provided by indexing databases to uncover the possible relationships between these indicators and APC prices. The process conducted for data collection, processing and analysis is detailed in the Data and Methods section. The methodology adopted for the study was based on the studies by Björk and Solomon (2012) and Solomon and Björk (2012) .
+
+Literature Review
+
+In recent years, APC policies and schemes adopted by scholarly journals have been the focus of research, considering both Gold OA journals and hybrid ones. Based on a sample of journals from DOAJ and detailed data collected from the websites of journals, Björk and Solomon (2012) analyzed the pricing policies practiced by different types of scholarly open access publishers – commercial, scientific society or professional association, university etc. In another study, the authors calculated that the average price charged to publish a single article in the journals under analysis was 906 USD. They also showed that lower fees are charged by journals from developing countries while higher ones are charged by journals with higher impact factors and publishers with stronger international presence ( Solomon; Björk, 2012 ). Another study based on DOAJ data for 2014 identified that at least 61% of publishers using APC are commercial and that the average APC price is 964 USD ( Morrison et al ., 2015 ). Björk and Solomon (2014) developed a comprehensive study for the Wellcome Trust Foundation describing potential market options for Gold OA journals adopting APC versus hybrid OA journals. The average APC price calculated by them in this case was even higher for hybrid journals (2,727USD) than for those published by ‘non-subscription’ publishers (1,418 USD).
+
+Based on the study by Houghton and Oppenheim (2010) , Van Noorden (2013) described the main article processing and distribution costs for publishers of both printed and online scholarly journals. These costs refer to a range of items such as: administering peer review, editing, proofreading, typesetting, graphics and quality assurance, covers, indexes and editorial, rights management, sales, printing and distribution (physically and online), management and investment, among others. Pinfield, Salter and Bath (2016) describe the total expenditure of 23 British academic institutions on APC payments covering the period from 2007-2014. They showed that, since 2012, institutions have been managing APC payments centrally, e.g. with an institutional central fund, and that those payments were projected to increase further. Solomon and Björk (2016) also analyzed the average APC fees paid by four universities in the United States and Canada, as well as the different sources of APC payment by field of study. Van der Graaf (2017) demonstrated how authors are paying OA fees, their administrative burden and whether their research institutions have an accurate overview of those payments.
+
+Studies discussing the adoption of the APC business model by journals in Latin America and the Caribbean (LAC) countries are scarce. In 2013, Príncipe and Barradas (2013) identified, from the Web of Science database, 41 Brazilian journals applying APC, with fees varying according to the authors’ nationality and types of publication, such as original articles, commentaries or review articles. The study of Pavan and Barbosa (2017) pointed out that just a minority of the Brazilian research funding agencies have specific policies addressing the payment of publication fees by the beneficiaries of their funds. The authors argue that the Brazilian system of research funding should be reviewed to create strategic policies related to APC and similar practices. It is argued that the continuous rise of the APC fees applied by journals such as PLoS Medicine and PLoS Biology move in the opposite direction of the expected decrease in the APC prices announced at the beginning of the OA movement ( Nassi-Calò, 2016 ) when some journals started adopting the APC business model.
+
+These different aspects of APC policies could also be analyzed concerning reward, prestige, and power systems in the scientific area. The reward systems of science were first addressed by Merton who analyzed cumulative-advantage processes in science ( Merton, 1968 ; 2013 ). Merton discussed the formation of different strata within the scientific community as a result of the accumulation of many rewards – in the form of grants, prizes etc. – received by individual scientists throughout their scientific career (the Matthew effect). A critical view on academic prestige was also developed by Bourdieu who proposed key concepts related to academic practices such as scientific field, symbolic and social capitals, among others ( Bourdieu, 1983 ). Bourdieu argued that the accumulated symbolic and social capital (such as authority, recognition, and other intangible or tangible resources) lead to the accumulation of power, allowing some individuals or group(s) to interfere with or establish the regulations and operation of a field such as the scientific one. From this perspective, one could argue that the prestige of a journal determines or has some influence on the journal’s subscription price or on the price of the fees charged to publish in it.
+
+One of the possible ways to study the mutual feedback between increased access to financial resources and the accumulation of prestige and symbolic capital in science is through the analysis of the relationship between journal citation counts – often reported by Web of Science Journal Citation Reports (JCR), and Scimago Journal and Country Rank (SJR) based on data retrieved from Scopus database – and the fees charged to publish in those journals. West, Bergstrom and Bergstrom (2014) developed a tool (< http://www.eigenfactor.org/projects/openAccess/ >) to correlate the APC prices, on the one hand, and their citation index given by the Eigenfactor/Article Influence Score on the other. Eigenfactor aims “to rank journals much as Google ranks Web pages” ( Bergstrom, 2007 , p.314). But instead of ranking journals based on a network of hyperlinks, Eigenfactor uses citations from the academic literature. Wang, Liu, and Fang (2015) analyzed the relationship between the Impact Factor and APC prices charged by open access journals in Health and Life Sciences indexed on the Web of Science database, attesting to a wide variation in the APC prices within similar Impact Factor ranges, from which we can deduce a low correlation between these variables. In Brazil, a system for journal classification – established by the regulatory agency of the national higher education system, National Council for Scientific and Technological Development (Capes, Coordenação de Aperfeiçoamento de Pessoal de Nível Superior ) and acknowledged by the Brazilian scientific community – has been an alternative for the use of the aforementioned metrics. The Qualis Journals System (Qualis Periódicos ) assigns scores to journals based on criteria defined by approximately fifty independent committees, each one related to a single field of study ( Coordenação de Aperfeiçoamento de Pessoal de Nível Superior , 2017 ). Those scores range from: A1-A2, assigned to ‘high-impact’ journals with wide international circulation; B1-B5, assigned to regionally indexed journals; and C, assigned to journals that are considered as non-relevant to a particular field. The score list is updated every four years and published at < https://qualis.capes.gov.br/ >.
+
+Methodological Procedures
+
+In order to obtain the data for analysis, we retrieved the full DOAJ dataset, available at < https://doaj.org/csv >, on 29 April 2018 at 7:11 p.m. (GMT -3) in CSV format. This dataset was then converted to XLSX format to perform descriptive analysis using Microsoft Excel software (Redmond, Washington, United States).
+
+We then proceeded to the sample selection that included the extraction of the records with variables and respective values corresponding to ‘Country of publisher=Brazil’ and ‘Journal article processing charges (APC)=Yes’. We excluded from the sample the journals not validated by DOAJ after 2014 and two duplicated records of journals whose names have changed. This selection resulted in a sample of eighty-one journals (n=81) to create a sub-dataset.
+
+With this new dataset, we proceeded to evaluate data integrity by selecting some variables and then transforming or merging their records for the analysis in a series of processes. The variable ‘Society or institution’ was replicated with the name ‘Type of Organization’ and its values were set as: Foundations, Professional Associations, Research Institutes, Scientific Societies, and Universities. The variable ‘Platform, host or aggregator’ was replicated and updated (with the names ‘Manuscript Platform’ and ‘Publishing Platform’) to reflect the most frequent or the main platforms used by the journals sampled. We considered platforms both for managing the manuscript workflow and publishing identified in each journal’s website. For the journals using more than one platform, we decided to aggregate data to obtain more significant information for the analysis. The variable ‘Subjects’ was replicated with the name ‘Fields of Study’ and its values were set as: Agriculture, Education, Geography, Language, Medicine, Philosophy, Science, Social Sciences, and Technology.
+
+Variables considered in the composition of APC prices presented by each journal were ‘APC amount’ and ‘Submission fee amount’. These values were updated on 29 April 2018 according to the information available on the website of each journal, generating two new variables identified in the dataset as ‘APC BRL pub amount 201804’ and ‘APC BRL submission amount 201804’. At a later stage, we added these variables and identified them as ‘APC BRL Full 201804’ corresponding to the total APC prices charged by each journal. A few aspects should be pointed out about the fees:
+
+    When different APC prices were charged to Brazilian and foreign authors, we considered the fees charged to Brazilians;
+
+    When prices varied according to the type of article or section ( e.g. review articles, original articles, opinion papers etc.), we considered the highest fee;
+
+    When the publication offered discounts to members or associates of the organization responsible for the publication, we took into account prices charged to non-members;
+
+    When the journal established an APC price per page (after typesetting), we considered the fee corresponding to ten pages; some journals apply a fixed price for articles with up to six pages and a fee for each additional page. In this case, we calculated the total APC price for an article with ten pages;
+
+    When we did not find updated information available on the website of the journal, we took into account the information available on the DOAJ dataset;
+
+    All journals in the sample presented APC prices either in Brazilian Reais (BRL) or United States Dollars (USD). In the latter case, we chose to convert all values to BRL according to the exchange rate provided by the Brazilian Federal Bank on 29 April 2018 (1USD=3,4670BRL, < http://www4.bcb.gov.br/pec/conversao/conversao.asp >).
+
+SJR data was obtained from the Sciamgo website (< https://www.scimagojr.com/ >) on 16 February 2018, corresponding to a dataset with only Brazilian journals. Data on Qualis Journals was obtained from the Qualis website (< https://qualis.capes.gov.br/ >) on 20 February 2018. Data regarding JCR/Impact Factor was obtained from the Web of Science database on 9 March 2018. After assigning the data from these three sets (SJR, JCR, and Qualis) to the respective journals in our sample, we found only 30 journals whose data were present in the three of them. This number was then established as a sample for the analysis of the possible relationship between ‘index of prestige’ and APC prices.
+
+Finally, using the MS Excel Pivot Table functions (Redmond, Washington, United States), we used different techniques for grouping data to provide some basic descriptive statistics such as frequency distributions, mean and median, maximum and minimum values of APC according to publisher’s type of organization and the fields of study of the journals.
+
+Results and Discussion
+
+It was observed that the number of Brazilian Open Access Journals that apply APC (around 6% in April 2018) is still low. Nevertheless, the absolute number of journals identified (81) is almost twice the number identified (41) by Príncipe and Barradas (2013) . This fact, however, should not be interpreted as a tendency to growth, given that the studies are based on distinct data sources. In Table 1 , we present a summary of the fees charged by Brazilian OA journals according to their inherent characteristics – i.e. whether they are dependent upon the context in which journals were created or exist – whereas, in Table 2 , we present the main added features of journals that may vary according to the journals’ policies, aims, focus, audience, scope etc.
+
+Table 1  Article Processing Charges applied by Brazilian Open Access journals according to journals’ inherent characteristics. 
+Journals’ inherent characteristics 	f (n=81) 	f/n (%) 	Mean (BRL) 	Median (BRL) 	Min (BRL) 	Max (BRL)
+Type of Organization
+Foundations 	4 	004.9 	864 	775 	520 	1.387
+Professional Associations 	15 	018.5 	823 	693 	80 	3.300
+Research Institutes 	5 	006.2 	991 	600 	400 	2.774
+Scientific Societies 	15 	018.5 	1.569 	1.450 	300 	3.467
+Universities 	42 	051.9 	720 	450 	12 	2.912
+Field of Study
+Agriculture 	28 	034.6 	901 	500 	80 	3.467
+Education 	2 	002.5 	900 	800 	800 	1.000
+Geography 	3 	003.7 	327 	150 	150 	680
+Language 	1 	001.2 	693 	693 	693 	693
+Medicine 	27 	033.3 	1.060 	1.000 	100 	3.300
+Philosophy 	1 	001.2 	800 	800 	800 	800
+Science 	13 	016.0 	1.095 	1.000 	12 	2.774
+Social Sciences 	1 	001.2 	120 	120 	120 	120
+Technology 	5 	006.2 	411 	400 	100 	936
+Launching Decade
+1960–1979 	3 	003.7 	1.000 	400 	400 	2.200
+1980–1989 	3 	003.7 	1.207 	1.320 	800 	1.500
+1990–1999 	24 	029.6 	1.276 	1.055 	120 	3.300
+2000–2009 	33 	040.7 	890 	600 	100 	3.467
+2010–2019 	18 	022.2 	411 	397 	12 	1.000
+Total 	81 	100.0 	920 	700 	12 	3.467
+
+Note: (f) frequency; (f/n) relative frequency; (Max) maximum values; (Min) minimum values; (BRL) Brazilian Reais .
+
+Source: Prepared by the authors based on data from the Directory of Open Access Journals, April 2018.
+
+Table 2  Article Processing Charges applied by Brazilian Open Access journals according to journals’ added features. 
+Journals’ added features 	f (n=81) 	f/n (%) 	Mean (BRL) 	Median (BRL) 	Min (BRL) 	Max (BRL)
+Full-text Language
+English 	15 	18.5 	1.288 	1.000 	400 	3.300
+English, French, Portuguese 	1 	01.2 	800 	800 	800 	800
+English, Portuguese 	24 	29.6 	834 	693 	100 	3.467
+English, Portuguese, Spanish; Castilian 	33 	40.7 	939 	687 	12 	2.912
+Portuguese 	8 	09.9 	429 	325 	80 	1.000
+Full-text Formats
+PDF 	28 	34.6 	381 	350 	12 	1.030
+PDF, HTML, XML 	53 	65.4 	1.205 	1.000 	100 	3.467
+Publishing Platform
+Open Journal Systems 	23 	28.4 	295 	275 	12 	1.000
+SciELO Brazil 	41 	50.6 	1.229 	1.000 	100 	3.467
+SciELO Brazil & Elsevier 	2 	02.5 	1.780 	1.780 	1.560 	2.000
+SciELO Brazil & Open Journal Systems 	12 	14.8 	931 	764 	120 	2.912
+NA 	3 	03.7 	877 	900 	700 	1.030
+Manuscript Platform
+Evise 	2 	02.5 	1.780 	1.780 	1.560 	2.000
+GNPapers 	2 	02.5 	1.015 	1.015 	1.000 	1.030
+Open Journal Systems 	29 	35.8 	338 	300 	12 	1.000
+Open Journal Systems by SciELO 	6 	07.4 	1.291 	1.225 	100 	2.774
+ScholarOne 	40 	49.4 	1.255 	1.025 	250 	3.467
+NA 	2 	02.5 	600 	600 	300 	900
+Total 	81 	100 	920 	700 	12 	3.467
+
+Note: (f) frequency; (f/n) relative frequency; (Max) maximum values; (Min) minimum values; (BRL) Brazilian Reais ; (NA) Not Available.
+
+Source: Prepared by the authors based on data from the Directory of Open Access Journals, April 2018.
+
+The average APC price calculated for the full sample (920BRL~265USD) is still far below the average prices found by Solomon and Björk (2012) , Morrison et al . (2015) and Björk and Solomon (2014) (906, 964, and 1,418USD, respectively). However, it is important to observe that for Agriculture, Medicine, and Science – fields of high prestige among the Brazilian science community and society at large – the maximum values charged (3.467BRL~1,000USD, 3.300BRL~951USD, and 2.774BRL~800USD, respectively) are slightly higher than or equivalent to the average APC prices found by the aforementioned studies.
+
+According to the data shown in Table 1, more than 50% of the journals analyzed are published by universities. This figure is consistent with the scholarly publishing system in Brazil, where most journals are hosted by and managed with infrastructure and resources mainly provided by public universities. On the other hand, it is also a revealing result that almost 40% of our sample correspond to professional associations and scientific societies, indicating that those types of organization may be investing in developing their own publishing infrastructure in Brazil.
+
+The predominant fields of study of the Brazilian journals that have adopted APC until now are Agriculture and Medicine, corresponding to approximately 68% of the total of journals. It may be inferred that those fields are taking the lead in the country in adopting APC, either because their journals consider this business model more sustainable or advantageous, or because researchers working in these fields are more willing to pay for publishing and have more access to research funding for this purpose. The data also reflect the preference for publishing articles in these fields. As pointed out by Meadows (1999) and Muller (2005) , researchers in the ‘hard sciences’ (Science, Technology, Engineering, and Mathematics – STEM) tend to prefer publishing their research results in journal articles, whereas researchers in the ‘soft sciences’ (Social Sciences, and Humanities) prefer publishing books. These facts help to explain the greater number of journals adopting APC in the hard sciences, as well as the higher APC prices charged by journals in these fields.
+
+Still according to Table 1, we can observe that almost all (92.5%) of Brazilian OA journals adopting APC were established in the early 1990’s; of those, 71.6% are 10 years old (or more). On the other hand, it is not possible to conclude that the longevity of a journal has a strong influence in defining APC prices charged. When we observe APC average prices over a period of time ( Figures 1a and 1b ), we can notice that longevity is a moderate prediction factor, with a large variation in average along time, given the presence of several varying outliers.
+
+Source: Prepared by the authors based on data from the Directory of Open Access Journals, April 2018.
+
+Figure 1  Summary of Brazilian journals APC prices according to year of foundation, manuscript workflow management platforms, and publishing platforms (n=81) (a) Distribution of APC average prices according to decade of the journals’ foundation; (b) Distribution of APC average prices according to the year of the journals’ foundation; (c) Distribution of platforms for manuscript workflow management and publishing platforms used by the journals studied; (d) Distribution of types of organization and publishing platforms used by the journals studied. 
+
+According to the data regarding the added features ( i.e. which may vary according to journals’ policies, aims, focus, audience, scope etc.), shown in Table 2 , it is possible to notice that journals publishing texts exclusively in English charge higher APC prices than those that publish exclusively in Portuguese or in Portuguese together with other languages. This could be explained by the need to cover costs with the hiring of specialized translation and/or revision services. It should also be noted that journals publishing in more than one and in ‘more open’ yet more complex formats ( e.g. Hypertext Markup Language – HTML, and Extensible Markup Language – XML) charge significantly higher APC prices than those that publish exclusively in PDF. This fact could be related to the costs of processing, conversion and adaptation of format ( Van Noorden, 2013 ). In the Brazilian context, these activities are usually outsourced, once local publishers (namely universities, research institutes, scientific societies etc.) cannot rely on their own infrastructure to perform such services, generating additional costs as a result.
+
+Differences related to the platforms for manuscript workflow management and platforms for article publication were also observed. Among the former, there are: Evise, commercialized by the RELX Group and used by 2.5% of the journals analyzed; GNPapers (2.5%), commercialized by the Brazilian company GN1 Sistemas e Publicações (GN1 Systems and Publishing); the platform Open Journal Systems (OJS) used by 35.8% of journals, developed and distributed in opensource format by the Public Knowledge Project (PKP) as well as an adaptation of the latter by the Scientific Electronic Library Online (SciELO) used by 7.4% of journals; and finally, ScholarOne (49.4%), commercialized by Clarivate Analytics. Journals not using any of the platforms (NA – 2.5%) receive manuscript submissions by e-mail.
+
+As for the publishing platforms, it can be observed that most journals exclusively adopted the OJS (28.4%), others exclusively adopted SciELO (50.6%) as well as the simultaneous publication on both platforms: OJS and SciELO (14.8%). SciELO started being developed in 1997, as a research project funded by public funds in the format of a grant awarded by the Fundação de Amparo à Pesquisa do Estado de São Paulo (Fapesp, Foundation for Research Support of the State of São Paulo ), with the aim to create an aggregator/a database for the indexation of metadata and full texts from journals, selected on the basis of predefined criteria.
+
+At the moment, SciELO goes beyond the role of indexer, acting as a service platform for journals and publishers, as part of (or condition for) the infrastructure for the role of indexation, in the sense of a quality certificate and, consequently, the financing of open access journals. As a result, several journals can be published directly onto the platform without requiring the parallel development of websites or in-house systems or of traditional/commercial publishers, giving SciELO the character of a ‘metapublisher’ ( Packer, 2011 ).
+
+In this sense, there is the cost of infrastructure that may include the assignment, of Digital Object Identifiers (DOI), hosting, a platform for managing manuscripts, generation of metrics and analytics etc., in addition to ensuring curation and consistency of metadata. These costs, according to a statement by the SciELO coordinator Abel Packer ( Marques, 2017 ), are covered by the platform itself, consequently with no impact on the APC prices. The SciELO recommendation for journals is to use platforms for manuscript workflow management, offering free of charge alternatives, such as ScholarOne or OJS.
+
+On the other hand, one must consider expenses needed to ensure the quality standards required by SciELO, particularly related to specialized workers required by the journals for the evaluation, editing, proofreading and publishing processes. These expenses are around 500USD (~1.700BRL) per article ( Marques, 2017 ). The provision of these services could contribute to increase APC prices charged by journals associated with SciELO, as shown in Table 2 . Journals using other commercial platforms for manuscript workflow management, that is, not covered by SciELO ( i.e. Evise, GNPapers), also charge higher prices, even though their representation in the sample is lower. The distribution of instances of platform use, manuscript workflow management and type of organization responsible for the publishing of journals are shown in Figures 1c and 1d .
+
+In Figure 2 , we present the data referring to the relationship between APC prices charged by journals and their citation and/or qualification indexes, taken as elements that define prestige. According to Figures 2a and 2b , the Impact Factor/JCR and SJR variables do not appear as relevant for determining the APC prices charged (coefficients of determination are insignificant or close to zero). However, the Scopus h-index variable ( Figure 2c ) is a moderate predictive factor for APC prices (coefficient of determination: 0.3385).
+
+Source: Prepared by the authors based on data from the Directory of Open Access Journals ( April 2018), Scimago Journal & Country Rank (February 2018), Clarivate Journal Citation Reports (March 2018), and Qualis/CAPES (February 2018).
+
+Figure 2  Distribution of APC prices according to journals’ indicators (n=30). (a) distribution of APC and Clarivate Impact Factor; (b) distribution of APC and Scimago Journal Ranking; (c) distribution of APC and Scimago h Index; (d) distribution of average and median APC and Qualis scores. 
+
+These results (exclusively for Brazilian Open Access journals) contrast with those presented by Solomon and Björk (2012) (with an international scope) that indicate that journals with greater citation or higher Impact Factor charge higher APC prices. On the other hand, when the Qualis Index variable is considered, journals with the highest scores attributed by this system were also those that present considerably higher APC price averages. Thus, it may be inferred that the relationship between prestige versus APC in Brazil is associated with the exploitation of the Qualis Index whose importance arises from its role in the evaluation of graduate programs in the country to which a significant number of Brazilian researchers are affiliated to. It is also associated with greater prestige in the fields of study. It is worth calling attention to the fact that, even though citation indexes considered by this study do not seem related to and do not interfere directly with APC, they are considered as part of the criteria adopted by different independent committees of Capes to determine the Qualis scores in their respective fields of study. Mugnaini and Sales (2011) and Mugnaini (2015) show that committees in the STEM fields rely almost exclusively on indicators such as JCR/IF and SJR when attributing scores. Humanities and Social Sciences, on the other hand, tend to consider indexation on databases and/or characteristics of the journal. Therefore, these indicators, externally generated and controlled, do indirectly interfere in the local prestige of journals.
+
+Conclusion
+
+Among Brazilian journals adopting APC, it was observed that the applied fees mainly vary in accordance with the geographical origin of authors, length of articles, journals’ fields of study, language of the publication, as well as discounts offered by publishers (for instance, to members/associates of scientific societies), among other factors. It was also observed that the strengthening of strategies aimed to promote the ‘opening’ of publications – such as the adoption of ‘more open’ publication formats – as well as strategies focused on internationalization through translations and publications in different languages have increased the APC prices charged to authors.
+
+The issue of prestige arises as a moderate determining factor for APC prices when considered from the perspective of citations, but significantly increases from the point of view of the evaluation system of Brazilian scientific production, impacting access to resources. This is a determining factor in the distribution of resources for research in the country in such a way that researchers with greater access to resources will also have greater access to higher-prestige journals, reinforcing the effects of cumulative advantages described by Merton.
+
+Finally, it is important to characterize and better understand to what extent the charging of fees, presented as a tendency in open access editorial practices, suit the contexts of Brazil and other Latin American and Caribbean countries that traditionally rely on public resources and funding for the maintenance of their systems of scientific publication. The topic and the data analyzed in this study can foster several lines of inquiry of a political-economic nature that, due to the choice of focus or limitations regarding length, could not be addressed in this article. Further developments of this study could include in-depth research with publishers to make, for example, their key motivations for the adoption of APC explicit, as well as the how they have tried to conciliate the flow of resources (institutional, grants, APC etc.) with the increasing costs of publication. The scarcity of studies questioning funding policies of Brazilian open access journals is also evident, as well as studies questioning the allocation of resources to allow authors to publish in foreign journals, presumably of greater circulation and impact, instead of investing in the funding of Brazilian journals to help them reach the level of circulation expected by authors.
+
+Data availability
+
+The entire data set that supports the results of this study was made available in Zenodo and can be accessed in http://dx.doi.org/10.5281/zenodo.2555317
+
+Acknowledgements
+
+We thank anonymous reviewers for their constructive comments and criticism that helped improve the manuscript.
+
+Support: Coordenação de Aperfeiçoamento de Pessoal de Nível Superior(Bolsa de Doutorado Demanda Social), Conselho Nacional de Desenvolvimento Científico e Tecnológico (grant No. 447019/2014-7), Fundação Carlos Chagas de Apoio à Pesquisa do Estado do Rio de Janeiro (grant No. E-26/201.428/2014).
+
+Este artigo foi submetido e avaliado na sessão para temáticas gerais. No entanto, pela proximidade do tema proposto para a presente edição, os autores foram convidados e aceitaram transferir o texto aceito para a edição “Métricas Alternativas e Ciência Aberta na América Latina”.
+
+Como citar este artigo /How to cite this article
+
+Appel, A.L.; Albagli, S. The adoption of Article Processing Charges as a business model by Brazilian Open Access journals. Transinformação , v.31, e180045, 2019. http://dx.doi.org/10.1590/2318-0889201931e180045
+
+ERRATUM
+
+In article “The adoption of Article Processing Charges as a business model by Brazilian Open Access journals” with DOI: 10.1590/2318-0889201931e180045 published in Transinformação, 2019;31:e180045, on page 4, first paragraph, line 14:
+
+Where is read
+
+National Council for Scientific and Technological Development (Capes, Coordenação de Aperfeiçoamento de Pessoal de Nível Superior ).
+
+Should read
+
+Coordination for Higher Education Staff Development (Capes, Coordenação de Aperfeiçoamento de Pessoal de Nível Superior ).
+
+References
+
+Appel, A.L.; Albagli, S. The adoption of Article Processing Charges as a business model by Brazilian Open Access journals. Zenodo , 2019. 1 data set (3CSV, 2XLSX, 1TXT files). Doi: http://dx.doi.org/10.5281/zenodo.2555317. Available from: https://zenodo.org/deposit/2555317 [  Links  ]
+
+Bergstrom, C.T. Eigenfactor: Measuring the value and prestige of scholarly journals. College and Research Libraries News , v.68, n.5, p.314-316, 2007. Doi: http://dx.doi.org/10.5860/crln.68.5.7804. Available from: http://crln.acrl.org/index.php/ crlnews/article/view/7804. Cited: May 27, 2018. [  Links  ]
+
+Bourdieu, P. O campo científico. In : Ortiz, R. (Org.). Bourdieu : sociologia. São Paulo: Ática, 1983. p.122-155. [  Links  ]
+
+Björk, B.-C. Scholarly journal publishing in transition: From restricted to open access. Electronic Markets , v.27, n.2, p.1-9, 2017. Doi: http://dx.doi.org/10.1007/s12525-017-0249-2. Available from: https://link.springer.com/article/10.1007%2Fs12525-017-0249-2 . Cited: May 27, 2018. [  Links  ]
+
+Björk, B.-C. The hybrid model for open access publication of scholarly articles: A failed experiment? Journal of the American Society for Information Science and Technology , v.63, n.8, p.1496-1504, 2012. Doi: http://dx.doi.org/10.1002/asi.22709. Available from: http://doi.wiley.com/10.1002/asi.22709 . Cited: May 27, 2018. [  Links  ]
+
+Björk, B.-C.; Solomon, D. Developing an effective market for Open Access Article Processing Charges . London: Wellcome Trust, 2014. E-book. Available from: https://wellcome.ac.uk/sites/default/files/developing-effective-market-for-open-access-article-processing-charges-mar14.pdf . Cited: Mar. 25, 2018. [  Links  ]
+
+Björk, B.-C.; Solomon, D. Pricing principles used by scholarly open access publishers. Learned Publishing , v.25, n.2, p.132-137, 2012. Doi: http://dx.doi.org/10.1087/20120207. Available from: http://doi.wiley.com/10.1087/20120207. Cited: May 27, 2018. [  Links  ]
+
+Coordenação de Aperfeiçoamento de Pessoal de Nível Superior. Qualis . 2017. Disponível em: https://web.archive.org/web/20171106055454/http://www.capes.gov.br/acessoainformacao/perguntas-frequentes/avaliacao-da-pos-graduacao/7422-qualis . Acesso em: 25 mar. 2018. [  Links  ]
+
+Houghton, J.W.; Oppenheim, C. The economic implications of alternative publishing models. Prometheus , v.28, n.1, p.41-54, 2010. Doi: http://dx.doi.org/10.1080/08109021003676359. Available from: http://www.tandfonline.com/doi/full/10.10 80/08109021003676359. Cited: May 27, 2018. [  Links  ]
+
+Kingsley, D. Addressing the “double dipping” charge. Australian Open Access Support Group Newsletter , 8 May, 2014. Available from: http://aoasg.org.au/addressing-the-double-dipping-charge/ . Cited: Oct. 14, 2018. [  Links  ]
+
+Marques, F. Produção científica acessível. Pesquisa Fapesp , n.259, 2017. Disponível em: http://revistapesquisa.fapesp.br/2017/09/22/producao-cientifica-acessivel/ . Acesso em: 12 out. 2018. [  Links  ]
+
+Meadows, A.J. A comunicação científica . Brasília: Briquet de Lemos, 1999. [  Links  ]
+
+Merton, R.K. O efeito Mateus na ciência II: a vantagem cumulativa e o simbolismo da propriedade intelectual. In : Marcovich, A.; Shinn, T. (Org.). Ensaios de sociologia da ciência : Robert K. Merton. São Paulo: 34, 2013. p.199-231. [  Links  ]
+
+Merton, R.K. The Matthew effect in Science. Science , v.59, n.3810, p.56-63, 1968. Doi: http://dx.doi.org/1126/science.159.3810.56 . Available from: http://www.sciencemag.org/cgi/doi/10.1126/science.159.3810.56. Cited: May 27, 2018. [  Links  ]
+
+Morrison, H. et al . Open access article processing charges: DOAJ survey May 2014. Publications , v.3, n.1, p.1-16, 2015. Doi: http://dx.doi.org/10.3390/publications3010001. Available from: http://www.mdpi.com/2304-6775/3/1/1/ . Cited: May 27, 2018. [  Links  ]
+
+Mueller, S.P.M. A publicação da ciência: áreas científicas e seus canais preferenciais. DataGramaZero: Revista de Ciência da Informação , v.6, n.1, p.1-13, 2005. Disponível em: http://repositorio.unb.br/bitstream/10482/980/2/ARTIGO_PublicacaoCiencia.pdf . Acesso em: 12 out. 2018. [  Links  ]
+
+Mugnaini, R. Ciclo avaliativo de periódicos no Brasil: caminho virtuoso ou colcha de retalhos? In : Encontro Nacional de Pesquisa em Ciência da Informação, 16., 2015, João Pessoa. Anais [...] João Pessoa: Ancib; UFPB, 2015. Disponível em: http://repositorios.questoesemrede.uff.br/repositorios/handle/123456789/2947 . Acesso em: 24 set. 2018. [  Links  ]
+
+Mugnaini, R.; Sales, D.P. Mapeamento do uso de índices de citação e indicadores bibliométricos na avaliação da produção científica brasileira. In : Encontro Nacional de Pesquisa em Ciência da Informação, 12., 2011, Brasília. Anais [...] Brasília: Ancib; UnB, 2011. p.2361-2372. Disponível em: http://repositorios.questoesemrede.uff.br/repositorios/handle/123456789/2150 . Acesso em: 24 set. 2018. [  Links  ]
+
+Nassi-Calò, L. Challenges for sustainability of the open access model: Brazilian health journals. Revista Latino-Americana de Enfermagem , v.24, p.1-3, 2016. Doi: http://dx.doi.org/10.1590/1518-8345.0000.2827. Available from: http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0104-11692016000 100205&lng=en&tlng=en. Cited: May 27, 2018. [  Links  ]
+
+Packer, A.L. Os periódicos brasileiros e a comunicação da pesquisa nacional. Revista USP , v.89, p.26-61, 2011. Doi: http://dx.doi.org/10.11606/issn.2316-9036.v0i89p26-61. Available from: http://www.revistas.usp.br/revusp/article/view/13868 . Cited: Oct. 23, 2018. [  Links  ]
+
+Pavan, C.; Barbosa, M.C.B. Financiamento público no Brasil para a publicação de artigos em acesso aberto: alguns apontamentos. Em Questão , v.23, n.2, p.120-145, 2017. Doi: http://dx.doi.org/10.19132/1808-5245232.120-145. Available from: http://seer.ufrgs.br/index.php/EmQuestao/article/view/67146/4067 8. Cited: May 27, 2018. [  Links  ]
+
+Pinfield, S.; Salter, J.; Bath, P.A. The “total cost of publication” in a hybrid open-access environment: Institutional approaches to funding journal article-processing charges in combination with subscriptions. Journal of the Association for Information Science and Technology , v.67, n.7, p.1751-1766, 2016. Doi: http://dx.doi.org/10.1002/asi.23446. Available from: https://onlinelibrary.wiley.com/doi/full/10.1002/asi.23446. Cited: May 27, 2018. [  Links  ]
+
+Príncipe, E.; Barradas, M.M. Modelos de negócios de revistas científicas brasileiras: author pay? In : Encontro Nacional de Editores Científicos, 14., 2013, São Pedro. Anais [...] São Pedro: Abec, 2013. p.26-30. Disponível em: http://ocs.abecbrasil.org.br/index.php/ENEC/ENECUSP/paper/viewFile/47/52 . Acesso em: 18 ago. 2018. [  Links  ]
+
+Solomon, D.J.; Björk, B.-C. A study of open access journals using article processing charges. Journal of the American Society for Information Science and Technology , v.63, n.8, p.1485-1495, 2012. Doi: http://dx.doi.org/10.1002/asi.22673. Available from: http://doi.wiley.com/10.1002/asi.22673. Cited: May 27, 2018. [  Links  ]
+
+Solomon, D.; Björk, B.-C. Article processing charges for open access publication: The situation for research intensive universities in the USA and Canada. PeerJ , v.4, e2264, 2016. Doi: http://dx.doi.org/10.7717/peerj.2264. Available from: https://peerj.com/articles/2264 . Cited: May 27, 2018. [  Links  ]
+
+Van der Graaf, M. Paying for open access : The author’s perspective. Bristol: [s.n.], 2017. E-book. Doi: http://dx.doi.org/10.5281/zenodo.438037. Available from: https://zenodo.org/record/438037 . Cited: May 27, 2018. [  Links  ]
+
+Van Noorden, R. The true cost of science publishing. Nature , v.495, n.7442, p.426-429, 2013. Doi: http://dx.doi.org/10.1038/495426a. Available from: https://www.nature. com/news/open-access-the-true-cost-of-science-publis hing-1.12676. Cited: May 27, 2018. [  Links  ]
+
+Wang, L.L.; Liu, X.Z.; Fang, H. Investigation of the degree to which articles supported by research grants are published in open access health and life sciences journals. Scientometrics , v.104, n.2, p.511-528, 2015. Doi: http://dx.doi.org/10.1007/s11192-015-1624-4. Available from: http://link.springer.com/10.1007/s11192-015-1624-4 . Cited: Sept. 24, 2018. [  Links  ]
+
+West, J.D.; Bergstrom, C.T.; Bergstrom, T.C. Cost effectiveness of open access publications. Economic Inquiry , v.52, n.4, p.1315-1321, 2014. Doi: http://dx.doi.org/10.1111/ecin.12117. Available from: https://onlinelibrary.wiley.com/doi/full/10.11 11/ecin.12117. Cited: May 27, 2018. [  Links  ]
+
+Received: June 07, 2018; Revised: October 29, 2018; Accepted: February 01, 2019
+
+Correspondência para/Correspondence to: S. ALBAGLI. E-mail: < sarita.albagli@gmail.com >.
+
+Contributors
+
+A.L. Appel contributed to the acquisition and preparation of data. A.L. appel and S. albagli contributed to the conception and design of the study, data analysis and interpretation, drafting, revising and final approval of the version to be published.
+
+Creative Commons License  This is an Open Access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
+ 
+Núcleo de Editoração SBI - Campus II - Av. John Boyd Dunlop, s/n. - Prédio de Odontologia
+Jd. Ipaussurama - 13059-900 - Campinas - SP
+Tel.: +55 19 3343-6875
+
+transinfo@puc-campinas.edu.br
