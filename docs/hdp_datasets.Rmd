@@ -38,8 +38,6 @@ output:
 #     wrap: 72
 ---
 
-
-
 ```{r setup, include=FALSE}
 library(knitr)
 library(rmdformats)
@@ -60,13 +58,18 @@ opts_knit$set(width=75)
 ```
 
 
-## HDP Datasets
+## 1) Archived & Publicly Available HDP Datasets
+
+1. Bruna, Emilio M. (2014): *Heliconia acuminata* seed set (seeds per fruit) 2008. figshare. Dataset. [https://doi.org/10.6084/m9.figshare.1273926.v2](https://doi.org/10.6084/m9.figshare.1273926.v2) 
+
+1. Bruna, Emilio M. (2014): Map of BDFFP Reserve 1501, Manaus, Brazil. figshare. Dataset. [https://doi.org/10.6084/m9.figshare.1157869.v1](https://doi.org/10.6084/m9.figshare.1157869.v1) 
+
+1. Bruna, Emilio M. (2012): _Heliconia acuminata_ (Heliconiaceae) Leaf Length vs. Leaf Area. figshare. Dataset. [(https://doi.org/10.6084/m9.figshare.92691 )](https://doi.org/10.6084/m9.figshare.92691)
+
+1. *Heliconia acuminata* microsatellite markers from [Côrtes et al. 2009](https://doi.org/10.1111/j.1755-0998.2009.02627.x), *Molecular Ecology Resources*: [[Genbank Archive]](https://www.ncbi.nlm.nih.gov/nuccore/?term=heliconia%20acuminata%20bruna) 
 
 
 
---- 
-nocite: |
-      
-      @HeliconiaAcuminataSeed2014
----   
+
+    **For a *.bib* file of these datasets [[click here]](https://github.com/BrunaLab/HeliconiaSurveys/blob/a2d8dcc79119efcefc196e0fd5138e878e0cca24/docs/HeliconiaSurveys_datasets/HeliconiaSurveys_datasets.bib).**
 
