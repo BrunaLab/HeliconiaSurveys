@@ -27,8 +27,8 @@ fontsize: 12pt
 linkcolor: blue
 urlcolor: blue
 bibliography: ["./HeliconiaSurveys_papers/HeliconiaSurveys_papers.bib","./HeliconiaSurveys_related/HeliconiaSurveys_related.bib" ]
-# csl: ecology.csl
-csl: nature.csl
+csl: ecology.csl
+# csl: nature.csl
 output:
   # pdf_document: default
   # html_document:
@@ -66,7 +66,7 @@ opts_knit$set(width=75)
 --- 
 nocite: |
     
-    @brooksStatisticalModelingPatterns2019a, @brunaArePlantPopulations2003a, @brunaBiologicalImpactsDeforestation2004, @brunaCompensatoryResponsesUnderstory2005d, @brunaDemographicEffectsHabitat2005, @brunaEdgeEffectsGrowth2011c, @brunaEffectsForestFragmentation2002b, @brunaExperimentalAssessmentHeliconia2002, @brunaForestFragmentsTropical2005, @brunaHabitatFragmentationDemographic2002b, @brunaHeliconiaAcuminataReproductive2004e, @brunaRegenerationPopulationStructure2005d, @brunaSeedGerminationRainforest1999b, @cortesCharacterization10Microsatellite2009c, @cortesLowPlantDensity2013b, @fiskeAlternativeSpatialSampling2010, @fiskeEffectsSampleSize2008a, @gagnonGrowthUnderstoryHerb2011b, @morrisLongevityCanBuffer2008a, @ribeiroInfluencePostClearingTreatment2010b, @scottDelayedEffectsClimate2021, @uriarteDisentanglingDriversReduced2011b, @uriarteEffectsForestFragmentation2010b
+    @leiteModelingPersistencePlant2021; @brooksStatisticalModelingPatterns2019a, @brunaArePlantPopulations2003a, @brunaBiologicalImpactsDeforestation2004, @brunaCompensatoryResponsesUnderstory2005d, @brunaDemographicEffectsHabitat2005, @brunaEdgeEffectsGrowth2011c, @brunaEffectsForestFragmentation2002b, @brunaExperimentalAssessmentHeliconia2002, @brunaForestFragmentsTropical2005, @brunaHabitatFragmentationDemographic2002b, @brunaHeliconiaAcuminataReproductive2004e, @brunaRegenerationPopulationStructure2005d, @brunaSeedGerminationRainforest1999b, @cortesCharacterization10Microsatellite2009c, @cortesLowPlantDensity2013b, @fiskeAlternativeSpatialSampling2010, @fiskeEffectsSampleSize2008a, @gagnonGrowthUnderstoryHerb2011b, @morrisLongevityCanBuffer2008a, @ribeiroInfluencePostClearingTreatment2010b, @scottDelayedEffectsClimate2021, @uriarteDisentanglingDriversReduced2011b, @uriarteEffectsForestFragmentation2010b
 ---   
 #### HDP Articles and Book Chapters
 
