@@ -160,6 +160,14 @@ kbl(marked_per_yr)
 ```
 
 
-## Publications
+## Related Information 
 
-A list of all publications is available [here](https://brunalab.github.io/HeliconiaSurveys/hdp_papers.html).
+1. HDP Project Publications:  [link](https://brunalab.github.io/HeliconiaSurveys/hdp_papers.html)
+
+1. Other HDP Datasets: [link](https://brunalab.github.io/HeliconiaSurveys/hdp_datasets.html)
+
+1. Log of Tag Number Changes:  [link](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/data_clean/tag_changes.csv)
+
+1. Locations and size of treefalls recorded during surveys: [link]()
+
+1. List of plants impacted by treefalls: [link]()

@@ -58,7 +58,7 @@ opts_knit$set(width=75)
 ```
 
 
-## 1) Archived & Publicly Available HDP Datasets
+## Archived & Publicly Available HDP Datasets
 
 1. Bruna, Emilio M. (2014): *Heliconia acuminata* seed set (seeds per fruit) 2008. figshare. Dataset. [https://doi.org/10.6084/m9.figshare.1273926.v2](https://doi.org/10.6084/m9.figshare.1273926.v2) 
 
