@@ -47,6 +47,32 @@ treefalls<-treefalls %>%
 cover<-as_tibble(str_extract(treefalls$notes, "[:digit:]+[//%]"))
 treefalls$perc_cover<-cover$value                         
 treefalls$perc_cover<-gsub("%","",treefalls$perc_cover)
+treefalls<-treefalls %>% 
+  mutate(plot = case_when(
+    plot == "2107" ~ "FF-1",
+    plot == "2108" ~ "FF-2",
+    plot == "2206" ~ "FF-5",
+    plot == "5756" ~ "CF-3",
+    plot == "5750" ~ "CF-2",
+    plot == "5751" ~ "FF-3",
+    plot == "5752" ~ "FF-2",
+    plot == "5753" ~ "FF-3",
+    plot == "CF-CF" ~ "CF-6",
+    plot == "Colosso-1" ~ "FF-3",
+    plot == "Colosso-10" ~ "FF-6",
+    plot == "PA CF" ~ "CF-5",
+    plot == "PA-CF" ~ "CF-5",
+    plot == "PA1" ~ "FF-4",
+    plot == "PA-10" ~ "FF-7",
+    plot == "Dim-CF" ~ "CF-4",
+    plot == "Florestal" ~ "CF-1",
+    plot == "florestal" ~ "CF-1",
+    plot == "cf cf" ~ "CF-6",
+    plot == "dim cf" ~ "CF-4",
+    TRUE ~ plot
+  ))
+
+unique(treefalls$plot)
 # 
 # 
 # plot is a mess due to treefall

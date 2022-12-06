@@ -168,6 +168,6 @@ kbl(marked_per_yr)
 
 1. Log of Tag Number Changes:  [link](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/data_clean/tag_changes.csv)
 
-1. Locations and size of treefalls recorded during surveys: [link]()
+1. Locations and size of treefalls recorded during surveys: [link] [in progress...]
 
-1. List of plants impacted by treefalls: [link]()
+1. List of plants impacted by treefalls: [link](https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/data_clean/treefall_impacts.csv)
