@@ -666,7 +666,7 @@ tag_changes <-
 # Save the files ----------------------------------------------------------
 
 
-write_csv(ha_dryad, "./data_clean/HDP_1997_2009.csv")
+write_csv(ha_dryad, "./data_clean/HDP_1998_2009.csv")
 
 write_csv(ha_plots, "./data_clean/HDP_plots.csv")
 
