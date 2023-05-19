@@ -6,12 +6,13 @@
 # Script created in R version 3.3.1
 
 # Load libraries ----------------------------------------------------------
+
 library(tidyverse)
 library(readxl)
 
-# DATA ENTRY AND NAME CLEANUP ---------------------------------------------
+# LOAD RAW DEMOGRAPHIC DATA ----------------------------------------------
 
-# load the CSV file
+# load the CSV file of demographic data
 
 ha_data <-
   read.csv(
@@ -22,11 +23,17 @@ ha_data <-
     check.names = FALSE
   )
 
-# make the column names lower case
+# convert column names to lower case
 names(ha_data) <- tolower(names(ha_data))
+
+# some of the column names were the same for each survey year, 
+# so they were made unique and then corrected
+
+# make duplicate column names unique
 names(ha_data) <- make.unique(names(ha_data), sep = "_")
-names(ha_data)
-# rename the columns that have duplicate names
+# names(ha_data)
+
+# rename columns with duplicate names
 ha_data <- ha_data %>% rename(
   "habitat" = "size",
   "plant_id_07" = "plantid",
@@ -43,8 +50,7 @@ ha_data <- ha_data %>% rename(
 )
 names(ha_data)
 
-
-# correct the data types assigned to each
+# correct each the data type of each column
 str(ha_data)
 ha_data <-
   ha_data %>%
@@ -53,7 +59,7 @@ ha_data <-
   mutate(column = as.character(column))
 
 
-# Convert the names of ranches to 3 letter codes
+# Convert the names of the ranches to a 3 letter code
 ha_data <- ha_data %>%
   mutate(ranch = str_replace_all(
     ranch,
@@ -69,21 +75,30 @@ ha_data <- ha_data %>%
       "Florestal" = "Florestal-CF"
     )
   ))
-#
+
 # unique(ha_data$ranch)
 # unique(ha_data$plot)
+
+
+
+# LOAD PLOT DESCRIPTORS & ADD THEM TO DEMOG DATA --------------------------
 
 plot_info <-
   read_csv("./data_raw/heliconia_plot_descriptors.csv") %>%
   select(plotID = habitat_type...1, plot = HDP_plot_ID_no)
+
+# add plot descriptors to demographic data
 ha_data <- left_join(ha_data, plot_info, by = "plot")
 
-names(ha_data)
-names(plot_info)
-rm(plot_info)
-str(ha_data)
+# names(ha_data)
+# names(plot_info)
+# str(ha_data)
 
-# DATA CLEANING -----------------------------------------------------------
+# delete the plot-level data from the environment
+rm(plot_info)
+
+
+# CLEANING UP THE DATA ----------------------------------------------------
 
 # delete unnecessary columns
 ha_data <- ha_data %>% select(
@@ -110,82 +125,99 @@ ha_data <- ha_data %>%
 
 
 # merge the PA10 data -----------------------------------------------------
+
+# The data from Porto Alegre's 10-ha fragment were in a different CSV file.
+# They were cleaned up and merged with the rest of the demographic data 
+# with the function `merge_with_PA10.R`  
+
 source("./code_data_cleaning/merge_with_PA10.R")
 ha_data <- merge_with_PA10(ha_data)
-names(ha_data)
 
-# to match up file from PA with others need to do the following:
-ha_data <- ha_data %>% rename("code" = "notes")
 
-# a few values for x_09 were entered with a comma instead of decimal
-ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
+# clean up codes column ----------------------------------------------------
 
-# clean up codes/notes ----------------------------------------------------
+# The survey team often recorded observations about individual plants or
+# the conditions in plots. These are standardized with function `clean_codes.R`
+
 source("./code_data_cleaning/clean_codes.R")
 ha_data <- clean_codes(ha_data)
 
 # Add a unique plant_id index number for each plant -----------------------
-# adding the plant id number here means any edits below will not alter
-# the plant id number--important for changes made after published to Dryad.
+
+# adding the plant id number here means any subsequent edits or correction
+# (now or post-publication will *not* change a plant's unique ID number.
 ha_data <- ha_data %>%
   group_by(plot, row, column, tag_number) %>%
   mutate(plant_id = cur_group_id(), .before = 1)
 
 
-# corrections 5750 --------------------------------------------------------
-source("./code_data_cleaning/correct_5750.R")
-ha_data <- correct_5750(ha_data)
 
-# corrections 5756 --------------------------------------------------------
-source("./code_data_cleaning/correct_5756.R")
-ha_data <- correct_5756(ha_data)
+# PLOT-LEVEL CORRECTIONS --------------------------------------------------
 
-# Corrections 5753 --------------------------------------------------------
-source("./code_data_cleaning/correct_5753.R")
-ha_data <- correct_5753(ha_data)
+# corrections for a demographic plot are made using a lot-specific function 
 
-# Corrections 5754 --------------------------------------------------------
-source("./code_data_cleaning/correct_5754.R")
-ha_data <- correct_5754(ha_data)
+# Continuous Forest 
 
-# Corrections 5751 --------------------------------------------------------
-source("./code_data_cleaning/correct_5751.R")
-ha_data <- correct_5751(ha_data)
-
-# Corrections 2108 --------------------------------------------------------
-source("./code_data_cleaning/correct_2108.R")
-ha_data <- correct_2108(ha_data)
-
-# Corrections 2206 --------------------------------------------------------
-source("./code_data_cleaning/correct_2206.R")
-ha_data <- correct_2206(ha_data)
-
-# Corrections 2107 --------------------------------------------------------
-source("./code_data_cleaning/correct_2107.R")
-ha_data <- correct_2107(ha_data)
-
-# Corrections 5752  -------------------------------------------------------
-source("./code_data_cleaning/correct_5752.R")
-ha_data <- correct_5752(ha_data)
-
-# corrections - Florestal -------------------------------------------------
+# corrections CF-1 (aka Florestal) ----------------------------------------
 source("./code_data_cleaning/correct_florestal.R")
 ha_data <- correct_florestal(ha_data)
 
-# Corrections - Porto Alegre CF -------------------------------------------
-source("./code_data_cleaning/correct_pa_cf.R")
-ha_data <- correct_pa_cf(ha_data)
+# corrections CF-2 (aka Esteio/Camp 41, 5750) -----------------------------
+source("./code_data_cleaning/correct_5750.R")
+ha_data <- correct_5750(ha_data)
 
-# Corrections Dimona-CF ---------------------------------------------------
+# corrections CF-3 (aka Esteio/Camp 41, 5756) ------------------------------
+source("./code_data_cleaning/correct_5756.R")
+ha_data <- correct_5756(ha_data)
+
+# Corrections CF-4 (aka Dimona-CF) -----------------------------------------
 source("./code_data_cleaning/correct_dimona_cf.R")
 ha_data <- correct_dimona_cf(ha_data)
 
-# Corrections CaboFrio-CF -------------------------------------------------
+# Corrections - CF-5 (aka Porto Alegre CF) --------------------------------
+source("./code_data_cleaning/correct_pa_cf.R")
+ha_data <- correct_pa_cf(ha_data)
+
+# Corrections CF-6 (aka CaboFrio-CF) -------------------------------------
 source("./code_data_cleaning/correct_cabofrio_cf.R")
 ha_data <- correct_cabofrio_cf(ha_data)
 
+# 1-ha Fragments
+
+# Corrections FF-1 (aka Dimona 1-ha 2107) -------------------------------
+source("./code_data_cleaning/correct_2107.R")
+ha_data <- correct_2107(ha_data)
+
+# Corrections FF-2 (aka Dimona 1-ha 2108) -------------------------------
+source("./code_data_cleaning/correct_2108.R")
+ha_data <- correct_2108(ha_data)
+
+# Corrections FF-3 (aka Colosso 1-ha, 5751) -----------------------------
+source("./code_data_cleaning/correct_5751.R")
+ha_data <- correct_5751(ha_data)
+
+# Corrections FF-4 (aka Porto Alegre 1-ha, 5753) ------------------------
+source("./code_data_cleaning/correct_5753.R")
+ha_data <- correct_5753(ha_data)
+
+# 10-ha fragments
+
+# Corrections FF-5 (aka Dimona 10-ha 2206) ------------------------------
+source("./code_data_cleaning/correct_2206.R")
+ha_data <- correct_2206(ha_data)
+
+# Corrections FF-6 (aka Colosso 10-ha 5752) -----------------------------
+source("./code_data_cleaning/correct_5752.R")
+ha_data <- correct_5752(ha_data)
+
+# Corrections FF-7 (aka Porto Alegre 10-ha, 5754) -----------------------
+source("./code_data_cleaning/correct_5754.R")
+ha_data <- correct_5754(ha_data)
+
+
 # correct & standardize tag numbers ---------------------------------------
-# round down the duplicate numbers with decimals
+
+# round down the duplicate numbers with decimals 
 # (the plant_ids are unique)
 ha_data$tag_number <- floor(ha_data$tag_number)
 ha_data$tag_number <- as.integer(ha_data$tag_number)
@@ -197,60 +229,60 @@ ha_data$tag_number <- as.integer(ha_data$tag_number)
 
 # correct "zombie plants"  ------------------------------------------------
 
-# Zombie Plants = marked dead in year t but with measurement of shts or ht
-# in a subsequent year, indicating they had lost above-ground parts
-# but were still alive
+# Zombie Plants are plants that were marked dead in year t but with 
+# a measurement of shts or ht in a subsequent year, indicating they had 
+# lost above-ground parts but were still alive. This function identifies
+# them, corrects those that are simple to correct, and then saves a csv
+# file with those that should be reviewed in the original records and corrected
+# in the correction file.
+# A message will be provided if there are no zombies in the dataset
 
 source("./code_data_cleaning/find_zombies.R")
 zombies <- find_zombies(ha_data)
-zombies %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id)) %>%
-  arrange(habitat, desc(N_plants))
 
-# check for duplicate id and tag numbers -----------------------------
+# If there are zombies, un-commented the code below to see how many are found 
+# in each plot
 
-# ID Numbers
-check_dupes <- function(ha_data) {
-  ha_data %>%
-    group_by(year, plant_id) %>%
-    count() %>%
-    filter(n > 1) %>%
-    pull(plant_id) %>%
-    unique()
-}
-initial_dupes <- check_dupes(ha_data)
-initial_dupes <- ha_data %>% filter(plant_id %in% initial_dupes)
-initial_dupes
-# tag numbers
-source("./code_data_cleaning/detect_duplicate_plants.R")
-dupes <- detect_duplicate_plants(ha_data)
-dupes %>%
-  group_by(habitat, plot) %>%
-  summarize(N_plants = n_distinct(plant_id)) %>%
-  arrange(habitat, desc(N_plants)) %>%
-  filter(habitat != "")
+# zombies %>%
+#   group_by(habitat, plot) %>%
+#   summarize(N_plants = n_distinct(plant_id)) %>%
+#   arrange(habitat, desc(N_plants))
 
-duplicate_tags <- dupes %>%
-  select(tag_number, plot) %>%
-  group_by(tag_number, plot) %>%
-  slice(1) %>%
-  filter(tag_number > 0) %>%
-  arrange(plot)
-duplicate_tags
 
-duplicate_tags$tag_number <- as.numeric(duplicate_tags$tag_number)
-duplicate_tags$duplicate_tag <- "duplicate tag number"
-ha_data <- left_join(ha_data, duplicate_tags)
-names(ha_data)
+# check for duplicate id numbers -----------------------------
 
-count_dupes <- ha_data %>%
-  filter(duplicate_tag == "duplicate tag number") %>%
-  group_by(tag_number, plot) %>%
-  summarize(N_plants = n_distinct(tag_number))
-nrow(duplicate_tags) == nrow(count_dupes)
+# This will verify that there are no duplicate ID numbers 
+
+source("./code_data_cleaning/find_dupe_id.R")
+
+initial_dupes <- find_dupe_id(ha_data)
+# initial_dupes
+
+
+# check for duplicate tag numbers -----------------------------
+
+# occasionally a member of the survey team will write down or read out a 
+# tag number incorrectly.  The function `detect_duplicate_plants.R` will
+# identify them and save as a csv file, which will allow for 
+# reviewing the original records to sort the duplicates out
+# records. It will also return the demographic data file 
+# with the duplicate tag numbers labeled in a new column
+
+
+
+source("./code_data_cleaning/find_dupe_tags.R")
+ha_data <- find_dupe_tags(ha_data)
+
+# This will give you a list of the individual duplicated tag numbers and
+# the plot in which they are located
+# 
+# count_dupes <- ha_data %>%
+#   filter(duplicate_tag == "duplicate tag number") %>%
+#   group_by(tag_number, plot) %>%
+#   summarize(N_plants = n_distinct(tag_number))
 
 # simplify codes ----------------------------------------------------------
+
 unique(ha_data$code)
 
 # This is simply to see how many have these different codes

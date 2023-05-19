@@ -170,5 +170,16 @@ merge_with_PA10 <- function(ha_data) {
  
   # bind up wiht ha_data and return
   ha_data<-bind_rows(ha_data,pa)
+  
+  # to match up file from PA with others need to do the following:
+  # names(ha_data)
+  ha_data <- ha_data %>% rename("code" = "notes")
+  
+  
+  # a few values for x_09 were entered with a comma instead of decimal point
+  # this line corrects them
+  ha_data$x_09 <- as.numeric(gsub("[\\,;]", "\\.", ha_data$x_09))
+  
+  
   return(ha_data)
 }
