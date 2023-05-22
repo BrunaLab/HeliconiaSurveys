@@ -33,12 +33,13 @@ find_dupe_tags <- function(ha_data) {
     
     write.csv(dupe_simplified, "./data_check/dupe_heliconia_tags.csv", row.names = FALSE)
     
+    print("The plants with identical tag numbers (i.e., `duplicate tags` have been labeled in the datafile.") 
     print("The file of duplicate tags in the dataset has been saved as `dupe_heliconia_tags.csv`.") 
-    print("This function returns the summary of how many are in each plot (see below).")
+    print("The summary of how many are in each plot is below.")
     
     print(dupes_count)
     
-    #  now label the duplocates in the 
+    #  now label the duplicates in the 
     
     duplicate_tags <- dupes %>%
       select(tag_number, plot) %>%
@@ -59,15 +60,7 @@ find_dupe_tags <- function(ha_data) {
     
   }
   
-  
-  # write.csv(dupes, "./data_check/dupes_heliconia.csv", row.names = FALSE)
-  
-  
-  
-  
-  
-  
-  # return(dupes)
+
   return(ha_data)
   
 }
