@@ -7,8 +7,19 @@ library(tidyverse)
 
 # This will create a df with the characteristics of heliconia demographic 
 # plots and then save the df as a csv file
-
 ha_plots<-read_csv("./data_clean/HDP_plots.csv")
+# 
+# # need to add have the EB plot number as a way of joining the dataset below
+# ha_plots_2 <- read_csv("./data_clean/heliconia_data_clean.csv") %>% 
+#   select(
+#     plot_id,
+#     plot
+#   ) %>%
+#   distinct() 
+# 
+# ha_plots<-left_join(ha_plots,ha_plots_2)
+# remove(ha_plots_2)
+
 
 # load tag changes --------------------------------------------------------
 
@@ -20,7 +31,7 @@ tag_changes <-
     sep = ",",
     check.names = FALSE
   ) %>% 
-  mutate(plot = case_when(
+  mutate(plot_id = case_when(
     plot == "2107" ~ "FF-1",
     plot == "2108" ~ "FF-2",
     plot == "2206" ~ "FF-5",
@@ -44,8 +55,15 @@ tag_changes <-
   select(-yr_isolated) %>% 
   as_tibble() %>% 
   arrange(plot,old_tag_no,year) %>% 
-  relocate("ranch","habitat", "bdffp_no",.before="year") 
+  relocate("ranch","habitat", "bdffp_no",.before="year") %>% 
+  relocate("plot_id",.before=1) 
 
+tag_changes<-tag_changes %>% 
+  mutate(notes=case_when(
+         notes==""~NA,
+         .default = notes
+         )
+  )
 
 
 # save the file -----------------------------------------------------------

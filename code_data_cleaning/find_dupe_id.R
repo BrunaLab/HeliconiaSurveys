@@ -13,7 +13,7 @@ find_dupe_id <- function(ha_data) {
     
     x<-"\n
     ------------------------------------------------------------------
-    There are no duplicate plant_id numbers in your dataset.
+    There are NO duplicate plant_id numbers in your dataset.
     ------------------------------------------------------------------
     \n"
     

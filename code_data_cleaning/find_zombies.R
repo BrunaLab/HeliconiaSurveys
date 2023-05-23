@@ -3,8 +3,10 @@ find_zombies <- function(ha_data) {
     ha_data %>%
     group_by(plant_id) %>%
     mutate(
-      zombie = if_else(lag(code, 1) == "dead", "delete", NA_character_),
-      .before = "code"
+      # zombie = if_else(lag(code, 1) == "dead", "delete", NA_character_),
+      zombie = if_else(lag(census_status, 1) == "dead", "delete", NA_character_),
+      .before = 1
+      # .before = "code"
     ) %>%
     fill(zombie, .direction = "down") %>%
     filter(zombie == "delete") %>%
@@ -19,7 +21,7 @@ find_zombies <- function(ha_data) {
     x<-"\n
     ------------------------------------------------------------------
     
-    There are no Zombie Plants in your dataset.
+    There are NO zombie plants in your dataset.
     
     ------------------------------------------------------------------
     \n"
@@ -60,8 +62,8 @@ find_zombies <- function(ha_data) {
     
     writeLines(x)   
 
-    
+    print(zombie_summary)
 
-    return(zombie_summary)
+    # return(ha_data)
   }
 }

@@ -2,6 +2,9 @@
   library(tidyverse)
   
   
+  # load the complete and clean Heliconia dataset ---------------------------
+  
+  
   # these are the years each fragment was isolated
   isolation <- tibble(
     "bdffp_no" = c(2107, 2108, 1104, 3114, 2206, 1202, 3209),
@@ -10,15 +13,15 @@
     mutate(across(where(is.double), as.factor))
   
   # select the plot id variables
-  ha_plots <- ha_data %>%
+  ha_plots <- read_csv("./data_clean/heliconia_data_clean.csv") %>% 
     select(
-      "plotID",
+      "plot_id",
       "habitat",
       "ranch",
       "bdffp_reserve_no"
     ) %>%
     distinct() %>%
-    arrange(plotID) %>%
+    arrange(plot_id) %>%
     mutate(ranch = recode_factor(ranch, "PortoAlegre" = "porto alegre")) %>%
     mutate(ranch = recode_factor(ranch, "DIM" = "dimona")) %>%
     mutate(ranch = recode_factor(ranch, "PAL" = "porto alegre")) %>%
@@ -28,8 +31,7 @@
     mutate(habitat = recode_factor(habitat, "CF" = "forest")) %>%
     mutate(bdffp_reserve_no = replace(bdffp_reserve_no, bdffp_reserve_no == "none", NA)) %>%
     rename(
-      "bdffp_no" = "bdffp_reserve_no",
-      "plot" = "plotID"
+      "bdffp_no" = "bdffp_reserve_no"
     ) %>%
     left_join(isolation)
   

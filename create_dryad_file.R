@@ -4,9 +4,9 @@
 
 library(tidyverse)
 
-# clean the raw Heliconia data --------------------------------------------
-source("./code_data_cleaning/clean_heliconia_data.R")
-ha_data<-clean_heliconia_data()
+# load the complete and clean Heliconia dataset ---------------------------
+ha_data<-read_csv("./data_clean/heliconia_data_clean.csv")
+
 
 
 # organize it for Dryad format --------------------------------------------
@@ -17,15 +17,14 @@ ha_data<-clean_heliconia_data()
 ha_dryad <- ha_data %>%
   arrange(row, as.numeric(column)) %>%
   mutate(subplot = paste(row, column, sep = "")) %>%
-  select(plotID,
+  select(plot_id,
          subplot,
          plant_id,
          year,
          shts,
          ht,
          infl,
-         code,
-         sdlg_status,
+         recorded_sdlg,
          found_without_tag,
          treefall_status,
          condition,
@@ -38,7 +37,7 @@ ha_dryad <- ha_data %>%
 
 # no measurements for some plots in 2000, 2003
 ha_dryad %>%
-  group_by(plot, year) %>%
+  group_by(plot_id, year) %>%
   summarize(non_na = sum(!is.na(shts))) %>%
   filter(non_na < 5)
 
@@ -77,6 +76,3 @@ test <- ha_dryad %>%
 
 write_csv(ha_dryad, "./data_clean/HDP_1998_2009.csv")
 
-
-return(ha_dryad)
-}

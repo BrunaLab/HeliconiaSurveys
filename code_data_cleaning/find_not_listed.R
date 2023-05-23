@@ -4,8 +4,10 @@ find_not_listed <- function(ha_data) {
   # TODO: Move this over to the in-progress corrections
   not_listed <-
     ha_data %>%
-    filter(code == "not on list" |
-             code == "dead and not on list") %>%
+    filter(notes == "not on list" |
+             notes == "dead and not on list") %>%
+    # filter(code == "not on list" |
+    #          code == "dead and not on list") %>%
     arrange(plot, tag_number)
   
   # unique(not_listed$code)
@@ -21,7 +23,7 @@ find_not_listed <- function(ha_data) {
     
     x<-"\n
     ------------------------------------------------------------------
-    There are no plants in the dataset that were not on the list of
+    There are NO plants in the dataset that were not on the list of
     plants to survey that was taken to the field.
     ------------------------------------------------------------------
     \n"
@@ -32,13 +34,9 @@ find_not_listed <- function(ha_data) {
     
     x<-"\n
     ------------------------------------------------------------------
-    This function returns a summary of how many of plants in each plot 
-    had a tag but were not on the list of plants to be measured in one
-    of the survey years. (it is also printed below).
-    
     A csv file of the plants in the dataset that were not on the 
     survey list taken to the field in any given year has been saved 
-    as `heliconia_not_on_survey_list.csv`
+    as `heliconia_not_on_survey_list.csv`. A summary is below.
     ------------------------------------------------------------------
     \n"
     
@@ -58,6 +56,6 @@ find_not_listed <- function(ha_data) {
 
   }
 
-  # return(dupes)
-  return(nol_summary)
+  
+  # return()
 }

@@ -1,10 +1,6 @@
 clean_heliconia_data <- function() {
-  
-
 
 # Code Overview -----------------------------------------------------------
-
-# Code to conduct the analyses and generate the figures in:
 # Script created by Emilio M. Bruna, embruna@ufl.edu
 # Script created in R version 3.3.1
 
@@ -13,122 +9,11 @@ clean_heliconia_data <- function() {
 library(tidyverse)
 library(readxl)
 
-# LOAD RAW DEMOGRAPHIC DATA ----------------------------------------------
+# LOAD AND PREP RAW DEMOGRAPHIC DATA ---------------------------------------
 
-# load the CSV file of demographic data
-
-ha_data <-
-  read.csv(
-    "./data_raw/Hacuminata_98-09_12oct2016.csv",
-    dec = ".",
-    header = TRUE,
-    sep = ",",
-    check.names = FALSE
-  )
-
-# convert column names to lower case
-names(ha_data) <- tolower(names(ha_data))
-# names(ha_data)
-# some of the column names were the same for each survey year, 
-# so they were made unique and then corrected
-
-# make duplicate column names unique
-names(ha_data) <- make.unique(names(ha_data), sep = "_")
-# names(ha_data)
-
-# rename columns with duplicate names
-ha_data <- ha_data %>% rename(
-  "habitat" = "size",
-  "plant_id_07" = "plantid",
-  "row_07" = "row_1",
-  "column_07" = "col",
-  "x_08" = "x",
-  "y_08" = "y",
-  "plant_id_08" = "plantid_1",
-  "row_08" = "row_2",
-  "column_08" = "col_1",
-  "x_09" = "x_1",
-  "y_09" = "y_1",
-  "code_to_eb" = "notes to emilio"
-)
-# names(ha_data)
-
-# correct each the data type of each column
-str(ha_data)
-ha_data <-
-  ha_data %>%
-  mutate(across(starts_with("notes_"), as.character)) %>%
-  mutate(across(starts_with("ht_"), as.double)) %>%
-  mutate(column = as.character(column))
-
-
-# Convert the names of the ranches to a 3 letter code
-ha_data <- ha_data %>%
-  mutate(ranch = str_replace_all(
-    ranch,
-    c("PortoAlegre" = "PAL", "Esteio-Colosso" = "EST", "Dimona" = "DIM")
-  )) %>%
-  # clean up the names of plots
-  mutate(plot = str_replace_all(
-    plot,
-    c(
-      "Dimona CF" = "Dimona-CF",
-      "PA-CF" = "PortoAlegre-CF",
-      "Cabo Frio" = "CaboFrio-CF",
-      "Florestal" = "Florestal-CF"
-    )
-  ))
-
-# unique(ha_data$ranch)
-# unique(ha_data$plot)
-
-
-
-# LOAD PLOT DESCRIPTORS & ADD THEM TO DEMOG DATA --------------------------
-
-
-plot_info <-
-  read_csv("./data_raw/heliconia_plot_descriptors.csv") %>%
-  select(plotID = habitat_type...1, plot = HDP_plot_ID_no)
-
-
-
-# add plot descriptors to demographic data
-ha_data <- left_join(ha_data, plot_info, by = "plot")
-
-# names(ha_data)
-# names(plot_info)
-# str(ha_data)
-
-# delete the plot-level data from the environment
-rm(plot_info)
-
-
-# CLEANING UP THE DATA ----------------------------------------------------
-
-# delete unnecessary columns
-ha_data <- ha_data %>% select(
-  -plant_id_07,
-  -row_07,
-  -column_07,
-  -plant_id_08,
-  -row_08,
-  -column_08,
-  -code_to_eb,
-  -x_08,
-  -y_08
-)
-
-# Convert from wide to long format
-
-ha_data <- ha_data %>%
-  pivot_longer(
-    cols = starts_with(c("shts_", "ht_", "infl_", "notes_")),
-    names_to = c(".value", "year"),
-    names_sep = "_"
-  ) %>%
-  mutate(year = as.numeric(year))
-
+source("./code_data_cleaning/prep_raw_ha_data.R")
+ha_data<-prep_raw_ha_data()
+  
 
 # merge the PA10 data -----------------------------------------------------
 
@@ -143,7 +28,7 @@ ha_data <- merge_with_PA10(ha_data)
 # clean up codes column ----------------------------------------------------
 
 # The survey team often recorded observations about individual plants or
-# the conditions in plots. These were entered as numberical codes. The 
+# the conditions in plots. These were entered as numerical codes. The 
 # function `clean_codes.R` converts them to text to simplify clean-up 
 
 source("./code_data_cleaning/codes_to_text.R")
@@ -213,7 +98,6 @@ ha_data <- correct_5753(ha_data)
 source("./code_data_cleaning/correct_2206.R")
 ha_data <- correct_2206(ha_data)
 
-
 # Corrections FF-6 (aka Colosso 10-ha 5752) -----------------------------
 source("./code_data_cleaning/correct_5752.R")
 ha_data <- correct_5752(ha_data)
@@ -232,36 +116,6 @@ ha_data <- correct_5754(ha_data)
 
 source("./code_data_cleaning/standardize_tag_numbers.R")
 ha_data <- standardize_tag_numbers(ha_data)
-
-# correct "zombie plants"  ------------------------------------------------
-
-# Zombie Plants are plants that were marked dead in year t but with 
-# a measurement of shts or ht in a subsequent year, indicating they had 
-# lost above-ground parts but were still alive. This function identifies
-# them, corrects those that are simple to correct, and then saves a csv
-# file with those that should be reviewed in the original records and corrected
-# in the correction file.
-# A message will be provided if there are no zombies in the dataset
-
-source("./code_data_cleaning/find_zombies.R")
-zombie_summary <- find_zombies(ha_data)
-
-# If there are zombies, un-commented the code below to see how many are found 
-# in each plot
-
-# zombies %>%
-#   group_by(habitat, plot) %>%
-#   summarize(N_plants = n_distinct(plant_id)) %>%
-#   arrange(habitat, desc(N_plants))
-
-# check for duplicate id numbers -----------------------------
-
-# This will verify that there are no duplicate ID numbers 
-
-source("./code_data_cleaning/find_dupe_id.R")
-initial_dupes <- find_dupe_id(ha_data)
-# initial_dupes
-
 
 # check for duplicate tag numbers -----------------------------
 
@@ -301,58 +155,34 @@ ha_data <- find_dupe_tags(ha_data)
 # ha_data %>% filter(code == "missing")
 # ha_data %>% filter(code == "under treefall")
 
-# Identify 'ULY' plants and save to csv file -----------------
+# Find and label "ULY" plants -------------------------------------
 
-# NOTE plots were still being completely surveyed through 99, which is why so
-# many ULY - most were from that year. We want to focus on those AFTER the
-# initial survey sweep so lets instead mark uly only after 1999
-source("./code_data_cleaning/find_uly.R")
-uly_summary<-find_uly(ha_data)
+# Sometimes the survey team simply misses established plants ("adults" that are 
+# in a plot, perhaps because density is so high or it is difficult to see 
+# individuals in treefalls. Sometimes plants that were marked will also lose 
+# their tags - a branch could fall on them and knock it off, or it could 
+# be lost in a treefall, or someone walking though the plot might have kicked
+# it.  All of these plants are given a new tag, with a notation recorded in the 
+# survey data sheet that they were an "adult" `plant without tag`, a 
+# `new plant in plot`, or `ULY` (i.e., 'unmarked last year').
 
+# This function: 
+# (1) identifies all plants flagged as 'established plants found without a tag 
+# in a survey', 
+# (2) creates a csv file of these plants for follow-up review, 
+# (3) identifies & creates a csv file of "ULY" plants flagged in 1999, and
+# (4) removes the flag from all plants marked this way in 1999.
+# Why 1999? Plots were still being completely surveyed through 99, which is why
+# so many ULY were found in that year. 
+# (5) Finally, this function creates a new column to 
+# indicate if plants were `found_without_tag` using the logical TRUE/FALSE
 
-# recoding post 1999 ULY --------------------------------------------------
-
-
-# These are the ULY plants marked after 1999 (by which time plots had been 
-# surveyed quite a bit and so would expect very few
-ULYs_post99 <-
-  ha_data %>%
-  filter(code == "no tag" | code == "ULY" | code == "new plant in plot") %>%
-  filter(year > 1999) %>%
-  arrange(notes, plot, year, tag_number) %>%
-  select(-ht, -shts, -infl, -x_09, -y_09)
-# write_csv(ULYs_post99, "./data_check/ULY_plants_post1999.csv")
-
-# Summary of the post-1999 ULYs
-ULYs_post99_summary <- ULYs_post99 %>%
-  # group_by(plot, year, row, column) %>%
-  # group_by(plot, year) %>%
-  group_by(plot) %>%
-  summarize(n = n()) %>%
-  arrange(desc(n))
-ULYs_post99_summary
-
-# Remove the ULY code from plants in 1999
-ha_data <- ha_data %>%
-  mutate(code = if_else((code == "ULY" & year == 1999), NA_character_, code))
-
-# Save CSV of plants that were not on the survey list ---------------------
-
-# Sometimes the team conducting the survey will find a plant that is not on the 
-# list of plants to be recorded. This is usually because it was marked dead 
-# in a previous year but re-sprouted. (This is why we leave plants with their 
-# numbered stake until they have been recorded "dead" >1 time).
-# 
-# This function will find any any that were not on the survey list and save
-# them in a csv file to allow going back through surveys and clear it update
-
-source("./code_data_cleaning/find_not_listed.R")
-not_listed_summary<-find_not_listed(ha_data)
+source("./code_data_cleaning/code_adult_no_tag.R")
+ha_data<-code_adult_no_tag(ha_data)
 
 
-# Formatting columns identifying seedlings and reproductive plants -----------
+# Formatting columns with reproductive status  -----------
 
-# No. of Inflorescences
 # `Infl` column is conditional: given that a plant is reproductive, 
 # how many infloresences does it have?
 # This function scans to make sure the entries are properly coded.
@@ -379,44 +209,18 @@ ha_data<-code_treefalls(ha_data)
 # unique(ha_data$treefall_status)
 
 
-
-# indicated plants marked as "adults" -------------------------------------
-
-
-# Sometimes the survey team simply misses established plants that are in a
-# plot, perhaps because density is so high or it is difficult to see 
-# individuals in treefalls. This function adds a column indicating if 
-# plants were 'adults" found without a tag. 
-# In the surveys there might be coded as `ULY`,`new plant in plot` or similar.
-# 
-# Sometimes plants will also lose their tags - a branch could fall on them
-# knowing it off, or it could be lost in a treefall. These are also identified 
-# in the survey (`plant without tag`), given a new number, and also labeled as 
-# a being marked as an adult.
-
-# You can see the codes that will be flagged with this column here: 
-# unique(ha_data$code)
-
-source("./code_data_cleaning/code_marked_as_adults.R")
-ha_data<-code_marked_as_adults(ha_data)
-
-# Confirm that all values in this column are either TRUE or FALSE
-# unique(ha_data$found_without_tag)
-# See how many were marked as adult plants without a tag
-# summary(ha_data$found_without_tag)
-
 # add the repro checks to code, delete notes col -----
 #
 # unique(ha_data$code)
 # unique(ha_data$notes)
-#
-ha_data <- ha_data %>%
-  mutate(code = if_else(
-    notes %in% c("1 old infl", "2 old infl", "1 new infl + 1 old infl"),
-    notes,
-    code
-  )) %>%
-  select(-notes)
+# #
+# ha_data <- ha_data %>%
+#   mutate(code = if_else(
+#     notes %in% c("1 old infl", "2 old infl", "1 new infl + 1 old infl"),
+#     notes,
+#     code
+#   )) %>%
+#   select(-notes)
 
 
 # add a column with observations of phys condition ------------------------
@@ -453,7 +257,7 @@ ha_data<-code_census_status(ha_data)
 
 
 # TODO: these are plants measured but with no shts, ht, or both. look into it
-ha_data %>% filter(census_status == "measured" & is.na(shts) & is.na(ht))
+# ha_data %>% filter(census_status == "measured" & is.na(shts) & is.na(ht))
 
 # once the plants cave been assigned census status, can delete Dead from the
 # 'code' column
@@ -469,11 +273,7 @@ ha_data %>% filter(census_status == "measured" & is.na(shts) & is.na(ht))
 
 # code column no longer needed & rename "plotID" as plot_id
 ha_data <- ha_data %>% 
-  select(-code) %>% 
-  rename(
-    "plot_id" = "plotID",
-  )
-
+  select(-code) 
 
 # Create and save a df of plot characteristics ------------------------------
 # 
@@ -486,8 +286,9 @@ ha_data <- ha_data %>%
 
 # This is the version of the dataset that will get uploaded to dryad
 
-names(ha_data)
-head(ha_data)
+# names(ha_data)
+# head(ha_data)
+
 # 
 # ha_dryad <- ha_data %>%
 #   arrange(row, as.numeric(column)) %>%
@@ -592,6 +393,21 @@ head(ha_data)
 
 # Save the files ----------------------------------------------------------
 
+write_csv(ha_data, "./data_clean/heliconia_data_clean.csv")
+
+x<-"\n
+    ------------------------------------------------------------------
+    The raw Heliconia census data have been merged, cleaned, and 
+    organized. You may now proceed to prepare the dataset for
+    uploading to Dryad.
+    
+    A csv file of this dataset has been saved as `heliconia_data_clean.csv`. 
+    ------------------------------------------------------------------
+    \n"
+
+writeLines(x)   
+
+
 
 # write_csv(ha_dryad, "./data_clean/HDP_1998_2009.csv")
 # 
@@ -600,7 +416,6 @@ head(ha_data)
 # write_csv(tag_changes, "./data_clean/tag_changes.csv")
 
 # write_csv(treefall_impact, "./data_clean/treefall_impacts.csv")
-
 
 return(ha_data)
 }

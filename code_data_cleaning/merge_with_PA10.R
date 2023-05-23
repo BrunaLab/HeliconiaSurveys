@@ -29,7 +29,7 @@ merge_with_PA10 <- function(ha_data) {
   names(PA10_data)<-tolower(names(PA10_data))
   
   PA10_data<-PA10_data %>% select(-plot,-size,-ranch,-bdffp_reserve_no)
-  names(PA10_data)
+  # names(PA10_data)
   
   #some of the columns are coming in as decimals / fractions, so round down
   PA10_data$column<-floor(PA10_data$column)
@@ -38,7 +38,7 @@ merge_with_PA10 <- function(ha_data) {
   ############################################################
   # correct the data types assigned to each 
   ############################################################
-  str(PA10_data)
+  # str(PA10_data)
   # set as character
   
   # set these as a character
@@ -56,7 +56,7 @@ merge_with_PA10 <- function(ha_data) {
       "notes_2005"
     )
   PA10_data[cols] <- lapply(PA10_data[cols], as.character)
-  str(PA10_data)
+  # str(PA10_data)
   
   
   ############################################################
@@ -72,7 +72,7 @@ merge_with_PA10 <- function(ha_data) {
       skip=1,
       check.names = FALSE
     )
-  str(PA10_data_2006)
+  # str(PA10_data_2006)
   PA10_data_2006[7:12]<-NULL
   colnames_2006<- c("tag_number","row","column","shts_2006","ht_2006","notes_2006")
   colnames(PA10_data_2006)<-colnames_2006
@@ -111,7 +111,7 @@ merge_with_PA10 <- function(ha_data) {
   PA10_data$bdffp_reserve_no<-3209
   
   
-  str(PA10_data_2006)
+  # str(PA10_data_2006)
   PA10_data_2006$tag_number<-as.integer(PA10_data_2006$tag_number)
   
   
@@ -152,10 +152,11 @@ merge_with_PA10 <- function(ha_data) {
     filter(tag_number!="818.7") %>%
     filter(tag_number!="825.7")
   
-  pa_duplicate$tag_number <- as.numeric(pa_duplicate$tag_number)
+  # there is a warning that the NA.1,NA.2, etc were being cvonverted to NA
+  suppressWarnings(pa_duplicate$tag_number <- as.numeric(pa_duplicate$tag_number))
   pa <- bind_rows(pa_no_dupes,pa_duplicate)
   # summary(pa$tag_number)
-  pa <- pa %>% rename("plotID"="HA.plot")
+  pa <- pa %>% rename("plot_id"="HA.plot")
   
   
   # fix the data types as needed
