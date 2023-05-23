@@ -9,10 +9,30 @@ find_dupe_id <- function(ha_data) {
   
   
   if (nrow(initial_dupes)==0) {
-    print("there are no duplicate ID numbers in your dataset")
+    
+    
+    x<-"\n
+    ------------------------------------------------------------------
+    There are no duplicate plant_id numbers in your dataset.
+    ------------------------------------------------------------------
+    \n"
+    
+    writeLines(x)   
+    
   } else {
+  
     # This just prints them out with each plant separated by a row
-    print("the list of duplicate ID numbers has been saved as 'duplicate_IDs.csv' ")
+  
+    
+    x<-"\n
+    ------------------------------------------------------------------
+    A csv file of duplicate plant_id numbers in your dataset has been 
+    saved as 'duplicate_IDs.csv'
+    ------------------------------------------------------------------
+    \n"
+    
+    writeLines(x)   
+    
     
     write.csv(initial_dupes,
               "./data_check/duplicate_IDs.csv",

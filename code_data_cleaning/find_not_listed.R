@@ -16,10 +16,34 @@ find_not_listed <- function(ha_data) {
 
   # This just prints them out with each plant separated by a row
   if (nrow(not_listed) == 0) {
-    print("there are no plants in your dataset that were not on the survey list.")
+    
+    
+    
+    x<-"\n
+    ------------------------------------------------------------------
+    There are no plants in the dataset that were not on the list of
+    plants to survey that was taken to the field.
+    ------------------------------------------------------------------
+    \n"
+    
+    writeLines(x)
+    
   } else {
-    print("a list of the plants in your dataset that were not on the survey list in any given year has been saved as `heliconia_not_on_survey_list.csv`")
-    print("This function also returns a summary of how many of these plants are in each plot and the year that the were missing from the survey list (below).")
+    
+    x<-"\n
+    ------------------------------------------------------------------
+    This function returns a summary of how many of plants in each plot 
+    had a tag but were not on the list of plants to be measured in one
+    of the survey years. (it is also printed below).
+    
+    A csv file of the plants in the dataset that were not on the 
+    survey list taken to the field in any given year has been saved 
+    as `heliconia_not_on_survey_list.csv`
+    ------------------------------------------------------------------
+    \n"
+    
+    writeLines(x)
+
     
     write_csv(not_listed, "./data_check/heliconia_not_on_survey_list.csv")
     

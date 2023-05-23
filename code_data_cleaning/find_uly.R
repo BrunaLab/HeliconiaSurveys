@@ -9,11 +9,33 @@ find_uly <- function(ha_data) {
 
   # This just prints them out with each plant separated by a row
   if (nrow(uly_plants) == 0) {
-    print("there are no ULY plants in your dataset")
+    
+    
+    x<-"\n
+    ------------------------------------------------------------------
+    There are no 'ULY' plants in your dataset.
+    ------------------------------------------------------------------
+    \n"
+    
+    writeLines(x)   
+  
   } else {
-    print("a list of all ULY plants in your dataset has been saved as `uly_heliconia.csv`")
-    print("This function also returns a summary of how many ULY plants are in each plot (below).")
-
+    
+    
+    x<-"\n
+    ------------------------------------------------------------------
+    This function returns a summary of how many 'ULY Plants' are 
+    found in each demographic plot (this is also printed below). 
+    
+    A csv file of all ULY Plants remaining in your dataset has 
+    been saved as `uly_heliconia.csv`
+    ------------------------------------------------------------------
+    \n"
+    
+    writeLines(x)   
+    
+    
+    
     uly_summary <- uly_plants %>%
       group_by(habitat, plot) %>%
       tally() %>%

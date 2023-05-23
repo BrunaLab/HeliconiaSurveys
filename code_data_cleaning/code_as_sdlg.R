@@ -3,8 +3,8 @@ code_as_sdlg <- function(ha_data) {
   
   ha_data <-
     ha_data %>%
-    mutate(sdlg_status = if_else(code == "sdlg", TRUE, FALSE)) %>%
-    mutate(sdlg_status = if_else(is.na(sdlg_status), FALSE, sdlg_status))
+    mutate(recorded_sdlg = if_else(code == "sdlg", TRUE, FALSE)) %>%
+    mutate(recorded_sdlg = if_else(is.na(recorded_sdlg), FALSE, recorded_sdlg))
   
 
   return(ha_data)

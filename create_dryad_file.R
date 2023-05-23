@@ -1,14 +1,16 @@
+
+
+# load functions ----------------------------------------------------------
+
 library(tidyverse)
 
-
-# clean the Heliconia dataset ---------------------------------------------
-
+# clean the raw Heliconia data --------------------------------------------
+source("./code_data_cleaning/clean_heliconia_data.R")
+ha_data<-clean_heliconia_data()
 
 
 # organize it for Dryad format --------------------------------------------
 
-
- 
 # names(ha_data)
 # head(ha_data)
 
@@ -23,18 +25,14 @@ ha_dryad <- ha_data %>%
          ht,
          infl,
          code,
-         recorded_sdlg = sdlg_status,
+         sdlg_status,
          found_without_tag,
          treefall_status,
          condition,
          census_status,
          tag_number
   ) %>%
-  ungroup() %>%
-  rename(
-    "plot" = "plotID",
-  )
-
+  ungroup() 
 
 # TODO: checking, cleanup
 
@@ -61,10 +59,10 @@ test <- ha_dryad %>%
 # write_csv(treefall_impact, "./data_clean/treefall_impacts.csv")
 # ha_dryad
 
-
-# DELETE CODE COLUMN
-unique(ha_dryad$code)
-ha_dryad <- ha_dryad %>% select(-code)
+# 
+# # DELETE CODE COLUMN
+# unique(ha_dryad$code)
+# ha_dryad <- ha_dryad %>% select(-code)
 # 
 # head(ha_dryad)
 # glimpse(ha_dryad)
@@ -78,3 +76,7 @@ ha_dryad <- ha_dryad %>% select(-code)
 
 
 write_csv(ha_dryad, "./data_clean/HDP_1998_2009.csv")
+
+
+return(ha_dryad)
+}
