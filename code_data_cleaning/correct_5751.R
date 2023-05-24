@@ -1,5 +1,5 @@
 correct_5751 <- function(ha_data) {
-  
+  suppressMessages({
   
   # in 2008 data for 390 incorrectly entered as 154
   # add to 390
@@ -162,6 +162,6 @@ correct_5751 <- function(ha_data) {
   
   
   
-  
+  }) 
   return(ha_data)
 }

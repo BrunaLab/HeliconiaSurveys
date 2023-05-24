@@ -1,6 +1,6 @@
-
 correct_5756 <- function(ha_data) {
-  
+
+  suppressMessages({  
   
   # in 2008 data for 176 incorrectly entered as 199
   # add 
@@ -763,7 +763,7 @@ correct_5756 <- function(ha_data) {
     rm(to_delete)
     
     
-    
+  }) 
     
     return(ha_data)
   }

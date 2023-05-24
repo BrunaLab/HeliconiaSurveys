@@ -77,7 +77,7 @@ ha_data <- ha_data %>%
 
 
 plot_info <-
-  read_csv("./data_raw/heliconia_plot_descriptors.csv") %>%
+  read_csv("./data_raw/heliconia_plot_descriptors.csv",show_col_types = FALSE) %>%
   select(plot_id = habitat_type...1, plot = HDP_plot_ID_no)
 
 

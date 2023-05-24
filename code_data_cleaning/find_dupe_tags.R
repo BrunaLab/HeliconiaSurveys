@@ -1,32 +1,13 @@
-find_dupe_tags <- function(ha_data) {
+find_dupe_tags <- function() {
   
-  ha_data$row_col <- do.call(paste, c(ha_data[c("row", "column")], sep = ""))
-  
-  
-  duplicates <- ha_data %>% 
-    group_by(habitat, plot, tag_number, year) %>% 
-    filter(n()>1) %>% 
-    ungroup()
-  
-  duplicates_row_col <- duplicates %>%  
-    select(plot, tag_number) %>% 
-    unique() %>% 
-    ungroup()
-
-  dupes <-
-    semi_join(ha_data, duplicates_row_col, by = c("plot", "tag_number")) %>% 
-    select(plot_id,plot, habitat,  plant_id,   tag_number, year, row,column, shts, ht, code) %>% 
-    arrange(plot, habitat, tag_number,  row,column,year) %>% # detect all the ones with decimals
-    bind_rows(ha_data %>% filter(str_detect(tag_number, "\\."))) %>% 
-    ungroup()
-  
-  dupe_simplified <- dupes %>% 
-    select(plot,tag_number,plant_id,row,column) %>% 
+  dupe_simplified <- ha_data %>% 
+    filter(duplicate_tag=="duplicate tag number") %>% 
+    select(habitat,plot_id,plot,tag_number,plant_id,row,column) %>% 
     group_by(plot,tag_number,row,column) %>% 
     slice(1) 
   
   # This just prints them out with each plant separated by a row
-  if (nrow(dupes)==0) {
+  if (nrow(dupe_simplified)==0) {
     
     
     
@@ -42,16 +23,14 @@ find_dupe_tags <- function(ha_data) {
   } else {
     
     
-    dupes_count<-dupes %>%
+    dupes_count<-dupe_simplified %>%
       group_by(habitat, plot) %>%
       summarize(n_plants = n_distinct(plant_id)) %>%
       arrange(habitat, desc(n_plants)) %>%
       filter(habitat != "") %>% 
       ungroup()
-      
     
     
-    write.csv(dupe_simplified, "./data_check/dupe_heliconia_tags.csv", row.names = FALSE)
     
     
     x<-"\n
@@ -63,36 +42,27 @@ find_dupe_tags <- function(ha_data) {
     
     Note that plants with identical tag numbers can be distinguished in the 
     dataset by their unique 'plant_id' numbers.
-    ------------------------------------------------------------------
-    \n."
+    ------------------------------------------------------------------"
     
     writeLines(x)   
     
     print(dupes_count)
     
-    #  now label the duplicates in the 
-    
-    duplicate_tags <- dupes %>%
-      select(tag_number, plot) %>%
-      group_by(tag_number, plot) %>%
-      slice(1) %>%
-      filter(tag_number > 0) %>%
-      arrange(plot)
-      
-    duplicate_tags
-    
-    duplicate_tags$tag_number <- as.numeric(duplicate_tags$tag_number)
-    duplicate_tags$duplicate_tag <- "duplicate tag number"
-    ha_data <- left_join(ha_data, duplicate_tags)
-    # names(ha_data)
-    # 
-    
-    
-    
     
   }
   
 
-  return(ha_data)
+# save the csv file -------------------------------------------------------
+
+  
+  if (!dir.exists("./data_review")){
+    dir.create("./data_review")
+  }else{
+    print("./data_review")
+  }
+
+    write.csv(dupe_simplified, "./data_review/dupe_heliconia_tags.csv", row.names = FALSE)
+  
+  # return(ha_data)
   
 }

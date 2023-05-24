@@ -1,6 +1,6 @@
 correct_5752 <- function(ha_data) {
   
-  
+  suppressMessages({
   
   # 841 in c1 is actually 849
   ha_data$tag_number[ha_data$plot == "5752" & 
@@ -161,7 +161,7 @@ correct_5752 <- function(ha_data) {
   rm(delete2007)
   
   
-  
+ }) 
   
     return(ha_data) 
 }

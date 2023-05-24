@@ -1,5 +1,5 @@
 correct_2108 <- function(ha_data) {
-  
+  suppressMessages({
   
   
   # 33 was missing in a treefall in 2003 
@@ -157,7 +157,8 @@ correct_2108 <- function(ha_data) {
     mutate(shts=replace(shts, plot==2108 & year==2007 & tag_number==332,1))  
   
   
-  
+
+  })  
   return(ha_data)
   
 }

@@ -1,5 +1,5 @@
 correct_5754 <- function(ha_data) {
-  
+  suppressMessages({
   ha_data$infl[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==88 & ha_data$year==2005 & ha_data$row=="A"] <- 2
   ha_data$notes[ha_data$bdffp_reserve_no=="3209" & ha_data$tag_number==88 & ha_data$year==2006 & ha_data$row=="A"] <- NA
   
@@ -284,6 +284,7 @@ correct_5754 <- function(ha_data) {
   ha_data<-ha_data %>%
     mutate(ht=replace(ht, plot==5754 & year==2006 & tag_number==896,110)) 
   
+  })
   
   return(ha_data)
 }

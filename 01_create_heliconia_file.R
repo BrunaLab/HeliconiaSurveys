@@ -53,6 +53,23 @@ source("./code_data_cleaning/find_not_listed.R")
 find_not_listed(ha_data)
 
 
+# Find duplicate tag numbers ----------------------------------------------
+
+
+
+
+# occasionally a member of the survey team will write down or read out a 
+# tag number incorrectly.  The function `detect_duplicate_plants.R` will
+# identify them and save as a csv file, which will allow for 
+# reviewing the original records to sort the duplicates out
+# records. It will also return the demographic data file 
+# with the duplicate tag numbers labeled in a new column
+
+source("./code_data_cleaning/find_dupe_tags.R")
+find_dupe_tags(ha_data)
+
+# This will give you a list of the individual plants with duplicated tag 
+# numbers and the plot in which they are located
 
 
 # find "adults" without a tag ---------------------------------------------

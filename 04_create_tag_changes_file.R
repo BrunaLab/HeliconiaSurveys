@@ -68,4 +68,10 @@ tag_changes<-tag_changes %>%
 
 # save the file -----------------------------------------------------------
 
+if (!dir.exists("./data_clean")){
+  dir.create("./data_clean")
+}else{
+  print("./data_clean")
+}
+
 write_csv(tag_changes, "./data_clean/tag_changes.csv")

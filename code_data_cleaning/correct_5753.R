@@ -1,6 +1,6 @@
 correct_5753 <- function(ha_data) {
   
-  
+  suppressMessages({
   # The person that entered the data for 2003 
   # for this plot made a major error when merging into excel
   # plants 205 through 319 are offset by 1: e.g.,
@@ -591,8 +591,9 @@ correct_5753 <- function(ha_data) {
   rm(delete321)
   
   
-  
+  })
   
   return(ha_data)
-  
+ 
+   
 }

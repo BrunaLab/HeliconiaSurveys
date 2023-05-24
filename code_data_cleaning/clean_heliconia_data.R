@@ -126,8 +126,8 @@ ha_data <- standardize_tag_numbers(ha_data)
 # records. It will also return the demographic data file 
 # with the duplicate tag numbers labeled in a new column
 
-source("./code_data_cleaning/find_dupe_tags.R")
-ha_data <- find_dupe_tags(ha_data)
+source("./code_data_cleaning/code_dupe_tags.R")
+ha_data <- code_dupe_tags(ha_data)
 
 # This will give you a list of the individual plants with duplicated tag 
 # numbers and the plot in which they are located
@@ -393,6 +393,13 @@ ha_data <- ha_data %>%
 
 # Save the files ----------------------------------------------------------
 
+if (!dir.exists("./data_clean")){
+  dir.create("./data_clean")
+}else{
+  print("./data_clean")
+}
+
+
 write_csv(ha_data, "./data_clean/heliconia_data_clean.csv")
 
 x<-"\n
@@ -406,16 +413,6 @@ x<-"\n
     \n"
 
 writeLines(x)   
-
-
-
-# write_csv(ha_dryad, "./data_clean/HDP_1998_2009.csv")
-# 
-# write_csv(ha_plots, "./data_clean/HDP_plots.csv")
-
-# write_csv(tag_changes, "./data_clean/tag_changes.csv")
-
-# write_csv(treefall_impact, "./data_clean/treefall_impacts.csv")
 
 return(ha_data)
 }

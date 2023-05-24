@@ -29,7 +29,6 @@ find_adults_no_tag <- function(ha_data) {
     
   } else {
     
-    write_csv(tagless_plants, "./data_check/adult_heliconia_no_tag.csv")
     
     x<-"\n
     ------------------------------------------------------------------
@@ -55,6 +54,18 @@ find_adults_no_tag <- function(ha_data) {
     
     # summary(as.factor(ULY$code == ULY$notes))
     
+    
+    # Save the files ----------------------------------------------------------
+    
+    if (!dir.exists("./data_review")){
+      dir.create("./data_review")
+    }else{
+      print("./data_review")
+    }
+    
+    
+    
+    write_csv(tagless_plants, "./data_review/adult_heliconia_no_tag.csv")
     
   }
 }

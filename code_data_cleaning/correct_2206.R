@@ -1,5 +1,6 @@
 correct_2206 <- function(ha_data) {
   
+  suppressMessages({
   # 270 
   # was on the edge of 2 plots with branchfalls and hence was recorded in
   # diff locations in diff years. Put in B10
@@ -65,6 +66,9 @@ correct_2206 <- function(ha_data) {
   delete2007 <- ha_data %>% filter(plot == 2206 & year == 2007)
   ha_data <- anti_join(ha_data, delete2007)
   rm(delete2007)
+  
+  
+  })
   
   
   return(ha_data)

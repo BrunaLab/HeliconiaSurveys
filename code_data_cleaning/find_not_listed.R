@@ -42,9 +42,6 @@ find_not_listed <- function(ha_data) {
     
     writeLines(x)
 
-    
-    write_csv(not_listed, "./data_check/heliconia_not_on_survey_list.csv")
-    
     nol_summary <- not_listed %>%
       group_by(habitat, plot, year) %>%
       tally() %>%
@@ -53,6 +50,19 @@ find_not_listed <- function(ha_data) {
     print(nol_summary)
     
     # summary(as.factor(ULY$code == ULY$notes))
+    
+    
+    # save the csv file -------------------------------------------------------
+    
+    
+    if (!dir.exists("./data_review")){
+      dir.create("./data_review")
+    }else{
+      print("./data_review")
+    }
+    
+    write_csv(not_listed, "./data_review/heliconia_not_on_survey_list.csv")
+    
 
   }
 

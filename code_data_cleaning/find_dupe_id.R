@@ -1,7 +1,7 @@
 find_dupe_id <- function(ha_data) {
   initial_dupes <- ha_data %>%
     group_by(year, plant_id) %>%
-    count() %>%
+    tally() %>%
     filter(n > 1) %>%
     pull(plant_id) %>%
     unique()
@@ -34,8 +34,21 @@ find_dupe_id <- function(ha_data) {
     writeLines(x)   
     
     
+    
+
+# save the csv file -------------------------------------------------------
+
+    
+    if (!dir.exists("./data_review")){
+      dir.create("./data_review")
+    }else{
+      print("./data_review")
+    }
+    
+    
+    
     write.csv(initial_dupes,
-              "./data_check/duplicate_IDs.csv",
+              "./data_review/duplicate_IDs.csv",
               row.names = FALSE)
   }
   

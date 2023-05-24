@@ -1,5 +1,6 @@
-
 correct_5750 <- function(ha_data) {
+  
+  suppressMessages({
   
   # Some of the plants in 5750 were put as Row "L" because he thought they might be
   # just outside the plot. I converted to J.
@@ -53,7 +54,7 @@ correct_5750 <- function(ha_data) {
              tag_number == 988 &
              row == "D" &
              column ==10)
-  ha_data <- anti_join(ha_data, delete988)
+    ha_data <- anti_join(ha_data, delete988)
   rm(delete988)
   # 
   # Correct the data for 988
@@ -169,7 +170,7 @@ correct_5750 <- function(ha_data) {
              tag_number == 2022 &
              row == "J" &
              column == 8)
-  ha_data <- anti_join(ha_data, delete2022)
+    ha_data <- anti_join(ha_data, delete2022)
   rm(delete2022)
   
   
@@ -234,7 +235,7 @@ correct_5750 <- function(ha_data) {
              tag_number == 236 &
              row == "G" &
              column == 9)
-  ha_data <- anti_join(ha_data, to_delete)
+    ha_data <- anti_join(ha_data, to_delete)
   rm(to_delete)
   
   # Updating Codes 
@@ -360,9 +361,12 @@ correct_5750 <- function(ha_data) {
              tag_number == 1338 &
              (year == 2008 |
              year == 2009))
-  ha_data <- anti_join(ha_data, delete1338)
+      ha_data <- anti_join(ha_data, delete1338)
+    
   rm(delete1338)
   
+
+  })
   
   return(ha_data)
 }

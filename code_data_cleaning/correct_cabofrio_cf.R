@@ -1,6 +1,7 @@
-
 correct_cabofrio_cf <- function(ha_data) {
-  
+
+  suppressMessages({
+    
   # 2115 in D9 is actually 2105; move the measurment from 2008 to 2015's record
   ha_data$shts[ha_data$plot == "CaboFrio-CF" & 
                        ha_data$tag_number == 2105 &
@@ -51,7 +52,9 @@ correct_cabofrio_cf <- function(ha_data) {
   # location
   ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 65] <- "E"
   ha_data$row[ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 158] <- "E"
-  
+ 
+  })
+   
   return(ha_data)
   
 }

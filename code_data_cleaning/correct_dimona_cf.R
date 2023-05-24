@@ -1,6 +1,7 @@
 # Corrections Dimona-CF ---------------------------------------------------
 correct_dimona_cf <- function(ha_data) {
   
+  suppressMessages({
   
   
   # 196: delete 196 in D6 (it is actually 194). Correct the record for 194
@@ -121,7 +122,7 @@ correct_dimona_cf <- function(ha_data) {
   rm(omit185)
   
   
-  
+  })  
   
   return(ha_data)
 }

@@ -1,6 +1,6 @@
 correct_2107 <- function(ha_data) {
   
-
+  suppressMessages({
 # in 2008 data for 275 incorrectly entered as 68   
 # add to 275
 ha_data$shts[ha_data$plot == 2107 &
@@ -186,6 +186,8 @@ delete25<-ha_data %>% filter(plot==2107 &
 ha_data<-anti_join(ha_data,delete25)
 rm(delete25)
 
+
+})
 return(ha_data)
 }
 

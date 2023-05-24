@@ -35,5 +35,16 @@
     ) %>%
     left_join(isolation)
   
+
+# save the csv file -------------------------------------------------------
+
   
-  write_csv(ha_plots, "./data_clean/HDP_plots.csv")
+  
+  if (!dir.exists("./data_for_dryad")){
+    dir.create("./data_for_dryad")
+  }else{
+    print("./data_for_dryad")
+  }
+  
+  
+  write_csv(ha_plots, "./data_for_dryad/HDP_plots.csv")

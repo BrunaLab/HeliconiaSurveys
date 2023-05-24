@@ -37,10 +37,7 @@ find_zombies <- function(ha_data) {
         rbind,
         by(zombies_clean, zombies_clean$tag_number, rbind, "")
       ), -1)
-    write.csv(zombies_all_yrs_new,
-      "./data_check/heliconia_zombies_formatted.csv",
-      row.names = FALSE
-    )
+    
 
 
     zombie_summary <- zombies %>%
@@ -64,6 +61,25 @@ find_zombies <- function(ha_data) {
 
     print(zombie_summary)
 
-    # return(ha_data)
+
+    # save the csv file -------------------------------------------------------
+    
+    
+    if (!dir.exists("./data_review")){
+      dir.create("./data_review")
+    }else{
+      print("./data_review")
+    }
+    
+    write.csv(zombies_all_yrs_new,
+              "./data_review/heliconia_zombies_formatted.csv",
+              row.names = FALSE
+    )
+    
+    
   }
+  
+  
+  
+
 }

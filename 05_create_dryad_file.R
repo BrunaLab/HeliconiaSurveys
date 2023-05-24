@@ -1,13 +1,13 @@
 
 
-# load functions ----------------------------------------------------------
+# load libraries ----------------------------------------------------------
 
 library(tidyverse)
 
 # load the complete and clean Heliconia dataset ---------------------------
+
+
 ha_data<-read_csv("./data_clean/heliconia_data_clean.csv")
-
-
 
 # organize it for Dryad format --------------------------------------------
 
@@ -25,7 +25,7 @@ ha_dryad <- ha_data %>%
          ht,
          infl,
          recorded_sdlg,
-         found_without_tag,
+         adult_no_tag,
          treefall_status,
          condition,
          census_status,
@@ -71,8 +71,14 @@ test <- ha_dryad %>%
 # names(ha_data)
 
 
-# Save the files ----------------------------------------------------------
+# Save the file  ----------------------------------------------------------
+
+if (!dir.exists("./data_for_dryad")){
+  dir.create("./data_for_dryad")
+}else{
+  print("./data_for_dryad")
+}
 
 
-write_csv(ha_dryad, "./data_clean/HDP_1998_2009.csv")
+write_csv(ha_dryad, "./data_for_dryad/HDP_1998_2009.csv")
 
