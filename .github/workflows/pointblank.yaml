@@ -43,7 +43,7 @@ jobs:
       - name: Run data cleaning scripts
         id: create_master_csv
         run: |
-          source("Heliconia_data_cleanup.R")
+          source("clean_heliconia_data.R")
         shell: Rscript {0}     
 
 # knit data validation report
