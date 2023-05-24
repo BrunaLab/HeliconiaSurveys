@@ -13,7 +13,7 @@ merge_with_PA10 <- function(ha_data) {
   # import CSV files  -----------------------------------------------
   PA10_data <-
     read.csv(
-      "./data_raw/PA10_from_Hacuminata_98-05_27may_Paul.csv",
+      "./data/data_raw/PA10_from_Hacuminata_98-05_27may_Paul.csv",
       dec = ".",
       header = TRUE,
       sep = ",",
@@ -65,7 +65,7 @@ merge_with_PA10 <- function(ha_data) {
   # Import the 06 Survey
   PA10_data_2006 <-
     read.csv(
-      "./data_raw/PA10_2006_from2006datasheets_22may.csv",
+      "./data/data_raw/PA10_2006_from2006datasheets_22may.csv",
       dec = ".",
       header = TRUE,
       sep = ",",
@@ -139,11 +139,11 @@ merge_with_PA10 <- function(ha_data) {
 
   # ALL THE PLANTS WITH DUPLICATED NUMBERS
   suppressMessages(
-  pa_duplicate <- pa %>%
-    group_by(tag_number, year) %>%
-    summarize(n = n()) %>%
-    filter(n > 1) %>%
-    arrange(desc(n))
+    pa_duplicate <- pa %>%
+      group_by(tag_number, year) %>%
+      summarize(n = n()) %>%
+      filter(n > 1) %>%
+      arrange(desc(n))
   )
   pa_duplicate <- unique(pa_duplicate$tag_number)
   pa_duplicate <- as.data.frame(pa_duplicate)
@@ -151,9 +151,9 @@ merge_with_PA10 <- function(ha_data) {
   pa_duplicate <- pa %>% filter(tag_number %in% pa_duplicate$tag_number)
 
   suppressMessages(
-  pa_no_dupes <- pa %>% anti_join(pa_duplicate)
-)
-  
+    pa_no_dupes <- pa %>% anti_join(pa_duplicate)
+  )
+
   pa_duplicate <- pa_duplicate %>%
     mutate(tag_number = paste(tag_number, column, sep = "."))
 
@@ -165,7 +165,7 @@ merge_with_PA10 <- function(ha_data) {
   # there is a warning that the NA.1,NA.2, etc were being cvonverted to NA
   suppressWarnings(
     pa_duplicate$tag_number <- as.numeric(pa_duplicate$tag_number)
-    )
+  )
   pa <- bind_rows(pa_no_dupes, pa_duplicate)
   # summary(pa$tag_number)
   pa <- pa %>% rename("plot_id" = "HA.plot")

@@ -5,52 +5,47 @@ find_dupe_id <- function(ha_data) {
     filter(n > 1) %>%
     pull(plant_id) %>%
     unique()
-  initial_dupes<-as_tibble(initial_dupes)
-  
-  
-  if (nrow(initial_dupes)==0) {
-    
-    
-    x<-"\n
+  initial_dupes <- as_tibble(initial_dupes)
+
+
+  if (nrow(initial_dupes) == 0) {
+    x <- "\n
     ------------------------------------------------------------------
     There are NO duplicate plant_id numbers in your dataset.
     ------------------------------------------------------------------
     \n"
-    
-    writeLines(x)   
-    
+
+    writeLines(x)
   } else {
-  
     # This just prints them out with each plant separated by a row
-  
-    
-    x<-"\n
+
+
+    x <- "\n
     ------------------------------------------------------------------
-    A csv file of duplicate plant_id numbers in your dataset has been 
-    saved as 'duplicate_IDs.csv'
+    A csv file of duplicate plant_id numbers in your dataset has been
+    saved as 'data_review/duplicate_IDs.csv'
     ------------------------------------------------------------------
     \n"
-    
-    writeLines(x)   
-    
-    
-    
 
-# save the csv file -------------------------------------------------------
+    writeLines(x)
 
-    
-    if (!dir.exists("./data_review")){
-      dir.create("./data_review")
-    }else{
-      print("./data_review")
+
+
+
+    # save the csv file -------------------------------------------------------
+
+
+    if (!dir.exists("./data/data_review")) {
+      dir.create("./data/data_review")
+    } else {
+      # placeholder - does nothing
     }
-    
-    
-    
+
+
+
     write.csv(initial_dupes,
-              "./data_review/duplicate_IDs.csv",
-              row.names = FALSE)
+      "./data/data_review/duplicate_IDs.csv",
+      row.names = FALSE
+    )
   }
-  
-  
 }

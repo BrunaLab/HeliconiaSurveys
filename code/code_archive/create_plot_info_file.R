@@ -1,4 +1,4 @@
-
+create_plot_info_file <- function() {
   library(tidyverse)
   
   
@@ -13,7 +13,7 @@
     mutate(across(where(is.double), as.factor))
   
   # select the plot id variables
-  ha_plots <- read_csv("./data_clean/heliconia_data_clean.csv") %>% 
+  ha_plots <- read_csv("./data/data_clean/heliconia_data_clean.csv") %>% 
     select(
       "plot_id",
       "habitat",
@@ -40,11 +40,16 @@
 
   
   
-  if (!dir.exists("./data_for_dryad")){
-    dir.create("./data_for_dryad")
+  if (!dir.exists("./data/data_archive")){
+    dir.create("./data/data_archive")
   }else{
-    print("./data_for_dryad")
+    print(" ")
   }
   
+  print("The file has been saved to: 'data/data_archive/HDP_plots.csv' ")
   
-  write_csv(ha_plots, "./data_for_dryad/HDP_plots.csv")
+  write_csv(ha_plots, "./data/data_archive/HDP_plots.csv")
+  
+  
+}
+

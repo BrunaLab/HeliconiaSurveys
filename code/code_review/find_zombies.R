@@ -16,18 +16,13 @@ find_zombies <- function(ha_data) {
 
 
   if (nrow(zombies) == 0) {
-    
-    
-    x<-"\n
+    x <- "\n
     ------------------------------------------------------------------
-    
     There are NO zombie plants in your dataset.
-    
     ------------------------------------------------------------------
     \n"
-    
-    writeLines(x)   
-    
+
+    writeLines(x)
   } else {
     # This just prints them out with each plant separated by a row
     zombies_clean <-
@@ -37,7 +32,7 @@ find_zombies <- function(ha_data) {
         rbind,
         by(zombies_clean, zombies_clean$tag_number, rbind, "")
       ), -1)
-    
+
 
 
     zombie_summary <- zombies %>%
@@ -45,41 +40,40 @@ find_zombies <- function(ha_data) {
       group_by(plot, plant_id) %>%
       slice(1)
 
-    
-    
-    x<-"\n
+
+
+    x <- "\n
     ------------------------------------------------------------------
-    This function returns the summary of how many 'Zombie Plants' are 
-    found in each demographic plot (this is also printeed below). 
+    A csv file of the Zombie Plants remaining in the in the dataset has
+    been saved as `data_review/heliconia_zombies.csv`.
     
-    A csv file of the Zombie Plants remaining in the in the dataset has 
-    been saved as `heliconia_zombies_formatted.csv`. 
-    ------------------------------------------------------------------
+    Here is a summary of how many 'Zombie Plants' are found in each 
+    of the demographic plots:
+    
     \n"
     
-    writeLines(x)   
+    writeLines(x)
 
     print(zombie_summary)
 
-
+    y <- "\n
+    ------------------------------------------------------------------"
+    
+    writeLines(y)
+    
+    
     # save the csv file -------------------------------------------------------
-    
-    
-    if (!dir.exists("./data_review")){
-      dir.create("./data_review")
-    }else{
-      print("./data_review")
-    }
-    
-    write.csv(zombies_all_yrs_new,
-              "./data_review/heliconia_zombies_formatted.csv",
-              row.names = FALSE
-    )
-    
-    
-  }
-  
-  
-  
 
+
+    if (!dir.exists("./data/data_review")) {
+      dir.create("./data/data_review")
+    } else {
+      # placeholder - does nothing
+    }
+
+    write.csv(zombies_all_yrs_new,
+      "./data/data_review/heliconia_zombies.csv",
+      row.names = FALSE
+    )
+  }
 }

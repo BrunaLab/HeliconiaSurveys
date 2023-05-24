@@ -1,6 +1,4 @@
-code_census_status <- function(ha_data) {
-  
-  
+check_census_status <- function(ha_data) {
   # unique(ha_data$code)
   ha_data <- ha_data %>%
     mutate(census_status = case_when(
@@ -17,7 +15,7 @@ code_census_status <- function(ha_data) {
     # filled in as dead until the last year of census
     fill(census_status, .direction = "down") %>%
     arrange(plot, plant_id, year)
-  
+
   # Now keep only those alive, missing, and the first year marked dead
   ha_measured <- ha_data %>% filter(census_status == "measured")
   ha_missing <- ha_data %>% filter(census_status == "missing")
@@ -28,11 +26,11 @@ code_census_status <- function(ha_data) {
     arrange(plot, plant_id, year) %>%
     group_by(plot, plant_id) %>%
     filter(row_number() == 1)
-  
+
   ha_data <- bind_rows(ha_measured, ha_na, ha_dead, ha_missing) %>%
     arrange(plot, plant_id, year)
-  
-  
+
+
   # Some that were NA in all measurements but were duplicate tag numbers weren't getting marked
   # as NA instead of missing in census_status so this takes care of that
   ha_data <- ha_data %>%
@@ -47,7 +45,7 @@ code_census_status <- function(ha_data) {
         TRUE ~ census_status
       ) # anything not measured or marked "missing", "dead" or "seedling" is NA
     )
-  
+
   ## The ones under treefalls coming back "measured"
   ha_data <- ha_data %>%
     mutate(
@@ -57,14 +55,14 @@ code_census_status <- function(ha_data) {
           is.na(infl) &
           census_status == "measured" &
           (treefall_status == "under treefall" |
-             treefall_status == "under branchfall") ~ "missing",
+            treefall_status == "under branchfall") ~ "missing",
         TRUE ~ census_status
       ) # anything not measured or marked "missing", "dead" or "seedling" is NA
     )
-  
+
   # unique(ha_data$census_status)
-  
-  
+
+
   # this gets any left that were coming back as "missing" even after marked "dead"
   ha_data <-
     ha_data %>%
@@ -77,13 +75,13 @@ code_census_status <- function(ha_data) {
     filter(is.na(blank_yr_delete) == TRUE) %>%
     select(-blank_yr_delete) %>%
     ungroup()
-  
-  
-  
-  # Once all these columns have been added, can delete the notations from the 
+
+
+
+  # Once all these columns have been added, can delete the notations from the
   # `code` column and make any final changes to the codes
-  
-  
+
+
   ha_data <- ha_data %>%
     mutate(code = replace(code, code == "dead", NA)) %>%
     mutate(code = replace(code, code == "dried", NA)) %>%
@@ -94,8 +92,7 @@ code_census_status <- function(ha_data) {
     mutate(code = replace(code, code == "resprouting", NA)) %>%
     mutate(code = replace(code, code == "missing", NA)) %>%
     mutate(code = replace(code, code == "2x in field", NA)) %>%
-    mutate(code = replace(code, code == "sdlg", NA)) %>% 
-    
+    mutate(code = replace(code, code == "sdlg", NA)) %>%
     mutate(code = case_when(
       code == "resprouting" ~ "resprouting",
       code == "dried" ~ "dried",
@@ -110,7 +107,7 @@ code_census_status <- function(ha_data) {
       treefall_status == "under treefall" ~ "tree",
       treefall_status == "under litter" ~ "litter",
       TRUE ~ treefall_status
-    )) 
-    
+    ))
+
   return(ha_data)
 }

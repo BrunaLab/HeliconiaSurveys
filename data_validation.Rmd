@@ -24,10 +24,10 @@ library(gghighlight)
 
 ```{r load-data}
 ha <- read_csv(
-  here("data_clean", "HDP_1997_2009.csv")
+  here("data/data_clean", "HDP_1997_2009.csv")
 )
 ha_plots <- read_csv(
-  here("data_clean", "HDP_plots.csv")
+  here("data/data_clean", "HDP_plots.csv")
 )
 ```
 

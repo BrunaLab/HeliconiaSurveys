@@ -1,4 +1,4 @@
-
+create_treefall_records_file <- function() {
 # load libraries ----------------------------------------------------------
 
 library(tidyverse)
@@ -6,7 +6,7 @@ library(tidyverse)
 
 # load the complete and clean Heliconia dataset ---------------------------
 
-ha_data<-read_csv("./data_clean/heliconia_data_clean.csv")
+ha_data<-read_csv("./data/data_clean/heliconia_data_clean.csv")
 
 # create a new DF with treefall impact information
 treefall_impact <- ha_data %>%
@@ -16,13 +16,15 @@ treefall_impact <- ha_data %>%
 
 # save to data_clean folder -----------------------------------------------
 
-if (!dir.exists("./data_clean")){
-  dir.create("./data_clean")
+if (!dir.exists("./data/data_archive")){
+  dir.create("./data/data_archive")
 }else{
-  print("./data_clean")
+  print(" ")
 }
 
+print("The file has been saved to: 'data/data_archive/treefall_impacts.csv' ")
 
 
+write_csv(treefall_impact, "./data/data_archive/treefall_impacts.csv")
 
-write_csv(treefall_impact, "./data_clean/treefall_impacts.csv")
+}

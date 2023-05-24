@@ -1,4 +1,4 @@
-
+create_dryad_file <- function() {
 
 # load libraries ----------------------------------------------------------
 
@@ -7,7 +7,7 @@ library(tidyverse)
 # load the complete and clean Heliconia dataset ---------------------------
 
 
-ha_data<-read_csv("./data_clean/heliconia_data_clean.csv")
+ha_data<-read_csv("./data/data_clean/heliconia_data_clean.csv")
 
 # organize it for Dryad format --------------------------------------------
 
@@ -55,7 +55,7 @@ test <- ha_dryad %>%
 #   select(plot, plant_id, year, treefall_status) %>%
 #   drop_na(treefall_status)
 # 
-# write_csv(treefall_impact, "./data_clean/treefall_impacts.csv")
+# write_csv(treefall_impact, "./data/data_clean/treefall_impacts.csv")
 # ha_dryad
 
 # 
@@ -73,12 +73,15 @@ test <- ha_dryad %>%
 
 # Save the file  ----------------------------------------------------------
 
-if (!dir.exists("./data_for_dryad")){
-  dir.create("./data_for_dryad")
+if (!dir.exists("./data/data_archive")){
+  dir.create("./data/data_archive")
 }else{
-  print("./data_for_dryad")
+  print(" ")
 }
 
+print("The file has been saved to: 'data/data_archive/HDP_1998_2009.csv' ")
 
-write_csv(ha_dryad, "./data_for_dryad/HDP_1998_2009.csv")
+write_csv(ha_dryad, "./data/data_archive/HDP_1998_2009.csv")
+
+}
 
