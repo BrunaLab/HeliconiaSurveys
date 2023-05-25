@@ -38,7 +38,7 @@ jobs:
 # knit data validation report
       - name: Generate report
         id: generate_error_reports
-        run: Rscript -e 'rmarkdown::render("data_validation.Rmd")'
+        run: Rscript -e 'rmarkdown::render("docs/data_validation.Rmd")'
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
