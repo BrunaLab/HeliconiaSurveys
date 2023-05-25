@@ -8,7 +8,6 @@ ha_data<-clean_heliconia_data()
 
 
 
-
 # Step 2: Review of the 'Clean' Data ----------------------------------------
 
 # must have a `heliconia_data_clean` in the `data/data_clean` folder
