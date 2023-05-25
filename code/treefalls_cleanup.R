@@ -4,7 +4,7 @@ library(readxl)
 
 # treefall records    ------------------------------------------------------
 
-treefalls <- read_excel("./data/data_raw/Hacuminata_98-05_27may_Paul.xls",
+treefalls <- read_excel("./data/data_raw/not_used/Hacuminata_98-05_27may_Paul.xls",
   sheet = "treefall records",
   col_names = FALSE
 ) %>%
