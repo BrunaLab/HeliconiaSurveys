@@ -35,11 +35,11 @@ ha_plots <- read_csv(
 
 ```{r echo=FALSE}
 ha %>% 
-  group_by(plot, year) %>% 
+  group_by(plot_id, year) %>% 
   summarize(prop_na = sum(is.na(ht))/n(), .groups = "drop") %>% 
   ggplot(aes(x = year, y = prop_na)) +
   geom_point(color="red") +
-  facet_wrap(~plot) +
+  facet_wrap(~plot_id) +
   theme_bw() +
   scale_x_continuous(breaks = scales::breaks_pretty()) +
   scale_y_continuous(breaks = c(0,0.5,1)) +
@@ -73,7 +73,7 @@ ha_change <-
          ht_pc = abs(ht_diff / ht_prev),
          shts_pc = abs(shts_diff / shts_prev)) %>%
   #re-order columns so easier to see errors
-  select(plot, subplot, plant_id, year, shts_prev, shts, shts_diff, shts_pc, ht_prev, ht, ht_diff, ht_pc, everything()) %>% 
+  select(plot_id, subplot, plant_id, year, shts_prev, shts, shts_diff, shts_pc, ht_prev, ht, ht_diff, ht_pc, everything()) %>% 
   ungroup()
 ```
 
@@ -91,7 +91,7 @@ ha %>%
   ) %>%
   col_vals_in_set(vars(subplot), unlist(lapply(LETTERS[1:10], paste0, 1:10)),
                   actions = al_strict) %>%
-  col_vals_in_set(vars(plot), ha_plots$plot,
+  col_vals_in_set(vars(plot_id), ha_plots$plot_id,
                   actions = al_strict) %>%
   col_vals_expr(label = "Height is measured to nearest cm",
                 expr = ~ ht %% 1 == 0, actions = al_strict) %>%
