@@ -8,7 +8,7 @@ ha_data<-clean_heliconia_data()
 
 
 
-# Step 2: Review of the 'Clean' Data ----------------------------------------
+# STEP 2: Review of the 'Clean' Data ----------------------------------------
 
 # must have a `heliconia_data_clean` in the `data/data_clean` folder
 
@@ -17,7 +17,7 @@ review_heliconia_data()
 
 
 
-# Step 3: Create Files for the Data Archive ---------------------------------
+# STEP 3: Create Files for the Data Archive ---------------------------------
 
 # csv file of demog dataset for Dryad ---------------------------------------
 source("./code/code_archive/create_dryad_file.R")
