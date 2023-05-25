@@ -60,10 +60,9 @@ tag_changes <-
 
 tag_changes<-tag_changes %>% 
   mutate(notes=case_when(
-         notes==""~NA,
-         .default = notes
+         notes !=""~ notes,
+         TRUE ~ as.character(NA))
          )
-  )
 
 
 # save the file -----------------------------------------------------------

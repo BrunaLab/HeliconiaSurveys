@@ -8,7 +8,7 @@ find_no_tags <- function(ha_data) {
   ha_data <- ha_data %>%
     mutate(adult_no_tag = case_when(
       (adult_no_tag == TRUE & year == 1999) ~ FALSE,
-      .default = adult_no_tag
+      TRUE ~ adult_no_tag
     ))
   
   

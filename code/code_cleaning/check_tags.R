@@ -1,5 +1,8 @@
 check_tags <- function(ha_data) {
-  
+
+  library(dplyr)
+  library(tidyr)
+    
   # This function does multiple validations related to tag numbers.
   # (1) It standardizes tag numbers
   # (2) It finds any duplicated tag numbers in the same plot and 
@@ -46,24 +49,6 @@ check_tags <- function(ha_data) {
   duplicates$duplicate_tag <- "duplicate tag number"
   
   
-  #
-  #   duplicates <-
-  #     semi_join(ha_data, duplicates, by = c("plot", "tag_number")) %>%
-  #     select(plot_id,plot, habitat,  plant_id,   tag_number, year, row,column, shts, ht, code) %>%
-  #     arrange(plot, habitat, tag_number,  row,column,year) %>% # detect all the ones with decimals
-  #     bind_rows(ha_data %>% filter(str_detect(tag_number, "\\."))) %>%
-  #     ungroup()
-  
-  
-  #  now label the duplicates in the ha_data df
-  #
-  # duplicate_tags <- duplicates %>%
-  #   select(tag_number, plot) %>%
-  #   group_by(tag_number, plot) %>%
-  #   slice(1) %>%
-  #   filter(tag_number > 0) %>%
-  #   arrange(plot)
-  
   # duplicate_tags
   
   ha_data <- left_join(ha_data, duplicates, by = c("plot", "tag_number"))
@@ -76,14 +61,15 @@ check_tags <- function(ha_data) {
   # now create the new column for all plants found without tags.
   # this includes uly, new plant without tag, etc.
   
+  
+  
   ha_data <- ha_data %>%
     mutate(adult_no_tag = case_when(
       code == "no tag" ~ TRUE,
       code == "plant without tag" ~ TRUE,
       code == "new plant in plot" ~ TRUE,
       code == "ULY" ~ TRUE,
-      .default = FALSE
-    ))
+      TRUE ~ FALSE))
   
   # summary(ha_data$adult_no_tag)
   
