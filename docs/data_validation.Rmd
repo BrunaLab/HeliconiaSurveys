@@ -24,7 +24,7 @@ library(gghighlight)
 
 ```{r load-data}
 ha <- read_csv(
-  here("data", "data_archive", "HDP_1997_2009.csv")
+  here("data", "data_archive", "HDP_1998_2009.csv")
 )
 ha_plots <- read_csv(
   here("data", "data_archive", "HDP_plots.csv")
