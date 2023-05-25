@@ -13,8 +13,8 @@ review_heliconia_data <- function() {
   # a measurement of shts or ht in a subsequent year, indicating they had 
   # lost above-ground parts but were still alive. This function identifies
   # them, corrects those that are simple to correct, and then saves a csv
-  # file with those that should be reviewed in the original records and corrected
-  # in the correction file.
+  # file with those that should be reviewed in the original records 
+  # and corrected in the correction file.
   
   # A message will inform if there are NO zombies in the dataset
   
@@ -70,12 +70,15 @@ review_heliconia_data <- function() {
   # numbers and the plot in which they are located
   
   
-  # find "adult plants" without a tag ---------------------------------------------
+  # find "adult plants" without a tag ----------------------------------------
   
   
   source("./code/code_review/find_no_tags.R")
   find_no_tags(ha_data)
   
   
-  # return(ha_data)
+  # find plants with census_status = "measured" but no recorded ht or shts ---
+  source("./code/code_review/find_plants_no_size.R")
+  find_plants_no_size(ha_data)
+  
 }

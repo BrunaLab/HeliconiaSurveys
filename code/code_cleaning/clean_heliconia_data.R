@@ -178,8 +178,10 @@ clean_heliconia_data <- function() {
   if (!dir.exists("./data/data_clean")) {
     dir.create("./data/data_clean")
   } else {
-    print(" ")
-  }
+    # print(" ")
+    # Nothing - this is a placeholder
+    
+    }
 
 
   write_csv(ha_data, "./data/data_clean/heliconia_data_clean.csv")

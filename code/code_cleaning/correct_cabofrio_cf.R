@@ -1,7 +1,9 @@
 correct_cabofrio_cf <- function(ha_data) {
 
   suppressMessages({
-    
+
+
+# 2115 --------------------------------------------------------------------
   # 2115 in D9 is actually 2105; move the measurment from 2008 to 2015's record
   ha_data$shts[ha_data$plot == "CaboFrio-CF" & 
                        ha_data$tag_number == 2105 &
@@ -20,10 +22,13 @@ correct_cabofrio_cf <- function(ha_data) {
              tag_number == 2115 &
              row == "D" &
              column == 9)
+  
   ha_data <- anti_join(ha_data, delete2115)
+  
   rm(delete2115)
   
-  
+
+# 350 ---------------------------------------------------------------------
   # tag 350 has two codes in 2007: 90, 10
   # 90: under branchfall
   # 10: resprouting
@@ -31,8 +36,8 @@ correct_cabofrio_cf <- function(ha_data) {
   ha_data$code[ha_data$plot == "CaboFrio-CF" & 
                  ha_data$tag_number == 350 &
                  ha_data$year == 2007] <- "under branchfall, resprouting"
-  
-  # tag no. 2121
+
+# 2121 --------------------------------------------------------------------
   # create the correct values
   correct_2121 <- ha_data %>%
     filter(plot == "CaboFrio-CF", tag_number == 2121) %>%
@@ -41,12 +46,13 @@ correct_cabofrio_cf <- function(ha_data) {
     mutate(ht = if_else(year == 2009, 6, ht)) %>%
     mutate(shts = if_else(year == 2009, 1, shts)) %>%
     mutate(code = ifelse(year == 2009, NA, code))
+  
   # remove the duplicates from the original df
   ha_data <- ha_data[!(ha_data$plot == "CaboFrio-CF" & ha_data$tag_number == 2121), ]
+  
   # re-insert them
-  # str(ha_data$code)
-  # str(correct_2121$code)
   ha_data <- bind_rows(ha_data, correct_2121)
+  
   rm(correct_2121)
   
   # location

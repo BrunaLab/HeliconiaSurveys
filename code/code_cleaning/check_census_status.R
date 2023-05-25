@@ -1,13 +1,13 @@
-check_census_status <- function(ha_data) {
-  # unique(ha_data$code)
-  ha_data <- ha_data %>%
+check_census_status <- function(ha_data_original) {
+  
+  ha_data <- ha_data_original %>%
     mutate(census_status = case_when(
-      (ht >= 0 | shts >= 0 | infl > 0) ~ "measured", # anything with a measurement is alive
-      code == "sdlg" ~ "measured", # new seedlings are alive, even if no ht or sht measurment
+      (ht >= 0 | shts >= 0 | infl > 0) ~ "measured", # alive if has shts | ht data
+      code == "sdlg" ~ "measured", # new seedlings alive, even if no ht | shts
       code %in% c("dead", "dead and not on list") ~ "dead", # anything dead is dead
       # code %in% c("sdlg","no tag","plant_no_tag", "ULY","new plant in plot") ~ "new",
       code == "missing" ~ "missing", # in some years plants were marked missing
-      TRUE ~ NA_character_ # anything not measured or marked "missing", "dead" or "seedling" is NA
+      TRUE ~ NA_character_ # anything not measured, "missing", "dead" or a "seedling" is NA
     )) %>%
     group_by(plot, plant_id) %>%
     # fill in the rows down. Any "missing will be recorded as missing until
@@ -16,21 +16,32 @@ check_census_status <- function(ha_data) {
     fill(census_status, .direction = "down") %>%
     arrange(plot, plant_id, year)
 
-  # Now keep only those alive, missing, and the first year marked dead
+  # Subset plants into df's by category: 
+  # alive (measured) 
   ha_measured <- ha_data %>% filter(census_status == "measured")
+  # missing
   ha_missing <- ha_data %>% filter(census_status == "missing")
-  ha_na <- ha_data %>% filter(is.na(census_status))
-  ha_na <- ha_na %>% filter(!is.na(duplicate_tag))
+  
+  # 1st year marked dead 
+  # (eliminates those recorded as dead 2 yrs in a row to confirm actually dead)
   ha_dead <- ha_data %>%
     filter(census_status == "dead") %>%
     arrange(plot, plant_id, year) %>%
     group_by(plot, plant_id) %>%
     filter(row_number() == 1)
+  
+  # duplicate tag numbers
+    # reduce to the ones NA in a census, then only `duplicate tag numbers`
+  ha_na <- ha_data %>% 
+    filter(is.na(census_status)) %>% 
+    filter(!is.na(duplicate_tag))
 
+  # bind it all up into a new ha_data 
   ha_data <- bind_rows(ha_measured, ha_na, ha_dead, ha_missing) %>%
     arrange(plot, plant_id, year)
 
-
+  ha_data_eliminated<-anti_join(ha_data_original,ha_data)
+  
   # Some that were NA in all measurements but were duplicate tag numbers weren't getting marked
   # as NA instead of missing in census_status so this takes care of that
   ha_data <- ha_data %>%
@@ -46,7 +57,7 @@ check_census_status <- function(ha_data) {
       ) # anything not measured or marked "missing", "dead" or "seedling" is NA
     )
 
-  ## The ones under treefalls coming back "measured"
+  ## There are some under treefalls coming back "measured"
   ha_data <- ha_data %>%
     mutate(
       census_status = case_when(
@@ -68,20 +79,17 @@ check_census_status <- function(ha_data) {
     ha_data %>%
     group_by(plant_id) %>%
     mutate(
-      blank_yr_delete = if_else(lag(census_status, 1) == "dead", "delete", NA_character_),
+      blank_yr_delete = 
+        if_else(lag(census_status, 1) == "dead", "delete", NA_character_),
       .before = "code"
     ) %>%
     fill(blank_yr_delete, .direction = "down") %>%
     filter(is.na(blank_yr_delete) == TRUE) %>%
     select(-blank_yr_delete) %>%
     ungroup()
-
-
-
+  
   # Once all these columns have been added, can delete the notations from the
   # `code` column and make any final changes to the codes
-
-
   ha_data <- ha_data %>%
     mutate(code = replace(code, code == "dead", NA)) %>%
     mutate(code = replace(code, code == "dried", NA)) %>%

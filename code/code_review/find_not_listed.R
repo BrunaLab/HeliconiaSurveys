@@ -53,7 +53,7 @@ find_not_listed <- function(ha_data) {
     if (!dir.exists("./data/data_review")) {
       dir.create("./data/data_review")
     } else {
-      print("./data/data_review")
+      # print("./data/data_review")
     }
 
     write_csv(not_listed, "./data/data_review/heliconia_not_on_survey_list.csv")

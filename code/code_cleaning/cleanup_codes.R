@@ -1,6 +1,11 @@
 cleanup_codes <- function(ha_data) {
+  
   ha_data$code <- as.factor(ha_data$code)
-  summary(ha_data$code)
+  # summary(ha_data$code)
+  
+
+# convert numerical codes to text -----------------------------------------
+
   levels(ha_data$code)[levels(ha_data$code) == "1"] <- "sdlg"
   levels(ha_data$code)[levels(ha_data$code) == "ULY"] <- "ULY"
   levels(ha_data$code)[levels(ha_data$code) == "3"] <- "ULY"
@@ -24,9 +29,11 @@ cleanup_codes <- function(ha_data) {
 
 
 
-  # unique(ha_data$code)
-  #
-  # CLEAN UP CODES FROM PA10
+# clean up codes from PA-10 ha --------------------------------------------
+
+  # This is mostly taking the long text entered by survey team and shortening
+  # for correction in the PA-10 correction function
+  
   ha_data$notes <- as.character(NA)
   ha_data$code <- as.character(ha_data$code)
   ha_data$code <- trimws(ha_data$code)
@@ -143,8 +150,9 @@ cleanup_codes <- function(ha_data) {
     mutate(code = na_if(code, "plot is 50% treefall")) %>%
     mutate(code = na_if(code, "trefall"))
 
+  
+  
   ha_data$code <- trimws(ha_data$code)
-
   ha_data$code <- as.character(ha_data$code)
 
   return(ha_data)
