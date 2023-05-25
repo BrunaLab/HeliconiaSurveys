@@ -160,6 +160,10 @@ kbl(marked_per_yr)
 ```
 
 
+## Data Validation
+
+[Data Validation Page](https://brunalab.github.io/HeliconiaSurveys/data_validation.html)
+
 ## Related Information 
 
 1. HDP Project Publications:  [link](https://brunalab.github.io/HeliconiaSurveys/hdp_papers.html)
