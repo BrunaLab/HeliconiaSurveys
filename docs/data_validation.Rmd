@@ -1,11 +1,18 @@
 ---
-title: "Validation of `HDP_plots.csv` & `HDP_1997_2009.csv` Data with `pointblank`"
-author: Eric R. Scott
+title: "Data Validation: _Heliconia_ Demography Project"
+author: Eric R. Scott & Emilio M. Bruna
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
 
-Here we use `pointblank` to create a data validation report. In the resulting table at the end, any failing tests should have a CSV button that lets you download a .csv file of just the rows of data that don't pass that particular validation step.
+We use the R package [`pointblank`](https://rich-iannone.github.io/pointblank/) to review and validate the demographic data set (`HDP_1997_2009.csv`) and plot-level descriptors (`HDP_plots.csv`) published in Bruna et al. (2023) and archived in the Dryad online data repository. The report below includes:
+
+1. the different validation tests that were conducted, 
+1. the date of the most recent test, 
+1. each test's criteria for 'pass', 'warn' and 'stop', 
+1. the number of 'units' (i.e., rows or columns) assessed in each test, 
+1. how many of these units passed or failed, and
+1. a button for downloading a .csv file of the records flagged by a particular validation test. _Note that these are not necessarily errors_. For instance, the validation procedure for 'plant size - height' returns as 'stop' all plants >2 m tall. _Heliconia_ plants can exceed this threshold; this test is simply designed to flag any such individuals. In contrast, the data set should not have any duplicated rows. A notification of 'fail' for this test indicates an error that can be corrected by downloading the csv file, reviewing the duplicated rows, and uploading the necessary corrections. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
@@ -55,11 +62,12 @@ ha_change <-
   ungroup()
 ```
 
-
+-----
 
 # Dataset Structure: _Data types_
 
-**Action levels**: strict criteria (**error** if *any* rows fail)
+Tests to determine if columns are correctly coded as integer, character, etc.   
+**Test criteria**: Strict ('stop' if *any* rows fail).
 
 ```{r agent1}
 ha %>%
@@ -77,9 +85,13 @@ ha %>%
 ```
 
 
+-----
+
 # Dataset Structure: _Plot & Subplot IDs_
 
-**Action levels**: strict criteria (**error** if *any* rows fail)
+Test for any nonexistent values of `plot_id` (e.g., 'FF-10', 'CF-23') or `subplot` (e.g., 'H23', 'A11').  
+**Test criteria**: Strict ('stop' if *any* rows fail).
+
 
 ```{r agent2}
 ha %>%
@@ -97,7 +109,8 @@ ha %>%
 
 # Dataset Structure: _Duplicated or Missing Values_
 
-**Action levels**: **error** if *any* rows fail.
+Tests for duplicated rows, missing `plant_ID` numbers, or duplicate `plant_id` numbers (test is done for every survey year).  
+**Test criteria**: Strict ('stop' if *any* rows fail).
 
 ```{r agent3}
 ha %>%
@@ -116,9 +129,10 @@ ha %>%
 ```
 
 
-# Plant Characteristics: _Range of Size & Inflorescence No._
+# Plant Characteristics: _Size & Flowering_
 
-**Action levels**: **warn** if $\geq$ 1 rows fail conditions, **error** if $\geq$ 2% of rows fail conditions.  
+Tests to determine how many values of plant size (`shts`, `ht`) or infloresence number (`infl`) are outside the range of most values.  
+**Test criteria**: 'warn' if $\geq$ 1 rows fail conditions, 'stop' if $\geq$ 2% of rows fail conditions.  
 
 ```{r agent4}
 ha %>%
@@ -137,9 +151,10 @@ ha %>%
 ```
 
 
-# Plant Growth: _Change in size from yr(t) to yr(t+1)_
+# Plant Characteristics: Growth
 
-**Action levels**: **warn** if $\geq$ 1 rows fail conditions, **error** if $\geq$ 2% of rows fail conditions.  
+Tests for unusual changes in plant size from $$Year_{t}$$ to $$Year_{t+1}$$. Conducted for both height and shoot number. 
+**Test criteria**: 'warn' if $\geq$ 1 rows fail conditions, 'stop' if $\geq$ 2% of rows fail conditions.  
 
 
 ```{r agent5}
@@ -162,8 +177,9 @@ ha_change %>%
 ```
 
 # Seedlings: _Initial size_
+Tests for seedlings whose size at initial marking was unusually large. Conducted for both height and shoot number.  
+**Test criteria**: 'warn' if $\geq$ 1 rows fail conditions, 'stop' if $\geq$ 2% of rows fail conditions.  
 
-**Action levels**: **warn** if $\geq$ 1 rows fail conditions, **error** if $\geq$ 2% of rows fail conditions.  
 
 ```{r agent6}
 # check seedlings
@@ -180,9 +196,9 @@ ha %>%
   interrogate()
 ```
 
+------
 
-
-# Check for missing values: _Height_
+# Missing values: _Height_
 
 ```{r echo=FALSE}
 ha %>% 
