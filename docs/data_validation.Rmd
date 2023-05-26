@@ -49,28 +49,33 @@ ha %>%
   
 ```
 
-# Check for missing values: Shoots
+<!-- # Check for missing values: Shoots -->
+
 ```{r echo=FALSE}
-ha %>% 
-  group_by(plot_id, year) %>% 
-  summarize(prop_na = sum(is.na(shts))/n(), .groups = "drop") %>% 
-  ggplot(aes(x = year, y = prop_na)) +
-  geom_point(color="red") +
-  facet_wrap(~plot_id) +
-  theme_bw() +
-  scale_x_continuous(breaks = scales::breaks_pretty()) +
-  scale_y_continuous(breaks = c(0,0.5,1)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  gghighlight(prop_na > .5) +
-  labs(y = "Proportion values missing - Shoots")
+# ha %>% 
+#   group_by(plot_id, year) %>% 
+#   summarize(prop_na = sum(is.na(shts))/n(), .groups = "drop") %>% 
+#   ggplot(aes(x = year, y = prop_na)) +
+#   geom_point(color="red") +
+#   facet_wrap(~plot_id) +
+#   theme_bw() +
+#   scale_x_continuous(breaks = scales::breaks_pretty()) +
+#   scale_y_continuous(breaks = c(0,0.5,1)) +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+#   gghighlight(prop_na > .5) +
+#   labs(y = "Proportion values missing - Shoots")
   
 ```
 
 
-
 **Action levels**
 
-By default, warn if 1 or more rows fail conditions and error if 2% or more fail.  Some checks are run with a stricter action level that errors if *any* rows fail.
+For most tests, the following criteria are used:
+
+- **'warn'**: 1 or more rows fail conditions 
+- **'error'**: 2% or more of rows fail conditions.  
+
+The exceptions are, ----, ----, -----. These use the strict condition, which will return an **'error'** if *any* rows fail.
 
 ```{r al, echo=TRUE}
 al_default <-  action_levels(warn_at = 1, stop_at = 0.02) #warn if even row fails, error if 2% of rows fail
@@ -134,9 +139,9 @@ ha %>%
 ```
 
 
-# Year to year change
+# Plant Size
 
-## This test is for unusually large changes in plant size from year t to t+1. 
+### This test is for unusually large changes in plant size from one year to the next.
 
 Checks that year to year change in size is reasonable
 
@@ -159,26 +164,9 @@ ha_change %>%
   interrogate()
 ```
 
-# Seedlings
+# Seedling Size
 
-## This test is for seedlings that are unusually large.
-
-```{r agent3}
-# check seedlings
-ha %>%
-  filter(recorded_sdlg) %>% 
-  create_agent(
-    actions = al_default,
-    label = "Check seedlings"
-  ) %>% 
-  col_vals_lt(vars(shts), 3, na_pass = TRUE,
-              label = "shoots < 3") %>% 
-  col_vals_lt(vars(ht), 30, na_pass = TRUE,
-              label = "height < 30cm") %>% 
-  interrogate()
-```
-
-
+### This searches for seedlings that are unusually large.
 
 ```{r agent3}
 # check seedlings
@@ -194,6 +182,23 @@ ha %>%
               label = "height < 30cm") %>% 
   interrogate()
 ```
+
+
+
+<!-- ```{r agent3}
+# # check seedlings
+# ha %>%
+#   filter(recorded_sdlg) %>% 
+#   create_agent(
+#     actions = al_default,
+#     label = "Check seedlings"
+#   ) %>% 
+#   col_vals_lt(vars(shts), 3, na_pass = TRUE,
+#               label = "shoots < 3") %>% 
+#   col_vals_lt(vars(ht), 30, na_pass = TRUE,
+#               label = "height < 30cm") %>% 
+#   interrogate()
+``` -->
 
 
 
