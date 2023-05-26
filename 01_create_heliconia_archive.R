@@ -11,7 +11,7 @@ ha_data<-clean_heliconia_data()
 # STEP 2: Review of the 'Clean' Data ----------------------------------------
 
 # must have a `heliconia_data_clean` in the `data/data_clean` folder
-
+# Note that this is all being moved to the pointblank page
 source("./code/code_review/review_heliconia_data.R")
 review_heliconia_data()
 

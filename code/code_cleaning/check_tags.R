@@ -37,12 +37,11 @@ check_tags <- function(ha_data) {
   
   
   duplicates <- ha_data %>%
-    group_by(habitat, plot, tag_number, year) %>%
-    filter(n() > 1) %>%
-    ungroup() %>%
-    select(plot, tag_number) %>%
-    unique() %>%
-    ungroup()
+    group_by(habitat,plot,plant_id,tag_number,subplot) %>%
+    unique() %>% 
+    ungroup %>% 
+    group_by(plot,tag_number) %>%
+    filter(n() > 1)
   
   
   duplicates$tag_number <- as.numeric(duplicates$tag_number)

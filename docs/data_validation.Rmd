@@ -5,7 +5,7 @@ date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
 
-We use the R package [`pointblank`](https://rich-iannone.github.io/pointblank/) to review and validate the demographic data set (`HDP_1997_2009.csv`) and plot-level descriptors (`HDP_plots.csv`) published in Bruna et al. (2023) and archived in the Dryad online data repository. The report below includes:
+We use the R package [`pointblank`](https://rich-iannone.github.io/pointblank/) to review and validate the plot-level descriptors (`HDP_plots.csv`) and clean demographic data set (`heliconia_data_clean.csv`) in preparation for archiving in Dryad and publication in Bruna et al. (2023). The report below includes:
 
 1. the different validation tests that were conducted, 
 1. the date of the most recent test, 
@@ -21,6 +21,7 @@ library(pointblank)
 library(readr)
 library(here)
 library(dplyr)
+library(tidyr)
 library(stringr)
 library(ggplot2)
 library(gghighlight)
@@ -31,7 +32,9 @@ library(gghighlight)
 
 ```{r load-data}
 ha <- read_csv(
-  here("data", "data_archive", "HDP_1998_2009.csv")
+  # here("data", "data_archive", "HDP_1998_2009.csv")
+  here("data", "data_clean", "heliconia_data_clean.csv")
+
 )
 ha_plots <- read_csv(
   here("data", "data_archive", "HDP_plots.csv")
@@ -122,9 +125,22 @@ ha %>%
                 label  = "duplicated rows") %>% 
   col_vals_not_null(vars(plant_id), actions = al_strict) %>% 
   rows_distinct(columns = "plant_id",
-                segments = vars(year),
+                preconditions = ~ . %>%
+                  dplyr::group_by(plant_id,tag_number) %>%
+                  slice(1),
+                # segments = vars(year),
                 actions = al_strict,
-                label = "Check for duplicate ID's within each year") %>% 
+                label = "Check for duplicate plant ID numbers") %>% 
+  rows_distinct(columns = "tag_number",
+                preconditions = ~ . %>% 
+                  dplyr::select(plot_id,plant_id,tag_number,subplot) %>%
+                  unique() %>%
+                  ungroup() %>%
+                  group_by(plot_id,tag_number) %>%
+                  filter(n() > 1),
+                # segments = vars(plot_id),
+                actions = al_strict,
+                label = "Check for duplicate tag numbers in a plot") %>% 
   interrogate()
 ```
 
@@ -151,9 +167,9 @@ ha %>%
 ```
 
 
-# Plant Characteristics: Growth
+# Plant Characteristics: _Growth_
 
-Tests for unusual changes in plant size from $$Year_{t}$$ to $$Year_{t+1}$$. Conducted for both height and shoot number. 
+Tests for unusual changes in plant size (both height and shoot number) from $Year_{t}$ to $Year_{t+1}$.  
 **Test criteria**: 'warn' if $\geq$ 1 rows fail conditions, 'stop' if $\geq$ 2% of rows fail conditions.  
 
 
@@ -169,9 +185,11 @@ ha_change %>%
               label = "|% change in height| < 200%") %>%
   col_vals_between(vars(ht_diff), -100, 100, na_pass = TRUE,
                    label = "|∆ height| < 100cm",
+                   # segments = vars(ht),
                    actions = al_strict) %>%
   col_vals_between(vars(shts_diff), -5, 5, na_pass = TRUE,
                    label = "|∆ shoot number| < 5",
+                   # segments = vars(shts),
                    actions = al_strict) %>%
   interrogate()
 ```
@@ -199,6 +217,8 @@ ha %>%
 ------
 
 # Missing values: _Height_
+
+Graphical depiction of the proportion of plants in each demographic plot for which there is no measurement of plant height (e.g., if plant not found).
 
 ```{r echo=FALSE}
 ha %>% 

@@ -162,7 +162,7 @@ kbl(marked_per_yr)
 
 ## Data Validation
 
-[Data Validation Page](https://brunalab.github.io/HeliconiaSurveys/data_validation.html)
+### [Data Validation Page](https://brunalab.github.io/HeliconiaSurveys/data_validation.html)
 
 ## Related Information 
 

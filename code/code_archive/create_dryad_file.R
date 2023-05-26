@@ -15,8 +15,8 @@ ha_data<-read_csv("./data/data_clean/heliconia_data_clean.csv")
 # head(ha_data)
 
 ha_dryad <- ha_data %>%
-  arrange(row, as.numeric(column)) %>%
-  mutate(subplot = paste(row, column, sep = "")) %>%
+  # arrange(row, as.numeric(column)) %>%
+  # mutate(subplot = paste(row, column, sep = "")) %>%
   select(plot_id,
          subplot,
          plant_id,

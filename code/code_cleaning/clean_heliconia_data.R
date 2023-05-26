@@ -173,6 +173,13 @@ clean_heliconia_data <- function() {
   ha_data <- check_census_status(ha_data)
 
 
+
+# final tweak  ------------------------------------------------------------
+  ha_data <- ha_data %>% 
+  arrange(row, as.numeric(column)) %>%
+    mutate(subplot = paste(row, column, sep = ""))  
+  
+  
   # STEP 5: Save the file -------------------------------------------------
 
   if (!dir.exists("./data/data_clean")) {
