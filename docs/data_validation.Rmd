@@ -1,11 +1,11 @@
 ---
-title: "Data validation with the pointblank package"
+title: "Validation of `HDP_plots.csv` & `HDP_1997_2009.csv` Data with `pointblank`"
 author: Eric R. Scott
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
 
-This uses `pointblank` to create a data validation report. In the resulting table at the end, any failing tests should have a CSV button that lets you download a .csv file of just the rows of data that don't pass that particular validation step.
+Here we use `pointblank` to create a data validation report. In the resulting table at the end, any failing tests should have a CSV button that lets you download a .csv file of just the rows of data that don't pass that particular validation step.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
@@ -31,7 +31,158 @@ ha_plots <- read_csv(
 )
 ```
 
-# Check for missing values: Height
+
+```{r al, echo=FALSE}
+al_default <-  action_levels(warn_at = 1, stop_at = 0.02) #warn if even row fails, error if 2% of rows fail
+al_strict <- action_levels(stop_at = 1) #error if even one row fails
+```
+
+
+```{r funs}
+#calculate percent changes
+ha_change <- 
+  ha %>%
+  group_by(plant_id) %>%
+  arrange(plant_id, year) %>%
+  mutate(ht_prev = lag(ht),
+         shts_prev = lag(shts),
+         ht_diff = ht - ht_prev,
+         shts_diff = shts - shts_prev,
+         ht_pc = abs(ht_diff / ht_prev),
+         shts_pc = abs(shts_diff / shts_prev)) %>%
+  #re-order columns so easier to see errors
+  select(plot_id, subplot, plant_id, year, shts_prev, shts, shts_diff, shts_pc, ht_prev, ht, ht_diff, ht_pc, everything()) %>% 
+  ungroup()
+```
+
+
+
+# Dataset Structure: _Data types_
+
+**Action levels**: strict criteria (**error** if *any* rows fail)
+
+```{r agent1}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Data Validation"
+  ) %>%
+  col_vals_expr(label = "Height is measured to nearest cm",
+                expr = ~ ht %% 1 == 0, actions = al_strict) %>%
+  col_vals_expr(label = "Shoots is interger",
+                expr = ~ shts %% 1 == 0, actions = al_strict) %>%
+  col_vals_expr(label = "Number of inflorescences is integer",
+                expr = ~ infl %% 1 == 0, actions = al_strict) %>% 
+  interrogate()
+```
+
+
+# Dataset Structure: _Plot & Subplot IDs_
+
+**Action levels**: strict criteria (**error** if *any* rows fail)
+
+```{r agent2}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Data Validation"
+  ) %>%
+  col_vals_in_set(vars(plot_id), ha_plots$plot_id,
+                  actions = al_strict) %>%
+  col_vals_in_set(vars(subplot), unlist(lapply(LETTERS[1:10], paste0, 1:10)),
+                  actions = al_strict) %>%
+  interrogate()
+```
+
+
+# Dataset Structure: _Duplicated or Missing Values_
+
+**Action levels**: **error** if *any* rows fail.
+
+```{r agent3}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Data Validation"
+  ) %>%
+  rows_distinct(actions = al_strict, 
+                label  = "duplicated rows") %>% 
+  col_vals_not_null(vars(plant_id), actions = al_strict) %>% 
+  rows_distinct(columns = "plant_id",
+                segments = vars(year),
+                actions = al_strict,
+                label = "Check for duplicate ID's within each year") %>% 
+  interrogate()
+```
+
+
+# Plant Characteristics: _Range of Size & Inflorescence No._
+
+**Action levels**: **warn** if $\geq$ 1 rows fail conditions, **error** if $\geq$ 2% of rows fail conditions.  
+
+```{r agent4}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Data Validation"
+  ) %>%
+  # check values are within reasonable range
+  col_vals_between(vars(shts), 0, 20, na_pass = TRUE,
+                   label = "shoots between 0 and 20") %>%
+  col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
+                   label = "height between 0 and 200cm") %>%
+  col_vals_between(vars(infl), 0, 3, na_pass = TRUE,
+                   label = "infloresences between 0 and 3") %>%
+  interrogate()
+```
+
+
+# Plant Growth: _Change in size from yr(t) to yr(t+1)_
+
+**Action levels**: **warn** if $\geq$ 1 rows fail conditions, **error** if $\geq$ 2% of rows fail conditions.  
+
+
+```{r agent5}
+ha_change %>%
+  create_agent(
+    actions = al_default,
+    label = "Check growth & regression"
+  ) %>%
+  
+  # check that year-to-year change is reasonable
+  col_vals_lt(vars(ht_pc), 2, na_pass = TRUE,
+              label = "|% change in height| < 200%") %>%
+  col_vals_between(vars(ht_diff), -100, 100, na_pass = TRUE,
+                   label = "|∆ height| < 100cm",
+                   actions = al_strict) %>%
+  col_vals_between(vars(shts_diff), -5, 5, na_pass = TRUE,
+                   label = "|∆ shoot number| < 5",
+                   actions = al_strict) %>%
+  interrogate()
+```
+
+# Seedlings: _Initial size_
+
+**Action levels**: **warn** if $\geq$ 1 rows fail conditions, **error** if $\geq$ 2% of rows fail conditions.  
+
+```{r agent6}
+# check seedlings
+ha %>%
+  filter(recorded_sdlg) %>% 
+  create_agent(
+    actions = al_default,
+    label = "Check seedlings"
+  ) %>% 
+  col_vals_lt(vars(shts), 3, na_pass = TRUE,
+              label = "shoots < 3") %>% 
+  col_vals_lt(vars(ht), 30, na_pass = TRUE,
+              label = "height < 30cm") %>% 
+  interrogate()
+```
+
+
+
+# Check for missing values: _Height_
 
 ```{r echo=FALSE}
 ha %>% 
@@ -66,139 +217,5 @@ ha %>%
 #   labs(y = "Proportion values missing - Shoots")
   
 ```
-
-
-**Action levels**
-
-For most tests, the following criteria are used:
-
-- **'warn'**: 1 or more rows fail conditions 
-- **'error'**: 2% or more of rows fail conditions.  
-
-The exceptions are, ----, ----, -----. These use the strict condition, which will return an **'error'** if *any* rows fail.
-
-```{r al, echo=TRUE}
-al_default <-  action_levels(warn_at = 1, stop_at = 0.02) #warn if even row fails, error if 2% of rows fail
-al_strict <- action_levels(stop_at = 1) #error if even one row fails
-```
-
-
-```{r funs}
-#calculate percent changes
-ha_change <- 
-  ha %>%
-  group_by(plant_id) %>%
-  arrange(plant_id, year) %>%
-  mutate(ht_prev = lag(ht),
-         shts_prev = lag(shts),
-         ht_diff = ht - ht_prev,
-         shts_diff = shts - shts_prev,
-         ht_pc = abs(ht_diff / ht_prev),
-         shts_pc = abs(shts_diff / shts_prev)) %>%
-  #re-order columns so easier to see errors
-  select(plot_id, subplot, plant_id, year, shts_prev, shts, shts_diff, shts_pc, ht_prev, ht, ht_diff, ht_pc, everything()) %>% 
-  ungroup()
-```
-
-# Data Validation
-
-## These are evaluations of (1) data type, (2) the range of values for shoots, height, and infloresences, and (3) potential duplicates in `HDP_plots.csv` and `HDP_1997_2009.csv`.
-
-
-```{r agent1}
-ha %>%
-  create_agent(
-    actions = al_default,
-    label = "Data Validation"
-  ) %>%
-  col_vals_in_set(vars(subplot), unlist(lapply(LETTERS[1:10], paste0, 1:10)),
-                  actions = al_strict) %>%
-  col_vals_in_set(vars(plot_id), ha_plots$plot_id,
-                  actions = al_strict) %>%
-  col_vals_expr(label = "Height is measured to nearest cm",
-                expr = ~ ht %% 1 == 0, actions = al_strict) %>%
-  col_vals_expr(label = "Shoots is interger",
-                expr = ~ shts %% 1 == 0, actions = al_strict) %>%
-  col_vals_expr(label = "Number of inflorescences is integer",
-                expr = ~ infl %% 1 == 0, actions = al_strict) %>% 
-  # check values are within reasonable range
-  col_vals_between(vars(shts), 0, 20, na_pass = TRUE,
-                   label = "shoots between 0 and 20") %>%
-  col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
-                   label = "height between 0 and 200cm") %>%
-  col_vals_between(vars(infl), 0, 3, na_pass = TRUE,
-                   label = "infloresences between 0 and 3") %>%
-  rows_distinct(actions = al_strict, 
-                label  = "duplicated rows") %>% 
-  col_vals_not_null(vars(plant_id), actions = al_strict) %>% 
-  rows_distinct(columns = "plant_id",
-                segments = vars(year),
-                actions = al_strict,
-                label = "Check for duplicate ID's within each year") %>% 
-  interrogate()
-```
-
-
-# Plant Size
-
-### This test is for unusually large changes in plant size from one year to the next.
-
-Checks that year to year change in size is reasonable
-
-```{r agent2}
-ha_change %>%
-  create_agent(
-    actions = al_default,
-    label = "Check growth & regression"
-  ) %>%
-  
-  # check that year-to-year change is reasonable
-  col_vals_lt(vars(ht_pc), 2, na_pass = TRUE,
-              label = "|% change in height| < 200%") %>%
-  col_vals_between(vars(ht_diff), -100, 100, na_pass = TRUE,
-                   label = "|∆ height| < 100cm",
-                   actions = al_strict) %>%
-  col_vals_between(vars(shts_diff), -5, 5, na_pass = TRUE,
-                   label = "|∆ shoot number| < 5",
-                   actions = al_strict) %>%
-  interrogate()
-```
-
-# Seedling Size
-
-### This searches for seedlings that are unusually large.
-
-```{r agent3}
-# check seedlings
-ha %>%
-  filter(recorded_sdlg) %>% 
-  create_agent(
-    actions = al_default,
-    label = "Check seedlings"
-  ) %>% 
-  col_vals_lt(vars(shts), 3, na_pass = TRUE,
-              label = "shoots < 3") %>% 
-  col_vals_lt(vars(ht), 30, na_pass = TRUE,
-              label = "height < 30cm") %>% 
-  interrogate()
-```
-
-
-
-<!-- ```{r agent3}
-# # check seedlings
-# ha %>%
-#   filter(recorded_sdlg) %>% 
-#   create_agent(
-#     actions = al_default,
-#     label = "Check seedlings"
-#   ) %>% 
-#   col_vals_lt(vars(shts), 3, na_pass = TRUE,
-#               label = "shoots < 3") %>% 
-#   col_vals_lt(vars(ht), 30, na_pass = TRUE,
-#               label = "height < 30cm") %>% 
-#   interrogate()
-``` -->
-
 
 
