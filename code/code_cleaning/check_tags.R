@@ -35,14 +35,13 @@ check_tags <- function(ha_data) {
   # records. It will also return the demographic data file
   # with the duplicate tag numbers labeled in a new column
   
-  
   duplicates <- ha_data %>%
-    group_by(habitat,plot,plant_id,tag_number,subplot) %>%
-    unique() %>% 
-    ungroup %>% 
-    group_by(plot,tag_number) %>%
-    filter(n() > 1)
-  
+    group_by(habitat, plot, tag_number, year) %>%
+    filter(n() > 1) %>%
+    ungroup() %>%
+    select(plot, tag_number) %>%
+    unique() %>%
+    ungroup()
   
   duplicates$tag_number <- as.numeric(duplicates$tag_number)
   duplicates$duplicate_tag <- "duplicate tag number"
