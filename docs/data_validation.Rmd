@@ -31,7 +31,7 @@ ha_plots <- read_csv(
 )
 ```
 
-# Check missing values
+# Check for missing values: Height
 
 ```{r echo=FALSE}
 ha %>% 
@@ -45,9 +45,27 @@ ha %>%
   scale_y_continuous(breaks = c(0,0.5,1)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   gghighlight(prop_na > .5) +
-  labs(y = "Proportion missing values for height")
+  labs(y = "Proportion of values missing - Height")
   
 ```
+
+# Check for missing values: Shoots
+```{r echo=FALSE}
+ha %>% 
+  group_by(plot_id, year) %>% 
+  summarize(prop_na = sum(is.na(shts))/n(), .groups = "drop") %>% 
+  ggplot(aes(x = year, y = prop_na)) +
+  geom_point(color="red") +
+  facet_wrap(~plot_id) +
+  theme_bw() +
+  scale_x_continuous(breaks = scales::breaks_pretty()) +
+  scale_y_continuous(breaks = c(0,0.5,1)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  gghighlight(prop_na > .5) +
+  labs(y = "Proportion values missing - Shoots")
+  
+```
+
 
 
 **Action levels**
@@ -79,9 +97,8 @@ ha_change <-
 
 # Data Validation
 
-The two datasets being submitted with the data paper are `HDP_plots.csv` and `HDP_1997_2009.csv`
+## These are evaluations of (1) data type, (2) the range of values for shoots, height, and infloresences, and (3) potential duplicates in `HDP_plots.csv` and `HDP_1997_2009.csv`.
 
-Checks for data type, range, and duplicates
 
 ```{r agent1}
 ha %>%
@@ -119,6 +136,8 @@ ha %>%
 
 # Year to year change
 
+## This test is for unusually large changes in plant size from year t to t+1. 
+
 Checks that year to year change in size is reasonable
 
 ```{r agent2}
@@ -142,7 +161,7 @@ ha_change %>%
 
 # Seedlings
 
-Check that size of seedlings is reasonable
+## This test is for seedlings that are unusually large.
 
 ```{r agent3}
 # check seedlings
@@ -158,3 +177,23 @@ ha %>%
               label = "height < 30cm") %>% 
   interrogate()
 ```
+
+
+
+```{r agent3}
+# check seedlings
+ha %>%
+  filter(recorded_sdlg) %>% 
+  create_agent(
+    actions = al_default,
+    label = "Check seedlings"
+  ) %>% 
+  col_vals_lt(vars(shts), 3, na_pass = TRUE,
+              label = "shoots < 3") %>% 
+  col_vals_lt(vars(ht), 30, na_pass = TRUE,
+              label = "height < 30cm") %>% 
+  interrogate()
+```
+
+
+
