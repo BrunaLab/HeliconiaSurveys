@@ -136,8 +136,9 @@ ha %>%
                   dplyr::select(plot_id,plant_id,tag_number,subplot) %>%
                   unique() %>%
                   ungroup() %>%
-                  group_by(plot_id,tag_number) %>%
-                  filter(n() > 1),
+                  group_by(plot_id,tag_number,.drop = FALSE) %>%
+                  filter(n() > 1) %>% 
+                  arrange(plot_id,tag_number),
                 # segments = vars(plot_id),
                 actions = al_strict,
                 label = "Check for duplicate tag numbers in a plot") %>% 
@@ -235,6 +236,38 @@ ha %>%
   labs(y = "Proportion of values missing - Height")
   
 ```
+
+# Zombie plants
+
+Zombie plants are those that were recorded as 'Dead' in a survey but for which there is a measurement in a subsequent year (indicative of the plant losing all below-ground parts and then new shoots emerging prior to the next survey). This validation generates a `.csv` of any plants meeting this condition (labeled as 'zombie` for review and correction. 
+
+```{r agent7}
+
+zombies <- ha %>% 
+  group_by(plant_id) %>%
+  mutate(
+    zombie = if_else(lag(census_status, 1) == "dead", "delete", NA_character_),
+    .before = 1
+    ) %>%
+  fill(zombie, .direction = "down") %>%
+  filter(zombie == "delete") %>%
+  mutate(zombie = if_else((is.na(shts) & is.na(ht)), "delete", "zombie"))
+zombies %>%
+  create_agent(
+    actions = al_default,
+    label = "Check for zombies"
+    ) %>%
+  col_vals_equal(
+    columns = vars(zombie),
+    value = "zombie",
+    na_pass = TRUE,
+    actions = al_strict,
+    label = "Check for Zombies"
+    ) %>% 
+  interrogate()
+  
+```
+
 
 <!-- # Check for missing values: Shoots -->
 

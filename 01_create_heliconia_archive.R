@@ -11,7 +11,10 @@ ha_data<-clean_heliconia_data()
 # STEP 2: Review of the 'Clean' Data ----------------------------------------
 
 # must have a `heliconia_data_clean` in the `data/data_clean` folder
-# Note that this is all being moved to the pointblank page
+# Note that these are subset of the validation procedures that are automatically
+# conducted by `pointblank`. The only difference is that this automatically
+# downloads the .csv files to the 'data/data_review' folder.
+
 source("./code/code_review/review_heliconia_data.R")
 review_heliconia_data()
 
