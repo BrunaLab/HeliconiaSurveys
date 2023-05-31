@@ -1,6 +1,8 @@
 ---
-title: "Heliconia Demography Project"
+title: "Tag Change Records"
 date: "updated: `r Sys.Date()`"
+layout: page
+permalink: /TagChanges
 header-includes:
 - \AtBeginDocument{\let\maketitle\relax} # this removes default title section
 - \usepackage[default]{sourcesanspro}
