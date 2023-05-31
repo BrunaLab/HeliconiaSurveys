@@ -7,15 +7,16 @@ date: "updated: `r Sys.Date()`"
   # pdf_document: default
   # html_document:
   #   df_print: paged
-output:rmdformats::robobook:
+output: 
+  rmdformats::robobook
 #   # rmdformats::downcute:
     
-      self_contained: true
-      thumbnails: true
-      lightbox: true
-      gallery: false
-      highlight: tango
-      bookdown: true
+self_contained: true
+thumbnails: true
+lightbox: true
+gallery: false
+highlight: tango
+bookdown: true
 ---
 
 We use the R package [`pointblank`](https://rich-iannone.github.io/pointblank/) to review and validate the plot-level descriptors (`HDP_plots.csv`) and clean demographic data set (`heliconia_data_clean.csv`) in preparation for archiving in Dryad and publication in Bruna et al. (2023). The report below includes:

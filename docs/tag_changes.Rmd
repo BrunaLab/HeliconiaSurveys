@@ -29,15 +29,16 @@ title: "Tag Change Records"
 # linkcolor: blue
 # urlcolor: blue
 # output: html_document
-output:rmdformats::robobook:
+output: 
+  rmdformats::robobook
 #   # rmdformats::downcute:
     
-      self_contained: true
-      thumbnails: true
-      lightbox: true
-      gallery: false
-      highlight: tango
-      bookdown: true
+self_contained: true
+thumbnails: true
+lightbox: true
+gallery: false
+highlight: tango
+bookdown: true
 ---
 
 

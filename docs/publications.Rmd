@@ -3,15 +3,16 @@ title: " "
 
 csl: ecology.csl
 bibliography: ["./HeliconiaSurveys_papers/HeliconiaSurveys_papers.bib","./HeliconiaSurveys_related/HeliconiaSurveys_related.bib","./HeliconiaSurveys_datasets/HeliconiaSurveys_datasets.bib" ]
-output:rmdformats::robobook:
+output: 
+  rmdformats::robobook
 #   # rmdformats::downcute:
     
-      self_contained: true
-      thumbnails: true
-      lightbox: true
-      gallery: false
-      highlight: tango
-      bookdown: true
+self_contained: true
+thumbnails: true
+lightbox: true
+gallery: false
+highlight: tango
+bookdown: true
 ---
 
 ```{r setup, include=FALSE}
@@ -36,7 +37,6 @@ opts_knit$set(width=75)
 ```
 
 
---- 
 nocite: |
     
     @leiteModelingPersistencePlant2021; @brooksStatisticalModelingPatterns2019a, @brunaArePlantPopulations2003a, @brunaBiologicalImpactsDeforestation2004, @brunaCompensatoryResponsesUnderstory2005d, @brunaDemographicEffectsHabitat2005, @brunaEdgeEffectsGrowth2011c, @brunaEffectsForestFragmentation2002b, @brunaExperimentalAssessmentHeliconia2002, @brunaForestFragmentsTropical2005, @brunaHabitatFragmentationDemographic2002b, @brunaHeliconiaAcuminataReproductive2004e, @brunaRegenerationPopulationStructure2005d, @brunaSeedGerminationRainforest1999b, @cortesCharacterization10Microsatellite2009c, @cortesLowPlantDensity2013b, @fiskeAlternativeSpatialSampling2010, @fiskeEffectsSampleSize2008a, @gagnonGrowthUnderstoryHerb2011b, @morrisLongevityCanBuffer2008a, @ribeiroInfluencePostClearingTreatment2010b, @scottDelayedEffectsClimate2021, @uriarteDisentanglingDriversReduced2011b, @uriarteEffectsForestFragmentation2010b

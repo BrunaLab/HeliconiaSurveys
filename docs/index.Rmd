@@ -3,15 +3,16 @@ title: "Heliconia Demography Project"
 date: "last update: `r Sys.Date()`"
 author: "Emilio M. Bruna"
 # output: html_document
-output:rmdformats::robobook:
+output: 
+  rmdformats::robobook
 #   # rmdformats::downcute:
     
-      self_contained: true
-      thumbnails: true
-      lightbox: true
-      gallery: false
-      highlight: tango
-      bookdown: true
+self_contained: true
+thumbnails: true
+lightbox: true
+gallery: false
+highlight: tango
+bookdown: true
 ---
 
 
@@ -39,7 +40,7 @@ opts_knit$set(width=75)
 
 ## Project Overview
 
-This is site provides additional information on the _Heliconia_ Demography project and updates to the data published in Bruna et al. (20--).
+This site provides additional information on the _Heliconia_ Demography project and updates to the data published in Bruna et al. (20--).
 
 ## Contact Information
 
