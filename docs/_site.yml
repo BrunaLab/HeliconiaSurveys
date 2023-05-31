@@ -1,7 +1,7 @@
-name: "my-website"
+name: "hdp-website"
 navbar:
-  title: "My Website"
-  type: inverse
+  title: "The Heliconia Demography Project"
+  # type: inverse
   left:
     - text: "Home"
       icon: fa-home

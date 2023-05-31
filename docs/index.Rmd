@@ -1,5 +1,6 @@
 ---
 title: "Heliconia Demography Project"
+# title: " "
 date: "updated: `r Sys.Date()`"
 
 header-includes:
@@ -64,11 +65,13 @@ opts_chunk$set(echo=FALSE,
 opts_knit$set(width=75)
 ```
 
-# Introduction
+# Introduction & Contact Information
+
+## Project Overview
 
 This is site provides additional information on the _Heliconia_ Demography project and updates to the data published in Bruna et al. (20--).
 
-# Contact for Questions or Suggestions
+## Contact for Questions or Suggestions
 
 If you have questions regarding any of the HDP data sets or suggestions for improvement, please contact Emilio M. Bruna (embruna@ufl.edu) or post an issue on the [HDP Github Repository](link)
 
@@ -174,14 +177,16 @@ kbl(marked_per_yr)
 
 Automated validation tests of the _Heliconia_ project data sets are carried out using the [`pointblank`](https://github.com/rich-iannone/pointblank/) package. Summaries of these validations tests, including links to `.csv` files of data flagged for review, are on the [_Heliconia_ Data Validation Page](https://brunalab.github.io/HeliconiaSurveys/data_validation.html)
 
-# Related Information 
+<!-- ## HDP Project Publications:  [link](https://brunalab.github.io/HeliconiaSurveys/hdp_papers.html) -->
 
-## HDP Project Publications:  [link](https://brunalab.github.io/HeliconiaSurveys/hdp_papers.html)
+# Publications & Datasets: [link](https://brunalab.github.io/HeliconiaSurveys/hdp_datasets.html)
 
-## Other HDP Datasets: [link](https://brunalab.github.io/HeliconiaSurveys/hdp_datasets.html)
+# Miscellaneous
 
-## Log of Tag Number Changes:  [link](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/data_clean/tag_changes.csv)
+## Tag Changes Log: [link](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/data_clean/tag_changes.csv)
 
-## Locations and size of treefalls recorded during surveys: [link] [in progress...]
+## Treefall Records
 
-## List of plants impacted by treefalls: [link](https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/data_clean/treefall_impacts.csv)
+### Treefall Records: [link] [in progress...]
+
+### Plants impacted by treefalls: [link](https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/data_clean/treefall_impacts.csv)
