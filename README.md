@@ -1,26 +1,32 @@
 ### Heliconia Demography Project Github Repository
 
-This is the README for the cleanup, organization, and summary of the Heliconia Demographic Project data. Summaries of the data, photos of the field sites, a list of project publications, and other project-related resources are available on the [project website](https://brunalab.github.io/HeliconiaSurveys/). The demographic data collected from 1998-2008 have been published in _Ecology_ as a Data Paper, which provides a full description of the project, data, and metadata. 
+This is the README for the cleanup, organization, and archiving of data sets collected as part of the _Heliconia_ Demographic Project. The core data set is demographic surveys conducted from 1998-2008. These have been published in _Ecology_ as a Data Paper.
 
+This repository also includes the following records: 
+
+1. [An overview](https://brunalab.github.io/HeliconiaSurveys/) of the project, methods, and field sites;
+2. Summaries of the demographic data collected
+3. A list of HDP-related publications
+4. Descriptions of the the HDP data sets available to users
+4. Status of ongoing data validation efforts and data sets being added to the archive 
+
+<!---
 This repository contains the following folders:
-
-└── my_awesome_project  
-    ├── `01_create_heliconia_archive.R`  
-    ├── code  
+└── HeliconiaSurveys.
+    ├── `01_create_heliconia_archive.R`
+    ├── code
     │   ├── code_archive (preparing the file to be archived at Dryad)
-    │   └── code_cleaning (cleaning & combining data from individual plots)   
-    │   └── code_review (validation checks of clean data set)  
-    ├── data  
+    │   └── code_cleaning (cleaning & combining data from individual plots)
+    │   └── code_review (validation checks of clean data set)
+    ├── data
     │   ├── data_archive (files archived at Dryad)
-    │   └── data_clean (clean data prior to archiving)   
+    │   └── data_clean (clean data prior to archiving)
     │   └── data_raw (raw data files)
-    │   └── data_review (records for review following validation checks)  
-    ├── README.md  
-    ├── LICENSE   
-    └── .gitignore  
-  
-  
-  
+    │   └── data_review (records for review following validation checks)
+    ├── README.md
+    ├── LICENSE
+    └── .gitignore
+--->
 
 
 
