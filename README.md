@@ -4,7 +4,7 @@ This is the README for the cleanup, organization, and archiving of data sets col
 
 This repository also includes the following records: 
 
-1. [An overview](https://brunalab.github.io/HeliconiaSurveys/) of the project, methods, and field sites;
+1. [An overview](https://brunalab.github.io/HeliconiaSurveys/index.html) of the project, methods, and field sites;
 2. Summaries of the demographic data collected
 3. A list of HDP-related publications
 4. Descriptions of the the HDP data sets available to users
