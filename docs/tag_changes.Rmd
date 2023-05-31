@@ -2,7 +2,7 @@
 title: "Tag Change Records"
 date: "updated: `r Sys.Date()`"
 layout: page
-permalink: /TagChanges
+permalink: HeliconiaSurveys/TagChanges
 header-includes:
 - \AtBeginDocument{\let\maketitle\relax} # this removes default title section
 - \usepackage[default]{sourcesanspro}
@@ -60,14 +60,14 @@ opts_knit$set(width=75)
 ```
 
 ```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
-tag_changes <- read_csv("./data_raw/tag_changes.csv", col_types = cols())
+tag_changes <- read_csv("./data/data_raw/tag_changes.csv", col_types = cols())
 
 # ANY CHNAGES TO THE TAG NUMBERS AS OF MAY 24 2022 WILL BE ENTERED HERE
 
 tag_changes_updated <- tag_changes
 # %>% 
 
-write_csv(tag_changes_updated, "./data_clean/tag_changes.csv")
+write_csv(tag_changes_updated, "./data/data_clean/tag_changes.csv")
 ```
 
 
