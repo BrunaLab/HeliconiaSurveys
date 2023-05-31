@@ -39,8 +39,8 @@ opts_knit$set(width=75)
 
 # Miscellaneous
 
-## [Tag Changes Log](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/data_clean/tag_changes.csv)
+## [Tag Changes Log](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/survey_clean/tag_changes.csv)
 
 ## [Treefall Records](link)
 
-## [Plants impacted by treefalls](https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/data_clean/treefall_impacts.csv)
+## [Plants impacted by treefalls](https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/survey_clean/treefall_impacts.csv)

@@ -1,0 +1,304 @@
+---
+title: "Data Validation"
+subtitle: "_Heliconia_ Demographic Survey Data"
+author: Eric R. Scott & Emilio M. Bruna
+date: "updated: `r Sys.Date()`"
+# output: html_document
+  # pdf_document: default
+  # html_document:
+  #   df_print: paged
+output: 
+  rmdformats::robobook
+#   # rmdformats::downcute:
+    
+self_contained: true
+thumbnails: true
+lightbox: true
+gallery: false
+highlight: tango
+bookdown: true
+---
+
+We use the R package [`pointblank`](https://rich-iannone.github.io/pointblank/) to review and validate the plot-level descriptors (`HDP_plots.csv`) and clean demographic data set (`heliconia_survey_clean.csv`) in preparation for archiving in Dryad and publication in Bruna et al. (2023). The report below includes:
+
+1. the different validation tests that were conducted, 
+1. the date of the most recent test, 
+1. each test's criteria for 'pass', 'warn' and 'stop', 
+1. the number of 'units' (i.e., rows or columns) assessed in each test, 
+1. how many of these units passed or failed, and
+1. a button for downloading a .csv file of the records flagged by a particular validation test. _Note that these are not necessarily errors_. For instance, the validation procedure for 'plant size - height' returns as 'stop' all plants >2 m tall. _Heliconia_ plants can exceed this threshold; this test is simply designed to flag any such individuals. In contrast, the data set should not have any duplicated rows. A notification of 'fail' for this test indicates an error that can be corrected by downloading the csv file, reviewing the duplicated rows, and uploading the necessary corrections. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+
+library(pointblank)
+library(readr)
+library(here)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(ggplot2)
+library(gghighlight)
+# Use `validate_rmd()` here to set options for the
+# pointblank validation workflow within R Markdown documents
+```
+
+
+```{r load-data}
+ha <- read_csv(
+  # here("data", "survey_archive", "HDP_1998_2009.csv")
+  here("data", "survey_clean", "heliconia_survey_clean.csv")
+
+)
+ha_plots <- read_csv(
+  here("data", "survey_archive", "HDP_plots.csv")
+)
+```
+
+
+```{r al, echo=FALSE}
+al_default <-  action_levels(warn_at = 1, stop_at = 0.02) #warn if even row fails, error if 2% of rows fail
+al_strict <- action_levels(stop_at = 1) #error if even one row fails
+```
+
+
+```{r funs}
+#calculate percent changes
+ha_change <- 
+  ha %>%
+  group_by(plant_id) %>%
+  arrange(plant_id, year) %>%
+  mutate(ht_prev = lag(ht),
+         shts_prev = lag(shts),
+         ht_diff = ht - ht_prev,
+         shts_diff = shts - shts_prev,
+         ht_pc = abs(ht_diff / ht_prev),
+         shts_pc = abs(shts_diff / shts_prev)) %>%
+  #re-order columns so easier to see errors
+  select(plot_id, subplot, plant_id, year, shts_prev, shts, shts_diff, shts_pc, ht_prev, ht, ht_diff, ht_pc, everything()) %>% 
+  ungroup()
+```
+
+-----
+
+# Dataset Structure: _Data types_
+
+Tests to determine if columns are correctly coded as integer, character, etc.   
+**Test criteria**: Strict ('stop' if *any* rows fail).
+
+```{r agent1}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Data Validation"
+  ) %>%
+  col_vals_expr(label = "Height is measured to nearest cm",
+                expr = ~ ht %% 1 == 0, actions = al_strict) %>%
+  col_vals_expr(label = "Shoots is interger",
+                expr = ~ shts %% 1 == 0, actions = al_strict) %>%
+  col_vals_expr(label = "Number of inflorescences is integer",
+                expr = ~ infl %% 1 == 0, actions = al_strict) %>% 
+  interrogate()
+```
+
+
+-----
+
+# Dataset Structure: _Plot & Subplot IDs_
+
+Test for any nonexistent values of `plot_id` (e.g., 'FF-10', 'CF-23') or `subplot` (e.g., 'H23', 'A11').  
+**Test criteria**: Strict ('stop' if *any* rows fail).
+
+
+```{r agent2}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Data Validation"
+  ) %>%
+  col_vals_in_set(vars(plot_id), ha_plots$plot_id,
+                  actions = al_strict) %>%
+  col_vals_in_set(vars(subplot), unlist(lapply(LETTERS[1:10], paste0, 1:10)),
+                  actions = al_strict) %>%
+  interrogate()
+```
+
+
+# Dataset Structure: _Duplicated or Missing Values_
+
+Tests for duplicated rows, missing `plant_ID` numbers, or duplicate `plant_id` numbers (test is done for every survey year).  
+**Test criteria**: Strict ('stop' if *any* rows fail).
+
+```{r agent3}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Data Validation"
+  ) %>%
+  rows_distinct(actions = al_strict, 
+                label  = "duplicated rows") %>% 
+  col_vals_not_null(vars(plant_id), actions = al_strict) %>% 
+  rows_distinct(columns = "plant_id",
+                preconditions = ~ . %>%
+                  dplyr::group_by(plant_id,tag_number) %>%
+                  slice(1),
+                # segments = vars(year),
+                actions = al_strict,
+                label = "Check for duplicate plant ID numbers") %>% 
+  rows_distinct(columns = "tag_number",
+                preconditions = ~ . %>% 
+                  dplyr::select(plot_id,plant_id,tag_number,subplot) %>%
+                  unique() %>%
+                  ungroup() %>%
+                  group_by(plot_id,tag_number,.drop = FALSE) %>%
+                  filter(n() > 1) %>% 
+                  arrange(plot_id,tag_number),
+                # segments = vars(plot_id),
+                actions = al_strict,
+                label = "Check for duplicate tag numbers in a plot") %>% 
+  interrogate()
+```
+
+
+# Plant Characteristics: _Size & Flowering_
+
+Tests to determine how many values of plant size (`shts`, `ht`) or infloresence number (`infl`) are outside the range of most values.  
+**Test criteria**: 'warn' if $\geq$ 1 rows fail conditions, 'stop' if $\geq$ 2% of rows fail conditions.  
+
+```{r agent4}
+ha %>%
+  create_agent(
+    actions = al_default,
+    label = "Data Validation"
+  ) %>%
+  # check values are within reasonable range
+  col_vals_between(vars(shts), 0, 20, na_pass = TRUE,
+                   label = "shoots between 0 and 20") %>%
+  col_vals_between(vars(ht), 0, 200, na_pass = TRUE,
+                   label = "height between 0 and 200cm") %>%
+  col_vals_between(vars(infl), 0, 3, na_pass = TRUE,
+                   label = "infloresences between 0 and 3") %>%
+  interrogate()
+```
+
+
+# Plant Characteristics: _Growth_
+
+Tests for unusual changes in plant size (both height and shoot number) from $Year_{t}$ to $Year_{t+1}$.  
+**Test criteria**: 'warn' if $\geq$ 1 rows fail conditions, 'stop' if $\geq$ 2% of rows fail conditions.  
+
+
+```{r agent5}
+ha_change %>%
+  create_agent(
+    actions = al_default,
+    label = "Check growth & regression"
+  ) %>%
+  
+  # check that year-to-year change is reasonable
+  col_vals_lt(vars(ht_pc), 2, na_pass = TRUE,
+              label = "|% change in height| < 200%") %>%
+  col_vals_between(vars(ht_diff), -100, 100, na_pass = TRUE,
+                   label = "|∆ height| < 100cm",
+                   # segments = vars(ht),
+                   actions = al_strict) %>%
+  col_vals_between(vars(shts_diff), -5, 5, na_pass = TRUE,
+                   label = "|∆ shoot number| < 5",
+                   # segments = vars(shts),
+                   actions = al_strict) %>%
+  interrogate()
+```
+
+# Seedlings: _Initial size_
+Tests for seedlings whose size at initial marking was unusually large. Conducted for both height and shoot number.  
+**Test criteria**: 'warn' if $\geq$ 1 rows fail conditions, 'stop' if $\geq$ 2% of rows fail conditions.  
+
+
+```{r agent6}
+# check seedlings
+ha %>%
+  filter(recorded_sdlg) %>% 
+  create_agent(
+    actions = al_default,
+    label = "Check seedlings"
+  ) %>% 
+  col_vals_lt(vars(shts), 3, na_pass = TRUE,
+              label = "shoots < 3") %>% 
+  col_vals_lt(vars(ht), 30, na_pass = TRUE,
+              label = "height < 30cm") %>% 
+  interrogate()
+```
+
+------
+
+# Missing values: _Height_
+
+Graphical depiction of the proportion of plants in each demographic plot for which there is no measurement of plant height (e.g., if plant not found).
+
+```{r echo=FALSE}
+ha %>% 
+  group_by(plot_id, year) %>% 
+  summarize(prop_na = sum(is.na(ht))/n(), .groups = "drop") %>% 
+  ggplot(aes(x = year, y = prop_na)) +
+  geom_point(color="red") +
+  facet_wrap(~plot_id) +
+  theme_bw() +
+  scale_x_continuous(breaks = scales::breaks_pretty()) +
+  scale_y_continuous(breaks = c(0,0.5,1)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  gghighlight(prop_na > .5) +
+  labs(y = "Proportion of values missing - Height")
+  
+```
+
+# Zombie plants
+
+Zombie plants are those that were recorded as 'Dead' in a survey but for which there is a measurement in a subsequent year (indicative of the plant losing all below-ground parts and then new shoots emerging prior to the next survey). This validation generates a `.csv` of any plants meeting this condition (labeled as 'zombie` for review and correction. 
+
+```{r agent7}
+
+zombies <- ha %>% 
+  group_by(plant_id) %>%
+  mutate(
+    zombie = if_else(lag(census_status, 1) == "dead", "delete", NA_character_),
+    .before = 1
+    ) %>%
+  fill(zombie, .direction = "down") %>%
+  filter(zombie == "delete") %>%
+  mutate(zombie = if_else((is.na(shts) & is.na(ht)), "delete", "zombie"))
+zombies %>%
+  create_agent(
+    actions = al_default,
+    label = "Check for zombies"
+    ) %>%
+  col_vals_equal(
+    columns = vars(zombie),
+    value = "zombie",
+    na_pass = TRUE,
+    actions = al_strict,
+    label = "Check for Zombies"
+    ) %>% 
+  interrogate()
+  
+```
+
+
+<!-- # Check for missing values: Shoots -->
+
+```{r echo=FALSE}
+# ha %>% 
+#   group_by(plot_id, year) %>% 
+#   summarize(prop_na = sum(is.na(shts))/n(), .groups = "drop") %>% 
+#   ggplot(aes(x = year, y = prop_na)) +
+#   geom_point(color="red") +
+#   facet_wrap(~plot_id) +
+#   theme_bw() +
+#   scale_x_continuous(breaks = scales::breaks_pretty()) +
+#   scale_y_continuous(breaks = c(0,0.5,1)) +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+#   gghighlight(prop_na > .5) +
+#   labs(y = "Proportion values missing - Shoots")
+  
+```
+
+

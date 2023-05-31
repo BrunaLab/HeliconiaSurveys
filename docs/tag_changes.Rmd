@@ -65,8 +65,8 @@ opts_knit$set(width=75)
 
 ```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
 
-tag_changes <- read_csv(here("data","data_raw","tag_changes.csv"), col_types = cols())
-ha_sites <- read_csv(here("data","data_clean","heliconia_data_clean.csv"), col_types = cols()) %>% 
+tag_changes <- read_csv(here("data","survey_raw","tag_changes.csv"), col_types = cols())
+ha_sites <- read_csv(here("data","survey_clean","heliconia_data_clean.csv"), col_types = cols()) %>% 
   select(habitat,plot_id,plot,bdffp_reserve_no,ranch) %>% 
   unique()
 tag_changes<-left_join(tag_changes,ha_sites, by="plot") %>% 
@@ -78,7 +78,7 @@ rm(ha_sites)
 tag_changes_updated <- tag_changes
 # %>% 
 
-write_csv(tag_changes_updated, here("data","data_clean","tag_changes.csv"))
+write_csv(tag_changes_updated, here("data","survey_clean","tag_changes.csv"))
 ```
 
 

@@ -53,10 +53,10 @@ If you have questions regarding any of the HDP data sets or suggestions for impr
 
 ```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
 # here::here()
-ha_plants <- read_csv(here("data","data_clean","heliconia_data_clean.csv"),
+ha_plants <- read_csv(here("data","survey_clean","heliconia_survey_clean.csv"),
                       col_types = cols())
 
-ha_plots <- read_csv(here("./data/data_archive/HDP_plots.csv"), col_types = cols())
+ha_plots <- read_csv(here("./data/survey_archive/HDP_plots.csv"), col_types = cols())
 ha_plants <- ha_plants %>% left_join(ha_plots)
 ```
 
@@ -148,17 +148,17 @@ kbl(marked_per_yr)
 
 ---
 
-# [Data Validation](https://brunalab.github.io/HeliconiaSurveys/data_validation.html)
+# [Data Validation](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html)
 
-Automated validation tests of the _Heliconia_ project data sets are carried out using the [`pointblank`](https://github.com/rich-iannone/pointblank/) package. Summaries of these validations tests, including links to `.csv` files of data flagged for review, are on the [_Heliconia_ Data Validation Page](https://brunalab.github.io/HeliconiaSurveys/data_validation.html)
+Automated validation tests of the _Heliconia_ project data sets are carried out using the [`pointblank`](https://github.com/rich-iannone/pointblank/) package. Summaries of these validations tests, including links to `.csv` files of data flagged for review, are on the [_Heliconia_ Data Validation Page](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html)
 
 ## HDP Project Publications:  [link](https://brunalab.github.io/HeliconiaSurveys/hdp_papers.html)
 
 
 # Miscellaneous
 
-## [Tag Changes Log](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/data_clean/tag_changes.csv)
+## [Tag Changes Log](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/survey_clean/tag_changes.csv)
 
 ## [Treefall Records](link)
 
-## [Plants impacted by treefalls](https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/data_clean/treefall_impacts.csv)
+## [Plants impacted by treefalls](https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/survey_clean/treefall_impacts.csv)

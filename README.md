@@ -19,10 +19,10 @@ This repository contains the following folders:
     │   └── code_cleaning (cleaning & combining data from individual plots)
     │   └── code_review (validation checks of clean data set)
     ├── data
-    │   ├── data_archive (files archived at Dryad)
-    │   └── data_clean (clean data prior to archiving)
-    │   └── data_raw (raw data files)
-    │   └── data_review (records for review following validation checks)
+    │   ├── survey_archive (files archived at Dryad)
+    │   └── survey_clean (clean data prior to archiving)
+    │   └── survey_raw (raw data files)
+    │   └── survey_review (records for review following validation checks)
     ├── README.md
     ├── LICENSE
     └── .gitignore
@@ -43,15 +43,15 @@ done using the R script `01_create_heliconia_archive.R`, located in the root dir
 
 - The function `ha_data<-clean_heliconia_data()` calls several other functions 
 found in the folder `code/code_cleaning`. The output is a clean csv file that is 
-saved to the folder `data/data_clean`.
+saved to the folder `data/survey_clean`.
 
 - The functions used in the data-cleaning process are in the folder `code/code_cleaning`. Each plot's demographic records are cleaned using a separate R script.
 
 ***STEP 2: Review of the 'Clean' Data.*** 
 
-- Once the file `heliconia_data_clean.csv` has been saved to the the `data/data_clean` folder, the function `review_heliconia_data()` will do a number of validations. 
+- Once the file `heliconia_survey_clean.csv` has been saved to the the `data/survey_clean` folder, the function `review_heliconia_data()` will do a number of validations. 
 Any records that are suggested for review will be saved as `.csv` files 
-in the folder `data/data_review`. 
+in the folder `data/survey_review`. 
 
 - The functions for this review are in the folder `code/code_review`.
 
@@ -59,7 +59,7 @@ in the folder `data/data_review`.
 
 ***STEP 3: Create Files for the Data Archive.*** 
 
-- the function `create_dryad_file()`will create the version of the data file that is available in Dryad (the difference between this and the `heliconia_data_clean.csv` file is that we have excluded some of the redundant plot identification codes). 
+- the function `create_dryad_file()`will create the version of the data file that is available in Dryad (the difference between this and the `heliconia_survey_clean.csv` file is that we have excluded some of the redundant plot identification codes). 
 
 - `create_plot_info_file()` will create a csv of plot-level information (Table 2 in Bruna et al., _Ecology_) 
 
@@ -70,7 +70,7 @@ treefalls in the demographic plots
 were replaced diring the field survey (necessary only if one is reviewing 
 plants history using the original data sheets) 
 
-- All of these csv files are saved to the folder `data/data_archive`. The 
+- All of these csv files are saved to the folder `data/survey_archive`. The 
 functions generating them are in the folder `code/code_archive`.
 
 
