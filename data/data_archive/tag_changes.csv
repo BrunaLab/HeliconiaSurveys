@@ -113,12 +113,50 @@ CF-2,5750,esteio,forest,1501,2004,93,1397,NA
 CF-2,5750,esteio,forest,1501,2004,96,982,NA
 CF-2,5750,esteio,forest,1501,2006,968,896,NA
 CF-2,5750,esteio,forest,1501,2006,996,966,NA
+FF-3,5751,esteio,one,1104,1999, U7,154,NA
+FF-3,5751,esteio,one,1104,1999, U9,137,NA
+FF-3,5751,esteio,one,1104,2000,100,277,NA
+FF-3,5751,esteio,one,1104,2002,179,246,NA
 FF-3,5751,esteio,one,1104,2006,305,403,NA
 FF-2,5752,dimona,one,2108,2006,116,789,NA
+FF-2,5752,dimona,one,2108,2000,186,280,NA
+FF-2,5752,dimona,one,2108,2001,196,552,NA
+FF-2,5752,dimona,one,2108,2000,214=305,214,NA
+FF-2,5752,dimona,one,2108,2001,251,556,NA
+FF-2,5752,dimona,one,2108,2001,308,585,NA
 FF-2,5752,dimona,one,2108,2006,622,804,NA
+FF-3,5753,esteio,one,1104,2004,21,371,NA
 FF-3,5753,esteio,one,1104,2009,366,371,NA
+FF-3,5753,esteio,one,1104,2002,43,400,NA
 FF-3,5753,esteio,one,1104,2009,74,412,NA
 FF-3,5753,esteio,one,1104,2006,98,405,NA
+5754,5754,NA,NA,NA,2002,120,984,NA
+5754,5754,NA,NA,NA,2000,170,625,NA
+5754,5754,NA,NA,NA,2002,22,1354,NA
+5754,5754,NA,NA,NA,2002,23,993,NA
+5754,5754,NA,NA,NA,2002,26,1309,NA
+5754,5754,NA,NA,NA,2002,27,1305,NA
+5754,5754,NA,NA,NA,2001,297,1398,NA
+5754,5754,NA,NA,NA,2001,300,1391,NA
+5754,5754,NA,NA,NA,2001,316,1383,NA
+5754,5754,NA,NA,NA,2003,321,806,NA
+5754,5754,NA,NA,NA,2001,323,1390,NA
+5754,5754,NA,NA,NA,2003,5,847,NA
+5754,5754,NA,NA,NA,2002,501,632,NA
+5754,5754,NA,NA,NA,2000,548,611,NA
+5754,5754,NA,NA,NA,2002,57,928,NA
+5754,5754,NA,NA,NA,2000,572,909,NA
+5754,5754,NA,NA,NA,2001,608,1389,NA
+5754,5754,NA,NA,NA,2001,632,1396,NA
+5754,5754,NA,NA,NA,2003,PVC,24,NA
+5754,5754,NA,NA,NA,2003,PVC,10,NA
+5754,5754,NA,NA,NA,2003,PVC,61,NA
+5754,5754,NA,NA,NA,2004,PVC,746,NA
+5754,5754,NA,NA,NA,2003,PVC 10,801,NA
+5754,5754,NA,NA,NA,2004,PVC 40,705,NA
+5754,5754,NA,NA,NA,2003,PVC 61,832,NA
+5754,5754,NA,NA,NA,2003,PVC 71,817,NA
+5754,5754,NA,NA,NA,2003,PVC 73,831,NA
 CF-3,5756,esteio,forest,1501,1999, U104,746,NA
 CF-3,5756,esteio,forest,1501,1999, U116,467,NA
 CF-3,5756,esteio,forest,1501,1999, U117,478,NA
@@ -133,75 +171,37 @@ CF-3,5756,esteio,forest,1501,2006,342,1661,NA
 CF-3,5756,esteio,forest,1501,1999,399,598,NA
 CF-3,5756,esteio,forest,1501,2001,479,935,NA
 CF-3,5756,esteio,forest,1501,2002,7,956,NA
-CF-6,CF-CF,porto alegre,forest,3402,2006,116,62,NA
-CF-6,CF-CF,porto alegre,forest,3402,2007,173,87,NA
-CF-6,CF-CF,porto alegre,forest,3402,2001,252,292,NA
-CF-6,CF-CF,porto alegre,forest,3402,2002,341,267,"not sure which is original, but think it is like this"
-CF-6,CF-CF,porto alegre,forest,3402,2004,371,21,NA
-CF-6,CF-CF,porto alegre,forest,3402,2007,5,2102,NA
-FF-3,Colosso-1,esteio,one,1104,1999, U7,154,NA
-FF-3,Colosso-1,esteio,one,1104,1999, U9,137,NA
-FF-3,Colosso-1,esteio,one,1104,2000,100,277,NA
-FF-3,Colosso-1,esteio,one,1104,2002,179,246,NA
-FF-6,Colosso-10,esteio,ten,1202,2000,186,280,NA
-FF-6,Colosso-10,esteio,ten,1202,2001,196,552,NA
-FF-6,Colosso-10,esteio,ten,1202,2000,214=305,214,NA
-FF-6,Colosso-10,esteio,ten,1202,2001,251,556,NA
-FF-6,Colosso-10,esteio,ten,1202,2001,308,585,NA
-CF-4,Dim-CF,dimona,forest,NA,2001,12,167,NA
-CF-4,Dim-CF,dimona,forest,NA,2001,142,122,NA
-CF-4,Dim-CF,dimona,forest,NA,2001,15,106,NA
-CF-4,Dim-CF,dimona,forest,NA,2006,176,184,NA
-CF-4,Dim-CF,dimona,forest,NA,2006,176,184,NA
-CF-4,Dim-CF,dimona,forest,NA,2001,77,108,NA
-CF-1,Florestal,esteio,forest,1301,2006,1027,1257,NA
-CF-1,Florestal,esteio,forest,1301,2006,1027,1257,NA
-CF-1,Florestal,esteio,forest,1301,2007,121,1570,NA
-CF-1,Florestal,esteio,forest,1301,2007,159,1581,NA
-CF-1,Florestal,esteio,forest,1301,2009,174,1912,NA
-CF-1,Florestal,esteio,forest,1301,2001,19,1036,NA
-CF-1,Florestal,esteio,forest,1301,2006,257,1273,NA
-CF-1,Florestal,esteio,forest,1301,2006,257,1273,NA
-CF-1,Florestal,esteio,forest,1301,2001,277,1004,NA
-CF-1,Florestal,esteio,forest,1301,2002,424,1118,NA
-CF-1,Florestal,esteio,forest,1301,2000,435,930,NA
-CF-1,Florestal,esteio,forest,1301,2007,48,1294,NA
-CF-1,Florestal,esteio,forest,1301,2000,480,904,NA
-CF-1,Florestal,esteio,forest,1301,2001,608,1077,NA
-CF-1,Florestal,esteio,forest,1301,2002,920,1442,NA
-CF-5,PA CF,porto alegre,forest,NA,2001,103,295,NA
-CF-5,PA CF,porto alegre,forest,NA,2001,11,287,NA
-CF-5,PA CF,porto alegre,forest,NA,2006,116,62,NA
-CF-5,PA CF,porto alegre,forest,NA,2001,122,263,NA
-CF-5,PA CF,porto alegre,forest,NA,2006,204,42,NA
-CF-5,PA CF,porto alegre,forest,NA,2004,43,224,NA
-FF-7,PA-10,porto alegre,ten,3209,2002,120,984,NA
-FF-7,PA-10,porto alegre,ten,3209,2000,170,625,NA
-FF-7,PA-10,porto alegre,ten,3209,2002,22,1354,NA
-FF-7,PA-10,porto alegre,ten,3209,2002,23,993,NA
-FF-7,PA-10,porto alegre,ten,3209,2002,26,1309,NA
-FF-7,PA-10,porto alegre,ten,3209,2002,27,1305,NA
-FF-7,PA-10,porto alegre,ten,3209,2001,297,1398,NA
-FF-7,PA-10,porto alegre,ten,3209,2001,300,1391,NA
-FF-7,PA-10,porto alegre,ten,3209,2001,316,1383,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,321,806,NA
-FF-7,PA-10,porto alegre,ten,3209,2001,323,1390,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,5,847,NA
-FF-7,PA-10,porto alegre,ten,3209,2002,501,632,NA
-FF-7,PA-10,porto alegre,ten,3209,2000,548,611,NA
-FF-7,PA-10,porto alegre,ten,3209,2002,57,928,NA
-FF-7,PA-10,porto alegre,ten,3209,2000,572,909,NA
-FF-7,PA-10,porto alegre,ten,3209,2001,608,1389,NA
-FF-7,PA-10,porto alegre,ten,3209,2001,632,1396,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,PVC,24,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,PVC,10,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,PVC,61,NA
-FF-7,PA-10,porto alegre,ten,3209,2004,PVC,746,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,PVC 10,801,NA
-FF-7,PA-10,porto alegre,ten,3209,2004,PVC 40,705,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,PVC 61,832,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,PVC 71,817,NA
-FF-7,PA-10,porto alegre,ten,3209,2003,PVC 73,831,NA
-CF-5,PA-CF,porto alegre,forest,NA,2007,75,305,NA
-FF-4,PA1,porto alegre,one,3114,2004,21,371,NA
-FF-4,PA1,porto alegre,one,3114,2002,43,400,NA
+CaboFrio-CF,CaboFrio-CF,NA,NA,NA,2006,116,62,NA
+CaboFrio-CF,CaboFrio-CF,NA,NA,NA,2007,173,87,NA
+CaboFrio-CF,CaboFrio-CF,NA,NA,NA,2001,252,292,NA
+CaboFrio-CF,CaboFrio-CF,NA,NA,NA,2002,341,267,"not sure which is original, but think it is like this"
+CaboFrio-CF,CaboFrio-CF,NA,NA,NA,2004,371,21,NA
+CaboFrio-CF,CaboFrio-CF,NA,NA,NA,2007,5,2102,NA
+Dimona-CF,Dimona-CF,NA,NA,NA,2001,12,167,NA
+Dimona-CF,Dimona-CF,NA,NA,NA,2001,142,122,NA
+Dimona-CF,Dimona-CF,NA,NA,NA,2001,15,106,NA
+Dimona-CF,Dimona-CF,NA,NA,NA,2006,176,184,NA
+Dimona-CF,Dimona-CF,NA,NA,NA,2006,176,184,NA
+Dimona-CF,Dimona-CF,NA,NA,NA,2001,77,108,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2006,1027,1257,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2006,1027,1257,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2007,121,1570,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2007,159,1581,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2009,174,1912,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2001,19,1036,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2006,257,1273,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2006,257,1273,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2001,277,1004,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2002,424,1118,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2000,435,930,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2007,48,1294,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2000,480,904,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2001,608,1077,NA
+Florestal-CF,Florestal-CF,NA,NA,NA,2002,920,1442,NA
+PortoAlegre-CF,PortoAlegre-CF,NA,NA,NA,2001,103,295,NA
+PortoAlegre-CF,PortoAlegre-CF,NA,NA,NA,2001,11,287,NA
+PortoAlegre-CF,PortoAlegre-CF,NA,NA,NA,2006,116,62,NA
+PortoAlegre-CF,PortoAlegre-CF,NA,NA,NA,2001,122,263,NA
+PortoAlegre-CF,PortoAlegre-CF,NA,NA,NA,2006,204,42,NA
+PortoAlegre-CF,PortoAlegre-CF,NA,NA,NA,2004,43,224,NA
+PortoAlegre-CF,PortoAlegre-CF,NA,NA,NA,2007,75,305,NA
