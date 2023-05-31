@@ -1,8 +1,8 @@
 ---
 title: "Tag Change Records"
 date: "updated: `r Sys.Date()`"
-layout: page
-permalink: HeliconiaSurveys/TagChanges
+# layout: page
+# permalink: HeliconiaSurveys/TagChanges
 header-includes:
 - \AtBeginDocument{\let\maketitle\relax} # this removes default title section
 - \usepackage[default]{sourcesanspro}
@@ -61,8 +61,14 @@ opts_knit$set(width=75)
 
 ```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
 tag_changes <- read_csv("./data/data_raw/tag_changes.csv", col_types = cols())
-
-# ANY CHNAGES TO THE TAG NUMBERS AS OF MAY 24 2022 WILL BE ENTERED HERE
+ha_sites <- read_csv("./data/data_clean/heliconia_data_clean.csv", col_types = cols()) %>% 
+  select(habitat,plot_id,plot,bdffp_reserve_no,ranch) %>% 
+  unique()
+tag_changes<-left_join(tag_changes,ha_sites, by="plot") %>% 
+  select(habitat,ranch,plot_id,plot,year,old_tag_no,new_tag_number,notes)
+rm(ha_sites)
+  
+# ANY CHANGES TO THE TAG NUMBERS AS OF June 1, 2023 WILL BE ENTERED HERE
 
 tag_changes_updated <- tag_changes
 # %>% 
@@ -75,7 +81,10 @@ write_csv(tag_changes_updated, "./data/data_clean/tag_changes.csv")
 
 **Last update:** `r format(Sys.time(), '%d %B %Y')`
 
+Field survey teams periodically change the tags attached to individual plants (e.g., if the tag becomes difficult to read or the tag is lost). Below is a record of these changes; these records are necessary when using the original data sheets to validate plant records.    
+
 ```{r nplants_total, cached=TRUE, warning=FALSE,message = FALSE}
+
 tag_changes_updated<-tag_changes_updated %>%
   group_by(plot) %>%
   arrange(plot, year)
