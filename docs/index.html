@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Emilio M. Bruna" />
+
+
+<title>Heliconia Demography Project</title>
+
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Heliconia Demography Project</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="pages/data_validation.html">Data Validation</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    HDP Products
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pages/hdp_datasets.html">Publications</a>
+    </li>
+    <li>
+      <a href="pages/pubs_test.html">Data Sets</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Heliconia Demography Project</h1>
+<h4 class="author">Emilio M. Bruna</h4>
+<h4 class="date">last update: 2023-05-31</h4>
+
+</div>
+
+
+<div id="introduction-contact-information" class="section level1">
+<h1>Introduction &amp; Contact Information</h1>
+<div id="project-overview" class="section level2">
+<h2>Project Overview</h2>
+<p>This is site provides additional information on the
+<em>Heliconia</em> Demography project and updates to the data published
+in Bruna et al. (20–).</p>
+</div>
+<div id="contact-information" class="section level2">
+<h2>Contact Information</h2>
+<p>If you have questions regarding any of the HDP data sets or
+suggestions for improvement, please contact Emilio M. Bruna (<a
+href="mailto:embruna@ufl.edu" class="email">embruna@ufl.edu</a>) or post
+an issue on the <a href="link">HDP Github Repository</a></p>
+</div>
+</div>
+<div id="publications-datasets" class="section level1">
+<h1><a
+href="https://brunalab.github.io/HeliconiaSurveys/hdp_datasets.html">Publications
+&amp; Datasets</a></h1>
+</div>
+<div id="hdp-data-overview" class="section level1">
+<h1>HDP Data Overview</h1>
+<hr />
+<div id="last-update-2023-05-31" class="section level2">
+<h2><strong>Last update:</strong> 2023-05-31</h2>
+<hr />
+</div>
+<div id="total-no.-of-plants-n-8586" class="section level2">
+<h2><strong>Total no. of plants:</strong> N = 8586</h2>
+<hr />
+</div>
+<div id="plants-x-habitat" class="section level2">
+<h2><strong>Plants x Habitat</strong></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+habitat
+</th>
+<th style="text-align:right;">
+N
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:right;">
+1441
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-ha
+</td>
+<td style="text-align:right;">
+2083
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:right;">
+5062
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="plants-x-demographic-plot" class="section level2">
+<h2><strong>Plants x Demographic Plot</strong></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+habitat
+</th>
+<th style="text-align:left;">
+plot
+</th>
+<th style="text-align:right;">
+N
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:left;">
+5751
+</td>
+<td style="text-align:right;">
+402
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:left;">
+5753
+</td>
+<td style="text-align:right;">
+399
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:left;">
+2107
+</td>
+<td style="text-align:right;">
+335
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:left;">
+2108
+</td>
+<td style="text-align:right;">
+305
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-ha
+</td>
+<td style="text-align:left;">
+5754
+</td>
+<td style="text-align:right;">
+970
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-ha
+</td>
+<td style="text-align:left;">
+5752
+</td>
+<td style="text-align:right;">
+822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-ha
+</td>
+<td style="text-align:left;">
+2206
+</td>
+<td style="text-align:right;">
+291
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+Florestal-CF
+</td>
+<td style="text-align:right;">
+1577
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+5756
+</td>
+<td style="text-align:right;">
+1327
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+5750
+</td>
+<td style="text-align:right;">
+1221
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+CaboFrio-CF
+</td>
+<td style="text-align:right;">
+426
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+PortoAlegre-CF
+</td>
+<td style="text-align:right;">
+306
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+Dimona-CF
+</td>
+<td style="text-align:right;">
+205
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="seedlings-x-demographic-plot" class="section level2">
+<h2><strong>Seedlings x Demographic Plot</strong></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+habitat
+</th>
+<th style="text-align:left;">
+plot
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:left;">
+5751
+</td>
+<td style="text-align:right;">
+187
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:left;">
+5753
+</td>
+<td style="text-align:right;">
+145
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:left;">
+2108
+</td>
+<td style="text-align:right;">
+111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-ha
+</td>
+<td style="text-align:left;">
+2107
+</td>
+<td style="text-align:right;">
+90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-ha
+</td>
+<td style="text-align:left;">
+5752
+</td>
+<td style="text-align:right;">
+401
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-ha
+</td>
+<td style="text-align:left;">
+5754
+</td>
+<td style="text-align:right;">
+259
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10-ha
+</td>
+<td style="text-align:left;">
+2206
+</td>
+<td style="text-align:right;">
+99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+Florestal-CF
+</td>
+<td style="text-align:right;">
+689
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+5750
+</td>
+<td style="text-align:right;">
+624
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+5756
+</td>
+<td style="text-align:right;">
+561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+CaboFrio-CF
+</td>
+<td style="text-align:right;">
+131
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+PortoAlegre-CF
+</td>
+<td style="text-align:right;">
+99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CF
+</td>
+<td style="text-align:left;">
+Dimona-CF
+</td>
+<td style="text-align:right;">
+68
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<!-- ## __Established plants found without tags during the surveys__ -->
+<!-- ```{r no_tag, cached=TRUE, warning=FALSE,message = FALSE} -->
+<!-- no_tag<-ha_plants %>% -->
+<!--   filter(adult_no_tag == TRUE) %>% -->
+<!--   group_by(habitat, plot) %>% -->
+<!--   summarize(N = n_distinct(plant_id)) %>%  -->
+<!--   arrange(habitat, desc(N)) -->
+<!-- kbl(no_tag) -->
+<!-- ``` -->
+<!-- ---  -->
+</div>
+<div id="plants-x-year" class="section level2">
+<h2><strong>Plants x Year</strong></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+year
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+%
+</th>
+<th style="text-align:right;">
+cumulative %
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1998
+</td>
+<td style="text-align:right;">
+3339
+</td>
+<td style="text-align:right;">
+39.0
+</td>
+<td style="text-align:right;">
+39.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+1096
+</td>
+<td style="text-align:right;">
+12.8
+</td>
+<td style="text-align:right;">
+51.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+750
+</td>
+<td style="text-align:right;">
+8.8
+</td>
+<td style="text-align:right;">
+60.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:right;">
+446
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+<td style="text-align:right;">
+65.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:right;">
+727
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+<td style="text-align:right;">
+74.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2003
+</td>
+<td style="text-align:right;">
+225
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+<td style="text-align:right;">
+76.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:right;">
+500
+</td>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:right;">
+82.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:right;">
+388
+</td>
+<td style="text-align:right;">
+4.5
+</td>
+<td style="text-align:right;">
+87.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2006
+</td>
+<td style="text-align:right;">
+276
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+<td style="text-align:right;">
+90.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2007
+</td>
+<td style="text-align:right;">
+219
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+<td style="text-align:right;">
+93.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+358
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+97.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:right;">
+245
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+<div id="data-validation" class="section level1">
+<h1><a
+href="https://brunalab.github.io/HeliconiaSurveys/data_validation.html">Data
+Validation</a></h1>
+<p>Automated validation tests of the <em>Heliconia</em> project data
+sets are carried out using the <a
+href="https://github.com/rich-iannone/pointblank/"><code>pointblank</code></a>
+package. Summaries of these validations tests, including links to
+<code>.csv</code> files of data flagged for review, are on the <a
+href="https://brunalab.github.io/HeliconiaSurveys/data_validation.html"><em>Heliconia</em>
+Data Validation Page</a></p>
+<!-- ## HDP Project Publications:  [link](https://brunalab.github.io/HeliconiaSurveys/hdp_papers.html) -->
+</div>
+<div id="miscellaneous" class="section level1">
+<h1>Miscellaneous</h1>
+<div id="tag-changes-log" class="section level2">
+<h2><a
+href="https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/data_clean/tag_changes.csv">Tag
+Changes Log</a></h2>
+</div>
+<div id="treefall-records" class="section level2">
+<h2><a href="link">Treefall Records</a></h2>
+</div>
+<div id="plants-impacted-by-treefalls" class="section level2">
+<h2><a
+href="https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/data_clean/treefall_impacts.csv">Plants
+impacted by treefalls</a></h2>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

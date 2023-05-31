@@ -1,8 +1,17 @@
 ---
 title: " "
-output: html_document
+
 csl: ecology.csl
 bibliography: ["./HeliconiaSurveys_papers/HeliconiaSurveys_papers.bib","./HeliconiaSurveys_related/HeliconiaSurveys_related.bib","./HeliconiaSurveys_datasets/HeliconiaSurveys_datasets.bib" ]
+output:rmdformats::robobook:
+#   # rmdformats::downcute:
+    
+      self_contained: true
+      thumbnails: true
+      lightbox: true
+      gallery: false
+      highlight: tango
+      bookdown: true
 ---
 
 ```{r setup, include=FALSE}

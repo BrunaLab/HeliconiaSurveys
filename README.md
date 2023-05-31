@@ -1,13 +1,35 @@
-### Heliconia Surveys Github Repository
+### Heliconia Demography Project Github Repository
 
-This is the README for the cleanup, organization, and summary of the Heliconia Demographic Project data. For summaries of the data, photos of the field sites, a list of project publications, and additional information visit the [project website](https://brunalab.github.io/HeliconiaSurveys/).
+This is the README for the cleanup, organization, and summary of the Heliconia Demographic Project data. Summaries of the data, photos of the field sites, a list of project publications, and other project-related resources are available on the [project website](https://brunalab.github.io/HeliconiaSurveys/). The demographic data collected from 1998-2008 have been published in _Ecology_ as a Data Paper, which provides a full description of the project, data, and metadata. 
+
+This repository contains the following folders:
+
+└── my_awesome_project  
+    ├── `01_create_heliconia_archive.R`  
+    ├── code  
+    │   ├── code_archive (preparing the file to be archived at Dryad)
+    │   └── code_cleaning (cleaning & combining data from individual plots)   
+    │   └── code_review (validation checks of clean data set)  
+    ├── data  
+    │   ├── data_archive (files archived at Dryad)
+    │   └── data_clean (clean data prior to archiving)   
+    │   └── data_raw (raw data files)
+    │   └── data_review (records for review following validation checks)  
+    ├── README.md  
+    ├── LICENSE   
+    └── .gitignore  
+  
+  
+  
+
+
+
+The workflow for preparing these data is described below.
 
 ## Workflow
 
-The cleaning, validating, and organizing of the _Heliconia_ demographic data is 
-done using the R script `01_create_heliconia_archive.R`. The functions in 
-this script will take the user from 'raw' survey data to the csv files of 
-clean and organized data that are available in Dryad. 
+The cleaning, validating, and organizing of the _Heliconia_ demographic survey data is 
+done using the R script `01_create_heliconia_archive.R`, located in the root directory. The functions in this script will take the 'raw' survey data and convert it to the .csv file of clean and organized data that have been archived at the Dryad Data Repository. 
 
 **The workflow is as follows:**
 
@@ -17,15 +39,17 @@ clean and organized data that are available in Dryad.
 found in the folder `code/code_cleaning`. The output is a clean csv file that is 
 saved to the folder `data/data_clean`.
 
-- The functions for this process are in the folder `code/code_cleaning`.
+- The functions used in the data-cleaning process are in the folder `code/code_cleaning`. Each plot's demographic records are cleaned using a separate R script.
 
 ***STEP 2: Review of the 'Clean' Data.*** 
 
-- Once you have `heliconia_data_clean.csv` in the `data/data_clean` folder, the function `review_heliconia_data()` will do a number of validations. 
+- Once the file `heliconia_data_clean.csv` has been saved to the the `data/data_clean` folder, the function `review_heliconia_data()` will do a number of validations. 
 Any records that are suggested for review will be saved as `.csv` files 
 in the folder `data/data_review`. 
 
 - The functions for this review are in the folder `code/code_review`.
+
+- These and other validations are also carried out using the pointblank packkage and are available for review [here]()
 
 ***STEP 3: Create Files for the Data Archive.*** 
 
@@ -42,3 +66,5 @@ plants history using the original data sheets)
 
 - All of these csv files are saved to the folder `data/data_archive`. The 
 functions generating them are in the folder `code/code_archive`.
+
+

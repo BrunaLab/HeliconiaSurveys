@@ -2,12 +2,16 @@
 title: "Heliconia Demography Project"
 date: "last update: `r Sys.Date()`"
 author: "Emilio M. Bruna"
-output: html_document
-#    rmdformats::robobook:
-#      toc: 3
-#      # toc_float:
-#      #   collapsed: TRUE
-#      use_bookdown: TRUE
+# output: html_document
+output:rmdformats::robobook:
+#   # rmdformats::downcute:
+    
+      self_contained: true
+      thumbnails: true
+      lightbox: true
+      gallery: false
+      highlight: tango
+      bookdown: true
 ---
 
 
