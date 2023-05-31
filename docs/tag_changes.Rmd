@@ -77,7 +77,7 @@ write_csv(tag_changes_updated, "./data/data_clean/tag_changes.csv")
 ```
 
 
-## Tag Number Changes
+<!-- ## Tag Number Changes -->
 
 **Last update:** `r format(Sys.time(), '%d %B %Y')`
 
