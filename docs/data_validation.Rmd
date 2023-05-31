@@ -1,8 +1,18 @@
 ---
-title: "Data Validation: _Heliconia_ Demography Project"
+title: "Data Validation"
+subtitle: "_Heliconia_ Demographic Survey Data"
 author: Eric R. Scott & Emilio M. Bruna
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "updated: `r Sys.Date()`"
 output: html_document
+  # pdf_document: default
+  # html_document:
+  #   df_print: paged
+  # rmdformats::robobook:
+  #   toc: 3
+  #   # toc_depth: 4
+  #   # toc_float: 
+  #   #   collapsed: TRUE
+  #   use_bookdown: TRUE
 ---
 
 We use the R package [`pointblank`](https://rich-iannone.github.io/pointblank/) to review and validate the plot-level descriptors (`HDP_plots.csv`) and clean demographic data set (`heliconia_data_clean.csv`) in preparation for archiving in Dryad and publication in Bruna et al. (2023). The report below includes:

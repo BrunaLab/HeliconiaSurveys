@@ -1,28 +1,62 @@
-name: "hdp-website"
+name: hdp-website
+output_dir: docs
 navbar:
-  title: "The Heliconia Demography Project"
-  # type: inverse
+  title: Heliconia Demography Project
+  type: inverse
   left:
-    - text: "Home"
-      icon: fa-home
-      href: index.html
-    - text: "About"
-      icon: fa-info
-      href: about.html
-    - text: "More"
-      icon: fa-gear
-      menu:
-        - text: "Heading 1"
-        - text: "Page A"
-          href: page-a.html
-        - text: "Page B"
-          href: page-b.html
-        - text: "---------"
-        - text: "Heading 2"
-        - text: "Page C"
-          href: page-c.html
-        - text: "Page D"
-          href: page-d.html
-  right:
-    - icon: fa-question fa-lg
-      href: https://example.com
+  - text: Home
+    href: docs/index.html
+  - text: Data Validation 
+    href: docs/data_validation.html
+  - text: HDP Products 
+    menu:
+    - text: Publications
+      href: docs/publications.html
+    - text: Data Sets
+      href: docs/datasets.html
+   - text: Updates/Change Log
+     href: updates.html
+    # - text: Module 4
+    #   href: readings-module4.html
+output: 
+   html_document:
+     theme: yeti
+     highlight: kate
+     
+#      
+# 
+# `default`,
+# `tango`,
+# `pygments`, 
+# `kate`, `monochrome`, `espresso`, `zenburn`, `haddock`, 
+# `breezedark`, `textmate`, `arrow`, or `rstudio`
+#     
+
+# name: "hdp-website"
+# navbar:
+#   title: "The Heliconia Demography Project"
+#   # type: inverse
+#   left:
+#     - text: "Home"
+#       icon: fa-home
+#       href: index.html
+#     - text: "About"
+#       icon: fa-info
+#       href: about.html
+#     - text: "More"
+#       icon: fa-gear
+#       menu:
+#         - text: "Heading 1"
+#         - text: "Page A"
+#           href: page-a.html
+#         - text: "Page B"
+#           href: page-b.html
+#         - text: "---------"
+#         - text: "Heading 2"
+#         - text: "Page C"
+#           href: page-c.html
+#         - text: "Page D"
+#           href: page-d.html
+#   right:
+#     - icon: fa-question fa-lg
+#       href: https://example.com
