@@ -27,14 +27,17 @@ fontsize: 12pt
 linkcolor: blue
 urlcolor: blue
 bibliography: ["./HeliconiaSurveys_papers/HeliconiaSurveys_papers.bib","./HeliconiaSurveys_related/HeliconiaSurveys_related.bib","./HeliconiaSurveys_datasets/HeliconiaSurveys_datasets.bib" ]
-csl: ecology.csl
+csl: bitr.csl
+# output: rmdformats::robobook
 output:
+  # rmdformats::downcute:
   rmdformats::robobook:
-    # code_folding: show
     self_contained: true
-    thumbnails: false
+    thumbnails: true
     lightbox: true
-  
+    gallery: false
+    highlight: tango
+    bookdown: true
     # output:
 #   # pdf_document: default
 #   # html_document:
@@ -62,6 +65,8 @@ opts_chunk$set(echo=FALSE,
                message=FALSE,
                warning=FALSE)
 opts_knit$set(width=75)
+
+
 ```
 
 
@@ -78,7 +83,9 @@ nocite: |
 
 
 
-### Other HDP Datasets
+### Other HDP Datasets. 
+
+**For a *.bib* file of these datasets [[click here]](https://github.com/BrunaLab/HeliconiaSurveys/blob/a2d8dcc79119efcefc196e0fd5138e878e0cca24/docs/HeliconiaSurveys_datasets/HeliconiaSurveys_datasets.bib).**
 
 1. Bruna, Emilio M. (2014): *Heliconia acuminata* seed set (seeds per fruit) 2008. figshare. Dataset. [https://doi.org/10.6084/m9.figshare.1273926.v2](https://doi.org/10.6084/m9.figshare.1273926.v2) 
 
@@ -89,7 +96,7 @@ nocite: |
 1. *Heliconia acuminata* microsatellite markers from [Côrtes et al. 2009](https://doi.org/10.1111/j.1755-0998.2009.02627.x), *Molecular Ecology Resources*: [[Genbank Archive]](https://www.ncbi.nlm.nih.gov/nuccore/?term=heliconia%20acuminata%20bruna) 
 
 
-    **For a *.bib* file of these datasets [[click here]](https://github.com/BrunaLab/HeliconiaSurveys/blob/a2d8dcc79119efcefc196e0fd5138e878e0cca24/docs/HeliconiaSurveys_datasets/HeliconiaSurveys_datasets.bib).**
+   
 
 ---
 
@@ -97,4 +104,6 @@ nocite: |
 
  **For a *.bib* file of these references [[click here]](https://github.com/BrunaLab/HeliconiaSurveys/blob/1649ea958df1fc2da0187693bca40ce38bebb759/docs/HeliconiaSurveys_papers/HeliconiaSurveys_papers.bib).**
 
+
+[back](./index.html)
 

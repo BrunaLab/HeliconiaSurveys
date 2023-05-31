@@ -26,11 +26,17 @@ geometry: margin=1in
 fontsize: 12pt
 linkcolor: blue
 urlcolor: blue
+
 output:
   # pdf_document: default
   # html_document:
   #   df_print: paged
-  rmdformats::robobook: default
+  rmdformats::robobook:
+    toc: 3
+    # toc_depth: 4
+    # toc_float: 
+    #   collapsed: TRUE
+    use_bookdown: TRUE
 # editor_options: 
 #   markdown: 
 #     wrap: 72
