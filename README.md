@@ -7,9 +7,9 @@ This is the README for the cleanup, organization, and archiving of demographic s
 
 This repository includes the following: 
 
-1. [Summaries](https://brunalab.github.io/HeliconiaSurveys) of the demographic dataset (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
+1. [Summaries](https://brunalab.github.io/HeliconiaSurveys/data_overview.html) of the demographic dataset (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
 2. R Code used to:
-    - process raw data files and correct / make changes to individual records (`code/survey_cleaning`)
+    - process raw data files and correct / make changes to individual records [`code/survey_cleaning`](code/survey_cleaning)
     - review the clean data for anomalies, unusual records for review, etc. (`code/survey_review`)
     - prepare the version of the data to be archived at Dryad (`code/survey_archving`)
 3. Data:
