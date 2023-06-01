@@ -1,0 +1,27 @@
+plant_id,plot,habitat,ranch,bdffp_reserve_no,tag_number,row,column,x_09,y_09,plot_id,year,shts,ht,infl,code,notes,duplicate_tag,adult_no_tag,recorded_sdlg,treefall_status,condition,census_status,subplot
+6862,Florestal-CF,CF,EST,1301,738,A,2,NA,NA,CF-1,2000,NA,NA,NA,NA,sdlg,NA,FALSE,TRUE,NA,NA,measured,A2
+6919,Florestal-CF,CF,EST,1301,61,A,3,NA,NA,CF-1,2007,NA,NA,NA,NA,resprouting,NA,FALSE,FALSE,NA,resprouting,measured,A3
+5108,5756,CF,EST,1501,983,A,7,NA,NA,CF-3,2002,NA,NA,NA,NA,sdlg,NA,FALSE,TRUE,NA,NA,measured,A7
+3405,5753,1-ha,PAL,3114,90,A,10,3.4,10,FF-4,2008,NA,NA,NA,NA,resprouting,NA,FALSE,FALSE,NA,resprouting,measured,A10
+2827,5752,10-ha,EST,1202,290,B,5,NA,NA,FF-6,2002,NA,NA,NA,no tag,no tag,NA,TRUE,FALSE,NA,NA,measured,B5
+5291,5756,CF,EST,1501,345,B,5,9.6,0.4,CF-3,2007,NA,NA,NA,NA,resprouting,NA,FALSE,FALSE,NA,resprouting,measured,B5
+7399,Florestal-CF,CF,EST,1301,1473,B,5,1.9,5.5,CF-1,2008,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,B5
+2847,5752,10-ha,EST,1202,460,B,6,NA,NA,FF-6,1999,NA,NA,NA,NA,sdlg,NA,FALSE,TRUE,NA,NA,measured,B6
+2848,5752,10-ha,EST,1202,464,B,6,NA,NA,FF-6,2000,NA,NA,NA,NA,sdlg,NA,FALSE,TRUE,NA,NA,measured,B6
+4216,5754,10-ha,PortoAlegre,3209,826,B,7,NA,NA,FF-7,2005,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,B7
+2866,5752,10-ha,EST,1202,501,B,8,NA,NA,FF-6,1999,NA,NA,NA,NA,sdlg,NA,FALSE,TRUE,NA,NA,measured,B8
+7724,Florestal-CF,CF,EST,1301,1969,C,8,0.65,3.94,CF-1,2009,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,C8
+3085,5752,10-ha,EST,1202,468,C,9,NA,NA,FF-6,1999,NA,NA,NA,NA,sdlg,NA,FALSE,TRUE,NA,NA,measured,C9
+4434,5754,10-ha,PortoAlegre,3209,817,C,9,NA,NA,FF-7,2002,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,C9
+4509,5754,10-ha,PortoAlegre,3209,835,D,6,NA,NA,FF-7,2004,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,D6
+4509,5754,10-ha,PortoAlegre,3209,835,D,6,NA,NA,FF-7,2005,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,D6
+4509,5754,10-ha,PortoAlegre,3209,835,D,6,NA,NA,FF-7,2006,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,D6
+7996,Florestal-CF,CF,EST,1301,1267,D,7,NA,NA,CF-1,2009,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,D7
+8006,Florestal-CF,CF,EST,1301,338,D,9,NA,NA,CF-1,2007,NA,NA,NA,NA,resprouting,NA,FALSE,FALSE,NA,resprouting,measured,D9
+2506,5751,1-ha,EST,1104,432,E,2,0.7,2,FF-3,2009,NA,NA,NA,NA,dried,NA,FALSE,FALSE,NA,dried,measured,E2
+8153,Florestal-CF,CF,EST,1301,600,E,3,0.2,2.6,CF-1,2008,NA,NA,NA,NA,resprouting,NA,FALSE,FALSE,NA,resprouting,measured,E3
+1454,5750,CF,EST,1501,735,E,6,9.2,8.2,CF-2,2007,NA,NA,NA,NA,resprouting,NA,FALSE,FALSE,NA,resprouting,measured,E6
+1726,5750,CF,EST,1501,1401,H,10,NA,NA,CF-2,2007,NA,NA,NA,NA,2x in field,duplicate tag number,FALSE,FALSE,NA,NA,measured,H10
+1726,5750,CF,EST,1501,1401,H,10,NA,NA,CF-2,2008,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,H10
+1726,5750,CF,EST,1501,1401,H,10,NA,NA,CF-2,2009,NA,NA,NA,NA,NA,duplicate tag number,FALSE,FALSE,NA,NA,measured,H10
+2094,5750,CF,EST,1501,711,J,8,3.9,8.7,CF-2,2007,NA,NA,NA,NA,resprouting,NA,FALSE,FALSE,NA,resprouting,measured,J8
