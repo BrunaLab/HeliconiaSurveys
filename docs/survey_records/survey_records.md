@@ -21,7 +21,7 @@ Survey teams often recorded the identity of individual plants covered by palm fr
 
 Scanning and uploading of the original datasheets is ongoing. [Figure 1](../survey_records/survey_sheets/Dimona1_2108_2002-compressed.pdf) is one of the data sheets used to survey one of the 1-ha fragments at Dimono (Fragment 2108) in 2002.
 
-<img src="../survey_records/survey_sheets/dimona_2108_2002.png" width="400px", ">
+<img src="../survey_records/survey_sheets/dimona_2108_2002.png" width="400px">
 
 The complete 2002 survey datasheets for Fragment 2018 can be downloaded [here](../survey_records/survey_sheets/Dimona1_2108_2002-compressed.pdf)
 ---
