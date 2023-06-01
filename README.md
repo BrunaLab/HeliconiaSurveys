@@ -10,13 +10,13 @@ This repository includes the following:
 1. [Summaries](https://brunalab.github.io/HeliconiaSurveys/data_overview.html) of the demographic dataset (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
 2. R Code used to:
     - process raw data files and correct / make changes to individual records [(`code/survey_cleaning`)](code/survey_cleaning)
-    - review the clean data for anomalies, unusual records for review, etc. [(`code/survey_review`)](`code/survey_review`)
-    - prepare the version of the data to be archived at Dryad [(`code/survey_archving`)](`code/survey_archving`)
+    - review the clean data for anomalies, unusual records for review, etc. [(`code/survey_review`)](code/survey_review)
+    - prepare the version of the data to be archived at Dryad [(`code/survey_archving`)](code/survey_archving)
 3. Data:
-    - .csv files of raw data [(`data/survey_raw`)](`data/survey_raw`)
-    - .csv files of clean demographic data and plot descriptors [(`data/survey_clean`)](`data/survey_clean`)
-    - .csv files of any records suggested for further review [(`data/survey_review`)](`data/survey_review`)
-    - .csv files of the datasets archived at Dryad [(`data/survey_archive`)](`data/survey_archive`)
+    - .csv files of raw data [(`data/survey_raw`)](data/survey_raw)
+    - .csv files of clean demographic data and plot descriptors [(`data/survey_clean`)](data/survey_clean)
+    - .csv files of any records suggested for further review [(`data/survey_review`)](data/survey_review)
+    - .csv files of the datasets archived at Dryad [(`data/survey_archive`)](data/survey_archive)
 4. The [output of data validation](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html) algorithms 
 5. A log of [post-publication corrections or code updates](NEWS.md).
 6. Lists of [HDP publications and publicly available data sets](docs/pubs_and_data/pubs_data.md).
