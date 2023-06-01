@@ -27,7 +27,7 @@ The workflow for cleaning, reviewing, and preparing the datasets archived in Dry
 ## Workflow
 
 The cleaning, validating, and organizing of the _Heliconia_ demographic survey data is 
-done using the R script [`01_create_survey_archive.R`](01_create_heliconia_archive.R). The functions in this script will take the 'raw' survey data, clean organize it, conduct a series of data validation procedures, and prepare the files to be archived at the Dryad Digital Repository. The workflow in the `01_create_survey_archive.R` script proceeds as follows:
+done using the R script [`01_create_survey_archive.R`](/01_create_survey_archive.R). The functions in this script will take the 'raw' survey data, clean organize it, conduct a series of data validation procedures, and prepare the files to be archived at the Dryad Digital Repository. The workflow in the `01_create_survey_archive.R` script proceeds as follows:
 
 **1. Load, correct, and organize the demographic data.** 
 
