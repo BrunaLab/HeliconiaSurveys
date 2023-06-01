@@ -2,9 +2,9 @@
 title: "HDP Publications"
 bibliography: 'heliconia_papers.bib'
 csl: 'ecology.csl'
-# output: html_document
-output:
-  rmdformats::robobook
+output: html_document
+# output:
+#   rmdformats::robobook
 # output:
 #   html_document:
 #     theme: yeti
