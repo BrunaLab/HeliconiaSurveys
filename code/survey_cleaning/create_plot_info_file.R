@@ -40,15 +40,15 @@ create_plot_info_file <- function() {
 
   
   
-  if (!dir.exists("./data/survey_archive")){
-    dir.create("./data/survey_archive")
+  if (!dir.exists("./data/survey_clean")){
+    dir.create("./data/survey_clean")
   }else{
-    print(" ")
+    # print(" ")
   }
   
-  print("The file has been saved to: 'data/survey_archive/HDP_plots.csv' ")
+  print("The file has been saved to: 'data/survey_clean/HDP_plots.csv' ")
   
-  write_csv(ha_plots, "./data/survey_archive/HDP_plots.csv")
+  write_csv(ha_plots, "./data/survey_clean/HDP_plots.csv")
   
   
 }

@@ -7,7 +7,7 @@ library(tidyverse)
 
 # This will create a df with the characteristics of heliconia demographic 
 # plots and then save the df as a csv file
-ha_plots<-read_csv("./data/survey_archive/HDP_plots.csv")
+ha_plots<-read_csv("./data/survey_clean/HDP_plots.csv")
 # 
 # # need to add have the EB plot number as a way of joining the dataset below
 # ha_plots_2 <- read_csv("./data/survey_clean/heliconia_survey_clean.csv") %>% 
@@ -67,14 +67,14 @@ tag_changes<-tag_changes %>%
 
 # save the file -----------------------------------------------------------
 
-if (!dir.exists("./data/survey_archive")){
-  dir.create("./data/survey_archive")
+if (!dir.exists("./data/survey_clean")){
+  dir.create("./data/survey_clean")
 }else{
   print(" ")
 }
 
-print("The file has been saved to: 'data/survey_archive/tag_changes.csv' ")
+print("The file has been saved to: 'data/survey_clean/tag_changes.csv' ")
 
-write_csv(tag_changes, "./data/survey_archive/tag_changes.csv")
+write_csv(tag_changes, "./data/survey_clean/tag_changes.csv")
 
 }
