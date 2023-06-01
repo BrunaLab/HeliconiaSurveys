@@ -33,6 +33,6 @@ Survey teams often noted if individual plants were under inside treefalls, cover
 
 Scanning and uploading of the original datasheets is ongoing. A sample of the datasheets used in the field survey can be [downloaded here](../survey_records/survey_sheets/Dimona1_2108_2002-compressed.pdf)
 
-<img src="../docs/survey_records/survey_sheets/dimona_2108_2022.png" width="400px">
+<img src="./docs/survey_records/survey_sheets/dimona_2108_2022.png" width="400px">
 
 ---
