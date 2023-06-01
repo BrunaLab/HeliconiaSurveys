@@ -11,7 +11,7 @@ This repository includes the following:
 2. R Code used to:
     - process raw data files and correct / make changes to individual records [(`code/survey_cleaning`)](code/survey_cleaning)
     - review the clean data for anomalies, unusual records for review, etc. [(`code/survey_review`)](code/survey_review)
-    - prepare the version of the data to be archived at Dryad [(`code/survey_archving`)](code/survey_archving)
+    - prepare the version of the data to be archived at Dryad [(`code/survey_archive`)](code/survey_archive)
 3. Data:
     - .csv files of raw data [(`data/survey_raw`)](data/survey_raw)
     - .csv files of clean demographic data and plot descriptors [(`data/survey_clean`)](data/survey_clean)
