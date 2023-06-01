@@ -1,11 +1,9 @@
 ---
-title: "Heliconia Demography Project"
+title: "Overview: Heliconia Survey Data" 
 date: "last update: `r Sys.Date()`"
 author: "Emilio M. Bruna"
-output: github
-# output: 
-#   rmdformats::robobook
-#   # rmdformats::downcute:
+output: rmdformats::robobook
+# rmdformats::downcute:
     
 self_contained: true
 thumbnails: true
@@ -36,7 +34,7 @@ opts_chunk$set(echo=FALSE,
 opts_knit$set(width=75)
 ```
 
-# HDP Survey Data Overview
+
 
 ```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
 # here::here()
@@ -58,11 +56,15 @@ nplants<-ha_plants %>%
 
 ---
 
-## __Last update:__ `r Sys.Date()`
+## __Last update:__
+
+`r Sys.Date()`
 
 --- 
 
-## __Total no. of plants:__ N = `r nplants`  
+## __Total no. of plants:__ 
+
+N = `r nplants`  
 
 ---
 
@@ -135,6 +137,5 @@ kbl(marked_per_yr)
 
 ---
 
-# [Back to the HDP Github Repository](https://github.com/BrunaLab/HeliconiaSurveys)
-
+# **Return to the HDP Github Repository:** [Link](https://github.com/BrunaLab/HeliconiaSurveys)
 

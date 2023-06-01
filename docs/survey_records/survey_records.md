@@ -1,9 +1,14 @@
-Survey Records
+---
+title: "Survey Records"
+date: "last update: `r Sys.Date()`"
+author: "Emilio M. Bruna"
+---
+
 ================
 
 # Tag Changes 
 
-Field survey teams periodically change the tags attached to individual plants (e.g., if the tag becomes difficult to read or the tag is lost). Below is a record of these changes; these records are necessary when using the original data sheets to validate plant records. Updates of this log are noted on [NEWS.md](./NEWS.md)
+Field survey teams periodically change the tags attached to individual plants (e.g., if the tag becomes difficult to read or the tag is lost). Below is a record of these changes; these records are necessary when using the original data sheets to validate plant records. Updates of this log are noted on [NEWS.md](/NEWS.md)
 
 (https://github.com/BrunaLab/HeliconiaSurveys/blob/cf0d340d2e3b6da089acaca2f8133ad5f9377937/NEWS.md)  
 
@@ -28,6 +33,6 @@ Survey teams often noted if individual plants were under inside treefalls, cover
 
 Scanning and uploading of the original datasheets is ongoing. A sample of the datasheets used in the field survey can be [downloaded here](../survey_records/survey_sheets/Dimona1_2108_2002-compressed.pdf)
 
-<img src="../survey_records/survey_sheets/Dimona1_2108_2002-compressed.pdf" width="400px">
+<img src="../docs/survey_records/survey_sheets/dimona_2108_2022.png" width="400px">
 
 ---

@@ -7,7 +7,7 @@ This is the README for the cleanup, organization, and archiving of demographic s
 
 This repository includes the following: 
 
-1. [Summaries](https://brunalab.github.io/HeliconiaSurveys) of the demographic data collected to date
+1. [Summaries](https://brunalab.github.io/HeliconiaSurveys) of the demographic dataset (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
 2. R Code used to:
     - process raw data files and correct / make changes to individual records (`code/survey_cleaning`)
     - review the clean data for anomalies, unusual records for review, etc. (`code/survey_review`)
@@ -19,7 +19,8 @@ This repository includes the following:
     - .csv files of the datasets archived at Dryad (`data/survey_archive`)
 4. The [output of data validation](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html) algorithms 
 5. A log of [post-publication corrections or code updates](NEWS.md).
-6. Lists of [HDP publications](https://brunalab.github.io/HeliconiaSurveys/publications.html) and other [HDP data sets](https://brunalab.github.io/HeliconiaSurveys/datasets.html) available to researchers.
+6. Lists of [HDP publications and publicly available data sets](https://github.com/BrunaLab/HeliconiaSurveys/blob/c0e2e6ca5d1013f0fff6da2cfef089bad7593ef8/docs/pubs_and_data/pubs_data.md).
+7. Records and information related to conducting the surveys and cleaning the data, including scanned copies of the original datasheets (_in progress_), a list of plants for which id tags were replaced during field surveys, a records of treefalls documented while conducting the survey.  
 
 <!---
 This repository contains the following folders:
