@@ -1,23 +1,34 @@
 ### Heliconia Demography Project Github Repository
 
-This is the README for the cleanup, organization, and archiving of data sets collected as part of the _Heliconia_ Demographic Project. The core data set is demographic surveys conducted from 1998-2008. These have been published in _Ecology_ as a Data Paper.
+This is the README for the cleanup, organization, and archiving of demographic survey data collected as part of the _Heliconia_ Demography Project. An overview of the 1998-2002 surveys and the associated metadata  have been published in _Ecology_ as a data paper, with the data archived in the Dryad Digital Repository. 
 
-This repository also includes the following records: 
 
-1. [An overview](https://brunalab.github.io/HeliconiaSurveys/index.html) of the project, methods, and field sites;
-2. Summaries of the demographic data collected
-3. A list of HDP-related publications
-4. Descriptions of the the HDP data sets available to users
-4. Status of ongoing data validation efforts and data sets being added to the archive 
+## Repository Overview
+
+This repository includes the following: 
+
+1. [Summaries](https://brunalab.github.io/HeliconiaSurveys) of the demographic data collected to date
+2. R Code used to:
+  - process raw data files and correct / make changes to individual records (`code/survey_cleaning`)
+  - review the clean data for anomalies, unusual records for review, etc. (`code/survey_review`)
+  - prepare the version of the data to be archived at Dryad (`code/survey_archving`)
+3. Data:
+  - .csv files of raw data (`data/survey_raw`)
+  - .csv files of corrected and organized demographic data and plot descriptors (`data/survey_clean`)
+  - .csv files of any records suggested for further review (`data/survey_review`)
+  - .csv files of the datasets archived at Dryad (`data/survey_archive`)
+4. The [output of data validation](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html) algorithms 
+5. A log of [post-publication corrections or code updates](NEWS.md).
+6. Lists of [HDP publications](https://brunalab.github.io/HeliconiaSurveys/publications.html) and other [HDP data sets](https://brunalab.github.io/HeliconiaSurveys/datasets.html) available to researchers.
 
 <!---
 This repository contains the following folders:
 └── HeliconiaSurveys.
     ├── `01_create_heliconia_archive.R`
     ├── code
-    │   ├── code_archive (preparing the file to be archived at Dryad)
-    │   └── code_cleaning (cleaning & combining data from individual plots)
-    │   └── code_review (validation checks of clean data set)
+    │   ├── survey_archive (preparing the file to be archived at Dryad)
+    │   └── survey_cleaning (cleaning & combining data from individual plots)
+    │   └── survey_review (validation checks of clean data set)
     ├── data
     │   ├── survey_archive (files archived at Dryad)
     │   └── survey_clean (clean data prior to archiving)
@@ -35,42 +46,59 @@ The workflow for preparing these data is described below.
 ## Workflow
 
 The cleaning, validating, and organizing of the _Heliconia_ demographic survey data is 
-done using the R script `01_create_heliconia_archive.R`, located in the root directory. The functions in this script will take the 'raw' survey data and convert it to the .csv file of clean and organized data that have been archived at the Dryad Data Repository. 
+done using the R script [`01_create_survey_archive.R`](https://github.com/BrunaLab/HeliconiaSurveys/blob/master/01_create_heliconia_archive.R). The functions in this script will take the 'raw' survey data, clean organize it, conduct a series of data validation procedures, and prepare the files to be archived at the Dryad Digital Repository. The workflow in the `01_create_survey_archive.R` script proceeds as follows:
 
-**The workflow is as follows:**
-
-***STEP 1: Load, correct, and organize the demographic data.*** 
+***1. Load, correct, and organize the demographic data.*** 
 
 - The function `ha_data<-clean_heliconia_data()` calls several other functions 
-found in the folder `code/code_cleaning`. The output is a clean csv file that is 
-saved to the folder `data/survey_clean`.
+found in the folder `code/survey_cleaning`. These functions include an .R script for cleaning and correcting the records for plants found in each demographic plot. 
 
-- The functions used in the data-cleaning process are in the folder `code/code_cleaning`. Each plot's demographic records are cleaned using a separate R script.
+- The function `create_plot_info_file()` will create a .csv file of plot-level descriptors 
 
-***STEP 2: Review of the 'Clean' Data.*** 
-
-- Once the file `heliconia_survey_clean.csv` has been saved to the the `data/survey_clean` folder, the function `review_heliconia_data()` will do a number of validations. 
-Any records that are suggested for review will be saved as `.csv` files 
-in the folder `data/survey_review`. 
-
-- The functions for this review are in the folder `code/code_review`.
-
-- These and other validations are also carried out using the pointblank packkage and are available for review [here]()
-
-***STEP 3: Create Files for the Data Archive.*** 
-
-- the function `create_dryad_file()`will create the version of the data file that is available in Dryad (the difference between this and the `heliconia_survey_clean.csv` file is that we have excluded some of the redundant plot identification codes). 
-
-- `create_plot_info_file()` will create a csv of plot-level information (Table 2 in Bruna et al., _Ecology_) 
-
-- `create_treefall_records_file()` creates a csv with some information on
+- The function `create_treefall_records_file()` creates a .csv with some information on
 treefalls in the demographic plots
 
 - `create_tag_changes_file()` creates a csv of all the plants whose tags 
-were replaced diring the field survey (necessary only if one is reviewing 
-plants history using the original data sheets) 
+were replaced during the field survey (necessary only if one is reviewing 
+the survey history of individual plants using the original data sheets) 
 
-- All of these csv files are saved to the folder `data/survey_archive`. The 
-functions generating them are in the folder `code/code_archive`.
+- The output of these functions are .csv files of 'clean' survey data, plot descriptors, treefall records, a log of tag changes saved to the folder `data/survey_clean`.
+
+
+***2. Review of the 'Clean' Data.*** 
+
+- Once the file `heliconia_survey_clean.csv` has been saved to the the `data/survey_clean` folder, the function `review_heliconia_data()` will conduct a series of data validation procedures. The functions for this review are in the folder `code/survey_review`. These and other validations are also carried out using the [`pointblank`](https://rich-iannone.github.io/pointblank/) package; the results are available for review [here](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html).
+
+- Any individual plant records that are flagged for review will be saved as `.csv` files 
+in the folder `data/survey_review`. They can also be downloaded as .csv files from the Data Validation page.
+
+***3. Prepare the files to be archived at Dryad.*** 
+
+- the function `create_dryad_file()`will create .csv files of (1) plot descriptors and (2) the survey data that were archived in Dryad (NB: The demographic data file uploaded to Dryad excludes some of the redundant plot identification codes and the x-y coordinates of individual plants). The function generating and saving these files is found in the folder `code/survey_archive`.
+
+<!---
+(Table 2 in Bruna et al., _Ecology_) 
+--->
+- These resulting .csv files are saved to the folder `data/survey_archive`.  
+
+
+## Improvements, Suggestions, & Questions
+
+We welcome any suggestions for package improvement or ideas for features to include in future versions. If you have Issues, Feature Requests and Pull Requests, [here is how to contribute](CONTRIBUTING.md). We expect everyone contributing to the package to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Contributors
+
+-   [Emilio M. Bruna](https://github.com/embruna), University of Florida
+-   [Eric R. Scott](https://github.com/Aariq), University of Arizona
+
+## Citation
+
+Please cite both the Data Paper and Dryad Repository when using these data for research, publications, teaching, etc.
+
+<!---
+Bruna, Emilio M. et al. (2023), Data from: Demography of the understory herb _Heliconia acuminata_ in an experimentally fragmented tropical landscape, Dryad, Dataset, https://doi.org----
+
+Bruna, Emilio M. María Uriarte, Maria Rosa Darrigo, Paulo Rubim, Cristiane F. Jurinitz, Eric R. Scott, Osmaildo Ferreira da Silva, & W. John Kress. 2023. Demography of the understory herb _Heliconia acuminata_ in an experimentally fragmented tropical landscape. Ecology XX(XX):xx-xx.
+--->
 
 
