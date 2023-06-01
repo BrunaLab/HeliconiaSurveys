@@ -1,28 +1,33 @@
-### Heliconia Demography Project Github Repository
-
-This is the README for the cleanup, organization, and archiving of demographic survey data collected as part of the _Heliconia_ Demography Project. An overview of the 1998-2002 surveys and the associated metadata  have been published in _Ecology_ as a data paper, with the data archived in the Dryad Digital Repository. 
-
+# Heliconia Demography Project
 
 ## Repository Overview
 
+This repository is for the cleanup, organization, and archiving of demographic survey data collected as part of the _Heliconia_ Demography Project. An overview of the 1998-2002 surveys and the associated metadata  have been published in _Ecology_ as a data paper, with the data archived in the Dryad Digital Repository. 
+
 This repository includes the following: 
 
-1. [Summaries](https://brunalab.github.io/HeliconiaSurveys/data_overview.html) of the demographic dataset (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
-2. R Code used to:
+1. **R Code** used to:
     - process raw data files and correct / make changes to individual records [(`code/survey_cleaning`)](code/survey_cleaning)
     - review the clean data for anomalies, unusual records for review, etc. [(`code/survey_review`)](code/survey_review)
     - prepare the version of the data to be archived at Dryad [(`code/survey_archive`)](code/survey_archive)
-3. Data:
+    
+2. **Data:**
     - .csv files of raw data [(`data/survey_raw`)](data/survey_raw)
     - .csv files of clean demographic data and plot descriptors [(`data/survey_clean`)](data/survey_clean)
     - .csv files of any records suggested for further review [(`data/survey_review`)](data/survey_review)
-    - .csv files of the datasets archived at Dryad [(`data/survey_archive`)](data/survey_archive)
-4. The [output of data validation](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html) algorithms 
-5. A log of [post-publication corrections or code updates](NEWS.md).
-6. Lists of [HDP publications and publicly available data sets](docs/pubs_and_data/pubs_data.md).
-7. Information and files related to surveys and data collection, scanned copies of the original datasheets (_in progress_), a list of plants for which id tags were replaced during field surveys, a records of treefalls documented while conducting the survey. A description of these records and links to download them [can be found here](docs/survey_records/survey_records.md).
+    - .csv files of the datasets archived at Dryad [(`data/survey_archive`)](data/survey_archive).  
+    
+3. [**Data validation algorithms and their output**](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html) algorithms 
 
-The workflow for cleaning, reviewing, and preparing the datasets archived in Dryad is described below.
+4. [**Summaries of the demographic data**](https://brunalab.github.io/HeliconiaSurveys/data_overview.html) (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
+
+5. [**A log of post-publication updates and corrections**](NEWS.md).
+
+6. [**HDP Publications and publicly available data sets**](docs/pubs_and_data/pubs_data.md).
+
+7. [**Methodological information and records**](docs/survey_records/survey_records.md), including scanned copies of the original datasheets (_in progress_), a list of plants for which id tags were replaced during field surveys, a records of treefalls documented while conducting the survey. A description of these records and links to download them .
+
+
 
 ## Workflow
 
