@@ -97,21 +97,40 @@ cf_rep<- cf_rep %>%
   
   
   
+
+# n plot ------------------------------------------------------------------
+
+  
+  cf_n_summary<-cf_rep %>% 
+    group_by(shts_bin) %>% 
+    summarize(n_bin=mean(n_bin)) %>% 
+    mutate(year="12 yr mean")
+  
+  cf_rep<- cf_rep %>% 
+    mutate(year=as.character(year))
   
   
   
-  n_plot<-plot_data %>%
+  plot_n_data<- full_join(cf_rep,cf_n_summary,
+                        by=c("n_bin","shts_bin","year")) %>% 
+    mutate(year=as.factor(year)) %>% 
+    mutate(shts_bin=as.factor(shts_bin)) %>%
+    mutate(highlight=ifelse(year=="12 yr mean","12 yr mean","other")) %>% 
+    mutate(year=as.character(year))  
+  
+  
+  n_plot<-plot_n_data %>%
     ggplot(aes(x=shts_bin, 
                y=n_bin, 
                group=year, size=highlight,color=highlight)) +
-    scale_y_continuous(breaks=c(0,10,20,30,40,50,60))+
+    # scale_y_continuous(breaks=c(0,10,20,30,40,50,60))+
     labs(x="shoots",y="number of plants")+
     geom_line() +
     expand_limits(x= c(-0, 9))+
-    geom_text(data=plot_data %>% filter(shts_bin=="8") %>% filter(year=="12 yr mean"), 
+    geom_text(data=plot_n_data %>% filter(shts_bin=="8") %>% filter(year=="12 yr mean"), 
               aes(label = year,
                   x = shts_bin, 
-                  y = perc_bin, 
+                  y = n_bin, 
                   color = highlight),
               size=5,
               hjust = -.2,
@@ -127,7 +146,7 @@ cf_rep<- cf_rep %>%
       legend.position="none",
       plot.title = element_text(size=14)
     )
-  plot
+  n_plot
   
   
   # 
