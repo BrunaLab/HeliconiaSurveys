@@ -2,8 +2,7 @@
 
 # heliconia reproduction in CF --------------------------------------------
 
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 ha_data<-read_csv("./data/survey_clean/heliconia_survey_clean.csv")
 # check for zombie plants  ------------------------------------------------
 
@@ -46,7 +45,7 @@ cf_rep
 cf_rep_summary<-cf_rep %>% 
     group_by(shts_bin) %>% 
     summarize(perc_bin=mean(perc_bin),sd=sd(perc_bin)) %>% 
-    mutate(year="12 yr mean")
+    mutate(year="mean\n(1998-2012)")
 
 cf_rep<- cf_rep %>% 
   mutate(year=as.character(year))
@@ -57,7 +56,7 @@ cf_rep<- cf_rep %>%
                         by=c("perc_bin","shts_bin","year")) %>% 
     mutate(year=as.factor(year)) %>% 
     mutate(shts_bin=as.factor(shts_bin)) %>%
-    mutate(highlight=ifelse(year=="12 yr mean","12 yr mean","other")) %>% 
+    mutate(highlight=ifelse(year=="mean\n(1998-2012)","mean\n(1998-2012)","other")) %>% 
     mutate(year=as.character(year))
   
   
@@ -71,17 +70,19 @@ cf_rep<- cf_rep %>%
                y=perc_bin, 
                group=year, size=highlight,color=highlight)) +
     scale_y_continuous(breaks=c(0,10,20,30,40,50,60))+
-    labs(x="shoots",y="Percent Flowering")+
+    labs(x="shoots",y="percent flowering")+
     geom_line() +
     expand_limits(x= c(-0, 9))+
-    geom_text(data=plot_data %>% filter(shts_bin=="8") %>% filter(year=="12 yr mean"), 
+    geom_text(data=plot_data %>% filter(shts_bin=="8") %>% filter(year=="mean\n(1998-2012)"), 
               aes(label = year,
                   x = shts_bin, 
                   y = perc_bin, 
                   color = highlight),
               size=5,
-              hjust = -.2,
-              position = position_dodge(0.0))+ 
+              hjust = 0.5,
+              nudge_x=0.4,
+              # position = position_dodge(0.0)
+              )+ 
     scale_x_discrete(labels = c(seq(1,7), "\u2265 8"))+
     # geom_text(aes(label = year))+
     scale_color_manual(values = c("darkgreen","lightgrey")) +
@@ -104,7 +105,7 @@ cf_rep<- cf_rep %>%
   cf_n_summary<-cf_rep %>% 
     group_by(shts_bin) %>% 
     summarize(n_bin=mean(n_bin)) %>% 
-    mutate(year="12 yr mean")
+    mutate(year="mean\n(1998-2012)")
   
   cf_rep<- cf_rep %>% 
     mutate(year=as.character(year))
@@ -115,7 +116,7 @@ cf_rep<- cf_rep %>%
                         by=c("n_bin","shts_bin","year")) %>% 
     mutate(year=as.factor(year)) %>% 
     mutate(shts_bin=as.factor(shts_bin)) %>%
-    mutate(highlight=ifelse(year=="12 yr mean","12 yr mean","other")) %>% 
+    mutate(highlight=ifelse(year=="mean\n(1998-2012)","mean\n(1998-2012)","other")) %>% 
     mutate(year=as.character(year))  
   
   
@@ -127,14 +128,16 @@ cf_rep<- cf_rep %>%
     labs(x="shoots",y="number of plants")+
     geom_line() +
     expand_limits(x= c(-0, 9))+
-    geom_text(data=plot_n_data %>% filter(shts_bin=="8") %>% filter(year=="12 yr mean"), 
+    geom_text(data=plot_n_data %>% filter(shts_bin=="8") %>% filter(year=="mean\n(1998-2012)"), 
               aes(label = year,
                   x = shts_bin, 
                   y = n_bin, 
                   color = highlight),
               size=5,
-              hjust = -.2,
-              position = position_dodge(0.0))+ 
+              hjust = 0.5,
+              nudge_x=0.4,
+              # position = position_dodge(0.0)
+    )+ 
     scale_x_discrete(labels = c(seq(1,7), "\u2265 8"))+
     # geom_text(aes(label = year))+
     scale_color_manual(values = c("darkgreen","lightgrey")) +
@@ -147,6 +150,14 @@ cf_rep<- cf_rep %>%
       plot.title = element_text(size=14)
     )
   n_plot
+  
+
+# join plots --------------------------------------------------------------
+
+library(gridExtra)
+grid.arrange(n_plot, perc_plot, ncol = 1)
+# 
+
   
   
   # 
