@@ -1,0 +1,14 @@
+plot_id,habitat,ranch,bdffp_no,yr_isolated
+CF-1,forest,esteio,1301,NA
+CF-2,forest,esteio,1501,NA
+CF-3,forest,esteio,1501,NA
+CF-4,forest,dimona,NA,NA
+CF-5,forest,porto alegre,NA,NA
+CF-6,forest,porto alegre,3402,NA
+FF-1,one,dimona,2107,1984
+FF-2,one,dimona,2108,1984
+FF-3,one,esteio,1104,1980
+FF-4,one,porto alegre,3114,1983
+FF-5,ten,dimona,2206,1984
+FF-6,ten,esteio,1202,1980
+FF-7,ten,porto alegre,3209,1983
