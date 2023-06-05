@@ -53,5 +53,9 @@ print("The files have been saved to: 'data/survey_archive/' as 'HDP_survey.csv' 
 write_csv(ha_dryad, "./data/survey_archive/HDP_survey.csv")
 write_csv(plots_dryad, "./data/survey_archive/HDP_plots.csv")
 
-}
+last_update<-c("last update", as.character(Sys.Date()))
+write(last_update, "./data/survey_archive/last_update.txt")
 
+
+
+}
