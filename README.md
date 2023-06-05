@@ -53,7 +53,7 @@ the survey history of individual plants using the original data sheets)
 
 **2. Review of the 'Clean' Data.** 
 
-- Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/survey_clean`](data/survey_clean) folder, the function [`review_heliconia_data()`](code/survey_review/review_heliconia_data.R) will conduct a series of data validation procedures. The functions for this review are in the folder [`code/survey_review`](code/survey_review). These and other validations are also carried out using the [`pointblank`](https://rich-iannone.github.io/pointblank/) package; the results are available for review [here](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html).
+- Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/survey_clean`](data/survey_clean) folder, the function [`review_heliconia_data()`](code/survey_review/review_heliconia_data.R) conducts a series of data validation procedures. The functions for this review are in the folder [`code/survey_review`](code/survey_review). These and other validations are also carried out using the [`pointblank`](https://rich-iannone.github.io/pointblank/) package; the results are available for review [here](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html).
 
 - Any individual plant records that are flagged for review will be saved as `.csv` files 
 in the folder [`data/survey_review`](data/survey_review). They can also be downloaded as .csv files from the Data Validation page.
