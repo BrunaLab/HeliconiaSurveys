@@ -50,7 +50,7 @@ if (!dir.exists("./data/survey_archive")){
 
 print("The files have been saved to: 'data/survey_archive/' as 'HDP_1998_2009.csv' and 'HDP_plots.csv' ")
 
-write_csv(ha_dryad, "./data/survey_archive/HDP_1998_2009.csv")
+write_csv(ha_dryad, "./data/survey_archive/HDP_survey.csv")
 write_csv(plots_dryad, "./data/survey_archive/HDP_plots.csv")
 
 }
