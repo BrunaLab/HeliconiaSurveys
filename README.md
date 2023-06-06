@@ -31,10 +31,11 @@ This repository includes the following:
 
 ## Workflow
 
-The cleaning, validating, and organizing of the _Heliconia_ demographic survey data is 
-done using the R script [`01_create_survey_archive.R`](/01_create_survey_archive.R). The functions in this script will take the 'raw' survey data, clean organize it, conduct a series of data validation procedures, and prepare the files to be archived at the Dryad Digital Repository. The workflow in the `01_create_survey_archive.R` script proceeds as follows:
+The cleaning, validating, organizing, and preparing the archive version of the _Heliconia_ demographic survey data is done in three steps:
 
 **1. Load, correct, and organize the demographic data.** 
+
+[`01_clean_survey_data.R`](/01_clean_survey_data.R): The functions in this script will take the 'raw' survey data, clean it, and organize it in tidy form.
 
 - The function `ha_data<-clean_heliconia_data()` calls several other functions 
 found in the folder [`code/survey_cleaning`](code/survey_cleaning). These functions include an .R script for cleaning and correcting the records for plants found in each demographic plot. 
@@ -53,12 +54,19 @@ the survey history of individual plants using the original data sheets)
 
 **2. Review of the 'Clean' Data.** 
 
-- Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/survey_clean`](data/survey_clean) folder, the function [`review_heliconia_data()`](code/survey_review/review_heliconia_data.R) conducts a series of data validation procedures. The functions for this review are in the folder [`code/survey_review`](code/survey_review). These and other validations are also carried out using the [`pointblank`](https://rich-iannone.github.io/pointblank/) package; the results are available for review [here](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html).
+Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/survey_clean`](data/survey_clean) folder, the script [`02_review_clean_data.R`](/02_review_clean_data.R) will conduct a series of data validation procedures to flag and prepare the files to be archived at the Dryad Digital Repository. 
 
-- Any individual plant records that are flagged for review will be saved as `.csv` files 
-in the folder [`data/survey_review`](data/survey_review). They can also be downloaded as .csv files from the Data Validation page.
+- The function [`review_heliconia_data()`](code/survey_review/review_heliconia_data.R) conducts a series of data validation procedures. The functions for this review are in the folder [`code/survey_review`](code/survey_review). 
+
+- These and other validations are also carried out using the [`pointblank`](https://rich-iannone.github.io/pointblank/) package; the results are available for review [here](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html).
+
+- Any individual plant records that are flagged for review will be saved as `.csv` files in the folder [`data/survey_review`](data/survey_review). They can also be downloaded as .csv files from the Data Validation page.
 
 **3. Prepare the files to be archived at Dryad.** 
+
+[`03_create_survey_archive.R`](/03_create_survey_archive.R): The functions in this script will prepare the version of the 'clean' survey data and file of plot descriptors that are archived in Dryad. 
+
+- This file requires 2 arguments: the version numbers of the archive and plot descriptors. The initial versions archived at Dryad are `1.0.0`
 
 - the function [`create_dryad_file()`](code/survey_archive/create_dryad_file.R) will create .csv files of (1) plot descriptors and (2) the survey data that were archived in Dryad (NB: The demographic data file uploaded to Dryad excludes some of the redundant plot identification codes and the x-y coordinates of individual plants). The function generating and saving these files is found in the folder [`code/survey_archive`](code/survey_archive).
 
