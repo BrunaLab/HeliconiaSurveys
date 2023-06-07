@@ -2,27 +2,27 @@ create_version_file <- function() {
 library(tidyverse)
 library(semver)
   
+version_bumper<-function(plots_or_survey){
   
   
-  if (!file.exists("./data/survey_archive/version_info.txt")){
+  file_name<-paste("./data/survey_archive/",plots_or_survey,"_version_info.txt",sep="")
+  
+  if (!file.exists(as.character(file_name))){
     
-    sink("./data/survey_archive/version_info.txt")
+    sink(as.character(file_name))
     cat(as.character("0.0.0"))
     cat("\n")
     cat(as.character(Sys.Date()))
     sink()
     print("new version file saved.")
-
+    
     
   }else{
-    
+
+    current_ver  <- semver::parse_version(readLines(file_name,n = 1))
+    changes=readline(prompt = paste(plots_or_survey,': is this an updated version? (Y/N): '));
     
   
-  
-current_ver  <- semver::parse_version(readLines("./data/survey_archive/version_info.txt",n = 1))
-
-changes=readline(prompt = 'is this an updated version? (Y/N): ');
-
 if (grepl("N",changes,ignore.case = TRUE)){
   new_ver <- current_ver
   print("No version bump")
@@ -48,14 +48,19 @@ if (grepl("N",changes,ignore.case = TRUE)){
 # writeLines(as.character(new_ver,Sys.Date()), file_conn)
 # close(file_conn)
 
-sink("./data/survey_archive/version_info.txt")
+sink(file_name)
 cat(as.character(new_ver))
 cat("\n")
 cat(as.character(Sys.Date()))
 sink()
 print("updated version file saved.")
   }
-  
+
+}
+
+version_bumper("plots")
+version_bumper("surveys")
+
 }
 # writeLines(as.character(new_ver,con=Sys.Date(),sep = "\n")), "./data/survey_archive/version_info.txt") 
 
