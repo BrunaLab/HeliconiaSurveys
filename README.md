@@ -61,11 +61,13 @@ Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/surv
 
 ### 2. Prepare the files for archiving at Dryad with `02_create_survey_archive.R`.
 
-The functions in [`02_create_survey_archive.R`](/02_create_survey_archive.R) will prepare the version of the 'clean' survey data and file of plot descriptors that are archived in Dryad. 
+The function in [`02_create_survey_archive.R`](/02_create_survey_archive.R) will prepare the version of the 'clean' survey data and file of plot descriptors that are archived in Dryad. 
 
-- This file requires 2 arguments: the version numbers of the archive and plot descriptors. The initial versions archived at Dryad are `1.0.0`
+- When doing so, the user will be asked if this is an updated version of the data set, and if so, if the version is a `major`, `minor`, or `patch` update (see ['Frictionless Standards'](https://specs.frictionlessdata.io/patterns/#data-package-version)). 
 
-- the function [`create_dryad_file()`](code/survey_archive/create_dryad_file.R) will create .csv files of (1) plot descriptors and (2) the survey data that were archived in Dryad (NB: The demographic data file uploaded to Dryad excludes some of the redundant plot identification codes and the x-y coordinates of individual plants). The function generating and saving these files is found in the folder [`code/survey_archive`](code/survey_archive).
+- the function [`create_dryad_file()`](code/survey_archive/create_dryad_file.R) will then create .csv files of (1) plot descriptors and (2) the survey data that were archived in Dryad (NB: The demographic data file uploaded to Dryad excludes some of the redundant plot identification codes and the x-y coordinates of individual plants). The function generating and saving these files is found in the folder [`code/survey_archive`](code/survey_archive), as is the [`create_version_file.R`](code/survey_archive/create_version_file.R) script used toupdate the `version_info.txt` file.
+
+
 
 <!---
 (Table 2 in Bruna et al., _Ecology_) 
