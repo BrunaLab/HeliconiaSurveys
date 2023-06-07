@@ -1,6 +1,24 @@
 create_version_file <- function() {
 library(tidyverse)
 library(semver)
+  
+  
+  
+  if (!file.exists("./data/survey_archive/version_info.txt")){
+    
+    sink("./data/survey_archive/version_info.txt")
+    cat(as.character("0.0.0"))
+    cat("\n")
+    cat(as.character(Sys.Date()))
+    sink()
+    print("new version file saved.")
+
+    
+  }else{
+    
+    
+  
+  
 current_ver  <- semver::parse_version(readLines("./data/survey_archive/version_info.txt",n = 1))
 
 changes=readline(prompt = 'is this an updated version? (Y/N): ');
@@ -36,6 +54,8 @@ cat("\n")
 cat(as.character(Sys.Date()))
 sink()
 print("updated version file saved.")
+  }
+  
 }
 # writeLines(as.character(new_ver,con=Sys.Date(),sep = "\n")), "./data/survey_archive/version_info.txt") 
 
