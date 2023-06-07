@@ -26,7 +26,7 @@ ha_dryad <- ha_data %>%
          recorded_sdlg,
          adult_no_tag,
          treefall_status,
-         condition,
+         # condition,
          census_status,
          tag_number
   ) %>%
