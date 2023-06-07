@@ -1,6 +1,8 @@
-check_census_status <- function(ha_data_original) {
+check_census_status <- function(ha_data) {
   
-  ha_data <- ha_data_original %>%
+    # for testing purposes only: ha_data_original<-ha_data 
+    ha_data_original<-ha_data
+    ha_data <- ha_data %>%
     mutate(census_status = case_when(
       (ht >= 0 | shts >= 0 | infl > 0) ~ "measured", # alive if has shts | ht data
       code == "sdlg" ~ "measured", # new seedlings alive, even if no ht | shts
@@ -30,11 +32,19 @@ check_census_status <- function(ha_data_original) {
     group_by(plot, plant_id) %>%
     filter(row_number() == 1)
   
-  # duplicate tag numbers
-    # reduce to the ones NA in a census, then only `duplicate tag numbers`
+  # duplicate tag numbers with data that still need to be sorted out
+  # reduce to the ones NA in a census, 
+  # then only `duplicate tag numbers`
+  # then only those with data in shts or ht or infl or code or notes
+  
   ha_na <- ha_data %>% 
     filter(is.na(census_status)) %>% 
-    filter(!is.na(duplicate_tag))
+    filter(!is.na(duplicate_tag)) %>% 
+    filter((is.na(shts) | 
+              is.na(ht) | 
+              is.na(infl)|
+              is.na(code)|
+              is.na(notes))==FALSE)
 
   # bind it all up into a new ha_data 
   ha_data <- bind_rows(ha_measured, ha_na, ha_dead, ha_missing) %>%

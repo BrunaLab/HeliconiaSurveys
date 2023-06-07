@@ -206,5 +206,8 @@ clean_heliconia_data <- function() {
 
   writeLines(x)
 
+  
+  
+  no_status<-ha_data %>% filter(is.na(census_status))
   return(ha_data)
 }
