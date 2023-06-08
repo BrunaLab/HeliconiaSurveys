@@ -6,7 +6,8 @@ review_heliconia_data <- function() {
   # load the complete and clean Heliconia dataset ---------------------------
   
   
-  ha_data<-read_csv("./data/survey_clean/heliconia_survey_clean.csv")
+  ha_data<-read_csv("./data/survey_clean/heliconia_survey_clean.csv",
+                    show_col_types = FALSE)
   # check for zombie plants  ------------------------------------------------
   
   # Zombie Plants are plants that were marked dead in year t but with 

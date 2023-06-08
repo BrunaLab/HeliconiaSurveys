@@ -2,12 +2,22 @@ create_tag_changes_file <- function() {
 # load libraries ----------------------------------------------------------
 
 library(tidyverse)
+  
+  
+  # create version file -----------------------------------------------------
+  
+  source("./code/create_version_file.R")
+  dataset<-"tag_changes"
+  create_version_file(dataset)  
+  
+  
 # load HDP plot data ------------------------------------------------------
 
 
 # This will create a df with the characteristics of heliconia demographic 
 # plots and then save the df as a csv file
-ha_plots<-read_csv("./data/survey_clean/HDP_plots.csv")
+ha_plots<-read_csv("./data/survey_clean/HDP_plots.csv",
+                   show_col_types = FALSE)
 # 
 # # need to add have the EB plot number as a way of joining the dataset below
 # ha_plots_2 <- read_csv("./data/survey_clean/heliconia_survey_clean.csv") %>% 
@@ -51,7 +61,7 @@ tag_changes <-
     plot == "Florestal" ~ "CF-1",
     TRUE ~ plot
   )) %>% 
-  left_join(ha_plots) %>% 
+  left_join(ha_plots,by="plot_id") %>% 
   select(-yr_isolated) %>% 
   as_tibble() %>% 
   arrange(plot,old_tag_no,year) %>% 

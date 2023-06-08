@@ -2,6 +2,13 @@ create_plot_info_file <- function() {
   library(tidyverse)
   
   
+
+# create version file -----------------------------------------------------
+
+  source("./code/create_version_file.R")
+  dataset<-"plots"
+  create_version_file(dataset)  
+  
   # load the complete and clean Heliconia dataset ---------------------------
   
   
@@ -13,7 +20,8 @@ create_plot_info_file <- function() {
     mutate(across(where(is.double), as.factor))
   
   # select the plot id variables
-  ha_plots <- read_csv("./data/survey_clean/heliconia_survey_clean.csv") %>% 
+  ha_plots <- read_csv("./data/survey_clean/heliconia_survey_clean.csv",
+                       show_col_types = FALSE) %>% 
     select(
       "plot_id",
       "habitat",

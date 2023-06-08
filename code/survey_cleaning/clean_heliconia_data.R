@@ -8,8 +8,15 @@ clean_heliconia_data <- function() {
   library(tidyverse)
   library(readxl)
 
-  # STEP 1: Load raw data and prep for cleanup ------------------------------
 
+# create version file -----------------------------------------------------
+
+  source("./code/create_version_file.R")
+  dataset<-"heliconia_survey_clean"
+  create_version_file(dataset)  
+  
+  
+  # STEP 1: Load raw data and prep for cleanup ------------------------------
 
   # load the demog data (for all plots except PA-10)  -----------------------
 

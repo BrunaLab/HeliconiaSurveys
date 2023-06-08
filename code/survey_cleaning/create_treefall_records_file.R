@@ -3,10 +3,18 @@ create_treefall_records_file <- function() {
 
 library(tidyverse)
 
+  
+  
+  # create version file -----------------------------------------------------
+  
+  source("./code/create_version_file.R")
+  dataset<-"treefall_impacts"
+  create_version_file(dataset)  
 
 # load the complete and clean Heliconia dataset ---------------------------
 
-ha_data<-read_csv("./data/survey_clean/heliconia_survey_clean.csv")
+ha_data<-read_csv("./data/survey_clean/heliconia_survey_clean.csv",
+                  show_col_types = FALSE)
 
 # create a new DF with treefall impact information
 treefall_impact <- ha_data %>%
