@@ -98,13 +98,13 @@ If you wish to cite this repository, please cite as follows:
 
 
 
-@misc{BrunaSurveys2023,
-  author = {Bruna, E.M., Eric R. Scott},
-  title = {Heliconia Demography Project},
-  year = {2023},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  note = {data v1.0.0.},
-  url={https://github.com/BrunaLab/HeliconiaSurveys}
-}
+@misc{BrunaSurveys2023,  
+  author = {Bruna, E.M., Eric R. Scott},  
+  title = {Heliconia Demography Project},  
+  year = {2023},  
+  publisher = {GitHub},  
+  journal = {GitHub repository},  
+  note = {data v1.0.0.},  
+  url={https://github.com/BrunaLab/HeliconiaSurveys}  
+}  
 
