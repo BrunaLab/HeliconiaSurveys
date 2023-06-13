@@ -94,4 +94,17 @@ Bruna, Emilio M. et al. (2023), Data from: Demography of the understory herb _He
 Bruna, Emilio M. María Uriarte, Maria Rosa Darrigo, Paulo Rubim, Cristiane F. Jurinitz, Eric R. Scott, Osmaildo Ferreira da Silva, & W. John Kress. 2023. Demography of the understory herb _Heliconia acuminata_ in an experimentally fragmented tropical landscape. Ecology XX(XX):xx-xx.
 --->
 
+If you wish to cite this repository, please cite as follows:
+
+
+
+@misc{BrunaSurveys2023,
+  author = {Bruna, E.M., Eric R. Scott},
+  title = {Heliconia Demography Project},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  note = {data v1.0.0.},
+  url={https://github.com/BrunaLab/HeliconiaSurveys}
+}
 
