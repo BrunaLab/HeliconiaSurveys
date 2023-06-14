@@ -1,0 +1,191 @@
+---
+title: "Bruna et al. Ecology Data Paper Figure 2"
+author: "Emilio M. Bruna"
+date: "2023-06-14"
+# output: html_document
+output: pdf_document
+# knit: (function(inputFile, encoding) {
+#   rmarkdown::render(inputFile,
+#   encoding = encoding,
+#   output_dir = "./docs/maps/images")
+#   })
+
+mainfont: Times New Roman
+fontsize: 12pt
+# bibliography: ["./references.bib"] 
+# #.// indicates it is in the parent directory (used for both ms and appendix)
+# csl: "./ecology.csl"
+fig_caption: yes #yes will automatically add "Figure X" to the start 
+always_allow_html: yes
+header-includes:
+  - \usepackage{float} #to keep figure in the location placed instead of end
+  - \floatplacement{figure}{H}
+  - \usepackage{booktabs}
+  - \raggedbottom
+ # - \usepackage{endfloat} #[nomarkers] excludes the {insert figure x around here] from main text. The others exclude the list of tables and figures. https://cs.brown.edu/about/system/managed/latex/doc/endfloat.pdf
+  - \usepackage{tabu}
+  - \usepackage{makecell}
+  - \usepackage{pdflscape}
+  - \usepackage{longtable}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \setlength\parindent{22pt}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r GlobalOptions, include=FALSE}
+options(knitr.duplicate.label = 'allow')
+knitr::opts_chunk$set(fig.pos = 'h')
+
+library(tidyverse)
+library(here)
+library(cowplot)
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE)
+```
+
+```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
+ha_plants<-read_csv(here("data", "survey_archive", "HDP_survey.csv"))
+```
+
+```{r repro, fig.cap='The abundance and reproduction of \\textit{Heliconia acuminata} in Continuous Forest. In each of survey year (gray lines) the data from the six demographic plots in Continuous Forest were pooled to give (A) the total number of post-seedling \\textit{H. acuminata} in size classes based on shoot number, and (B) the percentage of plants in each size class that produced at least 1 inflorescence. The green line is the average of the annual values for each size category.'}
+# fig.cap='', fig.height = 10, fig.width = 7, fig.align = "center"
+
+hacf<-ha_plants %>%
+  filter(str_detect(plot_id,"CF")==TRUE) %>%
+  filter(recorded_sdlg==FALSE) %>%
+  filter(shts>0) %>%
+  filter(is.na(shts)==FALSE)
+
+size<-hacf %>%
+  group_by(year,shts) %>%
+  summarize(n=n_distinct((plant_id)))
+
+repro<-hacf %>%
+  group_by(year,shts) %>%
+  filter(is.na(infl)==FALSE) %>%
+  summarize(n_rep=n_distinct((plant_id)))
+
+
+max_shts<-max(size$shts,na.rm = TRUE)
+cf_rep<-full_join(size,repro) %>%
+  mutate(n_rep = replace_na(n_rep, 0)) %>%
+  mutate(shts_bin = cut(shts, breaks=c(0,1,2, 3, 4, 5,6,7,max_shts),
+                      labels = c("1", "2", "3", "4","5","6","7","8")),
+       .after=shts) %>%
+  group_by(year,shts_bin) %>%
+  mutate(n_bin=sum(n),.after=shts_bin) %>%
+  group_by(year,shts_bin) %>%
+  mutate(n_rep_bin=sum(n_rep),.after=n_bin) %>%
+  relocate(n,.after=shts) %>%
+  relocate(n_rep,.after=n) %>%
+  mutate(perc_n=n_rep/n*100) %>%
+  mutate(perc_bin=n_rep_bin/n_bin*100) %>%
+  arrange(year,shts_bin)
+# cf_rep
+
+cf_rep_summary<-cf_rep %>%
+    group_by(shts_bin) %>%
+    summarize(perc_bin=mean(perc_bin),sd=sd(perc_bin)) %>%
+    mutate(year="mean\n(1998-2012)")
+
+cf_rep<- cf_rep %>%
+  mutate(year=as.character(year))
+
+  plot_data<- full_join(cf_rep,cf_rep_summary,
+                        by=c("perc_bin","shts_bin","year")) %>%
+    mutate(year=as.factor(year)) %>%
+    mutate(shts_bin=as.factor(shts_bin)) %>%
+    mutate(highlight=ifelse(year=="mean\n(1998-2012)","mean\n(1998-2012)","other")) %>%
+    mutate(year=as.character(year))
+# library(hrbrthemes)
+  perc_plot<-plot_data %>%
+    ggplot(aes(x=shts_bin,
+               y=perc_bin,
+               group=year, size=highlight,color=highlight)) +
+    scale_y_continuous(breaks=c(0,10,20,30,40,50,60))+
+    labs(x="shoots",y="% flowering")+
+    geom_line() +
+    expand_limits(x= c(-0, 9))+
+    geom_text(data=plot_data %>% filter(shts_bin=="8") %>% filter(year=="mean\n(1998-2012)"),
+              aes(label = year,
+                  x = shts_bin,
+                  y = perc_bin,
+                  color = highlight),
+              size=2,
+              hjust = 0.6,
+              nudge_x=0.5,
+              # position = position_dodge(0.0)
+              )+
+    scale_x_discrete(labels = c(seq(1,7),expression("">=8)))+
+    # geom_text(aes(label = year))+
+    scale_color_manual(values = c("darkgreen","lightgrey")) +
+    scale_size_manual(values=c(1.0,0.5)) +
+    theme(legend.position="none") +
+    # ggtitle("title") +
+    theme_classic() +
+    theme(
+      legend.position="none",
+      plot.title = element_text(size=14)
+    )
+  # perc_plot
+# n plot ------------------------------------------------------------------
+  cf_n_summary<-cf_rep %>%
+    group_by(shts_bin) %>%
+    summarize(n_bin=mean(n_bin)) %>%
+    mutate(year="mean\n(1998-2012)")
+
+  cf_rep<- cf_rep %>%
+    mutate(year=as.character(year))
+
+  plot_n_data<- full_join(cf_rep,cf_n_summary,
+                        by=c("n_bin","shts_bin","year")) %>%
+    mutate(year=as.factor(year)) %>%
+    mutate(shts_bin=as.factor(shts_bin)) %>%
+    mutate(highlight=ifelse(year=="mean\n(1998-2012)","mean\n(1998-2012)","other")) %>%
+    mutate(year=as.character(year))
+
+  n_plot<-plot_n_data %>%
+    ggplot(aes(x=shts_bin,
+               y=n_bin,
+               group=year, size=highlight,color=highlight)) +
+    # scale_y_continuous(breaks=c(0,10,20,30,40,50,60))+
+    labs(x="shoots",y="number of plants")+
+    geom_line() +
+    expand_limits(x= c(-0, 9))+
+    geom_text(data=plot_n_data %>% filter(shts_bin=="8") %>% filter(year=="mean\n(1998-2012)"),
+              aes(label = year,
+                  x = shts_bin,
+                  y = n_bin,
+                  color = highlight),
+              size=2,
+              hjust = 0.6,
+              nudge_x=0.5,
+              # position = position_dodge(0.0)
+    )+
+    scale_x_discrete(labels = c(seq(1,7),expression("">=8)))+
+    # geom_text(aes(label = year))+
+    scale_color_manual(values = c("darkgreen","lightgrey")) +
+    scale_size_manual(values=c(1.0,0.5)) +
+    theme(legend.position="none") +
+    # ggtitle("title") +
+    theme_classic() +
+    theme(
+      legend.position="none",
+      plot.title = element_text(size=14)
+    )
+  # n_plot
+
+# join plots --------------------------------------------------------------
+
+library(gridExtra)
+figure_rep<-grid.arrange(n_plot, perc_plot, ncol = 1)
+# figure_rep
+# grid.arrange(n_plot, perc_plot, ncol = 1)
+#
+# figure_rep <- ggdraw() +
+#   draw_image('./MetadataS1/figures/repro_figure.jpeg',x = -0.26, y = 0.3, scale = .5)
+
+```

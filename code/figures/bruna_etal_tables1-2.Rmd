@@ -1,0 +1,338 @@
+---
+title: "Bruna et al. Ecology Data Paper Tables 1-2"
+author: "Emilio M. Bruna"
+date: "2023-06-14"
+# output: html_document
+output: pdf_document
+# knit: (function(inputFile, encoding) {
+#   rmarkdown::render(inputFile,
+#   encoding = encoding,
+#   output_dir = "./docs/maps/images")
+#   })
+
+mainfont: Times New Roman
+fontsize: 12pt
+fig_caption: yes #yes will automatically add "Figure X" to the start 
+always_allow_html: yes
+header-includes:
+  - \usepackage{float} #to keep figure in the location placed instead of end
+  - \floatplacement{figure}{H}
+  - \usepackage{booktabs}
+  - \raggedbottom
+ # - \usepackage{endfloat} #[nomarkers] excludes the {insert figure x around here] from main text. The others exclude the list of tables and figures. https://cs.brown.edu/about/system/managed/latex/doc/endfloat.pdf
+  - \usepackage{tabu}
+  - \usepackage{makecell}
+  - \usepackage{pdflscape}
+  - \usepackage{longtable}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \setlength\parindent{22pt}
+
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r GlobalOptions, include=FALSE}
+options(knitr.duplicate.label = 'allow')
+knitr::opts_chunk$set(fig.pos = 'h')
+
+library(tidyverse)
+library(here)
+library(kableExtra)
+library(magick)
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE)
+```
+
+
+```{r data, cached=TRUE, echo = FALSE, warning=FALSE,message = FALSE}
+ha_plants<-read_csv(here("data", "survey_archive", "HDP_survey.csv"))
+ha_plots<-read_csv(here("data", "survey_archive", "HDP_plots.csv"))
+
+```
+
+```{=tex}
+\newpage
+\blandscape
+```
+
+
+
+**Table 1**. Variable Information for "Data set File 1: _Descriptors of demographic plots_".
+<!-- table row spacing set with arraystretch -->
+\renewcommand{\arraystretch}{0.5}
+```{r table1, echo=FALSE, message = FALSE, warning=FALSE, results='asis'}
+# ha_plots <- read_csv("./survey_clean/HDP_plots.csv", col_types = cols())
+Variables<-names(ha_plots)
+
+Definition<-c(
+  "Code used to identify a plot",
+  "Habitat in which a plot is located",
+  "Ranch in which a plot is located",
+  "BDFFPs Reserve ID NumberHACKIT",
+  "For fragments, the year initially isolated")
+#
+
+Code<-c(
+  "FF1-FF7: plots in fragments
+  \nCF1-CF6: plots in continuous forest",
+  "one: 1-ha fragment
+  \nten: 10-ha fragment
+  \nforest: continuous forest",
+  "porto alegre, esteio, dimona",
+  # "porto alegre
+  # \nesteio
+  # \ndimona",
+  "1104, 1202, 1301, 1501, 2107, 2108, 2206, 3209, 3402, NA",
+  "1980, 1983, 1984"
+)
+
+Storage<-c(
+  "string",
+  "string",
+  "string",
+  "string",
+  "integer"
+)
+
+table1<-bind_cols(Variable=Variables,
+                  'Definition'=Definition,
+                  'Codes'=Code,
+                  Storage=Storage)
+
+# %>% 
+#   mutate_all(linebreak)
+
+# %>%
+#   mutate_all(linebreak)
+
+
+tmp<-knitr::kable(table1,
+     align="l",
+     "latex",
+     # caption.short = "Demo Table",
+     # escape=FALSE,
+     # row.names = FALSE,
+     # caption = "Description of the column names for HDP_plots.csv and description of the data in each column",
+     booktabs=T,
+     linesep = "" #removes the blank line after every 5 lines
+     ) %>%
+  kable_styling(bootstrap_options = "striped",
+                full_width = F,
+                position = "center") %>%
+  # kable_styling(bootstrap_options = c("hover"),
+  #               full_width = TRUE,
+  #               latex_options = c("scale_down",
+  #                                 "repeat_header"),
+  #               font_size = 10,
+  #               position = "left") %>%
+  column_spec(1, width = "5em") %>%
+  column_spec(2, width = "18em") %>%
+  column_spec(3, width = "17em") %>%
+  column_spec(4, width = "3em") %>%
+  row_spec(c(1:4), hline_after = T) %>%
+  row_spec(c(0), bold = T) %>%
+  footnote(
+  #         # general = "Here is a general comments of the table. ",
+            number = "See Gascon and Bierregaard (2001) for details of the reserve numbering scheme. `NA` indicates the plot is not inside a formally demarcated BDFFP reserve.", threeparttable = T)
+  #         # ,
+  #          # alphabet = c("Footnote A; ", "Footnote B; "),
+  #          # symbol = c("Footnote Symbol 1; ", "Footnote Symbol 2")
+  #          )
+knitr::asis_output(str_replace(tmp, "HACKIT", "$^{1}$"))
+# knitr::asis_output(tmp)
+```
+
+\newpage
+<!-- \renewcommand{\arraystretch}{1.5} -->
+**Table 2**. Variable Information for "Data set File 2: _Heliconia Demographic Data_".
+\renewcommand{\arraystretch}{0.5}
+```{r table2, echo=FALSE, message = FALSE, warning=FALSE}
+ha_plants_t1 <- ha_plants %>% 
+  relocate(tag_number,.after=plant_id)
+# %>% select(-tag_number)
+Variables<-names(ha_plants_t1)
+
+Definition<-c(
+  "Plot in which plant is located",
+  "Subplot in which plant is located",
+  "Unique ID no. assigned to plant",
+  "Number on tag attached to plant",
+  "Calendar year of survey",
+  "No. of shoots when surveyed",
+  "Plant height when surveyed",
+  "No. of inflorescences (if flowering)",
+  "New seedling",
+  "Established (i.e., post-seedling) individual without tag",
+  "Plant found under fallen tree crown, branches, or leaf litter at time of survey",
+  # "Obs. of resprouting by plants that had previously lost above-ground parts",
+  "Plant status in a census"
+  )
+
+Codes<-c("FF1-FF7, CF1-CF6",
+  "A1-E10 except in CF3, where F6-J10HACKIT",
+  " - ",
+  " - ",
+  " - ",
+  " - ",
+  " - ",
+  " - ",
+  # "TRUE = seedling
+  # \nFALSE = not a seedling",
+  "TRUE, FALSE",
+  "TRUE, FALSE",
+  # "TRUE = established plant with no tag
+  # \nFALSE = seedling or previously marked plant",
+  "branch: under fallen tree limbs
+  \ntree: under tree crown or fallen trees
+  \nlitter: under accumulated leaf-litter
+  \nNA: not relevant or no observation recorded",
+  # " ",
+  "measured: alive, measured
+  \ndead: died prior to census
+  \nmissing: not found during census"
+  )
+
+Storage<-c(
+  "string",
+  "string",
+  "integer",
+  "integer",
+  "integer",
+  "integer",
+  "integer",
+  "integer",
+  "logical",
+  "logical",
+  "string",
+  # "string",
+  "string"
+)
+
+Range<-c(
+  "-",
+  "-",
+  "-",
+  "-",
+  "-",
+  "-",
+  "-",
+  "-",
+  "-",
+  "-",
+  "-",
+  "-"
+)
+
+
+Precision<-c(
+  " - ",
+  " - ",
+  "1",
+  "1",
+  "1",
+  "1",
+  "1",
+  "1",
+  " - ",
+  " - ",
+  " - ",
+  # " - ",
+  " - "
+)
+
+
+table2<-bind_cols(Variable=Variables,
+                  Definition=Definition,
+                  Codes=Codes,
+                  Range=Range,
+                  Storage=Storage
+                  # ,
+                  # Units=Units,
+                  # Precision=Precision
+                  )
+
+
+range_id <-   as.character(range(ha_plants_t1$plant_id, na.rm=TRUE))
+range_tag <-   as.character(range(ha_plants_t1$tag_number, na.rm=TRUE))
+range_shts <- as.character(range(ha_plants_t1$shts, na.rm=TRUE))
+range_ht <-   as.character(range(ha_plants_t1$ht, na.rm=TRUE))
+range_infl <- as.character(range(ha_plants_t1$infl, na.rm=TRUE))
+range_year <- as.character(range(ha_plants_t1$year, na.rm=TRUE))
+
+
+range_tag<-paste(range_tag[1],range_tag[2],sep="-")
+range_tag<-paste("range =",range_tag,"(units: number, precision: 1)",sep=" ")
+
+range_id<-paste(range_id[1],range_id[2],sep="-")
+range_id<-paste("range =",range_id,"(units: number, precision: 1)",sep=" ")
+
+range_shts <- paste(range_shts[1],range_shts[2],sep="-")
+range_shts<-paste("range =",range_shts,"(units: shoots, precision: 1)\n \nNA: data missing",sep=" ")
+
+range_ht <- paste(range_ht[1],range_ht[2],sep="-")
+range_ht<-paste("range =",range_ht,"(units: cm, precision: 1)\n \nNA: data missing",sep=" ")
+range_infl <- paste(range_infl[1],range_infl[2],sep="-")
+range_infl<-paste("range =",range_infl,"(units: shoots, precision: 1)\n \nNA: data missing",sep=" ")
+range_year <- paste(range_year[1],range_year[2],sep="-")
+range_year<-paste("range =",range_year,"(units: year, precision: 1)",sep=" ")
+
+table2<-table2 %>% mutate(Codes=case_when(
+    Variable=="shts" ~ range_shts,
+    Variable=="ht" ~ range_ht,
+    Variable=="infl" ~ range_infl,
+    Variable=="year" ~ range_year,
+    Variable=="plant_id" ~ range_id,
+    Variable=="tag_number" ~ range_tag,
+    TRUE ~ Codes
+  )) %>% rename("Codes or Range of Values"=Codes) %>%
+  select(-Range)
+
+
+# table2$Definition<-paste(table2$Definition, table2$Range, sep="(Range: ")
+table2<-table2 %>%
+  # filter(Variable !="treefall_status") %>%
+  filter(Variable !="condition")
+
+tmp<-knitr::kable(table2,
+     digits = 2,
+     # caption = "Description of the column names for HDP_1998_2009.csv and description of the data in each column",
+     format = "latex",
+     align="l",
+     longtable=T,
+     # escape = F,
+     # escape=FALSE,
+     # row.names = FALSE,
+     booktabs=T,
+    linesep = "" #removes the blank line after every 5 lines
+    ) %>%
+    kable_styling(bootstrap_options = "striped",
+                full_width = F,
+                position = "left",
+                # font_size = 10,
+                latex_options = c("scale_down",
+                                  "repeat_header")) %>%
+   # kable_styling(bootstrap_options = c("hover"),
+   #              full_width = TRUE,
+   #              latex_options = c("scale_down",
+   #                                "repeat_header"),
+   #              font_size = 10,
+   #              position = "left") %>%
+  row_spec(c(1:10), hline_after = T) %>%
+  row_spec(c(0), bold = T) %>%
+  column_spec(1, width = "9em") %>%
+  column_spec(2, width = "15em") %>%
+  column_spec(3, width = "20em") %>%
+  column_spec(4, width = "3em") %>%
+    footnote(number = "For the arrangment of the subplots see Figures 3-5") 
+
+knitr::asis_output(str_replace(tmp, "HACKIT", "$^{1}$"))
+
+```
+
+
+```{=tex}
+\elandscape
+```
+
+

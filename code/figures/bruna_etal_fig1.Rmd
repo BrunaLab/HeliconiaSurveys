@@ -1,0 +1,59 @@
+---
+title: "Bruna et al. Ecology Data Paper Figure 1"
+author: "Emilio M. Bruna"
+date: "2023-06-14"
+# output: html_document
+output: pdf_document
+# knit: (function(inputFile, encoding) {
+#   rmarkdown::render(inputFile,
+#   encoding = encoding,
+#   output_dir = "./docs/maps/images")
+#   })
+
+mainfont: Times New Roman
+fontsize: 12pt
+# bibliography: ["./references.bib"] 
+# #.// indicates it is in the parent directory (used for both ms and appendix)
+# csl: "./ecology.csl"
+fig_caption: yes #yes will automatically add "Figure X" to the start 
+always_allow_html: yes
+header-includes:
+  - \usepackage{float} #to keep figure in the location placed instead of end
+  - \floatplacement{figure}{H}
+  - \usepackage{booktabs}
+  - \raggedbottom
+ # - \usepackage{endfloat} #[nomarkers] excludes the {insert figure x around here] from main text. The others exclude the list of tables and figures. https://cs.brown.edu/about/system/managed/latex/doc/endfloat.pdf
+  - \usepackage{tabu}
+  - \usepackage{makecell}
+  - \usepackage{pdflscape}
+  - \usepackage{longtable}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \setlength\parindent{22pt}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r GlobalOptions, include=FALSE}
+options(knitr.duplicate.label = 'allow')
+knitr::opts_chunk$set(fig.pos = 'h')
+
+# library(tidyverse)
+# library(gridExtra)
+# library(knitr)
+library(here)
+library(cowplot)
+library(ggplot2)
+# library(magick)
+# library(here)
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE)
+```
+
+
+```{r map, out.width = "100%",fig.cap='Satellite image of the Biological Dynamics of Forest Fragments Project (ca. 1995) showing the location of the \\textit{Heliconia} Demographic Plots. Plots are located in Continuous Forest (CF1-CF6) or Forest Fragments (FF1-FF7), both of which are dark green. Light green areas are regenerating forest, while red indicates pasture. The BDFFP is located ~70 km north of Manaus, Brazil (inset map). For additional details on each plot see Table 1.'}
+
+
+ggdraw() + draw_image(here("docs", "maps" , "images", "bdffpsat.jpg"), scale = 1)
+
+```

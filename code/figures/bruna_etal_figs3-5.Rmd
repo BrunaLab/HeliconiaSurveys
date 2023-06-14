@@ -1,0 +1,116 @@
+---
+title: "Bruna et al. Ecology Data Paper Figures 3-5"
+author: "Emilio M. Bruna"
+date: "2023-06-14"
+# output: html_document
+output: pdf_document
+# knit: (function(inputFile, encoding) {
+#   rmarkdown::render(inputFile,
+#   encoding = encoding,
+#   output_dir = "./docs/maps/images")
+#   })
+
+mainfont: Times New Roman
+fontsize: 12pt
+# bibliography: ["./references.bib"] 
+# #.// indicates it is in the parent directory (used for both ms and appendix)
+# csl: "./ecology.csl"
+fig_caption: yes #yes will automatically add "Figure X" to the start 
+always_allow_html: yes
+header-includes:
+  - \usepackage{float} #to keep figure in the location placed instead of end
+  - \floatplacement{figure}{H}
+  - \usepackage{booktabs}
+  - \raggedbottom
+ # - \usepackage{endfloat} #[nomarkers] excludes the {insert figure x around here] from main text. The others exclude the list of tables and figures. https://cs.brown.edu/about/system/managed/latex/doc/endfloat.pdf
+  - \usepackage{tabu}
+  - \usepackage{makecell}
+  - \usepackage{pdflscape}
+  - \usepackage{longtable}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \setlength\parindent{22pt}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r GlobalOptions, include=FALSE}
+options(knitr.duplicate.label = 'allow')
+knitr::opts_chunk$set(fig.pos = 'h')
+library(here)
+library(cowplot)
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE)
+```
+
+
+```{r plots}
+# FIGURE - ONE HECTARE PLOTS 
+
+ff_one_all <- ggdraw() +
+  draw_image(here("docs", "maps", "images", "Slide1.jpeg"), x = -0.26, y = 0.2, scale = .5)+
+  draw_image(here("docs", "maps", "images", 'Slide2.jpeg'),x = 0.26, y =0.2, scale = .5)+
+draw_image(here("docs", "maps", "images", 'Slide3.jpeg'),x = -0.26, y =-0.15, scale = .5)+
+  draw_image(here("docs", "maps", "images", 'Slide4.jpeg'),x = 0.26, y = -0.15, scale = .5)
+
+
+# save the figures in multiple formats
+ggsave(here("docs","maps","images","ff_one_all.pdf"), width = 7, height = 10, units = "in",bg="white")
+ggsave(here("docs","maps","images","ff_one_all.png"), width = 7, height = 10, units = "in",bg="white")
+ggsave(here("docs","maps","images","ff_one_all.tiff"), width = 7, height = 10, units = "in",bg="white")
+
+
+
+# FIGURE - TEN HECTARE PLOTS 
+ff_ten_all <- ggdraw() +
+  draw_image(here("docs", "maps", "images", 'Slide5.jpeg'),x = -0.26, y = 0.2, scale = .5)+
+  draw_image(here("docs", "maps", "images", 'Slide6.jpeg'),x = 0.26, y =0.2, scale = .5)+
+draw_image(here("docs", "maps", "images", 'Slide7.jpeg'),x = 0, y =-0.2, scale = .5)
+
+# Save the figures in multiple formats
+ggsave(here("docs","maps","images","ff_ten_all.pdf"), width = 7, height = 10, units = "in",bg="white")
+ggsave(here("docs","maps","images","ff_ten_all.png"), width = 7, height = 10, units = "in",bg="white")
+ggsave(here("docs","maps","images","ff_ten_all.tiff"), width = 7, height = 10, units = "in",bg="white")
+
+
+
+
+
+#  PLOTS - CONTINUOUS FOREST
+
+cf_all <- ggdraw() +
+  draw_image(here("docs", "maps", "images", 'Slide8.jpeg'),x = -0.26, y = 0.3, scale = .5)+
+  draw_image(here("docs", "maps", "images", 'Slide9.jpeg'),x = 0.26, y =0.3, scale = .5)+
+draw_image(here("docs", "maps", "images", 'Slide10.jpeg'),x = -0.26, y =-0.01, scale = .5)+
+  draw_image(here("docs", "maps", "images", 'Slide11.jpeg'),x = 0.26, y = -0.01, scale = .5)+
+  draw_image(here("docs", "maps", "images", 'Slide12.jpeg'),x = -0.26, y = -0.325, scale = .5)+
+  draw_image(here("docs", "maps", "images", 'Slide13.jpeg'),x = 0.26, y =-0.28, scale = .5)
+
+
+ggsave(here("docs","maps","images","cf_all.pdf"), width = 7, height = 10, units = "in",bg="white")
+ggsave(here("docs","maps","images","cf_all.png"), width = 7, height = 10, units = "in",bg="white")
+ggsave(here("docs","maps","images","cf_all.tiff"), width = 7, height = 10, units = "in",bg="white")
+
+```
+
+
+```{r plotsone, fig.cap='Schematic of the \\textit{Heliconia} Demographic Plots in the BDFFP 1-hectare forest fragment reserves (note: not to scale). The rectangles filled with a letter-number combination (i.e., F-3, A-2, E-2) are coordinate stakes marking the permanent plots of the BDFFP Phytodemographic Project (Rankin-de-Mérona et al. 1992).',fig.height = 10, fig.width = 7, fig.align = "center"}
+
+ff_one_all
+```
+
+\newpage
+```{r plotsten, fig.cap='Schematic of the \\textit{Heliconia} Demographic Plots in the BDFFP 10-ha forest fragment reserves (note: not to scale). The rectangles filled with a letter-number combination (i.e., I-8, J-8) are coordinate stakes marking the permanent plots of the BDFFP Phytodemographic Project (Rankin-de-Mérona et al. 1992).',fig.height = 10, fig.width = 7, fig.align = "center"}
+
+
+ff_ten_all
+```
+
+\newpage
+
+```{r plotscf,  fig.cap='\\textit{Heliconia} Demographic Plots in Continuous Forest (note: not to scale). Rectangles with a letter-number combination (i.e., L-40, J-40, C-1, C-2) are coordinate stakes marking permanent plots of the BDFFP Phytodemographic Project (Rankin-de-Mérona et al. 1992).', fig.height = 9, fig.width = 6, fig.align = "center",}
+
+
+cf_all
+```
