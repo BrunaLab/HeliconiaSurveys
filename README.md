@@ -10,6 +10,7 @@ This repository includes the following:
     - process raw data files and correct / make changes to individual records [(`code/survey_cleaning`)](code/survey_cleaning)
     - review the clean data for anomalies, unusual records for review, etc. [(`code/survey_review`)](code/survey_review)
     - prepare the version of the data to be archived at Dryad [(`code/survey_archive`)](code/survey_archive)
+    - prepare figures for the data summaries and publications  [(`code/figures`)](code/figures)
     
 2. **Data:**
     - .csv files of raw data [(`data/survey_raw`)](data/survey_raw)
@@ -19,14 +20,13 @@ This repository includes the following:
     
 3. [**Data validation algorithms and their output**](https://brunalab.github.io/HeliconiaSurveys/survey_validation/survey_validation.html) algorithms 
 
-4. [**Summaries of the demographic data**](https://brunalab.github.io/HeliconiaSurveys/data_overview.html) (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
+4. [**Summaries of the demographic data**](https://brunalab.github.io/HeliconiaSurveys/data_summaries/data_overview.html) (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
 
 5. [**A log of post-publication updates and corrections**](NEWS.md).
 
 6. [**HDP Publications and publicly available data sets**](docs/pubs_and_data/pubs_data.md).
 
-7. [**Methodological information and records**](docs/survey_records/survey_records.md), including scanned copies of the original datasheets (_in progress_), a list of plants for which id tags were replaced during field surveys, a records of treefalls documented while conducting the survey. A description of these records and links to download them .
-
+7. **Methodological information and records**, including scanned copies of the [original datasheets](docs/survey_datasheets/survey_datasheets.md), an overview and downloadable record of plants for which [id tags were replaced](docs/tag_changes/tag_changes.md) during field surveys, [records of treefalls in plots](docs/treefalls/treefalls.md) and any damage the caused to plants, and [maps of the demographic plots](docs/maps/maps.md) (downloadable in different formats).
 
 
 ## Workflow
