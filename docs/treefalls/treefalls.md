@@ -1,9 +1,12 @@
 Treefalls and their impact on _H. acuminata_ 
 ================
 
+# Treefalls in Demographic Plots
 Survey teams documented treefalls in the demographic plots, including estimates of their extent. A .csv file with these observations can be  [downloaded here](https://github.com/BrunaLab/HeliconiaSurveys/blob/ca06ba6c501ad2bb6a43c6a6636cb09afccb5614/survey_clean/treefall_impacts.csv).
 
 - [Treefall Records](link) (.csv format).
+
+----  
 
 # Damage to Plants
 

@@ -24,7 +24,7 @@ This repository includes the following:
 
 5. [**A log of post-publication updates and corrections**](NEWS.md).
 
-6. [**HDP Publications and publicly available data sets**](docs/pubs_and_data/pubs_data.md).
+6. [**HDP Publications and publicly available data sets**](docs/publications/publications.md).
 
 7. **Methodological information and records**, including scanned copies of the [original datasheets](docs/survey_datasheets/survey_datasheets.md), an overview and downloadable record of plants for which [id tags were replaced](docs/tag_changes/tag_changes.md) during field surveys, [records of treefalls in plots](docs/treefalls/treefalls.md) and any damage the caused to plants, and [maps of the demographic plots](docs/maps/maps.md) (downloadable in different formats).
 
