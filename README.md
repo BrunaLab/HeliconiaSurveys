@@ -17,7 +17,7 @@ This repository includes the following:
     - .csv files of any records suggested for further review [(`data/survey_review`)](data/survey_review)
     - .csv files of the datasets archived at Dryad [(`data/survey_archive`)](data/survey_archive).  
     
-3. [**Data validation algorithms and their output**](https://brunalab.github.io/HeliconiaSurveys/survey_validation.html) algorithms 
+3. [**Data validation algorithms and their output**](https://brunalab.github.io/HeliconiaSurveys/survey_validation/survey_validation.html) algorithms 
 
 4. [**Summaries of the demographic data**](https://brunalab.github.io/HeliconiaSurveys/data_overview.html) (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
 
