@@ -16,12 +16,12 @@ This image (in .jpg format) can be downloaded directly or at [this link](https:/
 Schematic of the _Heliconia_ Demographic Plots in the BDFFP 1-hectare forest fragment reserves (note: not to scale). The rectangles filled with a letter-number combination (i.e., F-3, A-2, E-2) are coordinate stakes marking the permanent plots of the BDFFP Phytodemographic Project (Rankin-de-Mérona et al. 1992).
 
 <img src="https://github.com/BrunaLab/HeliconiaSurveys/blob/master/docs/maps/images/ff_one_all.png"/>
------
+-----  
 ### 10-ha Fragments
 Schematic of the _Heliconia_ Demographic Plots in the BDFFP 10-ha forest fragment reserves (note: not to scale). The rectangles filled with a letter-number combination (i.e., I-8, J-8) are coordinate stakes marking the permanent plots of the BDFFP Phytodemographic Project (Rankin-de-Mérona et al. 1992).
 
 <img src="https://github.com/BrunaLab/HeliconiaSurveys/blob/master/docs/maps/images/ff_ten_all.png"/>
------
+-----  
 ### Continuous Forest
 _Heliconia_ Demographic Plots in Continuous Forest (note: not to scale). Rectangles with a letter-number combination (i.e., L-40, J-40, C-1, C-2) are coordinate stakes marking permanent plots of the BDFFP Phytodemographic Project (Rankin-de-Mérona et al. 1992).
 
