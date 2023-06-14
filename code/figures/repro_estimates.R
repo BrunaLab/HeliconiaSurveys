@@ -1,8 +1,19 @@
 
-# heliconia reproduction in CF --------------------------------------------
+# H acuminata flowering & n plants (by sht number) in CF ------------------
+# NOTE: all CF plots combined
+
+# load the libraries ------------------------------------------------------
+
 
 library(tidyverse)
-ha_data<-read_csv("./data/survey_clean/heliconia_survey_clean.csv")
+library(gridExtra)
+
+
+# load the survey data archived in Dryad  ---------------------------------
+
+
+
+ha_plants<-read_csv("./data/survey_archive/HDP_survey.csv")
 # check for zombie plants  ------------------------------------------------
 
 
@@ -59,7 +70,7 @@ perc_plot<-plot_data %>%
              y=perc_bin,
              group=year, size=highlight,color=highlight)) +
   scale_y_continuous(breaks=c(0,10,20,30,40,50,60))+
-  labs(x="shoots",y="% flowering")+
+  labs(x="shoots",y="% Flowering")+
   geom_line() +
   expand_limits(x= c(-0, 9))+
   geom_text(data=plot_data %>% filter(shts_bin=="8") %>% filter(year=="mean\n(1998-2012)"),
@@ -84,6 +95,13 @@ perc_plot<-plot_data %>%
     plot.title = element_text(size=14)
   )
 # perc_plot
+
+
+ggsave("./docs/data_summaries/figs/perc_plot.pdf", width = 5, height = 4, units = "in", bg = "white")
+ggsave("./docs/data_summaries/figs/perc_plot.png", width = 5, height = 4, units = "in", bg = "white")
+ggsave("./docs/data_summaries/figs/perc_plot.tiff", width = 5, height = 4, units = "in", bg = "white")
+
+
 # n plot ------------------------------------------------------------------
 cf_n_summary<-cf_rep %>%
   group_by(shts_bin) %>%
@@ -105,7 +123,7 @@ n_plot<-plot_n_data %>%
              y=n_bin,
              group=year, size=highlight,color=highlight)) +
   # scale_y_continuous(breaks=c(0,10,20,30,40,50,60))+
-  labs(x="shoots",y="number of plants")+
+  labs(x="shoots",y="Total no. of plants")+
   geom_line() +
   expand_limits(x= c(-0, 9))+
   geom_text(data=plot_n_data %>% filter(shts_bin=="8") %>% filter(year=="mean\n(1998-2012)"),
@@ -130,8 +148,16 @@ n_plot<-plot_n_data %>%
     plot.title = element_text(size=14)
   )
 # n_plot
+# Save the figures in multiple formats
+ggsave("./docs/data_summaries/figs/n_plot.pdf", width = 5, height = 4, units = "in", bg = "white")
+ggsave("./docs/data_summaries/figs/n_plot.png", width = 5, height = 4, units = "in", bg = "white")
+ggsave("./docs/data_summaries/figs/n_plot.tiff", width = 5, height = 4, units = "in", bg = "white")
 
-# join plots --------------------------------------------------------------
 
-library(gridExtra)
-figure_rep<-grid.arrange(n_plot, perc_plot, ncol = 1)
+fig_n_flrperc<-grid.arrange(n_plot, perc_plot, ncol = 1)
+ggsave("./docs/data_summaries/figs/fig_n_flrperc.jpg", width = 6, height = 8, units = "in", bg = "white")
+
+ggdraw() +
+  draw_image("./docs/data_summaries/figs/n_plot.png", x = 0.00, y = 0.21, scale = .8) +
+  draw_image("./docs/data_summaries/figs/perc_plot.png", x = 0.0, y = -0.21, scale = .8)
+ggsave("./docs/data_summaries/figs/fig_n_flrperc.jpg", width = 4, height = 6, units = "in", bg = "white")

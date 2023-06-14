@@ -1,0 +1,12 @@
+---
+title: "Untitled"
+author: "Emilio M. Bruna"
+date: "2023-06-14"
+output: html_document
+---
+
+```{r map, out.width = "100%",fig.cap='Satellite image of the Biological Dynamics of Forest Fragments Project (ca. 1995) showing the location of the \\textit{Heliconia} Demographic Plots. Plots are located in Continuous Forest (CF1-CF6) or Forest Fragments (FF1-FF7), both of which are dark green. Light green areas are regenerating forest, while red indicates pasture. The BDFFP is located ~70 km north of Manaus, Brazil (inset map). For additional details on each plot see Table 1.'}
+
+ggdraw() + draw_image('./MetadataS1/figures/bdffpsat.jpg', scale = 1)
+
+```
