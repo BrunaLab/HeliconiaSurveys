@@ -9,12 +9,17 @@ source("./code/survey_cleaning/create_plot_info_file.R")
 create_plot_info_file()
 
 # csv file of treefall records ---------------------------------------------
-source("./code/survey_cleaning/create_treefall_records_file.R")
-create_treefall_records_file()
+source("./code/survey_cleaning/create_plant_damage_file.R")
+create_plant_damage_file()
 
 # csv file of tag replacements in the field --------------------------------
 source("./code/survey_cleaning/create_tag_changes_file.R")
 create_tag_changes_file()
+
+
+# csv file of tag replacements in the field --------------------------------
+source("./code/survey_cleaning/create_plot_treefalls_file.R")
+create_plot_treefalls_file()
 
 
 # STEP 2: Review of the 'Clean' Data ----------------------------------------
