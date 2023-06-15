@@ -1,5 +1,5 @@
 
-# STEP 3: Create Files for the Dryad. ---------------------------------------
+# STEP 2: Create Files for the Dryad. ---------------------------------------
 
 # csv file of demog dataset for Dryad ---------------------------------------
 

@@ -1,0 +1,79 @@
+plot,year,row,column,notes,missing_subplot,perc,cat,plot_id
+2107,2006,d,10,plot is a mess due to treefall,FALSE,NA,treefall,FF-1
+2107,2006,b,6,plot is a mess due to treefall,FALSE,NA,treefall,FF-1
+2107,2006,b,8,lots of fallen branches,FALSE,NA,branchfall,FF-1
+2108,2006,c,8,subplot is 100% treefall,FALSE,100,treefall,FF-2
+2206,2006,a,9,"plot  pletely covered with treefall, almost can't get in.",FALSE,100,treefall,FF-5
+2206,2006,a,10,"plot  pletely covered with treefall, almost can't get in.",FALSE,100,treefall,FF-5
+2206,2006,e,9,"plot  pletely covered with treefall, almost can't get in.",FALSE,100,treefall,FF-5
+5751,2006,d,5,plot covered by trefall,FALSE,100,treefall,FF-3
+5751,2006,d,6,plot covered by trefall,FALSE,100,treefall,FF-3
+5751,2006,c,5,trefall covers subplot,FALSE,100,treefall,FF-3
+5751,2006,d,8,plot covered by trefall,FALSE,100,treefall,FF-3
+5751,2006,d,9,subplot 25% treefall,FALSE,25,treefall,FF-3
+5752,2006,d,1,trefall in plot,FALSE,NA,treefall,FF-2
+5752,2006,a,4,subplot 25% treefall,FALSE,25,treefall,FF-2
+5752,2006,e,1,subplot almost entirely treefall,FALSE,95,treefall,FF-2
+5752,2006,a,8,big crownfall in this subplot,FALSE,NA,NA,FF-2
+5752,2006,b,8,trefall/fallen branches in plot,FALSE,NA,branchfall,FF-2
+5752,2006,b,4,2 fallen trees in plot,FALSE,NA,NA,FF-2
+5753,2006,d,10,plot covered by cecropia leaves,FALSE,NA,leaflitter,FF-3
+5753,2006,d,3,plot is  pletely covered by trefall,FALSE,100,treefall,FF-3
+5753,2006,e,5,trefall in plot,FALSE,NA,treefall,FF-3
+5754,2006,c,7,plot is 50% treefall,FALSE,50,treefall,5754
+5754,2006,a,1,trefall,FALSE,NA,treefall,5754
+5754,2006,b,6,horrible treefall in plot,FALSE,100,treefall,5754
+5754,2006,b,7,"horrible treefall in plot, can barely make it in",FALSE,100,treefall,5754
+5754,2006,a,8,lots of small branchfalls in plot,FALSE,NA,branchfall,5754
+5754,2006,d,7,treefall in plot,FALSE,NA,treefall,5754
+5750,2006,i,10,50% trefall,FALSE,50,treefall,CF-2
+5750,2006,h,6,big treefall in plot,FALSE,NA,treefall,CF-2
+5750,2006,i,6,50% treefall,FALSE,50,treefall,CF-2
+5750,2006,j,9,"treefall in plot, missing must be under",FALSE,NA,treefall,CF-2
+5750,2006,g,9,big trefall; missing plants could be underneath,FALSE,NA,treefall,CF-2
+5750,2006,d,9,big branchfall,FALSE,NA,branchfall,CF-2
+5756,2006,e,2,grande treefall in plot,FALSE,NA,treefall,CF-3
+5756,2006,d,9,grande treefall in plot,FALSE,NA,treefall,CF-3
+cf cf,2006,b,7,trefall/fallen branches in plot,FALSE,NA,branchfall,CF-6
+cf cf,2006,a,7,trefall/fallen branches in plot,FALSE,NA,branchfall,CF-6
+dim cf,2006,a,1,"treefall in plot inteira, planta que falta must be embaixo",FALSE,100,treefall,CF-4
+florestal,2006,a,8,arvore treefall in plot/ as planats missing devem estar embaixo da arvore,FALSE,NA,treefall,CF-1
+florestal,2006,b,9,big treefall in plot,FALSE,NA,treefall,CF-1
+pa cf,2006,c,8,treefall in plot,FALSE,NA,treefall,pa cf
+pa cf,2006,c,10,treefall in plot,FALSE,NA,treefall,pa cf
+2108,2007,c,1,cerca de 25% com queda de casca de um gigante angelim,FALSE,25,NA,FF-2
+2108,2007,e,10,muitas folhas de embaúbas na liteira,FALSE,NA,leaflitter,FF-2
+2108,2007,d,2,20% de galhada,FALSE,20,branchfall,FF-2
+2108,2007,c,4,cerca de 25% com queda de galhada,FALSE,25,branchfall,FF-2
+2107,2007,a,7,muitas folhas grandes na liteira,FALSE,NA,leaflitter,FF-1
+2107,2007,a,8,muitas folhas grandes na liteira,FALSE,NA,leaflitter,FF-1
+5751,2007,e,8,40% de galhos caídos na parcela,FALSE,40,branchfall,FF-3
+5751,2007,e,9,árvores caíram,FALSE,NA,NA,FF-3
+5751,2007,c,9,árvore podre caída,FALSE,NA,NA,FF-3
+5751,2007,b,7,10% da área com queda de falhada,FALSE,10,leaflitter,FF-3
+5753,2007,b,5,cerca de 20% da área da parcela com queda de galhada,FALSE,20,branchfall,FF-3
+5753,2007,c,1,15% de galhada em cima,FALSE,15,branchfall,FF-3
+5753,2007,c,4,70% da parcela com galhada,FALSE,70,branchfall,FF-3
+5753,2007,c,7,25% com galhada,FALSE,25,branchfall,FF-3
+5750,2007,j,8,gap,FALSE,NA,NA,CF-2
+5750,2007,d,9,galhos caídos em cerca de 10% de sua área/borda com E9,FALSE,10,branchfall,CF-2
+5750,2007,f,9,10% de galhada,FALSE,10,branchfall,CF-2
+5750,2007,g,9,10% de galhada (borda f9),FALSE,10,branchfall,CF-2
+5750,2007,j,9,clareira,FALSE,NA,NA,CF-2
+5756,2007,e,5,40% da área com caída de galhada,FALSE,40,branchfall,CF-3
+5756,2007,a,2,10 % da área com queda de árvore,FALSE,10,treefall,CF-3
+5756,2007,a,1,25% da área com queda de árvore,FALSE,25,treefall,CF-3
+5756,2007,NA,NA,30% de área da parcela com caída de galhada,TRUE,30,branchfall,CF-3
+dim cf,2007,a,1,caiu grande galhada 30%,FALSE,30,branchfall,CF-4
+pa cf,2007,b,7,20% da área com galhada,FALSE,20,branchfall,pa cf
+pa cf,2007,b,8,20% da área  com galhada,FALSE,20,branchfall,pa cf
+pa cf,2007,c,7,20% de sua área com queda de galhada,FALSE,20,branchfall,pa cf
+pa cf,2007,c,8,25% de sua área com queda de galhada,FALSE,25,branchfall,pa cf
+florestal,2007,a,4,90% de área com queda de árvore,FALSE,90,treefall,CF-1
+florestal,2007,a,7,20% da área com queda de árvore,FALSE,20,treefall,CF-1
+florestal,2007,b,4,30% da área com queda de árvore,FALSE,30,treefall,CF-1
+florestal,2007,b,8,15% de área com caída,FALSE,15,NA,CF-1
+florestal,2007,b,9,20% de área com queda de árvore,FALSE,20,treefall,CF-1
+florestal,2007,c,9,30% de caída,FALSE,30,NA,CF-1
+florestal,2007,a,8,20% de queda,FALSE,20,NA,CF-1
+5750,2007,i,10,10% da parcela com galhada,FALSE,10,branchfall,CF-2

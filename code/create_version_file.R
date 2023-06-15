@@ -24,7 +24,7 @@ library(semver)
   if (!file.exists(as.character(file_name))){
     
     sink(as.character(file_name))
-    cat(as.character("0.0.0"))
+    cat(as.character("1.0.0"))
     cat("\n")
     cat(as.character(Sys.Date()))
     sink()
