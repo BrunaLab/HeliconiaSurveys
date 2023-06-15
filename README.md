@@ -2,9 +2,9 @@
 
 ## Repository Overview
 
-This repository is for the cleanup, organization, and archiving of demographic survey data collected as part of the _Heliconia_ Demography Project. An overview of the 1998-2002 surveys and the associated metadata  have been published in _Ecology_ as a data paper, with the data archived in the Dryad Digital Repository. 
+This repository is for the cleanup, organization, and archiving of demographic survey data collected as part of the _Heliconia_ Demography Project. These procedures are carried out by executing two R scripts (see _Workflow_, below). An overview of the 1998-2002 surveys and the associated metadata have been submitted to _Ecology_ for publication as a data paper; upon acceptance the demographic data will be archived in the Dryad Digital Repository. ***There is a separate [Github repository for the _Data Paper_ itself](https://github.com/BrunaLab/Bruna_etal_HeliconiaDataPaper)***; it includes the latest version (in `.pdf` format) there and the `.Rmd` files used containing the text and code for analyses, data summaries, figures, and tables.
 
-This repository includes the following: 
+**This repository includes the following: **
 
 1. **R Code** used to:
     - process raw data files and correct / make changes to individual records [(`code/survey_cleaning`)](code/survey_cleaning)
@@ -16,42 +16,45 @@ This repository includes the following:
     - .csv files of raw data [(`data/survey_raw`)](data/survey_raw)
     - .csv files of clean demographic data and plot descriptors [(`data/survey_clean`)](data/survey_clean)
     - .csv files of any records suggested for further review [(`data/survey_review`)](data/survey_review)
-    - .csv files of the datasets archived at Dryad [(`data/survey_archive`)](data/survey_archive).  
+    - .csv files of the datasets archived at Dryad [(`data/survey_archive`)](data/survey_archive).   
     
 3. [**Data validation algorithms and their output**](https://brunalab.github.io/HeliconiaSurveys/survey_validation/survey_validation.html) algorithms 
 
 4. [**Summaries of the demographic data**](https://brunalab.github.io/HeliconiaSurveys/data_summaries/data_overview.html) (e.g., total number of plants, total number of plants per plot, total number of seedlings per year).
 
-5. [**A log of post-publication updates and corrections**](NEWS.md).
+5. [**A log of updates and corrections**](NEWS.md).
 
 6. [**HDP Publications and publicly available data sets**](docs/publications/publications.md).
 
-7. **Methodological information and records**, including scanned copies of the [original datasheets](docs/survey_datasheets/survey_datasheets.md), an overview and downloadable record of plants for which [id tags were replaced](docs/tag_changes/tag_changes.md) during field surveys, [records of treefalls in plots](docs/treefalls/treefalls.md) and any damage the caused to plants, and [maps of the demographic plots](docs/maps/maps.md) (downloadable in different formats).
+7. **Methodological information and records**, including: 
+    - scanned copies of the [original datasheets](docs/survey_datasheets/survey_datasheets.md), 
+    - an overview and downloadable record of plants for which [id tags were replaced](docs/tag_changes/tag_changes.md) during field surveys, 
+    - records of [treefalls in plots and any damage they caused to plants](docs/treefalls/treefalls.md), 
+    - [maps of the demographic plots](docs/maps/maps.md) that can be downloaded in different formats.
 
 
 ## Workflow
 
-The cleaning, validating, organizing, and preparing the archive version of the _Heliconia_ demographic survey data is done with two R scripts:
+### STEP 1. Correct, organize, & review the data with `01_clean_survey_data.R`
 
-### 1. Correct, organize, & review the data with `01_clean_survey_data.R`
+**Code:** The functions in [`01_clean_survey_data.R`](/01_clean_survey_data.R) will consolidate the 'raw' survey data, clean it, organize it in tidy form, and conduct a series of validation procedures. 
 
-The functions in [`01_clean_survey_data.R`](/01_clean_survey_data.R) will consolidate the 'raw' survey data, clean it, organize it in tidy form, and conduct a series of validation procedures.
+- [`ha_data<-clean_heliconia_data()`](code/survey_cleaning/clean_heliconia_data.R) calls several other functions found in the folder [`code/survey_cleaning`](code/survey_cleaning). These functions include an `.R` script for cleaning and correcting the records for plants found in each demographic plot and producing `csv files of 'clean' data and any records recommended for follow-up review. 
 
-- The function `ha_data<-clean_heliconia_data()` calls several other functions 
-found in the folder [`code/survey_cleaning`](code/survey_cleaning). These functions include an .R script for cleaning and correcting the records for plants found in each demographic plot. 
+- [`create_plot_info_file()`](code/survey_cleaning/create_plot_info_file.R) will create a `.csv` file of plot-level descriptors.
 
-- The function [`create_plot_info_file()`](code/survey_cleaning/create_plot_info_file.R) will create a .csv file of plot-level descriptors 
-
-- The function [`create_treefall_records_file()`](code/survey_cleaning/create_treefall_records_file.R) creates a .csv with some information on
-treefalls in the demographic plots
-
-- [`create_tag_changes_file()`](code/survey_cleaning/create_tag_changes_file.R) creates a csv of all the plants whose tags 
-were replaced during the field survey (necessary only if one is reviewing 
+- [`create_tag_changes_file()`](code/survey_cleaning/create_tag_changes_file.R) creates a `.csv` of all the plants whose tags were replaced during the field survey (necessary only if one is reviewing 
 the survey history of individual plants using the original data sheets) 
 
-- The output of these functions are .csv files of 'clean' survey data, plot descriptors, treefall records, a log of tag changes saved to the folder [`data/survey_clean`](data/survey_clean).
+- [`create_plot_treefalls_file()`](code/survey_cleaning/create_plot_treefalls_file.R) creates a `.csv` with records of any new tree falls and gaps noted in the demographic plots during the survey. _(NB: review of these records is currently in progress.)_
 
-Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/survey_clean`](data/survey_clean) folder, the function [`review_heliconia_data()`](code/survey_review/review_heliconia_data.R) conducts a series of data validation procedures to flag any records to review before preparing the files to be archived at the Dryad Digital Repository. 
+- [`create_plant_damage_file()`](code/survey_cleaning/create_plant_damage_file.R) creates a `.csv` with any observations by the survey team of plants that were damaged by fallen branches or trees. _(NB: review of these records is currently in progress.)_
+
+**Output:** The `.csv` files produced by these functions are saved to the folder [`data/survey_clean`](data/survey_clean). Executing the code also creates or edits `.txt` files with the relevant file's version number and date of most recent update (see _'File Versioning'_, below).
+
+**File Versioning**: To ensure reproducibility, users must know the precise version of a data set they used in their analyses. The first time the HDP files above are 'cleaned' or 'created', a `.txt` file will automatically be created assigning the version number `1.0.0` and recording the date the file was created. If a data set or file already exists, the user will be asked if executing 'clean/create' code will result in an updated version of file. Entering 'N' will execute the code without changing the version number or date. Entering 'Y' will trigger a follow-up question of whether the new version is a `major`, `minor`, or `patch` update (see ['Frictionless Standards'](https://specs.frictionlessdata.io/patterns/#data-package-version)). The response will increment the value in the appropriate location by 1 (e.g., major update = 1.0.0 to 2.0.0, minor update = 1.0.0 to 1.1.0, patch = 1.0.0 to 1.0.1).
+
+**Data Validation & Review:** Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/survey_clean`](data/survey_clean) folder, the function [`review_heliconia_data()`](code/survey_review/review_heliconia_data.R) conducts a series of data validation procedures to flag any records to review before preparing the files to be archived at the Dryad Digital Repository. 
 
 - The functions for this review are in the folder [`code/survey_review`](code/survey_review). 
 
@@ -59,21 +62,17 @@ Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/surv
 
 - Any individual plant records that are flagged for review by `review_heliconia_data()` will be saved as `.csv` files in the folder [`data/survey_review`](data/survey_review). They can also be downloaded as .csv files from the Data Validation page.
 
-### 2. Prepare the files for archiving at Dryad with `02_create_survey_archive.R`.
+### STEP 2. Prepare the files for archiving at Dryad with `02_create_survey_archive.R`.
 
-The function in [`02_create_survey_archive.R`](/02_create_survey_archive.R) will prepare the version of the 'clean' survey data and file of plot descriptors that are archived in Dryad. 
+**Code: **[`02_create_survey_archive.R`](/02_create_survey_archive.R) will prepare the version of the 'clean' survey data and file of plot descriptors that are archived in Dryad. 
 
-- When doing so, the user will be asked if this is an updated version of the data set, and if so, if the version is a `major`, `minor`, or `patch` update (see ['Frictionless Standards'](https://specs.frictionlessdata.io/patterns/#data-package-version)). 
+- The user will again be asked if this is an updated version of the data set, and if so, if the version is a `major`, `minor`, or `patch` update. 
 
-- the function [`create_dryad_file()`](code/survey_archive/create_dryad_file.R) will then create .csv files of (1) plot descriptors and (2) the survey data that were archived in Dryad (NB: The demographic data file uploaded to Dryad excludes some of the redundant plot identification codes and the x-y coordinates of individual plants). The function generating and saving these files is found in the folder [`code/survey_archive`](code/survey_archive), as is the [`create_version_file.R`](code/survey_archive/create_version_file.R) script used toupdate the `version_info.txt` file.
-
-
-
+- [`create_dryad_file()`](code/survey_archive/create_dryad_file.R) will then create .csv files of (1) plot descriptors and (2) the survey data that were archived in Dryad (NB: The demographic data file uploaded to Dryad excludes some of the redundant plot identification codes and the x-y coordinates of individual plants). The function generating and saving these files is found in the folder [`code/survey_archive`](code/survey_archive), as is the [`create_version_file.R`](code/survey_archive/create_version_file.R) script used toupdate the `version_info.txt` file.
 <!---
 (Table 2 in Bruna et al., _Ecology_) 
 --->
 - These resulting .csv files are saved to the folder `data/survey_archive`.  
-
 
 ## Improvements, Suggestions, & Questions
 
