@@ -7,10 +7,12 @@ library(semver)
 
   if (dataset==("HDP_survey")|dataset==("HDP_plots")){
   file_name<-paste("./data/survey_archive/",dataset,"_version_info.txt",sep="")
-  }else if(dataset==("heliconia_survey_clean")|
-           dataset==("plots")|
-           dataset==("tag_changes")|
-           dataset==("treefall_impacts")){
+  }else if(
+    dataset==("heliconia_survey_clean")|
+    dataset==("plots")|
+    dataset==("tag_changes")|
+    dataset==("plot_treefalls")|
+    dataset==("plant_damage")){
   file_name<-paste("./data/survey_clean/",dataset,"_version_info.txt",sep="")
   }
     
