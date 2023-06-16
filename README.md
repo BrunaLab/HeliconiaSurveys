@@ -52,7 +52,11 @@ the survey history of individual plants using the original data sheets)
 
 **Output:** The `.csv` files produced by these functions are saved to the folder [`data/survey_clean`](data/survey_clean). Executing the code also creates or edits `.txt` files with the relevant file's version number and date of most recent update (see _'File Versioning'_, below).
 
-**File Versioning**: To ensure reproducibility, users must know the precise version of a data set they used in their analyses. The first time the HDP files above are 'cleaned' or 'created', a `.txt` file will automatically be created assigning the version number `1.0.0` and recording the date the file was created. If a data set or file already exists, the user will be asked if executing 'clean/create' code will result in an updated version of file. Entering 'N' will execute the code without changing the version number or date. Entering 'Y' will trigger a follow-up question of whether the new version is a `major`, `minor`, or `patch` update (see ['Frictionless Standards'](https://specs.frictionlessdata.io/patterns/#data-package-version)). The response will increment the value in the appropriate location by 1 (e.g., major update = 1.0.0 to 2.0.0, minor update = 1.0.0 to 1.1.0, patch = 1.0.0 to 1.0.1).
+**File Versioning**: To ensure reproducibility, users must know the precise version of a data set they used in their analyses. Below each function is a snippet of code entitled `create version files`; uncommenting and running this code will create or update the file recording the version number of the file being created (see ['Frictionless Standards'](https://specs.frictionlessdata.io/patterns/#data-package-version)).  
+
+The first time the files are 'cleaned' or 'created' a `.txt` file will automatically be created assigning the version number `1.0.0` with the date of file creation. If a file already exists, the user will be asked if the file being created is an updated version. 'N' will execute the code without changing the version number or date; 'Y' will trigger a follow-up question of whether the new version is a `major`, `minor`, or `patch` update. The version number will be appriopriately incremented by 1 (e.g., major: 1.0.0 -> 2.0.0, minor: 1.0.0 -> 1.1.0, patch: 1.0.0 -> 1.0.1). 
+
+- _[NB: this was automated but is temporarily manual to allow automated validation, see [details here](https://github.com/BrunaLab/HeliconiaSurveys/issues/41)]_.
 
 **Data Validation & Review:** Once the file `heliconia_survey_clean.csv` has been saved to the the [`data/survey_clean`](data/survey_clean) folder, the function [`review_heliconia_data()`](code/survey_review/review_heliconia_data.R) conducts a series of data validation procedures to flag any records to review before preparing the files to be archived at the Dryad Digital Repository. 
 
@@ -66,7 +70,7 @@ the survey history of individual plants using the original data sheets)
 
 **Code: **[`02_create_survey_archive.R`](/02_create_survey_archive.R) will prepare the version of the 'clean' survey data and file of plot descriptors that are archived in Dryad. 
 
-- The user will again be asked if this is an updated version of the data set, and if so, if the version is a `major`, `minor`, or `patch` update. 
+- Uncommenting and running the snippet of code entitled `create version files` will prompt the user to answer if they are creating an updated version of the data set, and if so, if the version is a `major`, `minor`, or `patch` update. 
 
 - [`create_dryad_file()`](code/survey_archive/create_dryad_file.R) will then create .csv files of (1) plot descriptors and (2) the survey data that were archived in Dryad (NB: The demographic data file uploaded to Dryad excludes some of the redundant plot identification codes and the x-y coordinates of individual plants). The function generating and saving these files is found in the folder [`code/survey_archive`](code/survey_archive), as is the [`create_version_file.R`](code/survey_archive/create_version_file.R) script used toupdate the `version_info.txt` file.
 <!---

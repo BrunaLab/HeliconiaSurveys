@@ -412,9 +412,9 @@ can be downloaded in different formats.</li>
 </div>
 <div id="workflow" class="section level2">
 <h2>Workflow</h2>
-<div id="correct-organize-review-the-data-with-01_clean_survey_data.r" class="section level4">
-<h4>1. Correct, organize, &amp; review the data with
-<code>01_clean_survey_data.R</code></h4>
+<div id="step-1.-correct-organize-review-the-data-with-01_clean_survey_data.r" class="section level3">
+<h3>STEP 1. Correct, organize, &amp; review the data with
+<code>01_clean_survey_data.R</code></h3>
 <p><strong>Code:</strong> The functions in <a href="/01_clean_survey_data.R"><code>01_clean_survey_data.R</code></a>
 will consolidate the ‘raw’ survey data, clean it, organize it in tidy
 form, and conduct a series of validation procedures.</p>
@@ -447,18 +447,24 @@ file’s version number and date of most recent update (see <em>‘File
 Versioning’</em>, below).</p>
 <p><strong>File Versioning</strong>: To ensure reproducibility, users
 must know the precise version of a data set they used in their analyses.
-The first time the HDP files above are ‘cleaned’ or ‘created’, a
+Below each function is a snippet of code entitled
+<code>create version files</code>; uncommenting and running this code
+will create or update the file recording the version number of the file
+being created (see <a href="https://specs.frictionlessdata.io/patterns/#data-package-version">‘Frictionless
+Standards’</a>).</p>
+<p>The first time the files are ‘cleaned’ or ‘created’ a
 <code>.txt</code> file will automatically be created assigning the
-version number <code>1.0.0</code> and recording the date the file was
-created. If a data set or file already exists, the user will be asked if
-executing ‘clean/create’ code will result in an updated version of file.
-Entering ‘N’ will execute the code without changing the version number
-or date. Entering ‘Y’ will trigger a follow-up question of whether the
-new version is a <code>major</code>, <code>minor</code>, or
-<code>patch</code> update (see <a href="https://specs.frictionlessdata.io/patterns/#data-package-version">‘Frictionless
-Standards’</a>). The response will increment the value in the
-appropriate location by 1 (e.g., major update = 1.0.0 to 2.0.0, minor
-update = 1.0.0 to 1.1.0, patch = 1.0.0 to 1.0.1).</p>
+version number <code>1.0.0</code> with the date of file creation. If a
+file already exists, the user will be asked if the file being created is
+an updated version. ‘N’ will execute the code without changing the
+version number or date; ‘Y’ will trigger a follow-up question of whether
+the new version is a <code>major</code>, <code>minor</code>, or
+<code>patch</code> update. The version number will be appriopriately
+incremented by 1 (e.g., major: 1.0.0 -&gt; 2.0.0, minor: 1.0.0 -&gt;
+1.1.0, patch: 1.0.0 -&gt; 1.0.1).</p>
+<p><em>[NB: this was automated but is temporarily manual to allow
+automated validation, see <a href="https://github.com/BrunaLab/HeliconiaSurveys/issues/41">details
+here</a>]</em>.</p>
 <p><strong>Data Validation &amp; Review:</strong> Once the file
 <code>heliconia_survey_clean.csv</code> has been saved to the the <a href="data/survey_clean"><code>data/survey_clean</code></a> folder, the
 function <a href="code/survey_review/review_heliconia_data.R"><code>review_heliconia_data()</code></a>
@@ -475,16 +481,18 @@ files in the folder <a href="data/survey_review"><code>data/survey_review</code>
 also be downloaded as .csv files from the Data Validation page.</p></li>
 </ul>
 </div>
-<div id="prepare-the-files-for-archiving-at-dryad-with-02_create_survey_archive.r." class="section level3">
-<h3>2. Prepare the files for archiving at Dryad with
+<div id="step-2.-prepare-the-files-for-archiving-at-dryad-with-02_create_survey_archive.r." class="section level3">
+<h3>STEP 2. Prepare the files for archiving at Dryad with
 <code>02_create_survey_archive.R</code>.</h3>
-<p><a href="/02_create_survey_archive.R"><code>02_create_survey_archive.R</code></a>
+<p><strong>Code: </strong><a href="/02_create_survey_archive.R"><code>02_create_survey_archive.R</code></a>
 will prepare the version of the ‘clean’ survey data and file of plot
 descriptors that are archived in Dryad.</p>
 <ul>
-<li><p>The user will again be asked if this is an updated version of the
-data set, and if so, if the version is a <code>major</code>,
-<code>minor</code>, or <code>patch</code> update.</p></li>
+<li><p>Uncommenting and running the snippet of code entitled
+<code>create version files</code> will prompt the user to answer if they
+are creating an updated version of the data set, and if so, if the
+version is a <code>major</code>, <code>minor</code>, or
+<code>patch</code> update.</p></li>
 <li><p><a href="code/survey_archive/create_dryad_file.R"><code>create_dryad_file()</code></a>
 will then create .csv files of (1) plot descriptors and (2) the survey
 data that were archived in Dryad (NB: The demographic data file uploaded
