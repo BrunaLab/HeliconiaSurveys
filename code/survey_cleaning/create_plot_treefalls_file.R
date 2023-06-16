@@ -8,9 +8,9 @@ library(here)
 
 # # create version file -----------------------------------------------------
 #   
-source("./code/create_version_file.R")
-dataset<-"plot_treefalls"
-create_version_file(dataset)
+# source("./code/create_version_file.R")
+# dataset<-"plot_treefalls"
+# create_version_file(dataset)
   
 # treefall records    ------------------------------------------------------
 
