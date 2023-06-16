@@ -1,6 +1,6 @@
 create_version_file <- function(dataset) {
 library(tidyverse)
-library(semver)
+# library(semver)
 
 # identify which dataset is being versioned -------------------------------
 
