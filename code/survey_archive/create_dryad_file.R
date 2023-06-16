@@ -4,14 +4,15 @@ create_dryad_file <- function() {
   library(tidyverse)
 
 
-  # create version files ----------------------------------------------------
-  source("./code/create_version_file.R")
-  dataset<-"HDP_plots"
-  create_version_file(dataset)
-  dataset<-"HDP_survey"
-  create_version_file(dataset)
-
-    rm(dataset)
+  # # create version files ----------------------------------------------------
+  # source("./code/create_version_file.R")
+  # dataset<-"HDP_plots"
+  # create_version_file(dataset)
+  # dataset<-"HDP_survey"
+  # create_version_file(dataset)
+  # 
+  #   rm(dataset)
+  
   # load the complete and clean Heliconia survey dataset ---------------------------
 
   ha_data <- read_csv("./data/survey_clean/heliconia_survey_clean.csv",

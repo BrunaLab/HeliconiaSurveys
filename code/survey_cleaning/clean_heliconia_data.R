@@ -11,9 +11,9 @@ clean_heliconia_data <- function() {
 
 # create version file -----------------------------------------------------
  
-  source("./code/create_version_file.R")
-  dataset<-"heliconia_survey_clean"
-  create_version_file(dataset)
+  # source("./code/create_version_file.R")
+  # dataset<-"heliconia_survey_clean"
+  # create_version_file(dataset)
 
   
   # STEP 1: Load raw data and prep for cleanup ------------------------------
