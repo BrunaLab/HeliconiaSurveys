@@ -5,9 +5,9 @@ create_plot_info_file <- function() {
 
 # create version file -----------------------------------------------------
 
-  source("./code/create_version_file.R")
-  dataset<-"plots"
-  create_version_file(dataset)  
+  # source("./code/create_version_file.R")
+  # dataset<-"plots"
+  # create_version_file(dataset)  
   
   # load the complete and clean Heliconia dataset ---------------------------
   
@@ -41,7 +41,7 @@ create_plot_info_file <- function() {
     rename(
       "bdffp_no" = "bdffp_reserve_no"
     ) %>%
-    left_join(isolation)
+    left_join(isolation, by="bdffp_no")
   
 
 # save the csv file -------------------------------------------------------

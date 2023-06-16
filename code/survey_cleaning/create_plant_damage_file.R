@@ -4,12 +4,12 @@ create_plant_damage_file <- function() {
 library(tidyverse)
 
   
-  
-  # create version file -----------------------------------------------------
-  
-  source("./code/create_version_file.R")
-  dataset<-"plant_damage"
-  create_version_file(dataset)  
+  # 
+  # # create version file -----------------------------------------------------
+  # 
+  # source("./code/create_version_file.R")
+  # dataset<-"plant_damage"
+  # create_version_file(dataset)  
 
 # load the complete and clean Heliconia dataset ---------------------------
 
