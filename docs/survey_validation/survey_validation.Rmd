@@ -10,7 +10,9 @@ date: "updated: `r Sys.Date()`"
 output: 
   rmdformats::robobook
 #   # rmdformats::downcute:
-    
+layout: page
+permalink: /data-validation
+
 self_contained: true
 thumbnails: true
 lightbox: true
