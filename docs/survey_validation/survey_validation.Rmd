@@ -10,9 +10,8 @@ date: "updated: `r Sys.Date()`"
 output: 
   rmdformats::robobook
 #   # rmdformats::downcute:
-layout: page
-permalink: /data-validation
-
+# layout: page
+# permalink: survey_validation/survey-validation
 self_contained: true
 thumbnails: true
 lightbox: true

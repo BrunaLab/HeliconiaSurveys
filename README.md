@@ -62,7 +62,7 @@ The first time the files are 'cleaned' or 'created' a `.txt` file will automatic
 
 - The functions for this review are in the folder [`code/survey_review`](code/survey_review). 
 
-- These and other validations are also carried out using the [`pointblank`](https://rich-iannone.github.io/pointblank/) package; ***The output of the data validation process suggesting records for review is*** [***here***](https://github.com/BrunaLab/HeliconiaSurveys/blob/0675990bb7480055a1287b0cb9f7f7c593b22434/docs/survey_validation/survey_validation.html).
+- These and other validations are also carried out using the [`pointblank`](https://rich-iannone.github.io/pointblank/) package; ***The output of the data validation process suggesting records for review is*** [***here***](https://brunalab.github.io/HeliconiaSurveys/survey_validation/survey_validation.html).
 
 - Any individual plant records that are flagged for review by `review_heliconia_data()` will be saved as `.csv` files in the folder [`data/survey_review`](data/survey_review). They can also be downloaded as .csv files from the Data Validation page.
 
