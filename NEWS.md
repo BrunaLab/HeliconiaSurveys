@@ -1,5 +1,20 @@
 # HDP file updates (organized by date)
 
+## 13 July 2023
+
+### Corrections
+
+- the reproductive status of two plants and updated version numbers (0.9.1)
+
+### Enhancements 
+
+- added two new validations  
+  - checking the seedlings to make sure not coded as reproductive (rare data entry error)
+  - produces .csv of all plants with 6 or more shoots that were recorded as dead in next survey year.  
+  
+
+
+
 
 ## 15 June 2023
 

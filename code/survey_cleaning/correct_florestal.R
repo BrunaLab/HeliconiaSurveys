@@ -198,7 +198,18 @@ correct_florestal <- function(ha_data) {
                           year==2004 & 
                           tag_number==1079,"dead")) 
 
-# 1163 --------------------------------------------------------------------
+  
+# 728 --------------------------------------------------------------------
+  # Seedling accidentally entered 2 infl for this seedling during data entry. 
+  # validated as error by checking data sheets
+  
+  ha_data<-ha_data %>%
+    mutate(infl=replace(infl, plot=="Florestal-CF" & 
+                          year==2000 & 
+                          tag_number==728,NA)) 
+  
+  
+  # 1163 --------------------------------------------------------------------
   ha_data<-ha_data %>%
     mutate(code=replace(code, plot=="Florestal-CF" & 
                           year==2004 & 

@@ -2,7 +2,17 @@ correct_cabofrio_cf <- function(ha_data) {
 
   suppressMessages({
 
-
+    
+# 2101  --------------------------------------------------------------------
+# accidentally entered 1 infl for this seedling during data entry. 
+# validated as error by checking data sheets
+    
+    ha_data<-ha_data %>%
+      mutate(infl=replace(infl, plot=="CaboFrio-CF" & 
+                            year==2007 & 
+                            tag_number==2101,NA)) 
+    
+    
 # 2115 --------------------------------------------------------------------
   # 2115 in D9 is actually 2105; move the measurment from 2008 to 2015's record
   ha_data$shts[ha_data$plot == "CaboFrio-CF" & 
@@ -36,6 +46,7 @@ correct_cabofrio_cf <- function(ha_data) {
   ha_data$code[ha_data$plot == "CaboFrio-CF" & 
                  ha_data$tag_number == 350 &
                  ha_data$year == 2007] <- "under branchfall, resprouting"
+
 
 # 2121 --------------------------------------------------------------------
   # create the correct values
