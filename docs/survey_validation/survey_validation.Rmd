@@ -230,6 +230,31 @@ ha %>%
   interrogate()
 ```
 
+
+# Seedlings: _Data Entry Errors_
+
+Check if during data entry the size of seedlings (1) wasn't accidentally transposed to the "inflorescences" column, which would code a new seedling as being reproductive. 
+
+**Test criteria**: Strict ('stop' if *any* rows fail).
+
+
+```{r agent7}
+# check seedlings
+ha %>%
+  filter(recorded_sdlg) %>% 
+  create_agent(
+    actions = al_strict,
+    label = "Check for 'reproductive' seedlings"
+  ) %>%
+  col_vals_lt(columns = vars(infl), value = 1,
+              na_pass = TRUE,
+              label = "infl < 1",
+              # segments = vars(shts),
+              actions = al_strict) %>%
+  interrogate()
+```
+
+
 ------
 
 # Missing values: _Height_
@@ -256,7 +281,7 @@ ha %>%
 
 Zombie plants are those that were recorded as 'Dead' in a survey but for which there is a measurement in a subsequent year (indicative of the plant losing all below-ground parts and then new shoots emerging prior to the next survey). This validation generates a `.csv` of any plants meeting this condition (labeled as 'zombie` for review and correction. 
 
-```{r agent7}
+```{r agent8}
 
 zombies <- ha %>% 
   group_by(plant_id) %>%
@@ -301,6 +326,29 @@ zombies %>%
 #   labs(y = "Proportion values missing - Shoots")
   
 ```
+
+
+
+# Plant Mortality: _Plant size_  
+
+Tests for plants 6 or more shoots dying from one year to the next. ***Note: ***These are not errors, these are plants whose size the year prior to being recorded as 'dead' in a survey was in the top 2% of dying plants.
+
+**Test criteria**: 'warn' if $\geq$ 1 rows fail conditions, 'stop' if $\geq$ 2% of rows fail conditions.  
+
+
+```{r agent9}
+# check plnats
+ha %>%
+  filter(lag(census_status, 1) == "dead") %>% 
+  create_agent(
+    actions = al_default,
+    label = "Check large plants dying"
+  ) %>% 
+  col_vals_lt(vars(shts), 6, na_pass = TRUE,
+              label = "6 or more shoots") %>% 
+  interrogate()
+```
+
 
 
 # **Return to the Github Repository:** [Link](https://github.com/BrunaLab/HeliconiaSurveys)
