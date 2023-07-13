@@ -1,19 +1,21 @@
 ---
 title: "Heliconia Demography Project"
-date: "last update: `r Sys.Date()`"
-author: Emilio M. Bruna
-output: 
+# date: "last update: `r Sys.Date()`"
+author: "Emilio M. Bruna"
+output:
   rmdformats::robobook:
     self_contained: true
     thumbnails: true
     lightbox: true
     gallery: false
-    highlight: tango
+    # highlight: tango
 ---
 
 
+
 ```{r setup, include=FALSE}
-# library(knitr)
+library(knitr)
+library(rmarkdown)
 library(rmdformats)
 # library(tidyverse)
 library(bookdown)
