@@ -257,25 +257,25 @@ ha %>%
 
 ------
 
-# Missing values: _Height_
+<!-- # Missing values: _Height_ -->
 
-Graphical depiction of the proportion of plants in each demographic plot for which there is no measurement of plant height (e.g., if plant not found).
+<!-- Graphical depiction of the proportion of plants in each demographic plot for which there is no measurement of plant height (e.g., if plant not found). -->
 
-```{r echo=FALSE}
-ha %>% 
-  group_by(plot_id, year) %>% 
-  summarize(prop_na = sum(is.na(ht))/n(), .groups = "drop") %>% 
-  ggplot(aes(x = year, y = prop_na)) +
-  geom_point(color="red") +
-  facet_wrap(~plot_id) +
-  theme_bw() +
-  scale_x_continuous(breaks = scales::breaks_pretty()) +
-  scale_y_continuous(breaks = c(0,0.5,1)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  gghighlight(prop_na > .5) +
-  labs(y = "Proportion of values missing - Height")
-  
-```
+<!-- ```{r echo=FALSE} -->
+<!-- ha %>%  -->
+<!--   group_by(plot_id, year) %>%  -->
+<!--   summarize(prop_na = sum(is.na(ht))/n(), .groups = "drop") %>%  -->
+<!--   ggplot(aes(x = year, y = prop_na)) + -->
+<!--   geom_point(color="red") + -->
+<!--   facet_wrap(~plot_id) + -->
+<!--   theme_bw() + -->
+<!--   scale_x_continuous(breaks = scales::breaks_pretty()) + -->
+<!--   scale_y_continuous(breaks = c(0,0.5,1)) + -->
+<!--   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + -->
+<!--   gghighlight(prop_na > .5) + -->
+<!--   labs(y = "Proportion of values missing - Height") -->
+
+<!-- ``` -->
 
 # Zombie plants
 
