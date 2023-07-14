@@ -1,7 +1,8 @@
 ---
 title: "Heliconia Demography Project"
-# date: "last update: `r Sys.Date()`"
+date: "last update: `r Sys.Date()`"
 author: "Emilio M. Bruna"
+# output: html_document
 output:
   rmdformats::robobook:
     self_contained: true
@@ -16,6 +17,7 @@ output:
 ```{r setup, include=FALSE}
 library(knitr)
 library(rmarkdown)
+library(blogdown)
 library(rmdformats)
 # library(tidyverse)
 library(bookdown)
