@@ -3,13 +3,15 @@ title: "Heliconia Demography Project"
 date: "last update: `r Sys.Date()`"
 author: "Emilio M. Bruna"
 # output: html_document
-output: rmdformats::robobook
+output: 
+  rmdformats::robobook:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
 # output: html_document
-    # self_contained: true
-  #   thumbnails: true
-  #   lightbox: true
-  #   gallery: false
-    # highlight: tango
+    
 ---
 
 
@@ -19,13 +21,14 @@ library(knitr)
 library(rmarkdown)
 library(blogdown)
 library(rmdformats)
-# library(tidyverse)
+# # library(tidyverse)
 library(bookdown)
-# library(kableExtra)
-# library(here)
+# # library(kableExtra)
+library(here)
 
 knitr::opts_chunk$set(echo = TRUE)
-## Global options
+
+# Global options
 options(max.print="75")
 opts_chunk$set(echo=FALSE,
 	             cache=TRUE,
@@ -35,8 +38,11 @@ opts_chunk$set(echo=FALSE,
                message=FALSE,
                warning=FALSE)
 opts_knit$set(width=75)
+
 ```
 
+<!-- render to the proper location with this command from the console!! -->
+<!-- rmarkdown::render("./docs/webpage/index.Rmd", output_dir = "./docs") -->
 
 # Heliconia Demography Project
 
@@ -159,6 +165,3 @@ If you wish to cite this repository, please cite as follows:
 
 
 
-```{r render, include=FALSE}
-rmarkdown::render(here::here("docs","index.Rmd"), "rmdformats::robobook", output_dir = here::here("docs"), output_file = "index.html")
-```
