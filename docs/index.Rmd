@@ -3,9 +3,9 @@ title: "Heliconia Demography Project"
 date: "last update: `r Sys.Date()`"
 author: "Emilio M. Bruna"
 # output: html_document
-# output: rmdformats::robobook
-output: html_document
-  #   self_contained: fda
+output: rmdformats::robobook
+# output: html_document
+    # self_contained: true
   #   thumbnails: true
   #   lightbox: true
   #   gallery: false
@@ -155,5 +155,3 @@ If you wish to cite this repository, please cite as follows:
 ---
 
 # [Back to the HDP Github Repository](https://github.com/BrunaLab/HeliconiaSurveys)
-
-
