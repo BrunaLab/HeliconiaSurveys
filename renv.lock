@@ -238,6 +238,26 @@
       ],
       "Hash": "40415719b5a479b87949f3aa0aee737c"
     },
+    "blogdown": {
+      "Package": "blogdown",
+      "Version": "1.18",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "bookdown",
+        "htmltools",
+        "httpuv",
+        "jsonlite",
+        "knitr",
+        "later",
+        "rmarkdown",
+        "servr",
+        "xfun",
+        "yaml"
+      ],
+      "Hash": "17045c17691502267d716133eb7058c8"
+    },
     "bookdown": {
       "Package": "bookdown",
       "Version": "0.34",
@@ -1748,6 +1768,20 @@
         "utils"
       ],
       "Hash": "767de4760297e70995edb7b30fbda816"
+    },
+    "servr": {
+      "Package": "servr",
+      "Version": "0.27",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "httpuv",
+        "jsonlite",
+        "mime",
+        "xfun"
+      ],
+      "Hash": "f4d1414c2ddc0a34ea27923134ac3c7b"
     },
     "snakecase": {
       "Package": "snakecase",
