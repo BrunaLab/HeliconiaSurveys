@@ -155,3 +155,10 @@ If you wish to cite this repository, please cite as follows:
 ---
 
 # [Back to the HDP Github Repository](https://github.com/BrunaLab/HeliconiaSurveys)
+
+
+
+
+```{r render, include=FALSE}
+rmarkdown::render(here::here("docs","index.Rmd"), "rmdformats::robobook", output_dir = here::here("docs"), output_file = "index.html")
+```
