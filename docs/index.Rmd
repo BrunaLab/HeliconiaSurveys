@@ -3,13 +3,13 @@ title: "Heliconia Demography Project"
 date: "last update: `r Sys.Date()`"
 author: "Emilio M. Bruna"
 # output: html_document
-output:
-  rmdformats::robobook:
-    self_contained: true
-    thumbnails: true
-    lightbox: true
-    gallery: false
-    # highlight: tango
+output: html_document
+  # rmdformats::robobook:
+  #   self_contained: true
+  #   thumbnails: true
+  #   lightbox: true
+  #   gallery: false
+  #   # highlight: tango
 ---
 
 

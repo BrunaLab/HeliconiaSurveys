@@ -5,7 +5,7 @@ navbar:
   type: inverse
   left:
   - text: Home
-    href: docs/index.html
+    href: docs/docs/index.html
   # - text: Data Validation 
   #   href: docs/data_validation.html
   # - text: HDP Products 
