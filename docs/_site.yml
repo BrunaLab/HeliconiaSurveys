@@ -2,13 +2,15 @@ name: hdp-website
 output_dir: docs
 navbar:
   title: Heliconia Demography Project
-  type: inverse
+  # type: inverse
   left:
   - text: Home
     href: index.html
   - text: Data Validation 
     href: survey_validation/survey_validation.html
-  # - text: HDP Products 
+  - text: HDP Github repo
+    href: https://github.com/BrunaLab/HeliconiaSurveys
+  # - text: Data Validation 
   #   menu:
   #   - text: Publications
   #     href: docs/publications.html
