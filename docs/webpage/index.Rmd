@@ -14,6 +14,7 @@ output:
     
 ---
 
+<!-- if you have 404 problems due to relative paths see this: https://github.com/orgs/community/discussions/50269 -->
 
 
 ```{r setup, include=FALSE}
@@ -161,6 +162,8 @@ If you wish to cite this repository, please cite as follows:
 ---
 
 # [Back to the HDP Github Repository](https://github.com/BrunaLab/HeliconiaSurveys)
+
+
 
 
 
