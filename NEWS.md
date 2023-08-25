@@ -3,7 +3,7 @@
 ## 24 July 2023
 
 - Data Paper accepted by _Ecology_, given BDFFP Technical Series # 863
-- Data set saved as 1.0 and archived at Dryad 
+- Data set saved as 1.0 and archived at Dryad with DOI: https://doi.org/10.5061/dryad.stqjq2c8d
 
 ## 13 July 2023
 
