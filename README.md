@@ -2,9 +2,9 @@
 
 ## Repository Overview
 
-This repository is for the cleanup, organization, and archiving of demographic survey data collected as part of the _Heliconia_ Demography Project. These procedures are carried out by executing two R scripts (see _Workflow_, below). An overview of the 1998-2002 surveys and the associated metadata have been submitted to _Ecology_ for publication as a data paper; upon acceptance the demographic data will be archived in the Dryad Digital Repository. ***There is a separate [Github repository for the _Data Paper_ itself](https://github.com/BrunaLab/Bruna_etal_HeliconiaDataPaper)***; it includes the latest version (in `.pdf` format) there and the `.Rmd` files used containing the text and code for analyses, data summaries, figures, and tables.
+This repository is for the cleanup, organization, and archiving of demographic survey data collected as part of the _Heliconia_ Demography Project. These procedures are carried out by executing two R scripts (see _Workflow_, below). An overview of the 1998-2002 surveys and the associated metadata have been submitted to _Ecology_ for publication as a data paper; upon acceptance the demographic data will be archived in the Dryad Digital Repository. **There is a separate [Github repository for the 2023 _Ecology_ Data Paper](https://github.com/BrunaLab/Bruna_etal_HeliconiaDataPaper)**; that repo includes the final version of the paper (in `.pdf` format) there and the `.Rmd` files used containing the text and code for analyses, data summaries, figures, and tables.
 
-**This repository includes the following: **
+**This repository includes the following:**
 
 1. **R Code** used to:
     - process raw data files and correct / make changes to individual records [(`code/survey_cleaning`)](code/survey_cleaning)
