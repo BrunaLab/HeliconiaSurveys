@@ -1,5 +1,7 @@
 correct_pa_cf <- function(ha_data) {
 
+  # PortoAlegre-CF is CF-5   
+
 
 # 354/356 -----------------------------------------------------------------
   # the 356 in B4 is actually 354

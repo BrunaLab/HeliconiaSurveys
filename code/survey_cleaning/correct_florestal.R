@@ -1,5 +1,8 @@
 correct_florestal <- function(ha_data) {
 
+  
+  # Florestal is CF-1   
+  
   suppressMessages({
   
 

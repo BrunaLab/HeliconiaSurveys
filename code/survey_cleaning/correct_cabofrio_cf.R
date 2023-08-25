@@ -1,5 +1,7 @@
 correct_cabofrio_cf <- function(ha_data) {
 
+  # CaboFrio-CF is CF-6   
+  
   suppressMessages({
 
     
