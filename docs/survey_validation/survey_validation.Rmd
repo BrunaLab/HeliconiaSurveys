@@ -29,6 +29,8 @@ We use the R package [`pointblank`](https://rich-iannone.github.io/pointblank/) 
 1. how many of these units passed or failed, and
 1. a button for downloading a .csv file of the records flagged by a particular validation test. _Note that these are not necessarily errors_. For instance, the validation procedure for 'plant size - height' returns as 'stop' all plants >2 m tall. _Heliconia_ plants can exceed this threshold; this test is simply designed to flag any such individuals. In contrast, the data set should not have any duplicated rows. A notification of 'fail' for this test indicates an error that can be corrected by downloading the csv file, reviewing the duplicated rows, and uploading the necessary corrections. 
 
+Last run: `r Sys.Date()`
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
 
