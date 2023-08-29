@@ -24,6 +24,11 @@ jobs:
         with:
           use-public-rspm: true #use R Studio Package Manager to speed up install
       - uses: r-lib/actions/setup-pandoc@v2
+      - name: Install ImageMagick #using advice from https://github.com/rstudio/r-system-requirements/blob/main/rules/imagemagick.json
+        run: |
+          sudo apt-get install imagemagick
+          sudo apt-get install libmagick++-dev
+          sudo apt-get install gsfonts
       - uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 3
