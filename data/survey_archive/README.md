@@ -46,7 +46,6 @@ This data set describes the demographic plots in which surveys were conducted (H
 
 -- census_status: Plant status in a census (values: measured = alive, measured dead = died prior to census missing = not found during census)
 
--- tag_number: the number on the aluminum tag attached to a plant
 
 
 ## Description of the data and file structure: HDP_plots.csv
