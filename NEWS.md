@@ -1,4 +1,17 @@
-# HDP file updates (organized by date)
+# HDP file updates (organized by date beginning with the most recent changes)
+
+
+## 11 July 2024
+
+### Enhancement 
+
+- uploaded pdfs of the original datasheets from the four plots in 1-ha fragments, two odf the plots in 10-ha fragments, and five of the plots in continuous forest.
+
+## 2 July 2024
+
+### Enhancement
+
+- In July 2024 EB visited Camp 41 and conducted a quick visit to plot CF-2. Some of the original tags that were difficult to read or missing were replaced with new tags. All of the new numbers are noted in the "tag_changes" file. The page listing tag changes now includes a summary of the number and percentage of tags in each plot that have been changed. 
 
 ## 24 July 2023
 

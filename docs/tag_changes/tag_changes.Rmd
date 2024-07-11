@@ -53,6 +53,7 @@ here::here()
 knitr::opts_chunk$set(echo = TRUE)
 ## Global options
 options(max.print="75")
+
 opts_chunk$set(echo=FALSE,
 	             cache=TRUE,
                prompt=FALSE,
@@ -72,11 +73,82 @@ ha_sites <- read_csv(here("data","survey_clean","heliconia_survey_clean.csv"), c
 tag_changes<-left_join(tag_changes,ha_sites, by="plot") %>% 
   select(habitat,ranch,plot_id,plot,year,old_tag_no,new_tag_number,notes)
 rm(ha_sites)
-  
-# ANY CHANGES TO THE TAG NUMBERS AS OF June 1, 2023 WILL BE ENTERED HERE
 
-tag_changes_updated <- tag_changes
-# %>% 
+# Standardize 
+
+tag_changes<-tag_changes %>% 
+  mutate(ranch = 
+           case_when(
+             ranch == "PortoAlegre" ~ "PAL",
+             .default = as.character(ranch)
+             )
+         ) %>% 
+  rename(new_tag_no=new_tag_number)
+
+
+# ANY CHANGES TO THE TAG NUMBERS AS OF June 1, 2023 ARE ENTERED MANUALLY HERE
+
+# 2024 Minisurvey done to prep for grant proposal
+
+tag_changes_2024_CF2 <- data.frame(old_tag_no=character(),
+                                   new_tag_no=integer(),
+                                   notes=character(),
+                                   stringsAsFactors=FALSE)
+tag_changes_2024_CF2 <- tag_changes_2024_CF2 %>% 
+  add_row(
+          old_tag_no="153",
+          new_tag_no=13902,
+          notes=NA
+          ) %>% 
+  add_row(old_tag_no="2361",
+          new_tag_no=13908,
+          notes=NA
+          ) %>% 
+  add_row(old_tag_no="1340",
+          new_tag_no=13907,
+          notes=NA
+          ) %>% 
+  add_row(old_tag_no="2365",
+          new_tag_no=13909,
+          notes=NA
+          ) %>% 
+     add_row(old_tag_no="2390",
+             new_tag_no=13560,
+             notes=NA
+          ) %>% 
+  add_row(old_tag_no="767",
+          new_tag_no=13910,
+          notes=NA
+          ) %>% 
+ add_row(old_tag_no="147",
+          new_tag_no=13901,
+          notes=NA
+          ) %>% 
+  add_row(old_tag_no="460",
+          new_tag_no=13905,
+          notes=NA
+          ) %>% 
+  add_row(old_tag_no="461",
+          new_tag_no=13904,
+          notes=NA
+          ) %>% 
+  mutate(habitat="CF",
+          ranch="EST",
+          plot_id="CF-2",
+          plot="5750",
+          year=2024) 
+
+# Add back to file, rearrange, and save
+tag_changes_updated<-bind_rows(tag_changes,tag_changes_2024_CF2)
+
+# Arrange and save updated version
+
+tag_changes_updated<-tag_changes_updated %>%
+  arrange(habitat,
+          ranch,
+          plot_id,
+          year,
+          old_tag_no)
 
 write_csv(tag_changes_updated, here("data","survey_clean","tag_changes.csv"))
 ```
@@ -86,14 +158,58 @@ write_csv(tag_changes_updated, here("data","survey_clean","tag_changes.csv"))
 
 **Last update:** `r format(Sys.time(), '%d %B %Y')`
 
-Field survey teams periodically change the tags attached to individual plants (e.g., if the tag becomes difficult to read or the tag is lost). Below is a record of these changes; these records are necessary when using the original data sheets to validate plant records.    
+Field survey teams periodically change the tags attached to individual plants (e.g., if the tag becomes difficult to read or the tag is lost under a fallen branch). Below is (a) a summary of the number of tags changed per plot and (b) a list of the individual changes; these records are necessary if using the original data sheets to validate plant records.    
 
-```{r nplants_total, cached=TRUE, warning=FALSE,message = FALSE}
+## Summary of tag replacements.
 
-tag_changes_updated<-tag_changes_updated %>%
-  group_by(plot) %>%
-  arrange(plot, year)
-kbl(tag_changes_updated)
+
+
+```{r nplants_summary, cached=TRUE, warning=FALSE,message = FALSE}
+
+total_tagged <- read_csv(here("data","survey_clean","heliconia_survey_clean.csv"), col_types = cols()) %>% 
+  group_by(habitat,plot_id) %>% 
+  summarise(total_tagged=n_distinct(tag_number))
+
+tag_change_summary<-tag_changes_updated %>% 
+  group_by(habitat,plot_id,ranch) %>% 
+  tally() %>% 
+  left_join(total_tagged) %>% 
+  rename(tags_changed=n) %>% 
+  ungroup()
+tag_change_summary<-tag_change_summary %>% 
+  mutate(percent_changed=tags_changed/total_tagged*100) %>% 
+  mutate(percent_changed=round(percent_changed,2)) %>% 
+  select(-habitat) %>% 
+    arrange(ranch,
+          plot_id
+          )
+
+
+
+kbl(tag_change_summary,
+    align = "rrrrr") %>% 
+pack_rows("1-ha Fragments", 1, 4) %>% 
+  pack_rows("10-ha Fragments", 5, 7) %>% 
+  pack_rows("Continuous Forest", 8, 13) %>%
+  column_spec(1, width = "15em")
+
+
+
+```
+
+---
+
+## List of all tags replaced.
+
+```{r nplants_list, cached=TRUE, warning=FALSE,message = FALSE}
+
+
+options(knitr.kable.NA = '')
+
+kbl(tag_changes_updated,
+    align = "cccccccc")
+
+
 ```
 
 
