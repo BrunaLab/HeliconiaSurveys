@@ -24,7 +24,7 @@ This data set describes the demographic plots in which surveys were conducted (H
 
 -- plot_id: Plot in which plant is located (values: FF1-FF7, CF1-CF6)
 
--- subplot: Subplot in which plant is located  (values: A1-E10 except in CF3, where F6-J101)
+-- subplot: Subplot in which plant is located  (values: A1-E10 except in CF3, where F6-J10)
 
 -- plant_id: Unique ID no. assigned to plant (values: range = 1-8660, units: number, precision: 1)
 
