@@ -1,11 +1,11 @@
 # HDP file updates (organized by date beginning with the most recent changes)
 
 
-## 11 July 2024
+## 18 July 2024
 
 ### Enhancement 
 
-- uploaded pdfs of the original datasheets from the four plots in 1-ha fragments, two odf the plots in 10-ha fragments, and five of the plots in continuous forest.
+- Scanned copies (.pdf format) of the original data sheets used to conduct the demographic surveys have been uploaded. The originals are stored at the University of Florida and are available upon request from E. M. Bruna.   
 
 ## 2 July 2024
 
