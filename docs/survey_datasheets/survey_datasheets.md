@@ -4,7 +4,21 @@
 Scanned copies (.pdf format) of the original datasheets used to record data from the demographic surveys are now available for review and download.
 
 ------------------------------------------------------------------------
-
++-------------------+-------------+------------------------------------------------------------------+
+| Category          | Plot        | Survey Year                                                      |
++===================+=============+==================================================================+
+| 1-ha fragment     | FF-1        | Survey Year                                                      |
+|                   |             | Survey Year                                                      |
+|                   |             | Survey Year                                                      | 
+|                   |             | Survey Year                                                      | 
+|                   |             | Survey Year                                                      | 
+|                   |             | Survey Year                                                      | 
+|                   |             | Survey Year                                                      | 
+|                   |             | Survey Year                                                      | 
+|                   |             | Survey Year                                                      | 
+|                   |             | Survey Year                                                      | 
+|                   |             | Survey Year                                                      | 
++-------------------+-------------+------------------------------------------------------------------+
 
 +-------------------+-------------+------------------------------------------------------------------+
 | Category          | Plot        | Survey Year                                                      |
