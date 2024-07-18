@@ -5,7 +5,7 @@
 
 ### Enhancement 
 
-- Scanned copies (.pdf format) of the original data sheets used to conduct the demographic surveys have been uploaded. The originals are stored at the University of Florida and are available upon request from E. M. Bruna.   
+- Scanned copies (.pdf format) of the original data sheets used to conduct the demographic surveys have been uploaded. The originals are stored at the University of Florida and are available upon request from E. M. Bruna. _Note: some of these files are very large._. 
 
 ## 2 July 2024
 
