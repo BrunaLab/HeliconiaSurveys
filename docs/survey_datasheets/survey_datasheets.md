@@ -1,3 +1,11 @@
+
+# Survey Datasheets
+
+Scanned copies (.pdf format) of the original datasheets used to record data from the demographic surveys are now available for review and download.
+
+------------------------------------------------------------------------
+
+
 +-------------------+-------------+------------------------------------------------------------------+
 | Category          | Plot        | Survey Year                                                      |
 +===================+=============+==================================================================+
@@ -151,12 +159,5 @@
 |                   |             |                                                                  |
 +-------------------+-------------+------------------------------------------------------------------+
 
-# Survey Datasheets
-
-Scanned copies (.pdf format) of the original datasheets used to record data from the demographic surveys are now available for review and download.
-
-Scanning and uploading of the original datasheets is ongoing; for now the datasheets for the 2002 survey of BDFFP Fragment 2018 (Dimona, 1-ha) can be downloaded [here](../survey_datasheets//Dimona1_2108_2002-compressed.pdf)
-
-<img src="../survey_datasheets/dimona_2108_2002.png" width="400px"/>
-
 ------------------------------------------------------------------------
+<img src="../survey_datasheets/dimona_2108_2002.png" width="200px"/>
