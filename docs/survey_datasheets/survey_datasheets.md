@@ -8,16 +8,6 @@ Scanned copies (.pdf format) of the original datasheets used to record data from
 | Category          | Plot        | Survey Year                                                      |
 +===================+=============+==================================================================+
 | 1-ha fragment     | FF-1        | Survey Year                                                      |
-|                   |             | Survey Year                                                      |
-|                   |             | Survey Year                                                      | 
-|                   |             | Survey Year                                                      | 
-|                   |             | Survey Year                                                      | 
-|                   |             | Survey Year                                                      | 
-|                   |             | Survey Year                                                      | 
-|                   |             | Survey Year                                                      | 
-|                   |             | Survey Year                                                      | 
-|                   |             | Survey Year                                                      | 
-|                   |             | Survey Year                                                      | 
 +-------------------+-------------+------------------------------------------------------------------+
 
 +-------------------+-------------+------------------------------------------------------------------+
