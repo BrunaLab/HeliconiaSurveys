@@ -9,15 +9,25 @@ Scanned copies (.pdf format) of the original datasheets used to record data from
 | Category          | Plot        | Survey Year                                                      |
 +===================+=============+==================================================================+
 | 1-ha fragment     | FF-1        | [1999](../survey_datasheets/frag-one/ff1-2107/ff1-2107-1999.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2000](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2000.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2001](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2001.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2002](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2002.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2003](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2003.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2004](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2004.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2005](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2005.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2006](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2006.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2007](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2007.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2008](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2008.pdf) |
+|                   |             |                                                                  |
 |                   |             | [2009](../survey_datasheets/frag-one/ff1-2107/ff1-2107-2009.pdf) |
 +-------------------+-------------+------------------------------------------------------------------+
 
