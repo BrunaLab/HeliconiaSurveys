@@ -1,5 +1,8 @@
 check_condition <- function(ha_data) {
   
+  
+  library(tidyverse)
+  
   # This function creates / edits columns with plant status as follows:
   #   (1) categorizing status of plants as seedlings (`recorded_sdlg` =TRUE/FALSE)
   #   (2) noting if plants were impacted by treefalls/branchfalls (`treefall_status`)

@@ -1,6 +1,5 @@
 # HDP file updates (organized by date beginning with the most recent changes)
 
-
 ## 18 July 2024
 
 ### Enhancement 
@@ -11,7 +10,7 @@
 
 ### Enhancement
 
-- In July 2024 EB visited Camp 41 and conducted a quick visit to plot CF-2. Some of the original tags that were difficult to read or missing were replaced with new tags. All of the new numbers are noted in the "tag_changes" file. The page listing tag changes now includes a summary of the number and percentage of tags in each plot that have been changed. 
+- In July 2024 EB visited Camp 41 and conducted a quick visit to plot CF-2. Some of the original tags that were difficult to read or missing were replaced with new tags. All of the new numbers are noted in the "tag_changes" file. The page listing tag changes now includes a summary of the number and percentage of tags in each plot that have been changed. The numbers have been updated in the "clean" and "archive" version of the data, but they have not been uploaded to Dryad as a new version because no new data (i.e., plant size) that would alter analyses or results are included.
 
 ## 24 July 2023
 

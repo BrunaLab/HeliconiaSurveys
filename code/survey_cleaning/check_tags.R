@@ -1,7 +1,7 @@
 check_tags <- function(ha_data) {
 
-  library(dplyr)
-  library(tidyr)
+  library(tidyverse)
+  
     
   # This function does multiple validations related to tag numbers.
   # (1) It standardizes tag numbers

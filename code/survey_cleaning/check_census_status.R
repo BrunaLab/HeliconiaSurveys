@@ -1,5 +1,8 @@
 check_census_status <- function(ha_data) {
   
+  library(tidyverse)
+  
+  
     # for testing purposes only: ha_data_original<-ha_data 
     ha_data_original<-ha_data
     ha_data <- ha_data %>%

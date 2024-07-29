@@ -1,6 +1,6 @@
 correct_florestal <- function(ha_data) {
 
-  
+  library(tidyverse)
   # Florestal is CF-1   
   
   suppressMessages({

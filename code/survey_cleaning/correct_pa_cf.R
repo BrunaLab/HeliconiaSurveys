@@ -1,5 +1,6 @@
 correct_pa_cf <- function(ha_data) {
 
+  library(tidyverse)
   # PortoAlegre-CF is CF-5   
 
 

@@ -1,4 +1,5 @@
 cleanup_codes <- function(ha_data) {
+  library(tidyverse)
   
   ha_data$code <- as.factor(ha_data$code)
   # summary(ha_data$code)

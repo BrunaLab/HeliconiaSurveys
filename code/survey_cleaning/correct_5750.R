@@ -1,6 +1,9 @@
 correct_5750 <- function(ha_data) {
   
   
+  library(tidyverse)
+  
+  
   # 5750 is CF-2   
   
   
@@ -368,7 +371,22 @@ correct_5750 <- function(ha_data) {
     
     rm(delete1338)
   
+    
 
+# tag changes 2024 Manaus visit -------------------------------------------
+    
+
+
+    ha_data<-ha_data %>%
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==153, 13902)) %>% 
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==2361,13908)) %>% 
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==1340,13907)) %>% 
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==2365,13909)) %>% 
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==2390,13560)) %>% 
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==767,13910)) %>% 
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==147,13901)) %>% 
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==460,13905)) %>% 
+      mutate(tag_number=replace(tag_number, plot==5750 & tag_number==461,13904)) 
   })
   
   return(ha_data)
