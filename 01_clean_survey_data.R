@@ -1,4 +1,25 @@
 
+
+# Packages Required -------------------------------------------------------
+
+# install.packages("tidyverse")
+# install.packages("readxl")
+# install.packages("here")
+# install.packages("cowplot")
+# install.packages("gridExtra")
+# install.packages("rfigshare")
+# install.packages("semver")
+# install.packages("janitor")
+
+library(tidyverse)
+library(readxl)
+library(here)
+library(cowplot)
+library(gridExtra)
+library(rfigshare)
+library(semver)
+library(janitor)
+
 # STEP 1: Load, correct, and organize the demographic data -----------------
 
 source("./code/survey_cleaning/clean_heliconia_data.R")
